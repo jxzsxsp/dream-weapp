@@ -1,0 +1,17 @@
+<scroll-view>
+
+  <view class='select-container'>
+    <view class='select-item'>
+      <text class='title'>报考地区</text>
+      <text class='content'>{{info.province}}</text>
+      <text class='content'>{{info.area}}</text>
+    </view>
+
+    <view class='select-item'>
+      <text class='title'>学历选择</text>
+      <text class='content'>{{info.degree}}</text>
+    </view>
+  </view>
+
+  <button type='primary' bindtap='start'>开始学习</button>
+</scroll-view>

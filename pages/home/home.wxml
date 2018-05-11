@@ -1,0 +1,12 @@
+<scroll-view>
+
+  <view class="hot-container">
+    <block wx:for="{{iconList}}" wx:key="icon">
+      <view class="item-container" bindtap="{{item.tap}}">
+        <image class="item-image" src="{{item.image}}"></image>
+        <text class="item-text">{{item.title}}</text>
+      </view>
+    </block>
+  </view>
+
+</scroll-view>

@@ -1,0 +1,27 @@
+.select-container {
+  width: 650rpx;
+  height: 120rpx;
+  border: 1rpx solid gray;
+  margin-left: 50rpx;
+  margin-top: 80rpx;
+}
+
+.select-item {
+  line-height: 57rpx;
+  justify-content: center;
+  border: 1rpx solid gray;
+}
+
+.title {
+  padding: 2rpx;
+}
+
+.content {
+  margin-left: 20rpx;
+  font-size: 35rpx;
+  color: gray;
+}
+
+button {
+  margin-top: 100rpx;
+}

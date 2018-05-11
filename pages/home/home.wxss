@@ -1,0 +1,27 @@
+.hot-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  width: 371rpx;
+  height: 300rpx;
+  border:1px solid gray;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.item-text {
+  font-size: 12px;
+  text-align: center;
+  line-height: 100rpx;
+}
