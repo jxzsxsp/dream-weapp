@@ -10,7 +10,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
+// 判断开发，alpha，预发环境
 var env = config.build.env
+if (process.env.NODE_ENV == "alpha") {
+  env = config.alpha.env;
+}else if(process.env.NODE_ENV == "prelease"){
+  env = config.prelease.env;
+}
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
