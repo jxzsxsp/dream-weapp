@@ -6,10 +6,9 @@
     </div>
     <div class="my-account">
       <img class="head-pic" :src="headPic" background-size="cover"/>
-      <a href="pages/mine/login/main" class="ls-name">立即登录</a>
+      <a href="/pages/mine/login/main" class="ls-name">立即登录</a>
     </div>
     <div class="my-item">
-      <web-view :src="href"></web-view>
       <div class="my-title order-title">
         <div class="my-title-l my-title-item"><i class="iconfont icon-dingdan icon-red"></i><span>我的订单</span></div>
         <div class="my-title-r my-title-item">全部<i class="iconfont icon-jiantou"></i></div>
