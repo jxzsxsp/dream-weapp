@@ -17,6 +17,14 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 //   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 // })
 
+// 判断开发，alpha，预发环境
+var env = config.dev.env;
+if (process.env.NODE_ENV == "alpha") {
+  env = config.alpha.env;
+}else if(process.env.NODE_ENV == "prelease"){
+  env = config.prelease.env;
+}
+
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -36,7 +44,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': config.dev.env
+      'process.env': env
     }),
 
     // copy from ./webpack.prod.conf.js

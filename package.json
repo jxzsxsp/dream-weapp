@@ -7,6 +7,10 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
+    "alpha": "NODE_ENV=alpha node build/dev-server.js",
+    "buildalpha": "rimraf dist && NODE_ENV=alpha  node build/build.js",
+    "prelease": "NODE_ENV=prelease node build/dev-server.js",
+    "buildprelease": "rimraf dist && NODE_ENV=prelease node build/build.js",
     "build": "rimraf dist && node build/build.js"
   },
   "dependencies": {
