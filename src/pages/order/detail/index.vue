@@ -7,7 +7,7 @@
         <i class="iconfont icon-jiantou"></i>
       </div>
     </div>
-    <div class="order-address flex-style">
+    <div class="order-address">
         <i class="iconfont icon-jiantou order-address-left"></i>
         <div>
            <div><span>洛菲菲</span><span class="telephone">18397654678</span></div>
@@ -15,12 +15,32 @@
         </div>
     </div>
     <div class="order-list">
-        <div class="goods-info padding-style flex-style">
-            <item :text="message" :message="text"></item>
-            <!-- <cloth :src="src"></cloth> -->
-            <a class="check-cloth-report" href="/pages/order/clothReport/main">查看验布报告</a>
-        </div>
-        <div class="goods-info padding-style">这里是商品信息</div>
+        <item 
+               :title="title" 
+               :itemImgUrl="statusBg" 
+               :itemColorNum="itemColorNum" 
+               :itemColor="itemColor" 
+               :itemStatus="itemStatus" 
+               :itemStyle="itemStyle"
+               :price="price"
+               :unit="unit"
+               :itemNum='itemNum'
+               :isCloth='isCloth'
+               >
+            </item>
+            <item 
+               :title="title" 
+               :itemImgUrl="statusBg" 
+               :itemColorNum="itemColorNum" 
+               :itemColor="itemColor" 
+               :itemStatus="itemStatus" 
+               :itemStyle="itemStyle"
+               :price="price"
+               :unit="unit"
+               :itemNum='itemNum'
+               :isCloth='isCloth'
+               >
+            </item>
         <div class="goods-price-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">商品总价</div>
@@ -102,8 +122,15 @@ export default {
      statusBg:require('../../../images/statusBg.png'),
      src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
      isShowRate:false,
-     message:'222222',
-     text:'aaaaa'
+     title: '我是商品信息我是商品头',
+     itemColorNum:'3',
+     itemColor:'白色',
+     itemStatus:'现货',
+     itemStyle:'样布',
+     price:'20.00',
+     unit:'米',
+     itemNum:'20',
+     isCloth:true
     }
   },
   computed: {
@@ -175,6 +202,9 @@ page{
   padding:20rpx;
   align-items: normal;
   background:#fff;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
 }
 .order-address-left{
   margin-right:20rpx;
@@ -187,7 +217,7 @@ page{
   margin-left:50rpx;
 }
 .order-list{
-  padding:20rpx 20rpx;;
+  padding:0rpx 20rpx;;
   width:100%;
   margin-top:20rpx;
   background: #FFFFFF;
@@ -228,13 +258,6 @@ page{
   line-height:30rpx;
   padding:0 10rpx;
   border-radius:8rpx;
-}
-.check-cloth-report{
-  background: #FFFFFF;
-  border: 1px solid #333333;
-  border-radius: 6px;
-  width:183rpx;
-  text-align:center;
 }
 .check-cloth-report:hover{
   color:#333;
