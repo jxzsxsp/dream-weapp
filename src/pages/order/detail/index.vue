@@ -4,7 +4,7 @@
       <img class="status-bg" :src="statusBg" background-size="cover"/>
       <div class="status-content flex-style">
         <div class="status-text">订单待收货</div>
-        <i class="iconfont icon-jiantou"></i>
+        <i class="iconfont icon-shouhou"></i>
       </div>
     </div>
     <div class="order-address flex-style">
