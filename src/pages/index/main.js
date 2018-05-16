@@ -22,10 +22,10 @@ app.$mount()
 // const http = new Http()
 // html.get();
 // console.log(http);
-http.get('/user').then(
-  res => {console.log(res)},
-  res => {console.log(res)}
-)
+// http.get('/user').then(
+  // res => {console.log(res)},
+  // res => {console.log(res)}
+// )
 // .complete(res => {
   // console.log('complete',res);
 // });

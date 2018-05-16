@@ -13,6 +13,7 @@ class Http {
 		var url = this.root + '/login'
 		wx.request({
 			url: url,
+			method: "POST",
 			data: param,
 			success (res){
 				if(res.code == 200){
