@@ -15,7 +15,7 @@ class Http {
 	post (url, data, isLoading, opts) {
 		url = this.root + url
 		data = this.getQuestData(data);
-		return this.request(url,data,'POST', isLoading);
+		return this.request(url, data,'POST', isLoading);
 	}
 	// 其他域名get请求
 	otherGet (url, data, isLoading, opts) {
@@ -25,33 +25,7 @@ class Http {
 	otherPost (url, data, isLoading, opts) {
 		return this.request(url,data,'POST', isLoading);
 	}
-	//  静默登录
-	quietLogin (code) {
-		var param = wx.getStorageSync('systemInfo');
-		if(!param){
-			this.saveSystemInfo();
-			param = wx.getStorageSync('systemInfo');
-		}
-		param.data = {
-			code: code
-		}
-		var url = '/login'
-		console.log(this.post);
-		this.post(url,param,true).then(res => {
-			if(res.code == 200){
-				wx.setStorageSync('token',res.data.token);
-			}else if(res.code == -100){
-				var pages = getCurrentPages()    //获取加载的页面
-				var currentPage = pages[pages.length-1]    //获取当前页面的对象
-				var url = currentPage.route
-				wx.navigateTo({
-					url: 'pages/mine/login/main?url=' + encodeURI(url)
-				})
-			}
-		},res => {
-			console.log(res);
-		})
-	}
+	
 	// request
 	request (url, data, method, isLoading) {
 		if(isLoading){
@@ -66,11 +40,20 @@ class Http {
 				method: "POST",
 				data: data,
 				success (res){
-					reject(res || {});
+					if(res.code == 200){
+						resolve(res || {});
+					}else if(res.code == -100){
+						var pages = getCurrentPages()    //获取加载的页面
+						var currentPage = pages[pages.length-1]    //获取当前页面的对象
+						var url = currentPage.route
+						wx.navigateTo({
+							url: 'pages/mine/login/main?url=' + encodeURI(url)
+						})
+					}
 				},
 				fail (error){
 					console.log('获取数据失败');
-					resolve(error || {});
+					reject(error || {});
 				},
 				complete () {
 					if(isLoading){
@@ -78,6 +61,18 @@ class Http {
 					}
 				}
 			})
+		})
+	}
+	//  静默登录
+	quietLogin (code) {
+		var data = {
+			code: code
+		}
+		var url = '/login'
+		this.post(url,data,true).then(res => {
+			wx.setStorageSync('token',res.data.token);			
+		},res => {
+			console.log(res);
 		})
 	}
 	// 封装和后端数据格式
