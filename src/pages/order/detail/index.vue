@@ -2,9 +2,9 @@
   <div class="container">
     <div class="order-status">
       <img class="status-bg" :src="statusBg" background-size="cover"/>
-      <div class="status-content flex-style">
+      <div class="status-content flex-style" @click="showRate()">
         <div class="status-text">订单待收货</div>
-        <i class="iconfont icon-shouhou"></i>
+        <i class="iconfont icon-jiantou"></i>
       </div>
     </div>
     <div class="order-address flex-style">
@@ -15,7 +15,11 @@
         </div>
     </div>
     <div class="order-list">
-        <div class="goods-info padding-style">这里是商品信息</div>
+        <div class="goods-info padding-style flex-style">
+            <item :text="message" :message="text"></item>
+            <!-- <cloth :src="src"></cloth> -->
+            <a class="check-cloth-report" href="/pages/order/clothReport/main">查看验布报告</a>
+        </div>
         <div class="goods-info padding-style">这里是商品信息</div>
         <div class="goods-price-info">
             <div class="flex-style padding-style">
@@ -39,7 +43,10 @@
     <div class="order-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">订单编号</div>
-              <div class="goods-item-value flex-style"><i class="btn-copy">复制</i>302929843477523494</div>
+              <div class="goods-item-value flex-style">
+                <button class="btn-copy" data-clipboard-text="302929843477523494" @click="copy">复制</button>
+                302929843477523494
+              </div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">下单时间</div>
@@ -50,22 +57,79 @@
                 <div class="goods-item-value">支付宝</div>
             </div>
         </div>
+    <ul class="rate-modal" v-if="isShowRate">
+      <!-- <div class="step-icon"></div> -->
+      <li class="rate-list flex-style">
+        <i class="rate-cancel rate-icon rate-current"></i>
+        <i class="rate-line"></i>
+        <span>订单已取消</span>
+        <span class="rate-time">05-08 12:08:30</span>
+      </li>
+      <li class="rate-list flex-style">
+        <i class="rate-cancel rate-icon"></i>
+         <i class="rate-line"></i>
+        <span>订单已取消</span>
+        <span class="rate-time">05-08 12:08:30</span>
+      </li>
+      <li class="rate-list flex-style">
+        <i class="rate-cancel rate-icon"></i>
+         <i class="rate-line"></i>
+        <span>订单已取消</span>
+        <span class="rate-time">05-08 12:08:30</span>
+      </li>
+     <li class="rate-list flex-style">
+        <i class="rate-cancel rate-icon"></i>
+        <span>订单已取消</span>
+        <span class="rate-time">05-08 12:08:30</span>
+      </li>
+      <i class="iconfont icon-quxiao" @click="hideRate()"></i>
+    </ul>
+    <div class="mask" v-if="isShowRate"></div>
   </div>
 </template>
 
 <script>
-
+import cloth from '@/components/cloth'
+import item from '@/components/item'
+import Clipboard from 'clipboard'
 export default {
+  components: {
+    cloth,
+    item
+  },
   data () {
     return {
      statusBg:require('../../../images/statusBg.png'),
+     src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
+     isShowRate:false,
+     message:'222222',
+     text:'aaaaa'
     }
   },
   computed: {
     
   },
   methods: {
-    
+    showRate() {
+      this.isShowRate=true;
+    },
+    hideRate() {
+      this.isShowRate=false;
+    },
+    copy() {  
+        var clipboard = new Clipboard('.btn-copy')  
+        clipboard.on('success', e => {  
+          console.log('复制成功')  
+          // 释放内存  
+          clipboard.destroy()  
+        })  
+        clipboard.on('error', e => {  
+          // 不支持复制  
+          console.log('该浏览器不支持自动复制')  
+          // 释放内存  
+          clipboard.destroy()  
+        })  
+      } 
   }
 }
 
@@ -101,7 +165,7 @@ page{
   line-height:140rpx;
   color:#fff;
   font-size:34rpx;
-  z-index:100;
+  z-index:10;
   position: relative;
 }
 .order-address{
@@ -165,5 +229,68 @@ page{
   padding:0 10rpx;
   border-radius:8rpx;
 }
-
+.check-cloth-report{
+  background: #FFFFFF;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  width:183rpx;
+  text-align:center;
+}
+.check-cloth-report:hover{
+  color:#333;
+}
+/* 进度弹框开始 */
+.mask{
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-color:rgba(0,0,0,0.5);
+  z-index:20;
+}
+.rate-modal{
+  width:60%;
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  z-index:100;
+  top:20%;
+  border-radius:10rpx;
+  line-height:116rpx;
+  padding:40rpx 80rpx;
+}
+.rate-list{
+  font-size:30rpx;
+  position:relative;
+}
+.rate-time{
+  color:#666;
+  font-size:26rpx;
+}
+.rate-icon{
+  width:22rpx;
+  height:22rpx;
+  background: #D8D8D8;
+  border-radius:50%;
+}
+.rate-current{
+  background: #E26868;
+}
+.rate-line{
+  position:absolute;
+  left:10rpx;
+  border-left:1rpx solid #D8D8D8;
+  height:116rpx;
+  top:68rpx;
+}
+.icon-quxiao{
+  position:absolute;
+  z-index:20;
+  color:#fff;
+  margin-top:60rpx;
+  left:50%;
+  margin-left:-35rpx;
+  font-size:60rpx;
+}
+/* 进度弹框结束 */
 </style>
