@@ -5,6 +5,7 @@
       <span class="ls-name">秀</span>
     </div>
     <div class="my-account">
+      <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
       <img class="head-pic" :src="headPic" background-size="cover"/>
       <a href="/pages/mine/login/main" class="ls-name">立即登录</a>
     </div>
@@ -15,6 +16,7 @@
       </div>
       <div class="order-tabs">
         <div class="order-item" v-for="(order, index) in orderStatus" :key="index">
+            <i class="superscript">{{statusCount[index+1]}}</i>
             <i class="iconfont" :class="order.class"></i>
             <div class="order-item-text">{{order.text}}</div>
         </div>
@@ -43,6 +45,7 @@
       </div>
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
+    <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token">退出登录</div>
   </div>
 </template>
 
@@ -53,13 +56,24 @@ export default {
       href:'',
       token:'',
       headPic : require('../../../images/headPic.png'),
+      myAccountBg:require('../../../images/bg-b.png'),
       orderStatus:[
         {text:'待付款',class:'icon-daifukuan'},
         {text:'待发货',class:'icon-daifahuo'},
         {text:'待收货',class:'icon-daishouhuo'},
         {text:'已收货',class:'icon-yishouhuo'},
         {text:'退款／售后',class:'icon-shouhou'}
-      ]
+      ],
+      statusCount: {
+      "1": 0,
+      "2": 215,
+      "3": 0,
+      "4": 0,
+      "5": 39,
+      "6": 219,
+      "8": 9,
+      "100": 5
+    }
     }
   },
   components: {
@@ -88,11 +102,21 @@ page{
 .my-account {
   width:750rpx;
   height:200rpx;
-  background:#000;
   color:#fff;
   display:flex;
   font-size:26rpx;
-  background-size:100%
+  background-size:100%;
+  position:relative;
+}
+.my-account-bg{
+  width:750rpx;
+  height:auto;
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  z-index:-10;
 }
 .head-pic{
   width:100rpx;
@@ -125,6 +149,17 @@ page{
     align-items: center;
     justify-content: space-between;
  }
+ .superscript{
+   height:24rpx;
+   line-height:24rpx;
+   font-size:20rpx;
+   color:#fff;
+   background: #D0021B;
+   position:absolute;
+   right:32rpx;
+   border-radius:50%;
+   padding:3rpx 8rpx;
+ }
  .iconfont.icon-red{
    color:#d81e06;
    font-size:24rpx;
@@ -148,9 +183,11 @@ page{
     padding-bottom:30rpx;
  }
  .order-item{
+   width:20%;
    text-align:center;
    font-size:24rpx;
    color:#333;
+   position:relative;
  }
  .order-item-text{
    padding-top:30rpx;
@@ -164,4 +201,23 @@ page{
    text-align:center;
    line-height:100rpx;
  }
+/* 公用样式需抽出来 */
+.btn{
+  color:#333;
+  font-size: 32rpx;
+  text-align:center;
+  margin:0 auto;
+  border-radius:8rpx;
+  line-height:70rpx;
+}
+.btn-lg{
+  width:90%;
+}
+.btn-color-red{
+  color: #CB3F3F;
+  border:1rpx solid #CB3F3F;
+}
+.btn-login-out{
+  margin-top:300rpx;
+}
 </style>
