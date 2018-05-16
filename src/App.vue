@@ -6,16 +6,18 @@ var http = new httpClass();
 // 登录wx.login
 const quietLogin = function(){
   const token = wx.getStorageSync('token') || ''        // token
-  const systemInfo = wx.getStorageSync('systemInfo') || ''  // request请求时必须要封装的参数（由后端决定）
-  if(!token || !systemInfo){
+  // const systemInfo = wx.getStorageSync('systemInfo') || ''  // request请求时必须要封装的参数（由后端决定）
+  if(!token){
     wx.login({
       success (res){
         if (res.code) {
-          if(systemInfo){
+          // if(systemInfo){
+            // http.saveSystemInfo();
             http.quietLogin(res.code);
-          }else{
-            getUserInfo(res.code);
-          }
+          // }else{
+            // http.quietLogin(res.code);
+            // getUserInfo(res.code);
+          // }
         } else {
           console.log('登录失败！' + res.errMsg)
         }
@@ -37,6 +39,7 @@ const getUserInfo = function(code){
   wx.getUserInfo({
     withCredentials: true,
     success (res){ 
+      console.log(res);
       http.saveSystemInfo(res);
       http.quietLogin(code);
     },
@@ -55,7 +58,9 @@ const getUserInfo = function(code){
 
 export default {
   created () {
+    http.saveSystemInfo();
     quietLogin();
+    // getUserInfo();
   },
 }
 </script>
