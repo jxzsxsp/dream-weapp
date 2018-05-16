@@ -66,13 +66,25 @@ export default {
 </script>
 
 <style>
+page {
+  height: 100%;
+}
+.container-with-footer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #F4F4F4;
+
+}
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+  align-items: stretch;
+  justify-content: flex-start;
   box-sizing: border-box;
 }
 /* this rule will be remove */
