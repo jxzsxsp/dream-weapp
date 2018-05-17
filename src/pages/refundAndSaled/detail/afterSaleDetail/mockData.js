@@ -1,72 +1,34 @@
 module.exports = {
-  "refund": {
-    "id": 250,
-    "refundId": 1021731479000104,
-    "validity": 1,
-    "createTime": 1470900427000,
-    "updateTime": 1501078858000,
-    "createId": "BOSS:订单客服A",
-    "updateId": "FIN+:袁敏",
-    "tradeId": 1073121578390234,
-    "userId": 2016345,
-    "shopId": 2012195,
-    "reasonType": 0,
-    "refundDesc": "",
-    "refundStatus": 2,
-    "refundAmount": 28200,
-    "refundTime": 1470907778000,
-    "refundType": 1,
-    "buyerRefundStatus": 2,
-    "refuseReason": "",
-    "refundGains": 0,
-    "gainModifyReason": "",
-    "bankCardId": 0,
-    "saleRefundGains": 0,
-    "compensateAmount": 0,
-    "workTicketNo": ""
-  },
-  "refundItemList": [{
-      "id": 311,
-      "validity": 1,
-      "createTime": 1470900427000,
-      "updateTime": 1470900427000,
-      "tradeItemId": 124878,
-      "skuId": 661632,
-      "itemId": 121089432,
-      "itemName": "服装配件",
-      "itemImg": "http://img.lianshang.cn/data/item/20161/5/8757_1453509295222.jpg",
-      "itemTypeId": 3,
-      "outerSku": "",
-      "skuProperties": "颜色:金黄,状态:期货",
-      "refundAmount": 10200,
-      "oriAmount": 10200,
-      "refundId": 1021731479000104,
-      "averageCompensate": 0,
-      "refundQuantity": 0,
-      "refundGains": 0,
-      "saleRefundGains": 0
-    },
-    {
-      "id": 312,
-      "validity": 1,
-      "createTime": 1470900427000,
-      "updateTime": 1470900427000,
-      "tradeItemId": 124879,
-      "skuId": 661655,
-      "itemId": 121089443,
-      "itemName": "帽扣",
-      "itemImg": "http://img.lianshang.cn/data/item/20161/5/493_1453507328284.jpg",
-      "itemTypeId": 3,
-      "outerSku": "",
-      "skuProperties": "颜色:金黄,状态:期货",
-      "refundAmount": 18000,
-      "oriAmount": 18000,
-      "refundId": 1021731479000104,
-      "averageCompensate": 0,
-      "refundQuantity": 0,
-      "refundGains": 0,
-      "saleRefundGains": 0
-    }
-  ],
-  "vouchers": []
+  "tradeId":12345643,    //订单号
+  "refundId":1234565,   //退款单号  
+  "workTicketNo":"xxx",  //工单号
+  "amount":90,           //申请金额/退款金额
+  "refundType":1,        //退款类型
+  "refundTypeText":"退货退款", //退款类型描述
+  "applyTime":234567890, //申请时间
+  "refundFinishTime":2345678, //完成时间
+  "orderTime":123245643, //下单时间
+  "status":2,   //处理状态
+  "statusText":"处理中",  
+  "refundDesc":"布疵太多",  
+  "compensateType":1, //赔付方案
+  "compensateTypeText":"无需打款", ////赔付方案描述
+  "compensateDesc":"赔付要求",  
+  "declineReason":"退款拒绝原因",
+  "refundItemList":[  //退款商品列表
+      {
+        "skuId": 661632,
+        "itemId": 121089432,
+        "itemName": "服装配件",
+        "itemImg": "http://img.lianshang.cn/data/item/20161/5/8757_1453509295222.jpg",
+        "itemTypeId": 3,
+        "outerSku": "",
+        "skuProperties": "颜色:金黄,状态:期货",
+        "refundAmount": 10200,
+        "oriAmount": 10200,
+        "refundId": 1021731479000104,
+        "averageCompensate": 0,
+        "refundQuantity": 0,
+      }
+  ]
 }

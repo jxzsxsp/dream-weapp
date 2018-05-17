@@ -1,127 +1,109 @@
 <template>
   <scroll-view class="scroll-view">
-    <div class="container-with-footer">
-      <div class="content-header">
-        <div class="status-bar">
-          <img class="status-background-pic" :src="statusBackgroundPic" background-size="cover"/>
-          <i class="iconfont" :class="orderStatus"></i>
-          <p class="status-text"> 已成功 </p>
-        </div>
-        <div>
-          <div class="info-container" v-if="afterSaleDetail.refund.refundStatus === 2">
-            <div class="status-item">
-              <p class="font-detail">退款金额</p>
-              <p class="font-detail red-color"> ￥90.00 </p>
-            </div>
-            <div class="seperator-line"></div>
-            <div class="status-item">
-              <p class="font-detail">查看退款凭证</p>
-              <i class="iconfont icon-jiantou"></i>
-            </div>
-          </div>
-          <div class="info-container" v-if="afterSaleDetail.refund.refundStatus === 2">
-            <div class="status-item">
-              <p class="font-detail">赔付方式</p>
-              <p class="font-detail">无需打款</p>
-            </div>
-          </div>
-          <div class="info-container" v-if="afterSaleDetail.refund.refundStatus === 2">
-            <div class="status-item">
-              <p class="font-detail">拒绝原因</p>
-            </div>
-            <div class="refuse-detail">
-              <p class="font-detail">与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述与描述不与描述</p>
-            </div>
-          </div>
-        </div>
-        <div class="info-container">
-          <div class="goods-info">
-            <p class="font-detail">商品信息</p>
-          </div>
-          <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList" :key="index">
-            <img class="goods-img" :src="statusBackgroundPic"/>
-            <div class="goods-info-detail">
-              
+      <div class="status-bar">
+        <img class="status-background-pic" :src="statusBackgroundPic" background-size="cover"/>
+        <i class="iconfont" :class="orderStatus"></i>
+        <p class="status-text">已成功</p>
+      </div>
 
-            </div>
+      <div>
+        <div class="info-container" v-if="afterSaleDetail.status === 2">
+          <div class="status-item">
+            <p class="font-detail">退款金额</p>
+            <p class="font-detail red-color">{{ '￥' + afterSaleDetail.amount }}</p>
+          </div>
+          <div class="seperator-line"></div>
+          <div class="status-item">
+            <p class="font-detail">查看退款凭证</p>
+            <i class="iconfont icon-jiantou"></i>
           </div>
         </div>
-        <div class="info-container">
-          <div class="order-item">
-            <p class="font-detail gray-color"> 订单编号: &nbsp;&nbsp; </p>
-            <p class="font-detail"> 0987654312121212</p>
+        <div class="info-container" v-if="afterSaleDetail.status === 2">
+          <div class="status-item">
+            <p class="font-detail">赔付方式</p>
+            <p class="font-detail">{{ afterSaleDetail.compensateTypeText }}</p>
           </div>
-          <div class="order-item">
-            <p class="font-detail gray-color"> 下单时间: &nbsp;&nbsp; </p>
-            <p class="font-detail"> 0987654312121212</p>
+        </div>
+        <div class="info-container" v-if="afterSaleDetail.status === 2">
+          <div class="status-item">
+            <p class="font-detail">拒绝原因</p>
           </div>
-          <div class="order-item">
-            <p class="font-detail gray-color"> 申请时间: &nbsp;&nbsp; </p>
-            <p class="font-detail"> 0987654312121212</p>
-          </div>
-          <div class="order-item">
-            <p class="font-detail gray-color"> 申请原因: &nbsp;&nbsp; </p>
-            <p class="font-detail"> 0987654312121212</p>
-          </div>
-          <div class="order-item">
-            <p class="font-detail gray-color"> 赔付要求: &nbsp;&nbsp; </p>
-            <p class="font-detail"> 0987654312121212</p>
-          </div>
-          <div class="order-item" v-if="afterSaleDetail.refund.refundStatus !== 1">
-            <p class="font-detail gray-color"> 完成时间: &nbsp;&nbsp; </p>
-            <p class="font-detail"> 0987654312121212</p>
+          <div class="refuse-detail">
+            <p class="font-detail">{{ afterSaleDetail.declineReason }}</p>
           </div>
         </div>
       </div>
+
+      <div class="info-container">
+        <div class="goods-info">
+          <p class="font-detail">商品信息</p>
+        </div>
+        <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList" :key="index">
+          <goodsItem :itemData="itemData"></goodsItem>
+        </div>
+      </div>
+      <orderDetail :orderDetail="afterSaleDetail"></orderDetail>
       <div class="content-footer">
-        <p class="font-small-detail gray-color"> 如有疑问，可联系您的面料顾问 </p>
-        <p class="font-small-detail gray-color"> 客服电话：400-821-7111 (服务时间: 工作日9:00-18:00) </p>
+        <p class="font-small-detail gray-color">如有疑问，可联系您的面料顾问</p>
+        <p class="font-small-detail gray-color">客服电话：400-821-7111 (服务时间: 工作日9:00-18:00)</p>
       </div>
     </div>
   </scroll-view>
 </template>
 
 <script>
+import goodsItem from '@/components/goodsItem'
+import orderDetail from '@/components/refundAndSaled/orderDetail'
+
 export default {
+  components: {
+    goodsItem,
+    orderDetail
+  },
   data () {
     return ({
       statusBackgroundPic: require('../../../../images/statusBg.png'),
-      afterSaleDetail: require('./mockData')
+      afterSaleDetail: require('./mockData'),
+      itemData:{
+        title: '我是商品信息我是商品头',
+        itemImgUrl:require('../../../../images/statusBg.png'),
+        'itemColorNum':'3',
+        'itemColor':'白色',
+        'itemStatus':'现货',
+        'itemStyle':'样布',
+        'price':'20.00',
+        'unit':'米',
+        'itemNum':'20',
+        'isCloth':true
+     }
     })
   },
   computed: {
     orderStatus: function () {
       let orderStatus = ''
-      switch (this.afterSaleDetail.refund.refundStatus) {
+      switch (this.afterSaleDetail.status) {
         case 1:
           orderStatus = 'icon-shijian'
-          break;
+          break
         case 2:
           orderStatus = 'icon-chenggong'
-          break;
+          break
         case 3:
           orderStatus = 'icon-quxiao'
-          break;
+          break
         case 4:
           orderStatus = 'icon-jujue'
-          break;
+          break
         default:
-          break;
+          break
       }
       return orderStatus
-    },
+    }
   }
 }
-
 </script>
 
 <style>
-.content-header {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-}
 .status-bar {
   margin-bottom: 22rpx; 
   display: flex;
@@ -165,18 +147,6 @@ export default {
   padding-left: 20rpx;
   padding-right: 20rpx;
 }
-.red-color {
-  color: red;
-}
-.gray-color {
-  color: #666666;
-}
-.font-detail {
-  font-size: 28rpx;
-}
-.font-small-detail {
-  font-size: 24rpx;
-}
 .seperator-line {
   height: 1rpx;
   background: #DBDBDB;
@@ -200,9 +170,8 @@ export default {
   height: 80rpx;
 }
 .goods-item {
+  flex-direction: column;
   display: flex;
-  height: 170rpx;
-  align-items: center;
 }
 .goods-img {
   margin-left: 20rpx;
@@ -233,6 +202,18 @@ export default {
   align-items: center;
   height: 66rpx;
   text-align: center;
+}
 
+.red-color {
+  color: red;
+}
+.gray-color {
+  color: #666666;
+}
+.font-detail {
+  font-size: 28rpx;
+}
+.font-small-detail {
+  font-size: 24rpx;
 }
 </style>
