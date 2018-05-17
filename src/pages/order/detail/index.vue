@@ -15,8 +15,8 @@
         </div>
     </div>
     <div class="order-list">
-        <itemTemplate :itemData="itemData"></itemTemplate>
-        <itemTemplate :itemData="itemData"></itemTemplate>
+        <goodsItem :itemData="itemData"></goodsItem>
+        <goodsItem :itemData="itemData"></goodsItem>
         <div class="goods-price-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">商品总价</div>
@@ -86,12 +86,10 @@
 </template>
 
 <script>
-import cloth from '@/components/cloth'
-import itemTemplate from '@/components/goodsItem'
+import goodsItem from '@/components/goodsItem'
 export default {
   components: {
-    cloth,
-    itemTemplate
+    goodsItem
   },
   data () {
     return {
@@ -99,7 +97,7 @@ export default {
      src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
      isShowRate:false,
      itemData:{
-        'itemName': '我是商品信息我是商品头1111',
+        'itemTitle': '我是商品信息我是商品头1111',
         'itemImgUrl':require('../../../images/statusBg.png'),
         'itemColorNum':'3',
         'itemColor':'白色',
