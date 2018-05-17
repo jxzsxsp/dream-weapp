@@ -8,39 +8,15 @@
       </div>
     </div>
     <div class="order-address">
-        <i class="iconfont icon-jiantou order-address-left"></i>
-        <div>
+        <i class="iconfont icon-zuobiao order-address-left"></i>
+        <div class="order-address-detail">
            <div><span>洛菲菲</span><span class="telephone">18397654678</span></div>
            <div class="order-address-text">上海市沪太路1111弄1号楼11楼</div>
         </div>
     </div>
     <div class="order-list">
-        <itemTemplate 
-               :title="title" 
-               :itemImgUrl="statusBg" 
-               :itemColorNum="itemColorNum" 
-               :itemColor="itemColor" 
-               :itemStatus="itemStatus" 
-               :itemStyle="itemStyle"
-               :price="price"
-               :unit="unit"
-               :itemNum='itemNum'
-               :isCloth='isCloth'
-               >
-            </itemTemplate>
-            <itemTemplate 
-               :title="title" 
-               :itemImgUrl="statusBg" 
-               :itemColorNum="itemColorNum" 
-               :itemColor="itemColor" 
-               :itemStatus="itemStatus" 
-               :itemStyle="itemStyle"
-               :price="price"
-               :unit="unit"
-               :itemNum='itemNum'
-               :isCloth='isCloth'
-               >
-            </itemTemplate>
+        <itemTemplate :itemData="itemData"></itemTemplate>
+        <itemTemplate :itemData="itemData"></itemTemplate>
         <div class="goods-price-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">商品总价</div>
@@ -64,7 +40,7 @@
             <div class="flex-style padding-style">
               <div class="goods-item-key">订单编号</div>
               <div class="goods-item-value flex-style">
-                <button class="btn-copy" data-clipboard-text="302929843477523494" @click="copy">复制</button>
+                <button class="btn-copy" @click="copy">复制</button>
                 302929843477523494
               </div>
             </div>
@@ -77,7 +53,8 @@
                 <div class="goods-item-value">支付宝</div>
             </div>
         </div>
-    <ul class="rate-modal" v-if="isShowRate">
+    <div class="mask" v-if="isShowRate">
+      <ul class="rate-modal">
       <!-- <div class="step-icon"></div> -->
       <li class="rate-list flex-style">
         <i class="rate-cancel rate-icon rate-current"></i>
@@ -104,14 +81,13 @@
       </li>
       <i class="iconfont icon-quxiao" @click="hideRate()"></i>
     </ul>
-    <div class="mask" v-if="isShowRate"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import cloth from '@/components/cloth'
 import itemTemplate from '@/components/itemTemplate'
-import Clipboard from 'clipboard'
 export default {
   components: {
     cloth,
@@ -122,15 +98,18 @@ export default {
      statusBg:require('../../../images/statusBg.png'),
      src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
      isShowRate:false,
-     title: '我是商品信息我是商品头',
-     itemColorNum:'3',
-     itemColor:'白色',
-     itemStatus:'现货',
-     itemStyle:'样布',
-     price:'20.00',
-     unit:'米',
-     itemNum:'20',
-     isCloth:true
+     itemData:{
+        'title': '我是商品信息我是商品头',
+        'itemImgUrl':require('../../../images/statusBg.png'),
+        'itemColorNum':'3',
+        'itemColor':'白色',
+        'itemStatus':'现货',
+        'itemStyle':'样布',
+        'price':'20.00',
+        'unit':'米',
+        'itemNum':'20',
+        'isCloth':true
+     }
     }
   },
   computed: {
@@ -144,18 +123,7 @@ export default {
       this.isShowRate=false;
     },
     copy() {  
-        var clipboard = new Clipboard('.btn-copy')  
-        clipboard.on('success', e => {  
-          console.log('复制成功')  
-          // 释放内存  
-          clipboard.destroy()  
-        })  
-        clipboard.on('error', e => {  
-          // 不支持复制  
-          console.log('该浏览器不支持自动复制')  
-          // 释放内存  
-          clipboard.destroy()  
-        })  
+        console.log('copy中')
       } 
   }
 }
@@ -198,13 +166,9 @@ page{
 .order-address{
   width:750rpx;
   font-size:28rpx;
-  justify-content: normal;
   padding:20rpx;
-  align-items: normal;
   background:#fff;
-  display:flex;
-  flex-direction: row;
-  align-items: center;
+  position:relative;
 }
 .order-address-left{
   margin-right:20rpx;
@@ -270,16 +234,14 @@ page{
   z-index:20;
 }
 .rate-modal{
-  width:60%;
+  width:450rpx;
   background: #fff;
   padding: 0;
-  margin: 0;
-  position: fixed;
   z-index:100;
-  top:20%;
   border-radius:10rpx;
   line-height:116rpx;
   padding:40rpx 80rpx;
+  margin:220rpx auto;
 }
 .rate-list{
   font-size:30rpx;
@@ -313,6 +275,14 @@ page{
   left:50%;
   margin-left:-35rpx;
   font-size:60rpx;
+}
+.order-address-detail{
+  margin-left:70rpx;
+  line-height:45rpx;
+}
+.icon-zuobiao{
+  position:absolute;
+  top:27rpx;
 }
 /* 进度弹框结束 */
 </style>

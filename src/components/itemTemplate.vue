@@ -1,23 +1,21 @@
 <template>
   <div class="item-box">
-    <div class="list-item flex-style" :class="isCloth? 'hasCloth' : ''">
+    <div class="list-item flex-style" :class="itemData.isCloth? 'hasCloth' : ''">
       <div class="item-left">
-        <img class="item-img" :src="itemImgUrl"/>
+        <img class="item-img" :src="itemData.itemImgUrl"/>
       </div>
       <div class="item-center">
-          <div class="item-title flex-style">
-            <span class="in-item-title">{{title}}</span>
-            <span>¥{{price}}{{unit}}</span>
-          </div>
-          <div class="item-detail flex-style">
-            <div>色号:{{itemColorNum}} 颜色:{{itemColor}} 状态:{{itemStatus}}</div>
-            <div>*{{itemNum}}</div>
-          </div>
-          <div class="item-style">{{itemStyle}}</div>
-          <a v-if="isCloth" class="check-cloth-report" href="/pages/webView/main">查看验布报告</a>
+          <div class="item-title">{{itemData.title}}</div>
+          <div class="item-detail">色号:{{itemData.itemColorNum}} 颜色:{{itemData.itemColor}} 状态:{{itemData.itemStatus}}</div>
+          <div class="item-style">{{itemData.itemStyle}}</div>
       </div>
       <div class="item-right">
-          <div class="item-detail"></div>
+          <div class="item-detail">
+            <span>¥{{itemData.price}}{{unit}}</span>
+            <div>×{{itemData.itemNum}}</div>
+            <div>&nbsp</div>
+          </div>
+          <a v-if="itemData.isCloth" class="check-cloth-report" href="/pages/webView/main">查看验布报告</a>
       </div>
     </div>
   </div>
@@ -25,7 +23,7 @@
 
 <script>
 export default {
-  props: ['itemImgUrl', 'title', 'itemColorNum', 'itemColor', 'itemStatus', 'itemStyle','price','unit', 'itemNum', 'isCloth']
+  props: ["itemData"]   
 }
 </script>
 
@@ -46,20 +44,20 @@ export default {
   height:130rpx;
 }
 .item-title{
-  width:550rpx;
-  position:relative;
-  margin-top:-25rpx;
+  
 }
-.flex-style{
+.item-flex-style{
   display:flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .item-center{
   font-size:28rpx;
   color:#333;
   margin-left:20rpx;
+  line-height:45rpx;
+  width:60%;
 }
 .item-detail{
   color:#999;
@@ -79,11 +77,17 @@ export default {
 .check-cloth-report{
   background: #FFFFFF;
   border: 1px solid #333333;
-  border-radius: 6px;
+  border-radius: 8rpx;
   width:183rpx;
   text-align:center;
   position:absolute;
   right:20rpx;
   bottom:20rpx;
+  line-height:52rpx;
+  font-size:24rpx;
+}
+.item-right{
+  text-align:right;
+  width:20%;
 }
 </style>
