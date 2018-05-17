@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="order-list">
-        <item 
+        <itemTemplate 
                :title="title" 
                :itemImgUrl="statusBg" 
                :itemColorNum="itemColorNum" 
@@ -27,8 +27,8 @@
                :itemNum='itemNum'
                :isCloth='isCloth'
                >
-            </item>
-            <item 
+            </itemTemplate>
+            <itemTemplate 
                :title="title" 
                :itemImgUrl="statusBg" 
                :itemColorNum="itemColorNum" 
@@ -40,7 +40,7 @@
                :itemNum='itemNum'
                :isCloth='isCloth'
                >
-            </item>
+            </itemTemplate>
         <div class="goods-price-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">商品总价</div>
@@ -110,12 +110,12 @@
 
 <script>
 import cloth from '@/components/cloth'
-import item from '@/components/item'
+import itemTemplate from '@/components/itemTemplate'
 import Clipboard from 'clipboard'
 export default {
   components: {
     cloth,
-    item
+    itemTemplate
   },
   data () {
     return {
@@ -217,7 +217,6 @@ page{
   margin-left:50rpx;
 }
 .order-list{
-  padding:0rpx 20rpx;;
   width:100%;
   margin-top:20rpx;
   background: #FFFFFF;

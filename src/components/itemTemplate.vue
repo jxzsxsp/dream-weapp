@@ -14,7 +14,7 @@
             <div>*{{itemNum}}</div>
           </div>
           <div class="item-style">{{itemStyle}}</div>
-          <a v-if="isCloth" class="check-cloth-report" href="/pages/order/clothReport/main">查看验布报告</a>
+          <a v-if="isCloth" class="check-cloth-report" href="/pages/webView/main">查看验布报告</a>
       </div>
       <div class="item-right">
           <div class="item-detail"></div>
