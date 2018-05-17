@@ -87,7 +87,7 @@
 
 <script>
 import cloth from '@/components/cloth'
-import itemTemplate from '@/components/itemTemplate'
+import itemTemplate from '@/components/goodsItem'
 export default {
   components: {
     cloth,

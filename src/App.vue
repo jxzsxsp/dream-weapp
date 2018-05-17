@@ -86,6 +86,7 @@ page {
   align-items: stretch;
   justify-content: flex-start;
   box-sizing: border-box;
+  background-color: #F4F4F4;
 }
 /* this rule will be remove */
 * {

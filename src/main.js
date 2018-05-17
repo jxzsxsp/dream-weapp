@@ -16,8 +16,8 @@ export default {
       'pages/index/main', 
       'pages/mine/index/main', 
       'pages/mine/login/main',
-      '^pages/order/detail/main',
-      'pages/refundAndSaled/detail/afterSaleDetail/main',
+      'pages/order/detail/main',
+      '^pages/refundAndSaled/detail/afterSaleDetail/main',
     ],
 
 
