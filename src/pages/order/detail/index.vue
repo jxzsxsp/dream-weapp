@@ -121,8 +121,16 @@ export default {
       this.isShowRate=false;
     },
     copy() {  
-        console.log('copy中')
-      } 
+      wx.setClipboardData({
+        data: 'data',
+        success: function(res) {
+          wx.showToast({
+            title: '复制成功',
+            icon: 'none'
+          })
+        }
+      })
+    } 
   }
 }
 

@@ -14,7 +14,7 @@
         <div>×{{itemData.itemNum}}</div>
         <div>&nbsp</div>
       </div>
-      <a v-if="itemData.isCloth" class="check-cloth-report" href="/pages/webView/main">查看验布报告</a>
+      <p v-if="itemData.isCloth" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
       <p v-if="itemData.status">{{ itemData.status }}</p>
     </div>
   </div>
@@ -22,7 +22,14 @@
 
 <script>
 export default {
-  props: ["itemData"]   
+  props: ["itemData"],
+  methods: {
+    _checkCloth: function () {
+      wx.navigateTo({
+        url: '../../webView/main?url=http://www.baidu.com'
+      })
+    }
+  }
 }
 </script>
 
@@ -71,7 +78,7 @@ export default {
   text-align:center;
   right:20rpx;
   bottom:20rpx;
-  line-height:45rpx;
+  height: 40rpx;
   font-size:24rpx;
 }
 .item-right{

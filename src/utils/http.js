@@ -50,7 +50,7 @@ class Http {
 							url: 'pages/mine/login/main?url=' + encodeURI(url)
 						})
 					}else{
-						wx.toast({
+						wx.showToast({
 							title:res.data.message,
 							icon:'none',
 							mask:true
@@ -74,7 +74,7 @@ class Http {
 		var data = {
 			code: code
 		}
-		var url = '/login'
+		var url = '/buyer/user/mini-app/quick-login/v1'
 		this.post(url,data,true).then(res => {
 			wx.setStorageSync('token',res.data.token);			
 		},res => {
