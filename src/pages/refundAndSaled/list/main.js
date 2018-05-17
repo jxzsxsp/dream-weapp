@@ -5,9 +5,12 @@ const app = new Vue(App)
 app.$mount()
 
 
-
 export default {
   config: {
-    navigationBarTitleText: '查看启动日志'
+    navigationBarTitleText: "退款/售后",
+    enablePullDownRefresh: true,
+    backgroundTextStyle: "black",
+    onReachBottomDistance: 50,
+    backgroundColor: "#F4F4F4"
   }
 }

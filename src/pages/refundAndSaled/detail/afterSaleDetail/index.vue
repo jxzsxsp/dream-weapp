@@ -47,7 +47,6 @@
         <p class="font-small-detail gray-color">如有疑问，可联系您的面料顾问</p>
         <p class="font-small-detail gray-color">客服电话：400-821-7111 (服务时间: 工作日9:00-18:00)</p>
       </div>
-    </div>
   </scroll-view>
 </template>
 

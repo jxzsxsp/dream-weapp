@@ -12,7 +12,7 @@
       <div class="item-detail">
         <span>¥{{itemData.price}}{{unit}}</span>
         <div>×{{itemData.itemNum}}</div>
-        <div>&nbsp</div>
+        <div>&nbsp;</div>
       </div>
       <p v-if="itemData.isCloth" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
       <p v-if="itemData.status">{{ itemData.status }}</p>

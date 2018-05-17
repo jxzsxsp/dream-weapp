@@ -8,6 +8,10 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: '查看启动日志'
+    navigationBarTitleText: "订单列表",
+    enablePullDownRefresh: true,
+    backgroundTextStyle: "black",
+    onReachBottomDistance: 50,
+    backgroundColor: "#F4F4F4"
   }
 }
