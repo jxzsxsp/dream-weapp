@@ -1,11 +1,11 @@
 <template>
   <div class="container" @click="clickHandle">
     <div class="my-account" v-if="token">
-      <img class="head-pic" :src="userInfo.avatar" background-size="cover"/>
-      <span class="ls-name">{{userInfo.imNickName}}</span>
+      <img class="head-pic" :src="lsUserInfo.avatar" background-size="cover"/>
+      <span class="ls-name">{{lsUserInfo.imNickName}}</span>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
     </div>
-    <div class="my-account" v-if="token">
+    <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
       <a href="/pages/mine/login/main" class="ls-name">立即登录</a>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
@@ -17,7 +17,7 @@
       </div>
       <div class="order-tabs">
         <div class="order-item" v-for="(order, index) in orderStatus" :key="index">
-            <i class="superscript">{{statusCount[index+1]}}</i>
+            <i v-if='isShowStatusCount' class="superscript">{{statusCount[index+1]}}</i>
             <i class="iconfont" :class="order.class"></i>
             <div class="order-item-text">{{order.text}}</div>
         </div>
@@ -51,14 +51,18 @@
 </template>
 
 <script>
+import httpClass from '../../../utils/http'
+var http = new httpClass();
+
 export default {
   data () {
     return {
       href:'',
-      token:wx.getSystemInfoSync('token')?wx.getSystemInfoSync('token'):'',
-      userInfo:wx.getSystemInfoSync('userInfo'),
+      token:wx.getStorageSync('token')?wx.getSystemInfoSync('token'):'',
+      lsUserInfo:wx.getStorageSync('lsUserInfo'),
       headPic : require('../../../images/headPic.png'),
       myAccountBg:require('../../../images/bg-b.png'),
+      isShowStatusCount:false,
       orderStatus:[
         {text:'待付款',class:'icon-daifukuan'},
         {text:'待发货',class:'icon-daifahuo'},
@@ -67,14 +71,7 @@ export default {
         {text:'退款／售后',class:'icon-shouhou'}
       ],
       statusCount: {
-        "1": 0,
-        "2": 215,
-        "3": 0,
-        "4": 0,
-        "5": 39,
-        "6": 219,
-        "8": 9,
-        "100": 5
+      
       }
     }
   },
@@ -83,7 +80,21 @@ export default {
   },
   methods: {
     clickHandle (msg, ev) {
-      console.log(this.userInfo)
+      console.log('123')
+      console.log(this.lsUserInfo)
+    }
+  },
+  mounted () {
+    if(this.token){
+      http.post('/buyer/trade/status/count/v1', {}, true, '')
+      .then(
+        function(resp){
+          console.log(resp.token);
+        },
+        function(resp){
+          console.log(resp)
+        }
+      )
     }
   },
   created () {

@@ -85,7 +85,7 @@ export default {
             function(resp){
               console.log(resp.token);
               wx.setStorageSync('token', resp.token);
-              wx.setStorageSync('userInfo', resp.data);
+              wx.setStorageSync('lsUserInfo', resp.data);
               wx.navigateTo({
 							    url: '/pages/mine/index/main'
 						  })

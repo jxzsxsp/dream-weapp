@@ -39,6 +39,10 @@ class Http {
 				url: url,
 				method: "POST",
 				data: data,
+				header : { 
+					'content-type': 'application/json', 
+					'token':wx.getStorageSync("token")
+				},
 				success (res){
 					if(res.data.code == 200){
 						resolve(res.data || {});
