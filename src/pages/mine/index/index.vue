@@ -3,11 +3,12 @@
     <div class="my-account" v-if="token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
       <span class="ls-name">秀</span>
-    </div>
-    <div class="my-account">
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
+    </div>
+    <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
       <a href="/pages/mine/login/main" class="ls-name">立即登录</a>
+      <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
     </div>
     <div class="my-item">
       <div class="my-title order-title">
@@ -54,7 +55,7 @@ export default {
   data () {
     return {
       href:'',
-      token:'',
+      token:,
       headPic : require('../../../images/headPic.png'),
       myAccountBg:require('../../../images/bg-b.png'),
       orderStatus:[
@@ -116,16 +117,20 @@ page{
   right:0;
   top:0;
   bottom:0;
-  z-index:-10;
+  z-index:0;
 }
 .head-pic{
   width:100rpx;
   height:100rpx;
   border-radius: 50%;
   margin:44rpx 20rpx 0 20rpx;
+  position:relative;
+  z-index:1;
 }
 .ls-name{
   line-height:200rpx;
+  position:relative;
+  z-index:1;
 }
  .my-item{
    width:100%;

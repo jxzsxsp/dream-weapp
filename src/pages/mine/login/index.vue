@@ -26,8 +26,8 @@ var formValidate = new form();
 export default {
   data () {
     return {
-      mobile: '',
-      identificateCode:'',
+      mobile: '15206191611',
+      identificateCode:'098765',
       code: '',
       userInfo: {},
       codeButtonMessage: '获取验证码',
@@ -80,12 +80,17 @@ export default {
               mobile:this.mobile,
               code:this.identificateCode,
           }
-          http.post('/user/fastLogin/v2', data, true, '').then(
-            function(){
-
+          http.post('/user/fastLogin/v2', data, true, '')
+          .then(
+            function(resp){
+              console.log(resp.token);
+              wx.setStorageSync('token', resp.token);
+              wx.navigateTo({
+							    url: '/pages/mine/index/main'
+						  })
             },
-            function(){
-
+            function(resp){
+              console.log(resp)
             }
           )
         }

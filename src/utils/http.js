@@ -40,14 +40,20 @@ class Http {
 				method: "POST",
 				data: data,
 				success (res){
-					if(res.code == 200){
-						resolve(res || {});
-					}else if(res.code == -100){
+					if(res.data.code == 200){
+						resolve(res.data || {});
+					}else if(res.data.code == -100){
 						var pages = getCurrentPages()    //获取加载的页面
 						var currentPage = pages[pages.length-1]    //获取当前页面的对象
 						var url = currentPage.route
 						wx.navigateTo({
 							url: 'pages/mine/login/main?url=' + encodeURI(url)
+						})
+					}else{
+						wx.toast({
+							title:res.data.message,
+							icon:'none',
+							mask:true
 						})
 					}
 				},
