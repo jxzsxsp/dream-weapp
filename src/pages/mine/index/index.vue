@@ -1,11 +1,11 @@
 <template>
-  <div class="container">
+  <div class="container" @click="clickHandle">
     <div class="my-account" v-if="token">
-      <img class="head-pic" :src="headPic" background-size="cover"/>
-      <span class="ls-name">秀</span>
+      <img class="head-pic" :src="userInfo.avatar" background-size="cover"/>
+      <span class="ls-name">{{userInfo.imNickName}}</span>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
     </div>
-    <div class="my-account" v-if="!token">
+    <div class="my-account" v-if="token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
       <a href="/pages/mine/login/main" class="ls-name">立即登录</a>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
@@ -55,7 +55,8 @@ export default {
   data () {
     return {
       href:'',
-      token:,
+      token:wx.getSystemInfoSync('token')?wx.getSystemInfoSync('token'):'',
+      userInfo:wx.getSystemInfoSync('userInfo'),
       headPic : require('../../../images/headPic.png'),
       myAccountBg:require('../../../images/bg-b.png'),
       orderStatus:[
@@ -82,7 +83,7 @@ export default {
   },
   methods: {
     clickHandle (msg, ev) {
-      console.log('clickHandle:', msg, ev)
+      console.log(this.userInfo)
     }
   },
   created () {
