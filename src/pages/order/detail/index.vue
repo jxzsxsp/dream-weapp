@@ -99,7 +99,7 @@ export default {
      src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
      isShowRate:false,
      itemData:{
-        'title': '我是商品信息我是商品头',
+        'itemName': '我是商品信息我是商品头1111',
         'itemImgUrl':require('../../../images/statusBg.png'),
         'itemColorNum':'3',
         'itemColor':'白色',

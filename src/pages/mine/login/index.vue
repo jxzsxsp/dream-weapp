@@ -3,25 +3,31 @@
     <div class="input-box">
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
-          <input type='text' v-model="mobile" class="inputField" placeholder="请输入手机号"/>
+          <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-yanzhengma"></i>
-          <input maxlength="6" class="inputField inputCode" v-model="code" placeholder="请输入验证码">
-          <a @click="getCode(mobile,code)" class="getCodeButton">{{codeButtonMessage}}</a>
+          <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
+          <a @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</a>
       </div>
-      <button class="button-login" @click="lsLogin(mobile,code)">登录</button>
+      <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
     </div>
   </div>
 </template>
 
 <script>
-// import inputField from '@/components/inputField'
+
+import form from '../../../utils/formValidate'
+import httpClass from '../../../utils/http'
+
+var http = new httpClass();
+var formValidate = new form();
 
 export default {
   data () {
     return {
       mobile: '',
+      identificateCode:'',
       code: '',
       userInfo: {},
       codeButtonMessage: '获取验证码',
@@ -39,6 +45,7 @@ export default {
       const url = '../logs/main'
       wx.navigateTo({ url })
     },
+
     getUserInfo () {
       // 调用登录接口
       // wx.login({
@@ -51,10 +58,73 @@ export default {
       //   }
       // })
     },
-    clickHandle (msg, ev) {
-      console.log('clickHandle:', msg, ev)
+    validateValue (){
+      var that = this;
+      if(this.mobile!="" && this.identificateCode!=""){
+        that.isCanclick=true;
+      }else{
+        that.isCanclick=false;
+      }
     },
-    
+
+    lsLogin (){
+      if(this.isCanclick){
+        if(!formValidate.isMobilePhone(this.mobile)){
+           wx.showToast({
+            title: '手机号不正确！',
+            icon: 'none',
+            mask: true
+          })
+        }else{
+          var data = {
+              mobile:this.mobile,
+              code:this.identificateCode,
+          }
+          http.post('/user/fastLogin/v2', data, true, '').then(
+            function(){
+
+            },
+            function(){
+
+            }
+          )
+        }
+      } 
+    },
+    getCode (mobile) {
+      var that = this;
+      if (formValidate.validateMobilePhone(mobile)){
+        if(!this.isTimeDown){
+          // 调用微信登录接口
+          wx.login({
+            success: (resp) => {
+              this.code = resp.code;
+               wx.getUserInfo({
+                  withCredentials:true,
+                  success: (res) => {
+                    this.userInfo = res.userInfo
+                    // 调用获取验证码接口
+                    var data={
+                        mobile:mobile,
+                        code:this.code,
+                        encryptedData:this.userInfo.encryptedData,
+                        iv:this.userInfo.iv
+                    }
+                    http.post('/buyer/user/mini-app/send-login-sms/v1', data, true, '')
+                  }
+              })
+            }
+          })
+          this.timedown(5);
+        }else{
+          console.log('点过啦')
+          return;
+        }
+      }
+    },
+    /**
+    * 倒计时
+    */
     timedown(time) {
         let that = this;
         var timer1 = setInterval(function(){ 
@@ -68,77 +138,11 @@ export default {
                 that.isTimeDown = false;
             }
         },1000)
-    },
-    lsLogin (mobile,code){
-      if(mobile!=""&&code!=""){
-        this.isCanclick = true;
-        if(!this.isMbilePhone(mobile)){
-          wx.showToast({
-            title: '请输入正确的手机号码',
-            icon: 'none',
-            mask: true
-          })   
-        }else{
-          // wx.request({
-          //   url: 'https://m.lianshang.cn/ef/sendFinanceSms?userCode',
-          //   data: {
-          //     mobile: mobile ,
-          //     code:code
-          //   },
-          //   header: {
-          //       'content-type': 'application/json' // 默认值
-          //   },
-          //   success: function(res) {
-          //     console.log(res.data)
-          //   }
-          // })
-        }
-      }
-    },
-    getCode (mobile,code,button) {
-      if (mobile ==''){
-        wx.showToast({
-          title: '请输入手机号码',
-          icon: 'none',
-          mask: true
-        })
-      }else if(!this.isMbilePhone(mobile)){
-        wx.showToast({
-          title: '请输入正确的手机号码',
-          icon: 'none',
-          mask: true
-        })    
-      }else{
-            if(!this.isTimeDown){
-              this.timedown(5);
-            }else{
-              console.log('点过啦')
-              return;
-            }
-            
-          // wx.request({
-          //   url: 'https://m.lianshang.cn/ef/sendFinanceSms?userCode',
-          //   data: {
-          //     mobile: account ,
-          //     type:1
-          //   },
-          //   header: {
-          //       'content-type': 'application/json' // 默认值
-          //   },
-          //   success: function(res) {
-          //     console.log(res.data)
-          //   }
-          // })
-      }
-    },
-    isMbilePhone(s){
-        var reg =/^1((3\d)|(4[579])|(5[0-3,5-9])|(7[013,5-8])|(8\d))\d{8}$/
-        return reg.test(s);
     }
   },
   created () {
+    console.log('888888')
     // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
   }
 }
 </script>
@@ -204,5 +208,8 @@ page {
 }
 .iconfont{
   width:20rpx;
+}
+.canClick{
+  color:#fff;
 }
 </style>

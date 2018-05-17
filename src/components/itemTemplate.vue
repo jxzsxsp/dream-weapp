@@ -5,7 +5,7 @@
         <img class="item-img" :src="itemData.itemImgUrl"/>
       </div>
       <div class="item-center">
-          <div class="item-title">{{itemData.title}}</div>
+          <div class="item-title">{{itemData.itemName}}</div>
           <div class="item-detail">色号:{{itemData.itemColorNum}} 颜色:{{itemData.itemColor}} 状态:{{itemData.itemStatus}}</div>
           <div class="item-style">{{itemData.itemStyle}}</div>
       </div>
