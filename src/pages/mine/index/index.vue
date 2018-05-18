@@ -68,7 +68,7 @@ export default {
         {text:'待发货',class:'icon-daifahuo'},
         {text:'待收货',class:'icon-daishouhuo'},
         {text:'已收货',class:'icon-yishouhuo'},
-        {text:'退款／售后',class:'icon-shouhou'}
+        {text:'退款/售后',class:'icon-shouhou'}
       ],
       statusCount: {
       
@@ -164,10 +164,10 @@ page{
   z-index:0;
 }
 .head-pic{
-  width:100rpx;
-  height:100rpx;
+  width:114rpx;
+  height:114rpx;
   border-radius: 50%;
-  margin:44rpx 20rpx 0 20rpx;
+  margin:44rpx 26rpx 0 20rpx;
   position:relative;
   z-index:1;
 }
@@ -175,6 +175,7 @@ page{
   line-height:200rpx;
   position:relative;
   z-index:1;
+  font-size:30rpx;
 }
  .my-item{
    width:100%;
