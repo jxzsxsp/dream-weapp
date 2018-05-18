@@ -83,7 +83,7 @@ export default {
   position:absolute;
   right:20rpx;
   bottom:20rpx;
-  line-height:52rpx;
+  line-height:42rpx;
   font-size:24rpx;
 }
 .item-right{
