@@ -16,27 +16,11 @@
         <div class="my-title-r my-title-item">全部<i class="iconfont icon-jiantou"></i></div>
       </div>
       <div class="order-tabs">
-        <div class="order-item" v-for="(order, index) in orderStatus" :key="index">
-            <i v-if='isShowStatusCount' class="superscript">{{statusCount[index+1]}}</i>
+        <div class="order-item" v-for="(order, index) in orderStatus" :key="index" @click="navigateTo(order.href)">
+            <i v-if="statusCount[index+1] || statusCount[index+1]==0" class="superscript">{{statusCount[index+1]}}</i>
             <i class="iconfont" :class="order.class"></i>
             <div class="order-item-text">{{order.text}}</div>
         </div>
-        <!-- <div class="order-item">
-            <i class="iconfont icon-daifahuo"></i>
-            <div class="order-item-text">待发货</div>
-        </div>
-        <div class="order-item">
-            <i class="iconfont icon-daishouhuo"></i>
-            <div class="order-item-text">待收货</div>
-        </div>
-        <div class="order-item">
-            <i class="iconfont icon-yishouhuo"></i>
-            <div class="order-item-text">已收货</div>
-        </div>
-        <div class="order-item">
-            <i class="iconfont icon-shouhou"></i>
-            <div class="order-item-text">退款／售后</div>
-        </div> -->
       </div>
     </div>
     <div class="my-item my-item">
@@ -51,8 +35,10 @@
 </template>
 
 <script>
-import httpClass from '../../../utils/http'
+import indexFucClass from './store'
+import httpClass from '@/utils/http'
 var http = new httpClass();
+var indexFuc = new indexFucClass();
 
 export default {
   data () {
@@ -62,17 +48,14 @@ export default {
       lsUserInfo:wx.getStorageSync('lsUserInfo'),
       headPic : require('../../../images/headPic.png'),
       myAccountBg:require('../../../images/bg-b.png'),
-      isShowStatusCount:false,
       orderStatus:[
-        {text:'待付款',class:'icon-daifukuan'},
-        {text:'待发货',class:'icon-daifahuo'},
-        {text:'待收货',class:'icon-daishouhuo'},
-        {text:'已收货',class:'icon-yishouhuo'},
-        {text:'退款/售后',class:'icon-shouhou'}
+        {text:'待付款',class:'icon-daifukuan', href:"/pages/order/list/main?type=1"},
+        {text:'待发货',class:'icon-daifahuo', href:"/pages/order/list/main?type=2"},
+        {text:'待收货',class:'icon-daishouhuo', href:"/pages/order/list/main?type=3"},
+        {text:'已收货',class:'icon-yishouhuo', href:"/pages/order/list/main?type=4"},
+        {text:'退款/售后',class:'icon-shouhou', href:"/pages/refundAndSaled/list/main"}
       ],
-      statusCount: {
-      
-      }
+      statusCount:{}
     }
   },
   components: {
@@ -87,50 +70,52 @@ export default {
           wx.showModal({
             content: '您确认退出登录吗？',
             success: function(res) {
-          if (res.confirm) {
-            http.post('/buyer/user/mini-app/logout/v1', {}, true, '')
-              .then(
-                function(resp){
-                  console.log(resp);
-                },
-                function(resp){
-                  console.log(resp)
-                }
-              )
-          } else if (res.cancel) {
-            
+            if (res.confirm) {
+              indexFuc.lsLogout()
+            } else if (res.cancel) {
+              
+            }
           }
+        })      
+      },
+      navigateTo (href){
+        if(this.token){
+          wx.navigateTo({
+            url: href
+          });
+        }else{
+          wx.navigateTo({
+            url: '/pages/mine/login/main'
+          });
         }
-      })      
-    },
+      }
   },
   onLoad (){
     console.log('load')
+    this.token = wx.getStorageSync('token')
+    this.lsUserInfo = wx.getStorageSync('lsUserInfo');
+    var that = this;
+    if(this.token){
+    http.post('/buyer/trade/status/count/v1', {}, true, '')
+    .then(
+        function(resp){
+            console.log(resp.data.statusCount);
+            that.statusCount = resp.data.statusCount
+            // wx.getStorageSync('statusCount',resp.data.statusCount);
+        },
+        function(resp){
+            console.log(resp)
+        }
+    )}
   },
   onReady (){
     console.log('ready')
   },
   mounted () {
     console.log('mounted')
-    this.token = wx.getStorageSync('token')
-    this.lsUserInfo = wx.getStorageSync('lsUserInfo');
-    console.log(this.token);
-
-    if(this.token){
-      http.post('/buyer/trade/status/count/v1', {}, true, '')
-      .then(
-        function(resp){
-          console.log(resp.token);
-        },
-        function(resp){
-          console.log(resp)
-        }
-      )
-    }
   },
   created () {
     console.log('created');
-    // wx.clearStorageSync("token")
   },
 }
 </script>

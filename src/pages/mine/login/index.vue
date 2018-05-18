@@ -86,9 +86,20 @@ export default {
               console.log(resp.token);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp.data);
-              wx.navigateTo({
-							    url: '/pages/mine/index/main'
-						  })
+              var pages = getCurrentPages(); // 当前页面  
+              var beforePage = pages[pages.length - 2]; // 前一个页面  
+              console.log(beforePage);  
+              if(beforePage){
+                wx.navigateBack({  
+                    success: function() {  
+                        beforePage.onLoad(); // 执行前一个页面的onLoad方法  
+                    }  
+                });  
+              }else{
+                wx.navigateTo({
+                  url: '/pages/mine/index/main'
+                })
+              }
             },
             function(resp){
               console.log(resp)
