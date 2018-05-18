@@ -104,24 +104,35 @@ export default {
           // 调用微信登录接口
           wx.login({
             success: (resp) => {
+              console.log(resp);
               this.code = resp.code;
                wx.getUserInfo({
-                  withCredentials:true,
-                  success: (res) => {
-                    this.userInfo = res.userInfo
+                   withCredentials : true,
+                   success: (res) => {
+                    this.userInfo = res
                     // 调用获取验证码接口
                     var data={
                         mobile:mobile,
                         code:this.code,
-                        encryptedData:this.userInfo.encryptedData,
-                        iv:this.userInfo.iv
+                        encryptedData:resp.encryptedData,
+                        iv:resp.iv
                     }
                     http.post('/buyer/user/mini-app/send-login-sms/v1', data, true, '')
+                    .then(
+                      function(resp){
+                        console.log(resp)
+                        this.timedown(5);
+                      },function(resp){
+                        console.log(resp)
+                        wx.showToast({
+                          title:resp.message
+                        })
+                      }
+                    )
                   }
               })
             }
           })
-          this.timedown(5);
         }else{
           console.log('点过啦')
           return;

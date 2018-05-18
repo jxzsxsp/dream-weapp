@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
-    <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token">退出登录</div>
+    <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
   </div>
 </template>
 
@@ -79,10 +79,30 @@ export default {
     
   },
   methods: {
-    clickHandle (msg, ev) {
-      console.log('123')
-      console.log(this.lsUserInfo)
-    }
+      clickHandle (msg, ev) {
+        console.log('123')
+        console.log(this.lsUserInfo)
+      },
+      lsLogout (){
+          wx.showModal({
+            content: '您确认退出登录吗？',
+            success: function(res) {
+          if (res.confirm) {
+            http.post('/buyer/user/mini-app/logout/v1', {}, true, '')
+              .then(
+                function(resp){
+                  console.log(resp);
+                },
+                function(resp){
+                  console.log(resp)
+                }
+              )
+          } else if (res.cancel) {
+            
+          }
+        }
+      })      
+    },
   },
   mounted () {
     if(this.token){
@@ -98,7 +118,7 @@ export default {
     }
   },
   created () {
-   
+
   },
 }
 </script>
