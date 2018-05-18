@@ -104,7 +104,18 @@ export default {
       })      
     },
   },
+  onLoad (){
+    console.log('load')
+  },
+  onReady (){
+    console.log('ready')
+  },
   mounted () {
+    console.log('mounted')
+    this.token = wx.getStorageSync('token')
+    this.lsUserInfo = wx.getStorageSync('lsUserInfo');
+    console.log(this.token);
+
     if(this.token){
       http.post('/buyer/trade/status/count/v1', {}, true, '')
       .then(
@@ -118,7 +129,8 @@ export default {
     }
   },
   created () {
-
+    console.log('created');
+    // wx.clearStorageSync("token")
   },
 }
 </script>
