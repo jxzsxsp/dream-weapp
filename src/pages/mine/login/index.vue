@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       mobile: '15206191611',
-      identificateCode:'098765',
+      identificateCode:'09876',
       code: '',
       userInfo: {},
       codeButtonMessage: '获取验证码',
