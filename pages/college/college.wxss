@@ -1,0 +1,13 @@
+.item-container {
+  width: 750rpx;
+  line-height: 50rpx;
+  border-bottom:1px solid gray;
+}
+
+.item-img {
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  align-items: center;
+  justify-content: center;
+}

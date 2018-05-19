@@ -1,15 +1,14 @@
 .select-container {
   width: 650rpx;
-  height: 120rpx;
-  border: 1rpx solid gray;
+  height: 240rpx;
   margin-left: 50rpx;
   margin-top: 80rpx;
 }
 
 .select-item {
-  line-height: 57rpx;
+  line-height: 60rpx;
   justify-content: center;
-  border: 1rpx solid gray;
+  border-bottom: 1rpx solid gray;
 }
 
 .title {
@@ -17,9 +16,15 @@
 }
 
 .content {
-  margin-left: 20rpx;
+  margin-left: 40rpx;
   font-size: 35rpx;
   color: gray;
+}
+
+.img {
+  width: 30rpx;
+  height: 30rpx;
+  float: right;
 }
 
 button {

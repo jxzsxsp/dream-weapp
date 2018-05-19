@@ -1,0 +1,8 @@
+<scroll-view>
+  <block wx:for="{{universityList}}" wx:key="university">
+    <view class='item-container' bindtap='selectUniversity' data-university='{{item}}'>
+      <text>{{item.name}}</text>
+      <image class='item-img' src='/images/back_3x.png'></image>
+    </view>
+  </block>
+</scroll-view>

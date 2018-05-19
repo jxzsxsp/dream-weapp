@@ -1,0 +1,25 @@
+.item-container {
+  width: 750rpx;
+  line-height: 50rpx;
+  border:1px solid gray;
+}
+
+.item-img {
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  align-items: center;
+  justify-content: center;
+}
+
+.area-container {
+  top: 0rpx;
+  right: 0rpx;
+  width: 400rpx;
+  float: right;
+  z-index: 999;
+}
+
+.hide {
+  display: none;
+}

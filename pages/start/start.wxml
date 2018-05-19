@@ -1,16 +1,31 @@
 <scroll-view>
 
   <view class='select-container'>
-    <view class='select-item'>
-      <text class='title'>报考地区</text>
-      <text class='content'>{{info.province}}</text>
-      <text class='content'>{{info.area}}</text>
+
+    <view class='select-item' bindtap='selectProvince'>
+      <text class='title'>选择省份</text>
+      <text class='content'>{{info.province.name}}</text>
+      <image class='img' src='/images/back_3x.png'></image>
     </view>
 
-    <view class='select-item'>
-      <text class='title'>学历选择</text>
-      <text class='content'>{{info.degree}}</text>
+    <view class='select-item' bindtap='selectUniversity'>
+      <text class='title'>选择大学</text>
+      <text class='content'>{{info.university.name}}</text>
+      <image class='img' src='/images/back_3x.png'></image>
     </view>
+
+    <view class='select-item' bindtap='selectCollege'>
+      <text class='title'>选择学院</text>
+      <text class='content'>{{info.college.name}}</text>
+      <image class='img' src='/images/back_3x.png'></image>
+    </view>
+
+    <view class='select-item' bindtap='selectSpeciality'>
+      <text class='title'>选择专业</text>
+      <text class='content'>{{info.speciality.name}}</text>
+      <image class='img' src='/images/back_3x.png'></image>
+    </view>
+
   </view>
 
   <button type='primary' bindtap='start'>开始学习</button>

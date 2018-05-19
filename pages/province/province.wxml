@@ -1,0 +1,8 @@
+<scroll-view>
+  <block wx:for="{{provinces}}" wx:key="province">
+    <view class='item-container' bindtap='selectProvince' data-province='{{item}}'>
+      <text>{{item.name}}</text>
+      <image class='item-img' src='/images/back_3x.png'></image>
+    </view>
+  </block>
+</scroll-view>
