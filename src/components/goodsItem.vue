@@ -9,10 +9,9 @@
       <div class="item-style">{{itemData.itemStyle}}</div>
     </div>
     <div class="item-right">
-      <div class="item-detail">
+      <div class="item-price-detail">
         <span>¥{{itemData.price}}{{unit}}</span>
         <div>×{{itemData.itemNum}}</div>
-        <div>&nbsp;</div>
       </div>
       <p v-if="itemData.isCloth" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
       <p v-if="itemData.status">{{ itemData.status }}</p>
@@ -59,6 +58,11 @@ export default {
   margin-top: 10rpx;
   flex: 1;
 }
+.item-price-detail{
+  color: #999;
+  font-size: 24rpx;
+  flex: 1;
+}
 .item-style{
   width:70rpx;
   height:30rpx;
@@ -76,8 +80,6 @@ export default {
   border-radius: 8rpx;
   width:183rpx;
   text-align:center;
-  right:20rpx;
-  bottom:20rpx;
   height: 40rpx;
   font-size:24rpx;
 }
