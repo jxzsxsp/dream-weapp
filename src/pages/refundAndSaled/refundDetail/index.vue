@@ -2,29 +2,31 @@
   <scroll-view class="scroll-view">
       <div class="status-bar">
         <img class="status-background-pic" :src="statusBackgroundPic" background-size="cover"/>
-        <i class="iconfont" :class="orderStatus"></i>
-        <p class="status-text">已成功</p>
+        <i class="iconfont" :class="orderStatus.iconType"></i>
+        <p class="status-text">{{ orderStatus.status }}</p>
       </div>
 
       <div>
         <div class="info-container">
           <div class="status-item">
-            <p class="font-detail">申请金额</p>
+            <p class="font-detail">{{ afterSaleDetail.status === 2 ? '退款金额' : '申请金额'}}</p>
             <p class="font-detail red-color">{{ '￥' + afterSaleDetail.amount }}</p>
           </div>
           <div class="seperator-line"></div>
           <div class="status-item">
             <p class="font-detail">退款类型</p>
-            <p class="font-detail">退款/退货退款</p>
+            <p class="font-detail">{{ afterSaleDetail.refundTypeText }}</p>
           </div>
           <div class="seperator-line"></div>
-          <div class="status-item">
-            <p class="font-detail">拒绝原因</p>
+          <div v-if="afterSaleDetail.status === 3">
+            <div class="status-item">
+              <p class="font-detail">拒绝原因</p>
+            </div>
+            <div class="refuse-detail">
+              <p class="font-detail">{{ afterSaleDetail.declineReason }}</p>
+            </div>
           </div>
-          <div class="refuse-detail">
-            <p class="font-detail">{{ afterSaleDetail.declineReason }}</p>
-          </div>
-          <div class="status-item">
+          <div class="status-item" v-if="afterSaleDetail.status === 2">
             <p class="font-detail">查看退款凭证</p>
             <i class="iconfont icon-jiantou"></i>
           </div>
@@ -35,7 +37,7 @@
         <div class="goods-info">
           <p class="font-detail">商品信息</p>
         </div>
-        <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList" :key="index">
+        <div class="goods-item" v-for="(itemData, index) in afterSaleDetail.refundItemList" :key="index">
           <goodsItem :itemData="itemData"></goodsItem>
         </div>
       </div>
@@ -50,6 +52,7 @@
 <script>
 import goodsItem from '@/components/goodsItem'
 import orderDetail from '@/pages/refundAndSaled/template/orderDetail'
+import http from '@/utils/http'
 
 export default {
   components: {
@@ -59,42 +62,47 @@ export default {
   data () {
     return ({
       statusBackgroundPic: require('@/images/statusBg.png'),
-      afterSaleDetail: require('./mockData'),
-      itemData:{
-        title: '我是商品信息我是商品头',
-        itemImgUrl:require('@/images/statusBg.png'),
-        'itemColorNum':'3',
-        'itemColor':'白色',
-        'itemStatus':'现货',
-        'itemStyle':'样布',
-        'price':'20.00',
-        'unit':'米',
-        'itemNum':'20',
-        'isCloth':true
-     }
+      afterSaleDetail: {},
+      refundId: 2504480218967040
+      // refundId: this.$root.$mp.
     })
   },
   computed: {
     orderStatus: function () {
-      let orderStatus = ''
+      let orderStatus = {}
       switch (this.afterSaleDetail.status) {
-        case 1:
-          orderStatus = 'icon-shijian'
+        case 1: // 处理中
+          orderStatus.iconType = 'icon-shijian'
+          orderStatus.status = '处理中'
           break
-        case 2:
-          orderStatus = 'icon-chenggong'
+        case 2: // 已成功
+          orderStatus.iconType = 'icon-chenggong'
+          orderStatus.status = '已成功'
           break
-        case 3:
-          orderStatus = 'icon-quxiao'
+        case 3: // 已拒绝
+          orderStatus.iconType = 'icon-quxiao'
+          orderStatus.status = '已拒绝'
           break
-        case 4:
-          orderStatus = 'icon-jujue'
+        case 4: // 已取消
+          orderStatus.iconType = 'icon-jujue'
+          orderStatus.status = '已取消'
           break
         default:
           break
       }
       return orderStatus
     }
+  },
+  methods: {
+    _getRefundDetail () {
+      http.post('/buyer/refund/detail/v1', { refundId: this.refundId }, true, '')
+        .then((orderDetail) => {
+          this.afterSaleDetail = orderDetail
+        })
+    }
+  },
+  onLoad () {
+    this._getRefundDetail()
   }
 }
 </script>
@@ -192,7 +200,7 @@ export default {
 }
 .content-footer {
   margin-bottom: 20rpx;
-  margin-top: 80rpx;
+  margin-top: 120rpx;
   position: flex;
   flex-direction: column;
   align-items: center;

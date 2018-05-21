@@ -14,11 +14,11 @@
     </div>
     <div class="order-item">
       <p class="font-detail gray-color">申请原因: &nbsp;&nbsp;</p>
-      <p class="font-detail">{ orderDetail.refundDesc }}</p>
+      <p class="font-detail">{{ orderDetail.refundDesc || '无' }}</p>
     </div>
     <div class="order-item">
       <p class="font-detail gray-color">赔付要求: &nbsp;&nbsp;</p>
-      <p class="font-detail">{{ orderDetail.compensateDesc }}</p>
+      <p class="font-detail">{{ orderDetail.compensateDesc || '无' }}</p>
     </div>
     <div class="order-item" v-if="orderDetail.status !== 1">
       <p class="font-detail gray-color">完成时间: &nbsp;&nbsp;</p>
