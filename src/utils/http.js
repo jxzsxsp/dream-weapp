@@ -37,7 +37,7 @@ class Http {
 		return new Promise((resolve, reject) => {
 			wx.request({
 				url: url,
-				method: "POST",
+				method: method,
 				data: data,
 				header : { 
 					'content-type': 'application/json', 
