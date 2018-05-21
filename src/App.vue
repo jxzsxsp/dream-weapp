@@ -59,7 +59,7 @@ const getUserInfo = function(code){
 export default {
   created () {
     http.saveSystemInfo();
-    quietLogin();
+    // quietLogin();
     // getUserInfo();
   },
 }
