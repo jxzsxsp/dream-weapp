@@ -36,8 +36,7 @@
 
 <script>
 import indexFucClass from './store'
-import httpClass from '@/utils/http'
-var http = new httpClass();
+import http from '@/utils/http'
 var indexFuc = new indexFucClass();
 
 export default {

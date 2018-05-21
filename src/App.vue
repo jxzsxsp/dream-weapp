@@ -1,7 +1,6 @@
 <script>
 import './iconFont/iconfont.css';
-import httpClass from './utils/http'
-var http = new httpClass();
+import http from '@/utils/http'
 
 // 登录wx.login
 const quietLogin = function(){

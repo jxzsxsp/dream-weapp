@@ -1,5 +1,4 @@
-import httpClass from '../../../utils/http'
-var http = new httpClass();
+import http from '@/utils/http'
 
 class indexFuc {
     isGetOrderNum (token, lsUserInfo, statusCount){
