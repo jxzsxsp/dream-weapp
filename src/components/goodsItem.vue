@@ -1,20 +1,20 @@
 <template>
   <div class="list-item">
     <div class="item-left">
-      <img class="item-img" :src="itemData.itemImgUrl"/>
+      <img class="item-img" :src="itemData.itemImg"/>
     </div>
     <div class="item-center">
-      <div class="item-title">{{itemData.title}}</div>
-      <div class="item-detail">色号:{{itemData.itemColorNum}} 颜色:{{itemData.itemColor}} 状态:{{itemData.itemStatus}}</div>
-      <div class="item-style">{{itemData.itemStyle}}</div>
+      <div class="iitem-titlele">{{ itemData.itemName }}</div>
+      <div class="item-detail">{{ itemData.skuProperties }}</div>
+      <div class="item-style">{{ itemType }}</div>
     </div>
     <div class="item-right">
       <div class="item-price-detail">
-        <span>¥{{itemData.price}}{{unit}}</span>
-        <div>×{{itemData.itemNum}}</div>
+        <p class="item-price">¥{{ itemData.price }}{{ itemData.quantityUnit }}</p>
+        <p class="item-quantity">×{{ itemData.quantity }}</p>
       </div>
       <p v-if="itemData.isCloth" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
-      <p v-if="itemData.status">{{ itemData.status }}</p>
+      <p class="item-status" v-if="itemData.status">{{ itemData.status }}</p>
     </div>
   </div>
 </template>
@@ -22,6 +22,23 @@
 <script>
 export default {
   props: ["itemData"],
+  computed: {
+    itemType: function () {
+      let itemType = ''
+      switch (this.itemData.itemTypeId) {
+        case 1:
+          itemType = '样卡'
+          break
+        case 2:
+          itemType = '样布'
+        case 3:
+          itemType = '大货'
+        default:
+          break;
+      }
+      return itemType
+    }
+  },
   methods: {
     _checkCloth: function () {
       wx.navigateTo({
@@ -55,13 +72,15 @@ export default {
 .item-detail{
   color: #999;
   font-size: 24rpx;
-  margin-top: 10rpx;
   flex: 1;
 }
 .item-price-detail{
   color: #999;
   font-size: 24rpx;
-  flex: 1;
+  height: 100rpx;
+}
+.item-quantity {
+  margin-top: 10rpx;
 }
 .item-style{
   width:70rpx;
@@ -82,6 +101,10 @@ export default {
   text-align:center;
   height: 40rpx;
   font-size:24rpx;
+}
+.item-status {
+  text-align: right;
+  color: #eeb650;
 }
 .item-right{
   text-align:right;

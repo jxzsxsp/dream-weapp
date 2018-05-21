@@ -10,21 +10,43 @@
       3. 引入插件 <listBottomLoading :loadingDate="loadingDate"></listBottomLoading>
  */
 <template>
-  <div class="loader">
-    <i class="iconfont icon-jiazailoading-A" v-show="loadingData.isLoading"></i>
-    <div class="loader-end" v-show="!loadingData.isLoading">
-      <span class="line"></span>
-      <span class="disc"></span>
-      <span class="text">{{loadingData.loadingText?loadingData.loadingText:"我是有底线的"}}</span>
-      <span class="disc"></span>
-      <span class="line"></span>
+  <div class="loading">
+    <div class="no-order" ng-if="!hasOrder">
+      <img :src="noOrderIcon" alt="">
+      <p>{{loadingData.noOrderTips}}</p>
+    </div>
+    <div class="has-order loader" ng-if="hasOrder">
+      <i class="iconfont icon-jiazailoading-A" v-if="loading"></i>
+      <div class="loader-end" v-if="isLoading">
+        <span class="line"></span>
+        <span class="disc"></span>
+        <span class="text">{{loadingData.loadingText?loadingData.loadingText:"我是有底线的"}}</span>
+        <span class="disc"></span>
+        <span class="line"></span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['loadingData']
+  props: ['loadingData'],
+  data: {
+    noOrderIcon:require('@/images/no-order.png'),
+    hasOrder: false,
+    loading: true,
+  },
+  // created () {
+  //   if(!this.loadingData.noOrderTips) this.loadingData.noOrderTips = "您还没有相关订单";
+
+  //   if(this.loadingData.isLoading == 0){
+      
+  //   }else if(this.loadingData.isLoading == 1){
+
+  //   }else if(this.loadingData.isLoading == 2){
+
+  //   }
+  // }
 }
 </script>
 

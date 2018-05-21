@@ -18,9 +18,7 @@
 <script>
 
 import form from '../../../utils/formValidate'
-import httpClass from '../../../utils/http'
-
-var http = new httpClass();
+import http from '@/utils/http'
 var formValidate = new form();
 
 export default {

@@ -13,6 +13,10 @@ export default {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     pages: [
       // 'pages/logs/main', 
+<<<<<<< HEAD
+=======
+      // '^pages/flex/main', 
+>>>>>>> a38a3e510df055347f53be8a605a7f9963a19466
       '^pages/mine/index/main', 
       'pages/mine/login/main',
       'pages/order/detail/main',
