@@ -8,7 +8,7 @@
       <div class="input-item">
           <i class="iconfont icon-yanzhengma"></i>
           <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
-          <a @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</a>
+          <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
     </div>
@@ -26,8 +26,8 @@ var formValidate = new form();
 export default {
   data () {
     return {
-      mobile: '15206191611',
-      identificateCode:'09876',
+      mobile: '',
+      identificateCode:'',
       code: '',
       userInfo: {},
       codeButtonMessage: '获取验证码',
@@ -44,19 +44,6 @@ export default {
     bindViewTap () {
       const url = '../logs/main'
       wx.navigateTo({ url })
-    },
-
-    getUserInfo () {
-      // 调用登录接口
-      // wx.login({
-      //   success: () => {
-      //     wx.getUserInfo({
-      //       success: (res) => {
-      //         this.userInfo = res.userInfo
-      //       }
-      //     })
-      //   }
-      // })
     },
     validateValue (){
       var that = this;
@@ -115,7 +102,6 @@ export default {
           // 调用微信登录接口
           wx.login({
             success: (resp) => {
-              console.log(resp);
               this.code = resp.code;
                wx.getUserInfo({
                    withCredentials : true,
@@ -131,15 +117,17 @@ export default {
                     http.post('/buyer/user/mini-app/send-login-sms/v1', data, true, '')
                     .then(
                       function(resp){
-                        console.log(resp)
-                        this.timedown(5);
+                        console.log('9999999');
+                        that.timedown(60);
                       },function(resp){
-                        console.log(resp)
                         wx.showToast({
                           title:resp.message
                         })
                       }
                     )
+                  },
+                  fail:(resp) =>{
+                    console.log(resp)
                   }
               })
             }
@@ -214,7 +202,6 @@ page {
     top: -10rpx;
     right:0rpx;
     font-size: 28rpx;
-    width: 175rpx;
     line-height:64rpx;
     position: absolute;
     text-align: center;
