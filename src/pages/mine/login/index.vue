@@ -125,8 +125,8 @@ export default {
                     var data={
                         mobile:mobile,
                         code:this.code,
-                        encryptedData:resp.encryptedData,
-                        iv:resp.iv
+                        encryptedData:res.encryptedData,
+                        iv:res.iv
                     }
                     http.post('/buyer/user/mini-app/send-login-sms/v1', data, true, '')
                     .then(

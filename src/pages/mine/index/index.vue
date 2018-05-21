@@ -13,10 +13,10 @@
     <div class="my-item">
       <div class="my-title order-title">
         <div class="my-title-l my-title-item"><i class="iconfont icon-dingdan icon-red"></i><span>我的订单</span></div>
-        <div class="my-title-r my-title-item">全部<i class="iconfont icon-jiantou"></i></div>
+        <div class="my-title-r my-title-item" @click="navigateTo('/pages/order/list/main')">全部<i class="iconfont icon-jiantou"></i></div>
       </div>
       <div class="order-tabs">
-        <div class="order-item" v-for="(order, index) in orderStatus" :key="index" @click="navigateTo(order.href)">
+        <div class="index-order-item" v-for="(order, index) in orderStatus" :key="index" @click="navigateTo(order.href)">
             <i v-if="statusCount[index+1] || statusCount[index+1]==0" class="superscript">{{statusCount[index+1]}}</i>
             <i class="iconfont" :class="order.class"></i>
             <div class="order-item-text">{{order.text}}</div>
@@ -217,7 +217,7 @@ page{
     margin-top:10rpx;
     padding-bottom:30rpx;
  }
- .order-item{
+ .index-order-item{
    width:20%;
    text-align:center;
    font-size:24rpx;
