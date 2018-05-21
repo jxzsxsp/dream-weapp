@@ -52,7 +52,7 @@
 
 <script>
 import goodsItem from '@/components/goodsItem'
-import orderDetail from '@/components/refundAndSaled/orderDetail'
+import orderDetail from '@/pages/refundAndSaled/template/orderDetail'
 
 export default {
   components: {
@@ -61,11 +61,11 @@ export default {
   },
   data () {
     return ({
-      statusBackgroundPic: require('../../../../images/statusBg.png'),
+      statusBackgroundPic: require('@/images/statusBg.png'),
       afterSaleDetail: require('./mockData'),
       itemData:{
         title: '我是商品信息我是商品头',
-        itemImgUrl:require('../../../../images/statusBg.png'),
+        itemImgUrl:require('@/images/statusBg.png'),
         'itemColorNum':'3',
         'itemColor':'白色',
         'itemStatus':'现货',
