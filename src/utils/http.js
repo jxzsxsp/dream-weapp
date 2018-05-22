@@ -49,9 +49,9 @@ class Http {
 					}else if(res.data.code == -100 || res.data.code == -151){
 						var pages = getCurrentPages()    //获取加载的页面
 						var currentPage = pages[pages.length-1]    //获取当前页面的对象
-						var url = currentPage.route
-						wx.navigateTo({
-							url: 'pages/mine/login/main?url=' + encodeURI(url)
+						var url = '/' + currentPage.route
+						wx.redirectTo({
+							url: '/pages/mine/login/main?url=' + encodeURI(url)
 						})
 					}else{
 						wx.showToast({

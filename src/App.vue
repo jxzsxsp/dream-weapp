@@ -5,18 +5,11 @@ import http from '@/utils/http'
 // 登录wx.login
 const quietLogin = function(){
   const token = wx.getStorageSync('token') || ''        // token
-  // const systemInfo = wx.getStorageSync('systemInfo') || ''  // request请求时必须要封装的参数（由后端决定）
   if(!token){
     wx.login({
       success (res){
         if (res.code) {
-          // if(systemInfo){
-            // http.saveSystemInfo();
-            http.quietLogin(res.code);
-          // }else{
-            // http.quietLogin(res.code);
-            // getUserInfo(res.code);
-          // }
+          http.quietLogin(res.code);
         } else {
           console.log('登录失败！' + res.errMsg)
         }
@@ -34,26 +27,26 @@ const quietLogin = function(){
   }
 }
 // 获取微信user信息wx.getUserInfo
-const getUserInfo = function(code){
-  wx.getUserInfo({
-    withCredentials: true,
-    success (res){ 
-      console.log(res);
-      http.saveSystemInfo(res);
-      http.quietLogin(code);
-    },
-    fail (res){
-        wx.showToast({
-        title: '获取用户信息失败',
-        icon: 'none',
-        mask: true
-      })
-    },
-    complete () {
+// const getUserInfo = function(code){
+//   wx.getUserInfo({
+//     withCredentials: true,
+//     success (res){ 
+//       console.log(res);
+//       http.saveSystemInfo(res);
+//       http.quietLogin(code);
+//     },
+//     fail (res){
+//         wx.showToast({
+//         title: '获取用户信息失败',
+//         icon: 'none',
+//         mask: true
+//       })
+//     },
+//     complete () {
 
-    }
-  })
-}
+//     }
+//   })
+// }
 
 export default {
   created () {
