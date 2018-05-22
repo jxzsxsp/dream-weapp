@@ -2,11 +2,11 @@
 <div>
   <div class="order-tab">
     <ul>
-      <li class="current">全部</li>
-      <li>待付款</li>
-      <li>待发货</li>
-      <li>待收货</li>
-      <li>已收货</li>
+      <li :class="status == -1?'current':''" @click="changeStatus(-1)">全部</li>
+      <li :class="status == 1?'current':''" @click="changeStatus(1)">待付款</li>
+      <li :class="status == 2?'current':''" @click="changeStatus(2)">待发货</li>
+      <li :class="status == 3?'current':''" @click="changeStatus(3)">待收货</li>
+      <li :class="status == 4?'current':''" @click="changeStatus(4)">已收货</li>
     </ul>
   </div>
   <div class="list">
@@ -34,62 +34,61 @@
 </template>
 
 <script>
-
-// Use Vuex
 import store from './store'
 import listBottomLoading from '@/components/list-bottom-loading'
-import itemTemplate from '../template/itemTemplate'
-import http from '@/utils/http'
-// var http = new httpClass();
-
-
-
+import itemTemplate from '@/components/goodsItem'
 
 export default {
   components: {
     listBottomLoading,
     itemTemplate
   },
-  data: {
-    loadingData: {
-      // hasOrder: true,
-      isLoading: 1,
-      loadingText: '没有更多了',
-      noOrderTips: "您还没有相关订单"
-    },
-    orderList: [],
-    orderStatus: 0,
-  },
   computed: {
-    count () {
-      // return store.state.count
+    loadingData (){
+      return {
+        isLoading: store.state.isLoading,
+        loadingText: '没有更多了',
+        noOrderTips: "您还没有相关订单"
+      }
+    },
+    status (){
+      return store.state.status || -1;
+    },
+    orderList(){
+      return store.state.orderList || [];
+    },
+    isPullDownRefresh(){
+      return store.state.isPullDownRefresh;
     }
   },
+  
   // 下拉刷新
   onPullDownRefresh (){
-
-    wx.stopPullDownRefresh();
+    store.dispatch('refresh',true);
   },
   // 懒加载
   onReachBottom () {
-
+    store.dispatch('reachBottom');
   },
+  
   methods: {
-
-    // increment () {
-    //   store.commit('increment')
-    // },
-    // decrement () {
-    //   store.commit('decrement')
-    // }
+    changeStatus (status) {
+      store.dispatch('changeStatus',status);
+    }
   },
-  created(){
-    
+  mounted(){
+    var status = this.$root.$mp.query.status || -1;
+    store.dispatch('changeStatus',status);
+  },
+  watch: {
+    isPullDownRefresh: function(){
+      wx.stopPullDownRefresh();
+    }
   }
 }
 
 </script>
-<style>
+<style scoped>
   page{
     background-color: #F4F4F4;
   }

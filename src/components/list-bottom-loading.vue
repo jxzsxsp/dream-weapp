@@ -4,20 +4,21 @@
 ＊    1. 引入文件 import listBottomLoading from '@/template/list-bottom-loading'
 ＊    2. data里声明对象
         loadingData: {
-          isLoading: true,          //是否显示loading
-          loadingText: '没有更多了'   // 提示语 默认："我是有底线的"
+          isLoading: 1,                   // 0显示loading，1显示没有更多了，2表示没有相关订单
+          loadingText: '没有更多了'         // 1提示语 默认："我是有底线的"
+          noOrderTips: '您还没有相关订单'    // 2提示语 默认："您还没有相关订单"
         }
       3. 引入插件 <listBottomLoading :loadingDate="loadingDate"></listBottomLoading>
  */
 <template>
   <div class="loading">
-    <div class="no-order" ng-if="!hasOrder">
+    <div class="no-order" v-if="loadingData.isLoading == 2">
       <img :src="noOrderIcon" alt="">
-      <p>{{loadingData.noOrderTips}}</p>
+      <p>{{loadingData.noOrderTips?loadingData.noOrderTips:"您还没有相关订单"}}</p>
     </div>
-    <div class="has-order loader" ng-if="hasOrder">
-      <i class="iconfont icon-jiazailoading-A" v-if="loading"></i>
-      <div class="loader-end" v-if="isLoading">
+    <div class="has-order loader" v-if="loadingData.isLoading != 2">
+      <i class="iconfont icon-jiazailoading-A" v-if="loadingData.isLoading == 0"></i>
+      <div class="loader-end" v-if="loadingData.isLoading == 1">
         <span class="line"></span>
         <span class="disc"></span>
         <span class="text">{{loadingData.loadingText?loadingData.loadingText:"我是有底线的"}}</span>
@@ -31,26 +32,28 @@
 <script>
 export default {
   props: ['loadingData'],
-  data: {
-    noOrderIcon:require('@/images/no-order.png'),
-    hasOrder: false,
-    loading: true,
+  data() {
+    return {
+      noOrderIcon: require('../images/no-order.png'),
+    }
   },
-  // created () {
-  //   if(!this.loadingData.noOrderTips) this.loadingData.noOrderTips = "您还没有相关订单";
-
-  //   if(this.loadingData.isLoading == 0){
-      
-  //   }else if(this.loadingData.isLoading == 1){
-
-  //   }else if(this.loadingData.isLoading == 2){
-
-  //   }
-  // }
 }
 </script>
 
 <style>
+.no-order{
+  text-align: center;
+}
+.no-order img{
+  width: 333rpx;
+  height: 313rpx;
+  margin-top: 160rpx;
+}
+.no-order p{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
 .loader{
     height: 90rpx;
     line-height: 90rpx;
