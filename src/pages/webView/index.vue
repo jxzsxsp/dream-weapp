@@ -7,10 +7,13 @@
 <script>
 
 export default {
-  computed: {
-    url: function () {
-      return this.$root.$mp.query.url
-    }
+  data() {
+    return ({
+      url: ''
+    })
+  },
+  onShow () {
+    this.url = this.$root.$mp.query.url
   }
 }
 </script>
