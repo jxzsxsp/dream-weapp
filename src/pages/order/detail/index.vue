@@ -60,7 +60,7 @@
         <i class="rate-cancel rate-icon" :class="index == 0?'rate-current':''"></i>
         <i v-if="index!=rateList.length-1" class="rate-line"></i>
         <span>{{list.memo}}</span>
-        <span class="rate-time">{{list.operateTime}}</span>
+        <span class="rate-time">{{list.operateTimeText}}</span>
       </li>
       <i class="iconfont icon-quxiao" @click="hideRate()"></i>
     </ul>
@@ -81,7 +81,7 @@ export default {
      statusBg:require('../../../images/statusBg.png'),
      src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
      isShowRate:false,
-     tradeId:1558350025004692,
+     tradeId:'',
      itemData:{
         'itemTitle': '我是商品信息我是商品头1111',
         'itemImgUrl':require('../../../images/statusBg.png'),
@@ -99,6 +99,10 @@ export default {
   },
   computed: {
     
+  },
+  onLoad () {
+    this.isShowRate=false;
+    this.tradeId = this.$root.$mp.query.id
   },
   methods: {
     showRate() {
