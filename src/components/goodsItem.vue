@@ -4,7 +4,7 @@
       <img class="item-img" :src="itemData.itemImg"/>
     </div>
     <div class="item-center">
-      <div class="iitem-titlele">{{ itemData.itemName }}</div>
+      <div class="item-title">{{ itemData.itemName }}</div>
       <div class="item-detail">{{ itemData.skuProperties }}</div>
       <div class="item-style">{{ itemType }}</div>
     </div>
@@ -14,7 +14,7 @@
         <p class="item-quantity">×{{ itemData.quantity }}</p>
       </div>
       <p v-if="itemData.isCloth" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
-      <p class="item-status" v-if="itemData.status">{{ itemData.status }}</p>
+      <p class="item-status" v-if="itemData.buyerRefundStatusText">{{ itemData.buyerRefundStatusText }}</p>
     </div>
   </div>
 </template>
@@ -31,10 +31,12 @@ export default {
           break
         case 2:
           itemType = '样布'
+          break
         case 3:
           itemType = '大货'
+          break
         default:
-          break;
+          break
       }
       return itemType
     }
@@ -42,7 +44,7 @@ export default {
   methods: {
     _checkCloth: function () {
       wx.navigateTo({
-        url: '/pages/webView/main?url=http://www.baidu.com'
+        url: '@/webView/main?url=http://www.baidu.com'
       })
     }
   }
@@ -70,11 +72,13 @@ export default {
   justify-content: space-between;
 }
 .item-detail{
+  margin-top: 10rpx;
   color: #999;
   font-size: 24rpx;
   flex: 1;
 }
 .item-price-detail{
+  margin-top: 10rpx;
   color: #999;
   font-size: 24rpx;
   height: 100rpx;
@@ -112,7 +116,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
-.iitem-titlele{
+.item-title{
   text-overflow: ellipsis;
   height: 40rpx;
   overflow: hidden;
