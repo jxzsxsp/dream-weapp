@@ -99,6 +99,10 @@ export default {
     height: 88rpx;
     border-top: 1rpx solid #e2e2e2;
     border-bottom: 1rpx solid #e2e2e2;
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
   }
   .order-tab ul{
     display: flex;
@@ -118,6 +122,9 @@ export default {
   .order-tab ul li.current{
     border-bottom: 2px solid #CB3F3F;
     color: #CB3F3F;
+  }
+  .list{
+    padding-top: 88rpx;
   }
   .list-li{
     margin-top: 20rpx;
