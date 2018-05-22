@@ -67,6 +67,7 @@ export default {
 <style>
 page {
   height: 100%;
+  background-color:#F4F4F4;
 }
 .container-with-footer {
   height: 100%;
@@ -76,7 +77,6 @@ page {
   justify-content: space-between;
   box-sizing: border-box;
   background-color: #F4F4F4;
-
 }
 .container {
   height: 100%;

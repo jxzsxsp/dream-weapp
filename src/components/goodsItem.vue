@@ -42,7 +42,7 @@ export default {
   methods: {
     _checkCloth: function () {
       wx.navigateTo({
-        url: '../../webView/main?url=http://www.baidu.com'
+        url: '/pages/webView/main?url=http://www.baidu.com'
       })
     }
   }
@@ -111,5 +111,12 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.iitem-titlele{
+  text-overflow: ellipsis;
+  height: 40rpx;
+  overflow: hidden;
+  white-space:nowrap;
+  width: 480rpx;
 }
 </style>
