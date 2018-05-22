@@ -116,7 +116,7 @@ export default {
       })
     } 
   },
-  onShow () {
+  onLoad () {
     this.orderId = this.$root.$mp.query.id
     this._getDetail()
     this._showRate()

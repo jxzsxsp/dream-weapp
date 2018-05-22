@@ -12,7 +12,7 @@ export default {
       url: ''
     })
   },
-  onShow () {
+  onLoad () {
     this.url = this.$root.$mp.query.url
   }
 }
