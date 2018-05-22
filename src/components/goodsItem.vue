@@ -93,7 +93,7 @@ export default {
   color: #FFFFFF;
   letter-spacing: 0;
   background: #EA776B;
-  border-radius: 3rpx;
+  border-radius: 6rpx;
   line-height:30rpx;
   text-align:center;
 }
@@ -121,6 +121,6 @@ export default {
   height: 40rpx;
   overflow: hidden;
   white-space:nowrap;
-  width: 400rpx;
+  width: 370rpx;
 }
 </style>
