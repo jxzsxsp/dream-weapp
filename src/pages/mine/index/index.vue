@@ -147,7 +147,7 @@ export default {
 };
 </script>
 
-<style>
+<style scope>
 page {
   height: 100%;
   background: #f4f4f4;
