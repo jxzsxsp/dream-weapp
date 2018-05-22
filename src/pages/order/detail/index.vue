@@ -83,12 +83,8 @@ export default {
       isShowRate:false,
       orderDetail: {},
       // 订单进度列表
-      rateList: [],
-    }
-  },
-  computed: {
-    orderId: function () {
-      return this.$root.$mp.query.id
+      rateList: {},
+      orderId: 0
     }
   },
   methods: {
@@ -120,7 +116,8 @@ export default {
       })
     } 
   },
-  onLoad () {
+  onShow () {
+    this.orderId = this.$root.$mp.query.id
     this._getDetail()
     this._showRate()
   }
