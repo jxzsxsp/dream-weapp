@@ -70,7 +70,7 @@ export default {
             function(resp){
               console.log(resp.token);
               wx.setStorageSync('token', resp.token);
-              wx.setStorageSync('lsUserInfo', resp.data);
+              wx.setStorageSync('lsUserInfo', resp);
               var pages = getCurrentPages(); // 当前页面  
               var beforePage = pages[pages.length - 2]; // 前一个页面  
               console.log(beforePage);  
