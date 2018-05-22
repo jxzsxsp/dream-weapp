@@ -125,8 +125,8 @@ export default {
     if (this.token) {
       http.post("/buyer/trade/status/count/v1", {}, true, "").then(
         function(resp) {
-          console.log(resp.data.statusCount);
-          that.statusCount = resp.data.statusCount;
+          console.log(resp.statusCount);
+          that.statusCount = resp.statusCount;
           // wx.getStorageSync('statusCount',resp.data.statusCount);
         },
         function(resp) {
