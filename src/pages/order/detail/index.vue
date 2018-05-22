@@ -166,7 +166,7 @@ page{
   position: relative;
 }
 .order-address{
-  width:750rpx;
+  width:710rpx;
   font-size:28rpx;
   padding:20rpx;
   background:#fff;
