@@ -3,36 +3,37 @@
     <div class="order-status">
       <img class="status-bg" :src="statusBg" background-size="cover"/>
       <div class="status-content flex-style" @click="showRate()">
-        <div class="status-text">订单待收货</div>
+        <div class="status-text">订单{{ orderDetail.tradeInfo.showStatus }}</div>
         <i class="iconfont icon-jiantou"></i>
       </div>
     </div>
     <div class="order-address">
         <i class="iconfont icon-zuobiao order-address-left"></i>
         <div class="order-address-detail">
-           <div><span>洛菲菲</span><span class="telephone">18397654678</span></div>
-           <div class="order-address-text">上海市沪太路1111弄1号楼11楼</div>
+           <div><span>{{ orderDetail.tradeInfo.userName }}</span><span class="telephone">{{ orderDetail.tradeInfo.mobileno }}</span></div>
+           <div class="order-address-text">{{ orderDetail.addressInfo.address }}</div>
         </div>
     </div>
     <div class="order-list">
-        <goodsItem :itemData="itemData"></goodsItem>
-        <goodsItem :itemData="itemData"></goodsItem>
+        <div class="goods-item" v-for="(itemData, index) in orderDetail.tradeItemList" :key="index">
+          <goodsItem :itemData="itemData" :showCheckClothBtn=true></goodsItem>
+        </div>
         <div class="goods-price-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">商品总价</div>
-              <div class="goods-item-value">¥456.00</div>
+              <div class="goods-item-value">{{ orderDetail.tradeInfo.totalFee }}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">运费</div>
-                <div class="goods-item-value">¥456.00</div>
+                <div class="goods-item-value">{{ orderDetail.tradeInfo.freightFee }}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">优惠券</div>
-                <div class="goods-item-value">-¥456.00</div>
+                <div class="goods-item-value">{{ orderDetail.tradeInfo.couponFee}}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">实付款</div>
-                <div class="goods-item-value color-red">¥456.00</div>
+                <div class="goods-item-value color-red">{{ orderDetail.tradeInfo.payment }}</div>
             </div>
         </div>
     </div>
@@ -40,17 +41,17 @@
             <div class="flex-style padding-style">
               <div class="goods-item-key">订单编号</div>
               <div class="goods-item-value flex-style">
-                <button class="btn-copy" @click="copy">复制</button>
-                302929843477523494
+                <button class="btn-copy" @click="_copy">复制</button>
+                {{ orderDetail.tradeInfo.tradeId}}
               </div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">下单时间</div>
-                <div class="goods-item-value">2018-05-08 19:00:12</div>
+                <div class="goods-item-value">{{ orderDetail.tradeInfo.createtime }}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">支付方式</div>
-                <div class="goods-item-value">支付宝</div>
+                <div class="goods-item-value">{{ orderDetail.tradeInfo.payType }}</div>
             </div>
         </div>
     <div class="mask" v-if="isShowRate">
@@ -78,50 +79,36 @@ export default {
   },
   data () {
     return {
-     statusBg:require('../../../images/statusBg.png'),
-     src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
-     isShowRate:false,
-     tradeId:'',
-     itemData:{
-        'itemTitle': '我是商品信息我是商品头1111',
-        'itemImgUrl':require('../../../images/statusBg.png'),
-        'itemColorNum':'3',
-        'itemColor':'白色',
-        'itemStatus':'现货',
-        'itemStyle':'样布',
-        'price':'20.00',
-        'unit':'米',
-        'itemNum':'20',
-        'isCloth':true
-     },
-     rateList:[],
+      statusBg:require('@/images/statusBg.png'),
+      isShowRate:false,
+      orderDetail: {},
+      // 订单进度列表
+      rateList: {},
     }
   },
   computed: {
-    
-  },
-  onLoad () {
-    this.isShowRate=false;
-    this.tradeId = this.$root.$mp.query.id
+    orderId: function () {
+      return this.$root.$mp.query.id
+    }
   },
   methods: {
-    showRate() {
-      this.isShowRate=true;
-      var that = this;
-      http.post("/buyer/trade/progress/v1", {tradeId:this.tradeId}, true, "")
-      .then(
-        function(resp) {
-          that.rateList = resp.list;
-          console.log(that.rateList)
-        },
-        function(resp) {
-          console.log(resp);
-        });
+    _getDetail () {
+      http.post('/trade/detail/v3', { id: this.orderId }, true, '')
+        .then((orderDetail) => {
+          this.orderDetail = orderDetail
+        })
+    },
+    _showRate() {
+      http.post("/buyer/trade/progress/v1", { tradeId:this.orderId }, true, "")
+        .then((progress) => {
+          this.rateList = progress.list
+        }
+      )  
     },
     hideRate() {
       this.isShowRate=false;
     },
-    copy() {  
+    _copy() {  
       wx.setClipboardData({
         data: 'data',
         success: function(res) {
@@ -132,6 +119,10 @@ export default {
         }
       })
     } 
+  },
+  onLoad () {
+    this._getDetail()
+    this._showRate()
   }
 }
 
@@ -149,6 +140,10 @@ page{
   width:100%;
   position:relative;
   margin-bottom:20rpx;
+}
+.goods-item {
+  flex-direction: column;
+  display: flex;
 }
 .status-bg{
   width:100%;
