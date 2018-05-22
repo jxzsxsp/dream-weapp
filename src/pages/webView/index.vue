@@ -7,21 +7,12 @@
 <script>
 
 export default {
-  data () {
-    return {
-     
-    }
-  },
   computed: {
     url: function () {
       return this.$root.$mp.query.url
     }
-  },
-  methods: {
-    
   }
 }
-
 </script>
 <style>
 
