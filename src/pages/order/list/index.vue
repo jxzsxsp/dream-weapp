@@ -26,6 +26,9 @@
           <span class="money">¥{{order.tradeInfo.payableFee}}</span> 
           （含运费¥{{order.tradeInfo.freightFee}}）
         </div>
+        <div class="list-bottom list-bottom-btn">
+          <div class="order-list-btn">确认收货</div>
+        </div>
       </li>
     </ul>
   </div>
@@ -156,5 +159,21 @@ export default {
   .money{
     color: #CB3F3F;
     font-size: 30rpx;
+  }
+  .list-bottom-btn{
+    border-top: 1rpx solid #eeeeee;
+    text-align: right;
+  }
+  .order-list-btn{
+    width:160rpx;
+    height:60rpx;
+    font-size:28rpx;
+    line-height:60rpx;
+    text-align: center;
+    display:inline-block;
+    margin-top:8rpx;
+    padding:0;
+    border: 1rpx solid #999999;
+    border-radius: 6rpx;
   }
 </style>
