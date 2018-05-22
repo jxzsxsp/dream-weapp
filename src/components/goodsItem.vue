@@ -121,5 +121,6 @@ export default {
   height: 40rpx;
   overflow: hidden;
   white-space:nowrap;
+  width: 400rpx;
 }
 </style>
