@@ -26,7 +26,7 @@
               <p class="font-detail">{{ afterSaleDetail.declineReason }}</p>
             </div>
           </div>
-          <div class="status-item" v-if="afterSaleDetail.status === 2">
+          <div class="status-item" @click="_getRefundReceipt" v-if="afterSaleDetail.status === 2">
             <p class="font-detail">查看退款凭证</p>
             <i class="iconfont icon-jiantou"></i>
           </div>
@@ -63,8 +63,7 @@ export default {
     return ({
       statusBackgroundPic: require('@/images/statusBg.png'),
       afterSaleDetail: {},
-      refundId: 2504480218967040
-      // refundId: this.$root.$mp.
+      refundId: 0,
     })
   },
   computed: {
@@ -99,9 +98,22 @@ export default {
         .then((orderDetail) => {
           this.afterSaleDetail = orderDetail
         })
+    },
+    _getRefundReceipt () {
+      let data = {
+        workTicketNo: this.afterSaleDetail.workTicketNo,
+        refundId: this.refundId
+      }
+      http.post('/buyer/receipt/getRefundReceipt', { data }, true, '')
+        .then((res) => {
+          wx.navigateTo({
+            url: `@/webView/main?url=${res.url}`
+          })
+        })
     }
   },
   onLoad () {
+    this.refundId = this.$root.$mp.query.id
     this._getRefundDetail()
   }
 }

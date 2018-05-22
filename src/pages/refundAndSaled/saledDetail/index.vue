@@ -3,7 +3,7 @@
       <div class="status-bar">
         <img class="status-background-pic" :src="statusBackgroundPic" background-size="cover"/>
         <i class="iconfont" :class="orderStatus"></i>
-        <p class="status-text">已成功</p>
+        <p class="status-text">{{ orderStatus.status }}</p>
       </div>
 
       <div>
@@ -13,7 +13,7 @@
             <p class="font-detail red-color">{{ '￥' + afterSaleDetail.amount }}</p>
           </div>
           <div class="seperator-line"></div>
-          <div class="status-item">
+          <div class="status-item" @click="_getRefundReceipt">
             <p class="font-detail">查看退款凭证</p>
             <i class="iconfont icon-jiantou"></i>
           </div>
@@ -64,8 +64,7 @@ export default {
     return ({
       statusBackgroundPic: require('@/images/statusBg.png'),
       afterSaleDetail: {},
-      refundId: 2504480218967040
-      // refundId: this.$root.$mp.
+      refundId: 0,
     })
   },
   computed: {
@@ -100,9 +99,22 @@ export default {
         .then((orderDetail) => {
           this.afterSaleDetail = orderDetail
         })
+    },
+    _getRefundReceipt () {
+      let data = {
+        workTicketNo: this.afterSaleDetail.workTicketNo,
+        refundId: this.refundId
+      }
+      http.post('/buyer/receipt/getRefundReceipt', { data }, true, '')
+        .then((res) => {
+          wx.navigateTo({
+            url: `@/webView/main?url=${res.url}`
+          })
+        })
     }
   },
   onLoad () {
+    this.refundId = this.$root.$mp.query.id
     this._getRefundDetail()
   }
 }
