@@ -157,6 +157,19 @@ export default {
   created () {
     console.log('888888')
     // 调用应用实例的方法获取全局数据
+  },
+  onLoad() {
+    console.log("onLoad");
+    this.identificateCode='';
+  },
+  onReady() {
+    console.log("ready");
+  },
+  mounted() {
+    console.log("mounted");
+  },
+  created() {
+    console.log("created");
   }
 }
 </script>
