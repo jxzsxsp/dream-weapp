@@ -17,7 +17,9 @@
           <span class="lt-right red">{{order.tradeInfo.showStatus}}</span>
         </div>
         <div v-for="(item,itemIndex) in order.tradeItemList" :key="itemIndex">
-          <itemTemplate :itemData="item"></itemTemplate>
+          <a :href="'/pages/order/detail/main?id=' + order.tradeInfo.tradeId">
+            <itemTemplate :itemData="item"></itemTemplate>
+          </a>
         </div>
         <div class="list-bottom">
           共{{order.tradeItemList.lenght}}件商品，合计 
