@@ -4,7 +4,7 @@
       <img class="item-img" :src="itemData.itemImg"/>
     </div>
     <div class="item-center">
-      <div class="item-title">{{ itemData.itemName }}</div>
+      <div class="item-title">{{ title }}</div>
       <div class="item-detail">{{ itemData.skuProperties }}</div>
       <div class="item-style">{{ itemType }}</div>
     </div>
@@ -39,12 +39,15 @@ export default {
           break
       }
       return itemType
+    },
+    title () {
+      return this.itemData.itemName.length > 15 ? this.itemData.itemName.substr(0, 15) + '...' : this.itemData.itemName
     }
   },
   methods: {
     _checkCloth: function () {
       wx.navigateTo({
-        url: `@/webView/main?url=${ this.itemData.targetUrl }`
+        url: `/pages/webView/main?url=${ this.itemData.targetUrl }`
       })
     }
   }
@@ -111,7 +114,8 @@ export default {
   color: #eeb650;
 }
 .item-right{
-  text-align:right;
+  width: 183rpx;
+  text-align: right;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
