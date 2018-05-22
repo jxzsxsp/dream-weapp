@@ -13,7 +13,7 @@
         <p class="item-price">¥{{ itemData.price }}{{ itemData.quantityUnit }}</p>
         <p class="item-quantity">×{{ itemData.quantity }}</p>
       </div>
-      <p v-if="itemData.isCloth" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
+      <p v-if="showCheckClothBtn" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
       <p class="item-status" v-if="itemData.buyerRefundStatusText">{{ itemData.buyerRefundStatusText }}</p>
     </div>
   </div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  props: ["itemData"],
+  props: ["itemData", "showCheckClothBtn"],
   computed: {
     itemType: function () {
       let itemType = ''
@@ -44,7 +44,7 @@ export default {
   methods: {
     _checkCloth: function () {
       wx.navigateTo({
-        url: '@/webView/main?url=http://www.baidu.com'
+        url: `@/webView/main?url=${ this.itemData.targetUrl }`
       })
     }
   }
@@ -121,6 +121,5 @@ export default {
   height: 40rpx;
   overflow: hidden;
   white-space:nowrap;
-  width: 480rpx;
 }
 </style>
