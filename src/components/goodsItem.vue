@@ -13,7 +13,7 @@
         <p class="item-price">¥{{ itemData.price }}{{ itemData.quantityUnit }}</p>
         <p class="item-quantity">×{{ itemData.quantity }}</p>
       </div>
-      <p v-if="showCheckClothBtn" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
+      <p v-if="showCheckClothBtn" class="check-cloth-report" @click="_checkCloth(itemData.targetUrl)">查看验布报告</p>
       <p class="item-status" v-if="itemData.buyerRefundStatusText">{{ itemData.buyerRefundStatusText }}</p>
     </div>
   </div>
@@ -45,9 +45,9 @@ export default {
     }
   },
   methods: {
-    _checkCloth: function () {
+    _checkCloth: function (targetUrl) {
       wx.navigateTo({
-        url: `/pages/webView/main?url=${ this.itemData.targetUrl }`
+        url: "/pages/webView/main?url=" + targetUrl
       })
     }
   }

@@ -9,6 +9,6 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: 'pdf'
+    navigationBarTitleText: '链尚'
   }
 }
