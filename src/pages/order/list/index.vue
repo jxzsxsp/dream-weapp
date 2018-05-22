@@ -26,8 +26,8 @@
           <span class="money">¥{{order.tradeInfo.payableFee}}</span> 
           （含运费¥{{order.tradeInfo.freightFee}}）
         </div>
-        <div class="list-bottom list-bottom-btn">
-          <div class="order-list-btn">确认收货</div>
+        <div class="list-bottom list-bottom-btn" v-show="order.tradeInfo.statusId == 3">
+          <div class="order-list-btn" @click="confirmReceipt(order)">确认收货</div>
         </div>
       </li>
     </ul>
@@ -79,6 +79,14 @@ export default {
   methods: {
     changeStatus (status) {
       store.dispatch('changeStatus',status);
+    },
+    confirmReceipt (order) {
+      wx.showModal({
+        "title": "您是否确认收货",
+        "success": function(){
+          store.dispatch('confirmReceipt',order);
+        }
+      })
     }
   },
   mounted(){
