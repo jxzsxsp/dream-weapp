@@ -46,7 +46,7 @@ class Http {
 				success (res){
 					if(res.data.code == 200){
 						resolve(res.data.data || {});
-					}else if(res.data.code == -100){
+					}else if(res.data.code == -100 || res.data.code == -151){
 						var pages = getCurrentPages()    //获取加载的页面
 						var currentPage = pages[pages.length-1]    //获取当前页面的对象
 						var url = currentPage.route
