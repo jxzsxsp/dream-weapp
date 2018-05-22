@@ -14,7 +14,7 @@
           <span class="lt-right red">{{listItem.statusText}}</span>
         </div>
         <div v-for="(item,itemIndex) in listItem.refundItemList" :key="itemIndex">
-          <a :href="status == 1?'/pages/refundAndSaled/refundDetail/main?id=' + listItem.refundId:'/pages/refundAndSaled/saledDetail/main?id=' + listItem.refundId">
+          <a :href="status == 1?'/pages/refundAndSaled/refundDetail/main?id=' + listItem.refundId:'/pages/refundAndSaled/saledDetail/main?id=' + listItem.workTicketNo">
             <itemTemplate :itemData="item"></itemTemplate>
           </a>
         </div>
