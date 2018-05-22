@@ -191,10 +191,9 @@ page {
 .inputField{
   width:100%;
   height:70rpx;
-  padding-left:5rpx;
-  color:#999;
+  padding-left:20rpx;
+  color:#333;
   margin-left:20rpx;
-
 }
 .getCodeButton{
     top: -10rpx;
