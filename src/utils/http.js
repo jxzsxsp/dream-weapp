@@ -80,7 +80,12 @@ class Http {
 		}
 		var url = '/buyer/user/mini-app/quick-login/v1'
 		this.post(url,data,true).then(res => {
-			wx.setStorageSync('token',res.data.token);			
+			wx.setStorageSync('token',res.token);
+			var lsUserInfo={
+				avatar:res.headImgUrl,
+				imNickName:res.nickName,
+			}
+			wx.setStorageSync('lsUserInfo',lsUserInfo);			
 		},res => {
 			console.log(res);
 		})
