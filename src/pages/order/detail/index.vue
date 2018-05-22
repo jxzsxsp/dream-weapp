@@ -81,7 +81,10 @@ export default {
     return {
       statusBg:require('@/images/statusBg.png'),
       isShowRate:false,
-      orderDetail: {},
+      orderDetail: {
+        tradeInfo: {},
+        addressInfo: {}
+      },
       // 订单进度列表
       rateList: {},
       orderId: 0
