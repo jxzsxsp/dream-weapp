@@ -2,7 +2,7 @@
 // make sure to call Vue.use(Vuex) if using a module system
 import Vue from 'vue'
 import Vuex from 'vuex'
-import orderApi from '@/api/order.api.js'
+import refundAndSaledApi from '@/api/refundAndSaled.api.js'
 Vue.use(Vuex)
 
 let config = {
@@ -21,12 +21,11 @@ const store = new Vuex.Store({
 
   },
   actions: {
-    getOrderList(context,payload){
-      orderApi.getOrderList(payload).then(res => {
+    getList(context,payload){
+      refundAndSaledApi.getRefundList(payload).then(res => {
         var orderList = res.list;
         if(config.pageNo == 1){
           context.state.orderList = orderList;
-
           if(orderList.length == 0){
             context.state.isLoading = 2;
           }else if(orderList.length < config.pageSize){
@@ -58,7 +57,7 @@ const store = new Vuex.Store({
         pageNo: config.pageNo,
         pageSize: config.pageSize
       }
-      context.dispatch('getOrderList',prama)
+      context.dispatch('getList',prama)
     },
     reachBottom(context){
       if(config.isLockAddPageData) return false;
@@ -69,7 +68,7 @@ const store = new Vuex.Store({
         pageNo: config.pageNo,
         pageSize: config.pageSize
       }
-      context.dispatch('getOrderList',prama)
+      context.dispatch('getList',prama)
     },
     changeStatus(context,status){
       context.state.status = status;
