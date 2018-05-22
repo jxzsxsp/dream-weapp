@@ -2,7 +2,7 @@
   <div class="container">
     <div class="order-status">
       <img class="status-bg" :src="statusBg" background-size="cover"/>
-      <div class="status-content flex-style" @click="showRate()">
+      <div class="status-content flex-style" @click="isShowRate=true">
         <div class="status-text">订单{{ orderDetail.tradeInfo.showStatus }}</div>
         <i class="iconfont icon-jiantou"></i>
       </div>
@@ -83,7 +83,7 @@ export default {
       isShowRate:false,
       orderDetail: {},
       // 订单进度列表
-      rateList: {},
+      rateList: [],
     }
   },
   computed: {
@@ -236,13 +236,13 @@ page{
   z-index:20;
 }
 .rate-modal{
-  width:450rpx;
+  width:500rpx;
   background: #fff;
   padding: 0;
   z-index:100;
   border-radius:10rpx;
   line-height:116rpx;
-  padding:40rpx 80rpx;
+  padding:40rpx 40rpx;
   margin:220rpx auto;
 }
 .rate-list{
