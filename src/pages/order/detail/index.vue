@@ -56,28 +56,11 @@
     <div class="mask" v-if="isShowRate">
       <ul class="rate-modal">
       <!-- <div class="step-icon"></div> -->
-      <li class="rate-list flex-style">
-        <i class="rate-cancel rate-icon rate-current"></i>
-        <i class="rate-line"></i>
-        <span>订单已取消</span>
-        <span class="rate-time">05-08 12:08:30</span>
-      </li>
-      <li class="rate-list flex-style">
-        <i class="rate-cancel rate-icon"></i>
-         <i class="rate-line"></i>
-        <span>订单已取消</span>
-        <span class="rate-time">05-08 12:08:30</span>
-      </li>
-      <li class="rate-list flex-style">
-        <i class="rate-cancel rate-icon"></i>
-         <i class="rate-line"></i>
-        <span>订单已取消</span>
-        <span class="rate-time">05-08 12:08:30</span>
-      </li>
-     <li class="rate-list flex-style">
-        <i class="rate-cancel rate-icon"></i>
-        <span>订单已取消</span>
-        <span class="rate-time">05-08 12:08:30</span>
+      <li class="rate-list flex-style" v-for="(list, index) in rateList" :key="index">
+        <i class="rate-cancel rate-icon" :class="index == 0?'rate-current':''"></i>
+        <i v-if="index!=rateList.length-1" class="rate-line"></i>
+        <span>{{list.memo}}</span>
+        <span class="rate-time">{{list.operateTime}}</span>
       </li>
       <i class="iconfont icon-quxiao" @click="hideRate()"></i>
     </ul>
@@ -87,6 +70,8 @@
 
 <script>
 import goodsItem from '@/components/goodsItem'
+import http from '@/utils/http'
+
 export default {
   components: {
     goodsItem
@@ -96,6 +81,7 @@ export default {
      statusBg:require('../../../images/statusBg.png'),
      src:'http://img.lianshang.cn/data/common/20185/5/499_1526033223216.pdf?Expires=1526300880&OSSAccessKeyId=8zE74tGMILBOSz1R&Signature=52mdP%2FCQBU12Ck9yD%2Fu6fh9dXq0%3D',
      isShowRate:false,
+     tradeId:1558350025004692,
      itemData:{
         'itemTitle': '我是商品信息我是商品头1111',
         'itemImgUrl':require('../../../images/statusBg.png'),
@@ -107,7 +93,8 @@ export default {
         'unit':'米',
         'itemNum':'20',
         'isCloth':true
-     }
+     },
+     rateList:[],
     }
   },
   computed: {
@@ -116,6 +103,16 @@ export default {
   methods: {
     showRate() {
       this.isShowRate=true;
+      var that = this;
+      http.post("/buyer/trade/progress/v1", {tradeId:this.tradeId}, true, "")
+      .then(
+        function(resp) {
+          that.rateList = resp.list;
+          console.log(that.rateList)
+        },
+        function(resp) {
+          console.log(resp);
+        });
     },
     hideRate() {
       this.isShowRate=false;
@@ -271,7 +268,7 @@ page{
   left:10rpx;
   border-left:1rpx solid #D8D8D8;
   height:116rpx;
-  top:68rpx;
+  top:70rpx;
 }
 .icon-quxiao{
   position:absolute;
