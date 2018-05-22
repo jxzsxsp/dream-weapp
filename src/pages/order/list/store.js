@@ -10,6 +10,7 @@ let config = {
   pageSize: 10,
   isLockAddPageData: false
 }
+
 const store = new Vuex.Store({
   state: {
     isLoading: 0,
@@ -56,7 +57,7 @@ const store = new Vuex.Store({
       });
     },
     refresh(context,isPullDownRefresh){
-      config.isLockAddPageData = false;
+      config.isLockAddPageData = true;   
       config.pageNo = 1;
       let prama = {
         status: context.state.status,
@@ -70,7 +71,7 @@ const store = new Vuex.Store({
       config.isLockAddPageData = true;
       config.pageNo++;
       let prama = {
-        status: status,
+        status: context.state.status,
         pageNo: config.pageNo,
         pageSize: config.pageSize
       }

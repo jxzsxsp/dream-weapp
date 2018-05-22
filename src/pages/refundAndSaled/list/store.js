@@ -22,8 +22,6 @@ const store = new Vuex.Store({
   },
   actions: {
     getList(context,payload){
-
-
       function httpSuccess (res){
         var list = res.list;
         if(config.pageNo == 1){
@@ -49,7 +47,6 @@ const store = new Vuex.Store({
         }
         context.state.isPullDownRefresh++;
       }
-
       function httpError (res){
         config.isLockAddPageData = false;
         wx.showToast({
@@ -73,11 +70,9 @@ const store = new Vuex.Store({
           httpError(res);
         });
       }
-
-      
     },
     refresh(context,isPullDownRefresh){
-      config.isLockAddPageData = false;
+      config.isLockAddPageData = true;
       config.pageNo = 1;
       let prama = {
         status: context.state.status,
