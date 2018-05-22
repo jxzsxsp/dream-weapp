@@ -236,7 +236,7 @@ page{
   z-index:20;
 }
 .rate-modal{
-  width:500rpx;
+  width:543rpx;
   background: #fff;
   padding: 0;
   z-index:100;
