@@ -203,7 +203,7 @@ page {
     position: absolute;
     text-align: center;
     border:1rpx solid #333;
-    border-radius:8rpx;
+    border-radius:14rpx;
     z-index:100;
 
 }

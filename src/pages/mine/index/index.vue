@@ -52,22 +52,22 @@ export default {
         {
           text: "待付款",
           class: "icon-daifukuan",
-          href: "/pages/order/list/main?type=1"
+          href: "/pages/order/list/main?status=1"
         },
         {
           text: "待发货",
           class: "icon-daifahuo",
-          href: "/pages/order/list/main?type=2"
+          href: "/pages/order/list/main?status=2"
         },
         {
           text: "待收货",
           class: "icon-daishouhuo",
-          href: "/pages/order/list/main?type=3"
+          href: "/pages/order/list/main?status=3"
         },
         {
           text: "已收货",
           class: "icon-yishouhuo",
-          href: "/pages/order/list/main?type=4"
+          href: "/pages/order/list/main?status=4"
         },
         {
           text: "退款/售后",
@@ -147,7 +147,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
 page {
   height: 100%;
   background: #f4f4f4;
