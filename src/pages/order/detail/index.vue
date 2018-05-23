@@ -51,7 +51,7 @@
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">支付方式</div>
-                <div class="goods-item-value">{{ orderDetail.tradeInfo.payType }}</div>
+                <div class="goods-item-value">{{ orderDetail.tradeInfo.payMethodText }}</div>
             </div>
         </div>
     <div class="mask" v-if="isShowRate">
