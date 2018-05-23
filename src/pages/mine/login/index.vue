@@ -72,23 +72,16 @@ export default {
           http.post('/user/fastLogin/v2', data, true, '')
           .then(
             function(resp){
-              console.log(resp.token);
+              // console.log(resp.token);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp);
-              var pages = getCurrentPages(); // 当前页面  
-              var beforePage = pages[pages.length - 2]; // 前一个页面  
-              console.log(beforePage);  
-              if(beforePage){
-                wx.navigateBack({  
-                    success: function() {  
-                        beforePage.onLoad(); // 执行前一个页面的onLoad方法  
-                    }  
-                });  
-              }else{
-                wx.navigateTo({
-                  url: '/pages/mine/index/main'
-                })
+              var loginToUrl = wx.getStorageSync('loginToUrl');
+              if(loginToUrl){
+                wx.removeStorage({"key":"loginToUrl"})
               }
+              wx.navigateTo({
+                url: loginToUrl || '/pages/mine/index/main'
+              })
             },
             function(resp){
               console.log(resp)

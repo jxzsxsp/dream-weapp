@@ -14,7 +14,7 @@
         <p class="item-quantity">×{{ itemData.quantity }}</p>
       </div>
       <p v-if="showCheckClothBtn" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
-      <p class="item-status" v-if="showRefundStatus">{{ itemData.buyerRefundStatusText }}</p>
+      <p class="item-status" v-if="itemData.buyerRefundStatusText">{{ itemData.buyerRefundStatusText }}</p>
     </div>
   </div>
 </template>
