@@ -25,7 +25,7 @@
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">运费</div>
-                <div class="goods-item-value">￥{{ orderDetail.tradeInfo.freightFee }}</div>
+                <div class="goods-item-value">{{ orderDetail.tradeInfo.freightFee ? '￥' + orderDetail.tradeInfo.freightFee : '到付' }}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">优惠券</div>
