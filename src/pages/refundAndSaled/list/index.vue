@@ -6,6 +6,7 @@
       <li :class="status == 2?'current':''" @click="changeStatus(2)">售后</li>
     </ul>
   </div>
+  <div style="height: 88rpx;"></div>
   <div class="list">
     <ul>
       <li class="list-li" v-for="(listItem, index) in list" :key="index">
@@ -111,9 +112,6 @@ export default {
   .order-tab ul li.current{
     border-bottom: 2px solid #CB3F3F;
     color: #CB3F3F;
-  }
-  .list{
-    padding-top: 88rpx;
   }
   .list-li{
     margin-top: 20rpx;

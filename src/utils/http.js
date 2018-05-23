@@ -3,7 +3,7 @@
 class Http {
 	constructor(opts) {
 		this.root = process.env.API_HOST,
-		this.isLoadingText = '数据加载中...请稍后！'
+		this.isLoadingText = '数据加载中...'
 	}
 	// get请求
 	get (url, data, isLoading, opts) {
