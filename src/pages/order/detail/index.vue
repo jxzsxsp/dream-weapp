@@ -60,7 +60,7 @@
       <li class="rate-list flex-style" v-for="(list, index) in rateList" :key="index">
         <i class="rate-cancel rate-icon" :class="index == 0?'rate-current':''"></i>
         <i v-if="index!=rateList.length-1" class="rate-line"></i>
-        <span>{{list.memo}}</span>
+        <div class="list-memo">{{list.memo}}</div>
         <span class="rate-time">{{list.operateTimeText}}</span>
       </li>
       <i class="iconfont icon-quxiao" @click="hideRate()"></i>
@@ -288,6 +288,10 @@ page{
 .icon-zuobiao{
   position:absolute;
   top:27rpx;
+}
+.list-memo{
+  width:200rpx;
+  text-align:left;
 }
 /* 进度弹框结束 */
 </style>
