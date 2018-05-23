@@ -7,13 +7,14 @@
           isLoading: 1,                   // 0显示loading，1显示没有更多了，2表示没有相关订单
           loadingText: '没有更多了'         // 1提示语 默认："我是有底线的"
           noOrderTips: '您还没有相关订单'    // 2提示语 默认："您还没有相关订单"
+          noItemImgType: 1,               // 0:无订单 1:无优惠券 默认0
         }
       3. 引入插件 <listBottomLoading :loadingDate="loadingDate"></listBottomLoading>
  */
 <template>
   <div class="loading">
     <div class="no-order" v-if="loadingData.isLoading == 2">
-      <img :src="noOrderIcon" alt="">
+      <img :class="noItemImg.style" :src="noItemImg.img">
       <p>{{loadingData.noOrderTips?loadingData.noOrderTips:"您还没有相关订单"}}</p>
     </div>
     <div class="has-order loader" v-if="loadingData.isLoading != 2">
@@ -34,9 +35,31 @@ export default {
   props: ['loadingData'],
   data() {
     return {
-      noOrderIcon: require('../images/no-order.png'),
+      noOrderIcon: require('@/images/no-order.png'),
+      noCouponIcon: require('@/images/no-coupon.png')
     }
   },
+  computed: {
+    noItemImg () {
+      switch (this.loadingData.noItemImgType) {
+        case 0:
+          return ({
+            img: this.noOrderIcon,
+            style: 'no-order-img'
+          })
+        case 1:
+          return ({
+            img: this.noCouponIcon,
+            style: 'no-coupon-img'
+          })
+        default:
+          return ({
+            img: this.noOrderIcon,
+            style: 'no-order-img'
+          })
+      }
+    }
+  }
 }
 </script>
 
@@ -44,10 +67,15 @@ export default {
 .no-order{
   text-align: center;
 }
-.no-order img{
+.no-order-img{
   width: 333rpx;
   height: 313rpx;
   margin-top: 160rpx;
+}
+.no-coupon-img {
+  width: 225rpx;
+  height: 154rpx;
+  margin-top: 250rpx;
 }
 .no-order p{
   margin-top: 20rpx;
