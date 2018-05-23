@@ -3,6 +3,14 @@
     <div class="input-box">
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
+          <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
+      </div>
+      <div class="input-item">
+          <i class="iconfont icon-shouji"></i>
+          <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入公司名称/店铺名称" />
+      </div>
+      <div class="input-item">
+          <i class="iconfont icon-shouji"></i>
           <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item">
@@ -10,7 +18,7 @@
           <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
-      <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
+      <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsRegister">注册</button>
     </div>
   </div>
 </template>
@@ -52,7 +60,7 @@ export default {
       }
     },
 
-    lsLogin (){
+    lsRegister (){
       if(this.isCanclick){
         if(!formValidate.isMobilePhone(this.mobile)){
            wx.showToast({

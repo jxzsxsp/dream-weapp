@@ -98,6 +98,7 @@ export default {
         })
     },
     _showRate() {
+      this.isShowRate = false;
       http.post("/buyer/trade/progress/v1", { tradeId:this.orderId }, true, "")
         .then((progress) => {
           this.rateList = progress.list
@@ -231,9 +232,11 @@ page{
 .mask{
   width:100%;
   height:100%;
-  position:fixed;
+  position: fixed;
   background-color:rgba(0,0,0,0.5);
   z-index:20;
+  top:0;
+  left:0;
 }
 .rate-modal{
   width:543rpx;
