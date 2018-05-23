@@ -86,7 +86,7 @@ const store = new Vuex.Store({
       config.isLockAddPageData = true;
       config.pageNo++;
       let prama = {
-        status: status,
+        status: context.state.status,
         pageNo: config.pageNo,
         pageSize: config.pageSize
       }
