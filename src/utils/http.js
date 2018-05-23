@@ -40,6 +40,7 @@ class Http {
 				method: method,
 				data: data,
 				header : { 
+					'appType': 2,
 					'content-type': 'application/json', 
 					'token':wx.getStorageSync("token")
 				},
@@ -59,15 +60,20 @@ class Http {
 						})
 					}else{
 						wx.showToast({
-							title:res.data.message,
-							icon:'none',
-							mask:true
+							title: res.data.message,
+							icon: 'none',
+							mask: true
 						})
+						reject(res.data || {});						
 					}
 				},
 				fail (error){
-					console.log('获取数据失败');
-					reject(error || {});
+					// console.log('获取数据失败');
+					wx.showToast({
+						title: '网络出错！',
+						icon:'none',
+						mask:true
+					})
 				},
 				complete () {
 				

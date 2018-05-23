@@ -49,12 +49,6 @@ const store = new Vuex.Store({
       }
       function httpError (res){
         config.isLockAddPageData = false;
-        wx.showToast({
-          title: res.message, //提示的内容,
-          icon: 'none', //图标,
-          duration: 2000, //延迟时间,
-          mask: true, //显示透明蒙层，防止触摸穿透,
-        });
       }
 
       if(context.state.status == 1){

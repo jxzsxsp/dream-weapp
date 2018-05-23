@@ -4,7 +4,7 @@
       <img class="item-img" :src="itemData.itemImg"/>
     </div>
     <div class="item-center">
-      <div class="item-title">{{ title }}</div>
+      <div class="item-title">{{ itemData.itemName }}</div>
       <div class="item-detail">{{ itemData.skuProperties }}</div>
       <div class="item-style">{{ itemType }}</div>
     </div>
@@ -40,9 +40,9 @@ export default {
       }
       return itemType
     },
-    title () {
-      return this.itemData.itemName.length > 15 ? this.itemData.itemName.substr(0, 15) + '...' : this.itemData.itemName
-    }
+    // title () {
+      // return this.itemData.itemName.length > 15 ? this.itemData.itemName.substr(0, 15) + '...' : this.itemData.itemName
+    // }
   },
   methods: {
     _checkCloth: function () {

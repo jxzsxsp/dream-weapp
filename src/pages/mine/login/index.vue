@@ -79,7 +79,7 @@ export default {
               if(loginToUrl){
                 wx.removeStorage({"key":"loginToUrl"})
               }
-              wx.navigateTo({
+              wx.redirectTo({
                 url: loginToUrl || '/pages/mine/index/main'
               })
             },
