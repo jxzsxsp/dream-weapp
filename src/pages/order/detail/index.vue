@@ -110,13 +110,13 @@ export default {
     },
     _copy() {  
       wx.setClipboardData({
-        data: this.orderDetail.tradeInfo.tradeId,
+        data: this.orderDetail.tradeInfo.tradeId.toString(),
         success: function(res) {
           wx.showToast({
             title: '复制成功',
             icon: 'none'
           })
-        }
+        },
       })
     } 
   },
