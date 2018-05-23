@@ -101,7 +101,6 @@ export default {
     },
     _getRefundReceipt () {
       let data = {
-        workTicketNo: this.afterSaleDetail.workTicketNo,
         refundId: this.refundId
       }
       http.post('/buyer/receipt/getRefundReceipt', { data }, true, '')

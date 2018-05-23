@@ -13,7 +13,7 @@
             <p class="font-detail red-color">{{ '￥' + afterSaleDetail.amount }}</p>
           </div>
           <div class="seperator-line"></div>
-          <div class="status-item" @click="_getRefundReceipt">
+          <div class="status-item" @click="_getSaledReceipt">
             <p class="font-detail">查看退款凭证</p>
             <i class="iconfont icon-jiantou"></i>
           </div>
@@ -64,7 +64,7 @@ export default {
     return ({
       statusBackgroundPic: require('@/images/statusBg.png'),
       afterSaleDetail: {},
-      refundId: 0,
+      workTicketNo: 0,
     })
   },
   computed: {
@@ -94,16 +94,15 @@ export default {
     }
   },
   methods: {
-    _getRefundDetail () {
-      http.post('/buyer/refund/detail/v1', { refundId: this.refundId }, true, '')
+    _getSaledDetail () {
+      http.post('/buyer/workticket/detail/v1', { workTicketNo: this.workTicketNo }, true, '')
         .then((orderDetail) => {
           this.afterSaleDetail = orderDetail
         })
     },
-    _getRefundReceipt () {
+    _getSaledReceipt () {
       let data = {
-        workTicketNo: this.afterSaleDetail.workTicketNo,
-        refundId: this.refundId
+        workTicketNo: this.workTicketNo,
       }
       http.post('/buyer/receipt/getRefundReceipt', { data }, true, '')
         .then((res) => {
@@ -114,8 +113,8 @@ export default {
     }
   },
   onLoad () {
-    this.refundId = this.$root.$mp.query.id
-    this._getRefundDetail()
+    this.workTicketNo = this.$root.$mp.query.id
+    this._getSaledDetail()
   }
 }
 </script>
