@@ -13,13 +13,13 @@
           <i class="iconfont icon-shouji"></i>
           <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
-      <div class="input-item">
+      <div class="input-item last-input-item">
           <i class="iconfont icon-yanzhengma"></i>
           <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
        <div class="argeement flex-style">
-          <i class="iconfont icon-ic_gou_kong"></i>
+          <i class="iconfont" :class="iconClass" @click="_readAgreement()"></i>
           <span class="agreement-text flex-style">我已阅读并同意 
             <a :href="'/pages/webView/main?url=' +  msitesHost +'/subject/service/register_agreement.html'" class="agreement-xieyi">《链尚用户注册协议》</a>
           </span>
@@ -51,7 +51,9 @@ export default {
       codeButtonMessage: '获取验证码',
       isTimeDown:false,
       isCanclick:false,
-      msitesHost:process.env.MSITES_HOST
+      isRead:false,
+      msitesHost:process.env.MSITES_HOST,
+      iconClass:'icon-ic_gou_kong'
     }
   },
 
@@ -66,7 +68,7 @@ export default {
     },
     validateValue (){
       var that = this;
-      if(this.mobile!="" && this.identificateCode!="" && this.name!="" && this.companyName!=""){
+      if(this.mobile!="" && this.identificateCode!="" && this.name!="" && this.companyName!="" && this.isRead){
         that.isCanclick=true;
       }else{
         that.isCanclick=false;
@@ -173,6 +175,21 @@ export default {
                 that.isTimeDown = false;
             }
         },1000)
+    },
+    _readAgreement() {
+      if(this.iconClass == 'icon-ic_gou_kong'){
+        this.iconClass = 'icon-ic_gou_shi'
+        this.isRead = true;
+      }else{
+        this.iconClass = 'icon-ic_gou_kong'
+        this.isRead = false;
+      }
+      if(this.mobile!="" && this.identificateCode!="" && this.name!="" && this.companyName!=""){
+        this.isCanclick = true;
+      }else{
+        this.isCanclick = false;
+      }
+      
     }
   },
   created () {
