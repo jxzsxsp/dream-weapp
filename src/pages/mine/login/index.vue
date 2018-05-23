@@ -11,6 +11,10 @@
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
+      <div class="navigator">
+        <a class="navigator-text" href="/pages/mine/register/main">去注册</a>
+        <i class="iconfont icon-jiantou"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -175,70 +179,5 @@ export default {
 </script>
 
 <style scoped>
-page {
-  height: 100%;
-}
-.text{
-  color:#fff;
-}
-.container {
-  display:block;
-  padding:20px 0;
-}
-.input-box{
-  margin:20px 0;
-  width:100%;
-}
-.input-item{
-  width:88%;
-  font-size:30rpx;
-  margin:0 auto;
-  margin-bottom:50rpx;
-  position:relative;
-  border-bottom:1rpx solid #ccc;
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-}
-.inputField{
-  width:100%;
-  height:70rpx;
-  padding-left:20rpx;
-  color:#333;
-  margin-left:20rpx;
-  position:relative;
-  z-index:10;
-}
-.inputCode{
-  width:400rpx;
-}
-.getCodeButton{
-    top: -10rpx;
-    right:0rpx;
-    font-size: 28rpx;
-    line-height:64rpx;
-    position: absolute;
-    text-align: center;
-    border:1rpx solid #333;
-    border-radius:14rpx;
-    z-index:100;
-
-}
-.button-login{
-  background: #CB3F3F;
-  color:#DE8585;
-  border-radius: 6px;
-  width:88%;
-  height:80rpx;
-  line-height:80rpx;
-  margin:0 auto;
-  font-size:30rpx;
-  margin-top:90rpx;
-}
-.iconfont{
-  width:20rpx;
-}
-.canClick{
-  color:#fff;
-}
+@import '../common/login.css';
 </style>

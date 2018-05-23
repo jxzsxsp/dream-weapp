@@ -7,7 +7,8 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
-      <a href="/pages/mine/login/main" class="ls-name">立即登录</a>
+      <a href="/pages/mine/register/main" class="ls-name">注册/</a>
+      <a href="/pages/mine/login/main" class="ls-name">登录</a>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
     </div>
     <div class="my-item">

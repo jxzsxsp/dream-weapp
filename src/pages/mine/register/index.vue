@@ -2,12 +2,12 @@
   <div class="container" >
     <div class="input-box">
       <div class="input-item">
-          <i class="iconfont icon-shouji"></i>
-          <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
+          <i class="iconfont icon-ic_user_name"></i>
+          <input type='text' maxlength="20" v-model="name" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
       </div>
       <div class="input-item">
-          <i class="iconfont icon-shouji"></i>
-          <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入公司名称/店铺名称" />
+          <i class="iconfont icon-ic_company_name"></i>
+          <input type='text' maxlength="20" v-model="companyName" class="inputField" v-on:input="validateValue" placeholder="请输入公司名称/店铺名称" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
@@ -18,7 +18,17 @@
           <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
+       <div class="argeement flex-style">
+          <i class="iconfont icon-ic_gou_kong"></i>
+          <span class="agreement-text flex-style">我已阅读并同意 
+            <a :href="'/pages/webView/main?url=' +  msitesHost +'/subject/service/register_agreement.html'" class="agreement-xieyi">《链尚用户注册协议》</a>
+          </span>
+      </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsRegister">注册</button>
+      <div class="navigator">
+        <a class="navigator-text" href="/pages/mine/login/main">已有账号，登录</a>
+        <i class="iconfont icon-jiantou"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -32,13 +42,16 @@ var formValidate = new form();
 export default {
   data () {
     return {
+      name:'',
+      companyName:'',
       mobile: '',
       identificateCode:'',
       code: '',
       userInfo: {},
       codeButtonMessage: '获取验证码',
       isTimeDown:false,
-      isCanclick:false
+      isCanclick:false,
+      msitesHost:process.env.MSITES_HOST
     }
   },
 
@@ -53,7 +66,7 @@ export default {
     },
     validateValue (){
       var that = this;
-      if(this.mobile!="" && this.identificateCode!=""){
+      if(this.mobile!="" && this.identificateCode!="" && this.name!="" && this.companyName!=""){
         that.isCanclick=true;
       }else{
         that.isCanclick=false;
@@ -183,70 +196,5 @@ export default {
 </script>
 
 <style scoped>
-page {
-  height: 100%;
-}
-.text{
-  color:#fff;
-}
-.container {
-  display:block;
-  padding:20px 0;
-}
-.input-box{
-  margin:20px 0;
-  width:100%;
-}
-.input-item{
-  width:88%;
-  font-size:30rpx;
-  margin:0 auto;
-  margin-bottom:50rpx;
-  position:relative;
-  border-bottom:1rpx solid #ccc;
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-}
-.inputField{
-  width:100%;
-  height:70rpx;
-  padding-left:20rpx;
-  color:#333;
-  margin-left:20rpx;
-  position:relative;
-  z-index:10;
-}
-.inputCode{
-  width:400rpx;
-}
-.getCodeButton{
-    top: -10rpx;
-    right:0rpx;
-    font-size: 28rpx;
-    line-height:64rpx;
-    position: absolute;
-    text-align: center;
-    border:1rpx solid #333;
-    border-radius:14rpx;
-    z-index:100;
-
-}
-.button-login{
-  background: #CB3F3F;
-  color:#DE8585;
-  border-radius: 6px;
-  width:88%;
-  height:80rpx;
-  line-height:80rpx;
-  margin:0 auto;
-  font-size:30rpx;
-  margin-top:90rpx;
-}
-.iconfont{
-  width:20rpx;
-}
-.canClick{
-  color:#fff;
-}
+@import '../common/login.css';
 </style>

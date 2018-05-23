@@ -3,7 +3,7 @@
 class Http {
 	constructor(opts) {
 		this.root = process.env.API_HOST,
-		this.isLoadingText = '数据加载中...请稍后！'
+		this.isLoadingText = '数据加载中...'
 	}
 	// get请求
 	get (url, data, isLoading, opts) {
@@ -50,9 +50,9 @@ class Http {
 						var pages = getCurrentPages()    //获取加载的页面
 						var currentPage = pages[pages.length-1]    //获取当前页面的对象
 						var url = '/' + currentPage.route
-						wx.redirectTo({
-							url: '/pages/mine/login/main?url=' + encodeURI(url)
-						})
+						// wx.redirectTo({
+						// 	url: '/pages/mine/login/main?url=' + encodeURI(url)
+						// })
 					}else{
 						wx.showToast({
 							title:res.data.message,
