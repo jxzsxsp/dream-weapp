@@ -25,6 +25,9 @@ page {
     flex-direction: row;
     align-items: center;
   }
+  .last-input-item{
+    margin-bottom:30rpx;
+  }
   .inputField{
     width:100%;
     height:70rpx;
@@ -96,6 +99,10 @@ page {
   }
   .icon-ic_gou_kong{
     margin-right:40rpx;
+  }
+  .icon-ic_gou_shi{
+    margin-right:40rpx;
+    color:red;
   }
   .agreement-xieyi{
     text-decoration: underline;

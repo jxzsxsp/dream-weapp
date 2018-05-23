@@ -1,4 +1,5 @@
 <template>
+<scroll-view class="scroll-view">
   <div class="container">
     <div class="order-status">
       <img class="status-bg" :src="statusBg" background-size="cover"/>
@@ -67,6 +68,7 @@
     </ul>
     </div>
   </div>
+  </scroll-view>
 </template>
 
 <script>
@@ -129,14 +131,14 @@ export default {
 
 </script>
 <style>
-page{
+/* page{
   background: #F4F4F4;
 }
 .container{
   height:100%;
   padding:0;
   background: #eee;
-}
+} */
 .order-status{
   width:100%;
   position:relative;
