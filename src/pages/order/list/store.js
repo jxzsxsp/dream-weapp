@@ -89,7 +89,7 @@ const store = new Vuex.Store({
         order.tradeInfo.showStatus = "已收货";
         order.tradeInfo.statusId = 4
         wx.showToast({
-          content: '确认收货成功！', //提示的内容,
+          title: '确认成功！', //提示的内容,
           icon: 'success', //图标,
           duration: 2000, //延迟时间,
           mask: true, //显示透明蒙层，防止触摸穿透,
@@ -97,8 +97,8 @@ const store = new Vuex.Store({
         });
       }, res => {
         wx.showToast({
-          title: '确认收货失败啦，请重新确认！', //提示的内容,
-          icon: 'success', //图标,
+          title: '确认失败啦！', //提示的内容,
+          icon: 'none', //图标,
           duration: 2000, //延迟时间,
           mask: true, //显示透明蒙层，防止触摸穿透,
           success: res => {}

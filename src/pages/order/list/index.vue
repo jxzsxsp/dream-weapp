@@ -83,9 +83,12 @@ export default {
     },
     confirmReceipt (order) {
       wx.showModal({
-        "title": "您是否确认收货",
-        "success": function(){
-          store.dispatch('confirmReceipt',order);
+        "content": "您是否确认收货",
+        "success": function(res){
+          if (res.confirm) {
+            store.dispatch('confirmReceipt',order);
+          } else if (res.cancel) {
+          }
         }
       })
     }
