@@ -21,7 +21,7 @@
         <div class="goods-price-info">
             <div class="flex-style padding-style">
               <div class="goods-item-key">商品总价</div>
-              <div class="goods-item-value">{{ orderDetail.tradeInfo.totalFee }}</div>
+              <div class="goods-item-value">￥{{ orderDetail.tradeInfo.totalFee }}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">运费</div>
@@ -29,11 +29,11 @@
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">优惠券</div>
-                <div class="goods-item-value">{{ orderDetail.tradeInfo.couponFee}}</div>
+                <div class="goods-item-value">-￥{{ orderDetail.tradeInfo.couponFee}}</div>
             </div>
             <div class="flex-style padding-style">
                 <div class="goods-item-key">实付款</div>
-                <div class="goods-item-value color-red">{{ orderDetail.tradeInfo.payment }}</div>
+                <div class="goods-item-value color-red">{{ orderDetail.tradeInfo.paymentFee }}</div>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@ export default {
     },
     _copy() {  
       wx.setClipboardData({
-        data: 'data',
+        data: this.orderDetail.tradeInfo.tradeId,
         success: function(res) {
           wx.showToast({
             title: '复制成功',
