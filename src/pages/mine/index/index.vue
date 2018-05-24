@@ -144,11 +144,11 @@ export default {
   },
   created() {
     console.log("created");
-  },
-  onShow() {
-    this.token = wx.getStorageSync("token");
-    this.lsUserInfo = wx.getStorageSync("lsUserInfo");
   }
+  // onShow() {
+  //   this.token = wx.getStorageSync("token");
+  //   this.lsUserInfo = wx.getStorageSync("lsUserInfo");
+  // }
 };
 </script>
 
