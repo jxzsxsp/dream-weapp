@@ -33,15 +33,19 @@
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
     <div class="mask" v-if="isShowCouponModal">
-      <div class="coupon-modal">
-        <div class="coupon-title">520元新人礼</div>
-        <div class="coupon-con">未下单用户注册登录送520元大礼包</div>
-        <img class="couponListImg" :src="couponListImg"/>
-        <div class="go-register-btn" @click="receive()">立即领取</div>
+      <div class="coupon-modal" :class="!token? 'showReceive' : ''">
+        <div class="in-coupon-modal">
+            <div class="coupon-title">520元新人礼</div>
+            <div v-if="!token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
+            <div v-if="token" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
+            <img class="couponListImg" :src="couponListImg"/>
+        </div>
+        <div v-if="!token" class="go-register-btn" @click="receive()">立即领取</div>
+        <div v-if="token" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
-    <img class="iconGift" :src="iconGift"/> 
+    <img v-if="!isShowCouponModal || !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
   </div>
 </template>
 
@@ -55,11 +59,12 @@ export default {
   data() {
     return {
       href: "",
+      mobile:'15206191611',
       token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
       headPic: require("../../../images/headPic.png"),
       myAccountBg: require("../../../images/bg-b.png"),
-      isShowCouponModal:false,
+      isShowCouponModal:true,
       couponListImg:require("../../../images/couponList.png"),
       iconGift:require("../../../images/newPresent.png"),
       orderStatus: [
@@ -137,6 +142,9 @@ export default {
       wx.navigateTo({
           url: "/pages/mine/register/main"
       });
+    },
+    showIconGift() {
+      this.isShowCouponModal = true;
     }
   },
   onLoad() {
@@ -319,14 +327,21 @@ page {
   left:0;
 }
 .coupon-modal{
-  width:543rpx;
+  width:523rpx;
   background: #fff;
   padding: 0;
   z-index:100;
   border-radius:10rpx;
   line-height:116rpx;
-  padding:40rpx 40rpx;
+  padding:40rpx 50rpx 0;
   margin:120rpx auto;
+}
+.showReceive{
+  padding-bottom:40rpx;
+}
+.in-coupon-modal{
+  padding:0 15rpx;
+  height:654rpx;
 }
 .icon-quxiao{
   position:absolute;
@@ -338,11 +353,11 @@ page {
   font-size:60rpx;
 }
 .couponListImg{
-  width:543rpx;
+  width:497rpx;
   height:530rpx;
 }
 .coupon-title{
-  font-size:30rpx;
+  font-size:48rpx;
   text-align:center;
   line-height:40rpx;
   font-weight: bold;
@@ -353,15 +368,29 @@ page {
   line-height:60rpx;
 }
 .go-register-btn{
-  width:100%;
+  width:497rpx;
   line-height:100rpx;
   text-align:center;
   background: #D0021B;
   border-radius: 13rpx;
   color:#fff;
+  margin:0 auto;
 }
 .iconGift{
   width:106rpx;
   height:80rpx;
+  position:absolute;
+  bottom:107rpx;
+  right:10rpx;
+}
+.mobile{
+  color:#D0021B;
+}
+.follow{
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 100rpx;
+  text-align:center;
+  border-top:1rpx solid #d8d8d8;
 }
 </style>

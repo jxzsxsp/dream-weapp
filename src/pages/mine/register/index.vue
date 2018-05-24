@@ -3,7 +3,7 @@
     <div class="input-box">
       <div class="input-item">
           <i class="iconfont icon-ic_user_name"></i>
-          <input type='text' maxlength="20" v-model="name" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
+          <input type='text' maxlength="20" v-model="userName" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-ic_company_name"></i>
@@ -42,7 +42,7 @@ var formValidate = new form();
 export default {
   data () {
     return {
-      name:'',
+      userName:'',
       companyName:'',
       mobile: '',
       identificateCode:'',
@@ -85,12 +85,14 @@ export default {
           })
         }else{
           var data = {
+              userName:this.userName,
+              companyName:this.companyName,
               mobile:this.mobile,
-              code:this.identificateCode,
+              validateCode:this.identificateCode,
+              isRead:this.isRead
           }
-          http.post('/user/fastLogin/v2', data, true, '')
-          .then(
-            function(resp){
+          http.post('/buyer/user/login/register/v2', data, true, '')
+          .then(()=>{
               console.log(resp.token);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp);
@@ -108,10 +110,7 @@ export default {
                   url: '/pages/mine/index/main'
                 })
               }
-            },
-            function(resp){
-              console.log(resp)
-            }
+          }
           )
         }
       } 
