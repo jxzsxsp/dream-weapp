@@ -246,7 +246,7 @@ export default {
   left:0;
 }
 .rate-modal{
-  width:576rpx;
+  width:570rpx;
   background: #fff;
   padding: 0;
   z-index:100;
