@@ -57,13 +57,12 @@
         </div>
     <div class="mask" v-if="isShowRate">
       <ul class="rate-modal">
-      <!-- <div class="step-icon"></div> -->
-      <li class="rate-list flex-style" v-for="(list, index) in rateList" :key="index">
-        <i class="rate-cancel rate-icon" :class="index == 0?'rate-current':''"></i>
-        <i v-if="index!=rateList.length-1" class="rate-line"></i>
-        <div class="list-memo">{{list.memo}}</div>
-        <span class="rate-time">{{list.operateTimeText}}</span>
-      </li>
+        <li class="rate-list modal-flex-style" v-for="(list, index) in rateList" :key="index">
+          <i class="rate-cancel rate-icon" :class="index == 0?'rate-current':''"></i>
+          <i v-if="index!=rateList.length-1" class="rate-line"></i>
+          <div class="list-memo">{{list.memo}}</div>
+          <span class="rate-time">{{list.operateTimeText}}</span>
+        </li>
       <i class="iconfont icon-quxiao" @click="hideRate()"></i>
     </ul>
     </div>
@@ -159,6 +158,12 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+.modal-flex-style{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
 }
 .status-content{
   padding:0 20rpx;
@@ -294,6 +299,8 @@ export default {
 .list-memo{
   width:200rpx;
   text-align:left;
+  margin-left:20rpx;
+  margin-right:30rpx;
 }
 /* 进度弹框结束 */
 </style>
