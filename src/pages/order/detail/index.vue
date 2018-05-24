@@ -297,7 +297,7 @@ export default {
   top:27rpx;
 }
 .list-memo{
-  width:210rpx;
+  width:200rpx;
   text-align:left;
   margin-left:20rpx;
   margin-right:30rpx;

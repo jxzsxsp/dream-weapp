@@ -41,7 +41,7 @@ export default {
   components: {
     // inputField
   },
-  
+
   methods: {
     bindViewTap () {
       const url = '../logs/main'
@@ -55,6 +55,7 @@ export default {
         that.isCanclick=false;
       }
     },
+
     lsLogin (){
       if(this.isCanclick){
         if(!formValidate.isMobilePhone(this.mobile)){
@@ -150,6 +151,10 @@ export default {
         },1000)
     }
   },
+  created () {
+    console.log('888888')
+    // 调用应用实例的方法获取全局数据
+  },
   onLoad() {
     console.log("onLoad");
     this.identificateCode='';
@@ -162,7 +167,6 @@ export default {
   },
   created() {
     console.log("created");
-    wx.redirectTo()
   }
 }
 </script>
