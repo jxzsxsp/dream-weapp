@@ -37,12 +37,12 @@
         <div class="coupon-title">520元新人礼</div>
         <div class="coupon-con">未下单用户注册登录送520元大礼包</div>
         <img class="couponListImg" :src="couponListImg"/>
-        <div class="go-register-btn">立即领取</div>
-        <i class="iconfont icon-quxiao" @click="hideRate()"></i>
+        <div class="go-register-btn" @click="receive()">立即领取</div>
+        <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
+    <img class="iconGift" :src="iconGift"/> 
   </div>
-  
 </template>
 
 <script>
@@ -61,6 +61,7 @@ export default {
       myAccountBg: require("../../../images/bg-b.png"),
       isShowCouponModal:false,
       couponListImg:require("../../../images/couponList.png"),
+      iconGift:require("../../../images/newPresent.png"),
       orderStatus: [
         {
           text: "待付款",
@@ -128,6 +129,14 @@ export default {
           url: "/pages/mine/login/main"
         });
       }
+    },
+    hideCouponModal() {
+      this.isShowCouponModal = false;
+    },
+    receive() {
+      wx.navigateTo({
+          url: "/pages/mine/register/main"
+      });
     }
   },
   onLoad() {
@@ -329,7 +338,7 @@ page {
   font-size:60rpx;
 }
 .couponListImg{
-  width:520rpx;
+  width:543rpx;
   height:530rpx;
 }
 .coupon-title{
@@ -347,8 +356,12 @@ page {
   width:100%;
   line-height:100rpx;
   text-align:center;
-  background:#e74c3c;
+  background: #D0021B;
+  border-radius: 13rpx;
   color:#fff;
-  border-radius:8rpx;
+}
+.iconGift{
+  width:106rpx;
+  height:80rpx;
 }
 </style>

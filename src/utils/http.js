@@ -1,137 +1,178 @@
-
-
 class Http {
-	constructor(opts) {
-		this.root = process.env.API_HOST,
-		this.isLoadingText = '数据加载中...'
-	}
-	// get请求
-	get (url, data, isLoading, opts) {
-		url = this.root + url
-		data = this.getQuestData(data);
-		return this.request(url,data,'GET', isLoading);
-	}
-	// post请求
-	post (url, data, isLoading, opts) {
-		url = this.root + url
-		data = this.getQuestData(data);
-		return this.request(url, data,'POST', isLoading);
-	}
-	// 其他域名get请求
-	otherGet (url, data, isLoading, opts) {
-		return this.request(url,data,'GET', isLoading);
-	}
-	// 其他域名post请求
-	otherPost (url, data, isLoading, opts) {
-		return this.request(url,data,'POST', isLoading);
-	}
-	
-	// request
-	request (url, data, method, isLoading) {
-		if(isLoading){
-			wx.showLoading({
-				title: (typeof isLoading == 'string')?isLoading:this.isLoadingText,
-				mask: true
-			})
-		}
-		return new Promise((resolve, reject) => {
-			wx.request({
-				url: url,
-				method: method,
-				data: data,
-				header : { 
-					'appType': 2,
-					'content-type': 'application/json', 
-					'token':wx.getStorageSync("token")
-				},
-				success (res){
-					if(isLoading){
-						wx.hideLoading();
-					}
-					if(res.data.code == 200){
-						resolve(res.data.data || {});
-					}else if(res.data.code == -100 || res.data.code == -151 || res.data.code == -117){
-						wx.showToast({
-							title: res.data.message,
-							icon: 'none',
-							mask: true,
-							success(){
-								var pages = getCurrentPages()    //获取加载的页面
-								var currentPage = pages[pages.length-1]    //获取当前页面的对象
-								var url = '/' + currentPage.route
-								wx.setStorageSync('loginToUrl', url);
-								wx.redirectTo({
-									url: '/pages/mine/login/main'
-								})
-							}
-						})
-					}else{
-						wx.showToast({
-							title: res.data.message,
-							icon: 'none',
-							mask: true
-						})
-						reject(res.data || {});						
-					}
-				},
-				fail (error){
-					// console.log('获取数据失败');
-					wx.showToast({
-						title: '网络出错！',
-						icon:'none',
-						mask:true
-					})
-				},
-				complete () {
-				
-				}
-			})
-		})
-	}
-	//  静默登录
-	quietLogin (code) {
-		var data = {
-			code: code
-		}
-		var url = '/buyer/user/mini-app/quick-login/v1'
-		this.post(url,data,true).then(res => {
-			wx.setStorageSync('token',res.token);
-			var lsUserInfo={
-				avatar:res.headImgUrl,
-				imNickName:res.nickName,
-			}
-			wx.setStorageSync('lsUserInfo',lsUserInfo);			
-		},res => {
-			console.log(res);
-		})
-	}
-	// 封装和后端数据格式
-	getQuestData (data) {
-		var param = wx.getStorageSync('systemInfo') || {};
-		param.data = data;
-		return param;
-	}
-	// 获取时间戳＋6位随机数
-	randomNub () {
-		var getTime = new Date().getTime();
-		var random = Math.floor(Math.random()*1000000);
-		return getTime + '-' + random;
-	}
-	// 保存设备信息，为后端交互提供基础信息
-	saveSystemInfo () {
-		if(!wx.getStorageSync('systemInfo')){
-			var systemInfo = wx.getSystemInfoSync();
-			var param = {
-				"platform": systemInfo.platform,
-				"platformVersion": systemInfo.system,
-				"deviceModel": systemInfo.model,
-				"appType": 2,
-				"appVersion": systemInfo.SDKVersion,
-				"deviceId": systemInfo.brand + '-' + systemInfo.model + '-' + this.randomNub(),
-			}
-			wx.setStorageSync('systemInfo', param);
-		}
-	}
+  constructor(opts) {
+    this.root = process.env.API_HOST,
+      this.isLoadingText = '数据加载中...'
+  }
+  // get请求
+  get(url, data, isLoading, opts) {
+    url = this.root + url
+    data = this.getQuestData(data);
+    return this.request(url, data, 'GET', isLoading);
+  }
+  // post请求
+  post(url, data, isLoading, opts) {
+    url = this.root + url
+    data = this.getQuestData(data);
+    return this.request(url, data, 'POST', isLoading);
+  }
+  // 其他域名get请求
+  otherGet(url, data, isLoading, opts) {
+    return this.otherRequest(url, data, 'GET', isLoading);
+  }
+  // 其他域名post请求
+  otherPost(url, data, isLoading, opts) {
+    return this.otherRequest(url, data, 'POST', isLoading);
+  }
+
+  // request
+  request(url, data, method, isLoading) {
+    if (isLoading) {
+      wx.showLoading({
+        title: (typeof isLoading == 'string') ? isLoading : this.isLoadingText,
+        mask: true
+      })
+    }
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url,
+        method: method,
+        data: data,
+        header: {
+          'appType': 2,
+          'content-type': 'application/json',
+          'token': wx.getStorageSync("token")
+        },
+        success(res) {
+          if (isLoading) {
+            wx.hideLoading();
+          }
+          if (res.data.code == 200) {
+            resolve(res.data.data || {});
+          } else if (res.data.code == -100 || res.data.code == -151 || res.data.code == -117) {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              mask: true,
+              success() {
+                var pages = getCurrentPages() //获取加载的页面
+                var currentPage = pages[pages.length - 1] //获取当前页面的对象
+                var url = '/' + currentPage.route
+                wx.setStorageSync('loginToUrl', url);
+                wx.redirectTo({
+                  url: '/pages/mine/login/main'
+                })
+              }
+            })
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+              mask: true
+            })
+            reject(res.data || {});
+          }
+        },
+        fail(error) {
+          // console.log('获取数据失败');
+          wx.showToast({
+            title: '网络出错！',
+            icon: 'none',
+            mask: true
+          })
+        },
+        complete() {
+
+        }
+      })
+    })
+  }
+
+  // otherRequest
+  otherRequest(url, data, method, isLoading) {
+    if (isLoading) {
+      wx.showLoading({
+        title: (typeof isLoading == 'string') ? isLoading : this.isLoadingText,
+        mask: true
+      })
+    }
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url,
+        method: method,
+        data: data,
+        header: {
+          'appType': 2,
+          'content-type': 'application/json',
+          'token': wx.getStorageSync("token")
+        },
+        success(res) {
+          if (isLoading) {
+            wx.hideLoading();
+          }
+          resolve(res || {});
+        },
+        fail(error) {
+          // console.log('获取数据失败');
+          wx.showToast({
+            title: '网络出错！',
+            icon: 'none',
+            mask: true
+          })
+          reject(error || {});
+        },
+        complete() {
+
+        }
+      })
+    })
+  }
+  //  静默登录
+  quietLogin(code) {
+    var data = {
+      code: code
+    }
+    var url = this.root + '/buyer/user/mini-app/quick-login/v1'
+
+    this.otherPost(url, data, true).then(res => {
+      if (res.data.code == 200) {
+        wx.setStorageSync('token', res.data.data.token);
+        var lsUserInfo = {
+          avatar: res.data.data.headImgUrl,
+          imNickName: res.data.data.nickName,
+        }
+        wx.setStorageSync('lsUserInfo', lsUserInfo);
+      }
+    }, res => {
+      console.log(res);
+    })
+  }
+  // 封装和后端数据格式
+  getQuestData(data) {
+    var param = wx.getStorageSync('systemInfo') || {};
+    param.data = data;
+    return param;
+  }
+  // 获取时间戳＋6位随机数
+  randomNub() {
+    var getTime = new Date().getTime();
+    var random = Math.floor(Math.random() * 1000000);
+    return getTime + '-' + random;
+  }
+  // 保存设备信息，为后端交互提供基础信息
+  saveSystemInfo() {
+    if (!wx.getStorageSync('systemInfo')) {
+      var systemInfo = wx.getSystemInfoSync();
+      var param = {
+        "platform": systemInfo.platform,
+        "platformVersion": systemInfo.system,
+        "deviceModel": systemInfo.model,
+        "appType": 2,
+        "appVersion": systemInfo.SDKVersion,
+        "deviceId": systemInfo.brand + '-' + systemInfo.model + '-' + this.randomNub(),
+      }
+      wx.setStorageSync('systemInfo', param);
+    }
+  }
 }
 
 export default new Http()
