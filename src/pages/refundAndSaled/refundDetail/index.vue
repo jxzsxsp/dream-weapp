@@ -103,7 +103,7 @@ export default {
       let data = {
         refundId: this.refundId
       }
-      http.post('/buyer/receipt/getRefundReceipt', { data }, true, '')
+      http.post('/buyer/receipt/getRefundReceipt',  data, true, '')
         .then((res) => {
           wx.navigateTo({
             url: `@/webView/main?url=${res.url}`

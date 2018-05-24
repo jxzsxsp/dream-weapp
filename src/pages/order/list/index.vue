@@ -23,9 +23,9 @@
           </a>
         </div>
         <div class="list-bottom">
-          共{{order.tradeItemList.lenght}}件商品，合计 
+          共{{order.tradeItemList.length}}件商品，合计 
           <span class="money">¥{{order.tradeInfo.payableFee}}</span> 
-          （含运费¥{{order.tradeInfo.freightFee}}）
+          <span v-if="order.tradeInfo.freightFee > 0">（含运费¥{{order.tradeInfo.freightFee}}）</span>
         </div>
         <div class="list-bottom list-bottom-btn" v-show="order.tradeInfo.statusId == 3">
           <div class="order-list-btn" @click="confirmReceipt(order)">确认收货</div>

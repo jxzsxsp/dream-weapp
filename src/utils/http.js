@@ -40,6 +40,7 @@ class Http {
 				method: method,
 				data: data,
 				header : { 
+					'appType': 2,
 					'content-type': 'application/json', 
 					'token':wx.getStorageSync("token")
 				},
@@ -49,24 +50,37 @@ class Http {
 					}
 					if(res.data.code == 200){
 						resolve(res.data.data || {});
-					}else if(res.data.code == -100 || res.data.code == -151){
-						var pages = getCurrentPages()    //获取加载的页面
-						var currentPage = pages[pages.length-1]    //获取当前页面的对象
-						var url = '/' + currentPage.route
-						// wx.redirectTo({
-						// 	url: '/pages/mine/login/main?url=' + encodeURI(url)
-						// })
+					}else if(res.data.code == -100 || res.data.code == -151 || res.data.code == -117){
+						wx.showToast({
+							title: res.data.message,
+							icon: 'none',
+							mask: true,
+							success(){
+								var pages = getCurrentPages()    //获取加载的页面
+								var currentPage = pages[pages.length-1]    //获取当前页面的对象
+								var url = '/' + currentPage.route
+								wx.setStorageSync('loginToUrl', url);
+								wx.redirectTo({
+									url: '/pages/mine/login/main'
+								})
+							}
+						})
 					}else{
 						wx.showToast({
-							title:res.data.message,
-							icon:'none',
-							mask:true
+							title: res.data.message,
+							icon: 'none',
+							mask: true
 						})
+						reject(res.data || {});						
 					}
 				},
 				fail (error){
-					console.log('获取数据失败');
-					reject(error || {});
+					// console.log('获取数据失败');
+					wx.showToast({
+						title: '网络出错！',
+						icon:'none',
+						mask:true
+					})
 				},
 				complete () {
 				

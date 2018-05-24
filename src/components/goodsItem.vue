@@ -4,7 +4,7 @@
       <img class="item-img" :src="itemData.itemImg"/>
     </div>
     <div class="item-center">
-      <div class="item-title">{{ title }}</div>
+      <div class="item-title">{{ itemData.itemName }}</div>
       <div class="item-detail">{{ itemData.skuProperties }}</div>
       <div class="item-style">{{ itemType }}</div>
     </div>
@@ -14,7 +14,7 @@
         <p class="item-quantity">×{{ itemData.quantity }}</p>
       </div>
       <p v-if="showCheckClothBtn" class="check-cloth-report" @click="_checkCloth">查看验布报告</p>
-      <p class="item-status" v-if="showRefundStatus">{{ itemData.buyerRefundStatusText }}</p>
+      <p class="item-status" v-if="itemData.buyerRefundStatusText">{{ itemData.buyerRefundStatusText }}</p>
     </div>
   </div>
 </template>
@@ -40,9 +40,9 @@ export default {
       }
       return itemType
     },
-    title () {
-      return this.itemData.itemName.length > 15 ? this.itemData.itemName.substr(0, 15) + '...' : this.itemData.itemName
-    }
+    // title () {
+      // return this.itemData.itemName.length > 15 ? this.itemData.itemName.substr(0, 15) + '...' : this.itemData.itemName
+    // }
   },
   methods: {
     _checkCloth: function () {
