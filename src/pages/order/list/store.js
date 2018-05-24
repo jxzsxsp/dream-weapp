@@ -25,26 +25,20 @@ const store = new Vuex.Store({
     getOrderList(context,payload){
       orderApi.getOrderList(payload).then(res => {
         var orderList = res.list;
+        var hasMore = res.hasMore;
         if(config.pageNo == 1){
           context.state.orderList = orderList;
-          if(orderList.length == 0){
-            context.state.isLoading = 2;
-            config.isLockAddPageData = true;            
-          }else if(orderList.length < config.pageSize){
-            context.state.isLoading = 1;
-            config.isLockAddPageData = true;
-          }else{
-            context.state.isLoading = 0;   
-            config.isLockAddPageData = false; 
-          }
-        }else if(orderList.length < config.pageSize){
-          context.state.isLoading = 1;
-          config.isLockAddPageData = true;
-          context.state.orderList.push(...orderList)
         }else{
           context.state.orderList.push(...orderList)
-          config.isLockAddPageData = false;        
         }
+        if(hasMore){
+          context.state.isLoading = 0;
+          config.isLockAddPageData = false;  
+        }else{
+          config.isLockAddPageData = true;    
+          context.state.isLoading = (orderList.length == 0 && config.pageNo == 1)?2:1;
+        }
+        
         context.state.isPullDownRefresh++;
       },res => {
         config.isLockAddPageData = false;
