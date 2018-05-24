@@ -94,8 +94,8 @@ export default {
             http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
             .then(
               function(resp) {
-                wx.clearStorageSync("token");
-                wx.clearStorageSync("lsUserInfo");
+                wx.setStorageSync("token",'');
+                wx.setStorageSync("lsUserInfo",{});
                 that.token = wx.getStorageSync("token");
               },
               function(resp) {
