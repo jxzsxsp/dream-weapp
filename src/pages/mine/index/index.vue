@@ -18,7 +18,7 @@
       </div>
       <div class="order-tabs">
         <div class="index-order-item" v-for="(order, index) in orderStatus" :key="index" @click="navigateTo(order.href)">
-            <i v-if="(statusCount[index+1] || statusCount[index+1]==0)&&token" class="superscript">{{statusCount[index+1]}}</i>
+            <i v-if="(statusCount[index+1]) && token" class="superscript">{{statusCount[index+1]}}</i>
             <i class="iconfont" :class="order.class"></i>
             <div class="order-item-text">{{order.text}}</div>
         </div>
@@ -113,8 +113,8 @@ export default {
             http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
             .then(
               function(resp) {
-                wx.clearStorageSync("token");
-                wx.clearStorageSync("lsUserInfo");
+                wx.setStorageSync("token",'');
+                wx.setStorageSync("lsUserInfo",{});
                 that.token = wx.getStorageSync("token");
               },
               function(resp) {

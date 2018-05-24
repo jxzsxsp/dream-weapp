@@ -24,27 +24,20 @@ const store = new Vuex.Store({
     getList(context,payload){
       function httpSuccess (res){
         var list = res.list;
+        var hasMore = res.hasMore;
         if(config.pageNo == 1){
           context.state.list = list;
-          if(list.length == 0){
-            context.state.isLoading = 2;
-            config.isLockAddPageData = true;
-          }else if(list.length < config.pageSize){
-            context.state.isLoading = 1;
-            config.isLockAddPageData = true;
-          }else{
-            context.state.isLoading = 0;   
-            config.isLockAddPageData = false; 
-          }          
-        }else if(list.length < config.pageSize){
-          context.state.isLoading = 1;
-          config.isLockAddPageData = true;
-          context.state.list.push(...list)
         }else{
           context.state.list.push(...list)
-          config.isLockAddPageData = false;  
-          context.state.isLoading = 0;      
         }
+        if(hasMore){
+          context.state.isLoading = 0;
+          config.isLockAddPageData = false;  
+        }else{
+          config.isLockAddPageData = true;    
+          context.state.isLoading = (list.length == 0 && config.pageNo == 1)?2:1;
+        }
+        
         context.state.isPullDownRefresh++;
       }
       function httpError (res){

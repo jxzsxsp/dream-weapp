@@ -171,11 +171,15 @@ export default {
   color: #999999;
 }
 .refuse-detail {
-  padding-left: 40rpx;
-  padding-right: 40rpx;
-  padding-top: 5rpx;
-  padding-bottom: 20rpx;
+  margin-left: 30rpx;
+  padding-left: 10rpx;
+  margin-right: 30rpx;
+  padding-right: 10rpx;
+  margin-top: 3rpx;
+  padding-top: 2rpx;
+  margin-bottom: 20rpx;
   min-height: 100rpx;
+  background-color: #DBDBDB;
 }
 .goods-info {
   display: flex;
@@ -211,7 +215,7 @@ export default {
 }
 .content-footer {
   margin-bottom: 20rpx;
-  margin-top: 120rpx;
+  margin-top: 300rpx;
   position: flex;
   flex-direction: column;
   align-items: center;
