@@ -92,13 +92,23 @@ export default {
               validateCode:this.identificateCode,
           }
           http.post('/buyer/user/login/register/v2', data, true, '')
-          .then(()=>{
+          .then(
+            function(resp){
+              // console.log(resp.token);
+              wx.setStorageSync('mobile', resp.mobile);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp);
-              wx.navigateTo({
-                  url: '/pages/mine/index/main?isRegister=true'
+              var loginToUrl = wx.getStorageSync('loginToUrl');
+              if(loginToUrl){
+                wx.removeStorage({"key":"loginToUrl"})
+              }
+              wx.redirectTo({
+                url: loginToUrl || '/pages/mine/index/main?isRegister=true'
               })
-          }
+            },
+            function(resp){
+              console.log(resp)
+            }
           )
         }
       } 

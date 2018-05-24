@@ -32,20 +32,20 @@
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
-    <div class="mask" v-if="isShowCouponModal">
-      <div class="coupon-modal" :class="!token? 'showReceive' : ''">
+    <div class="mask" v-if="(isShowCouponModal && !token) || isRegister">
+      <div class="coupon-modal" :class="!isRegister? 'showReceive' : ''">
         <div class="in-coupon-modal">
             <div class="coupon-title">520元新人礼</div>
-            <div v-if="!token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
-            <div v-if="token" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
+            <div v-if="!isRegister && !token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
+            <div v-if="isRegister" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
             <img class="couponListImg" :src="couponListImg"/>
         </div>
-        <div v-if="!token" class="go-register-btn" @click="receive()">立即领取</div>
-        <div v-if="token" class="follow">关注公众号可参加更多优惠</div>
+        <div v-if="!isRegister" class="go-register-btn" @click="receive()">立即领取</div>
+        <div v-if="isRegister" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
-    <img v-if="!isShowCouponModal || !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
+    <img v-if="!isShowCouponModal && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
   </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {
     return {
       isRegister:false,
       href: "",
-      mobile:'15206191611',
+      mobile: wx.getStorageSync("mobile"),
       token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
       headPic: require("../../../images/headPic.png"),
@@ -138,6 +138,7 @@ export default {
     },
     hideCouponModal() {
       this.isShowCouponModal = false;
+      this.isRegister = false;
     },
     receive() {
       wx.navigateTo({
@@ -149,9 +150,8 @@ export default {
     }
   },
   onLoad() {
-    this.isRegister = this.$root.$mp.query.isRegister
-    console.log(this.isRegister);
     this.token = wx.getStorageSync("token");
+    this.mobile = wx.getStorageSync("mobile");
     this.lsUserInfo = wx.getStorageSync("lsUserInfo");
     var that = this;
     if (this.token) {
@@ -175,6 +175,8 @@ export default {
   },
   mounted() {
     console.log("mounted");
+    this.isRegister = this.$root.$mp.query.isRegister
+    console.log(this.isRegister+'0999');
   },
   created() {
     console.log("created");
