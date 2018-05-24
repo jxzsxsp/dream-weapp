@@ -60,7 +60,7 @@ export default {
       if(this.isCanclick){
         if(!formValidate.isMobilePhone(this.mobile)){
            wx.showToast({
-            title: '手机号不正确！',
+            title: '请输入11位手机号',
             icon: 'none',
             mask: true
           })
@@ -116,7 +116,9 @@ export default {
                         that.timedown(60);
                       },function(resp){
                         wx.showToast({
-                          title:resp.message
+                          title:resp.message,
+                          icon: 'none',
+                          mask: true
                         })
                       }
                     )

@@ -79,7 +79,7 @@ export default {
       if(this.isCanclick){
         if(!formValidate.isMobilePhone(this.mobile)){
            wx.showToast({
-            title: '手机号不正确！',
+            title: '请输入11位手机号',
             icon: 'none',
             mask: true
           })
