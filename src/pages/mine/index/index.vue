@@ -32,7 +32,17 @@
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
+    <div class="mask" v-if="isShowCouponModal">
+      <div class="coupon-modal">
+        <div class="coupon-title">520元新人礼</div>
+        <div class="coupon-con">未下单用户注册登录送520元大礼包</div>
+        <img class="couponListImg" :src="couponListImg"/>
+        <div class="go-register-btn">立即领取</div>
+        <i class="iconfont icon-quxiao" @click="hideRate()"></i>
+      </div>
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -49,6 +59,8 @@ export default {
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
       headPic: require("../../../images/headPic.png"),
       myAccountBg: require("../../../images/bg-b.png"),
+      isShowCouponModal:false,
+      couponListImg:require("../../../images/couponList.png"),
       orderStatus: [
         {
           text: "待付款",
@@ -134,6 +146,9 @@ export default {
           console.log(resp);
         }
       );
+    }else{
+      this.isShowCouponModal = true;
+      
     }
   },
   onReady() {
@@ -282,5 +297,58 @@ page {
 }
 .btn-login-out {
   margin-top: 300rpx;
+}
+
+/* 进度弹框开始 */
+.mask{
+  width:100%;
+  height:100%;
+  position: fixed;
+  background-color:rgba(0,0,0,0.5);
+  z-index:20;
+  top:0;
+  left:0;
+}
+.coupon-modal{
+  width:543rpx;
+  background: #fff;
+  padding: 0;
+  z-index:100;
+  border-radius:10rpx;
+  line-height:116rpx;
+  padding:40rpx 40rpx;
+  margin:120rpx auto;
+}
+.icon-quxiao{
+  position:absolute;
+  z-index:20;
+  color:#fff;
+  margin-top:60rpx;
+  left:50%;
+  margin-left:-35rpx;
+  font-size:60rpx;
+}
+.couponListImg{
+  width:520rpx;
+  height:530rpx;
+}
+.coupon-title{
+  font-size:30rpx;
+  text-align:center;
+  line-height:40rpx;
+  font-weight: bold;
+}
+.coupon-con{
+  font-size:24rpx;
+  text-align:center;
+  line-height:60rpx;
+}
+.go-register-btn{
+  width:100%;
+  line-height:100rpx;
+  text-align:center;
+  background:#e74c3c;
+  color:#fff;
+  border-radius:8rpx;
 }
 </style>
