@@ -3,7 +3,7 @@
     <div class="input-box">
       <div class="input-item">
           <i class="iconfont icon-ic_user_name"></i>
-          <input type='text' maxlength="20" v-model="userName" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
+          <input type='text' maxlength="20" v-model="contactName" class="inputField" v-on:input="validateValue" placeholder="请输入姓名" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-ic_company_name"></i>
@@ -42,7 +42,7 @@ var formValidate = new form();
 export default {
   data () {
     return {
-      userName:'',
+      contactName:'',
       companyName:'',
       mobile: '',
       identificateCode:'',
@@ -85,31 +85,19 @@ export default {
           })
         }else{
           var data = {
-              userName:this.userName,
+              userType:0,
+              contactName:this.contactName,
               companyName:this.companyName,
               mobile:this.mobile,
               validateCode:this.identificateCode,
-              isRead:this.isRead
           }
           http.post('/buyer/user/login/register/v2', data, true, '')
           .then(()=>{
-              console.log(resp.token);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp);
-              var pages = getCurrentPages(); // 当前页面  
-              var beforePage = pages[pages.length - 2]; // 前一个页面  
-              console.log(beforePage);  
-              if(beforePage){
-                wx.navigateBack({  
-                    success: function() {  
-                        beforePage.onLoad(); // 执行前一个页面的onLoad方法  
-                    }  
-                });  
-              }else{
-                wx.navigateTo({
-                  url: '/pages/mine/index/main'
-                })
-              }
+              wx.navigateTo({
+                  url: '/pages/mine/index/main?isRegister=true'
+              })
           }
           )
         }

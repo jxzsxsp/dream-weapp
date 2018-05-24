@@ -141,7 +141,7 @@ export default {
         var timer1 = setInterval(function(){ 
             if(time>0){
                 time--;
-                that.codeButtonMessage = (+time+'秒后重发');
+                that.codeButtonMessage = (+time+'s后请重试');
                 that.isTimeDown = true;
             }else{
                 clearInterval(timer1);

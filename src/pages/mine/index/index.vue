@@ -58,6 +58,7 @@ var indexFuc = new indexFucClass();
 export default {
   data() {
     return {
+      isRegister:false,
       href: "",
       mobile:'15206191611',
       token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
@@ -148,7 +149,8 @@ export default {
     }
   },
   onLoad() {
-    console.log("load");
+    this.isRegister = this.$root.$mp.query.isRegister
+    console.log(this.isRegister);
     this.token = wx.getStorageSync("token");
     this.lsUserInfo = wx.getStorageSync("lsUserInfo");
     var that = this;
