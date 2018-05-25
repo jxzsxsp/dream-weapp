@@ -47,7 +47,7 @@ class Http {
             wx.hideLoading();
           }
           if (res.data.code == 200) {
-            resolve(res.data.data || {});
+            resolve(Object.assign({}, res.data.data, {requestParam: data.data}))
           } else if (res.data.code == -100 || res.data.code == -151 || res.data.code == -117) {
             wx.showToast({
               title: res.data.message,
