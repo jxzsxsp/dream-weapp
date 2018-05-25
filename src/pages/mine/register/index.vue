@@ -7,11 +7,11 @@
       </div>
       <div class="input-item">
           <i class="iconfont icon-ic_company_name"></i>
-          <input type='text' maxlength="20" v-model="companyName" class="inputField" v-on:input="validateValue" placeholder="请输入公司名称/店铺名称" />
+          <input type='text' maxlength="30" v-model="companyName" class="inputField" v-on:input="validateValue" placeholder="请输入公司名称/店铺名称" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
-          <input type='text' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
+          <input type='text' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item last-input-item">
           <i class="iconfont icon-yanzhengma"></i>

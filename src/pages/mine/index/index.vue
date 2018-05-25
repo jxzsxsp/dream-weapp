@@ -60,6 +60,7 @@ export default {
     return {
       isRegister:false,
       href: "",
+      switch: false,
       mobile: wx.getStorageSync("mobile"),
       token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
@@ -149,7 +150,7 @@ export default {
       this.isShowCouponModal = true;
     }
   },
-  onLoad() {
+  onLoad(){
     this.token = wx.getStorageSync("token");
     this.mobile = wx.getStorageSync("mobile");
     this.lsUserInfo = wx.getStorageSync("lsUserInfo");
@@ -165,10 +166,12 @@ export default {
           console.log(resp);
         }
       );
-    }else{
-      this.isShowCouponModal = true;
-      
     }
+    // 判断是否展示活动页面
+    http.post("/buyer/coupon/switch/v1", {}, true, "")
+    .then((resp)=>{
+      console.log(resp.switch)
+    });
   },
   onReady() {
     console.log("ready");
