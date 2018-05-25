@@ -37,6 +37,7 @@
 
 import form from '../../../utils/formValidate'
 import http from '@/utils/http'
+import config from '@/config/env'
 var formValidate = new form();
 
 export default {
@@ -52,7 +53,7 @@ export default {
       isTimeDown:false,
       isCanclick:false,
       isRead:false,
-      msitesHost:process.env.MSITES_HOST,
+      msitesHost: config.msitesBaseUrl,
       iconClass:'icon-ic_gou_kong'
     }
   },

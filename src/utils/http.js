@@ -1,8 +1,9 @@
 
+import config from '@/config/env';
 
 class Http {
 	constructor(opts) {
-		this.root = process.env.API_HOST,
+		this.root = config.baseUrl,
 		this.isLoadingText = '数据加载中...'
 	}
 	// get请求
