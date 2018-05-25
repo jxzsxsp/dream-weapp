@@ -6,33 +6,33 @@ Page({
   data: {
     iconList: [
       {
-        image: "/images/chao.png",
+        image: "/images/icon/day_pink.png",
         title:"每日一练",
         tap:""
       },
       {
-        image: "/images/chao.png",
-        title: "每日一练",
+        image: "/images/icon/edit_blue.png",
+        title: "考点练习",
         tap: ""
       },
       {
-        image: "/images/chao.png",
-        title: "每日一练",
+        image: "/images/icon/edit_green.png",
+        title: "历年真题",
         tap: ""
       },
       {
-        image: "/images/chao.png",
-        title: "每日一练",
+        image: "/images/icon/doc_yellow.png",
+        title: "高频题库",
         tap: ""
       },
       {
-        image: "/images/chao.png",
-        title: "每日一练",
+        image: "/images/icon/doc_purple.png",
+        title: "模拟试题",
         tap: ""
       },
       {
-        image: "/images/chao.png",
-        title: "每日一练",
+        image: "/images/icon/edit_red.png",
+        title: "错题练习",
         tap: ""
       }
     ]
