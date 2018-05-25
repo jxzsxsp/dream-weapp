@@ -15,6 +15,7 @@ export default {
       '^pages/mine/index/main', 
       'pages/mine/login/main',
       'pages/order/detail/main',
+      'pages/coupon/couponList/main',
       'pages/refundAndSaled/saledDetail/main',
       'pages/refundAndSaled/refundDetail/main',
       'pages/webView/main',
