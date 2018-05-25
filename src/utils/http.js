@@ -17,10 +17,12 @@ class Http {
   }
   // 其他域名get请求
   otherGet(url, data, isLoading, opts) {
+    data = this.getQuestData(data);
     return this.otherRequest(url, data, 'GET', isLoading);
   }
   // 其他域名post请求
   otherPost(url, data, isLoading, opts) {
+    data = this.getQuestData(data);
     return this.otherRequest(url, data, 'POST', isLoading);
   }
 

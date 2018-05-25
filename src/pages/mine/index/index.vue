@@ -7,6 +7,7 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
+      <button open-type="getUserInfo" @click="getUserInfo()" lang="zh_CN" bindgetuserinfo="onGotUserInfo">注册</button>
       <a href="/pages/mine/register/main" class="ls-name">注册/</a>
       <a href="/pages/mine/login/main" class="ls-name">登录</a>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
@@ -50,15 +51,14 @@
 </template>
 
 <script>
-
-import indexFucClass from './store'
-import http from '@/utils/http'
+import indexFucClass from "./store";
+import http from "@/utils/http";
 var indexFuc = new indexFucClass();
 
 export default {
   data() {
     return {
-      isRegister:false,
+      isRegister: false,
       href: "",
       switch: false,
       mobile: wx.getStorageSync("mobile"),
@@ -66,9 +66,9 @@ export default {
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
       headPic: require("../../../images/headPic.png"),
       myAccountBg: require("../../../images/bg-b.png"),
-      isShowCouponModal:true,
-      couponListImg:require("../../../images/couponList.png"),
-      iconGift:require("../../../images/newPresent.png"),
+      isShowCouponModal: true,
+      couponListImg: require("../../../images/couponList.png"),
+      iconGift: require("../../../images/newPresent.png"),
       orderStatus: [
         {
           text: "待付款",
@@ -101,6 +101,32 @@ export default {
   },
   components: {},
   methods: {
+    // 获取权限开始
+    getUserInfo() {
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting["scope.userInfo"]) {
+            console.log("已经授权");
+            // 已经授权，可以直接调用 getUserInfo
+            wx.getUserInfo({
+              success: res => {
+                console.log("app.js执行 getUserInfo");
+                // 可以将 res 发送给后台解码出 unionId
+                this.globalData.userInfo = res.userInfo;
+
+                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                // 所以此处加入 callback 以防止这种情况
+                if (this.userInfoReadyCallback) {
+                  this.userInfoReadyCallback(res);
+                }
+              }
+            });
+          }
+        }
+      });
+    },
+
+    // 获取权限结束
     clickHandle(msg, ev) {
       console.log("123");
       console.log(this.lsUserInfo);
@@ -111,16 +137,16 @@ export default {
         content: "您确认退出登录吗？",
         success: function(res) {
           if (res.confirm) {
-            http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
-            .then(
+            http.post("/buyer/user/mini-app/logout/v1", {}, true, "").then(
               function(resp) {
-                wx.setStorageSync("token",'');
-                wx.setStorageSync("lsUserInfo",{});
+                wx.setStorageSync("token", "");
+                wx.setStorageSync("lsUserInfo", {});
                 that.token = wx.getStorageSync("token");
               },
               function(resp) {
                 console.log(resp);
-              });
+              }
+            );
           } else if (res.cancel) {
           }
         }
@@ -143,14 +169,16 @@ export default {
     },
     receive() {
       wx.navigateTo({
-          url: "/pages/mine/register/main"
+        url: "/pages/mine/register/main"
       });
     },
     showIconGift() {
       this.isShowCouponModal = true;
     }
   },
-  onLoad(){
+  onLoad() {
+    // 授权开始
+
     this.token = wx.getStorageSync("token");
     this.mobile = wx.getStorageSync("mobile");
     this.lsUserInfo = wx.getStorageSync("lsUserInfo");
@@ -167,35 +195,24 @@ export default {
         }
       );
     }
+
+    // 授权结束
     // 判断是否展示活动页面
-    http.post("/buyer/coupon/switch/v1", {}, true, "")
-    .then((resp)=>{
-      console.log(resp.switch)
-    });
+    // http.post("/buyer/coupon/switch/v1", {}, true, "")
+    // .then((resp)=>{
+    //   console.log(resp.switch)
+    // });
   },
   onReady() {
     console.log("ready");
   },
   mounted() {
     console.log("mounted");
-    this.isRegister = this.$root.$mp.query.isRegister
-    console.log(this.isRegister+'0999');
+    this.isRegister = this.$root.$mp.query.isRegister;
+    console.log(this.isRegister + "0999");
   },
   created() {
     console.log("created");
-    wx.getSetting({
-      success(res) {
-          if (!res.authSetting['scope.record']) {
-              wx.authorize({
-                  scope: 'scope.record',
-                  success() {
-                      // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-                      wx.startRecord()
-                  }
-              })
-          }
-      }
-    })
   }
 };
 </script>
@@ -337,80 +354,80 @@ page {
 }
 
 /* 进度弹框开始 */
-.mask{
-  width:100%;
-  height:100%;
+.mask {
+  width: 100%;
+  height: 100%;
   position: fixed;
-  background-color:rgba(0,0,0,0.5);
-  z-index:20;
-  top:0;
-  left:0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  top: 0;
+  left: 0;
 }
-.coupon-modal{
-  width:523rpx;
+.coupon-modal {
+  width: 523rpx;
   background: #fff;
   padding: 0;
-  z-index:100;
-  border-radius:10rpx;
-  line-height:116rpx;
-  padding:40rpx 50rpx 0;
-  margin:120rpx auto;
+  z-index: 100;
+  border-radius: 10rpx;
+  line-height: 116rpx;
+  padding: 40rpx 50rpx 0;
+  margin: 120rpx auto;
 }
-.showReceive{
-  padding-bottom:40rpx;
+.showReceive {
+  padding-bottom: 40rpx;
 }
-.in-coupon-modal{
-  padding:0 15rpx;
-  height:654rpx;
+.in-coupon-modal {
+  padding: 0 15rpx;
+  height: 654rpx;
 }
-.icon-quxiao{
-  position:absolute;
-  z-index:20;
-  color:#fff;
-  margin-top:60rpx;
-  left:50%;
-  margin-left:-35rpx;
-  font-size:60rpx;
+.icon-quxiao {
+  position: absolute;
+  z-index: 20;
+  color: #fff;
+  margin-top: 60rpx;
+  left: 50%;
+  margin-left: -35rpx;
+  font-size: 60rpx;
 }
-.couponListImg{
-  width:497rpx;
-  height:530rpx;
+.couponListImg {
+  width: 497rpx;
+  height: 530rpx;
 }
-.coupon-title{
-  font-size:48rpx;
-  text-align:center;
-  line-height:40rpx;
+.coupon-title {
+  font-size: 48rpx;
+  text-align: center;
+  line-height: 40rpx;
   font-weight: bold;
 }
-.coupon-con{
-  font-size:24rpx;
-  text-align:center;
-  line-height:60rpx;
+.coupon-con {
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 60rpx;
 }
-.go-register-btn{
-  width:497rpx;
-  line-height:100rpx;
-  text-align:center;
-  background: #D0021B;
+.go-register-btn {
+  width: 497rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #d0021b;
   border-radius: 13rpx;
-  color:#fff;
-  margin:0 auto;
+  color: #fff;
+  margin: 0 auto;
 }
-.iconGift{
-  width:106rpx;
-  height:80rpx;
-  position:absolute;
-  bottom:107rpx;
-  right:10rpx;
+.iconGift {
+  width: 106rpx;
+  height: 80rpx;
+  position: absolute;
+  bottom: 107rpx;
+  right: 10rpx;
 }
-.mobile{
-  color:#D0021B;
+.mobile {
+  color: #d0021b;
 }
-.follow{
+.follow {
   font-size: 24rpx;
   color: #333333;
   line-height: 100rpx;
-  text-align:center;
-  border-top:1rpx solid #d8d8d8;
+  text-align: center;
+  border-top: 1rpx solid #d8d8d8;
 }
 </style>
