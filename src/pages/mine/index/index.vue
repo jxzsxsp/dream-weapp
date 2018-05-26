@@ -1,5 +1,6 @@
 <template>
   <div class="container" @click="clickHandle">
+    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN" @click="getAuthor()"></button>
     <div class="my-account" v-if="token">
       <img class="head-pic" :src="lsUserInfo.avatar" background-size="cover"/>
       <span class="ls-name">{{lsUserInfo.imNickName}}</span>
@@ -7,9 +8,8 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
-      <button open-type="getUserInfo" @click="getUserInfo()" lang="zh_CN" bindgetuserinfo="onGotUserInfo">注册</button>
-      <a href="/pages/mine/register/main" class="ls-name">注册/</a>
-      <a href="/pages/mine/login/main" class="ls-name">登录</a>
+      <div class="ls-name" @click="goToRegister('/pages/mine/register/main')">注册/</div>
+      <div class="ls-name" @click="goToRegister('/pages/mine/login/main')" >登录</div>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
     </div>
     <div class="my-item">
@@ -33,7 +33,7 @@
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
-    <div class="mask" v-if="(isShowCouponModal && !token) || isRegister">
+    <div class="mask" v-if="(couponSwitch && !token) || isRegister">
       <div class="coupon-modal" :class="!isRegister? 'showReceive' : ''">
         <div class="in-coupon-modal">
             <div class="coupon-title">520元新人礼</div>
@@ -46,7 +46,7 @@
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
-    <img v-if="!isShowCouponModal && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
+    <img v-if="!couponSwitch && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
   </div>
 </template>
 
@@ -58,15 +58,15 @@ var indexFuc = new indexFucClass();
 export default {
   data() {
     return {
+      wxUserInfo:false,
       isRegister: false,
       href: "",
-      switch: false,
+      couponSwitch: false,
       mobile: wx.getStorageSync("mobile"),
       token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
       headPic: require("../../../images/headPic.png"),
       myAccountBg: require("../../../images/bg-b.png"),
-      isShowCouponModal: true,
       couponListImg: require("../../../images/couponList.png"),
       iconGift: require("../../../images/newPresent.png"),
       orderStatus: [
@@ -101,35 +101,10 @@ export default {
   },
   components: {},
   methods: {
-    // 获取权限开始
-    getUserInfo() {
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting["scope.userInfo"]) {
-            console.log("已经授权");
-            // 已经授权，可以直接调用 getUserInfo
-            wx.getUserInfo({
-              success: res => {
-                console.log("app.js执行 getUserInfo");
-                // 可以将 res 发送给后台解码出 unionId
-                this.globalData.userInfo = res.userInfo;
-
-                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                // 所以此处加入 callback 以防止这种情况
-                if (this.userInfoReadyCallback) {
-                  this.userInfoReadyCallback(res);
-                }
-              }
-            });
-          }
-        }
+    goToRegister(url) {
+      wx.navigateTo({
+        url: url
       });
-    },
-
-    // 获取权限结束
-    clickHandle(msg, ev) {
-      console.log("123");
-      console.log(this.lsUserInfo);
     },
     lsLogout() {
       var that = this;
@@ -164,7 +139,7 @@ export default {
       }
     },
     hideCouponModal() {
-      this.isShowCouponModal = false;
+      this.couponSwitch = false;
       this.isRegister = false;
     },
     receive() {
@@ -173,12 +148,56 @@ export default {
       });
     },
     showIconGift() {
-      this.isShowCouponModal = true;
+      this.couponSwitch = true;
+    },
+    getAuthor() {
+      this.getSetting();
+    },
+    getSetting() {
+      var that = this;
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting["scope.userInfo"]) {
+            wx.getUserInfo({
+              withCredentials: true,
+              success: res => {
+                 that.wxUserInfo = true;
+                 wx.setStorageSync("wxUserInfo",res);
+              },
+              fail: resp => {
+                // 拒绝授权
+                wx.openSetting({
+                  success: res => {
+                    if (res.authSetting["scope.userInfo"]) {
+                    } else {
+                    }
+                  },
+                  fail: res => {
+                    if (res.authSetting["scope.userInfo"]) {
+                    }
+                  }
+                });
+              }
+            });
+          } else {
+          }
+        },
+        fail(res) {
+          console.log("拒绝");
+        }
+      });
     }
   },
   onLoad() {
-    // 授权开始
-
+    var that = this;
+    // 授权拒绝开始
+    wx.login({
+      success: resp => {
+        this.code = resp.code;
+        this.getSetting();
+      }
+    });
+    // 授权拒绝结束
     this.token = wx.getStorageSync("token");
     this.mobile = wx.getStorageSync("mobile");
     this.lsUserInfo = wx.getStorageSync("lsUserInfo");
@@ -196,6 +215,11 @@ export default {
       );
     }
 
+    if (this.wxUserInfo) {
+      this.couponSwitch = true;
+    } else {
+      this.couponSwitch = false;
+    }
     // 授权结束
     // 判断是否展示活动页面
     // http.post("/buyer/coupon/switch/v1", {}, true, "")
@@ -225,6 +249,19 @@ page {
 .container {
   padding: 0;
   display: block;
+}
+.button {
+  background: none;
+  margin: 0;
+  /* color:#fff; */
+  border-radius: 0;
+  border: none;
+  position: static;
+  padding: 0;
+}
+.button::after {
+  border: none;
+  border-radius: none;
 }
 .my-account {
   width: 750rpx;
@@ -258,6 +295,8 @@ page {
   position: relative;
   z-index: 1;
   font-size: 30rpx;
+  color: #fff;
+  padding: 0;
 }
 .my-item {
   width: 100%;
@@ -266,6 +305,8 @@ page {
   border-top: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;
   font-size: 28rpx;
+  line-height: 46rpx;
+  padding: 0;
 }
 .my-title {
   display: flex;
@@ -320,6 +361,8 @@ page {
   font-size: 24rpx;
   color: #333;
   position: relative;
+  padding: 0;
+  line-height: 50rpx;
 }
 .order-item-text {
   padding-top: 30rpx;
@@ -429,5 +472,17 @@ page {
   line-height: 100rpx;
   text-align: center;
   border-top: 1rpx solid #d8d8d8;
+}
+.getUserInfo-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: transparent;
+}
+.none{
+  display:none;
 }
 </style>
