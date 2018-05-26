@@ -58,7 +58,7 @@ var indexFuc = new indexFucClass();
 export default {
   data() {
     return {
-      wxUserInfo:false,
+      wxUserInfo:wx.getStorageSync('wxUserInfo') ? wx.getStorageSync('wxUserInfo') :false,
       isRegister: false,
       href: "",
       couponSwitch: false,
@@ -157,19 +157,26 @@ export default {
       var that = this;
       wx.getSetting({
         success(res) {
+          if(res.authSetting["scope.userInfo"]){
+            this.wxUserInfo = true;
+          }
           if (!res.authSetting["scope.userInfo"]) {
             wx.getUserInfo({
               withCredentials: true,
               success: res => {
                  that.wxUserInfo = true;
-                 wx.setStorageSync("wxUserInfo",res);
+                 wx.setStorageSync("wxUserInfo",true);
               },
               fail: resp => {
                 // 拒绝授权
                 wx.openSetting({
                   success: res => {
                     if (res.authSetting["scope.userInfo"]) {
+                      console.log('111111111111')
+                       that.wxUserInfo = true;
+                       wx.setStorageSync("wxUserInfo",true);
                     } else {
+                      console.log('22222222')
                     }
                   },
                   fail: res => {
@@ -179,7 +186,6 @@ export default {
                 });
               }
             });
-          } else {
           }
         },
         fail(res) {
@@ -214,18 +220,14 @@ export default {
         }
       );
     }
-
-    if (this.wxUserInfo) {
-      this.couponSwitch = true;
-    } else {
-      this.couponSwitch = false;
-    }
     // 授权结束
     // 判断是否展示活动页面
-    // http.post("/buyer/coupon/switch/v1", {}, true, "")
-    // .then((resp)=>{
-    //   console.log(resp.switch)
-    // });
+    // if(this.wxUserInfo){
+    //   http.post("/buyer/coupon/switch/v1", {}, true, "")
+    //   .then((resp)=>{
+    //     console.log(resp.switch)
+    //   });
+    // }
   },
   onReady() {
     console.log("ready");
