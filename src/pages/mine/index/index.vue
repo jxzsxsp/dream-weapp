@@ -7,7 +7,7 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover"/>
-      <a href="/pages/mine/register/main" class="ls-name">注册/</a>
+      <!-- <a href="/pages/mine/register/main" class="ls-name">注册/</a> -->
       <a href="/pages/mine/login/main" class="ls-name">登录</a>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover"/>
     </div>
@@ -24,12 +24,12 @@
         </div>
       </div>
     </div>
-    <div class="my-item my-item">
+    <!-- <div class="my-item my-item">
       <div class="my-title" @click="clickHandle('test click', $event)">
           <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>优惠券</span></div>
           <div class="my-title-r my-title-item"><i class="iconfont icon-jiantou"></i></div>
       </div>
-    </div>
+    </div> -->
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
   </div>

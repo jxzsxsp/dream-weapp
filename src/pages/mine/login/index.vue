@@ -11,10 +11,10 @@
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
-      <div class="navigator">
+      <!-- <div class="navigator">
         <a class="navigator-text" href="/pages/mine/register/main">去注册</a>
         <i class="iconfont icon-jiantou"></i>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
