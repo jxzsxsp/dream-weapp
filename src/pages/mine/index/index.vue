@@ -33,7 +33,7 @@
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
-    <div class="mask" v-if="(couponSwitch && !token) || isRegister">
+    <div class="mask" v-if="(isSwitch && !token) || isRegister">
       <div class="coupon-modal" :class="!isRegister? 'showReceive' : ''">
         <div class="in-coupon-modal">
             <div class="coupon-title">520元新人礼</div>
@@ -46,7 +46,7 @@
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
-    <img v-if="!couponSwitch && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
+    <img v-if="isSwitchGif && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift"/> 
   </div>
 </template>
 
@@ -63,7 +63,8 @@ export default {
         : false,
       isRegister: false,
       href: "",
-      couponSwitch: false,
+      isSwitch: false,
+      isSwitchGif:false,
       mobile: wx.getStorageSync("mobile"),
       token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
       lsUserInfo: wx.getStorageSync("lsUserInfo"),
@@ -141,8 +142,9 @@ export default {
       }
     },
     hideCouponModal() {
-      this.couponSwitch = false;
+      this.isSwitch = false;
       this.isRegister = false;
+      this.isSwitchGif = true;
     },
     receive() {
       wx.navigateTo({
@@ -150,7 +152,8 @@ export default {
       });
     },
     showIconGift() {
-      this.couponSwitch = true;
+      this.isSwitch = true;
+      this.isSwitchGif = false;
     },
     getAuthor() {
       this.getSetting();
@@ -207,6 +210,9 @@ export default {
           success: res => {
             that.wxUserInfo = true;
             wx.setStorageSync("wxUserInfo", true);
+            http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+                that.isSwitch = resp.switch;
+            });
           },
           fail: resp => {
             // 拒绝授权
@@ -216,6 +222,9 @@ export default {
                   console.log("111111111111");
                   that.wxUserInfo = true;
                   wx.setStorageSync("wxUserInfo", true);
+                   http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+                      that.isSwitch = resp.switch;
+                  });
                 } else {
                   console.log("22222222");
                 }
@@ -248,11 +257,13 @@ export default {
     }
     // 授权结束
     // 判断是否展示活动页面
-    if(this.wxUserInfo){
+    if (this.wxUserInfo) {
       http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-        this.couponSwitch = resp.data.swith;
+        that.isSwitch = resp.switch;
       });
-    } 
+      console.log("load");
+      console.log(that.isSwitch);
+    }
   },
   onReady() {
     console.log("ready");
