@@ -46,8 +46,10 @@ export default {
   },
   methods: {
     _checkCloth: function () {
+      var url = this.itemData.targetUrl;
+      url = encodeURIComponent(url);
       wx.navigateTo({
-        url: `/pages/webView/main?url=${ this.itemData.targetUrl }`
+        url: `/pages/webView/main?url=${ url }`
       })
     }
   }

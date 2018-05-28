@@ -13,7 +13,7 @@ export default {
     })
   },
   onLoad () {
-    this.url = this.$root.$mp.query.url
+    this.url = decodeURIComponent(this.$root.$mp.query.url);
   }
 }
 </script>
