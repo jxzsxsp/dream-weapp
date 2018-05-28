@@ -72,7 +72,7 @@ class Http {
 							icon: 'none',
 							mask: true
 						})
-						reject(res.data || {});						
+						// reject(res.data || {});						
 					}
 				},
 				fail (error){
