@@ -11,11 +11,11 @@
       </div>
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
-          <input type='text' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
+          <input type="number" maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item last-input-item">
           <i class="iconfont icon-yanzhengma"></i>
-          <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
+          <input type="number" maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
        <div class="argeement flex-style">
@@ -85,6 +85,12 @@ export default {
         if (!formValidate.isMobilePhone(this.mobile)) {
           wx.showToast({
             title: "请输入11位手机号",
+            icon: "none",
+            mask: true
+          });
+        } else if(!formValidate.isSixCode(this.identificateCode)){
+          wx.showToast({
+            title: "请输入6位验证码",
             icon: "none",
             mask: true
           });

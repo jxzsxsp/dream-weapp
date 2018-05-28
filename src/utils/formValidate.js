@@ -45,6 +45,14 @@ class FormValidate {
     var reg = /^1\d{10}$/
     return reg.test(s);
   }
+  
+  /**
+   * 是否是六位验证码
+   */
+  isSixCode(s) {
+    var reg = /^\d{6}$/
+    return reg.test(s);
+  }
 
   /**
    * 
