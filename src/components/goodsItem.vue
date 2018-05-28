@@ -81,6 +81,10 @@ export default {
   color: #999;
   font-size: 24rpx;
   flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+  width: 370rpx;
 }
 .item-price-detail{
   margin-top: 10rpx;

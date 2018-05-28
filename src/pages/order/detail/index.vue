@@ -122,7 +122,7 @@ export default {
     } 
   },
   onLoad () {
-    this.orderId = this.$root.$mp.query.id
+    this.orderId = this.$root.$mp.query.orderId
     this._getDetail()
     this._showRate()
   }
