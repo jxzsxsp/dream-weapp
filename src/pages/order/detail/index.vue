@@ -15,11 +15,11 @@
       </div>
     </div>
     <div class="order-address">
-        <i class="iconfont icon-zuobiao order-address-left"></i>
-        <div class="order-address-detail">
-           <div><span>{{ orderDetail.tradeInfo.userName }}</span><span class="telephone">{{ orderDetail.tradeInfo.mobileno }}</span></div>
-           <div class="order-address-text">{{ orderDetail.addressInfo.address }}</div>
-        </div>
+      <i class="iconfont icon-zuobiao order-address-left"></i>
+      <div class="order-address-detail">
+        <div><span>{{ orderDetail.tradeInfo.userName }}</span><span class="telephone">{{ orderDetail.tradeInfo.mobileno }}</span></div>
+        <div class="order-address-text">{{ orderDetail.addressInfo.address }}</div>
+      </div>
     </div>
     <div class="order-list">
         <div class="goods-item" v-for="(itemData, index) in orderDetail.tradeItemList" :key="index">
@@ -79,7 +79,7 @@
 <script>
 import goodsItem from '@/components/goodsItem'
 import http from '@/utils/http'
-import lsCountDown from '@/components/lsCountDown'
+import lsCountDown from '../template/lsCountDown'
 
 export default {
   components: {
