@@ -107,15 +107,16 @@ export default {
       });
     },
     navigateTo(href) {
-      if (this.token) {
-        wx.navigateTo({
+       wx.navigateTo({
           url: href
         });
-      } else {
-        wx.navigateTo({
-          url: "/pages/mine/login/main"
-        });
-      }
+      // if (this.token) {
+       
+      // } else {
+      //   wx.navigateTo({
+      //     url: "/pages/mine/login/main"
+      //   });
+      // }
     }
   },
   onLoad() {

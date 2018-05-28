@@ -246,13 +246,13 @@ export default {
   left:0;
 }
 .rate-modal{
-  width:543rpx;
+  width:576rpx;
   background: #fff;
   padding: 0;
   z-index:100;
   border-radius:10rpx;
   line-height:116rpx;
-  padding:40rpx 40rpx;
+  padding:40rpx 30rpx;
   margin:220rpx auto;
 }
 .rate-list{
@@ -297,7 +297,7 @@ export default {
   top:27rpx;
 }
 .list-memo{
-  width:200rpx;
+  width:215rpx;
   text-align:left;
   margin-left:20rpx;
   margin-right:30rpx;
