@@ -58,7 +58,9 @@ var indexFuc = new indexFucClass();
 export default {
   data() {
     return {
-      wxUserInfo:wx.getStorageSync('wxUserInfo') ? wx.getStorageSync('wxUserInfo') :false,
+      wxUserInfo: wx.getStorageSync("wxUserInfo")
+        ? wx.getStorageSync("wxUserInfo")
+        : false,
       isRegister: false,
       href: "",
       couponSwitch: false,
@@ -157,26 +159,26 @@ export default {
       var that = this;
       wx.getSetting({
         success(res) {
-          if(res.authSetting["scope.userInfo"]){
+          if (res.authSetting["scope.userInfo"]) {
             this.wxUserInfo = true;
           }
           if (!res.authSetting["scope.userInfo"]) {
             wx.getUserInfo({
               withCredentials: true,
               success: res => {
-                 that.wxUserInfo = true;
-                 wx.setStorageSync("wxUserInfo",true);
+                that.wxUserInfo = true;
+                wx.setStorageSync("wxUserInfo", true);
               },
               fail: resp => {
                 // 拒绝授权
                 wx.openSetting({
                   success: res => {
                     if (res.authSetting["scope.userInfo"]) {
-                      console.log('111111111111')
-                       that.wxUserInfo = true;
-                       wx.setStorageSync("wxUserInfo",true);
+                      console.log("111111111111");
+                      that.wxUserInfo = true;
+                      wx.setStorageSync("wxUserInfo", true);
                     } else {
-                      console.log('22222222')
+                      console.log("22222222");
                     }
                   },
                   fail: res => {
@@ -196,14 +198,38 @@ export default {
   },
   onLoad() {
     var that = this;
-    // 授权拒绝开始
+    // 授权开始
     wx.login({
       success: resp => {
         this.code = resp.code;
-        this.getSetting();
+        wx.getUserInfo({
+          withCredentials: true,
+          success: res => {
+            that.wxUserInfo = true;
+            wx.setStorageSync("wxUserInfo", true);
+          },
+          fail: resp => {
+            // 拒绝授权
+            wx.openSetting({
+              success: res => {
+                if (res.authSetting["scope.userInfo"]) {
+                  console.log("111111111111");
+                  that.wxUserInfo = true;
+                  wx.setStorageSync("wxUserInfo", true);
+                } else {
+                  console.log("22222222");
+                }
+              },
+              fail: res => {
+                if (res.authSetting["scope.userInfo"]) {
+                }
+              }
+            });
+          }
+        });
       }
     });
-    // 授权拒绝结束
+    // 授权结束
     this.token = wx.getStorageSync("token");
     this.mobile = wx.getStorageSync("mobile");
     this.lsUserInfo = wx.getStorageSync("lsUserInfo");
@@ -222,12 +248,9 @@ export default {
     }
     // 授权结束
     // 判断是否展示活动页面
-    // if(this.wxUserInfo){
-    //   http.post("/buyer/coupon/switch/v1", {}, true, "")
-    //   .then((resp)=>{
-    //     console.log(resp.switch)
-    //   });
-    // }
+    // http.post("/buyer/coupon/switch/v1", {}, true, "").then(resp => {
+    //   console.log(resp.switch);
+    // });
   },
   onReady() {
     console.log("ready");
@@ -484,7 +507,7 @@ page {
   z-index: 1000;
   background-color: transparent;
 }
-.none{
-  display:none;
+.none {
+  display: none;
 }
 </style>
