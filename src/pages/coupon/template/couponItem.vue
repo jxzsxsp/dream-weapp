@@ -1,25 +1,28 @@
 <template>
-  <div class="coupon-item">
+  <div class="coupon-item" :class="itemData.status === 1 ? 'red' : 'grey'">
     <div class="item-left">
       <div class="price">
         <p class="price-unit">￥</p>
-        <p class="price-amount">88</p>
+        <p class="price-amount">{{ itemData.couponAmount }}</p>
       </div>
-      <p class="price-restrict">满5000可用</p>
+      <p class="price-restrict">满{{ itemData.minTradeAmount }}元可用</p>
     </div>
-    <div class="item-center">
-      <p class="title">仅限链尚白条支付</p>
-      <p class="use-restrict">仅限首单使用</p>
-      <p class="use-date">使用与2018.04.05</p>
+    <div class="item-center" :class="itemData.status === 1 ? 'red' : 'grey'">
+      <p class="title">{{ itemData.couponItemTypeText }}</p>
+      <p class="use-restrict" v-if="itemData.conditionDesc">{{ itemData.conditionDesc}}</p>
+      <p class="use-date" v-if="itemData.period">{{ itemData.period }}</p>
+      <p class="use-date" v-if="itemData.useTime">使用于{{ itemData.useTime }}</p>
     </div>
     <div class="item-right">
-      <!-- <img class="image" :src="imgUrl"/> -->
+      <i class="iconfont icon-img_coupon_used icon" v-if="itemData.status === 2"></i>
+      <i class="iconfont icon-img_coupon_disabled icon" v-if="itemData.status === 4"></i>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ["itemData"],
 
 }
 </script>
@@ -41,49 +44,57 @@ export default {
   display: flex;
 }
 .price-unit {
-  color: #999999;
+  /* color: #999999; */
   font-size: 36rpx;
   margin-top: 20rpx;
 }
 .price-amount {
-  color: #999999;
+  /* color: #999999; */
   font-size: 72rpx;
 }
 .price-restrict {
   font-size: 28rpx;
-  color: #999999;
+  /* color: #999999; */
   text-align: center;
   margin-bottom: 36rpx;
 }
 .item-center {
+  /* color: red; */
   display: flex;
   flex-direction: column;
   padding-left: 20rpx;
   padding-top: 34rpx;
   padding-bottom: 33rpx;
-  width: 400rpx;
-  justify-content: space-between;
+  width: 300rpx;
+  justify-content: center;
 }
 .title {
   font-size: 36rpx;
-  color: #999999;
+  /* color: #999999; */
 }
 .use-restrict {
   font-size: 26rpx;
   color: #999999;
+  margin-top: 20rpx;
 }
 .use-date {
-  margin-top: 3rpx;
   font-size: 26rpx;
-  color: #999999;
+  /* color: #999999; */
+  margin-top: 20rpx;
 }
 .item-right {
   flex: 1;
   justify-content: center;
   align-items: center;
+  display: flex;
 }
-.image {
-  height: 120rpx;
-  width: 124rpx;
+.icon {
+  font-size: 120rpx;
+}
+.red {
+  color: red;
+}
+.grey {
+  color: #999999;
 }
 </style>

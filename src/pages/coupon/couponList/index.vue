@@ -7,7 +7,7 @@
     </div>
     
     <div class="coupon-tab-placeholder"></div>
-    <couponItem v-for="(itemData, index) in couponList" :key="index"></couponItem>
+    <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData"></couponItem>
     <listBottomLoading :loadingData="loadingData"></listBottomLoading>
   </scroll-view>
 </template>
@@ -20,7 +20,7 @@ import listBottomLoading from '@/components/list-bottom-loading'
 export default { 
   components: {
     couponItem,
-    listBottomLoading
+    listBottomLoading,
   },
   data () {
     return ({
