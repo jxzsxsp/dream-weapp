@@ -131,15 +131,9 @@ export default {
       });
     },
     navigateTo(href) {
-      if (this.token) {
-        wx.navigateTo({
+      wx.navigateTo({
           url: href
-        });
-      } else {
-        wx.navigateTo({
-          url: "/pages/mine/login/main"
-        });
-      }
+      });
     },
     hideCouponModal() {
       this.isSwitch = false;
