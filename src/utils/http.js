@@ -17,12 +17,10 @@ class Http {
   }
   // 其他域名get请求
   otherGet(url, data, isLoading, opts) {
-    data = this.getQuestData(data);
     return this.otherRequest(url, data, 'GET', isLoading);
   }
   // 其他域名post请求
   otherPost(url, data, isLoading, opts) {
-    data = this.getQuestData(data);
     return this.otherRequest(url, data, 'POST', isLoading);
   }
 
@@ -130,11 +128,10 @@ class Http {
   }
   //  静默登录
   quietLogin(code) {
-    var data = {
-      code: code
-    }
+    var data = {}
+    data = this.getQuestData(data);
+    data.data.code = code;
     var url = this.root + '/buyer/user/mini-app/quick-login/v1'
-
     this.otherPost(url, data, true).then(res => {
       if (res.data.code == 200) {
         wx.setStorageSync('token', res.data.data.token);

@@ -248,9 +248,11 @@ export default {
     }
     // 授权结束
     // 判断是否展示活动页面
-    // http.post("/buyer/coupon/switch/v1", {}, true, "").then(resp => {
-    //   console.log(resp.switch);
-    // });
+    if(this.wxUserInfo){
+      http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+        this.couponSwitch = resp.data.swith;
+      });
+    } 
   },
   onReady() {
     console.log("ready");
