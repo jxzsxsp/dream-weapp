@@ -54,7 +54,7 @@ export default {
   },
   onLoad () {
     // 外部跳转进来默认为未使用
-    this.selectedItem = this.$root.$mp.query.status || 1
+    this.selectedItem = Number(this.$root.$mp.query.status) || 1
     this._requestCoupon()
   },
   // 上拉刷新
