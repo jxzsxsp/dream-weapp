@@ -9,6 +9,6 @@ app.$mount()
 
 export default {
   config: {
-    navigationBarTitleText: '优惠券'
+    navigationBarTitleText: '我的优惠券'
   }
 }
