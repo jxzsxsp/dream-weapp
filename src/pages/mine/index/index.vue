@@ -97,22 +97,19 @@
     },
     methods: {
       lsLogout() {
-        var that = this;
         wx.showModal({
           content: "您确认退出登录吗？",
           success: function(res) {
             if (res.confirm) {
-              http.post("/buyer/user/mini-app/logout/v1", {}, true, "").then(
-                function(resp) {
+              http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
+                .then((resp) => {
                   wx.setStorageSync("token", "");
                   wx.setStorageSync("lsUserInfo", {});
-                  that.token = wx.getStorageSync("token");
-                },
-                function(resp) {
-                  console.log(resp);
-                }
-              );
-            } else if (res.cancel) {}
+                  this.token = wx.getStorageSync("token");
+                });
+            } else if (res.cancel) {
+  
+            }
           }
         });
       },
@@ -138,18 +135,16 @@
           });
       },
       getAuthor() {
-        var that = this;
         wx.getSetting({
-          success(res) {
+          success: res => {
             if (res.authSetting["scope.userInfo"]) {
-              that.getCouponSwitch();
+              this.getCouponSwitch();
             }
             if (!res.authSetting["scope.userInfo"]) {
               wx.getUserInfo({
                 withCredentials: true,
                 success: res => {
-  
-                  that.getCouponSwitch();
+                  this.getCouponSwitch();
                 },
                 fail: resp => {
                   // 拒绝打开设置页面
@@ -157,7 +152,7 @@
                     success: res => {
                       if (res.authSetting["scope.userInfo"]) {
                         console.log("勾选");
-                        that.getCouponSwitch();
+                        this.getCouponSwitch();
                       } else {
                         console.log("未勾选");
                       }
@@ -172,7 +167,7 @@
               });
             }
           },
-          fail(res) {
+          fail: res => {
             console.log("拒绝");
           }
         });
@@ -180,7 +175,7 @@
       getStatusCount() {
         if (this.token) {
           http.post("/buyer/trade/status/count/v1", {}, true, "")
-          .then((resp)=>{
+            .then((resp) => {
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
             });
@@ -191,18 +186,17 @@
       this.token = wx.getStorageSync("token");
       this.mobile = wx.getStorageSync("mobile");
       this.lsUserInfo = wx.getStorageSync("lsUserInfo");
-      var that = this;
       // 授权开始
       wx.getSetting({
-        success(res) {
+        success: res => {
           if (res.authSetting["scope.userInfo"]) {
-            that.getCouponSwitch();
+            this.getCouponSwitch();
           }
           if (!res.authSetting["scope.userInfo"]) {
-            that.wxUserInfo = false;
+            this.wxUserInfo = false;
           }
         },
-        fail(res) {
+        fail: res => {
           console.log("拒绝");
         }
       });
