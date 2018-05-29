@@ -9,7 +9,7 @@
 	},
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
-	"appid": "wx0bcf98762610c2b2",
+	"appid": "wx17c662e7f97e2e85",
 	"projectname": "lssmallsoftware",
 	"condition": {
 		"search": {
