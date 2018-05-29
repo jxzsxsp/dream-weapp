@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @click="clickHandle">
+  <div class="container">
     <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN" @click="getAuthor()"></button>
     <div class="my-account" v-if="token">
       <img class="head-pic" :src="lsUserInfo.avatar" background-size="cover" />
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="my-item my-item">
-      <div class="my-title" @click="clickHandle('test click', $event)">
+      <div class="my-title" @click="navigateTo('/pages/coupon/couponList/main')">
         <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>优惠券</span></div>
         <div class="my-title-r my-title-item"><i class="iconfont icon-jiantou"></i></div>
       </div>

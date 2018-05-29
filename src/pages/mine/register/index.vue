@@ -72,9 +72,9 @@
         if (
           this.mobile != "" &&
           this.identificateCode != "" &&
-          this.name != "" &&
           this.companyName != "" &&
-          this.isRead
+          this.contactName != "" &&
+          this.isRead==true
         ) {
           that.isCanclick = true;
         } else {
@@ -209,12 +209,14 @@
         } else {
           this.iconClass = "icon-ic_gou_kong";
           this.isRead = false;
+          this.isCanclick = false;
         }
         if (
           this.mobile != "" &&
           this.identificateCode != "" &&
-          this.name != "" &&
-          this.companyName != ""
+          this.contactName != "" &&
+          this.companyName != "" &&
+          this.isRead == true
         ) {
           this.isCanclick = true;
         } else {
@@ -228,7 +230,13 @@
     },
     onLoad() {
       console.log("onLoad");
+      this.iconClass = "icon-ic_gou_kong"
+      this.isRead = false;
+      this.contactName = "";
+      this.companyName = "";
+      this.mobile = "";
       this.identificateCode = "";
+      this.isCanclick = false;
     },
     onReady() {
       console.log("ready");
