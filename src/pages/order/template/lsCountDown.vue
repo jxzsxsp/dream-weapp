@@ -1,6 +1,10 @@
 <template>
   <div class="countdown-style">
     <p>剩余</p>
+    <!-- <p >{{ day }}天</p>
+    <p>{{ hour }}小时</p>
+    <p>{{ minute }}分钟</p>
+    <p>{{ second }}秒</p> -->
     <p v-if="day !== 0">{{ day }}天</p>
     <p v-if="hour !== 0">{{ hour }}小时</p>
     <p v-if="minute !== 0">{{ minute }}分钟</p>
@@ -14,6 +18,7 @@ export default {
   data () {
     return ({
       timeLeft: this.seconds,
+      intervalId: 0,
       second: 0,
       minute: 0,
       hour: 0,
@@ -22,7 +27,7 @@ export default {
   },
   methods: {
     _countDown () {
-      setInterval(() => {
+      return setInterval(() => {
         if (this.timeLeft > 0 ) {
           this.timeLeft--
         } 
@@ -39,8 +44,12 @@ export default {
   },
   onLoad () {
     // 开启定时
-    this._countDown()
+    this.intervalId = this._countDown()
+  },
+  onUnload () {
+    clearInterval(this.intervalId)
   }
+
 }
 </script>
 
