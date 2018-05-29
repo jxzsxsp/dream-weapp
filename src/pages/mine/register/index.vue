@@ -172,9 +172,9 @@
                       that.timedown(60);
                     },
                     function(resp) {
-                      wx.showToast({
-                        title: resp.message
-                      });
+                      // wx.showToast({
+                      //   title: resp.message
+                      // });
                     }
                   );
               }
