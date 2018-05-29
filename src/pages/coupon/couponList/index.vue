@@ -43,7 +43,8 @@ export default {
   methods: {
     selectTab (tabIndex) {
       this.selectedItem = tabIndex
-      this._requestCoupon ()
+      this.couponList = []
+      this._requestCoupon()
     },
     // 调用网络请求
     _requestCoupon () {
