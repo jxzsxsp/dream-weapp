@@ -13,7 +13,7 @@ export default {
   props: ["seconds","fontSize"],
   data () {
     return ({
-      timeLeft: this.seconds,
+      timeLeft: Math.floor(this.seconds/1000),
       intervalId: 0,
       second: 0,
       minute: 0,
