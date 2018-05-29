@@ -8,8 +8,8 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover" />
-      <div class="ls-name" @click="goToRegister('/pages/mine/register/main')">注册/</div>
-      <div class="ls-name" @click="goToRegister('/pages/mine/login/main')">登录</div>
+      <div class="ls-name" @click="navigateTo('/pages/mine/register/main')">注册/</div>
+      <div class="ls-name" @click="navigateTo('/pages/mine/login/main')">登录</div>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover" />
     </div>
     <div class="my-item">
@@ -41,7 +41,7 @@
           <div v-if="isRegister" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
           <img class="couponListImg" :src="couponListImg" />
         </div>
-        <div v-if="!isRegister" class="go-register-btn" @click="receive()">立即领取</div>
+        <div v-if="!isRegister" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
         <div v-if="isRegister" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
@@ -51,16 +51,12 @@
 </template>
 
 <script>
-  import indexFucClass from "./store";
   import http from "@/utils/http";
-  var indexFuc = new indexFucClass();
-  
   export default {
     data() {
       return {
         wxUserInfo: false,
         isRegister: false,
-        href: "",
         isSwitch: false,
         isSwitchGif: false,
         mobile: wx.getStorageSync("mobile"),
@@ -99,13 +95,7 @@
         statusCount: {}
       };
     },
-    components: {},
     methods: {
-      goToRegister(url) {
-        wx.navigateTo({
-          url: url
-        });
-      },
       lsLogout() {
         var that = this;
         wx.showModal({
@@ -136,55 +126,46 @@
         this.isRegister = false;
         this.isSwitchGif = true;
       },
-      receive() {
-        wx.navigateTo({
-          url: "/pages/mine/register/main"
-        });
-      },
       showIconGift() {
         this.isSwitch = true;
         this.isSwitchGif = false;
       },
-      getAuthor() {
-        this.getSetting();
+      getCouponSwitch() {
+        this.wxUserInfo = true;
+        http.post("/buyer/switch/coupon/v1", {}, true, "")
+          .then(resp => {
+            this.isSwitch = resp.switch;
+          });
       },
-      getSetting() {
+      getAuthor() {
         var that = this;
         wx.getSetting({
           success(res) {
             if (res.authSetting["scope.userInfo"]) {
-              that.wxUserInfo = true;
-              http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-                that.isSwitch = resp.switch;
-              });
+              that.getCouponSwitch();
             }
             if (!res.authSetting["scope.userInfo"]) {
               wx.getUserInfo({
                 withCredentials: true,
                 success: res => {
-                  that.wxUserInfo = true;
-                  wx.setStorageSync("wxUserInfo", true);
-                  http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-                    that.isSwitch = resp.switch;
-                  });
+  
+                  that.getCouponSwitch();
                 },
                 fail: resp => {
-                  // 拒绝授权
+                  // 拒绝打开设置页面
                   wx.openSetting({
                     success: res => {
                       if (res.authSetting["scope.userInfo"]) {
-                        console.log("111111111111");
-                        that.wxUserInfo = true;
-                        wx.setStorageSync("wxUserInfo", true);
-                        http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-                          that.isSwitch = resp.switch;
-                        });
+                        console.log("勾选");
+                        that.getCouponSwitch();
                       } else {
-                        console.log("22222222");
+                        console.log("未勾选");
                       }
                     },
                     fail: res => {
-                      if (res.authSetting["scope.userInfo"]) {}
+                      if (res.authSetting["scope.userInfo"]) {
+  
+                      }
                     }
                   });
                 }
@@ -195,18 +176,27 @@
             console.log("拒绝");
           }
         });
+      },
+      getStatusCount() {
+        if (this.token) {
+          http.post("/buyer/trade/status/count/v1", {}, true, "")
+          .then((resp)=>{
+              console.log(resp.statusCount);
+              this.statusCount = resp.statusCount;
+            });
+        }
       }
     },
     onLoad() {
+      this.token = wx.getStorageSync("token");
+      this.mobile = wx.getStorageSync("mobile");
+      this.lsUserInfo = wx.getStorageSync("lsUserInfo");
       var that = this;
       // 授权开始
       wx.getSetting({
         success(res) {
           if (res.authSetting["scope.userInfo"]) {
-            that.wxUserInfo = true;
-            http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-                that.isSwitch = resp.switch;
-            });
+            that.getCouponSwitch();
           }
           if (!res.authSetting["scope.userInfo"]) {
             that.wxUserInfo = false;
@@ -217,34 +207,16 @@
         }
       });
       // 授权结束
-      this.token = wx.getStorageSync("token");
-      this.mobile = wx.getStorageSync("mobile");
-      this.lsUserInfo = wx.getStorageSync("lsUserInfo");
-      var that = this;
-      if (this.token) {
-        http.post("/buyer/trade/status/count/v1", {}, true, "").then(
-          function(resp) {
-            console.log(resp.statusCount);
-            that.statusCount = resp.statusCount;
-            // wx.getStorageSync('statusCount',resp.data.statusCount);
-          },
-          function(resp) {
-            console.log(resp);
-          }
-        );
-      }
-      // 授权结束
     },
-    onReady() {
-      console.log("ready");
+    onShow() {
+      // 加载和返回首页时调接口
+      console.log('onShow');
+      this.getStatusCount();
     },
     mounted() {
       console.log("mounted");
       this.isRegister = this.$root.$mp.query.isRegister;
       console.log(this.isRegister + "0999");
-    },
-    created() {
-      console.log("created");
     }
   };
 </script>
