@@ -58,9 +58,7 @@
   export default {
     data() {
       return {
-        wxUserInfo: wx.getStorageSync("wxUserInfo") ?
-          wx.getStorageSync("wxUserInfo") :
-          false,
+        wxUserInfo: false,
         isRegister: false,
         href: "",
         isSwitch: false,
@@ -155,7 +153,10 @@
         wx.getSetting({
           success(res) {
             if (res.authSetting["scope.userInfo"]) {
-              this.wxUserInfo = true;
+              that.wxUserInfo = true;
+              http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+                that.isSwitch = resp.switch;
+              });
             }
             if (!res.authSetting["scope.userInfo"]) {
               wx.getUserInfo({
@@ -163,6 +164,9 @@
                 success: res => {
                   that.wxUserInfo = true;
                   wx.setStorageSync("wxUserInfo", true);
+                  http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+                    that.isSwitch = resp.switch;
+                  });
                 },
                 fail: resp => {
                   // 拒绝授权
@@ -172,6 +176,9 @@
                         console.log("111111111111");
                         that.wxUserInfo = true;
                         wx.setStorageSync("wxUserInfo", true);
+                        http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+                          that.isSwitch = resp.switch;
+                        });
                       } else {
                         console.log("22222222");
                       }
@@ -193,39 +200,20 @@
     onLoad() {
       var that = this;
       // 授权开始
-      wx.login({
-        success: resp => {
-          this.code = resp.code;
-          wx.getUserInfo({
-            withCredentials: true,
-            success: res => {
-              that.wxUserInfo = true;
-              wx.setStorageSync("wxUserInfo", true);
-              http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
+      wx.getSetting({
+        success(res) {
+          if (res.authSetting["scope.userInfo"]) {
+            that.wxUserInfo = true;
+            http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
                 that.isSwitch = resp.switch;
-              });
-            },
-            fail: resp => {
-              // 拒绝授权
-              wx.openSetting({
-                success: res => {
-                  if (res.authSetting["scope.userInfo"]) {
-                    console.log("111111111111");
-                    that.wxUserInfo = true;
-                    wx.setStorageSync("wxUserInfo", true);
-                    http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-                      that.isSwitch = resp.switch;
-                    });
-                  } else {
-                    console.log("22222222");
-                  }
-                },
-                fail: res => {
-                  if (res.authSetting["scope.userInfo"]) {}
-                }
-              });
-            }
-          });
+            });
+          }
+          if (!res.authSetting["scope.userInfo"]) {
+            that.wxUserInfo = false;
+          }
+        },
+        fail(res) {
+          console.log("拒绝");
         }
       });
       // 授权结束
@@ -246,14 +234,6 @@
         );
       }
       // 授权结束
-      // 判断是否展示活动页面
-      if (this.wxUserInfo) {
-        http.post("/buyer/switch/coupon/v1", {}, true, "").then(resp => {
-          that.isSwitch = resp.switch;
-        });
-        console.log("load");
-        console.log(that.isSwitch);
-      }
     },
     onReady() {
       console.log("ready");
