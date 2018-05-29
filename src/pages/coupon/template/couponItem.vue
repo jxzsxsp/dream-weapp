@@ -1,28 +1,28 @@
 <template>
-  <div class="coupon-item" :class="itemData.status === 1 ? 'red' : 'grey'">
+  <div class="coupon-item">
     <div class="item-left">
-      <div class="price">
+      <div class="price" :class="couponStatus === 1 ? 'red' : 'grey'">
         <p class="price-unit">￥</p>
         <p class="price-amount">{{ itemData.couponAmount }}</p>
       </div>
-      <p class="price-restrict">满{{ itemData.minTradeAmount }}元可用</p>
+      <p class="price-restrict" :class="couponStatus === 1 ? 'black' : 'grey'">满{{ itemData.minTradeAmount }}元可用</p>
     </div>
-    <div class="item-center" :class="itemData.status === 1 ? 'red' : 'grey'">
+    <div class="item-center" :class="couponStatus === 1 ? 'black' : 'grey'">
       <p class="title">{{ itemData.couponItemTypeText }}</p>
       <p class="use-restrict" v-if="itemData.conditionDesc">{{ itemData.conditionDesc}}</p>
-      <p class="use-date" v-if="itemData.period">{{ itemData.period }}</p>
-      <p class="use-date" v-if="itemData.useTime">使用于{{ itemData.useTime }}</p>
+      <p class="use-date" v-if="couponStatus === 4">{{ itemData.period }}</p>
+      <p class="use-date" v-if="couponStatus === 2">使用于{{ itemData.useTime }}</p>
     </div>
     <div class="item-right">
-      <i class="iconfont icon-img_coupon_used icon" v-if="itemData.status === 2"></i>
-      <i class="iconfont icon-img_coupon_disabled icon" v-if="itemData.status === 4"></i>
+      <i class="iconfont icon-img_coupon_used icon" v-if="couponStatus === 2"></i>
+      <i class="iconfont icon-img_coupon_disabled icon" v-if="couponStatus === 4"></i>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["itemData"],
+  props: ["itemData", "couponStatus"],
 
 }
 </script>
@@ -74,7 +74,7 @@ export default {
 }
 .use-restrict {
   font-size: 26rpx;
-  color: #999999;
+  /* color: #999999; */
   margin-top: 20rpx;
 }
 .use-date {
@@ -90,11 +90,15 @@ export default {
 }
 .icon {
   font-size: 120rpx;
+  color: #999999;
 }
 .red {
   color: red;
 }
 .grey {
   color: #999999;
+}
+.black {
+  color: black;
 }
 </style>

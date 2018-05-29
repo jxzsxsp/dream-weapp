@@ -7,7 +7,7 @@
     </div>
     
     <div class="coupon-tab-placeholder"></div>
-    <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData"></couponItem>
+    <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData" :couponStatus="selectedItem"></couponItem>
     <listBottomLoading :loadingData="loadingData"></listBottomLoading>
   </scroll-view>
 </template>
@@ -24,6 +24,7 @@ export default {
   },
   data () {
     return ({
+      // 根据优惠券状态设置，1-未使用   2-已使用， 4- 已失效
       selectedItem: 1,
       loadingStatus: 0,
       couponList: [],
@@ -34,7 +35,7 @@ export default {
       return ({
         isLoading: this.loadingStatus,
         loadingText: '没有更多了',
-        noOrderTips: "您还没有相关订单"
+        noOrderTips: "亲，没有优惠呦"
       })
     }
   },
