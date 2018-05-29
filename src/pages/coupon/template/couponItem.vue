@@ -5,13 +5,14 @@
         <p class="price-unit">￥</p>
         <p class="price-amount">{{ itemData.couponAmount }}</p>
       </div>
-      <p class="price-restrict" :class="couponStatus === 1 ? 'black' : 'grey'">满{{ itemData.minTradeAmount }}元可用</p>
+      <p class="price-restrict" :class="couponStatus === 1 ? 'dark-grey' : 'grey'">满{{ itemData.minTradeAmount }}元可用</p>
     </div>
-    <div class="item-center" :class="couponStatus === 1 ? 'black' : 'grey'">
-      <p class="title">{{ itemData.couponItemTypeText }}</p>
+    <div class="item-center" :class="couponStatus === 1 ? 'dark-grey' : 'grey'">
+      <p class="title" :class="couponStatus === 1 ? 'black' : 'grey'">{{ itemData.couponItemTypeText }}</p>
       <p class="use-restrict" v-if="itemData.conditionDesc">{{ itemData.conditionDesc}}</p>
       <p class="use-date" v-if="couponStatus === 4">{{ itemData.period }}</p>
       <p class="use-date" v-if="couponStatus === 2">使用于{{ itemData.useTime }}</p>
+      <p class="use-date" v-if="couponStatus === 1">还剩{{ itemData.remainDays }}天到期</p>
     </div>
     <div class="item-right">
       <i class="iconfont icon-img_coupon_used icon" v-if="couponStatus === 2"></i>
@@ -100,5 +101,8 @@ export default {
 }
 .black {
   color: black;
+}
+.dark-grey {
+  color: #666666;
 }
 </style>

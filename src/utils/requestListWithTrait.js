@@ -17,6 +17,7 @@ export default class RequestListWithTrait {
     this.pageNo = 0
     this.hasMore = true
     this.dataList = []
+    this.totalCount = 0
     this.pageSize = props.pageSize || 10
     this.url = props.url
     this.isLoading = props.isLoading || true
@@ -29,13 +30,15 @@ export default class RequestListWithTrait {
     if (this.traitName && data[this.traitName] !== this.trait) {
       this.pageNo = 0
       this.dataList = []
+      this.totalCount = 0
       this.hasMore = true
       return this._postWithData(data)
     } else {
+      // 特征没变化的时候，即还在当前列表的时候，判断是否到底，到底直接返回缓存数据，否则调用网络请求。
       if (this.hasMore === false) {
         return new Promise((resolve, reject) => {
           let loadingStatus = this._loadingStatus()
-          resolve({loadingStatus, dataList: this.dataList})
+          resolve({loadingStatus, dataList: this.dataList, totalCount: this.totalCount})
         })
       } else {
         return this._postWithData(data)
@@ -56,11 +59,13 @@ export default class RequestListWithTrait {
       res.list.map((item) => {
         this.dataList.push(item)
       })
-      return {dataList: this.dataList, loadingStatus: this._loadingStatus()}
+      this.totalCount = res.count
+      return {dataList: this.dataList, loadingStatus: this._loadingStatus(), totalCount: this.totalCount}
     })
   }
 
   _loadingStatus () {
+    // 配合 list-bottom-loading 2 为没有，1 为没有更多，0 为加载中
     if (this.dataList.length === 0) {
       return 2
     } else if (this.hasMore === false) {

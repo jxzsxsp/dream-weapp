@@ -1,7 +1,7 @@
 <template>
   <scroll-view>
     <div class="coupon-tab">
-      <div :class="selectedItem === 1 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(1)">未使用</div>
+      <div :class="selectedItem === 1 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(1)">未使用({{ remainCouponCount }})</div>
       <div :class="selectedItem === 2 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(2)">已使用</div>
       <div :class="selectedItem === 4 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(4)">已失效</div>
     </div>
@@ -28,6 +28,7 @@ export default {
       selectedItem: 1,
       loadingStatus: 0,
       couponList: [],
+      remainCouponCount: 0,
     })
   },
   computed: {
@@ -50,6 +51,9 @@ export default {
         console.log(res)
         this.loadingStatus = res.loadingStatus
         this.couponList = res.dataList
+        if (this.selectedItem === 1) {
+          this.remainCouponCount = res.totalCount
+        }
       })
     }
   },
