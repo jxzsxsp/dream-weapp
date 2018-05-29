@@ -99,7 +99,7 @@
       lsLogout() {
         wx.showModal({
           content: "您确认退出登录吗？",
-          success: function(res) {
+          success:res =>{
             if (res.confirm) {
               http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
                 .then((resp) => {
