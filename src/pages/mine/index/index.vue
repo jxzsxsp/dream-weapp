@@ -27,7 +27,7 @@
     </div>
     <div class="my-item my-item">
       <div class="my-title" @click="navigateTo('/pages/coupon/couponList/main')">
-        <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>优惠券</span></div>
+        <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>我的优惠券</span></div>
         <div class="my-title-r my-title-item"><i class="iconfont icon-jiantou"></i></div>
       </div>
     </div>
@@ -99,7 +99,7 @@
       lsLogout() {
         wx.showModal({
           content: "您确认退出登录吗？",
-          success:res =>{
+          success: res => {
             if (res.confirm) {
               http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
                 .then((resp) => {
@@ -182,7 +182,26 @@
         }
       }
     },
+      // 下拉刷新
+    onPullDownRefresh(){
+       wx.getSetting({
+        success: res => {
+          if (res.authSetting["scope.userInfo"]) {
+            
+          }
+          if (!res.authSetting["scope.userInfo"]) {
+            this.wxUserInfo = false;
+          }
+        },
+        fail: res => {
+          console.log("拒绝");
+        }
+       });
+      this.getStatusCount();
+      wx.stopPullDownRefresh()
+    },
     onLoad() {
+      console.log('onload')
       this.token = wx.getStorageSync("token");
       this.mobile = wx.getStorageSync("mobile");
       this.lsUserInfo = wx.getStorageSync("lsUserInfo");
@@ -201,10 +220,6 @@
         }
       });
       // 授权结束
-    },
-    onShow() {
-      // 加载和返回首页时调接口
-      console.log('onShow');
       this.getStatusCount();
     },
     mounted() {
