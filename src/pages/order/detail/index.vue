@@ -7,7 +7,6 @@
         <div class="status-title">
           <div class="status-text">订单{{ orderDetail.tradeInfo.showStatus }}</div>
           <lsCountDown 
-            v-if="orderDetail.tradeInfo.cancelRemainingTime"
             :seconds="orderDetail.tradeInfo.cancelRemainingTime">
           </lsCountDown>
         </div>

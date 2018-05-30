@@ -1,7 +1,6 @@
 <template>
-  <div class="countdown-style">
+  <div class="countdown-style" v-if="seconds">
     <p>剩余</p>
-    <p v-if="day !== 0">{{ day }}天</p>
     <p v-if="hour !== 0">{{ hour }}小时</p>
     <p v-if="minute !== 0">{{ minute }}分钟</p>
     <p v-if="second !== 0">{{ second }}秒</p>
@@ -13,12 +12,11 @@ export default {
   props: ["seconds","fontSize"],
   data () {
     return ({
-      timeLeft: Math.floor(this.seconds/1000),
+      timeLeft: 0,
       intervalId: 0,
       second: 0,
       minute: 0,
       hour: 0,
-      day: 0,
     })
   },
   methods: {
@@ -31,14 +29,16 @@ export default {
     }
   },
   watch: {
+    seconds () {
+      this.timeLeft = Math.floor(this.seconds/1000)
+    },
     timeLeft () {
-      this.day = Math.floor(this.timeLeft/86400)
-      this.hour = Math.floor(this.timeLeft/3600 - this.day*24)
-      this.minute = Math.floor(this.timeLeft/60 - this.day*24*60 - this.hour*60 )
-      this.second = Math.floor(this.timeLeft - this.day*24*60*60 - this.hour* 60*60 - this.minute*60)
+      this.hour = Math.floor(this.timeLeft/3600)
+      this.minute = Math.floor(this.timeLeft/60 - this.hour*60 )
+      this.second = Math.floor(this.timeLeft - this.hour* 60*60 - this.minute*60)
     }
   },
-  onLoad () {
+  onLoad (options) {
     // 开启定时
     this.intervalId = this._countDown()
   },
