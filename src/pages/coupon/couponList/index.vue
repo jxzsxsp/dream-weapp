@@ -42,8 +42,10 @@ export default {
   },
   methods: {
     selectTab (tabIndex) {
-      this.selectedItem = tabIndex
-      this.couponList = []
+      if (tabIndex !== this.selectedItem) {
+        this.couponList = []
+        this.selectedItem = tabIndex
+      }
       this._requestCoupon()
     },
     // 调用网络请求
