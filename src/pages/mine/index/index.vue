@@ -30,7 +30,7 @@
         <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>优惠券</span></div>
         <div class="my-title-r my-title-item"><i class="iconfont icon-jiantou"></i></div>
       </div>
-    </div> -->
+    </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
     <div class="mask" v-if="(isSwitch && !token) || isRegister">
