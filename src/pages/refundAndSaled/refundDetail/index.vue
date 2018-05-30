@@ -111,7 +111,7 @@ export default {
     }
   },
   onLoad () {
-    this.refundId = this.$root.$mp.query.id
+    this.refundId = this.$root.$mp.query.refundId
     this._getRefundDetail()
   }
 }

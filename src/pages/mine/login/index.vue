@@ -7,14 +7,14 @@
       </div>
       <div class="input-item">
           <i class="iconfont icon-yanzhengma"></i>
-          <input maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
+          <input type='number' maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
-      <div class="navigator">
+      <!-- <div class="navigator">
         <a class="navigator-text" href="/pages/mine/register/main">去注册</a>
         <i class="iconfont icon-jiantou"></i>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -115,11 +115,7 @@ export default {
                         console.log('9999999');
                         that.timedown(60);
                       },function(resp){
-                        // wx.showToast({
-                        //   title:resp.message,
-                        //   icon: 'none',
-                        //   mask: true
-                        // })
+                        
                       }
                     )
                   },

@@ -18,7 +18,7 @@
           <span class="lt-right red">{{order.tradeInfo.showStatus!='待评价'?order.tradeInfo.showStatus:'已收货'}}</span>
         </div>
         <div v-for="(item,itemIndex) in order.tradeItemList" :key="itemIndex">
-          <a :href="'/pages/order/detail/main?id=' + order.tradeInfo.tradeId">
+          <a :href="'/pages/order/detail/main?orderId=' + order.tradeInfo.tradeId">
             <itemTemplate :itemData="item"></itemTemplate>
           </a>
         </div>

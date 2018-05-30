@@ -112,7 +112,7 @@ export default {
     }
   },
   onLoad () {
-    this.workTicketNo = this.$root.$mp.query.id
+    this.workTicketNo = this.$root.$mp.query.workTicketNo
     this._getSaledDetail()
   }
 }

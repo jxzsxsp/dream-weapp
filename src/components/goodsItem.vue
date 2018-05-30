@@ -46,8 +46,10 @@ export default {
   },
   methods: {
     _checkCloth: function () {
+      var url = this.itemData.targetUrl;
+      url = encodeURIComponent(url);
       wx.navigateTo({
-        url: `/pages/webView/main?url=${ this.itemData.targetUrl }`
+        url: `/pages/webView/main?url=${ url }`
       })
     }
   }
@@ -79,6 +81,10 @@ export default {
   color: #999;
   font-size: 24rpx;
   flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+  width: 370rpx;
 }
 .item-price-detail{
   margin-top: 10rpx;
