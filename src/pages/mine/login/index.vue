@@ -3,7 +3,7 @@
     <div class="input-box">
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
-          <input type='number' v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
+          <input type='number' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-yanzhengma"></i>
@@ -11,10 +11,10 @@
           <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
-      <!-- <div class="navigator">
+      <div class="navigator">
         <a class="navigator-text" href="/pages/mine/register/main">去注册</a>
         <i class="iconfont icon-jiantou"></i>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ export default {
       if(this.isCanclick){
         if(!formValidate.isMobilePhone(this.mobile)){
            wx.showToast({
-            title: '手机号不正确！',
+            title: '请输入11位手机号',
             icon: 'none',
             mask: true
           })
@@ -139,7 +139,7 @@ export default {
         var timer1 = setInterval(function(){ 
             if(time>0){
                 time--;
-                that.codeButtonMessage = (+time+'秒后重发');
+                that.codeButtonMessage = (+time+'s后请重试');
                 that.isTimeDown = true;
             }else{
                 clearInterval(timer1);

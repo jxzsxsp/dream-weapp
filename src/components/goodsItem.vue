@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .list-item{
   display: flex;
   border-bottom:1rpx solid #eee;

@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
+    "builddev": "rimraf dist && NODE_ENV=development node build/build.js",
     "start": "node build/dev-server.js",
     "alpha": "NODE_ENV=alpha node build/dev-server.js",
     "buildalpha": "rimraf dist && NODE_ENV=alpha  node build/build.js",

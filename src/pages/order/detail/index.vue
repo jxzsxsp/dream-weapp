@@ -4,16 +4,21 @@
     <div class="order-status">
       <img class="status-bg" :src="statusBg" background-size="cover"/>
       <div class="status-content flex-style" @click="isShowRate=true">
-        <div class="status-text">订单{{ orderDetail.tradeInfo.showStatus }}</div>
+        <div class="status-title">
+          <div class="status-text">订单{{ orderDetail.tradeInfo.showStatus }}</div>
+          <lsCountDown 
+            :seconds="orderDetail.tradeInfo.cancelRemainingTime">
+          </lsCountDown>
+        </div>
         <i class="iconfont icon-jiantou"></i>
       </div>
     </div>
     <div class="order-address">
-        <i class="iconfont icon-zuobiao order-address-left"></i>
-        <div class="order-address-detail">
-           <div><span>{{ orderDetail.tradeInfo.userName }}</span><span class="telephone">{{ orderDetail.tradeInfo.mobileno }}</span></div>
-           <div class="order-address-text">{{ orderDetail.addressInfo.address }}</div>
-        </div>
+      <i class="iconfont icon-zuobiao order-address-left"></i>
+      <div class="order-address-detail">
+        <div><span>{{ orderDetail.tradeInfo.userName }}</span><span class="telephone">{{ orderDetail.tradeInfo.mobileno }}</span></div>
+        <div class="order-address-text">{{ orderDetail.addressInfo.address }}</div>
+      </div>
     </div>
     <div class="order-list">
         <div class="goods-item" v-for="(itemData, index) in orderDetail.tradeItemList" :key="index">
@@ -73,10 +78,12 @@
 <script>
 import goodsItem from '@/components/goodsItem'
 import http from '@/utils/http'
+import lsCountDown from '../template/lsCountDown'
 
 export default {
   components: {
-    goodsItem
+    goodsItem,
+    lsCountDown,
   },
   data () {
     return {
@@ -142,6 +149,7 @@ export default {
   width:100%;
   position:relative;
   margin-bottom:20rpx;
+  z-index: 1;
 }
 .goods-item {
   flex-direction: column;
@@ -151,7 +159,7 @@ export default {
   width:100%;
   height:140rpx;
   position:absolute;
-  z-index:0;
+  z-index:-1;
 }
 .flex-style{
   display:flex;
@@ -167,11 +175,17 @@ export default {
 }
 .status-content{
   padding:0 20rpx;
-  line-height:140rpx;
+  height: 140rpx;
   color:#fff;
   font-size:34rpx;
-  z-index:10;
-  position: relative;
+}
+.status-title {
+  display: flex;
+  flex-direction: column;
+}
+.status-countdown {
+  margin-top: 20rpx;
+  font-size: 26rpx;
 }
 .order-address{
   width:710rpx;

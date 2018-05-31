@@ -6,31 +6,29 @@
         <p class="status-text">{{ orderStatus.status }}</p>
       </div>
 
-      <div>
-        <div class="info-container" v-if="afterSaleDetail.status === 2 && !afterSaleDetail.compensateTypeText">
-          <div class="status-item">
-            <p class="font-detail">退款金额</p>
-            <p class="font-detail red-color">{{ '￥' + afterSaleDetail.amount }}</p>
-          </div>
-          <div class="seperator-line"></div>
-          <div class="status-item" @click="_getSaledReceipt">
-            <p class="font-detail">查看退款凭证</p>
-            <i class="iconfont icon-jiantou"></i>
-          </div>
+      <div class="info-container" v-if="afterSaleDetail.status === 2 && !afterSaleDetail.compensateTypeText">
+        <div class="status-item">
+          <p class="font-detail">退款金额</p>
+          <p class="font-detail red-color">{{ '￥' + afterSaleDetail.amount }}</p>
         </div>
-        <div class="info-container" v-if="afterSaleDetail.status === 2 && afterSaleDetail.compensateTypeText ">
-          <div class="status-item">
-            <p class="font-detail">赔付方式</p>
-            <p class="font-detail">{{ afterSaleDetail.compensateTypeText }}</p>
-          </div>
+        <div class="seperator-line"></div>
+        <div class="status-item" @click="_getSaledReceipt">
+          <p class="font-detail">查看退款凭证</p>
+          <i class="iconfont icon-jiantou"></i>
         </div>
-        <div class="info-container" v-if="afterSaleDetail.status === 3">
-          <div class="status-item">
-            <p class="font-detail">拒绝原因</p>
-          </div>
-          <div class="refuse-detail">
-            <p class="font-detail">{{ afterSaleDetail.declineReason }}</p>
-          </div>
+      </div>
+      <div class="info-container" v-if="afterSaleDetail.status === 2 && afterSaleDetail.compensateTypeText ">
+        <div class="status-item">
+          <p class="font-detail">赔付方式</p>
+          <p class="font-detail">{{ afterSaleDetail.compensateTypeText }}</p>
+        </div>
+      </div>
+      <div class="info-container" v-if="afterSaleDetail.status === 3">
+        <div class="status-item">
+          <p class="font-detail">拒绝原因</p>
+        </div>
+        <div class="refuse-detail">
+          <p class="font-detail">{{ afterSaleDetail.declineReason }}</p>
         </div>
       </div>
 
@@ -38,7 +36,7 @@
         <div class="goods-info">
           <p class="font-detail">商品信息</p>
         </div>
-        <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList" :key="index">
+        <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList">
           <goodsItem :itemData="order"></goodsItem>
         </div>
       </div>
@@ -64,6 +62,7 @@ export default {
     return ({
       statusBackgroundPic: require('@/images/statusBg.png'),
       afterSaleDetail: {},
+      // 订单 id
       workTicketNo: 0,
     })
   },

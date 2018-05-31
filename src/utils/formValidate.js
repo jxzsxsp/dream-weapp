@@ -42,7 +42,15 @@ class FormValidate {
    * 手机号验证
    */
   isMobilePhone(s) {
-    var reg = /^1[3|4|5|6|7|8][0-9]\d{4,8}$/
+    var reg = /^1\d{10}$/
+    return reg.test(s);
+  }
+  
+  /**
+   * 是否是六位验证码
+   */
+  isSixCode(s) {
+    var reg = /^\d{6}$/
     return reg.test(s);
   }
 
@@ -61,7 +69,7 @@ class FormValidate {
     }
     if (!this.isMobilePhone(s)) {
       wx.showToast({
-        title: '手机号不正确！',
+        title: '请输入11位手机号',
         icon: 'none',
         mask: true
       })
