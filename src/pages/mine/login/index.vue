@@ -3,7 +3,7 @@
     <div class="input-box">
       <div class="input-item">
           <i class="iconfont icon-shouji"></i>
-          <input type='text' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
+          <input type='number' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item">
           <i class="iconfont icon-yanzhengma"></i>
