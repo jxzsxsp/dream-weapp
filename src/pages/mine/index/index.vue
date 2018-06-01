@@ -178,6 +178,7 @@
             .then((resp) => {
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
+              wx.stopPullDownRefresh()
             });
         }
       }
@@ -187,10 +188,11 @@
        wx.getSetting({
         success: res => {
           if (res.authSetting["scope.userInfo"]) {
-            
+            wx.stopPullDownRefresh()
           }
           if (!res.authSetting["scope.userInfo"]) {
             this.wxUserInfo = false;
+            wx.stopPullDownRefresh()
           }
         },
         fail: res => {
@@ -198,7 +200,6 @@
         }
        });
       this.getStatusCount();
-      wx.stopPullDownRefresh()
     },
     onLoad() {
       console.log('onload')
