@@ -179,6 +179,7 @@
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
               wx.stopPullDownRefresh()
+              console.log( '3333' )
             });
         }
       }
@@ -189,10 +190,12 @@
         success: res => {
           if (res.authSetting["scope.userInfo"]) {
             wx.stopPullDownRefresh()
+            console.log( '111' )
           }
           if (!res.authSetting["scope.userInfo"]) {
             this.wxUserInfo = false;
             wx.stopPullDownRefresh()
+            console.log( '222' )
           }
         },
         fail: res => {
