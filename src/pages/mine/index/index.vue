@@ -19,7 +19,8 @@
       </div>
       <div class="order-tabs">
         <div class="index-order-item" v-for="(order, index) in orderStatus" :key="index" @click="navigateTo(order.href)">
-          <i v-if="(statusCount[index+1]) && token" class="superscript">{{statusCount[index+1]}}</i>
+          <i v-if="(statusCount[index+1])>99 && token" class="superscript">...</i>
+          <i v-if="(statusCount[index+1])<=99 && token" class="superscript">{{ statusCount[index+1] }}</i>
           <i class="iconfont" :class="order.class"></i>
           <div class="order-item-text">{{order.text}}</div>
         </div>
@@ -179,8 +180,9 @@
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
               wx.stopPullDownRefresh()
-              console.log( '3333' )
             });
+        }else{
+          wx.stopPullDownRefresh()
         }
       }
     },
@@ -189,13 +191,11 @@
        wx.getSetting({
         success: res => {
           if (res.authSetting["scope.userInfo"]) {
-            wx.stopPullDownRefresh()
-            console.log( '111' )
+           
           }
           if (!res.authSetting["scope.userInfo"]) {
             this.wxUserInfo = false;
-            wx.stopPullDownRefresh()
-            console.log( '222' )
+            
           }
         },
         fail: res => {
@@ -326,15 +326,16 @@
   }
   
   .superscript {
-    height: 24rpx;
-    line-height: 24rpx;
-    font-size: 20rpx;
-    color: #fff;
-    background: #d0021b;
-    position: absolute;
-    right: 32rpx;
-    border-radius: 50%;
-    padding: 3rpx 8rpx;
+    height:30rpx;
+    width:30rpx;
+    line-height:30rpx;
+    font-size:20rpx;
+    color:#fff;
+    background:#d0021b;
+    position:absolute;
+    right:32rpx;
+    border-radius:50%;
+    top:-7rpx;
   }
   
   .iconfont.icon-red {
