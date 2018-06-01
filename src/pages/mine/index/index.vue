@@ -191,18 +191,16 @@
        wx.getSetting({
         success: res => {
           if (res.authSetting["scope.userInfo"]) {
-           
-          }
-          if (!res.authSetting["scope.userInfo"]) {
+            this.getStatusCount();
+          }else if(!res.authSetting["scope.userInfo"]) {
             this.wxUserInfo = false;
-            
+            wx.stopPullDownRefresh()
           }
         },
         fail: res => {
           console.log("拒绝");
         }
        });
-      this.getStatusCount();
     },
     onLoad() {
       console.log('onload')
