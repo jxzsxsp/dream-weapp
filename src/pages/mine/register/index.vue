@@ -102,6 +102,7 @@
                 this.code = resp.code;
                 wx.getUserInfo({
                   withCredentials: true,
+                  lang:'zh_CN',
                   success: res => {
                     this.userInfo = res;
                     // 调用获取验证码接口

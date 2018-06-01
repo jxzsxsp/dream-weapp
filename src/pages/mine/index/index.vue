@@ -144,6 +144,7 @@
             if (!res.authSetting["scope.userInfo"]) {
               wx.getUserInfo({
                 withCredentials: true,
+                lang:'zh_CN',
                 success: res => {
                   this.getCouponSwitch();
                 },
