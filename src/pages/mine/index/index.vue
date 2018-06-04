@@ -248,6 +248,10 @@
     },
     mounted() {
       console.log("mounted");
+    },
+    onShow(){
+      this.token = wx.getStorageSync("token")
+      this.lsUserInfo = wx.getStorageSync("lsUserInfo")
     }
   };
 </script>
