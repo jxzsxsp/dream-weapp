@@ -28,8 +28,15 @@
     </div>
     <div class="my-item my-item">
       <div class="my-title" @click="navigateTo('/pages/coupon/couponList/main')">
-        <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>我的优惠券</span></div>
-        <div class="my-title-r my-title-item"><i class="iconfont icon-jiantou"></i></div>
+        <div class="my-title-l my-title-item">
+          <i class="iconfont icon-youhuiquan icon-red"></i>
+          <span>我的优惠券</span>
+        </div>
+        <div class="my-title-r my-title-item">
+          <span v-if='token && canUseCouponCount>0 ' class="color-red">{{ canUseCouponCount}}张可使用</span>
+          <span v-if='token && canUseCouponCount==0 ' class="color-red">无可用优惠券</span>
+          <i class="iconfont icon-jiantou"></i>
+        </div>
       </div>
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
@@ -60,6 +67,7 @@
         isSwitch: false,
         hasSendMiniAppActiveCoupon: false,
         isSwitchGif: false,
+        canUseCouponCount:0,
         mobile: wx.getStorageSync("mobile"),
         token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
         lsUserInfo: wx.getStorageSync("lsUserInfo"),
@@ -104,10 +112,10 @@
             if (res.confirm) {
               http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
                 .then((resp) => {
-                  wx.setStorageSync("token", "");
-                  wx.setStorageSync("lsUserInfo", {});
-                  this.token = wx.getStorageSync("token");
-                  
+                  wx.setStorageSync("token", "")
+                  wx.setStorageSync("lsUserInfo", {})
+                  this.token = wx.getStorageSync("token")
+                  this.canUseCouponCount = 0
                 });
             } else if (res.cancel) {
   
@@ -186,6 +194,16 @@
         }else{
           wx.stopPullDownRefresh()
         }
+      },
+      getCouponCount() {
+        if (this.token) {
+          http.post("/buyer/coupon/list/v1", {status:1}, true, "")
+            .then((resp) => {
+              this.canUseCouponCount = resp.count;
+            });
+        }else{
+         
+        }
       }
     },
       // 下拉刷新
@@ -203,6 +221,7 @@
           console.log("拒绝");
         }
        });
+       this.getCouponCount();
     },
     onLoad() {
       console.log('onload')
@@ -225,6 +244,7 @@
       });
       // 授权结束
       this.getStatusCount();
+      this.getCouponCount();
     },
     mounted() {
       console.log("mounted");
@@ -492,6 +512,9 @@
   }
   
   .mobile {
+    color: #d0021b;
+  }
+  .color-red{
     color: #d0021b;
   }
   
