@@ -8,7 +8,7 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover" />
-      <div class="ls-name" @click="navigateTo('/pages/mine/register/main')">注册/</div>
+      <div class="ls-name" @click="navigateTo('/pages/mine/login/main')">注册/</div>
       <div class="ls-name" @click="navigateTo('/pages/mine/login/main')">登录</div>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover" />
     </div>
@@ -34,20 +34,20 @@
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
-    <div class="mask" v-if="(isSwitch && !token) || isRegister">
-      <div class="coupon-modal" :class="!isRegister? 'showReceive' : ''">
+    <div class="mask" v-if="(isSwitch && !token) || (isSwitch && hasSendMiniAppActiveCoupon)">
+      <div class="coupon-modal" :class="!token? 'showReceive' : ''">
         <div class="in-coupon-modal">
           <div class="coupon-title">520元新人礼</div>
-          <div v-if="!isRegister && !token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
-          <div v-if="isRegister" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
+          <div v-if="!token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
+          <div v-if="hasSendMiniAppActiveCoupon && token" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
           <img class="couponListImg" :src="couponListImg" />
         </div>
-        <div v-if="!isRegister" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
-        <div v-if="isRegister" class="follow">关注公众号可参加更多优惠</div>
+        <div v-if="isSwitch && !token" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
+        <div v-if="hasSendMiniAppActiveCoupon && token" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
-    <img v-if="isSwitchGif && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift" />
+    <img v-if="isSwitchGif  && !token" @click="showIconGift" class="iconGift" :src="iconGift" />
   </div>
 </template>
 
@@ -57,8 +57,8 @@
     data() {
       return {
         wxUserInfo: false,
-        isRegister: false,
         isSwitch: false,
+        hasSendMiniAppActiveCoupon: false,
         isSwitchGif: false,
         mobile: wx.getStorageSync("mobile"),
         token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
@@ -107,6 +107,7 @@
                   wx.setStorageSync("token", "");
                   wx.setStorageSync("lsUserInfo", {});
                   this.token = wx.getStorageSync("token");
+                  
                 });
             } else if (res.cancel) {
   
@@ -121,7 +122,6 @@
       },
       hideCouponModal() {
         this.isSwitch = false;
-        this.isRegister = false;
         this.isSwitchGif = true;
       },
       showIconGift() {
@@ -130,9 +130,10 @@
       },
       getCouponSwitch() {
         this.wxUserInfo = true;
-        http.post("/buyer/switch/coupon/v1", {}, true, "")
+        http.post("/buyer/switch/coupon/v1", {}, true)
           .then(resp => {
-            this.isSwitch = resp.switch;
+            this.isSwitch = resp.switch
+            this.hasSendMiniAppActiveCoupon = resp.hasSendMiniAppActiveCoupon
           });
       },
       getAuthor() {
@@ -227,8 +228,6 @@
     },
     mounted() {
       console.log("mounted");
-      this.isRegister = this.$root.$mp.query.isRegister;
-      console.log(this.isRegister + "0999");
     }
   };
 </script>

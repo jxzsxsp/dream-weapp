@@ -75,6 +75,7 @@ export default {
               // console.log(resp.token);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp);
+              wx.setStorageSync("mobile", resp.mobile);
               var loginToUrl = wx.getStorageSync('loginToUrl');
               if(loginToUrl){
                 wx.removeStorage({"key":"loginToUrl"})

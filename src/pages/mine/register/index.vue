@@ -131,7 +131,7 @@
                             });
                           }
                           wx.redirectTo({
-                            url: "/pages/mine/index/main?isRegister=1"
+                            url: "/pages/mine/index/main"
                           });
                         },
                         function(resp) {
