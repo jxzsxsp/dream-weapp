@@ -7,7 +7,7 @@ let couponListInstance = new RequestListWithTrait({
 })
 
 const api = {
-  getCouponList: (data) => couponListInstance.postWithTrait(data)
+  getCouponList: (data, forceUpdate) => couponListInstance.postWithTrait(data, forceUpdate)
 }
 
 export default api
