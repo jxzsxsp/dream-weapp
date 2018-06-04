@@ -250,8 +250,11 @@
       console.log("mounted");
     },
     onShow(){
+      console.log('onShow')
       this.token = wx.getStorageSync("token")
       this.lsUserInfo = wx.getStorageSync("lsUserInfo")
+      this.getStatusCount();
+      this.getCouponCount();
     }
   };
 </script>
