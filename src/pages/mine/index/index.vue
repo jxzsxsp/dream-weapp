@@ -368,7 +368,6 @@
   }
   
   .my-title-r {
-    font-size: 24rpx;
     color: #999999;
   }
   
