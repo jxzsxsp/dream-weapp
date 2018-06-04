@@ -197,7 +197,7 @@
       },
       getCouponCount() {
         if (this.token) {
-          http.post("/buyer/coupon/list/v1", {status:1}, true, "")
+          http.post("/buyer/coupon/list/v1", {status:1}, false, '')
             .then((resp) => {
               this.canUseCouponCount = resp.count;
             });
