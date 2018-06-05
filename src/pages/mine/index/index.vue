@@ -8,7 +8,7 @@
     </div>
     <div class="my-account" v-if="!token">
       <img class="head-pic" :src="headPic" background-size="cover" />
-      <div class="ls-name" @click="navigateTo('/pages/mine/register/main')">注册/</div>
+      <div class="ls-name" @click="navigateTo('/pages/mine/login/main')">注册/</div>
       <div class="ls-name" @click="navigateTo('/pages/mine/login/main')">登录</div>
       <img class="my-account-bg" :src="myAccountBg" background-size="cover" />
     </div>
@@ -19,7 +19,8 @@
       </div>
       <div class="order-tabs">
         <div class="index-order-item" v-for="(order, index) in orderStatus" :key="index" @click="navigateTo(order.href)">
-          <i v-if="(statusCount[index+1]) && token" class="superscript">{{statusCount[index+1]}}</i>
+          <i v-if="(statusCount[index+1])>99 && token" class="superscript">...</i>
+          <i v-if="(statusCount[index+1])<=99 && token" class="superscript">{{ statusCount[index+1] }}</i>
           <i class="iconfont" :class="order.class"></i>
           <div class="order-item-text">{{order.text}}</div>
         </div>
@@ -27,26 +28,33 @@
     </div>
     <div class="my-item my-item">
       <div class="my-title" @click="navigateTo('/pages/coupon/couponList/main')">
-        <div class="my-title-l my-title-item"><i class="iconfont icon-youhuiquan icon-red"></i><span>我的优惠券</span></div>
-        <div class="my-title-r my-title-item"><i class="iconfont icon-jiantou"></i></div>
+        <div class="my-title-l my-title-item">
+          <i class="iconfont icon-youhuiquan icon-red"></i>
+          <span>我的优惠券</span>
+        </div>
+        <div class="my-title-r my-title-item">
+          <span v-if='token && canUseCouponCount>0 ' class="color-red">{{ canUseCouponCount}}张可使用</span>
+          <span v-if='token && canUseCouponCount==0 ' class="color-red">无可用优惠券</span>
+          <i class="iconfont icon-jiantou"></i>
+        </div>
       </div>
     </div>
     <div class="telephone">客服电话：400-821-7111（服务时间：工作日9:00-18:00）</div>
     <div class="btn btn-default btn-lg btn-color-red btn-login-out" v-if="token" @click="lsLogout">退出登录</div>
-    <div class="mask" v-if="(isSwitch && !token) || isRegister">
-      <div class="coupon-modal" :class="!isRegister? 'showReceive' : ''">
+    <div class="mask" v-if="(isSwitch && !token) || (isSwitch && hasSendMiniAppActiveCoupon && token)">
+      <div class="coupon-modal" :class="!token? 'showReceive' : ''">
         <div class="in-coupon-modal">
           <div class="coupon-title">520元新人礼</div>
-          <div v-if="!isRegister && !token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
-          <div v-if="isRegister" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
+          <div v-if="!token" class="coupon-con">未下单用户注册登录送520元大礼包</div>
+          <div v-if="hasSendMiniAppActiveCoupon && token" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
           <img class="couponListImg" :src="couponListImg" />
         </div>
-        <div v-if="!isRegister" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
-        <div v-if="isRegister" class="follow">关注公众号可参加更多优惠</div>
+        <div v-if="isSwitch && !token" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
+        <div v-if="hasSendMiniAppActiveCoupon && token" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
     </div>
-    <img v-if="isSwitchGif && !isRegister && !token" @click="showIconGift" class="iconGift" :src="iconGift" />
+    <img v-if="isSwitchGif  && !token" @click="showIconGift" class="iconGift" :src="iconGift" />
   </div>
 </template>
 
@@ -56,9 +64,10 @@
     data() {
       return {
         wxUserInfo: false,
-        isRegister: false,
         isSwitch: false,
+        hasSendMiniAppActiveCoupon: false,
         isSwitchGif: false,
+        canUseCouponCount:0,
         mobile: wx.getStorageSync("mobile"),
         token: wx.getStorageSync("token") ? wx.getSystemInfoSync("token") : "",
         lsUserInfo: wx.getStorageSync("lsUserInfo"),
@@ -103,9 +112,10 @@
             if (res.confirm) {
               http.post("/buyer/user/mini-app/logout/v1", {}, true, "")
                 .then((resp) => {
-                  wx.setStorageSync("token", "");
-                  wx.setStorageSync("lsUserInfo", {});
-                  this.token = wx.getStorageSync("token");
+                  wx.setStorageSync("token", "")
+                  wx.setStorageSync("lsUserInfo", {})
+                  this.token = wx.getStorageSync("token")
+                  this.canUseCouponCount = 0
                 });
             } else if (res.cancel) {
   
@@ -120,7 +130,6 @@
       },
       hideCouponModal() {
         this.isSwitch = false;
-        this.isRegister = false;
         this.isSwitchGif = true;
       },
       showIconGift() {
@@ -129,9 +138,10 @@
       },
       getCouponSwitch() {
         this.wxUserInfo = true;
-        http.post("/buyer/switch/coupon/v1", {}, true, "")
+        http.post("/buyer/switch/coupon/v1", {}, true)
           .then(resp => {
-            this.isSwitch = resp.switch;
+            this.isSwitch = resp.switch
+            this.hasSendMiniAppActiveCoupon = resp.hasSendMiniAppActiveCoupon
           });
       },
       getAuthor() {
@@ -143,6 +153,7 @@
             if (!res.authSetting["scope.userInfo"]) {
               wx.getUserInfo({
                 withCredentials: true,
+                lang:'zh_CN',
                 success: res => {
                   this.getCouponSwitch();
                 },
@@ -178,7 +189,20 @@
             .then((resp) => {
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
+              wx.stopPullDownRefresh()
             });
+        }else{
+          wx.stopPullDownRefresh()
+        }
+      },
+      getCouponCount() {
+        if (this.token) {
+          http.post("/buyer/coupon/list/v1", {status:1}, false, '')
+            .then((resp) => {
+              this.canUseCouponCount = resp.count;
+            });
+        }else{
+         
         }
       }
     },
@@ -187,18 +211,17 @@
        wx.getSetting({
         success: res => {
           if (res.authSetting["scope.userInfo"]) {
-            
-          }
-          if (!res.authSetting["scope.userInfo"]) {
+            this.getStatusCount();
+          }else if(!res.authSetting["scope.userInfo"]) {
             this.wxUserInfo = false;
+            wx.stopPullDownRefresh()
           }
         },
         fail: res => {
           console.log("拒绝");
         }
        });
-      this.getStatusCount();
-      wx.stopPullDownRefresh()
+       this.getCouponCount();
     },
     onLoad() {
       console.log('onload')
@@ -221,11 +244,17 @@
       });
       // 授权结束
       this.getStatusCount();
+      this.getCouponCount();
     },
     mounted() {
       console.log("mounted");
-      this.isRegister = this.$root.$mp.query.isRegister;
-      console.log(this.isRegister + "0999");
+    },
+    onShow(){
+      console.log('onShow')
+      this.token = wx.getStorageSync("token")
+      this.lsUserInfo = wx.getStorageSync("lsUserInfo")
+      this.getStatusCount();
+      this.getCouponCount();
     }
   };
 </script>
@@ -322,15 +351,16 @@
   }
   
   .superscript {
-    height: 24rpx;
-    line-height: 24rpx;
-    font-size: 20rpx;
-    color: #fff;
-    background: #d0021b;
-    position: absolute;
-    right: 32rpx;
-    border-radius: 50%;
-    padding: 3rpx 8rpx;
+    height:30rpx;
+    width:30rpx;
+    line-height:30rpx;
+    font-size:20rpx;
+    color:#fff;
+    background:#d0021b;
+    position:absolute;
+    right:32rpx;
+    border-radius:50%;
+    top:-7rpx;
   }
   
   .iconfont.icon-red {
@@ -345,7 +375,6 @@
   }
   
   .my-title-r {
-    font-size: 24rpx;
     color: #999999;
   }
   
@@ -489,6 +518,9 @@
   }
   
   .mobile {
+    color: #d0021b;
+  }
+  .color-red{
     color: #d0021b;
   }
   

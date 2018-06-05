@@ -49,8 +49,8 @@ export default {
       this._requestCoupon()
     },
     // 调用网络请求
-    _requestCoupon () {
-      couponApi.getCouponList({status: this.selectedItem}).then((res) => {
+    _requestCoupon (falseUpdate = false) {
+      couponApi.getCouponList({status: this.selectedItem}, falseUpdate).then((res) => {
         console.log(res)
         this.loadingStatus = res.loadingStatus
         this.couponList = res.dataList
@@ -63,7 +63,7 @@ export default {
   onLoad () {
     // 外部跳转进来默认为未使用
     this.selectedItem = Number(this.$root.$mp.query.status) || 1
-    this._requestCoupon()
+    this._requestCoupon(true)
   },
   // 上拉刷新
   onReachBottom () {
