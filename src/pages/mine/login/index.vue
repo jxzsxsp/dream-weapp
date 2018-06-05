@@ -75,6 +75,7 @@ export default {
               // console.log(resp.token);
               wx.setStorageSync('token', resp.token);
               wx.setStorageSync('lsUserInfo', resp);
+              wx.setStorageSync("mobile", resp.mobile);
               var loginToUrl = wx.getStorageSync('loginToUrl');
               if(loginToUrl){
                 wx.removeStorage({"key":"loginToUrl"})
@@ -100,6 +101,7 @@ export default {
               this.code = resp.code;
                wx.getUserInfo({
                    withCredentials : true,
+                   lang:'zh_CN',
                    success: (res) => {
                     this.userInfo = res
                     // 调用获取验证码接口

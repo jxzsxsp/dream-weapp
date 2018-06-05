@@ -25,9 +25,9 @@ export default class RequestListWithTrait {
     this.opt = props.opt
   }
 
-  postWithTrait (data) {
-    // 特征变化的时候立刻重新请求
-    if (this.traitName && data[this.traitName] !== this.trait) {
+  postWithTrait (data, forceUpdate = false) {
+    // 特征变化的时候立刻重新请求 以及 强制更新为 true 的时候立即跟新
+    if ((this.traitName && data[this.traitName] !== this.trait) || forceUpdate) {
       this.pageNo = 0
       this.dataList = []
       this.totalCount = 0
