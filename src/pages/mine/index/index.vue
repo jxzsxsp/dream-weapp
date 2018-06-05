@@ -132,11 +132,11 @@
         this.isSwitch = false;
         this.isSwitchGif = true;
       },
-      showIconGift() {
+      showIconGift () {
         this.isSwitch = true;
         this.isSwitchGif = false;
       },
-      getCouponSwitch() {
+      getCouponSwitch () {
         this.wxUserInfo = true;
         http.post("/buyer/switch/coupon/v1", {}, true)
           .then(resp => {
@@ -144,7 +144,7 @@
             this.hasSendMiniAppActiveCoupon = resp.hasSendMiniAppActiveCoupon
           });
       },
-      getAuthor() {
+      getAuthor () {
         wx.getSetting({
           success: res => {
             if (res.authSetting["scope.userInfo"]) {
@@ -183,27 +183,43 @@
           }
         });
       },
-      getStatusCount() {
+      getStatusCount () {
         if (this.token) {
           http.post("/buyer/trade/status/count/v1", {}, true, "")
             .then((resp) => {
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
               wx.stopPullDownRefresh()
-            });
+            })
         }else{
           wx.stopPullDownRefresh()
         }
       },
-      getCouponCount() {
+      getCouponCount () {
         if (this.token) {
           http.post("/buyer/coupon/list/v1", {status:1}, false, '')
             .then((resp) => {
               this.canUseCouponCount = resp.count;
-            });
+            })
         }else{
          
         }
+      },
+      getLocation () {
+        wx.getLocation({
+          type: 'wgs84',
+          success: function(res) {
+            var latitude = res.latitude
+            var longitude = res.longitude
+            var speed = res.speed
+            var accuracy = res.accuracy
+            http.otherGet('http://api.map.baidu.com/geocoder/v2/?ak=pUOppTMIdy47mW3SxxxqK1w6XdDnU4bw&location=' + latitude + ',' + longitude + '&output=json&pois=1')
+            .then((opts) =>{
+              console.log(opts.data.result.addressComponent.city);
+              wx.setStorageSync("cityName", opts.data.result.addressComponent.city)
+            })
+          }
+        })
       }
     },
       // 下拉刷新
@@ -243,8 +259,9 @@
         }
       });
       // 授权结束
-      this.getStatusCount();
-      this.getCouponCount();
+      this.getStatusCount()
+      this.getCouponCount()
+      this.getLocation()
     },
     mounted() {
       console.log("mounted");

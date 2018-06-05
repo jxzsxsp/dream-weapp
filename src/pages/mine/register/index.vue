@@ -131,8 +131,11 @@
                             });
                           }
                           wx.redirectTo({
-                            url: "/pages/mine/index/main"
+                            url: "/pages/cityLocation/main"
                           });
+                          // wx.redirectTo({
+                          //   url: "/pages/mine/index/main"
+                          // });
                         },
                         function(resp) {
                           console.log(resp);
