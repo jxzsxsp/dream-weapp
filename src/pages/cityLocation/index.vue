@@ -38,9 +38,6 @@
       .then((data)=>{
         console.log(data);
       })
-      .then((data)=>{
-        console.log(data);
-      })
     }
   }
   </script>
