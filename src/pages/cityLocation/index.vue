@@ -11,8 +11,9 @@
                 v-for="(order, index) in cityData" 
                 :key="index"  
                 :class="cityData[index].cityName == cityName? 'current':''"
-                @click="changeCity(cityData[index].cityName, cityData[index].cityId)"
-                >{{cityData[index].cityName}}</li>
+                @click="changeCity(cityData[index].cityName, cityData[index].cityId)">
+                {{ cityData[index].cityName }}
+              </li>
             </ul>
         </div>
         <div class="location-bottom">
@@ -23,8 +24,8 @@
   </template>
   
   <script>
-  import form from '../../utils/getPermission'
-  var getPermission = new form();  
+  import { getLocation } from '../../utils/getPermission'
+  import authorize from '../../utils/authorize'
   
   export default {
     data() {
@@ -73,9 +74,10 @@
       }
     },
     onLoad () {
-      getPermission.getLocation()
-      .then((data)=>{
-        console.log(data);
+      authorize('getLocation','我们需要您的定位权限',0,'userLocation').then(data =>{
+        return getLocation(data)
+      }).then(data => {
+        console.log(data)
       })
     }
   }
