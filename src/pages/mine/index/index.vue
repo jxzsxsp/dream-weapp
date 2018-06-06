@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN" @click="getAuthor()"></button>
+    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN"></button>
     <div class="my-account" v-if="token">
       <img class="head-pic" :src="lsUserInfo.avatar" background-size="cover" />
       <span class="ls-name">{{lsUserInfo.imNickName}}</span>
@@ -145,41 +145,13 @@
           });
       },
       getAuthor () {
-        wx.getSetting({
+        wx.getUserInfo({
+          lang:'zh_CN',
           success: res => {
-            if (res.authSetting["scope.userInfo"]) {
-              this.getCouponSwitch();
-            }
-            if (!res.authSetting["scope.userInfo"]) {
-              wx.getUserInfo({
-                withCredentials: true,
-                lang:'zh_CN',
-                success: res => {
-                  this.getCouponSwitch();
-                },
-                fail: resp => {
-                  // 拒绝打开设置页面
-                  wx.openSetting({
-                    success: res => {
-                      if (res.authSetting["scope.userInfo"]) {
-                        console.log("勾选");
-                        this.getCouponSwitch();
-                      } else {
-                        console.log("未勾选");
-                      }
-                    },
-                    fail: res => {
-                      if (res.authSetting["scope.userInfo"]) {
-  
-                      }
-                    }
-                  });
-                }
-              });
-            }
+            this.getCouponSwitch();
           },
-          fail: res => {
-            console.log("拒绝");
+          fail: resp => {
+            // 拒绝打开设置页面
           }
         });
       },
@@ -204,22 +176,6 @@
         }else{
          
         }
-      },
-      getLocation () {
-        wx.getLocation({
-          type: 'wgs84',
-          success: function(res) {
-            var latitude = res.latitude
-            var longitude = res.longitude
-            var speed = res.speed
-            var accuracy = res.accuracy
-            http.otherGet('http://api.map.baidu.com/geocoder/v2/?ak=pUOppTMIdy47mW3SxxxqK1w6XdDnU4bw&location=' + latitude + ',' + longitude + '&output=json&pois=1')
-            .then((opts) =>{
-              console.log(opts.data.result.addressComponent.city);
-              wx.setStorageSync("cityName", opts.data.result.addressComponent.city)
-            })
-          }
-        })
       }
     },
       // 下拉刷新
@@ -261,7 +217,6 @@
       // 授权结束
       this.getStatusCount()
       this.getCouponCount()
-      this.getLocation()
     },
     mounted() {
       console.log("mounted");

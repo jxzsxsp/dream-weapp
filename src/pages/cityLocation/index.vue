@@ -2,12 +2,17 @@
     <div class="container">
         <div class="location-top flex-style">
             <div class="flex"><i class="iconfont icon-zuobiao1 icon-margin"></i><span>{{cityName}}</span></div>
-            <div class="flex col-red"><i class="iconfont icon-dingwei icon-margin"></i><span>定位城市</span></div>
+            <div class="flex col-red"><i class="iconfont icon-dingwei icon-margin"></i><span @click="getLocationSetting()">定位城市</span></div>
         </div>
         <div class="location-middle">
             <div class="flex"><i class="label"></i>您所在的城市</div>
             <ul class="city-box">
-              <li v-for="(order, index) in cityData" :key="index"  :class="cityData[index] == cityName? 'current':''">{{cityData[index]}}</li>
+              <li 
+                v-for="(order, index) in cityData" 
+                :key="index"  
+                :class="cityData[index].cityName == cityName? 'current':''"
+                @click="changeCity(cityData[index].cityName, cityData[index].cityId)"
+                >{{cityData[index].cityName}}</li>
             </ul>
         </div>
         <div class="location-bottom">
@@ -27,11 +32,45 @@
        latitude:'',
        longitude:'',
        cityName:'其他',
-       cityData:['湖州','佛山','苏州','东莞','杭州','上海','深圳','其他']
+       cityId:'1',
+      //  330500,440600,320500,441900,330100,310100,440300,1
+       cityData:[{
+         cityName:'湖州', 
+         cityId:'330500'
+        },{
+         cityName:'佛山', 
+         cityId:'440600'
+        },{
+         cityName:'苏州', 
+         cityId:'320500'
+        },{
+         cityName:'东莞', 
+         cityId:'441900'
+        },{
+         cityName:'杭州', 
+         cityId:'330100'
+        },{
+         cityName:'上海', 
+         cityId:'310100'
+        },{
+         cityName:'深圳', 
+         cityId:'440300'
+        },{
+         cityName:'其他', 
+         cityId:'1'
+        }
+        ]
       })
     },
     methods: {
-  
+      getLocationSetting() {
+        
+      },
+      changeCity(chooseCityName,chooseCityId) {
+        console.log(chooseCityId)
+        this.cityName = chooseCityName
+        this.cityId = chooseCityId
+      }
     },
     onLoad () {
       getPermission.getLocation()

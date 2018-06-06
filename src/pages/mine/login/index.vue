@@ -12,7 +12,7 @@
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
       <div class="navigator">
-        <a class="navigator-text" href="/pages/mine/register/main">去注册</a>
+        <a class="navigator-text" href="/pages/cityLocation/main">去注册</a>
         <i class="iconfont icon-jiantou"></i>
       </div>
     </div>
