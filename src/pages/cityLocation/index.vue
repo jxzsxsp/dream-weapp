@@ -24,7 +24,7 @@
   </template>
   
   <script>
-  import { getLocation } from '../../utils/getPermission'
+  import { convertLocation } from '../../utils/publicHttpMethods'
   import authorize from '../../utils/authorize'
   
   export default {
@@ -74,8 +74,8 @@
       }
     },
     onLoad () {
-      authorize('getLocation','我们需要您的定位权限',0,'userLocation').then(data =>{
-        return getLocation(data)
+      authorize('getLocation','我们需要您的定位权限',0,'userLocation').then(((data) =>{
+        return convertLocation(data.latitude, data.longitude)
       }).then(data => {
         console.log(data)
       })
