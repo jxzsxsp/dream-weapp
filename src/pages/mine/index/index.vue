@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN"></button>
+    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN" @click="getAuthor"></button>
     <div class="my-account" v-if="token">
       <img class="head-pic" :src="lsUserInfo.avatar" background-size="cover" />
       <span class="ls-name">{{lsUserInfo.imNickName}}</span>
