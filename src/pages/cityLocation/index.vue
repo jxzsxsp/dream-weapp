@@ -18,16 +18,29 @@
   </template>
   
   <script>
+  import form from '../../utils/getPermission'
+  var getPermission = new form();  
   
   export default {
     data() {
       return ({
-       cityName:'佛山',
+       latitude:'',
+       longitude:'',
+       cityName:'其他',
        cityData:['湖州','佛山','苏州','东莞','杭州','上海','深圳','其他']
       })
     },
+    methods: {
+  
+    },
     onLoad () {
-      
+      getPermission.getLocation()
+      .then((data)=>{
+        console.log(data);
+      })
+      .then((data)=>{
+        console.log(data);
+      })
     }
   }
   </script>
