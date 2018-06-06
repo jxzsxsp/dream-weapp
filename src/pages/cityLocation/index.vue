@@ -74,7 +74,7 @@
       }
     },
     onLoad () {
-      authorize('getLocation','我们需要您的定位权限',0,'userLocation').then(((data) =>{
+      authorize('getLocation','我们需要您的定位权限',0,'userLocation').then(data =>{
         return convertLocation(data.latitude, data.longitude)
       }).then(data => {
         console.log(data)
