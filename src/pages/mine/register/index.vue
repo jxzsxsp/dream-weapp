@@ -108,6 +108,7 @@
                     // 调用获取验证码接口
                     var data = {
                       code: this.code,
+                      cityId:wx.getStorageSync('cityId'),
                       userType: 0,
                       contactName: this.contactName,
                       companyName: this.companyName,
@@ -131,11 +132,8 @@
                             });
                           }
                           wx.redirectTo({
-                            url: "/pages/cityLocation/main"
-                          });
-                          // wx.redirectTo({
-                          //   url: "/pages/mine/index/main"
-                          // });
+                            url: "/pages/mine/index/main"
+                          })
                         },
                         function(resp) {
                           console.log(resp);

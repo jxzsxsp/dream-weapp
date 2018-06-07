@@ -49,7 +49,7 @@
           <div v-if="hasSendMiniAppActiveCoupon && token" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
           <img class="couponListImg" :src="couponListImg" />
         </div>
-        <div v-if="isSwitch && !token" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
+        <div v-if="isSwitch && !token" class="go-register-btn" @click="navigateTo('/pages/cityLocation/main')">立即领取</div>
         <div v-if="hasSendMiniAppActiveCoupon && token" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
@@ -222,6 +222,16 @@
       console.log("mounted");
     },
     onShow(){
+      wx.getSetting({
+        success: res => {
+          if (!res.authSetting["scope.userInfo"]) {
+            this.wxUserInfo = false;
+          }
+        },
+        fail: res => {
+          console.log("拒绝");
+        }
+      });
       console.log('onShow')
       this.token = wx.getStorageSync("token")
       this.lsUserInfo = wx.getStorageSync("lsUserInfo")
