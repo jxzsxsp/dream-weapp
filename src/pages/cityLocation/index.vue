@@ -95,11 +95,8 @@
         wx.getSetting({
           success: res => {
             if (res.authSetting["scope.userInfo"]) {
-              wx.setStorageSync("latitude", this.latitude)
-              wx.setStorageSync("longitude", this.longitude)
-              wx.setStorageSync("cityId", this.cityId)
               wx.navigateTo({
-                url: '/pages/mine/register/main'
+                url: '/pages/mine/register/main?latitude='+this.latitude+'&longitude='+this.longitude+'&cityId='+this.cityId+''
               });
             }
           },

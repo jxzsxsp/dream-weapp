@@ -105,12 +105,12 @@
                   lang:'zh_CN',
                   success: res => {
                     this.userInfo = res;
-                    let latitude = wx.getStorageSync('latitude')
-                    let longitude = wx.getStorageSync('longitude')
+                    let latitude = this.$root.$mp.query.latitude
+                    let longitude = this.$root.$mp.query.longitude
                     // 调用获取验证码接口
                     var data = {
                       code: this.code,
-                      cityId:wx.getStorageSync('cityId'),
+                      cityId:this.$root.$mp.query.cityId,
                       userType: 0,
                       contactName: this.contactName,
                       companyName: this.companyName,
