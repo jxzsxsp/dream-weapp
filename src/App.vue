@@ -54,6 +54,12 @@ export default {
     quietLogin();
     // getUserInfo();
   },
+  onLaunch (option) {
+    if (option.query.scene) {
+      wx.setStorageSync("sceneStr", option.query.scene)
+    }
+    wx.setStorageSync("sceneType", option.scene)
+  }
 }
 </script>
 
