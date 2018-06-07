@@ -21,7 +21,7 @@ export default function authorizeWXAPI (funcName, info, authorizeLevel = 0,autho
           reject(res)
         } else {
           wx.showModal({
-            title: '需要权限', 
+            title: '权限设置', 
             content: info,
             showCancel: false,
             success: res => {

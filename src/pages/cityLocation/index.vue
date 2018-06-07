@@ -74,7 +74,7 @@
         this.cityId = chooseCityId
       },
       authorize(level) {
-        authorize('getLocation', '我们需要您的定位权限', level, 'userLocation')
+        authorize('getLocation', '链尚需要获取您的定位权限', level, 'userLocation')
           .then(data => {
             return convertLocation(data.latitude, data.longitude)
           }).then(data => {
