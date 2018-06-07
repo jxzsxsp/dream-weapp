@@ -5,7 +5,7 @@ import http from '@/utils/http'
  */
 export function convertLocation(latitude, longitude) {
   return new Promise((resolve, reject) => {
-    http.otherGet('https://api.map.baidu.com/geocoder/v2/?ak=pUOppTMIdy47mW3SxxxqK1w6XdDnU4bw&location=' + latitude + ',' + longitude + '&output=json&pois=1', '', true, '')
+    http.otherGet('https://api.map.baidu.com/geocoder/v2/?ak=GBFGB6jgPlXXP7eVpbglmyST2Qya0jXE&location=' + latitude + ',' + longitude + '&output=json&pois=1', '', true, '')
     .then((opts) => {
       resolve({city: opts.data.result.addressComponent.city, latitude, longitude})
     }) 
