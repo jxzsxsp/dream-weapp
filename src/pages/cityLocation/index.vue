@@ -38,7 +38,7 @@
       return ({
         latitude: '',
         longitude: '',
-        cityName: '其他',
+        cityName: '',
         cityId: '1',
         //  330500,440600,320500,441900,330100,310100,440300,1
         cityData: [{
@@ -77,7 +77,8 @@
         authorize('getLocation', '链尚需要获取您的定位权限', level, 'userLocation')
           .then(data => {
             return convertLocation(data.latitude, data.longitude)
-          }).then(data => {
+          }).then(
+            data => {
             this.cityName = data.city.replace("市", "");
             this.latitude = data.latitude
             this.longitude = data.longitude
@@ -87,7 +88,11 @@
               }
             }
             console.log(this.cityId)
-          })
+          },
+          data =>{
+            this.cityName="定位失败"
+          }
+        )
       },
       goToRegister() {
         wx.getSetting({

@@ -118,8 +118,8 @@
                       validateCode: this.identificateCode,
                       encryptedData: res.encryptedData,
                       iv: res.iv,
-                      sceneStr: '',
-                      sceneType: ''
+                      sceneStr: wx.getStorageSync('sceneStr'),
+                      sceneType: wx.getStorageSync('sceneType')
                     };
                     http
                       .post('/buyer/user/login/register/v2?latitude='+latitude+'&longitude='+longitude+'', data, true, "")
