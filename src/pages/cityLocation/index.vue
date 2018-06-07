@@ -70,6 +70,8 @@
         this.authorize(1)
       },
       changeCity(chooseCityName, chooseCityId) {
+        wx.setStorageSync("latitude", '')
+        wx.setStorageSync("longitude", '')
         this.cityName = chooseCityName
         this.cityId = chooseCityId
       },

@@ -105,6 +105,8 @@
                   lang:'zh_CN',
                   success: res => {
                     this.userInfo = res;
+                    let latitude = wx.getStorageSync('latitude')
+                    let longitude = wx.getStorageSync('longitude')
                     // 调用获取验证码接口
                     var data = {
                       code: this.code,
@@ -115,10 +117,12 @@
                       mobile: this.mobile,
                       validateCode: this.identificateCode,
                       encryptedData: res.encryptedData,
-                      iv: res.iv
+                      iv: res.iv,
+                      sceneStr: sceneStr,
+                      sceneType: sceneType
                     };
                     http
-                      .post("/buyer/user/login/register/v2", data, true, "")
+                      .post('/buyer/user/login/register/v2?latitude='+latitude+'&longitude='+longitude+'', data, true, "")
                       .then(
                         function(resp) {
                           // console.log(resp.token);
