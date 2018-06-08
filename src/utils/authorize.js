@@ -21,21 +21,25 @@ export default function authorizeWXAPI (funcName, info, authorizeLevel = 0,autho
           reject(res)
         } else {
           wx.showModal({
-            title: '权限设置', 
+            title: '位置授权', 
             content: info,
-            showCancel: false,
+            showCancel: true,
             success: res => {
-              wx.openSetting({
-                success: res => {
-                  if (authorizeLevel === 2) {
-                    // 强授权，继续调用自己
-                    authorizeWXAPI(funcName, info, 2, authorizeScope, data).then(resolve).catch(reject)
-                  } else {
-                    // 弱授权变为最弱授权
-                    authorizeWXAPI(funcName, info, 0, authorizeScope, data).then(resolve).catch(reject)
-                  }
-                },
-              }); 
+              if (res.confirm) {
+                wx.openSetting({
+                  success: res => {
+                    if (authorizeLevel === 2) {
+                      // 强授权，继续调用自己
+                      authorizeWXAPI(funcName, info, 2, authorizeScope, data).then(resolve).catch(reject)
+                    } else {
+                      // 弱授权变为最弱授权
+                      authorizeWXAPI(funcName, info, 0, authorizeScope, data).then(resolve).catch(reject)
+                    }
+                  },
+                }); 
+              } else if (res.cancel) {
+                
+              }
             }
           })
         }
