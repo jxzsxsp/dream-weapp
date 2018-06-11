@@ -172,5 +172,5 @@ export default {
 </script>
 
 <style scoped>
-@import '../common/login.css';
+@import '../css/login.css';
 </style>
