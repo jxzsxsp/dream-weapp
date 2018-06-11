@@ -30,8 +30,8 @@
 <script>
   import {
     convertLocation
-  } from '../../utils/publicHttpMethods'
-  import authorize from '../../utils/authorize'
+  } from '@/utils/publicHttpMethods'
+  import authorize from '@/utils/authorize'
 
   export default {
     data() {
@@ -117,7 +117,7 @@
 
 </script>
 <style>
-  @import "../../css/common.css";
+  @import '../../../css/common.css';
   .container {
     background: #fff;
     font-size: 30rpx;

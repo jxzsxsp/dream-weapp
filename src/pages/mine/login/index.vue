@@ -2,17 +2,17 @@
   <div class="container" >
     <div class="input-box">
       <div class="input-item">
-          <i class="iconfont icon-shouji"></i>
-          <input type='number' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
+        <i class="iconfont icon-shouji"></i>
+        <input type='number' maxlength="11" v-model="mobile" class="inputField" v-on:input="validateValue" placeholder="请输入手机号" />
       </div>
       <div class="input-item">
-          <i class="iconfont icon-yanzhengma"></i>
-          <input type='number' maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
-          <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
+        <i class="iconfont icon-yanzhengma"></i>
+        <input type='number' maxlength="6" class="inputField inputCode" v-model="identificateCode" v-on:input="validateValue" placeholder="请输入验证码" />
+        <button open-type="getUserInfo"  @click="getCode(mobile)" class="getCodeButton">{{codeButtonMessage}}</button>
       </div>
       <button class="button-login" :class="isCanclick? 'canClick' : ''" @click="lsLogin">登录</button>
       <div class="navigator">
-        <a class="navigator-text" href="/pages/cityLocation/main">去注册</a>
+        <a class="navigator-text" href="/pages/mine/cityLocation/main">去注册</a>
         <i class="iconfont icon-jiantou"></i>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
 <script>
 
-import form from '../../../utils/formValidate'
+import form from '@/utils/formValidate'
 import http from '@/utils/http'
 var formValidate = new form();
 
