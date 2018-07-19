@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN" @click="getAuthor()"></button>
+    <button class="getUserInfo-btn" :class="wxUserInfo?'none':''" open-type="getUserInfo" lang="zh_CN" @click="getAuthor"></button>
     <div class="my-account" v-if="token">
       <img class="head-pic" :src="lsUserInfo.avatar" background-size="cover" />
       <span class="ls-name">{{lsUserInfo.imNickName}}</span>
@@ -49,7 +49,7 @@
           <div v-if="hasSendMiniAppActiveCoupon && token" class="coupon-con">已放入你的账户 <span class="mobile">{{mobile}}</span></div>
           <img class="couponListImg" :src="couponListImg" />
         </div>
-        <div v-if="isSwitch && !token" class="go-register-btn" @click="navigateTo('/pages/mine/register/main')">立即领取</div>
+        <div v-if="isSwitch && !token" class="go-register-btn" @click="navigateTo('/pages/mine/cityLocation/main')">立即领取</div>
         <div v-if="hasSendMiniAppActiveCoupon && token" class="follow">关注公众号可参加更多优惠</div>
         <i class="iconfont icon-quxiao" @click="hideCouponModal()"></i>
       </div>
@@ -132,11 +132,11 @@
         this.isSwitch = false;
         this.isSwitchGif = true;
       },
-      showIconGift() {
+      showIconGift () {
         this.isSwitch = true;
         this.isSwitchGif = false;
       },
-      getCouponSwitch() {
+      getCouponSwitch () {
         this.wxUserInfo = true;
         http.post("/buyer/switch/coupon/v1", {}, true)
           .then(resp => {
@@ -144,63 +144,35 @@
             this.hasSendMiniAppActiveCoupon = resp.hasSendMiniAppActiveCoupon
           });
       },
-      getAuthor() {
-        wx.getSetting({
+      getAuthor () {
+        wx.getUserInfo({
+          lang:'zh_CN',
           success: res => {
-            if (res.authSetting["scope.userInfo"]) {
-              this.getCouponSwitch();
-            }
-            if (!res.authSetting["scope.userInfo"]) {
-              wx.getUserInfo({
-                withCredentials: true,
-                lang:'zh_CN',
-                success: res => {
-                  this.getCouponSwitch();
-                },
-                fail: resp => {
-                  // 拒绝打开设置页面
-                  wx.openSetting({
-                    success: res => {
-                      if (res.authSetting["scope.userInfo"]) {
-                        console.log("勾选");
-                        this.getCouponSwitch();
-                      } else {
-                        console.log("未勾选");
-                      }
-                    },
-                    fail: res => {
-                      if (res.authSetting["scope.userInfo"]) {
-  
-                      }
-                    }
-                  });
-                }
-              });
-            }
+            this.getCouponSwitch();
           },
-          fail: res => {
-            console.log("拒绝");
+          fail: resp => {
+            // 拒绝打开设置页面
           }
         });
       },
-      getStatusCount() {
+      getStatusCount () {
         if (this.token) {
           http.post("/buyer/trade/status/count/v1", {}, true, "")
             .then((resp) => {
               console.log(resp.statusCount);
               this.statusCount = resp.statusCount;
               wx.stopPullDownRefresh()
-            });
+            })
         }else{
           wx.stopPullDownRefresh()
         }
       },
-      getCouponCount() {
+      getCouponCount () {
         if (this.token) {
           http.post("/buyer/coupon/list/v1", {status:1}, false, '')
             .then((resp) => {
               this.canUseCouponCount = resp.count;
-            });
+            })
         }else{
          
         }
@@ -243,13 +215,23 @@
         }
       });
       // 授权结束
-      this.getStatusCount();
-      this.getCouponCount();
+      this.getStatusCount()
+      this.getCouponCount()
     },
     mounted() {
       console.log("mounted");
     },
     onShow(){
+      wx.getSetting({
+        success: res => {
+          if (!res.authSetting["scope.userInfo"]) {
+            this.wxUserInfo = false;
+          }
+        },
+        fail: res => {
+          console.log("拒绝");
+        }
+      });
       console.log('onShow')
       this.token = wx.getStorageSync("token")
       this.lsUserInfo = wx.getStorageSync("lsUserInfo")

@@ -1,0 +1,49 @@
+/* 按钮样式开始 */
+.btn {
+    display: block;
+    margin-bottom: 0;
+    font-size: 32rpx;
+    line-height: 88rpx;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 8rpx;
+  }
+  .btn-danger {
+    color: #fff;
+    background: #CB3F3F;
+  }
+  .btn-default{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+  /* 按钮样式结束 */
+
+
+  .flex-style{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .flex{
+    display:flex;
+    align-items: center;
+  }
+
+  /* 颜色 */
+  .col-red{
+    color:#CB3F3F;
+  }
+  .col-gray{
+    color: #666666;
+  }
