@@ -105,19 +105,24 @@
                   lang:'zh_CN',
                   success: res => {
                     this.userInfo = res;
+                    let latitude = this.$root.$mp.query.latitude
+                    let longitude = this.$root.$mp.query.longitude
                     // 调用获取验证码接口
                     var data = {
                       code: this.code,
+                      cityId:this.$root.$mp.query.cityId,
                       userType: 0,
                       contactName: this.contactName,
                       companyName: this.companyName,
                       mobile: this.mobile,
                       validateCode: this.identificateCode,
                       encryptedData: res.encryptedData,
-                      iv: res.iv
+                      iv: res.iv,
+                      sceneStr: wx.getStorageSync('sceneStr'),
+                      sceneType: wx.getStorageSync('sceneType')
                     };
                     http
-                      .post("/buyer/user/login/register/v2", data, true, "")
+                      .post('/buyer/user/login/register/v2?latitude='+latitude+'&longitude='+longitude+'', data, true, "")
                       .then(
                         function(resp) {
                           // console.log(resp.token);
@@ -132,7 +137,7 @@
                           }
                           wx.redirectTo({
                             url: "/pages/mine/index/main"
-                          });
+                          })
                         },
                         function(resp) {
                           console.log(resp);
@@ -252,5 +257,5 @@
 </script>
 
 <style scoped>
-  @import "../common/login.css";
+  @import "../css/login.css";
 </style>
