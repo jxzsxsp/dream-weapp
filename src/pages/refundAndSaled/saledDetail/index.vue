@@ -36,7 +36,7 @@
         <div class="goods-info">
           <p class="font-detail">商品信息</p>
         </div>
-        <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList">
+        <div class="goods-item" v-for="(order, index) in afterSaleDetail.refundItemList" :key="index">
           <goodsItem :itemData="order"></goodsItem>
         </div>
       </div>
