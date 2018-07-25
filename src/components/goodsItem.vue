@@ -74,17 +74,35 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: space-between;
+  justify-content: center;
+}
+.item-title{
+  text-overflow: ellipsis;
+  height: 40rpx;
+  overflow: hidden;
+  white-space:nowrap;
+  width: 370rpx;
 }
 .item-detail{
   margin-top: 10rpx;
   color: #999;
   font-size: 24rpx;
-  flex: 1;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space:nowrap;
   width: 370rpx;
+}
+.item-style{
+  width:70rpx;
+  height:30rpx;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  background: #EA776B;
+  margin-top: 10rpx;
+  border-radius: 6rpx;
+  line-height:30rpx;
+  text-align:center;
 }
 .item-price-detail{
   margin-top: 10rpx;
@@ -95,17 +113,7 @@ export default {
 .item-quantity {
   margin-top: 10rpx;
 }
-.item-style{
-  width:70rpx;
-  height:30rpx;
-  font-size: 20rpx;
-  color: #FFFFFF;
-  letter-spacing: 0;
-  background: #EA776B;
-  border-radius: 6rpx;
-  line-height:30rpx;
-  text-align:center;
-}
+
 .check-cloth-report{
   background: #FFFFFF;
   border: 1px solid #333333;
@@ -127,11 +135,5 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
-.item-title{
-  text-overflow: ellipsis;
-  height: 40rpx;
-  overflow: hidden;
-  white-space:nowrap;
-  width: 370rpx;
-}
+
 </style>
