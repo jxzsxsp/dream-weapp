@@ -1,108 +1,109 @@
 <template>
-  <scroll-view>
-    <div class="coupon-tab">
-      <div :class="selectedItem === 1 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(1)">未使用({{ remainCouponCount }})</div>
-      <div :class="selectedItem === 2 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(2)">已使用</div>
-      <div :class="selectedItem === 4 ? 'selected-tab-item' : 'tab-item'" @click="selectTab(4)">已失效</div>
-    </div>
-    
-    <div class="coupon-tab-placeholder"></div>
+<div>
+  <div class="title-container">
+    <img class="title-bg" :src="titleBackground"/>
+    <p class="main-title">感恩大回馈</p>
+    <p class="sub-title" v-if="!getCouponStatus">恭喜您</p>
+    <p class="sub-title" v-if="!getCouponStatus">红包我出，你开心就好</p>
+    <p class="sub-title" v-if="getCouponStatus">感谢您的信任与支持</p>
+    <p class="sub-title" v-if="getCouponStatus">优惠券已放入您的账户{{userMobile}}</p>
+  </div>
+  <scroll-view scroll-y class="scroll-view">
     <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData" :couponStatus="selectedItem"></couponItem>
-    <listBottomLoading :loadingData="loadingData"></listBottomLoading>
   </scroll-view>
+  <button type="warn" size="mini" class="get-coupon-btn" @click="_updateCouponStatus">{{ getCouponStatus ? '查看优惠券' : '领取' }}</button>
+</div>
 </template>
 
 <script>
-import couponItem from '../template/couponItem'
+import couponItem from '../template/newCouponItem'
 import couponApi from '@/api/coupon.api.js'
-import listBottomLoading from '@/components/list-bottom-loading'
 
 export default { 
   components: {
     couponItem,
-    listBottomLoading,
   },
   data () {
     return ({
-      // 根据优惠券状态设置，1-未使用   2-已使用， 4- 已失效
-      selectedItem: 1,
-      loadingStatus: 0,
+      titleBackground: require('@/images/coupon_title_bg.png'),
       couponList: [],
-      remainCouponCount: 0,
+      getCouponStatus: false,
     })
   },
   computed: {
-    loadingData () {
-      return ({
-        isLoading: this.loadingStatus,
-        loadingText: '没有更多了',
-        noOrderTips: "亲，没有优惠呦"
-      })
+    userMobile () {
+      return wx.getStorageSync('mobile')
     }
   },
   methods: {
-    selectTab (tabIndex) {
-      if (tabIndex !== this.selectedItem) {
-        this.couponList = []
-        this.selectedItem = tabIndex
-      }
-      this._requestCoupon()
-    },
-    // 调用网络请求
+    /**
+     * 获取优惠券列表
+     */
     _requestCoupon (falseUpdate = false) {
       couponApi.getCouponList({status: this.selectedItem}, falseUpdate).then((res) => {
-        console.log(res)
-        this.loadingStatus = res.loadingStatus
-        this.couponList = res.dataList
-        if (this.selectedItem === 1) {
-          this.remainCouponCount = res.totalCount
-        }
+        this.couponList = [...res.dataList,...res.dataList,...res.dataList,...res.dataList,...res.dataList,...res.dataList,...res.dataList]
       })
+    },
+    /**
+     * 领取优惠券及跳转到优惠券列表
+     */
+    _updateCouponStatus () {
+      if (!this.getCouponStatus) {
+        // 未领取优惠券领取优惠券
+        couponApi.updateCouponStatus().then(res => {
+          this.getCouponStatus = true
+        })
+      } else {
+        // 领取完跳转优惠券列表
+        const url = '/pages/coupon/couponList/main'
+        wx.navigateTo({url})
+      }
     }
   },
   onLoad () {
-    // 外部跳转进来默认为未使用
-    this.selectedItem = Number(this.$root.$mp.query.status) || 1
     this._requestCoupon(true)
   },
-  // 上拉刷新
-  onReachBottom () {
-    this._requestCoupon()
-  }
+
 }
 
 </script>
-<style>
-.coupon-tab-placeholder {
-  height: 110rpx;
-}
-.coupon-tab {
-  z-index: 1;
+<style scoped>
+.title-container {
+  height: 200rpx;
+  position:relative;
   display: flex;
-  flex-direction: row;
-  background-color: #ffffff;
-  height: 88rpx;
-  border-top: 1rpx solid #e2e2e2;
-  border-bottom: 1rpx solid #e2e2e2;
-  position: fixed;
-  left: 0rpx;
-  right: 0rpx;
-  top: 0rpx;
-}
-.selected-tab-item {
-  flex: 1;
-  line-height: 87rpx;
-  text-align: center;
-  height: 90rpx;
-  border-bottom: 2px solid #CB3F3F;
-  color: #CB3F3F;
-}
-.tab-item {
-  flex: 1;
-  height: 90rpx;
-  text-align: center;
-  line-height: 88rpx;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.title-bg {
+  position: absolute;
+  z-index: -1;
+  left: 0rpx;
+  top: 0rpx;
+  height: 200rpx;
+  width: 100%;
+}
+.main-title {
+  color: white;
+  font-size: 48rpx;
+}
+.sub-title {
+  margin-top: 10rpx;
+  color: white;
+  font-size: 22rpx;
+}
+.scroll-view {
+  margin-top: 20rpx;
+  height: 800rpx
+}
+.get-coupon-btn {
+  height: 75rpx;
+  width: 95%;
+  background-color: #cb3f3f;
+  margin-top: 50rpx;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
 </style>

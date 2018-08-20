@@ -30,6 +30,12 @@
         <div class="list-bottom list-bottom-btn" v-show="order.tradeInfo.statusId == 3">
           <div class="order-list-btn" @click="confirmReceipt(order)">确认收货</div>
         </div>
+        <div class="list-bottom list-bottom-btn" v-show="order.tradeInfo.showPayButton">
+          <div class="order-list-btn" @click="payOrder(order)">付款</div>
+        </div>
+        <div class="list-bottom list-bottom-btn" v-show="order.tradeInfo.showCodRepayButton">
+          <div class="order-list-btn" @click="payOrder(order)">货到付款</div>
+        </div>
       </li>
     </ul>
   </div>
@@ -91,6 +97,14 @@ export default {
           }
         }
       })
+    },
+    /**
+     * 跳转到付款页面
+     */
+    payOrder (order) {
+      const url = '/pages/pay/payMode/main?url=' + encodeURIComponent(order.tradeInfo.payUrl)
+      console.log(order.tradeInfo.payUrl)
+      wx.navigateTo({url})
     }
   },
   mounted(){
