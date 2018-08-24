@@ -8,8 +8,7 @@ let couponListInstance = new RequestListWithTrait({
 
 const api = {
   getCouponList: (data, forceUpdate) => couponListInstance.postWithTrait(data, forceUpdate),
-  getReceivedCoupon: (data) => http.post('/buyer/canReceiveCoupon/list/v1', data, true),
-  updateCouponStatus: (data) => http.post('/buyer/updateCouponStatus/list/v1', data, true)
+  receiveCoupon: (data) => http.post('/buyer/coupon/receive/v1', data, true)
 }
 
 export default api

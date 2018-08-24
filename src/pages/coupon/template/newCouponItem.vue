@@ -6,18 +6,17 @@
         <p class="price-unit">￥</p>
         <p class="price-amount">{{ itemData.couponAmount }}</p>
       </div>
-      <p class="price-restrict" :class="couponStatus === 1 ? 'dark-grey' : 'grey'">满{{ itemData.minTradeAmount }}元可用</p>
+      <p class="price-restrict">满{{ itemData.minTradeAmount }}元可用</p>
     </div>
-    <div class="item-center" :class="couponStatus === 1 ? 'dark-grey' : 'grey'">
-      <p class="title" :class="couponStatus === 1 ? 'black' : 'grey'">{{ itemData.couponItemTypeText }}</p>
-      <p class="use-restrict" v-if="itemData.conditionDesc">{{ itemData.conditionDesc}}</p>
-      <p class="use-date" v-if="couponStatus === 4">{{ itemData.period }}</p>
-      <p class="use-date" v-if="couponStatus === 2">使用于{{ itemData.useTime }}</p>
-      <p class="use-date" v-if="couponStatus === 1">还剩{{ itemData.remainDays }}天到期</p>
+    <div class="item-center">
+      <p class="title">{{ itemData.couponItemTypeText }}</p>
+      <p class="use-restrict">{{ itemData.conditionDesc}}</p>
+      <p class="use-date">{{ itemData.period }}</p>
+      <p class="use-date" v-if="itemData.remainDays>10">使用于{{ itemData.period }}</p>
+      <p class="use-date" v-if="itemData.remainDays<=10 && itemData.remainDays>0">还剩{{ itemData.remainDays }}天到期</p>
     </div>
     <div class="item-right">
-      <i class="iconfont icon-img_coupon_used icon" v-if="couponStatus === 2"></i>
-      <i class="iconfont icon-img_coupon_disabled icon" v-if="couponStatus === 4"></i>
+      <i class="iconfont icon-ic_coupon_ylq icon" v-if="getCouponStatus"></i>
     </div>
   </div>
 </template>
@@ -25,7 +24,7 @@
 <script>
 //FIXME: 这里要删除 couponStatus 展示页不需要
 export default {
-  props: ["itemData", "couponStatus"],
+  props: ["itemData", "couponStatus","getCouponStatus"],
   data () {
     return {
       couponItemBg: require('@/images/coupon_item.png')
@@ -52,50 +51,58 @@ export default {
   display: flex;
   flex-direction: column;
   width: 246rpx;
+  color: #FFFFFF;
+
 }
 .price {
-  margin-top: 30rpx;
-  justify-content: center;
+  margin-top: 40rpx;
+  align-content: center;
+  margin-left: 30rpx;
+  justify-content: flex-start;
   display: flex;
+  height: 140rpx;
 }
 .price-unit {
-  /* color: #999999; */
-  font-size: 36rpx;
-  margin-top: 20rpx;
+  margin-top: 50rpx;
+  font-size: 20rpx;
+  text-align: end;
 }
 .price-amount {
   /* color: #999999; */
-  font-size: 72rpx;
+  font-size: 70rpx;
 }
 .price-restrict {
-  font-size: 28rpx;
-  /* color: #999999; */
-  text-align: center;
-  margin-bottom: 36rpx;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: left;
+  margin-bottom: 30rpx;
+  margin-left: 40rpx
 }
 .item-center {
-  /* color: red; */
+
   display: flex;
   flex-direction: column;
-  padding-left: 20rpx;
+  padding-left: 60rpx;
   padding-top: 34rpx;
   padding-bottom: 33rpx;
   width: 300rpx;
   justify-content: center;
+  align-content: center;
+
 }
-.title {
-  font-size: 36rpx;
-  /* color: #999999; */
+.title{
+  color: #333333;
+  font-size: 26rpx;
 }
 .use-restrict {
+  color: #333333;
   font-size: 26rpx;
-  /* color: #999999; */
-  margin-top: 20rpx;
+
 }
 .use-date {
+  color: #333333;
   font-size: 26rpx;
-  /* color: #999999; */
-  margin-top: 20rpx;
 }
 .item-right {
   flex: 1;
@@ -106,17 +113,5 @@ export default {
 .icon {
   font-size: 120rpx;
   color: #999999;
-}
-.red {
-  color: red;
-}
-.grey {
-  color: #999999;
-}
-.black {
-  color: black;
-}
-.dark-grey {
-  color: #666666;
 }
 </style>

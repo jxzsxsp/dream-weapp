@@ -9,7 +9,7 @@
     <p class="sub-title" v-if="getCouponStatus">优惠券已放入您的账户{{userMobile}}</p>
   </div>
   <scroll-view scroll-y class="scroll-view">
-    <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData" :couponStatus="selectedItem"></couponItem>
+    <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData" :couponStatus="selectedItem" :getCouponStatus="getCouponStatus"></couponItem>
   </scroll-view>
   <button type="warn" size="mini" class="get-coupon-btn" @click="_updateCouponStatus">{{ getCouponStatus ? '查看优惠券' : '领取' }}</button>
 </div>
@@ -19,7 +19,7 @@
 import couponItem from '../template/newCouponItem'
 import couponApi from '@/api/coupon.api.js'
 
-export default { 
+export default {
   components: {
     couponItem,
   },
@@ -40,8 +40,8 @@ export default {
      * 获取优惠券列表
      */
     _requestCoupon (falseUpdate = false) {
-      couponApi.getCouponList({status: this.selectedItem}, falseUpdate).then((res) => {
-        this.couponList = [...res.dataList,...res.dataList,...res.dataList,...res.dataList,...res.dataList,...res.dataList,...res.dataList]
+      couponApi.getCouponList({status: 99}, falseUpdate).then((res) => {
+        this.couponList = res.dataList
       })
     },
     /**
@@ -50,7 +50,7 @@ export default {
     _updateCouponStatus () {
       if (!this.getCouponStatus) {
         // 未领取优惠券领取优惠券
-        couponApi.updateCouponStatus().then(res => {
+        couponApi.receiveCoupon().then(res => {
           this.getCouponStatus = true
         })
       } else {
@@ -95,7 +95,7 @@ export default {
 }
 .scroll-view {
   margin-top: 20rpx;
-  height: 800rpx
+  height: 820rpx
 }
 .get-coupon-btn {
   height: 75rpx;
