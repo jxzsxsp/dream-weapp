@@ -1,67 +1,71 @@
 <template>
 <div>
-  <div class="title-container">
-    <img class="title-bg" :src="titleBackground"/>
-    <p class="main-title">感恩大回馈</p>
-    <p class="sub-title" v-if="!getCouponStatus">恭喜您</p>
-    <p class="sub-title" v-if="!getCouponStatus">红包我出，你开心就好</p>
-    <p class="sub-title" v-if="getCouponStatus">感谢您的信任与支持</p>
-    <p class="sub-title" v-if="getCouponStatus">优惠券已放入您的账户{{userMobile}}</p>
+  <div v-if="loadingData.isLoading==3">
+      <div class="title-container">
+        <img class="title-bg" :src="titleBackground"/>
+        <p class="main-title">感恩大回馈</p>
+        <p class="sub-title" v-if="!getCouponStatus">恭喜您</p>
+        <p class="sub-title" v-if="!getCouponStatus">红包我出，你开心就好</p>
+        <p class="sub-title" v-if="getCouponStatus">感谢您的信任与支持</p>
+        <p class="sub-title" v-if="getCouponStatus">优惠券已放入您的账户{{userMobile}}</p>
+      </div>
+      <scroll-view scroll-y class="scroll-view">
+        <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData" :couponStatus="selectedItem" :getCouponStatus="getCouponStatus"></couponItem>
+      </scroll-view>
+      <button type="warn" size="mini" class="get-coupon-btn" @click="_updateCouponStatus">{{ getCouponStatus ? '查看优惠券' : '领取' }}</button>
   </div>
-  <scroll-view scroll-y class="scroll-view">
-    <couponItem v-for="(itemData, index) in couponList" :key="index" :itemData="itemData" :couponStatus="selectedItem" :getCouponStatus="getCouponStatus"></couponItem>
-  </scroll-view>
-  <button type="warn" size="mini" class="get-coupon-btn" @click="_updateCouponStatus">{{ getCouponStatus ? '查看优惠券' : '领取' }}</button>
+  <div>
+    <listBottomLoading :loadingData="loadingData"></listBottomLoading>
+  </div>
 </div>
+
 </template>
 
 <script>
+import store from './store'
 import couponItem from '../template/newCouponItem'
 import couponApi from '@/api/coupon.api.js'
+import listBottomLoading from '@/components/list-bottom-loading'
 
 export default {
   components: {
     couponItem,
+    listBottomLoading
   },
-  data () {
-    return ({
-      titleBackground: require('@/images/coupon_title_bg.png'),
-      couponList: [],
-      getCouponStatus: false,
-    })
-  },
+
   computed: {
     userMobile () {
       return wx.getStorageSync('mobile')
+    },
+    titleBackground(){
+      return require('@/images/coupon_title_bg.png')
+    },
+    couponList(){
+      return store.state.couponList||[];
+    },
+    getCouponStatus(){
+      return store.state.getCouponStatus||false;
+    },
+    loadingData (){
+      return {
+        isLoading: store.state.isLoading,
+        loadingText: '',
+        noOrderTips: "Oops,没有可以领取的优惠券",
+        noItemImgType:1
+      }
     }
   },
   methods: {
     /**
-     * 获取优惠券列表
-     */
-    _requestCoupon (falseUpdate = false) {
-      couponApi.getCouponList({status: 99}, falseUpdate).then((res) => {
-        this.couponList = res.dataList
-      })
-    },
-    /**
      * 领取优惠券及跳转到优惠券列表
      */
     _updateCouponStatus () {
-      if (!this.getCouponStatus) {
-        // 未领取优惠券领取优惠券
-        couponApi.receiveCoupon().then(res => {
-          this.getCouponStatus = true
-        })
-      } else {
-        // 领取完跳转优惠券列表
-        const url = '/pages/coupon/couponList/main'
-        wx.navigateTo({url})
-      }
-    }
+      store.dispatch('_updateCouponStatus');
+    },
   },
   onLoad () {
-    this._requestCoupon(true)
+
+    store.dispatch('_requestCoupon');
   },
 
 }
