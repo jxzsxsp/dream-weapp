@@ -105,7 +105,7 @@ export default {
       http.post('/buyer/receipt/getRefundReceipt',  data, true, '')
         .then((res) => {
           wx.navigateTo({
-            url: `@/webView/main?url=${res.url}`
+            url: `/pages/webView/main?url=${res.url}`
           })
         })
     }
