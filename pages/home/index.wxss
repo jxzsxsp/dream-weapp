@@ -1,0 +1,61 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 750rpx;
+}
+
+.logo {
+  width: 318rpx;
+  height: 321rpx;
+  margin-top: 166rpx;
+}
+
+.common-btn {
+  width: 660rpx;
+  height: 98rpx;
+  border-radius: 49px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.inbound-btn {
+  background-image: linear-gradient(-134deg, #F5515F 0%, #CF0524 100%);
+  margin-top: 122rpx;
+}
+
+.collection-btn {
+  background-image: linear-gradient(45deg, #7140F0 0%, #515FEE 100%);
+  margin-top: 34rpx;
+}
+
+.outbound-btn {
+  background-image: linear-gradient(-90deg, #3ED9F7 0%, #0F8DF7 100%);
+  margin-top: 34rpx;
+}
+
+.common-btn .btn-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.btn-img {
+  width: 16.7rpx;
+  height: 29.5rpx;
+  transform: rotateY(180deg);
+  margin-left: 480rpx;
+}
+
+.footer {
+  font-family: PingFangSC-Light;
+  font-size: 22rpx;
+  color: #666666;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: 150rpx;
+}
