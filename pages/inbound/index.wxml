@@ -1,2 +1,59 @@
-<!--pages/inbound/index.wxml-->
-<text>pages/inbound/index.wxml</text>
+<cloth-block>
+  <van-search
+    value="{{ value }}"
+    placeholder="验布单号/客户名称/联系方式"
+    bind:change="onSearchChange"
+    bind:search="onSearch"
+  />
+</cloth-block>
+
+<cloth-block>
+  <van-tabs color="#00B1EF;" bind:change="onTabChange">
+
+    <van-tab title="待入库">
+      <view wx:for="1234" wx:key="index" class="content-item">
+        <view class="content">
+          <text class="content-text">验布单号：127386124519402</text>
+          <text class="content-text">客户名称：泰森布业</text>
+          <text class="content-text">联系方式：13838987766</text>
+          <text class="content-text">总卷数：<text class="num-text">5</text> 卷</text>
+          <text class="content-text">下单时间：2018-10-10</text>
+        </view>
+        <view class="content-btn">
+          <text>入库</text>
+        </view>
+      </view>
+    </van-tab>
+
+    <van-tab title="部分入库">
+      <view wx:for="12345" wx:key="index" class="content-item">
+        <view class="content">
+          <text class="content-text">验布单号：127386124519402</text>
+          <text class="content-text">客户名称：泰森布业</text>
+          <text class="content-text">联系方式：13838987766</text>
+          <text class="content-text">总卷数：<text class="num-text">5</text> 卷</text>
+          <text class="content-text">已入库卷数：3 卷</text>
+        </view>
+        <view class="content-btn">
+          <text>继续入库</text>
+        </view>
+      </view>
+    </van-tab>
+
+    <van-tab title="全部入库">
+      <view wx:for="1234" wx:key="index" class="content-item">
+        <view class="content">
+          <text class="content-text">验布单号：127386124519402</text>
+          <text class="content-text">客户名称：泰森布业</text>
+          <text class="content-text">联系方式：13838987766</text>
+          <text class="content-text">总卷数：<text class="num-text">5</text> 卷</text>
+          <text class="content-text">已入库卷数：5 卷</text>
+        </view>
+        <view class="content-btn">
+          <text>查看详情</text>
+        </view>
+      </view>
+    </van-tab>
+
+  </van-tabs>
+</cloth-block>

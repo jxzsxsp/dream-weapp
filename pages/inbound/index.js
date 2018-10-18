@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    keyword: ''
   },
 
   /**
@@ -62,5 +62,30 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onSearchChange(e) {
+    this.setData({
+      keyword: e.detail
+    });
+  },
+
+  onSearch(event) {
+    if (this.data.keyword) {
+      wx.showToast({
+        title: '搜索：' + this.data.keyword,
+        icon: 'none'
+      });
+    }
+  },
+
+  /**
+   * 点击切换Tab事件
+   */
+  onTabChange(event) {
+    wx.showToast({
+      title: `切换到标签 ${event.detail.title}`,
+      icon: 'none'
+    });
   }
 })

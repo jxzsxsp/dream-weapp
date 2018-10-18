@@ -1,3 +1,26 @@
+page {
+  color: #333;
+  font-size: 16px;
+  background: #EEEEEE;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0 0 100rpx;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'PingFang SC', Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, Arial, sans-serif;
+}
+
+.cloth-margin-left {
+  margin-left: 10px;
+}
+
+.cloth-margin-right {
+  margin-right: 10px;
+}
+
+.cloth-margin-bottom {
+  display: block;
+  margin-bottom: 15px;
+}
 
 image {
   max-width: 100%;
