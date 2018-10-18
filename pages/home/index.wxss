@@ -61,5 +61,5 @@ page {
   color: #666666;
   letter-spacing: 0;
   text-align: center;
-  margin-top: 150rpx;
+  margin-top: 130rpx;
 }

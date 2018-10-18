@@ -36,12 +36,24 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "入库列表",
 					"pathName": "pages/inbound/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收款列表",
+					"pathName": "pages/collection/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "出库列表",
+					"pathName": "pages/outbound/index",
 					"query": ""
 				}
 			]

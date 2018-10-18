@@ -1,2 +1,32 @@
-<!--pages/collection/index.wxml-->
-<text>pages/collection/index.wxml</text>
+<cloth-block>
+  <van-search
+    value="{{ keyword }}"
+    placeholder="验布单号/客户名称/联系方式"
+    use-action-slot
+    bind:change="onSearchChange"
+    bind:search="onSearch"
+  >
+    <view class="scan-qrcode" slot="action" bind:tap="onSearch">
+      <image src="/assets/images/ic_scan@3x.png"></image>
+    </view>
+  </van-search>
+</cloth-block>
+
+<cloth-block>
+  <view wx:for="1234" wx:key="index" class="content-item">
+    <view class="content">
+      <view class="content-text">
+        验布单号：127386124519402
+        <text wx:if="{{ index % 2 == 0}}" class="status-text">待收款</text>
+        <text wx:if="{{ index % 2 == 1}}" class="status-text">待支付</text>
+      </view>
+      <text class="content-text">客户名称：泰森布业</text>
+      <text class="content-text">联系方式：13838987766</text>
+      <view class="content-text">总卷数：<text class="num-text">5</text> 卷</view>
+      <text class="content-text">已入库卷数：5 卷</text>
+    </view>
+    <view wx:if="{{ index % 2 == 0}}" class="content-btn">
+      <text>收款</text>
+    </view>
+  </view>
+</cloth-block>

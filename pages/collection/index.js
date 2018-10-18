@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    keyword: ''
   },
 
   /**
@@ -62,5 +62,20 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onSearchChange(e) {
+    this.setData({
+      keyword: e.detail
+    });
+  },
+
+  onSearch(event) {
+    if (this.data.keyword) {
+      wx.showToast({
+        title: '搜索：' + this.data.keyword,
+        icon: 'none'
+      });
+    }
   }
 })

@@ -1,1 +1,54 @@
-/* pages/collection/index.wxss */
+.content-item {
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.content-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 50rpx;
+}
+
+.num-text {
+  color: #00B1FF;
+}
+
+.content-btn {
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1rpx solid #E2E2E2;
+}
+
+.content-btn text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #00B1FF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+.status-text{
+  float: right;
+  margin-right: 34rpx;
+  color: #333333;
+}
+
+.scan-qrcode {
+  width: 48rpx;
+  height: 48rpx;
+}
+
