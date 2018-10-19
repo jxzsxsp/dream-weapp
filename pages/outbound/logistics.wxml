@@ -1,0 +1,28 @@
+<cloth-block>
+  <van-cell-group>
+    <van-field
+      value="{{ username }}"
+      label="物流公司"
+      placeholder="请填写物流公司"
+    />
+    <van-field
+      value="{{ password }}"
+      label="联系人"
+      placeholder="请填写联系人"
+    />
+    <van-field
+      value="{{ password }}"
+      label="联系方式"
+      placeholder="请填写物流联系方式"
+    />
+    <van-field
+      value="{{ password }}"
+      label="物流单号"
+      placeholder="请填写物流单号"
+    />
+  </van-cell-group>
+</cloth-block>
+
+<view class="logistics-btn">
+  <text>出库</text>
+</view>

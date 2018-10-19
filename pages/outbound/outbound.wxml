@@ -1,0 +1,72 @@
+<cloth-block>
+  <view class="content">
+    <view class="content-text">
+      <text>验布单号</text>
+      <text class="right-text">1446656138002648</text>
+    </view>
+    <view class="content-text">
+      <text>客户名称</text>
+      <text class="right-text">湖州开顺布业</text>
+    </view>
+    <view class="content-text">
+      <text>联系方式</text>
+      <text class="right-text">18260348234</text>
+    </view>
+  </view>
+</cloth-block>
+
+<cloth-block title="出库信息">
+  <view class="content">
+    <view class="content-text">
+      <text>验布类型</text>
+      <text class="right-text">打卷</text>
+    </view>
+    <view class="content-text">
+      <text>拉货方式</text>
+      <text class="right-text">代发货</text>
+    </view>
+    <view class="content-text">
+      <text>总卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+    <view class="content-text">
+      <text>实际总卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+    <view class="content-text">
+      <text>已入库卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+    <view class="content-text">
+      <text>实收金额</text>
+      <text class="right-text">90 元</text>
+    </view>
+    <view class="content-text">
+      <text>支付金额</text>
+      <text class="right-text">已支付</text>
+    </view>
+  </view>
+</cloth-block>
+
+<view class="line"></view>
+
+<cloth-block>
+  <view class="content">
+    <view class="content-head">
+      <text>唯一码</text>
+      <text class="right-text">数量(米/公斤)</text>
+    </view>
+    <view wx:for="123411111111111" wx:key="index" class="content-text">
+      <text>{{ '81807292011000000' + index }}</text>
+      <text class="right-text">24</text>
+    </view>
+  </view>
+</cloth-block>
+
+<view class="bottom-line"></view>
+
+<navigator url="/pages/outbound/logistics">
+  <view class="outbound-btn">
+    <text>出库</text>
+  </view>
+</navigator>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "出库",
+  "usingComponents": {
+    "cloth-block": "../../components/cloth-block/index"
+  }
+}

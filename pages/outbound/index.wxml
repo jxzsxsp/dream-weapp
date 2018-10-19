@@ -24,8 +24,10 @@
       <view class="content-text">总卷数：<text class="num-text">5</text> 卷</view>
       <text class="content-text">已入库卷数：5 卷</text>
     </view>
-    <view class="content-btn">
-      <text>出库</text>
-    </view>
+    <navigator url='/pages/outbound/outbound'>
+      <view class="content-btn">
+        <text>出库</text>
+      </view>
+    </navigator>
   </view>
 </cloth-block>

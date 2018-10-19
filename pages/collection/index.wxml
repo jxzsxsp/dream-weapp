@@ -25,8 +25,10 @@
       <view class="content-text">总卷数：<text class="num-text">5</text> 卷</view>
       <text class="content-text">已入库卷数：5 卷</text>
     </view>
-    <view wx:if="{{ index % 2 == 0}}" class="content-btn">
-      <text>收款</text>
-    </view>
+    <navigator url='/pages/collection/collection'>
+      <view wx:if="{{ index % 2 == 0}}" class="content-btn">
+        <text>收款</text>
+      </view>
+    </navigator>
   </view>
 </cloth-block>

@@ -1,0 +1,76 @@
+<cloth-block>
+  <view class="content">
+    <view class="content-text">
+      <text>验布单号</text>
+      <text class="right-text">1446656138002648</text>
+    </view>
+    <view class="content-text">
+      <text>客户名称</text>
+      <text class="right-text">湖州开顺布业</text>
+    </view>
+    <view class="content-text">
+      <text>联系方式</text>
+      <text class="right-text">18260348234</text>
+    </view>
+  </view>
+</cloth-block>
+
+<cloth-block title="收款明细">
+  <view class="content">
+    <view class="content-head">
+      <text>唯一码</text>
+      <text class="center-head">数量(米/公斤)</text>
+      <text class="right-head">价格(元)</text>
+    </view>
+    <view wx:for="123411111111111" wx:key="index" class="content-text">
+      <text>{{ '81807292011000000' + index }}</text>
+      <text class="center-text">24</text>
+      <text class="right-text">8</text>
+    </view>
+  </view>
+</cloth-block>
+
+<cloth-block title="收款信息">
+  <view class="content">
+    <view class="content-text">
+      <text>验布类型</text>
+      <text class="right-text">打卷</text>
+    </view>
+    <view class="content-text">
+      <text>拉货方式</text>
+      <text class="right-text">代发货</text>
+    </view>
+    <view class="content-text">
+      <text>总卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+    <view class="content-text">
+      <text>实际总卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+    <view class="content-text">
+      <text>已入库卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+    <view class="content-text">
+      <text>总金额</text>
+      <text class="right-text">100 元</text>
+    </view>
+    <view class="content-text">
+      <text>客户折扣</text>
+      <text class="right-text">九折</text>
+    </view>
+    <view class="content-text">
+      <text>应收金额</text>
+      <view class="right-text">
+        <input class="amount-text"></input>
+        <text>元</text>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-line"></view>
+</cloth-block>
+
+<view class="collection-btn">
+  <text>收款</text>
+</view>

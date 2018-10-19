@@ -3,7 +3,10 @@
     "pages/home/index",
     "pages/inbound/index",
     "pages/collection/index",
-    "pages/outbound/index"
+    "pages/outbound/index",
+    "pages/collection/collection",
+    "pages/outbound/outbound",
+    "pages/outbound/logistics"
   ],
   "window": {
     "backgroundTextStyle": "light",
