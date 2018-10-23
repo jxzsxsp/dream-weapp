@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    logisticsCompany: '',
+    username: '',
+    mobile: '',
+    logisticsNo: ''
   },
 
   /**
@@ -62,5 +65,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  scanCode() {
+    let that = this;
+    wx.scanCode({
+      success(res) {
+        that.setData({
+          logisticsNo: res.result
+        })
+      }
+    })
   }
 })

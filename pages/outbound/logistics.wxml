@@ -1,24 +1,27 @@
 <cloth-block>
   <van-cell-group>
     <van-field
-      value="{{ username }}"
+      value="{{ logisticsCompany }}"
       label="物流公司"
       placeholder="请填写物流公司"
     />
     <van-field
-      value="{{ password }}"
+      value="{{ username }}"
       label="联系人"
       placeholder="请填写联系人"
     />
     <van-field
-      value="{{ password }}"
+      value="{{ mobile }}"
       label="联系方式"
       placeholder="请填写物流联系方式"
     />
     <van-field
-      value="{{ password }}"
+      value="{{ logisticsNo }}"
       label="物流单号"
       placeholder="请填写物流单号"
+      icon="qr"
+      icon-class="icon"
+      bind:click-icon="scanCode"
     />
   </van-cell-group>
 </cloth-block>

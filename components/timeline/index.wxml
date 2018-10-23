@@ -1,0 +1,23 @@
+<view wx:for="{{steps}}" wx:key="index" class='timeline'>
+  <view class="timeline-date">
+    <text wx:if="{{item.date}}">{{item.date}}</text>
+  </view>
+  <view class="timeline-line">
+    <view class="circle"></view>
+    <view class="line"></view>
+  </view>
+  <view class='timeline-content'>
+    <view class='title'>
+      <text wx:if="{{item.title}}">{{item.title}}</text>
+    </view>
+    <view class='name'>
+      <text wx:if="{{item.name}}">{{item.name}}</text>
+    </view>
+    <view class='time'>
+      <text wx:if="{{item.time}}">{{item.time}}</text>
+    </view>
+    <view class='desc'>
+      <text wx:if="{{item.desc}}">{{item.desc}}</text>
+    </view>
+  </view>
+</view>

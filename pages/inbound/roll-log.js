@@ -5,22 +5,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 3,
     steps: [
       {
-        text: '步骤一',
+        date: '12月31日',
+        time: '',
+        title: '入库',
+        name: '',
+        desc: '张许昌  22:30:40'
+      },
+      {
+        date: '',
+        time: '22:30:40',
+        title: '上机',
+        name: '验布师',
         desc: '描述信息'
       },
       {
-        text: '步骤二',
+        date: '',
+        time: '22:30:40',
+        title: '开始验布',
+        name: '验布师',
         desc: '描述信息'
       },
       {
-        text: '步骤三',
+        date: '',
+        time: '22:30:40',
+        title: '验布完成',
+        name: '验布师',
         desc: '描述信息'
       },
       {
-        text: '步骤四',
+        date: '',
+        time: '22:30:40',
+        title: '已下机',
+        name: '理单员',
+        desc: '描述信息'
+      },
+      {
+        date: '',
+        time: '22:30:40',
+        title: '出库',
+        name: '客户',
         desc: '描述信息'
       }
     ]

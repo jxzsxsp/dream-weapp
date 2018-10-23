@@ -6,7 +6,7 @@
     bind:change="onSearchChange"
     bind:search="onSearch"
   >
-    <view class="scan-qrcode" slot="action" bind:tap="onSearch">
+    <view class="scan-qrcode" slot="action" bind:tap="scanCode">
       <image src="/assets/images/ic_scan@3x.png"></image>
     </view>
   </van-search>

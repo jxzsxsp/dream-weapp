@@ -2,6 +2,6 @@
   "navigationBarTitleText": "每卷跟踪",
   "usingComponents": {
     "cloth-block": "../../components/cloth-block/index",
-    "van-steps": "../../dist/steps/index"
+    "timeline": "../../components/timeline/index"
   }
 }

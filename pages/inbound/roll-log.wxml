@@ -18,10 +18,7 @@
 <view class="line"></view>
 
 <cloth-block>
-  <van-steps
-    steps="{{ steps }}"
-    active="{{ active }}"
-    direction="vertical"
-    active-color="#108EE9"
+  <timeline
+  steps="{{steps}}"
   />
 </cloth-block>

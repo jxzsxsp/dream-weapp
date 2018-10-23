@@ -70,12 +70,26 @@ Page({
     });
   },
 
-  onSearch(event) {
+  onSearch() {
     if (this.data.keyword) {
       wx.showToast({
         title: '搜索：' + this.data.keyword,
         icon: 'none'
       });
     }
+  },
+
+  scanCode() {
+    let that = this;
+    wx.scanCode({
+      success(res) {
+        that.setData({
+          keyword: res.result
+        })
+      },
+      complete() {
+        that.onSearch();
+      }
+    })
   }
 })
