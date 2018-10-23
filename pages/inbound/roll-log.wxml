@@ -1,0 +1,27 @@
+<cloth-block>
+  <view class="content">
+    <view class="content-text">
+      <text>验布单号</text>
+      <text class="right-text">1446656138002648</text>
+    </view>
+    <view class="content-text">
+      <text>客户名称</text>
+      <text class="right-text">湖州开顺布业</text>
+    </view>
+    <view class="content-text">
+      <text>联系方式</text>
+      <text class="right-text">18260348234</text>
+    </view>
+  </view>
+</cloth-block>
+
+<view class="line"></view>
+
+<cloth-block>
+  <van-steps
+    steps="{{ steps }}"
+    active="{{ active }}"
+    direction="vertical"
+    active-color="#108EE9"
+  />
+</cloth-block>

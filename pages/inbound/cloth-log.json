@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "验布单跟踪",
+  "usingComponents": {
+    "cloth-block": "../../components/cloth-block/index",
+    "van-steps": "../../dist/steps/index"
+  }
+}

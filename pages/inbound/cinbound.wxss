@@ -1,0 +1,43 @@
+.content {
+  background: #FFFFFF;
+  padding: 30rpx 30rpx 30rpx;
+}
+
+.customer-info {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.right-text {
+  float: right;
+  display: flex;
+  flex-direction: row;
+}
+
+.inbound-btn {
+  position: fixed;
+  z-index: 100;
+  left: 0rpx;
+  bottom: 0rpx;
+  height: 88rpx;
+  width: 750rpx;
+  background: #00B1EF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.inbound-btn text {
+  font-family: PingFangSC-Regular;
+  font-size: 38rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.bottom-line {
+  height: 30rpx;
+}

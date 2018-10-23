@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
-	"appid": "wx13e0c672856b3aa6",
+	"appid": "wx5bd404360bcff807",
 	"projectname": "%E9%AA%8C%E5%B8%83%E5%9D%8A%E5%B0%8F%E7%A8%8B%E5%BA%8F",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -72,6 +72,42 @@
 					"id": -1,
 					"name": "确认物流",
 					"pathName": "pages/outbound/logistics",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收货入库",
+					"pathName": "pages/inbound/inbound",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "继续入库",
+					"pathName": "pages/inbound/cinbound",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "驳回",
+					"pathName": "pages/inbound/reject",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查看详情",
+					"pathName": "pages/inbound/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "跟踪日志-验布单",
+					"pathName": "pages/inbound/cloth-log",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "跟踪日志-每卷",
+					"pathName": "pages/inbound/roll-log",
 					"query": ""
 				}
 			]

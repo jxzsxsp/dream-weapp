@@ -1,0 +1,17 @@
+<demo-block title="高度自适应">
+  <van-cell-group>
+    <van-field
+      value="{{ message }}"
+      type="textarea"
+      placeholder="请填写驳回原因"
+      rows="5"
+      autosize
+    />
+  </van-cell-group>
+</demo-block>
+
+<view class="operate-btn" bind:tap="reject">
+  <text>确认驳回</text>
+</view>
+
+<van-toast id="van-toast" />

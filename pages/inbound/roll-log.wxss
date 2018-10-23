@@ -1,0 +1,21 @@
+.content {
+  background: #FFFFFF;
+  padding: 30rpx 30rpx 30rpx;
+}
+
+.content-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.right-text {
+  float: right;
+  display: flex;
+  flex-direction: row;
+}
+
+.line {
+  height: 20rpx;
+}

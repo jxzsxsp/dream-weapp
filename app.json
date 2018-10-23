@@ -6,7 +6,13 @@
     "pages/outbound/index",
     "pages/collection/collection",
     "pages/outbound/outbound",
-    "pages/outbound/logistics"
+    "pages/outbound/logistics",
+    "pages/inbound/inbound",
+    "pages/inbound/reject",
+    "pages/inbound/detail",
+    "pages/inbound/cinbound",
+    "pages/inbound/cloth-log",
+    "pages/inbound/roll-log"
   ],
   "window": {
     "backgroundTextStyle": "light",

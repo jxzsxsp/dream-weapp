@@ -1,0 +1,80 @@
+<cloth-block title="客户信息">
+  <view class="content">
+    <view class="customer-info">
+      <text>验布单号</text>
+      <text class="right-text">1446656138002648</text>
+    </view>
+    <view class="customer-info">
+      <text>客户名称</text>
+      <text class="right-text">湖州开顺布业</text>
+    </view>
+    <view class="customer-info">
+      <text>联系方式</text>
+      <text class="right-text">18260348234</text>
+    </view>
+    <view class="customer-info">
+      <text>验布类型</text>
+      <text class="right-text">打卷</text>
+    </view>
+    <view class="customer-info">
+      <text>拉货方式</text>
+      <text class="right-text">代发货</text>
+    </view>
+    <view class="customer-info">
+      <text>总卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+  </view>
+</cloth-block>
+
+<cloth-block title="实际信息">
+  <van-cell-group>
+    <van-cell
+      title="验布单号"
+      value="1446656138002648"
+    />
+    <van-cell
+      title="客户名称"
+      value="湖州开顺布业"
+    />
+    <van-cell
+      title="联系方式"
+      value="18260348234"
+    />
+    <van-cell
+      title="验布类型"
+      is-link
+      arrow-direction="down"
+      value="打卷"
+      url=""
+    />
+    <van-cell
+      title="拉货方式"
+      is-link
+      arrow-direction="down"
+      value="代发货"
+      url=""
+    />
+    <van-cell
+      title="实际总卷数"
+      value="5"
+    />
+    <van-cell
+      title="已入库卷数"
+      value="3"
+    />
+    <van-cell
+      title="本次入库卷数"
+      is-link
+      arrow-direction="down"
+      value="2"
+      url=""
+    />
+  </van-cell-group>
+</cloth-block>
+
+<view class="bottom-line"></view>
+
+<view class="inbound-btn" bindtap="inbound">
+  <text>入库并打印</text>
+</view>

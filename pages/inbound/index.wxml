@@ -19,9 +19,11 @@
           <text class="content-text">总卷数：<text class="num-text">5</text> 卷</text>
           <text class="content-text">下单时间：2018-10-10</text>
         </view>
-        <view class="content-btn">
-          <text>入库</text>
-        </view>
+        <navigator url="/pages/inbound/inbound">
+          <view class="content-btn">
+            <text>入库</text>
+          </view>
+        </navigator>
       </view>
     </van-tab>
 
@@ -34,9 +36,11 @@
           <text class="content-text">总卷数：<text class="num-text">5</text> 卷</text>
           <text class="content-text">已入库卷数：3 卷</text>
         </view>
-        <view class="content-btn">
-          <text>继续入库</text>
-        </view>
+        <navigator url="/pages/inbound/cinbound">
+          <view class="content-btn">
+            <text>继续入库</text>
+          </view>
+        </navigator>
       </view>
     </van-tab>
 
@@ -49,9 +53,11 @@
           <text class="content-text">总卷数：<text class="num-text">5</text> 卷</text>
           <text class="content-text">已入库卷数：5 卷</text>
         </view>
-        <view class="content-btn">
-          <text>查看详情</text>
-        </view>
+        <navigator url="/pages/inbound/detail">
+          <view class="content-btn">
+            <text>查看详情</text>
+          </view>
+        </navigator>
       </view>
     </van-tab>
 

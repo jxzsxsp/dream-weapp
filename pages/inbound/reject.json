@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "驳回",
+  "usingComponents": {
+    "cloth-block": "../../components/cloth-block/index",
+    "van-toast": "../../dist/toast/index",
+    "van-field": "../../dist/field/index",
+    "van-cell-group": "../../dist/cell-group/index"
+  }
+}
