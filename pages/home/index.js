@@ -24,7 +24,9 @@ Page({
     wx.showToast({
       title: config.environment,
       icon: 'none'
-    })
+    });
+
+    console.log(config.environment);
 
   },
 
