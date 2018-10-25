@@ -1,6 +1,7 @@
 // pages/home/index.js
 import { urls } from '../../constants/urls.js'
 import { _get } from '../../utils/request.js'
+import { config } from '../../config.js'
 
 Page({
 
@@ -18,6 +19,11 @@ Page({
     _get(urls.home_url, {},
     function(res) {
       console.log(res)
+    });
+
+    wx.showToast({
+      title: config.environment,
+      icon: 'none'
     })
 
   },
