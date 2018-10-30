@@ -5,6 +5,16 @@ function showLoading() {
 }
 
 /**
+ * 执行用户登录
+ */
+function doLogin() {
+  // 跳转授权页面
+  wx.navigateTo({
+    url: "/pages/login/index"
+  });
+}
+
+/**
  * get请求
  */
 function _get (url, data, success, fail, complete, check_login) {
@@ -13,6 +23,8 @@ function _get (url, data, success, fail, complete, check_login) {
   
   // 构造请求参数
   data = data || {};
+  data.token = wx.getStorageSync('token');
+  data.wxapp_id = 10001;
 
   // 构造get请求
   let request = function () {
@@ -33,6 +45,7 @@ function _get (url, data, success, fail, complete, check_login) {
         }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
+          doLogin();
         } else if (res.data.code === 0) {
           wx.showToast({
             title: res.data.msg,
@@ -56,7 +69,6 @@ function _get (url, data, success, fail, complete, check_login) {
       },
       complete: function (res) {
         wx.hideLoading();
-        console.log(res);
         complete && complete(res);
       },
     });
@@ -71,6 +83,10 @@ function _get (url, data, success, fail, complete, check_login) {
 function _post (url, data, success, fail, complete) {
   
   showLoading();
+
+  // 构造请求参数
+  data = data || {};
+  data.token = wx.getStorageSync('token');
 
   wx.request({
     url: url,

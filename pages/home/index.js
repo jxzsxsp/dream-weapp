@@ -16,17 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    _get(urls.home_url, {},
-    function(res) {
-      console.log(res)
-    });
-
-    wx.showToast({
-      title: config.environment,
-      icon: 'none'
-    });
-
-    console.log(config.environment);
 
   },
 
