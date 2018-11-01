@@ -8,3 +8,24 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+@font-face {
+  font-family: 'ChameIconfont';  /* project id 896322 */
+  src: url('//at.alicdn.com/t/font_896322_asdol2z6q8s.eot');
+  src: url('//at.alicdn.com/t/font_896322_asdol2z6q8s.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_896322_asdol2z6q8s.woff') format('woff'),
+  url('//at.alicdn.com/t/font_896322_asdol2z6q8s.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_896322_asdol2z6q8s.svg#ChameIconfont') format('svg');
+}
+
+.ChameIconfont {
+  font-family:"ChameIconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ickehu:before { content: "\e60a"; }
+
+.icon-icshouye:before { content: "\e610"; }
