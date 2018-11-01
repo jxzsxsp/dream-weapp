@@ -1,4 +1,7 @@
 // pages/login/index.js
+import { urls } from '../../constants/urls.js'
+import { _get } from '../../utils/request.js'
+import { config } from '../../config.js'
 
 Page({
 
@@ -81,27 +84,16 @@ Page({
     wx.login({
       success: function (res) {
         // 发送用户信息
-
-        wx.hideLoading();
-
-        wx.setStorageSync('token', 'token')
-
-        // 跳转回原页面
-        _this.navigateBack();
-
-        /*
-        App._post_form('user/login'
+        _get(urls.login_url
           , {
-            code: res.code,
-            user_info: e.detail.rawData,
-            encrypted_data: e.detail.encryptedData,
-            iv: e.detail.iv,
-            signature: e.detail.signature
+            appId: config.app_id,
+            code: res.code
           }
           , function (result) {
+            console.log(result);
             // 记录token user_id
-            wx.setStorageSync('token', result.data.token);
-            wx.setStorageSync('user_id', result.data.user_id);
+            //wx.setStorageSync('token', result.data.token);
+            //wx.setStorageSync('user_id', result.data.user_id);
             // 跳转回原页面
             _this.navigateBack();
           }
@@ -109,7 +101,6 @@ Page({
           , function () {
             wx.hideLoading();
           });
-        */
       }
     });
   },

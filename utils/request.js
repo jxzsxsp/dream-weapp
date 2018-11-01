@@ -24,7 +24,6 @@ function _get (url, data, success, fail, complete, check_login) {
   // 构造请求参数
   data = data || {};
   data.token = wx.getStorageSync('token');
-  data.wxapp_id = 10001;
 
   // 构造get请求
   let request = function () {
@@ -45,7 +44,7 @@ function _get (url, data, success, fail, complete, check_login) {
         }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
-          doLogin();
+          //doLogin();
         } else if (res.data.code === 0) {
           wx.showToast({
             title: res.data.msg,
