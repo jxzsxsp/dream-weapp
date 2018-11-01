@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard --verbose",
     "precommit": "npm run lint",
-    "dev": "cd ./urls && ./ce.sh dev",
-    "pro": "cd ./urls && ./ce.sh pro"
+    "dev": "./env/ce.sh dev",
+    "pro": "./env/ce.sh pro"
   },
   "dependencies": {
     "vant-weapp": "^0.4.2"
