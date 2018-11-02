@@ -7,6 +7,12 @@
   padding-right: 30rpx;
 } 
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
 @font-face {
   font-family: 'ChameIconfont';  /* project id 896322 */
   src: url('//at.alicdn.com/t/font_896322_asdol2z6q8s.eot');

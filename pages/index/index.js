@@ -7,12 +7,12 @@ Page({
   data: {
     pantoneList: []
   },
-  // 事件处理函数
+  // 跳转搜索
   searchBarClicked: function () {
     $wx.navigateTo($wx.router.searchColor)
   },
   onLoad: function () {
-    http.get(urls.pantone.COLOR_CATEGORIES,{local:1})
+    http.get(urls.pantone.COLOR_CATEGORIES, {local:1})
       .then((res) => {
         this.setData({
           pantoneList: res.list

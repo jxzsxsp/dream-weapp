@@ -3,11 +3,7 @@
   <view class="search-bar-container" bind:tap="searchBarClicked">
     <view class="search-bar">
       <view class="search-icon"/>
-      <text class="search-text" wx:if="{{true}}">请输入要搜索的色号</text>
-      <input class="search-input" wx:if="{{false}}" placeholder="请输入要搜索的色号"/>
-    </view>
-    <view class="search-button" wx:if="{{false}}">
-      <text class="search-button-text">取消</text>
+      <text class="search-text">请输入要搜索的色号</text>
     </view>
   </view>
 

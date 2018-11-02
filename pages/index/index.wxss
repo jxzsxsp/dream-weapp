@@ -5,12 +5,12 @@
   border-radius: 32rpx;
   background: #FFFFFF;
   box-shadow: 0 2rpx 10rpx 0 rgba(0,0,0,0.20);
-  height: 64rpx;
   margin-top: 10rpx;
 }
 
 .search-bar {
   display: flex;
+  height: 64rpx;
   flex-direction: row;
   align-items: center;
   flex: 1;
