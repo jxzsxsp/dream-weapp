@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="search-bar-container" bind:tap="searchBarClicked">
+  <view class="search-bar-container">
     <view class="search-bar">
       <view class="search-icon"/>
       <input 
@@ -12,8 +12,8 @@
         bind:confirm="beginSearch"
       />
     </view>
-    <view class="search-button">
+    <navigator class="search-button" open-type="navigateBack" hover-class="none">
       <text class="search-button-text">取消</text>
-    </view>
+    </navigator>
   </view>
 </view>

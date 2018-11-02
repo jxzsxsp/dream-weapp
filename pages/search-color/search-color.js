@@ -3,7 +3,10 @@ import {$wx} from '../../genji4mp/index'
 Page({
   data: {
   },
-  onLoad: function () {
+  beginSearch: function (val) {
+    console.log(val)
+  },
 
+  onLoad: function () {
   },
 })

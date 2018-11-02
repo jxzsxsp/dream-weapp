@@ -34,7 +34,7 @@
 }
 
 .search-icon {
-  width: 28rpxr;
+  width: 28rpx;
   height: 28rpx;
   margin-left: 26rpx;
   color: #252525;
