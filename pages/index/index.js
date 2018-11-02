@@ -12,12 +12,12 @@ Page({
     $wx.navigateTo($wx.router.searchColor)
   },
   onLoad: function () {
-    console.log('onload')
-    http.get(urls.pantone.COLOR_CATEGORIES,{local:1}).then((res) => {
-      this.setData({
-        pantoneList: res.list
+    http.get(urls.pantone.COLOR_CATEGORIES,{local:1})
+      .then((res) => {
+        this.setData({
+          pantoneList: res.list
+        })
       })
-    })
   },
 
 })

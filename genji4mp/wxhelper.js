@@ -18,7 +18,7 @@ let baseService = {
       }
     }
     wx.navigateTo({
-      url: baseUrl + paramUrl
+      url: baseUrl + (paramUrl === '?' ? '' : paramUrl)
     })
   }
 }

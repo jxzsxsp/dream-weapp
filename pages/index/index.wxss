@@ -54,6 +54,8 @@
 }
 
 .card-container {
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
