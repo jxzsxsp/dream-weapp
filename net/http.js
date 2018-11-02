@@ -1,4 +1,3 @@
-// import login from './urls/login'
 import env from './env'
 import mock from './mock'
 
