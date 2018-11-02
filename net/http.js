@@ -16,7 +16,7 @@ export default class Http {
   }
 
   /**
-   * get 请求k
+   * get 请求
    * @param {String} url 请求url
    * @param {Object} data 请求数据
    * @param {Bool | String} isLoading 是否显示加载框，或者显示加载框的文字
@@ -65,7 +65,6 @@ export default class Http {
       })
     }
 
-    data = this._getQuestData(data)
     // 真实的网络请求
     if (isLoading) {
       wx.showLoading({
@@ -160,13 +159,6 @@ export default class Http {
     })
   }
 
-  // 封装和后端数据格式
-  _getQuestData (data) {
-    var param = wx.getStorageSync('systemInfo') || {}
-    param.data = data
-    return param
-  }
-
   // 获取时间戳＋6位随机数
   _randomNub () {
     var getTime = new Date().getTime()
@@ -176,9 +168,7 @@ export default class Http {
 
   //  静默登录
   quietLogin (code) {
-    var data = {}
-    data = this._getQuestData(data)
-    data.data.code = code
+    let data = {code}
     var url = this.root + '/buyer/user/mini-app/quick-login/v1'
     this.otherPost(url, data, true).then(res => {
       if (res.data.code == 200) {
