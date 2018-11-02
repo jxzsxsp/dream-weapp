@@ -1,21 +1,98 @@
 /**index.wxss**/
-.userinfo {
+.search-bar-container {
+  display: flex;
+  flex-direction: row;
+  border-radius: 32rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 10rpx 0 rgba(0,0,0,0.20);
+  height: 64rpx;
+  margin-top: 10rpx;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.search-icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 26rpx;
+  color: #252525;
+}
+
+.search-text {
+  flex: 1;
+  font-family: PingFangSC-Medium;
+  margin-left: 12rpx;
+  font-size: 26rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  line-height: 36rpx;
+}
+
+.banner-container {
+  height: 250rpx;
+}
+
+.banner-swiper {
+  margin-top: 20rpx;
+  height: 220rpx;
+  flex: 1;
+  background-color: aqua;
+  border-radius: 20rpx;
+}
+
+.card-list-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 36px;
+}
+
+.card-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.15);
+  border-radius: 20rpx;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.card-image {
+  height: 124rpx;
+  background-color: aquamarine;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.card-title-container {
+  height: 120rpx;
+  padding-left: 26rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.usermotto {
-  margin-top: 200px;
+.card-title {
+  font-family: PingFangSC-Medium;
+  font-size: 26rpx;
+  color: #666666;
+  letter-spacing: 0;
 }
+
+.card-subtitle {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #666666;
+  letter-spacing: 0;
+}
+
+
+
+
+
+
+
+
+

@@ -1,14 +1,35 @@
 <!--index.wxml-->
 <view class="container">
-  <view class='ChameIconfont icon-ickehu'/>
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="search-bar-container" bind:tap="searchBarClicked">
+    <view class="search-bar">
+      <view class="search-icon"/>
+      <text class="search-text" wx:if="{{true}}">请输入要搜索的色号</text>
+      <input class="search-input" wx:if="{{false}}" placeholder="请输入要搜索的色号"/>
+    </view>
+    <view class="search-button" wx:if="{{false}}">
+      <text class="search-button-text">取消</text>
+    </view>
+  </view>
+
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" class="banner-container">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <view class="banner-swiper"></view>
+      </swiper-item>
     </block>
+  </swiper>
+
+  <text class="card-list-title">潘通色卡库</text>
+
+  <view 
+    class="card-container" 
+    wx:for="{{pantoneList}}" 
+    bind:tap="pantoneCardClicked">
+    <view class="card-image"/>
+    <view class="card-title-container">
+      <text class="card-title">{{item.name}}</text>
+      <text class="card-subtitle">{{item.description}}</text>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+
 </view>
