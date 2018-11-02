@@ -1,7 +1,7 @@
 import env from './env'
 import mock from './mock'
 
-export default class Http {
+class Http {
   constructor () {
     this.isLoadingText = '数据加载中...'
     // 为非主域名动态添加 Get Set 方法
@@ -21,7 +21,7 @@ export default class Http {
    * @param {Bool | String} isLoading 是否显示加载框，或者显示加载框的文字
    */
   get (url, data, isLoading = true) {
-    wholeUrl = env.url + url
+    const wholeUrl = env.url + url
     return this._request(wholeUrl, data, 'GET', isLoading, url )
   }
 
@@ -32,7 +32,7 @@ export default class Http {
    * @param {Bool | String} isLoading 加载框是否显示加载框，或者显示加载框的文字
    */
   post (url, data, isLoading = true) {
-    wholeUrl = env.url + url
+    const wholeUrl = env.url + url
     return this._request(wholeUrl, data, 'POST', isLoading, url)
   }
   /**
@@ -200,3 +200,4 @@ export default class Http {
   }
 }
 
+export default new Http()

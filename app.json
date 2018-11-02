@@ -1,15 +1,11 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/search-color/search-color"
+    "pages/index/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
-  },
-  "usingComponents": {
-    "van-button": "vant-weapp/button"
   }
 }

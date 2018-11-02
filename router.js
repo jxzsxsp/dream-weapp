@@ -1,5 +1,5 @@
 
 export default {
-  index: 'index',
+  mainPage: 'index',
   searchColor: 'search-color',
 }
