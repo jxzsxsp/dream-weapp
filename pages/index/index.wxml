@@ -21,7 +21,8 @@
     class="card-container" 
     wx:for="{{pantoneList}}"
     wx:key="{{index}}" 
-    bind:tap="pantoneCardClicked">
+    bind:tap="pantoneCardClicked"
+  >
     <view class="card-image"/>
     <view class="card-title-container">
       <text class="card-title">{{item.name}}</text>

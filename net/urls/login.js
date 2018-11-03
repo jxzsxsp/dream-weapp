@@ -1,3 +1,3 @@
 export default {
-  LOGIN: '/login/v1'
+  login: '/login/v1'
 }

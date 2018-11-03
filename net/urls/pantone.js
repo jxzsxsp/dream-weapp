@@ -1,3 +1,6 @@
 export default {
-  COLOR_CATEGORIES: '/pantone/color-categories'
+  // 潘通色分类列表
+  colorCategories: '/pantone/color-categories',
+  // 潘通色搜索颜色
+  colorSearch: '/color/query',
 }
