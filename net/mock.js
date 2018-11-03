@@ -1,8 +1,6 @@
 import urls from './urls/index'
-let colorCategory = urls.pantone.COLOR_CATEGORIES
-
-export default {
-  [colorCategory]: {
+let colorCategory = {
+  [urls.pantone.colorCategories]: {
     "list":[
       {
         "id": 1,
@@ -27,4 +25,59 @@ export default {
         }
     ]
   }
+}
+let searchCategory = {
+  [urls.pantone.colorSearch]: {
+    "list":[
+      {
+      "colorId": 121145997, //颜色id
+      "rgb":"255,255,255", 
+      "srgb":"255,255,255",
+      "hexColor":"FFFFFF",
+      "labs":"2.0,2.0,2.0", 
+      "cmyk":"24,0,25,51",
+      "categoryId":1,//分类id
+      "categoryName":"1343", //分类名称
+      "name":"3514 CP" //颜色名称
+      },
+      {
+        "colorId": 121145997, //颜色id
+        "rgb":"255,255,255", 
+        "srgb":"255,255,255",
+        "hexColor":"FFFFFF",
+        "labs":"2.0,2.0,2.0", 
+        "cmyk":"24,0,25,51",
+        "categoryId":1,//分类id
+        "categoryName":"1343", //分类名称
+        "name":"3514 CP" //颜色名称
+      }, {
+        "colorId": 121145997, //颜色id
+        "rgb":"255,255,255", 
+        "srgb":"255,255,255",
+        "hexColor":"FFFFFF",
+        "labs":"2.0,2.0,2.0", 
+        "cmyk":"24,0,25,51",
+        "categoryId":1,//分类id
+        "categoryName":"1343", //分类名称
+        "name":"3514 CP" //颜色名称
+      }, {
+        "colorId": 121145997, //颜色id
+        "rgb":"255,255,255", 
+        "srgb":"255,255,255",
+        "hexColor":"FFFFFF",
+        "labs":"2.0,2.0,2.0", 
+        "cmyk":"24,0,25,51",
+        "categoryId":1,//分类id
+        "categoryName":"1343", //分类名称
+        "name":"3514 CP" //颜色名称
+      },
+    ],
+    "totalCount":100,
+    "hasMore":false
+  }
+}
+
+export default {
+  ...colorCategory,
+  ...searchCategory,
 }

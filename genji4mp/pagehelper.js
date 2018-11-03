@@ -16,20 +16,20 @@ export default function (props = {}, data = {}, lifeCycle = {}, privateMethod = 
   isObject('props', props) && isObject('data', data) && isObject('lifeCycle', lifeCycle) && isObject('privateMethod', privateMethod) && isObject('viewAction', viewAction)
 
   let lifeCycleObject = {}
-  !!lifeCycle && Object.keys(lifeCycle).forEach((key) => {
+  !!lifeCycle && Object.keys(lifeCycle).forEach(function (key) {
     lifeCycleObject[key] = lifeCycle[key]
   })
 
   let privateMethodObject = {}
-  !!privateMethod && Object.keys(privateMethod).forEach((key) => {
+  !!privateMethod && Object.keys(privateMethod).forEach(function (key) {
     privateMethodObject[key] = privateMethod[key]
   })
 
   let actionsObject = {}
-  !!actionsObject && Object.keys(viewAction).forEach((key) => {
+  !!actionsObject && Object.keys(viewAction).forEach(function (key) {
     let action = viewAction[key]
     actionsObject[key] = function (e) {
-      action(e.currentTarget.dataset || {}, e.detail.value || {})
+      action.call(this, e.currentTarget.dataset || {}, e.detail.value || {})
     }
   })
 
