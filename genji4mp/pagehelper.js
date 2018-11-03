@@ -4,31 +4,36 @@ function isObject (key, obj) {
   }
 }
 
-export default function (pageInstance) {
-  // 要传给 page 的对象
-  let pageObject = {}
-  Object.keys(pageInstance).forEach((key) => {
-    if (key === 'lifeCycle') {
-      isObject(key, pageInstance[key])
-      pageObject = Object.assign(pageObject, {...pageInstance[key]})
-    } else if (key === 'viewAction') {
-      isObject(key, pageInstance[key])
-      // 原始的 actions 对象
-      let actions = pageInstance[key]
-      // 修改后的 actions 对象
-      let actionsObject = {}
-      Object.keys(actions).forEach((key) => {
-        // 原始的某一个 action 方法
-        let action = actions[key]
-        actionsObject[key] = function (e) {
-          action(e.currentTarget.dataset || {}, e.detail.value || {})
-        }
-      })
-      pageObject = Object.assign(pageObject, actionsObject)
-    } else {
-      pageObject = Object.assign(pageObject, {[key]: pageInstance[key]})
+/**
+ * 生成Page的方法
+ * @param {object} props 不影响UI对象
+ * @param {object} data 影响UI对象
+ * @param {object} lifeCycle 生命周期对象
+ * @param {object} privateMethod 私有方法对象
+ * @param {object} viewAction UI点击事件对象
+ */
+export default function (props = {}, data = {}, lifeCycle = {}, privateMethod = {}, viewAction = {}) {
+  isObject('props', props) && isObject('data', data) && isObject('lifeCycle', lifeCycle) && isObject('privateMethod', privateMethod) && isObject('viewAction', viewAction)
+
+  let lifeCycleObject = {}
+  !!lifeCycle && Object.keys(lifeCycle).forEach((key) => {
+    lifeCycleObject[key] = lifeCycle[key]
+  })
+
+  let privateMethodObject = {}
+  !!privateMethod && Object.keys(privateMethod).forEach((key) => {
+    privateMethodObject[key] = privateMethod[key]
+  })
+
+  let actionsObject = {}
+  !!actionsObject && Object.keys(viewAction).forEach((key) => {
+    let action = viewAction[key]
+    actionsObject[key] = function (e) {
+      action(e.currentTarget.dataset || {}, e.detail.value || {})
     }
   })
-  console.log(pageObject)
+
+  const pageObject = {props, data, ...privateMethodObject, ...actionsObject, ...lifeCycleObject}
+
   Page(pageObject)
 }
