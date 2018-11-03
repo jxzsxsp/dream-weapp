@@ -1,12 +1,42 @@
-import {$wx} from '../../genji4mp/index'
+import {$wx, $Page} from '../../genji4mp/index'
+import {http, urls} from '../../net/index'
 
-Page({
-  data: {
-  },
-  beginSearch: function (val) {
-    console.log(val)
-  },
+const props = {
+  loadingState: http.defaultLoadingState()
+}
 
-  onLoad: function () {
-  },
-})
+const data = {
+  searchColorList: [],
+  // 如果开始搜索了就要显示颜色列表或者无颜色提示
+  isSearching: false
+}
+
+const privateMethod = {
+  onReachBottom () {
+    http.getList(urls.pantone.colorSearch, this.props.loadingState)
+      .then((res) => {
+        console.log(res)
+        this.data.searchColorList.push(...res)
+        this.setData({
+          searchColorList: this.data.searchColorList
+        })
+      })
+
+  }
+}
+
+const viewAction = {
+  beginSearch : function(data, value) {
+    this.props.loadingState = http.defaultLoadingState()
+    http.getList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, local: true})
+      .then((res) => {
+        this.setData({
+          searchColorList: res,
+          isSearching: true
+        })
+      })
+  }
+}
+
+$Page(props, data, null, privateMethod, viewAction)
+

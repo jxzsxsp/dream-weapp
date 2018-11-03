@@ -33,7 +33,7 @@ let searchCategory = {
       "colorId": 121145997, //颜色id
       "rgb":"255,255,255", 
       "srgb":"255,255,255",
-      "hexColor":"FFFFFF",
+      "hexColor":"#9B9B9B",
       "labs":"2.0,2.0,2.0", 
       "cmyk":"24,0,25,51",
       "categoryId":1,//分类id
@@ -44,7 +44,7 @@ let searchCategory = {
         "colorId": 121145997, //颜色id
         "rgb":"255,255,255", 
         "srgb":"255,255,255",
-        "hexColor":"FFFFFF",
+        "hexColor":"#9B9B9B",
         "labs":"2.0,2.0,2.0", 
         "cmyk":"24,0,25,51",
         "categoryId":1,//分类id
@@ -54,7 +54,7 @@ let searchCategory = {
         "colorId": 121145997, //颜色id
         "rgb":"255,255,255", 
         "srgb":"255,255,255",
-        "hexColor":"FFFFFF",
+        "hexColor":"#9B9B9B",
         "labs":"2.0,2.0,2.0", 
         "cmyk":"24,0,25,51",
         "categoryId":1,//分类id
@@ -64,16 +64,142 @@ let searchCategory = {
         "colorId": 121145997, //颜色id
         "rgb":"255,255,255", 
         "srgb":"255,255,255",
-        "hexColor":"FFFFFF",
+        "hexColor":"#9B9B9B",
         "labs":"2.0,2.0,2.0", 
         "cmyk":"24,0,25,51",
         "categoryId":1,//分类id
         "categoryName":"1343", //分类名称
         "name":"3514 CP" //颜色名称
       },
+      {
+        "colorId": 121145997, //颜色id
+        "rgb":"255,255,255", 
+        "srgb":"255,255,255",
+        "hexColor":"#9B9B9B",
+        "labs":"2.0,2.0,2.0", 
+        "cmyk":"24,0,25,51",
+        "categoryId":1,//分类id
+        "categoryName":"1343", //分类名称
+        "name":"3514 CP" //颜色名称
+        },
+        {
+          "colorId": 121145997, //颜色id
+          "rgb":"255,255,255", 
+          "srgb":"255,255,255",
+          "hexColor":"#9B9B9B",
+          "labs":"2.0,2.0,2.0", 
+          "cmyk":"24,0,25,51",
+          "categoryId":1,//分类id
+          "categoryName":"1343", //分类名称
+          "name":"3514 CP" //颜色名称
+        }, {
+          "colorId": 121145997, //颜色id
+          "rgb":"255,255,255", 
+          "srgb":"255,255,255",
+          "hexColor":"#9B9B9B",
+          "labs":"2.0,2.0,2.0", 
+          "cmyk":"24,0,25,51",
+          "categoryId":1,//分类id
+          "categoryName":"1343", //分类名称
+          "name":"3514 CP" //颜色名称
+        }, {
+          "colorId": 121145997, //颜色id
+          "rgb":"255,255,255", 
+          "srgb":"255,255,255",
+          "hexColor":"#9B9B9B",
+          "labs":"2.0,2.0,2.0", 
+          "cmyk":"24,0,25,51",
+          "categoryId":1,//分类id
+          "categoryName":"1343", //分类名称
+          "name":"3514 CP" //颜色名称
+        },
+        {
+          "colorId": 121145997, //颜色id
+          "rgb":"255,255,255", 
+          "srgb":"255,255,255",
+          "hexColor":"#9B9B9B",
+          "labs":"2.0,2.0,2.0", 
+          "cmyk":"24,0,25,51",
+          "categoryId":1,//分类id
+          "categoryName":"1343", //分类名称
+          "name":"3514 CP" //颜色名称
+          },
+          {
+            "colorId": 121145997, //颜色id
+            "rgb":"255,255,255", 
+            "srgb":"255,255,255",
+            "hexColor":"#9B9B9B",
+            "labs":"2.0,2.0,2.0", 
+            "cmyk":"24,0,25,51",
+            "categoryId":1,//分类id
+            "categoryName":"1343", //分类名称
+            "name":"3514 CP" //颜色名称
+          }, {
+            "colorId": 121145997, //颜色id
+            "rgb":"255,255,255", 
+            "srgb":"255,255,255",
+            "hexColor":"#9B9B9B",
+            "labs":"2.0,2.0,2.0", 
+            "cmyk":"24,0,25,51",
+            "categoryId":1,//分类id
+            "categoryName":"1343", //分类名称
+            "name":"3514 CP" //颜色名称
+          }, {
+            "colorId": 121145997, //颜色id
+            "rgb":"255,255,255", 
+            "srgb":"255,255,255",
+            "hexColor":"#9B9B9B",
+            "labs":"2.0,2.0,2.0", 
+            "cmyk":"24,0,25,51",
+            "categoryId":1,//分类id
+            "categoryName":"1343", //分类名称
+            "name":"3514 CP" //颜色名称
+          },
+          {
+            "colorId": 121145997, //颜色id
+            "rgb":"255,255,255", 
+            "srgb":"255,255,255",
+            "hexColor":"#9B9B9B",
+            "labs":"2.0,2.0,2.0", 
+            "cmyk":"24,0,25,51",
+            "categoryId":1,//分类id
+            "categoryName":"1343", //分类名称
+            "name":"3514 CP" //颜色名称
+            },
+            {
+              "colorId": 121145997, //颜色id
+              "rgb":"255,255,255", 
+              "srgb":"255,255,255",
+              "hexColor":"#9B9B9B",
+              "labs":"2.0,2.0,2.0", 
+              "cmyk":"24,0,25,51",
+              "categoryId":1,//分类id
+              "categoryName":"1343", //分类名称
+              "name":"3514 CP" //颜色名称
+            }, {
+              "colorId": 121145997, //颜色id
+              "rgb":"255,255,255", 
+              "srgb":"255,255,255",
+              "hexColor":"#9B9B9B",
+              "labs":"2.0,2.0,2.0", 
+              "cmyk":"24,0,25,51",
+              "categoryId":1,//分类id
+              "categoryName":"1343", //分类名称
+              "name":"3514 CP" //颜色名称
+            }, {
+              "colorId": 121145997, //颜色id
+              "rgb":"255,255,255", 
+              "srgb":"255,255,255",
+              "hexColor":"#9B9B9B",
+              "labs":"2.0,2.0,2.0", 
+              "cmyk":"24,0,25,51",
+              "categoryId":1,//分类id
+              "categoryName":"1343", //分类名称
+              "name":"3514 CP" //颜色名称
+            },
     ],
     "totalCount":100,
-    "hasMore":false
+    "hasMore":true
   }
 }
 

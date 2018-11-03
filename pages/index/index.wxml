@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container container-margin">
   <view class="search-bar-container" bind:tap="searchBarClicked">
     <view class="search-bar">
       <view class="search-icon"/>

@@ -16,4 +16,27 @@
       <text class="search-button-text">取消</text>
     </navigator>
   </view>
+
+  <view
+    wx:if="{{isSearching && searchColorList.length === 0}}" 
+    class="no-color-container"
+  >
+    <text class="no-color-title">无匹配的色号</text>
+    <text class="no-color-description">请确认是否输入正确</text>
+    <text class="no-color-description">或者换个色号试试</text>
+  </view>
+
+  <view wx:if="{{isSearching && searchColorList.length !== 0}}" class="color-total-container">
+    <view 
+      wx:for="{{searchColorList}}" 
+      class="color-container" 
+      style="background: {{searchColorList[index].hexColor}}"
+    >
+      <text class="color-title">{{searchColorList[index].name}}</text>
+      <text class="color-subtitle">{{searchColorList[index].categoryName}}</text>
+    </view>
+
+  </view>
+
+
 </view>
