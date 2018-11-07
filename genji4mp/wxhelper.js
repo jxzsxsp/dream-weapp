@@ -12,11 +12,16 @@ let baseService = {
   navigateTo: function (baseUrl, params) {
     let paramUrl = '?'
     for (const key in params) {
+      if (typeof key === 'object') {
+        throw new Error('小程序跳转参数内部不能包含 object：' + key)
+      }
       if (params.hasOwnProperty(key)) {
         const element = params[key];
-        paramUrl+=`${key}=${element}`
+        paramUrl+=`${key}=${element}&`
       }
     }
+    paramUrl = paramUrl.substr(0, paramUrl.length-1)
+
     wx.navigateTo({
       url: baseUrl + (paramUrl === '?' ? '' : paramUrl)
     })
