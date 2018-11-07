@@ -26,17 +26,21 @@
     <text class="no-color-description">或者换个色号试试</text>
   </view>
 
-  <view wx:if="{{isSearching && searchColorList.length !== 0}}" class="color-total-container">
+  <view 
+    wx:if="{{isSearching && searchColorList.length !== 0}}"
+    class="color-total-container"
+  >
     <view 
+      wx:key="index"
       wx:for="{{searchColorList}}" 
       class="color-container" 
       style="background: {{searchColorList[index].hexColor}}"
+      bind:tap="searchColorClicked"
+      data-index="{{index}}"
     >
       <text class="color-title">{{searchColorList[index].name}}</text>
       <text class="color-subtitle">{{searchColorList[index].categoryName}}</text>
     </view>
-
   </view>
-
 
 </view>

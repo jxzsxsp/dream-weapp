@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="color-container" style="background: {{colorDetail.hexColor}}">
+    <view class="color-title-container">
+      <text class="color-title">{{colorDetail.categoryName}}</text>
+      <text class="color-subtitle">{{colorDetail.name}}</text>
+    </view>
+    <view class="color-detail-container">
+      <text class="color-detail-text">CMYK {{colorDetail.cmyk}}</text>
+      <text class="color-detail-text">sRGB {{colorDetail.srgb}}</text>
+      <text class="color-detail-text">LAB {{colorDetail.lab}}</text>
+    </view>
+  </view>
+  <view class="color-recipe-container" wx:if="{{colorRecipe}}">
+    <text class="color-recipe-title">油墨配方</text>
+    <view wx:for="{{colorRecipe}}" class="color-recipe-detail">
+      <text class="color-recipe-text">{{item.name}}</text>
+      <text class="color-recipe-text">{{item.value*100}}%</text>
+    </view>
+  </view>
+  <text class="color-source-text">颜色来源于 PANTONE TCX</text>
+</view>

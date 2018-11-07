@@ -105,7 +105,7 @@ class Http {
   // 请求实体
   _request (url, data, method, isLoading, mockUrl) {
     // 注入mock数据
-    if (data && data.hasOwnProperty('local')) {
+    if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
         resolve(mock[mockUrl] || {})
       })
@@ -161,7 +161,7 @@ class Http {
   // otherRequest
   otherRequest (url, data, method, isLoading) {
     // 注入mock数据
-    if (data && data.hasOwnProperty('local')) {
+    if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
         resolve(mock[mockUrl] || {})
       })

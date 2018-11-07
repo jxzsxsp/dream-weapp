@@ -1,0 +1,82 @@
+.color-container {
+  height: 750rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 60rpx;
+  padding-bottom: 60rpx;
+  padding-left: 30rpx;
+}
+
+.color-title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.color-title {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+   margin-bottom: 10rpx;
+}
+
+.color-subtitle {
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.color-detail-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.color-detail-text {
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  margin-bottom: 10rpx;
+}
+
+.color-recipe-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 40rpx;
+  padding-left: 30rpx;
+}
+
+.color-recipe-title {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #252525;
+  letter-spacing: 0;
+  margin-bottom: 23rpx;
+}
+
+.color-recipe-detail {
+  padding-right: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.color-recipe-text {
+  font-family: PingFangSC-Light;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.color-source-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #0A3100;
+  letter-spacing: 0;
+  line-height: 40rpx;
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+}

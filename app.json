@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/search-color/search-color"
+    "pages/search-color/search-color",
+    "pages/color-detail/color-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

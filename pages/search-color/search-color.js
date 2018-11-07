@@ -21,20 +21,23 @@ const privateMethod = {
           searchColorList: this.data.searchColorList
         })
       })
+  },
 
-  }
 }
 
 const viewAction = {
-  beginSearch : function(data, value) {
+  beginSearch: function (data, value) {
     this.props.loadingState = http.defaultLoadingState()
-    http.getList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, local: true})
+    http.getList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, mock: true})
       .then((res) => {
         this.setData({
           searchColorList: res,
           isSearching: true
         })
       })
+  },
+  searchColorClicked: function (data, value) {
+    $wx.navigateTo($wx.router.colorDetail, this.data.searchColorList[data.index])
   }
 }
 

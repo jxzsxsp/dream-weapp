@@ -203,7 +203,31 @@ let searchCategory = {
   }
 }
 
+let colorDetail = {
+  [urls.pantone.colorDetail]: {
+    "id": 2323,
+    "name": "Bright Red C",
+    "categoryId": 1,
+    "categoryName": "PANTONE+ Solid Coated-V3",
+    "cmyk": "0,52,75,36",
+    "srgb": "210,190,162",
+    "hexColor": "#9B9B9B",
+    "lab": "03744,-0.665785",
+    "xyz": "226.000000,223.000000,121.000000",
+    "colorRecipe": [
+        {
+            "name": "PANTONE Yellow",
+            "value": "0.004"
+        },
+        {
+            "name": "PANTONE Warm Red",
+            "value": "0.004"
+        }]
+  }
+}
+
 export default {
   ...colorCategory,
   ...searchCategory,
+  ...colorDetail,
 }

@@ -5,7 +5,7 @@ import {http, urls} from '../../net/index'
 
 const lifeCycle = {
   onLoad: function () {
-    http.get(urls.pantone.colorCategories, {local:1})
+    http.get(urls.pantone.colorCategories, {mock:1})
       .then((res) => {
         this.setData({
           pantoneList: res.list
