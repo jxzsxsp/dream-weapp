@@ -21,6 +21,7 @@
     class="card-container" 
     wx:for="{{pantoneList}}"
     wx:key="{{index}}" 
+    data-index="{{index}}"
     bind:tap="pantoneCardClicked"
   >
     <view class="card-image"/>

@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="search-bar-container">
+    <view class="search-bar">
+      <view class="search-icon"/>
+      <input 
+        class="search-input" 
+        placeholder="请输入要搜索的色号" 
+        placeholder-class="search-placeholder" 
+        confirm-type="search"
+        bind:confirm="beginSearch"
+      />
+    </view>
+  </view>  
+  <view class="color-total-container">
+    <view class="color-container" wx:for="{{colorList}}" wx:key="{{index}}" bind:tap="colorClicked" data-index="{{index}}">
+      <view style="background: {{item.hexColor}}" class="color-color"/>
+      <text class="color-title">{{item.name}}</text>
+    </view>
+  </view>
+
+</view>

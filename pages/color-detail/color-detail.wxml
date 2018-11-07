@@ -12,7 +12,7 @@
   </view>
   <view class="color-recipe-container" wx:if="{{colorRecipe}}">
     <text class="color-recipe-title">油墨配方</text>
-    <view wx:for="{{colorRecipe}}" class="color-recipe-detail">
+    <view wx:for="{{colorRecipe}}" wx:key="{{index}}" class="color-recipe-detail">
       <text class="color-recipe-text">{{item.name}}</text>
       <text class="color-recipe-text">{{item.value*100}}%</text>
     </view>

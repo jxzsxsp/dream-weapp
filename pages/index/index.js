@@ -3,6 +3,11 @@
 import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 
+const data = {
+  pantoneList: []
+}
+
+
 const lifeCycle = {
   onLoad: function () {
     http.get(urls.pantone.colorCategories, {mock:1})
@@ -19,10 +24,10 @@ const viewAction = {
   searchBarClicked: function () {
     $wx.navigateTo($wx.router.searchColor)
   },
-}
-
-const data = {
-  pantoneList: []
+  // 跳转色卡详情
+  pantoneCardClicked: function (data) {
+    $wx.navigateTo($wx.router.colorList, this.data.pantoneList[data.index])
+  }
 }
 
 $Page(null, data, lifeCycle, null, viewAction)

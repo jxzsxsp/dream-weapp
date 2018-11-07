@@ -28,15 +28,16 @@ class Http {
   /**
    * 获取列表默认状态
    *
+   * @param {number} [pageSize=20]
    * @returns 返回默认列表状态
    * @memberof Http
    */
-  defaultLoadingState () {
+  defaultLoadingState (pageSize = 20) {
     return {
       hasMore: true,
       param: {
         pageId: 1,
-        pageSize: 20,
+        pageSize,
       }
     }
   }

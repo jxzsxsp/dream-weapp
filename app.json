@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/search-color/search-color",
-    "pages/color-detail/color-detail"
+    "pages/color-detail/color-detail",
+    "pages/color-list/color-list"
   ],
   "window":{
     "backgroundTextStyle":"light",
