@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="result-container">
+    <text class="result-title">△ = ?</text>
+    <text class="result-subtitle">值越小代表颜色越接近</text>
+  </view>
+
+  <view class="color-container">
+    <view class="remote-color-container">
+      <view class="remote-color"/>
+      <view class="remote-text-container">
+        <text class="remote-text">样本选择</text>
+      </view>
+    </view>
+    <view class="locol-color-container">
+      <view class="locol-color"/>
+      <view class="locol-text-container">
+        <text class="locol-text">去 app</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail-container">
+    <view class="remote-detail">
+      <text class="remote-hexcolor"></text>
+      <text class="remote-rgb"></text>
+      <text class="remote-lab"></text>
+    </view>
+  </view>
+</view>
