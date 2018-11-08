@@ -1,0 +1,140 @@
+.result-container {
+  margin-top: 20rpx;
+  margin-bottom: 72rpx;
+  align-self: center;
+  width: 370rpx;
+  height: 100rpx;
+  opacity: 0.1;
+  background: #F5A623;
+  border-radius: 50rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-title {
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #F5A623;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.result-subtitle {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #F5A623;
+  letter-spacing: 0;
+}
+
+.color-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.remote-color-container {
+  position: relative;
+}
+
+.remote-color {
+  height: 326rpx;
+  width: 326rpx;
+  border-radius: 20rpx;
+}
+
+.remote-text-container {
+  position: absolute;
+  width: 136rpx;
+  height: 44rpx; 
+  bottom: -22rpx;
+  left: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
+  border-radius: 21.5rpx;
+}
+
+.remote-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.locol-color-container {
+  position: relative;
+}
+
+.locol-color {
+  width: 326rpx;
+  height: 326rpx;
+  border-radius: 20rpx;
+}
+
+.locol-text-container {
+  position: absolute;
+  width: 136rpx;
+  height: 44rpx; 
+  bottom: -22rpx;
+  left: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
+  border-radius: 21.5rpx;
+  width: 136rpx;
+  height: 44rpx; 
+}
+
+.locol-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+  margin-top: 100rpx;
+}
+
+.remote-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.remote-hexcolor {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  display: inline-block;
+  margin-bottom: 30rpx;
+}
+
+.remote-detail-color {
+  font-family: PingFangSC-Light;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+
+
+
+
+
+
+
+
+
+

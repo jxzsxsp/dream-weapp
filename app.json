@@ -4,7 +4,8 @@
     "pages/search-color/search-color",
     "pages/color-detail/color-detail",
     "pages/color-list/color-list",
-    "pages/fetch-color-detail/fetch-color-detail"
+    "pages/fetch-color-detail/fetch-color-detail",
+    "pages/compare-color/compare-color"
   ],
   "window":{
     "backgroundTextStyle":"light",

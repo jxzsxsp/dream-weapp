@@ -6,7 +6,7 @@
 
   <view class="color-container">
     <view class="remote-color-container">
-      <view class="remote-color"/>
+      <view class="remote-color" style="background: {{remoteColorDetail.hexColor}}"/>
       <view class="remote-text-container">
         <text class="remote-text">样本选择</text>
       </view>
@@ -21,9 +21,9 @@
 
   <view class="detail-container">
     <view class="remote-detail">
-      <text class="remote-hexcolor"></text>
-      <text class="remote-rgb"></text>
-      <text class="remote-lab"></text>
+      <text class="remote-hexcolor">{{remoteColorDetail.hexColor}}</text>
+      <text class="remote-detail-color">sRGB: {{remoteColorDetail.rgb}}</text>
+      <text class="remote-detail-color">LAB: {{remoteColorDetail.lab}}</text>
     </view>
   </view>
 </view>

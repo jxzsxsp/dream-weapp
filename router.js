@@ -5,4 +5,5 @@ export default {
   colorDetail: 'color-detail',
   colorList: 'color-list',
   fetchColorDetail: 'fetch-color-detail',
+  compareColor: 'compare-color'
 }

@@ -6,5 +6,7 @@ export default {
   // 颜色详情
   colorDetail: '/pantone/color-detail',
   // 用户取色详情
-  fetchColorDetail: '/user-color/color-detail'
+  fetchColorDetail: '/user-color/color-detail',
+  // 远程对色详情
+  compareColorDetail: '/user-color-comparison/color-detail'
 }

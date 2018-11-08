@@ -236,9 +236,23 @@ let fetchColorDetail = {
   }
 }
 
+let compareColorDetail = {
+  [urls.pantone.compareColorDetail]: {
+    "id": 1, 
+    "deviceId":"1323", 
+    "originType":1,
+    "rgb":"255,255,255",
+    "hexColor":"#678901",
+    "lab":"2.0,2.0,2.0",
+    "cmyk": ""
+  }
+}
+
+
 export default {
   ...colorCategory,
   ...searchCategory,
   ...colorDetail,
   ...fetchColorDetail,
+  ...compareColorDetail,
 }
