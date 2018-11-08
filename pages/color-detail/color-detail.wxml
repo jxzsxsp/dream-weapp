@@ -1,6 +1,6 @@
 <view class="container">
   <view class="color-container" style="background: {{colorDetail.hexColor}}">
-    <view class="colortitle-container">
+    <view class="color-title-container">
       <text class="color-title">{{colorDetail.categoryName}}</text>
       <text class="color-subtitle">{{colorDetail.name}}</text>
     </view>
