@@ -1,6 +1,6 @@
 {
     "navigationBarTitle": "取色",
     "usingComponents": {
-        "component-tag-name": "components/suspend-button"
+        "suspend-button": "/components/suspend-button/suspend-button"
       }
 }

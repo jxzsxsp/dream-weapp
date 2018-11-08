@@ -35,9 +35,9 @@ let privateMethod = {
   onReachBottom () {
     http.getList(urls.pantone.colorSearch, this.props.loadingState)
       .then(colorList => {
-        this.data.colorList.push(...colorList)
+        this.data.relativeColorList.push(...colorList)
         this.setData({
-          colorList: this.data.colorList
+          relativeColorList: this.data.relativeColorList
         })
       })
   }

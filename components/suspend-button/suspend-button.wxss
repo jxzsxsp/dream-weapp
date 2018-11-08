@@ -1,0 +1,15 @@
+.suspend-container {
+  background: #678901;
+  height: 100rpx;
+  width: 100rpx;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 100rpx;
+  bottom: 100rpx; 
+}
+
+.go-home {
+  flex: 1;
+  
+}

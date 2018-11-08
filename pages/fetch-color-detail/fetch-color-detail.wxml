@@ -1,4 +1,5 @@
 <view class="container">
+  <suspend-button/>
   <view class="fetched-color-container">
     <view class="fetched-color-color" style="background: {{colorDetail.hexColor}}"/>
     <view class="fetched-color-detail-container">
