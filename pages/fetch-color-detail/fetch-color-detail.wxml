@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="fetched-color-container">
+    <view class="fetched-color-color" style="background: {{colorDetail.hexColor}}"/>
+    <view class="fetched-color-detail-container">
+      <text class="fetched-color-title">{{colorDetail.hexColor}}</text>
+      <text class="fetched-color-subtitle">sRGB:{{colorDetail.rgb}}</text>
+      <text class="fetched-color-subtitle">LAB:{{colorDetail.lab}}</text>
+    </view>
+  </view>
+
+  <view class="share-button-container">
+    <view class="share-button">
+      <text class="share-button-text">打开 Chame 取色</text>
+    </view>
+  </view>
+
+  <view class="relative-color-container">
+    <text class="relative-color-header">可匹配以下潘通色号</text>
+    <view wx:for="{{relativeColorList}}" wx:key="{{index}}" class="relative-color-detail-container" bind:tap="relativeColorClicked" data-index="{{index}}">
+      <view class="relative-color-detail-seperator"/>
+      <view class="relative-color-title-view-container">
+        <view class="relative-color-title-container">
+          <text class="relative-color-title">{{item.name}}</text>
+          <text class="relative-color-subtitle">{{item.categoryName}}</text>
+        </view>
+        <view class="right-icon"/>
+      </view>
+    </view>
+  </view>
+
+</view>

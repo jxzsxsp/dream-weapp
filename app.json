@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/search-color/search-color",
     "pages/color-detail/color-detail",
-    "pages/color-list/color-list"
+    "pages/color-list/color-list",
+    "pages/fetch-color-detail/fetch-color-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

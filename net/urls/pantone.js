@@ -5,4 +5,6 @@ export default {
   colorSearch: '/color/query',
   // 颜色详情
   colorDetail: '/pantone/color-detail',
+  // 用户取色详情
+  fetchColorDetail: '/user-color/color-detail'
 }

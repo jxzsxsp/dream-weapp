@@ -42,7 +42,12 @@
 				{
 					"id": -1,
 					"name": "search-color",
-					"pathName": "pages/search-color/search-color"
+					"pathName": "pages/fetch-color-detail/fetch-color-detail",
+					"query": "name=zachary",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
+					}
 				}
 			]
 		}

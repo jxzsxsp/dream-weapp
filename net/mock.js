@@ -226,8 +226,19 @@ let colorDetail = {
   }
 }
 
+let fetchColorDetail = {
+  [urls.pantone.fetchColorDetail]: {
+    "id": 1, 
+    "deviceId":"1323", 
+    "rgb":"255,255,255",
+    "hexColor":"#456789",
+    "lab":"2.0,2.0,2.0"
+  }
+}
+
 export default {
   ...colorCategory,
   ...searchCategory,
   ...colorDetail,
+  ...fetchColorDetail,
 }

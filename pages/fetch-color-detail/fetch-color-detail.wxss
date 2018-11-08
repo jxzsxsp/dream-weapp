@@ -1,0 +1,120 @@
+.fetched-color-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  padding-left: 30rpx;
+}
+
+.fetched-color-color {
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 20rpx;
+  margin-right: 30rpx;
+}
+
+.fetched-color-detail-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.fetched-color-title {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+  margin-bottom: 26rpx;
+}
+
+.fetched-color-subtitle {
+  font-family: PingFangSC-Light;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.share-button-container {
+  margin-top: 100rpx;
+  margin-bottom: 70rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-button {
+  height: 88rpx;
+  width: 570rpx;
+  border: 1rpx solid #979797;
+  border-radius: 44rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.relative-color-header {
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #252525;
+  letter-spacing: 0;
+  margin-left: 24rpx;
+  margin-bottom: 30rpx;
+  display: inline-block;
+}
+
+.relative-color-detail-container {
+  display: flex;
+  flex-direction: column;
+  height: 126rpx;
+}
+
+.relative-color-detail-seperator {
+  background: #D8D8D8;
+  height: 0.5rpx;
+}
+
+.relative-color-title-view-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+  align-items: center;
+}
+
+.relative-color-title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.relative-color-title {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  margin-bottom: 5rpx;
+}
+
+.relative-color-subtitle {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 40rpx;
+}
+
+.right-icon {
+  width: 15rpx;
+  height: 28rpx;
+  margin-right: 34rpx;
+}
+
+
+
+
+
+

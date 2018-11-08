@@ -4,4 +4,5 @@ export default {
   searchColor: 'search-color',
   colorDetail: 'color-detail',
   colorList: 'color-list',
+  fetchColorDetail: 'fetch-color-detail',
 }
