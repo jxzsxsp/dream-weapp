@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -58,6 +58,11 @@
 					"referrerInfo": {
 						"appId": "12345"
 					}
+				},
+				{
+					"id": -1,
+					"name": "fetch-color-detail",
+					"pathName": "pages/fetch-color-detail/fetch-color-detail"
 				}
 			]
 		}
