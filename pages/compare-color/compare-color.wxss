@@ -4,8 +4,7 @@
   align-self: center;
   width: 370rpx;
   height: 100rpx;
-  opacity: 0.1;
-  background: #F5A623;
+  background: rgba(245, 166, 35, 0.1);
   border-radius: 50rpx;
   display: flex;
   flex-direction: column;
@@ -23,6 +22,8 @@
   font-family: PingFangSC-Regular;
   font-size: 24rpx;
   color: #F5A623;
+  opacity: 1;
+  text-align: center;
   letter-spacing: 0;
 }
 
