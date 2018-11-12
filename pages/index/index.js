@@ -20,7 +20,7 @@ const lifeCycle = {
     http.get(urls.bannerList)
       .then(res => {
         this.setData({
-          bannerList: res
+          bannerList: res.list
         })
       })
   },

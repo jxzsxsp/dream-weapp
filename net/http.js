@@ -156,7 +156,12 @@ class Http {
             wx.hideLoading()
           }
           if (res.data.code === 200) {
-            const resData = Object.assign({}, res.data.data, { requestParam: data})
+            let resData = {}
+            if (res.data.data instanceof Array) {
+              resData = {list: res.data.data, requestParam: data}
+            } else {
+              resData = {...res.data.data, requestParam: data}
+            }
             if (!isOnline) {
               console.log('-----------网络请求的 url 为-----'+ url)
               console.log(resData)
