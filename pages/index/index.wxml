@@ -8,9 +8,9 @@
   </view>
 
   <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" class="banner-container">
-    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <block wx:for="{{bannerList}}" wx:key="{{index}}">
       <swiper-item>
-        <view class="banner-swiper"></view>
+        <image class="banner-swiper" src="{{item.pic}}"></image>
       </swiper-item>
     </block>
   </swiper>
@@ -24,7 +24,7 @@
     data-index="{{index}}"
     bind:tap="pantoneCardClicked"
   >
-    <view class="card-image"/>
+    <image class="card-image" src="{{item.imgUrl}}" />
     <view class="card-title-container">
       <text class="card-title">{{item.name}}</text>
       <text class="card-subtitle">{{item.description}}</text>

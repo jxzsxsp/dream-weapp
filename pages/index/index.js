@@ -4,16 +4,23 @@ import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 
 const data = {
-  pantoneList: []
+  pantoneList: [],
+  bannerList: []
 }
 
 
 const lifeCycle = {
   onLoad: function () {
-    http.get(urls.pantone.colorCategories, {mock:1})
-      .then((res) => {
+    http.getPantone(urls.pantone.colorCategories)
+      .then(res => {
         this.setData({
           pantoneList: res.list
+        })
+      })
+    http.get(urls.bannerList)
+      .then(res => {
+        this.setData({
+          bannerList: res
         })
       })
   },

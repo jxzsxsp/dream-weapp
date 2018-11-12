@@ -45,8 +45,7 @@
 .banner-swiper {
   margin-top: 20rpx;
   height: 220rpx;
-  flex: 1;
-  background-color: aqua;
+  width: 100%;
   border-radius: 20rpx;
 }
 
@@ -55,7 +54,7 @@
   font-size: 36rpx;
   color: #000000;
   letter-spacing: 0;
-  line-height: 36px;
+  line-height: 36rpx;
 }
 
 .card-container {
@@ -71,7 +70,6 @@
 
 .card-image {
   height: 124rpx;
-  background-color: aquamarine;
 }
 
 .card-title-container {
