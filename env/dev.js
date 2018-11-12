@@ -1,4 +1,7 @@
+export const isOnline = false
+
 export default {
-  login: '10.26.5.145',
-  url: '10.26.5.145'  // 主域名
+  Login: 'http://172.16.2.166:8080',
+  url: 'http://172.16.2.150:8080',  // 主域名
+  Pantone: 'http://172.16.2.149:8080'
 }
