@@ -15,14 +15,14 @@ let lifeCycle = {
     $wx.setNavigationBarTitle({
       title: '取色'
     })
-    http.get(urls.pantone.fetchColorDetail, {colorId: query.colorId, mock: true})
+    http.get(urls.pantone.fetchColorDetail, {colorId: query.colorId})
       .then(colorDetail => {
         this.setData({
           colorDetail,
         })
         return colorDetail.lab
       }).then(lab => {
-        return http.getList(urls.pantone.colorSearch, this.props.loadingState, {labs: lab, mock: true})
+        return http.getList(urls.pantone.colorSearch, this.props.loadingState, {labs: lab})
       }).then(relativeColorList => {
         this.setData({
           relativeColorList
