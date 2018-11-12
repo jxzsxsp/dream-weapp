@@ -8,8 +8,9 @@ class Http {
     for (const baseUrlName in env) {
       if (env.hasOwnProperty(baseUrlName) && baseUrlName !== 'url') {
         const baseUrl = env[baseUrlName]
-        this['get' + baseUrlName] = (url, data, isLoading = true) => this._request(baseUrl + url, data, 'GET', isLoading, url)
-        this['post' + baseUrlName] = (url, data, isLoading = true) => this._request(baseUrl + url, data, 'POST', isLoading, url)
+        this['get' + baseUrlName] = (url, data, isLoading) => this._request(baseUrl + url, data, 'GET', isLoading, url)
+        this['post' + baseUrlName] = (url, data, isLoading) => this._request(baseUrl + url, data, 'POST', isLoading, url)
+        this['get' + baseUrlName + 'List'] = (url, loadingState, data, isLoading) => this._getOtherList(baseUrlName, url, loadingState, data, isLoading)
       }
     }
   }
@@ -49,7 +50,7 @@ class Http {
    * @param {Obejct} data 请求的参数
    * @param {Bool} isLoading 是否显示加载框
    */
-  getList (url, loadingState, data, isLoading = true) {
+  getList (url, loadingState, data, isLoading) {
     // 没有更多了，直接返回
     if (!loadingState.hasMore) {
       return new Promise((resolve) => {
@@ -73,13 +74,35 @@ class Http {
 
   }
 
+  _getOtherList (baseUrlName, url, loadingState, data, isLoading) {
+    if (!loadingState.hasMore) {
+      return new Promise((resolve) => {
+        resolve([])
+      })
+    }
+
+    let realData = {}
+    // 如果存在data，把上次的请求参数更新
+    if (!!data) {
+      loadingState.param = Object.assign({}, {pageId: loadingState.param.pageId, pageSize: loadingState.param.pageSize}, data)
+    }
+    realData = Object.assign(realData, loadingState.param)
+
+    return this['get'+baseUrlName](url, realData, isLoading).then((res) => {
+      loadingState.param.pageId += 1
+      loadingState.hasMore = res.hasMore
+      loadingState.totalCount = res.totalCount
+      return res.list
+    }) 
+  }
+
   /**
    * post 请求
    * @param {String} url 请求url
    * @param {Object} data 请求数据
    * @param {Bool | String} isLoading 加载框是否显示加载框，或者显示加载框的文字
    */
-  post (url, data, isLoading = true) {
+  post (url, data, isLoading) {
     const wholeUrl = env.url + url
     return this._request(wholeUrl, data, 'POST', isLoading, url)
   }
@@ -89,8 +112,8 @@ class Http {
    * @param {Object} data 请求数据
    * @param {Bool | String} isLoading 是否显示加载框，或者显示加载框的文字
    */
-  otherGet (wholeUrl, data, isLoading = true) {
-    return this.otherRequest(wholeUrl, data, 'GET', isLoading)
+  otherGet (wholeUrl, data, isLoading) {
+    return this._otherRequest(wholeUrl, data, 'GET', isLoading)
   }
   
   /**
@@ -99,12 +122,11 @@ class Http {
    * @param {Object} data 请求数据
    * @param {Bool | String} isLoading 是否显示加载框，或者显示加载框的文字
    */
-  otherPost (wholeUrl, data, isLoading = true) {
-    return this.otherRequest(wholeUrl, data, 'POST', isLoading)
+  otherPost (wholeUrl, data, isLoading) {
+    return this._otherRequest(wholeUrl, data, 'POST', isLoading)
   }
 
-  // 请求实体
-  _request (url, data={}, method, isLoading, mockUrl) {
+  _request (url, data={}, method, isLoading = true, mockUrl) {
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
@@ -165,11 +187,11 @@ class Http {
   }
 
   // otherRequest
-  otherRequest (url, data, method, isLoading) {
+  _otherRequest (url, data = {}, method, isLoading = true) {
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
-        resolve(mock[mockUrl] || {})
+        resolve(mock[url] || {})
       })
     }
 
