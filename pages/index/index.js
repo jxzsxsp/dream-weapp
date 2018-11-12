@@ -34,6 +34,15 @@ const viewAction = {
   // 跳转色卡详情
   pantoneCardClicked: function (data) {
     $wx.navigateTo($wx.router.colorList, this.data.pantoneList[data.index])
+  },
+  // banner 跳转
+  bannerClicked: function (data) {
+    const banner = this.data.bannerList[data.index]
+    const param = {
+      url: encodeURIComponent(banner.targetUrl),
+      title: banner.title
+    }
+    $wx.navigateTo($wx.router.commonWebview, param)
   }
 }
 

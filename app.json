@@ -5,7 +5,8 @@
     "pages/color-detail/color-detail",
     "pages/color-list/color-list",
     "pages/fetch-color-detail/fetch-color-detail",
-    "pages/compare-color/compare-color"
+    "pages/compare-color/compare-color",
+    "pages/common-webview/common-webview"
   ],
   "window":{
     "backgroundTextStyle":"light",

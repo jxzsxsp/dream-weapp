@@ -10,7 +10,7 @@
   <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" class="banner-container">
     <block wx:for="{{bannerList}}" wx:key="{{index}}">
       <swiper-item>
-        <image class="banner-swiper" src="{{item.pic}}"></image>
+        <image class="banner-swiper" src="{{item.pic}}" bind:tap="bannerClicked" data-index="{{index}}"></image>
       </swiper-item>
     </block>
   </swiper>

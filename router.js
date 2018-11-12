@@ -5,5 +5,6 @@ export default {
   colorDetail: 'color-detail',
   colorList: 'color-list',
   fetchColorDetail: 'fetch-color-detail',
-  compareColor: 'compare-color'
+  compareColor: 'compare-color',
+  commonWebview: 'common-webview',
 }
