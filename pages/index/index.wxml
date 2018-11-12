@@ -31,4 +31,5 @@
     </view>
   </view>
 
+  <view class="border"></view>
 </view>

@@ -6,7 +6,8 @@
     "pages/color-list/color-list",
     "pages/fetch-color-detail/fetch-color-detail",
     "pages/compare-color/compare-color",
-    "pages/common-webview/common-webview"
+    "pages/common-webview/common-webview",
+    "pages/user-center/user-center"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -14,5 +15,18 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black",
     "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#000000",
+    "backgroundColor": "#FFFFFF",
+    "selectedColor": "#000000",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    },{
+      "pagePath": "pages/user-center/user-center",
+      "text": "我的"
+    }]
   }
 }
