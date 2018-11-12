@@ -1,3 +1,3 @@
-<view class="suspend-container">
-  <view class="go-home" bind:tap="goHome">go home</view>
+<view class="suspend-container" bind:tap="goHome">
+  <slot></slot>
 </view>
