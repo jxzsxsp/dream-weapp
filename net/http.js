@@ -8,8 +8,8 @@ class Http {
     for (const baseUrlName in env) {
       if (env.hasOwnProperty(baseUrlName) && baseUrlName !== 'url') {
         const baseUrl = env[baseUrlName]
-        this['get' + baseUrlName] = (url, data={}, isLoading = true) => this._request(baseUrl + url, data, 'GET', isLoading, url)
-        this['post' + baseUrlName] = (url, data={}, isLoading = true) => this._request(baseUrl + url, data, 'POST', isLoading, url)
+        this['get' + baseUrlName] = (url, data, isLoading = true) => this._request(baseUrl + url, data, 'GET', isLoading, url)
+        this['post' + baseUrlName] = (url, data, isLoading = true) => this._request(baseUrl + url, data, 'POST', isLoading, url)
       }
     }
   }
@@ -104,7 +104,7 @@ class Http {
   }
 
   // 请求实体
-  _request (url, data, method, isLoading, mockUrl) {
+  _request (url, data={}, method, isLoading, mockUrl) {
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
