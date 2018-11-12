@@ -14,7 +14,7 @@ let lifecycle = {
     this.setData({
       colorDetail: colorDetail
     })
-    http.get(urls.pantone.colorDetail, {colorId: colorDetail.colorId, mock: true})
+    http.getPantone(urls.pantone.colorDetail, {colorId: colorDetail.colorId})
       .then((res) => {
         this.setData({
           colorRecipe: res.colorRecipe

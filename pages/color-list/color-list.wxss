@@ -81,6 +81,6 @@
 }
 
 .color-color {
-  height: 300rpx;
-  margin-bottom: 10rpx;
+  height: 0rpx;
+  padding-bottom: 100%;
 }

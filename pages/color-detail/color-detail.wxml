@@ -6,8 +6,8 @@
     </view>
     <view class="color-detail-container">
       <text class="color-detail-text">CMYK {{colorDetail.cmyk}}</text>
-      <text class="color-detail-text">sRGB {{colorDetail.srgb}}</text>
-      <text class="color-detail-text">LAB {{colorDetail.lab}}</text>
+      <text class="color-detail-text">sRGB {{colorDetail.rgb}}</text>
+      <text class="color-detail-text">LAB {{colorDetail.labs}}</text>
     </view>
   </view>
   <view class="color-recipe-container" wx:if="{{colorRecipe}}">

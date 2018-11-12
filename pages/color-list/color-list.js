@@ -12,7 +12,7 @@ let data = {
 
 let privateMethod = {
   onReachBottom () {
-    http.getList(urls.pantone.colorSearch, this.props.loadingState)
+    http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState)
       .then(colorList => {
         this.data.colorList.push(...colorList)
         this.setData({
@@ -28,7 +28,7 @@ let lifeCycle = {
     $wx.setNavigationBarTitle({
       title: colorDetail.name
     })
-    http.getList(urls.pantone.colorSearch, this.props.loadingState, {categoryId: this.props.categoryId, mock:true})
+    http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {categoryId: this.props.categoryId})
       .then(colorList => {
         this.setData({
           colorList
@@ -40,7 +40,7 @@ let lifeCycle = {
 let viewAction = {
   beginSearch: function (data, value) {
     this.props.loadingState = http.defaultLoadingState()
-    http.getList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, categoryId: this.props.categoryId, mock: true})
+    http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, categoryId: this.props.categoryId})
       .then((colorList) => {
         this.setData({
           colorList
