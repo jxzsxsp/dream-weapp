@@ -1,4 +1,4 @@
-import env from './env'
+import env, {isOnline} from './env'
 import mock from './mock'
 
 class Http {
@@ -8,8 +8,8 @@ class Http {
     for (const baseUrlName in env) {
       if (env.hasOwnProperty(baseUrlName) && baseUrlName !== 'url') {
         const baseUrl = env[baseUrlName]
-        this[baseUrlName + 'Get'] = (url, data, isLoading = true) => this._request(baseUrl + url, data, 'GET', isLoading, url)
-        this[baseUrlName + 'Post'] = (url, data, isLoading = true) => this._request(baseUrl + url, data, 'POST', isLoading, url)
+        this['get' + baseUrlName] = (url, data={}, isLoading = true) => this._request(baseUrl + url, data, 'GET', isLoading, url)
+        this['post' + baseUrlName] = (url, data={}, isLoading = true) => this._request(baseUrl + url, data, 'POST', isLoading, url)
       }
     }
   }
@@ -134,7 +134,12 @@ class Http {
             wx.hideLoading()
           }
           if (res.data.code === 200) {
-            resolve(Object.assign({}, res.data.data, { requestParam: data.data }))
+            const resData = Object.assign({}, res.data.data, { requestParam: data})
+            if (!isOnline) {
+              console.log('-----------网络请求的 url 为-----'+ url)
+              console.log(resData)
+            }
+            resolve(resData)
           } else {
             wx.showToast({
               title: res.data.message,
