@@ -28,7 +28,7 @@ const privateMethod = {
 const viewAction = {
   beginSearch: function (data, value) {
     this.props.loadingState = http.defaultLoadingState()
-    http.getList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, mock: true})
+    http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value})
       .then((res) => {
         this.setData({
           searchColorList: res,
