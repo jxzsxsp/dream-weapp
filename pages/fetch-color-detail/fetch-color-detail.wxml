@@ -1,5 +1,4 @@
 <view class="container">
-  <suspend-button/>
   <view class="fetched-color-container">
     <view class="fetched-color-color" style="background: {{colorDetail.hexColor}}"/>
     <view class="fetched-color-detail-container">
@@ -29,4 +28,10 @@
     </view>
   </view>
 
+  <suspend-button>
+    <view class="go-home-container">
+      <view class="iconfont icon-tab_index_a go-home-view"/>
+      <text class="go-home-text">回首页</text>
+    </view>
+  </suspend-button>
 </view>
