@@ -1,0 +1,9 @@
+.border {
+  height: 0.1rpx;
+  background: #FFFFFF;
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+}

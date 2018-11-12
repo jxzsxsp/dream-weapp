@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="login-container">
+    <view class="has-login-container">
+
+    </view>
+    <view class="not-login-container">
+      
+    </view>
+  </view>
+
+
+
+
+  <view class="border"></view>
+</view>
