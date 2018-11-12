@@ -13,7 +13,7 @@ const data = {
 
 const privateMethod = {
   onReachBottom () {
-    http.getList(urls.pantone.colorSearch, this.props.loadingState)
+    http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState)
       .then((res) => {
         console.log(res)
         this.data.searchColorList.push(...res)
