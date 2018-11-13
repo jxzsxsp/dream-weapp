@@ -63,7 +63,9 @@
 					"id": 2,
 					"name": "fetch-color-detail",
 					"pathName": "pages/fetch-color-detail/fetch-color-detail",
-					"query": "colorId=123"
+					"query": "colorId=123",
+					"scene": "1036",
+					"referrerInfo": {}
 				}
 			]
 		}

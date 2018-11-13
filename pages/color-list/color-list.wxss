@@ -84,3 +84,10 @@
   height: 0rpx;
   padding-bottom: 100%;
 }
+
+.color-title {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #666666;
+  letter-spacing: 0;
+}

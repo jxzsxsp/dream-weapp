@@ -1,15 +1,14 @@
 .suspend-container {
-  background: #678901;
-  height: 100rpx;
-  width: 100rpx;
+  height: 72rpx;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: fixed;
-  right: 100rpx;
+  right: 0rpx;
   bottom: 100rpx; 
-}
-
-.go-home {
-  flex: 1;
-  
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
+  border-radius: 36rpx 0 0 36rpx;
+  width: 172rpx;
+  justify-content: flex-end;
 }
