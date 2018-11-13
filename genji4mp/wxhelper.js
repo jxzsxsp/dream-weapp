@@ -1,4 +1,5 @@
 import router from '../router'
+import settinghelper from './settinghelper'
 
 for (const key in router) {
   if (router.hasOwnProperty(key)) {
@@ -7,7 +8,15 @@ for (const key in router) {
   }
 }
 
+const settingArr = ['getLocation', 'getUserInfo']
+let settingMethods = {}
+for (const key of settingArr) {
+  settingMethods[key] = (info, authorizeLevel, data ) => settinghelper(key, info, authorizeLevel, data)
+}
+
+
 let baseService = {
+  ...settingMethods,
   router,
   navigateTo: function (baseUrl, params) {
     let paramUrl = '?'
