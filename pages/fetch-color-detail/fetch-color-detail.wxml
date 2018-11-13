@@ -9,9 +9,9 @@
   </view>
 
   <view class="share-button-container">
-    <view class="share-button">
+    <button class="share-button" open-type="launchApp" app-parameter="{{colorId}}" bind:error="launchAppError">
       <text class="share-button-text">打开 Chame 取色</text>
-    </view>
+    </button>
   </view>
 
   <view class="relative-color-container">

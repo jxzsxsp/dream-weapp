@@ -17,13 +17,7 @@
 
   <text class="card-list-title">潘通色卡库</text>
 
-  <view 
-    class="card-container" 
-    wx:for="{{pantoneList}}"
-    wx:key="{{index}}" 
-    data-index="{{index}}"
-    bind:tap="pantoneCardClicked"
-  >
+  <view class="card-container" wx:for="{{pantoneList}}" wx:key="{{index}}" data-index="{{index}}" bind:tap="pantoneCardClicked">
     <image class="card-image" src="{{item.imgUrl}}" />
     <view class="card-title-container">
       <text class="card-title">{{item.name}}</text>

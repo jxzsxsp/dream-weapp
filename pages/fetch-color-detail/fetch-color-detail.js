@@ -2,7 +2,8 @@ import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 
 let props = {
-  loadingState: http.defaultLoadingState()
+  loadingState: http.defaultLoadingState(),
+  colorId: 0
 }
 
 let data = {
@@ -12,9 +13,7 @@ let data = {
 
 let lifeCycle = {
   onLoad: function (query) {
-    $wx.setNavigationBarTitle({
-      title: '取色'
-    })
+    this.props.colorId = query.colorId
     http.get(urls.pantone.fetchColorDetail, {colorId: query.colorId})
       .then(colorDetail => {
         this.setData({
@@ -22,7 +21,7 @@ let lifeCycle = {
         })
         return colorDetail.lab
       }).then(lab => {
-        return http.getList(urls.pantone.colorSearch, this.props.loadingState, {labs: lab})
+        return http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {labs: lab})
       }).then(relativeColorList => {
         this.setData({
           relativeColorList
@@ -40,12 +39,20 @@ let privateMethod = {
           relativeColorList: this.data.relativeColorList
         })
       })
+  },
+  launchAppError (e) {
+    $wx.showModal({title: '提示', content: '请先下载App', showCancel: false}).then(res => {
+      console.log(e.detail.errMsg)
+    })
   }
 }
 
 let viewAction = {
-  relativeColorClicked: function(data) {
+  relativeColorClicked: function (data) {
     $wx.navigateTo($wx.router.colorDetail, {...this.data.relativeColorList[data.index]})
+  },
+  openApp: function () {
+
   }
 }
 

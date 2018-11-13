@@ -12,10 +12,10 @@
     </view>
   </view>  
   <view class="color-total-container">
-    <view class="color-container" wx:for="{{colorList}}" wx:key="{{index}}" bind:tap="colorClicked" data-index="{{index}}">
+    <button class="color-container" wx:for="{{colorList}}" wx:key="{{index}}" bind:tap="colorClicked" data-index="{{index}}">
       <view style="background: {{item.hexColor}}" class="color-color"/>
       <text class="color-title">{{item.name}}</text>
-    </view>
+    </button>
   </view>
 
 </view>
