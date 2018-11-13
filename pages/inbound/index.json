@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "入库列表",
   "usingComponents": {
     "cloth-block": "../../components/cloth-block/index",

@@ -23,7 +23,8 @@ function _get (url, data, success, fail, complete, check_login) {
   
   // 构造请求参数
   data = data || {};
-  data.token = wx.getStorageSync('token');
+  let token = wx.getStorageSync('token');
+  //data.token = token;
 
   // 构造get请求
   let request = function () {
@@ -31,7 +32,8 @@ function _get (url, data, success, fail, complete, check_login) {
     wx.request({
       url: url,
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'token': token
       },
       data: data,
       success: function (res) {
@@ -44,26 +46,20 @@ function _get (url, data, success, fail, complete, check_login) {
         }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
-          //doLogin();
-        } else if (res.data.code === 0) {
+          doLogin();
+        } else if (res.data.code < 0) {
           wx.showToast({
-            title: res.data.msg,
+            title: res.data.message,
             icon: 'none'
-          })
-          return false;
+          });
         } else {
           success && success(res.data);
         }
       },
       fail: function (res) {
         wx.showToast({
-          title: res.errMsg,
-          icon: 'none',
-          success: function(res) {},
-          fail: function(res) {},
-          complete: function(res) {
-            fail && fail(res);
-          },
+          title: res.message,
+          icon: 'none'
         });
       },
       complete: function (res) {
@@ -73,7 +69,7 @@ function _get (url, data, success, fail, complete, check_login) {
     });
   };
   // 判断是否需要验证登录
-  check_login ? App.doLogin(request) : request();
+  check_login ? doLogin(request) : request();
 }
 
 /**
@@ -85,12 +81,14 @@ function _post (url, data, success, fail, complete) {
 
   // 构造请求参数
   data = data || {};
-  data.token = wx.getStorageSync('token');
+  let token = wx.getStorageSync('token');
+  //data.token = token;
 
   wx.request({
     url: url,
     header: {
-      'content-type': 'application/x-www-form-urlencoded',
+      'content-type': 'application/json',
+      'token': token
     },
     method: 'POST',
     data: data,
@@ -104,26 +102,19 @@ function _post (url, data, success, fail, complete) {
       }
       if (res.data.code === -1) {
         // 登录态失效, 重新登录
-        return false;
-      } else if (res.data.code === 0) {
+        doLogin();
+      } else if (res.data.code < 0) {
         wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          complete: function(res) {
-            fail && fail(res);
-          },
+          title: res.data.message,
+          icon: 'none'
         });
-        return false;
       }
       success && success(res.data);
     },
     fail: function (res) {
       wx.showToast({
-        title: res.errMsg,
-        icon: 'none',
-        complete: function(res) {
-          fail && fail(res);
-        },
+        title: res.message,
+        icon: 'none'
       });
     },
     complete: function (res) {

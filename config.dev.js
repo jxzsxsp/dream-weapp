@@ -1,9 +1,10 @@
 const config = {
   environment: 'DEV',
   app_id: 2,
-  sso_url: 'http://sso.dev.lsfash.cn',
-  base_url: 'https://yougou.uubi.cn',
-  pay_url: 'pay_url'
+  domain_name: 'sso.lianshang.com',
+  sso_url: '172.16.2.166:8080',
+  base_url: '',
+  pay_url: ''
 }
 
 export { config };

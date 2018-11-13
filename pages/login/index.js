@@ -78,29 +78,27 @@ Page({
       return false;
     }
 
-    wx.showLoading({ title: "正在登录", mask: true });
-
     // 执行微信登录
     wx.login({
       success: function (res) {
+        
         // 发送用户信息
         _get(urls.login_url
           , {
             appId: config.app_id,
-            code: res.code
+            code: res.code,
+            domainName: config.domain_name
           }
           , function (result) {
             console.log(result);
             // 记录token user_id
-            //wx.setStorageSync('token', result.data.token);
+            wx.setStorageSync('token', result.data.token);
             //wx.setStorageSync('user_id', result.data.user_id);
             // 跳转回原页面
             _this.navigateBack();
           }
           , false
-          , function () {
-            wx.hideLoading();
-          });
+          , false);
       }
     });
   },
