@@ -4,10 +4,13 @@
 }
 
 .content-text {
+  height: 68rpx;
+  line-height: 68rpx;
   font-family: PingFangSC-Regular;
   font-size: 30rpx;
   color: #333333;
   letter-spacing: 0;
+  align-items: center;
 }
 
 .right-text {
