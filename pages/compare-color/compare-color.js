@@ -17,4 +17,13 @@ let lifecycle = {
   },
 }
 
-$Page(null, data, lifecycle, null, {})
+let privateMethod = {
+  launchAppError (e) {
+    $wx.showModal({title: '提示', content: '请先下载App', showCancel: false})
+      .then(res => {
+        console.log(e.detail.errMsg)
+      })
+  }
+}
+
+$Page(null, data, lifecycle, privateMethod, {})

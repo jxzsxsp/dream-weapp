@@ -13,9 +13,9 @@
     </view>
     <view class="locol-color-container">
       <view class="locol-color"/>
-      <view class="locol-text-container">
+      <button class="locol-text-container" open-type="launchApp" app-parameter="{{id}}" bind:error="launchAppError">
         <text class="locol-text">去 app</text>
-      </view>
+      </button>
     </view>
   </view>
 
@@ -26,4 +26,11 @@
       <text class="remote-detail-color">LAB: {{remoteColorDetail.lab}}</text>
     </view>
   </view>
+
+  <suspend-button>
+    <view class="go-home-container">
+      <view class="iconfont icon-tab_index_a go-home-view"/>
+      <text class="go-home-text">回首页</text>
+    </view>
+  </suspend-button>
 </view>

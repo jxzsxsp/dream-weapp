@@ -51,9 +51,6 @@ let viewAction = {
   relativeColorClicked: function (data) {
     $wx.navigateTo($wx.router.colorDetail, {...this.data.relativeColorList[data.index]})
   },
-  openApp: function () {
-
-  }
 }
 
 $Page(props, data, lifeCycle, privateMethod, viewAction)
