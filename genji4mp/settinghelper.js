@@ -8,7 +8,7 @@
  * @param {Object} [data = {}]  微信API需要提供的字段
  * @returns 返回一个执行结果的 Promise
  */
-export default function authorizeWXAPI(funcName, info, authorizeLevel = 0, data = {}) {
+export default function authorizeWXAPI(funcName, info = '我们需要您的授权', authorizeLevel = 0, data = {}) {
     return new Promise((resolve, reject) => {
       // 调用相关 api，如定位
       wx[funcName]({
