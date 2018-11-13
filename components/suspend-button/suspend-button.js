@@ -1,7 +1,7 @@
 Component({
   methods: {
     goHome: function () {
-      wx.redirectTo({url: '/pages/index/index'})
+      wx.reLaunch({url: '/pages/index/index'})
     },
     goApp: function () {
 
