@@ -1,5 +1,6 @@
 import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
   bindId: '',
@@ -47,6 +48,8 @@ const viewAction = {
       bindId: this.props.bindId,
       mobile: this.props.mobile,
       uuid: this.props.uuid,
+      appId: constant.appId,
+      domainName: constant.domainName,
       authCode: verifyCode,
     }
     http.postLogin(urls.login.bindMobile, data)

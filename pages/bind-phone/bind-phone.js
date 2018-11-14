@@ -60,7 +60,7 @@ const viewaction = {
       }
       http.postLogin(urls.login.getAuthCode, data).then(res => {
         const data = {
-          phoneNumber: this.data.phoneNumber, 
+          phoneNumber: phoneNumber, 
           bindId: this.props.bindId, 
           uuid: res.uuid
         }
