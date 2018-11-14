@@ -1,4 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
+import { http, urls } from '../../net/index';
+import constant from '../../constant/index'
 
 const props = {
   bindId: ''
@@ -9,7 +11,7 @@ const data = {
 }
 
 const lifecycle = {
-  onLoad (query) {
+  onLoad: function (query) {
     this.props.bindId = query.bindId
   }
 }
@@ -49,9 +51,23 @@ const viewaction = {
     if (phoneNumber.length !== 11) {
       $wx.showToast({title: '请输入正确手机号', icon: 'none'})
     } else {
-      $wx.navigateTo($wx.router.inputCode, {phoneNumber: this.data.phoneNumber, bindId: this.props.bindId})
+      const data = {
+        mobile: phoneNumber, 
+        appId: constant.appId, 
+        domainName: constant.domainName,
+        source: constant.authCodeSource.bindMobile,
+        randomStr: '1234',
+      }
+      http.postLogin(urls.login.getAuthCode, data).then(res => {
+        const data = {
+          phoneNumber: this.data.phoneNumber, 
+          bindId: this.props.bindId, 
+          uuid: res.uuid
+        }
+        $wx.navigateTo($wx.router.inputCode, data)
+      })
     }
   }
 }
 
-$Page(props, data, null, null, viewaction)
+$Page(props, data, lifecycle, null, viewaction)

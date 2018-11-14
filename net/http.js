@@ -1,6 +1,8 @@
 import env, {isOnline} from './env'
 import mock from './mock'
 import {$wx} from '../genji4mp/index'
+import constant from '../constant/index'
+import urls from './urls/index'
 
 class Http {
   constructor () {
@@ -18,9 +20,8 @@ class Http {
 
   //  静默登录
   quietLogin (code) {
-    let data = {code, appId: 4, domainName: 'chameleon.lianshang.com'}
-    var url = '/wechat/oauth2/mini-auth-login'
-    return this.getLogin(url, data, true).then(res => {
+    let data = {code, appId: constant.appId, domainName: constant.domainName}
+    return this.getLogin(urls.login.quietLogin, data, true).then(res => {
       if (res.token) {
         wx.setStorageSync('token', res.token)
         getApp().globalData.token = res.token

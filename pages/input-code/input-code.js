@@ -2,11 +2,20 @@ import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 
 const props = {
-  bindId: ''
+  bindId: '',
+  mobile: '',
+  uuid: '',
 }
 
 const data = {
-  verifyCodeArr: [{num: '', focus: false},{num: '', focus: false},{num: '', focus: false},{num: '', focus: false},{num: '', focus: false},{num: '', focus: false}],
+  verifyCodeArr: [
+    {num: '', focus: false},
+    {num: '', focus: false},
+    {num: '', focus: false},
+    {num: '', focus: false},
+    {num: '', focus: false},
+    {num: '', focus: false}
+  ],
   test: '',
 }
 
@@ -14,6 +23,7 @@ const lifecycle = {
   onLoad (query) {
     this.props.bindId = query.bindId
     this.props.mobile = query.phoneNumber
+    this.props.uuid = query.uuid
   }
 }
 
@@ -36,7 +46,8 @@ const viewAction = {
     const data = {
       bindId: this.props.bindId,
       mobile: this.props.mobile,
-      authCode: verifyCode
+      uuid: this.props.uuid,
+      authCode: verifyCode,
     }
     http.postLogin(urls.login.bindMobile, data)
       .then(() => {

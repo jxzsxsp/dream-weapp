@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -71,7 +71,7 @@
 					"id": 3,
 					"name": "bind-phone",
 					"pathName": "pages/bind-phone/bind-phone",
-					"query": "bindId = 97bf8a926a8c938498f10c431cb9efe0889007a7a28fa03fec20b6bc1df2e3b4",
+					"query": "bindId=97bf8a926a8c938498f10c431cb9efe0889007a7a28fa03fec20b6bc1df2e3b4",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "12345"
