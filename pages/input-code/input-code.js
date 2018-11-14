@@ -6,6 +6,7 @@ const props = {
   bindId: '',
   mobile: '',
   uuid: '',
+  timer: null
 }
 
 const data = {
@@ -17,7 +18,7 @@ const data = {
     {num: '', focus: false},
     {num: '', focus: false}
   ],
-  test: '',
+  countDownNum: 60,
 }
 
 const lifecycle = {
@@ -25,6 +26,9 @@ const lifecycle = {
     this.props.bindId = query.bindId
     this.props.mobile = query.phoneNumber
     this.props.uuid = query.uuid
+  },
+  onShow () {
+    this.countDown()
   }
 }
 
@@ -33,6 +37,20 @@ const privateMethods = {
     return this.data.verifyCodeArr.reduce((preCode, item) => {
       return preCode + item.num
     }, '')
+  },
+  countDown: function () {
+    let countDownNum = this.data.countDownNum;
+
+    this.props.timer = setInterval(() => {
+        countDownNum--;
+        this.setData({
+          countDownNum: countDownNum
+        })
+        if (countDownNum == 0) {
+          clearInterval(this.props.timer);
+        }
+      }, 1000)
+
   }
 }
 
