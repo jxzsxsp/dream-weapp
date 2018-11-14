@@ -1,4 +1,5 @@
 import {$Page, $wx} from '../../genji4mp/index'
+import { http } from '../../net/index';
 
 const data = {
   settingList: [{
@@ -16,10 +17,10 @@ const privateMethod = {
     this.setData({
       userInfo: e.detail.userInfo
     })
+    http.quietLogin().then(res => {
+      $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId} )
+    })
   },
-  bindPhone () {
-    
-  }
 }
 
 const lifecycle = {

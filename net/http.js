@@ -19,9 +19,11 @@ class Http {
   }
 
   //  静默登录
-  quietLogin (code) {
-    let data = {code, appId: constant.appId, domainName: constant.domainName}
-    return this.getLogin(urls.login.quietLogin, data, true).then(res => {
+  quietLogin () {
+    return $wx.login().then(res => {
+      let data = {code: res.code, appId: constant.appId, domainName: constant.domainName}
+      return this.getLogin(urls.login.quietLogin, data, true)
+    }).then(res => {
       if (res.token) {
         wx.setStorageSync('token', res.token)
         getApp().globalData.token = res.token
