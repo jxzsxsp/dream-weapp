@@ -170,6 +170,7 @@ class Http {
           if (isLoading) {
             wx.hideLoading()
           }
+
           if (res.data.code === 200) {
             let resData = {}
             if (res.data.data instanceof Array) {
@@ -177,11 +178,13 @@ class Http {
             } else {
               resData = {...res.data.data, requestParam: data}
             }
+
             // 非线上环境打印请求
             if (!isOnline) {
-              console.log('-----------网络请求的 url 为-----'+ url)
+              console.log('----请求成功-------网络请求的 url 为-----'+ url)
               console.log(resData)
             }
+
             resolve(resData)
           } else if (res.data.code === 100) {
             // 没有token，重新登录
@@ -202,6 +205,15 @@ class Http {
             })
 
           } else {
+            // 非线上环境打印请求
+            if (!isOnline) {
+              console.log('----请求失败-------网络请求的 url 为-----:'+ url)
+              console.log('----错误请求参数------:')
+              console.log(data)
+              console.log('----错误请求码-------:' + res.data.code)
+              console.log('----错误请求信息------:' + res.data.message)
+            }
+
             wx.showToast({
               title: res.data.message,
               icon: 'none',
@@ -211,7 +223,7 @@ class Http {
           }
         },
         fail (error) {
-          // console.log('获取数据失败');
+
           wx.showToast({
             title: '网络出错！',
             icon: 'none',
