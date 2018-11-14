@@ -7,4 +7,6 @@ export default {
   fetchColorDetail: 'fetch-color-detail',
   compareColor: 'compare-color',
   commonWebview: 'common-webview',
+  bindPhone: 'bind-phone',
+  userAgreement: 'user-agreement'
 }

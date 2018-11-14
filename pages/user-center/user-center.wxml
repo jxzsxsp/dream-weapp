@@ -1,15 +1,27 @@
 <view class="container">
   <view class="login-container">
-    <view class="has-login-container">
-
+    <view wx:if="{{userInfo.nickName}}" class="has-login-container">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"/>
+      <view class="user-name-container">
+        <text class="user-name">{{userInfo.nickName}}</text>
+      </view>
+      <view class="edit-user">
+        <text class="edit-text">编辑</text>
+        <view class="iconfont icon-ic_back setting-detail"/>
+      </view>
     </view>
-    <view class="not-login-container">
-      
+    <view wx:else class="not-login-container">
+      <text class="not-login-text">Hello,你好</text>
+      <button class="not-login-button" open-type="getUserInfo" bind:getuserinfo=getUserInfo">
+        <text class="not-login-button-text">登录/注册</text>
+      </button>
     </view>
   </view>
 
+  <view wx:for="{{settingList}}" wx:key="{{index}}" class="setting-row-container">
+    <view class="iconfont {{item.icon}} setting-icon"/>
+    <text class="setting-text">{{item.name}}</text>
+    <view class="iconfont icon-ic_back setting-detail"/>
+  </view>
 
-
-
-  <view class="border"></view>
 </view>

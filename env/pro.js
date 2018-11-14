@@ -1,6 +1,7 @@
 const isOnline = true
 
 export default {
-  login: '10.26.4.145',
-  url: 'www.lianshang.com'  //主域名
+  Login: 'https://sso2.lian-shang.cn',
+  url: 'https://chameleon.lian-shang.cn',  //主域名
+  Pantone: 'https://colorlab.lian-shang.cn'
 }

@@ -1,0 +1,114 @@
+.bind-phone-container {
+  padding-left: 80rpx;
+  padding-right: 80rpx;
+}
+.title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.maintitle {
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.subtitle {
+  margin-top: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+}
+
+.user-agreement {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #131313;
+  letter-spacing: 0;
+  line-height: 40rpx;
+}
+
+.phone-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 110rpx;
+}
+
+.phone-title {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+}
+
+.phone-number-container {
+  margin-top: 26rpx;
+  display: flex;
+  flex-direction: row;
+  height: 80rpx;
+  align-items: center;
+}
+
+.phone-area {
+  background: #F1F1F1;
+  height: 60rpx;
+  width: 85rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-area-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #4A4A4A;
+  letter-spacing: 0;
+}
+
+.phone-number {
+  font-family: PingFangSC-Regular;
+  font-size: 46rpx;
+  color: #4A4A4A;
+  letter-spacing: 0;
+  line-height: 60rpx;
+  margin-left: 60rpx;
+}
+
+.seperator {
+  background: #9B9B9B;
+  height: 1rpx;
+  margin-top: 14rpx;
+}
+
+.next-step-container {
+  border: 2rpx solid #252525;
+  border-radius: 44rpx;
+  height: 88rpx;
+  margin-top: 145rpx;
+  width: 570rpx;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.next-step {
+  font-family: PingFangSC-Regular;
+  font-size: 46rpx;
+  color: #4A4A4A;
+  letter-spacing: 0;
+  line-height: 60rpx;
+}
+
+
+
+
+
+
+
+
+
+
+

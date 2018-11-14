@@ -37,12 +37,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
-					"id": -1,
-					"name": "search-color",
-					"pathName": "pages/fetch-color-detail/fetch-color-detail",
+					"id": 0,
+					"name": "user-center",
+					"pathName": "pages/user-center/user-center",
 					"query": "name=zachary",
 					"scene": "1036",
 					"referrerInfo": {
@@ -66,6 +66,16 @@
 					"query": "colorId=123",
 					"scene": "1036",
 					"referrerInfo": {}
+				},
+				{
+					"id": 3,
+					"name": "bind-phone",
+					"pathName": "pages/bind-phone/bind-phone",
+					"query": "bindId = 97bf8a926a8c938498f10c431cb9efe0889007a7a28fa03fec20b6bc1df2e3b4",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
+					}
 				}
 			]
 		}

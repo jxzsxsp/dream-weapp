@@ -1,5 +1,6 @@
 import env, {isOnline} from './env'
 import mock from './mock'
+import {$wx} from '../genji4mp/index'
 
 class Http {
   constructor () {
@@ -13,6 +14,19 @@ class Http {
         this['get' + baseUrlName + 'List'] = (url, loadingState, data, isLoading) => this._getOtherList(baseUrlName, url, loadingState, data, isLoading)
       }
     }
+  }
+
+  //  静默登录
+  quietLogin (code) {
+    let data = {code, appId: 4, domainName: 'chameleon.lianshang.com'}
+    var url = '/wechat/oauth2/mini-auth-login'
+    return this.getLogin(url, data, true).then(res => {
+      if (res.token) {
+        wx.setStorageSync('token', res.token)
+        getApp().globalData.token = res.token
+      }
+      return res
+    })
   }
 
   /**
@@ -142,6 +156,7 @@ class Http {
       })
     }
     return new Promise((resolve, reject) => {
+      // 非线上环境打印请求
       wx.request({
         url: url,
         method: method,
@@ -149,7 +164,7 @@ class Http {
         header: {
           'appType': 2,
           'content-type': 'application/json',
-          'token': wx.getStorageSync('token')
+          'token': getApp().globalData.token
         },
         success (res) {
           if (isLoading) {
@@ -162,11 +177,30 @@ class Http {
             } else {
               resData = {...res.data.data, requestParam: data}
             }
+            // 非线上环境打印请求
             if (!isOnline) {
               console.log('-----------网络请求的 url 为-----'+ url)
               console.log(resData)
             }
             resolve(resData)
+          } else if (res.data.code === 100) {
+            // 没有token，重新登录
+            this.quietLogin().then(res => {
+              if (!!res.token) {
+                // token 失效的情况
+                wx.showToast({
+                  title: '请求失败，请刷新重试',
+                  icon: 'none',
+                  mask: true
+                })
+              } else if (!!res.bindId) {
+                // 没有绑定手机号的情况
+                $wx.showModal({title: '绑定手机', content: '本功能需要绑定手机才能体验', cancelText: false}).then(res => {
+                  $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId})
+                })
+              }
+            })
+
           } else {
             wx.showToast({
               title: res.data.message,
@@ -214,7 +248,7 @@ class Http {
         header: {
           'appType': 2,
           'content-type': 'application/json',
-          'token': wx.getStorageSync('token')
+          'token': getApp().globalData.token
         },
         success (res) {
           if (isLoading) {
@@ -239,45 +273,27 @@ class Http {
   }
 
   // 获取时间戳＋6位随机数
-  _randomNub () {
-    var getTime = new Date().getTime()
-    var random = Math.floor(Math.random() * 1000000)
-    return getTime + '-' + random
-  }
-
-  //  静默登录
-  quietLogin (code) {
-    let data = {code}
-    var url = this.root + '/buyer/user/mini-app/quick-login/v1'
-    this.otherPost(url, data, true).then(res => {
-      if (res.data.code == 200) {
-        wx.setStorageSync('token', res.data.data.token)
-        var lsUserInfo = {
-          avatar: res.data.data.headImgUrl,
-          imNickName: res.data.data.nickName
-        }
-        wx.setStorageSync('lsUserInfo', lsUserInfo)
-      }
-    }, res => {
-      console.log(res)
-    })
-  }
+  // _randomNub () {
+  //   var getTime = new Date().getTime()
+  //   var random = Math.floor(Math.random() * 1000000)
+  //   return getTime + '-' + random
+  // }
 
   // 保存设备信息，为后端交互提供基础信息
-  saveSystemInfo () {
-    if (!wx.getStorageSync('systemInfo')) {
-      var systemInfo = wx.getSystemInfoSync()
-      var param = {
-        'platform': systemInfo.platform,
-        'platformVersion': systemInfo.system,
-        'deviceModel': systemInfo.model,
-        'appType': 2,
-        'appVersion': systemInfo.SDKVersion,
-        'deviceId': systemInfo.brand + '-' + systemInfo.model + '-' + this.randomNub()
-      }
-      wx.setStorageSync('systemInfo', param)
-    }
-  }
+  // saveSystemInfo () {
+  //   if (!wx.getStorageSync('systemInfo')) {
+  //     var systemInfo = wx.getSystemInfoSync()
+  //     var param = {
+  //       'platform': systemInfo.platform,
+  //       'platformVersion': systemInfo.system,
+  //       'deviceModel': systemInfo.model,
+  //       'appType': 2,
+  //       'appVersion': systemInfo.SDKVersion,
+  //       'deviceId': systemInfo.brand + '-' + systemInfo.model + '-' + this.randomNub()
+  //     }
+  //     wx.setStorageSync('systemInfo', param)
+  //   }
+  // }
 }
 
 export default new Http()

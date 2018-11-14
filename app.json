@@ -7,7 +7,9 @@
     "pages/fetch-color-detail/fetch-color-detail",
     "pages/compare-color/compare-color",
     "pages/common-webview/common-webview",
-    "pages/user-center/user-center"
+    "pages/user-center/user-center",
+    "pages/bind-phone/bind-phone",
+    "pages/user-agreement/user-agreement"
   ],
   "window":{
     "backgroundTextStyle":"light",

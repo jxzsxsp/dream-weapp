@@ -44,6 +44,7 @@ const viewAction = {
     }
     $wx.navigateTo($wx.router.commonWebview, param)
   }
+  
 }
 
 $Page(null, data, lifeCycle, null, viewAction)

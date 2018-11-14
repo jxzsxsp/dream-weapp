@@ -14,7 +14,6 @@ for (const key of settingArr) {
   settingMethods[key] = (info, authorizeLevel, data ) => settinghelper(key, info, authorizeLevel, data)
 }
 
-
 let baseService = {
   ...settingMethods,
   router,
