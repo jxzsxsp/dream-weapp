@@ -8,5 +8,6 @@ export default {
   compareColor: 'compare-color',
   commonWebview: 'common-webview',
   bindPhone: 'bind-phone',
-  userAgreement: 'user-agreement'
+  userAgreement: 'user-agreement',
+  inputCode: 'input-code'
 }

@@ -45,13 +45,13 @@ const viewaction = {
     })
   },
   nextStepClicked: function () {
-    let phoneNum = this.data.phoneNumber.replace(/\s*/g,"")
-    if (phoneNum.length !== 11) {
+    let phoneNumber = this.data.phoneNumber.replace(/\s*/g,"")
+    if (phoneNumber.length !== 11) {
       $wx.showToast({title: '请输入正确手机号', icon: 'none'})
     } else {
-
+      $wx.navigateTo($wx.router.inputCode, {phoneNumber: this.data.phoneNumber, bindId: this.props.bindId})
     }
   }
 }
 
-$Page(null, data, null, null, viewaction)
+$Page(props, data, null, null, viewaction)

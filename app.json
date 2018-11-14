@@ -9,7 +9,8 @@
     "pages/common-webview/common-webview",
     "pages/user-center/user-center",
     "pages/bind-phone/bind-phone",
-    "pages/user-agreement/user-agreement"
+    "pages/user-agreement/user-agreement",
+    "pages/input-code/input-code"
   ],
   "window":{
     "backgroundTextStyle":"light",
