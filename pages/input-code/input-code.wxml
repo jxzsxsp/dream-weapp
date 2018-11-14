@@ -10,8 +10,6 @@
     </block>
   </view>
 
-  <text >{{test}}</text>
-
   <view class="confirm-container" bind:tap="nextStepClicked">
     <text class="confirm-text">确认</text>
   </view>

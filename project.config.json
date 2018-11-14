@@ -78,10 +78,10 @@
 					}
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "input-phone",
 					"pathName": "pages/input-code/input-code",
-					"query": "phoneNumber=16602194415&bindId = 97bf8a926a8c938498f10c431cb9efe0889007a7a28fa03fec20b6bc1df2e3b4",
+					"query": "phoneNumber=16602194415&bindId=97bf8a926a8c938498f10c431cb9efe0889007a7a28fa03fec20b6bc1df2e3b4",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "12345"

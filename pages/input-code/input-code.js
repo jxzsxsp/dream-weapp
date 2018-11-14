@@ -1,8 +1,20 @@
 import {$wx, $Page} from '../../genji4mp/index'
+import {http, urls} from '../../net/index'
+
+const props = {
+  bindId: ''
+}
 
 const data = {
   verifyCodeArr: [{num: '', focus: false},{num: '', focus: false},{num: '', focus: false},{num: '', focus: false},{num: '', focus: false},{num: '', focus: false}],
   test: '',
+}
+
+const lifecycle = {
+  onLoad (query) {
+    this.props.bindId = query.bindId
+    this.props.mobile = query.phoneNumber
+  }
 }
 
 const privateMethods = {
@@ -15,9 +27,25 @@ const privateMethods = {
 
 const viewAction = {
   nextStepClicked () {
-    
-    this.getVerifyCode()
+    const verifyCode = this.getVerifyCode()
+    if (verifyCode.length !== 6) {
+      $wx.showToast({title: '验证码输入错误', icon: 'none'})
+      return
+    }
+
+    const data = {
+      bindId: this.props.bindId,
+      mobile: this.props.mobile,
+      authCode: verifyCode
+    }
+    http.postLogin(urls.login.bindMobile, data)
+      .then(() => {
+        return $wx.showToast({title: '绑定成功'})
+      }).then(() => {
+        $wx.navigateBack({delta: 2})
+      })
   },
+
   codeInputed (data, value) {
     // 删除的情况
     if (typeof(value) === "object") {
@@ -55,4 +83,4 @@ const viewAction = {
   }
 }
 
-$Page(null,data,null, privateMethods, viewAction)
+$Page(props, data, lifecycle, privateMethods, viewAction)
