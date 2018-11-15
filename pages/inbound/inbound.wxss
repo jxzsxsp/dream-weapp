@@ -21,7 +21,7 @@
 
 .operate-btn {
   position: fixed;
-  z-index: 100;
+  z-index: 50;
   left: 0rpx;
   bottom: 0rpx;
   display: flex;
@@ -56,6 +56,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.long-btn {
+  width: 750rpx;
 }
 
 .bottom-line {

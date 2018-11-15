@@ -19,7 +19,7 @@
           <text class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</text>
           <text class="content-text">下单时间：{{item.createTime}}</text>
         </view>
-        <navigator url="/pages/inbound/inbound">
+        <navigator url="/pages/inbound/inbound?orderNo={{item.orderNo}}">
           <view class="content-btn">
             <text>入库</text>
           </view>
@@ -36,7 +36,7 @@
           <text class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</text>
           <text class="content-text">已入库卷数：{{item.bossFabricVolumes}} 卷</text>
         </view>
-        <navigator url="/pages/inbound/cinbound">
+        <navigator url="/pages/inbound/cinbound?orderNo={{item.orderNo}}">
           <view class="content-btn">
             <text>继续入库</text>
           </view>
@@ -53,7 +53,7 @@
           <text class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</text>
           <text class="content-text">已入库卷数：{{item.bossFabricVolumes}} 卷</text>
         </view>
-        <navigator url="/pages/inbound/detail">
+        <navigator url="/pages/inbound/detail?orderNo={{item.orderNo}}">
           <view class="content-btn">
             <text>查看详情</text>
           </view>

@@ -2,27 +2,47 @@
   <view class="content">
     <view class="customer-info">
       <text>验布单号</text>
-      <text class="right-text">1446656138002648</text>
+      <text class="right-text">{{orderNo}}</text>
     </view>
     <view class="customer-info">
       <text>客户名称</text>
-      <text class="right-text">湖州开顺布业</text>
+      <text class="right-text">{{orderDetail.customerName}}</text>
     </view>
     <view class="customer-info">
       <text>联系方式</text>
-      <text class="right-text">18260348234</text>
+      <text class="right-text">{{orderDetail.customerMobile}}</text>
     </view>
     <view class="customer-info">
-      <text>验布类型</text>
-      <text class="right-text">打卷</text>
+      <text>面料类型</text>
+      <text class="right-text">{{orderDetail.customerFabricTypeName}}</text>
     </view>
     <view class="customer-info">
-      <text>拉货方式</text>
-      <text class="right-text">代发货</text>
+      <text>验布方式</text>
+      <text class="right-text">{{orderDetail.bossClothTypeName}}</text>
     </view>
     <view class="customer-info">
-      <text>总卷数</text>
-      <text class="right-text">5 卷</text>
+      <text>检测项目</text>
+      <view class="right-text">
+        <block wx:for="{{orderDetail.checkItems}}" wx:key="index">
+          <van-tag>{{item}}</van-tag>
+        </block>
+      </view>
+    </view>
+    <view class="customer-info">
+      <text>验布米数</text>
+      <text class="right-text">130 m</text>
+    </view>
+    <view class="customer-info">
+      <text>验布卷数</text>
+      <text class="right-text">{{orderDetail.customerFabricVolumes}} 卷</text>
+    </view>
+    <view class="customer-info">
+      <text>取货方式</text>
+      <text class="right-text">{{orderDetail.logisticsTypeName}}</text>
+    </view>
+    <view class="customer-info">
+      <text>客户留言</text>
+      <text class="right-text">打卷不要带链尚LOGO</text>
     </view>
   </view>
 </cloth-block>
@@ -30,50 +50,95 @@
 <cloth-block title="实际信息">
   <van-cell-group>
     <van-cell
-      title="验布单号"
-      value="1446656138002648"
-    />
-    <van-cell
-      title="客户名称"
-      value="湖州开顺布业"
-    />
-    <van-cell
-      title="联系方式"
-      value="18260348234"
-    />
-    <van-cell
-      title="验布类型"
+      title="面料类型"
       is-link
       arrow-direction="down"
-      value="打卷"
+      value="{{customerFabricTypeName}}"
       url=""
+      bind:click="toggleFabricType"
     />
     <van-cell
-      title="拉货方式"
+      title="验布方式"
       is-link
       arrow-direction="down"
-      value="代发货"
+      value="{{bossClothTypeName}}"
       url=""
+      bind:click="toggleClothType"
     />
     <van-cell
-      title="总卷数"
+      title="检测项目"
+      value="手写报告 克重 门幅 米数/米差 侧边贴 换纸管 换包装"
+    />
+    <van-cell
+      title="验布卷数"
+      value="10"
+    />
+    <van-cell
+      title="取货方式"
       is-link
       arrow-direction="down"
+      value="{{logisticsTypeName}}"
+      url=""
+      bind:click="toggleLogisticsType"
+    />
+    <van-cell
+      title="已入库卷数"
+      value="0"
+    />
+    <van-cell
+      title="本次入库卷数"
       value="5"
-      url=""
-    />
+    >
+    <input value='{{bossFabricVolumesIn}}' />
+    </van-cell>
   </van-cell-group>
+
+  <van-action-sheet
+    show="{{ showFabricType }}"
+    actions="{{ fabricTypeList }}"
+    cancel-text="取消"
+    bind:close="toggleFabricType"
+    bind:cancel="toggleFabricType"
+    bind:select="selectFabricType"
+  />
+
+  <van-action-sheet
+    show="{{ showClothType }}"
+    actions="{{ clothTypeList }}"
+    cancel-text="取消"
+    bind:close="toggleClothType"
+    bind:cancel="toggleClothType"
+    bind:select="selectClothType"
+  />
+
+  <van-action-sheet
+    show="{{ showLogisticsType }}"
+    actions="{{ logisticsTypeList }}"
+    cancel-text="取消"
+    bind:close="toggleLogisticsType"
+    bind:cancel="toggleLogisticsType"
+    bind:select="selectLogisticsType"
+  />
 </cloth-block>
 
 <view class="bottom-line"></view>
 
 <view class="operate-btn">
-  <navigator url="/pages/inbound/reject">
-    <view class="reject-btn">
+  <block wx:if="{{showBtn.reject}}">
+    <view class="reject-btn" bindtap="reject">
       <text>驳回</text>
     </view>
-  </navigator>
-  <view class="inbound-btn" bindtap="inbound">
-    <text>入库并打印</text>
-  </view>
+  </block>
+  <block wx:if="{{showBtn.inputAndPrint}}">
+    <block wx:if="{{showBtn.reject}}">
+      <view class="inbound-btn" bindtap="inbound">
+        <text>入库并打印</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="inbound-btn long-btn" bindtap="inbound">
+        <text>入库并打印</text>
+      </view>
+    </block>
+  </block>
 </view>
