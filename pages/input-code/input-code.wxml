@@ -1,7 +1,7 @@
 <view class="container verify-code-container">
   <view class="title-container">
     <text class="maintitle">输入验证码</text>
-    <text class="subtitle">验证码已发送至 {{}}</text>
+    <text class="subtitle">验证码已发送至 {{mobile}}</text>
     <text class="time-left">{{countDownNum}}s后重新获取</text>
   </view>
   <view class="verify-code">

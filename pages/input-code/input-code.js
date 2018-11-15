@@ -4,7 +4,6 @@ import constant from '../../constant/index'
 
 const props = {
   bindId: '',
-  mobile: '',
   uuid: '',
   timer: null
 }
@@ -19,13 +18,16 @@ const data = {
     {num: '', focus: false}
   ],
   countDownNum: 60,
+  mobile: '',
 }
 
 const lifecycle = {
   onLoad (query) {
     this.props.bindId = query.bindId
-    this.props.mobile = query.phoneNumber
     this.props.uuid = query.uuid
+    this.setData({
+      mobile: query.phoneNumber
+    })
   },
   onShow () {
     this.countDown()
@@ -64,7 +66,7 @@ const viewAction = {
 
     const data = {
       bindId: this.props.bindId,
-      mobile: this.props.mobile,
+      mobile: this.data.mobile,
       uuid: this.props.uuid,
       appId: constant.appId,
       domainName: constant.domainName,
