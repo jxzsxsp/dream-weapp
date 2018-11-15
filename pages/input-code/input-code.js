@@ -76,7 +76,9 @@ const viewAction = {
       .then(() => {
         return $wx.showToast({title: '绑定成功'})
       }).then(() => {
-        $wx.navigateBack({delta: 2})
+        setTimeout(() => {
+          $wx.navigateBack({delta: 2})
+        }, 2000)
       })
   },
 

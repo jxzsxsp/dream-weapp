@@ -14,11 +14,16 @@ const data = {
 
 const privateMethod = {
   getUserInfo (e) {
+    if (!e.detail.userInfo) {
+      return
+    }
     this.setData({
       userInfo: e.detail.userInfo
     })
     http.quietLogin().then(res => {
-      $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId} )
+      if (res.bindId) {
+        $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId} )
+      }
     })
   },
 }
