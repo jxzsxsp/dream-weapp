@@ -14,7 +14,7 @@ let lifecycle = {
     this.setData({
       colorDetail: colorDetail
     })
-    http.getPantone(urls.pantone.colorDetail, {colorId: colorDetail.colorId})
+    http.getPantone(urls.pantone.colorDetail, {colorId: parseInt(colorDetail.colorId)})
       .then((res) => {
         this.setData({
           colorRecipe: res.colorRecipe
