@@ -14,7 +14,7 @@ let data = {
 let lifeCycle = {
   onLoad: function (query) {
     this.props.colorId = query.colorId
-    http.get(urls.pantone.fetchColorDetail, {colorId: query.colorId})
+    http.get(urls.pantone.fetchColorDetail, {colorId: parseInt(query.colorId)})
       .then(colorDetail => {
         this.setData({
           colorDetail,

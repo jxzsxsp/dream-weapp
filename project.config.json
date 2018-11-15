@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -63,9 +63,11 @@
 					"id": 2,
 					"name": "fetch-color-detail",
 					"pathName": "pages/fetch-color-detail/fetch-color-detail",
-					"query": "colorId=123",
+					"query": "colorId=60",
 					"scene": "1036",
-					"referrerInfo": {}
+					"referrerInfo": {
+						"appId": "12345"
+					}
 				},
 				{
 					"id": 3,

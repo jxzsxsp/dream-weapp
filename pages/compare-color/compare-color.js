@@ -8,7 +8,7 @@ let data = {
 let lifecycle = {
   onLoad: function (query) {
     $wx.setNavigationBarTitle({title: '远程对色'})
-    http.get(urls.pantone.compareColorDetail, {colorComparisonSourceId: query.id, mock: true})
+    http.get(urls.pantone.compareColorDetail, {colorComparisonSourceId: parseInt(query.id), mock: true})
       .then(remoteColorDetail => {
         this.setData({
           remoteColorDetail
