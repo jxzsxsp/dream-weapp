@@ -3,12 +3,13 @@ import {$wx} from './genji4mp/index'
 
 App({
   onLaunch: function () {
-    // $wx.login().then(res => {
-    //   http.quietLogin(res.code) 
-    // })
+    $wx.login().then(res => {
+      http.quietLogin(res.code) 
+    })
   },
 
   globalData: {
-    token: ''
+    token: '',
+
   }
 })

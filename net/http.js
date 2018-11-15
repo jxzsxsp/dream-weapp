@@ -159,7 +159,10 @@ class Http {
       })
     }
     return new Promise((resolve, reject) => {
-      // 非线上环境打印请求
+      // 没有 token 先取出token
+      if (!getApp().globalData.token) {
+        getApp().globalData.token = wx.getStorageSync('token')
+      }
       wx.request({
         url: url,
         method: method,
