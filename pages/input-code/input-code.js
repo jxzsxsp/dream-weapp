@@ -52,6 +52,20 @@ const privateMethods = {
           clearInterval(this.props.timer);
         }
       }, 1000)
+  },
+  resendCode: function () {
+    const data = {
+      mobile: this.data.mobile, 
+      appId: constant.appId, 
+      domainName: constant.domainName,
+      source: constant.authCodeSource.bindMobile,
+      randomStr: '1234',
+    }
+    http.postLogin(urls.login.getAuthCode, data)
+      .then(() => {
+        this.data.countDownNum = 60
+        this.countDown()
+      })
 
   }
 }
