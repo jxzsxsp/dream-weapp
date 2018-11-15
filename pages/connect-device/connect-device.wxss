@@ -1,0 +1,58 @@
+.view-container {
+  align-items: center
+}
+
+.background-image {
+  width: 622rpx;
+  height: 378rpx;
+  margin-top: 144rpx;
+}
+
+.current-state {
+  margin-top: 46rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.step-container {
+  margin-top: 140rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.step-icon {
+  height: 80rpx;
+  width: 80rpx;
+}
+
+.step-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #1673DF;
+  letter-spacing: 0;
+  margin-left: 10rpx;
+}
+
+.adjust-button {
+  margin-top: 143rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #1673DF;
+  border-radius: 44rpx;
+  width: 420rpx;
+  height: 88rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adjust-button-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #1673DF;
+  letter-spacing: 0;
+  text-align: center;
+}

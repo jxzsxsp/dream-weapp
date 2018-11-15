@@ -11,7 +11,8 @@
     "pages/bind-phone/bind-phone",
     "pages/user-agreement/user-agreement",
     "pages/input-code/input-code",
-    "pages/device-manager/device-manager"
+    "pages/device-manager/device-manager",
+    "pages/connect-device/connect-device"
   ],
   "window":{
     "backgroundTextStyle":"light",
