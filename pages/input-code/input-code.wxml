@@ -2,7 +2,8 @@
   <view class="title-container">
     <text class="maintitle">输入验证码</text>
     <text class="subtitle">验证码已发送至 {{mobile}}</text>
-    <text class="time-left">{{countDownNum}}s后重新获取</text>
+    <text hidden="{{countDownNum === 0}}" class="time-left">{{countDownNum}}s后重新获取</text>
+    <text hidden="{{countDownNum !== 0}}" class="resend-button" bind:tap="resendCode">重新发送</text>
   </view>
   <view class="verify-code">
     <block wx:for="{{verifyCodeArr}}" wx:key="{{index}}">
