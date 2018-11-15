@@ -38,5 +38,13 @@ const lifecycle = {
   }
 }
 
+const viewAction = {
+  itemClicked (data) {
+    if (data.index === 0) {
+      // 设备管理 
+      $wx.navigateTo($wx.router.deviceManager)
+    }
+  }
+}
 
-$Page(null, data, lifecycle, privateMethod, {})
+$Page(null, data, lifecycle, privateMethod, viewAction)

@@ -1,0 +1,39 @@
+.device-container {
+  padding-left: 56rpx;
+  padding-right: 56rpx;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.connect-device-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.connected-state {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.connected-state {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.disconnected-state {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #1673DF;
+  letter-spacing: 0;
+  text-align: right;
+}

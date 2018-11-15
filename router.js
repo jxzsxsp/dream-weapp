@@ -9,5 +9,6 @@ export default {
   commonWebview: 'common-webview',
   bindPhone: 'bind-phone',
   userAgreement: 'user-agreement',
-  inputCode: 'input-code'
+  inputCode: 'input-code',
+  deviceManager: 'device-manager'
 }
