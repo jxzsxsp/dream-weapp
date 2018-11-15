@@ -26,10 +26,14 @@
     "borderStyle": "white",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "首页"
+      "text": "首页",
+      "iconPath": "/assets/tab_index_b.png",
+      "selectedIconPath": "/assets/tab_index_a.png"
     },{
       "pagePath": "pages/user-center/user-center",
-      "text": "我的"
+      "text": "我的",
+      "iconPath": "/assets/tab_I_b.png",
+      "selectedIconPath": "/assets/tab_I_a.png"
     }]
   }
 }
