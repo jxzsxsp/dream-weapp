@@ -13,7 +13,7 @@
     </view>
     <view class="locol-color-container">
       <view class="locol-color"/>
-      <button class="locol-text-container" open-type="launchApp" app-parameter="{{id}}" bind:error="launchAppError">
+      <button class="locol-text-container" open-type="launchApp" app-parameter="{router:1,data:{{id}}}" bind:error="launchAppError">
         <text class="locol-text">去 app</text>
       </button>
     </view>

@@ -3,17 +3,19 @@ import {http, urls} from '../../net/index'
 
 let props = {
   loadingState: http.defaultLoadingState(),
-  colorId: 0
 }
 
 let data = {
   colorDetail: {},
   relativeColorList: [],
+  colorId: 0
 }
 
 let lifeCycle = {
   onLoad: function (query) {
-    this.props.colorId = query.colorId
+    this.setData({
+      colorId: query.colorId
+    })
     http.get(urls.pantone.fetchColorDetail, {colorId: parseInt(query.colorId)})
       .then(colorDetail => {
         this.setData({
@@ -41,9 +43,10 @@ let privateMethod = {
       })
   },
   launchAppError (e) {
-    $wx.showModal({title: '提示', content: '请先下载App', showCancel: false}).then(res => {
-      console.log(e.detail.errMsg)
-    })
+    $wx.showModal({title: '提示', content: '请先下载App', showCancel: false})
+      .then(() => {
+        console.log(e.detail.errMsg)
+      })
   }
 }
 
