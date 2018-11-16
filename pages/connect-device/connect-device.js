@@ -1,4 +1,9 @@
 import {$wx, $Page} from '../../genji4mp/index'
+import constant from '../../constant/index';
+
+const props = {
+  _discoveryStarted: false
+}
 
 const data = {
   isAdjusting: false,
@@ -8,7 +13,7 @@ const data = {
 
 const lifecycle = {
   onLoad () {
-
+    this.openBluetoothAdapter()
   },
 
   onUnload () {
@@ -17,82 +22,73 @@ const lifecycle = {
 }
 
 const privateMethod = {
-  // 搜索蓝牙
+  // 开启搜索蓝牙
   openBluetoothAdapter() {
-    wx.openBluetoothAdapter({
-      success: (res) => {
-        console.log('openBluetoothAdapter success', res)
+    $wx.openBluetoothAdapter()
+      .then(res => {
+        console.log('openBluetoothAdapter success', res) 
         this.startBluetoothDevicesDiscovery()
-      },
-      fail: (res) => {
+      }).catch(res => {
         if (res.errCode === 10001) {
-          wx.onBluetoothAdapterStateChange(function (res) {
+          //TODO: 显示要打开蓝牙
+          $wx.onBluetoothAdapterStateChange(function (res) {
             console.log('onBluetoothAdapterStateChange', res)
             if (res.available) {
               this.startBluetoothDevicesDiscovery()
             }
           })
         }
-      }
-    })
+      })
   },
 
-  cecece (obj) {
-    console.log(obj)
-  },
 
   // 搜索蓝牙
   startBluetoothDevicesDiscovery() {
-    if (this._discoveryStarted) {
+    if (this.props._discoveryStarted) {
       return
     }
-    this._discoveryStarted = true
-    wx.startBluetoothDevicesDiscovery({
-      services: [ColorSenseService],
-      success: (res) => {
-        console.log('startBluetoothDevicesDiscovery success', res)
-        this.onBluetoothDeviceFound()
-      },
+    this.props._discoveryStarted = true
+    $wx.startBluetoothDevicesDiscovery({
+      services: [constant.ColorSenseService],
+    }).then(res => {
+      console.log('startBluetoothDevicesDiscovery success', res)
+      this.onBluetoothDeviceFound()
     })
   },
+
+  // 停止搜索蓝牙
   stopBluetoothDevicesDiscovery() {
-    wx.stopBluetoothDevicesDiscovery()
+    $wx.stopBluetoothDevicesDiscovery()
   },
+
+  // 找到蓝牙
   onBluetoothDeviceFound() {
-    wx.onBluetoothDeviceFound((res) => {
-      res.devices.forEach(device => {
-        if (!device.name && !device.localName) {
-          return
-        }
-        const foundDevices = this.data.devices
-        const idx = inArray(foundDevices, 'deviceId', device.deviceId)
-        const data = {}
-        if (idx === -1) {
-          this.data.devices[foundDevices.length] = device
-        } else {
-          this.data.devices[idx] = device
-        }
-        this.setData({devices: this.data.devices})
-      })
-    })
-  },
-  createBLEConnection(e) {
-    const ds = e.currentTarget.dataset
-    const deviceId = ds.deviceId
-    const name = ds.name
-    wx.createBLEConnection({
-      deviceId,
-      success: (res) => {
-        this.setData({
-          connected: true,
-          name,
-          deviceId,
+    $wx.onBluetoothDeviceFound((res) => {
+      console.log('找到蓝牙设备',res)
+      const deviceId = res.devices[0].deviceId
+      $wx.createBLEConnection({deviceId})
+        .then(res => {
+          console.log('连接成功')
+          this.getBLEDeviceServices(deviceId) 
         })
-        this.getBLEDeviceServices(deviceId)
-      }
+      // res.devices[0]
+      // res.devices.forEach(device => {
+      //   if (!device.name && !device.localName) {
+      //     return
+      //   }
+      //   const foundDevices = this.data.devices
+      //   const idx = inArray(foundDevices, 'deviceId', device.deviceId)
+      //   const data = {}
+      //   if (idx === -1) {
+      //     this.data.devices[foundDevices.length] = device
+      //   } else {
+      //     this.data.devices[idx] = device
+      //   }
+      //   this.setData({devices: this.data.devices})
+      // })
     })
-    this.stopBluetoothDevicesDiscovery()
   },
+  
   closeBLEConnection() {
     wx.closeBLEConnection({
       deviceId: this.data.deviceId
@@ -105,53 +101,49 @@ const privateMethod = {
   },
   // 获取设备的服务
   getBLEDeviceServices(deviceId) {
-    wx.getBLEDeviceServices({
+    $wx.getBLEDeviceServices({
       deviceId,
-      success: (res) => {
-        for (let i = 0; i < res.services.length; i++) {
-          if (res.services[i].uuid === ColorSenseService) {
-            this.getBLEDeviceCharacteristics(deviceId, ColorSenseService)
-            return
-          }
+    }).then(res => {
+      for (let i = 0; i < res.services.length; i++) {
+        if (res.services[i].uuid === constant.ColorSenseService) {
+          this.getBLEDeviceCharacteristics(deviceId, constant.ColorSenseService)
+          return
         }
       }
     })
   },
+
+  // 获取特征值
   getBLEDeviceCharacteristics(deviceId, serviceId) {
     wx.getBLEDeviceCharacteristics({
       deviceId,
       serviceId,
-      success: (res) => {
-        console.log('getBLEDeviceCharacteristics success', res.characteristics)
-
-
+    }).then(res => {
+      console.log('getBLEDeviceCharacteristics success', res.characteristics)
+      let buffer = new ArrayBuffer(1)
+      let dataView = new DataView(buffer)
+      dataView.setUint8(0, Math.random() * 255 | 0)
+      wx.writeBLECharacteristicValue({
+        deviceId: deviceId,
+        serviceId: serviceId,
+        characteristicId: constant.HeartUUID,
+        value: buffer,
+      })
+      setInterval(() => {
         let buffer = new ArrayBuffer(1)
         let dataView = new DataView(buffer)
         dataView.setUint8(0, Math.random() * 255 | 0)
         wx.writeBLECharacteristicValue({
           deviceId: deviceId,
           serviceId: serviceId,
-          characteristicId: '3A796671-B41B-4B54-A929-00F880C8833B',
+          characteristicId: constant.HeartUUID,
           value: buffer,
         })
-
-        setInterval(() => {
-          let buffer = new ArrayBuffer(1)
-          let dataView = new DataView(buffer)
-          dataView.setUint8(0, Math.random() * 255 | 0)
-          wx.writeBLECharacteristicValue({
-            deviceId: deviceId,
-            serviceId: serviceId,
-            characteristicId: '3A796671-B41B-4B54-A929-00F880C8833B',
-            value: buffer,
-          })
-        }, 30000
-        )
-      },
-      fail(res) {
-        console.error('getbledevicecharacteristics', res)
-      }
+      }, 30000)
+    }).catch(res => {
+      console.error('getbledevicecharacteristics', res)
     })
+
     // 操作之前先监听，保证第一时间获取数据 获取数据
     wx.onBLECharacteristicValueChange((characteristic) => {
       const idx = inArray(this.data.chs, 'uuid', characteristic.characteristicId)
@@ -193,4 +185,4 @@ const privateMethod = {
   },
 }
 
-$Page(null, data, lifecycle, null, {})
+$Page(props, data, lifecycle, privateMethod, {})
