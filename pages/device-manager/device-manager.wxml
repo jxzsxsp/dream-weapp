@@ -1,7 +1,7 @@
 <view class="container">
-  <view wx:if="{{getApp().deviceConnected}}" class="device-container">
-    <text class="connect-device-text">已连接设备</text>
-    <text class="connected-state">去断开</text>
+  <view wx:if="{{deviceConnected}}" class="device-container">
+    <text class="connect-device-text">已连接设备{{deviceId}}</text>
+    <text class="connected-state" bind:tap="disconnectClicked">去断开</text>
   </view>
   <view wx:else class="device-container">
     <text class="connect-device-text">当前未连接设备</text>

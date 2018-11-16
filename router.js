@@ -10,5 +10,6 @@ export default {
   bindPhone: 'bind-phone',
   userAgreement: 'user-agreement',
   inputCode: 'input-code',
-  deviceManager: 'device-manager'
+  deviceManager: 'device-manager',
+  connectDevice: 'connect-device'
 }

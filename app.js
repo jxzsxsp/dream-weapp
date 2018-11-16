@@ -10,6 +10,10 @@ App({
 
   globalData: {
     token: '',
-    deviceConnected: false,
+    deviceInfo: {
+      connected: false,
+      heartTimer: null,
+      deviceId: ''
+    }
   }
 })

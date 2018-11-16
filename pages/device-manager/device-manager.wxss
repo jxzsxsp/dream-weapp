@@ -1,7 +1,7 @@
 .device-container {
   padding-left: 56rpx;
   padding-right: 56rpx;
-  margin-top: 40rpx;
+  margin-top: 140rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -3,11 +3,12 @@
   <image class="background-image" src="/assets/img_niu.png" hidden="{{!isAdjusting}}"/>
   <text class="current-state">{{currentStateText}}</text>
 
-  <view class="step-container" hidden="{{isAdjusting}}">
+  <view class="step-container" hidden="bluetoothOpened">
+    <image class="step-icon" src="/assets/img_bluetooth.png"/>
+    <text class="step-text">请打开蓝牙</text> 
+  </view>
+  <view class="step-container" hidden="{{!bluetoothOpened}}">
     <image class="step-icon" src="/assets/img_bottom_switch.png"/>
     <text class="step-text">{{stepText}}</text>
-  </view>
-  <view class="adjust-button" hidden="{{!isAdjusting}}">
-    <text class="adjust-button-text">校验</text>
   </view>
 </view>

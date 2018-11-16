@@ -36,23 +36,3 @@
   letter-spacing: 0;
   margin-left: 10rpx;
 }
-
-.adjust-button {
-  margin-top: 143rpx;
-  background: #FFFFFF;
-  border: 1rpx solid #1673DF;
-  border-radius: 44rpx;
-  width: 420rpx;
-  height: 88rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.adjust-button-text {
-  font-family: PingFangSC-Regular;
-  font-size: 34rpx;
-  color: #1673DF;
-  letter-spacing: 0;
-  text-align: center;
-}
