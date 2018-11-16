@@ -5,7 +5,6 @@ function _justifyColorItem (item) {
     return
   }
   let isDeep = ((rgbArr[0]*0.299 + rgbArr[1]*0.578 + rgbArr[2]*0.114) >= 190) ? false : true
-  console.log(isDeep)
   item.textColor = isDeep ? '#ffffff' : '#252525'
 }
 
