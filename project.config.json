@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -93,6 +93,16 @@
 					"id": -1,
 					"name": "compare-color",
 					"pathName": "pages/connect-device/connect-device",
+					"query": "id=36",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
+					}
+				},
+				{
+					"id": -1,
+					"name": "search-color",
+					"pathName": "pages/search-color/search-color",
 					"query": "id=36",
 					"scene": "1036",
 					"referrerInfo": {

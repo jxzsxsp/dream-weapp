@@ -1,5 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
+import {justifyColor} from '../../utils/index'
 
 let data = {
   colorDetail: {},
@@ -11,6 +12,8 @@ let lifecycle = {
     $wx.setNavigationBarTitle({
       title: colorDetail.categoryName
     })
+    
+    justifyColor(colorDetail)
     this.setData({
       colorDetail: colorDetail
     })

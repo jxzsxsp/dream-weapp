@@ -38,8 +38,8 @@
       bind:tap="searchColorClicked"
       data-index="{{index}}"
     >
-      <text class="color-title">{{searchColorList[index].name}}</text>
-      <text class="color-subtitle">{{searchColorList[index].categoryName}}</text>
+      <text class="color-title" style="color:{{item.textColor}}">{{searchColorList[index].name}}</text>
+      <text class="color-subtitle" style="color:{{item.textColor}}">{{searchColorList[index].categoryName}}</text>
     </view>
   </view>
 
