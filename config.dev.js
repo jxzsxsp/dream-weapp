@@ -3,7 +3,7 @@ const config = {
   app_id: 2,
   domain_name: 'sso.lianshang.com',
   sso_url: '172.16.2.166:8080',
-  base_url: '',
+  base_url: 'https://somersault-cloud-api.lian-shang.cn',
   pay_url: ''
 }
 

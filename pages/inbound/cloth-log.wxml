@@ -2,15 +2,15 @@
   <view class="content">
     <view class="content-text">
       <text>验布单号</text>
-      <text class="right-text">1446656138002648</text>
+      <text class="right-text">{{orderDetail.orderNo}}</text>
     </view>
     <view class="content-text">
       <text>客户名称</text>
-      <text class="right-text">湖州开顺布业</text>
+      <text class="right-text">{{orderDetail.customerMobile}}</text>
     </view>
     <view class="content-text">
       <text>联系方式</text>
-      <text class="right-text">18260348234</text>
+      <text class="right-text">{{orderDetail.customerName}}</text>
     </view>
   </view>
 </cloth-block>

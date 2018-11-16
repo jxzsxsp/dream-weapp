@@ -3,6 +3,8 @@
   "usingComponents": {
     "cloth-block": "../../components/cloth-block/index",
     "van-cell": "../../dist/cell/index",
-    "van-cell-group": "../../dist/cell-group/index"
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-action-sheet": "../../dist/action-sheet/index",
+    "van-tag": "../../dist/tag/index"
   }
 }

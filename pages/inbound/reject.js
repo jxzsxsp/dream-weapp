@@ -1,5 +1,7 @@
 // pages/inbound/reject.js
 import Toast from '../../dist/toast/toast';
+import { urls } from '../../constants/urls.js'
+import { _post } from '../../utils/request.js'
 
 Page({
 
@@ -7,14 +9,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({ orderNo: options.orderNo });
   },
 
   /**
@@ -66,7 +68,26 @@ Page({
 
   },
 
-  reject() {
-    Toast.success('成功驳回');
+  reject(callback) {
+    let _this = this;
+
+    _post(urls.reject_url,
+      {
+        orderNo: _this.data.orderNo,
+        rejectDescription: _this.data.rejectDescription
+      },
+      function (result) {
+        console.log(result);
+      },
+      false,
+      function () {
+        Toast.success('成功驳回');
+        typeof callback === 'function' && callback();
+      });
+  },
+
+  onChange(event) {
+    this.setData({ rejectDescription: event.detail })
   }
+
 })

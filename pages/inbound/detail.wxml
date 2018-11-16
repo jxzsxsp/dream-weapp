@@ -2,15 +2,15 @@
   <view class="content">
     <view class="content-text">
       <text>验布单号</text>
-      <text class="right-text">1446656138002648</text>
+      <text class="right-text">{{orderDetail.orderNo}}</text>
     </view>
     <view class="content-text">
       <text>客户名称</text>
-      <text class="right-text">湖州开顺布业</text>
+      <text class="right-text">{{orderDetail.customerName}}</text>
     </view>
     <view class="content-text">
       <text>联系方式</text>
-      <text class="right-text">18260348234</text>
+      <text class="right-text">{{orderDetail.customerMobile}}</text>
     </view>
   </view>
 </cloth-block>
@@ -18,24 +18,36 @@
 <cloth-block title="实际信息">
   <view class="content">
     <view class="content-text">
-      <text>验布类型</text>
-      <text class="right-text">打卷</text>
+      <text>面料类型</text>
+      <text class="right-text">{{orderDetail.customerFabricTypeName}}</text>
     </view>
     <view class="content-text">
-      <text>拉货方式</text>
-      <text class="right-text">代发货</text>
+      <text>验布方式</text>
+      <text class="right-text">{{orderDetail.customerClothTypeName}}</text>
     </view>
     <view class="content-text">
-      <text>总卷数</text>
-      <text class="right-text">5 卷</text>
+      <text>检测项目</text>
+      <text class="right-text">{{orderDetail.customerClothTypeNameItem}}</text>
+    </view>
+    <view class="content-text">
+      <text>验布卷数</text>
+      <text class="right-text">{{orderDetail.customerFabricVolumes}} 卷</text>
+    </view>
+    <view class="content-text">
+      <text>取货方式</text>
+      <text class="right-text">{{orderDetail.customerLogisticsTypeName}}</text>
+    </view>
+    <view class="content-text">
+      <text>客户留言</text>
+      <text class="right-text">{{orderDetail.customerMessage}}</text>
     </view>
     <view class="content-text">
       <text>实际总卷数</text>
-      <text class="right-text">5 卷</text>
+      <text class="right-text">{{orderDetail.bossFabricVolumes}} 卷</text>
     </view>
     <view class="content-text">
       <text>已入库卷数</text>
-      <text class="right-text">5 卷</text>
+      <text class="right-text">{{orderDetail.bossFabricVolumesReadyIn}} 卷</text>
     </view>
   </view>
 </cloth-block>
@@ -48,16 +60,16 @@
       <text>唯一码</text>
       <text class="right-text">跟踪日志</text>
     </view>
-    <view wx:for="123411111111111" wx:key="index" class="content-text">
-      <text>{{ '81807292011000000' + index }}</text>
-      <text class="check right-text" data-index="{{index}}" bindtap="checkRollLog">查看</text>
+    <view wx:for="{{orderRoll}}" wx:key="index" class="content-text">
+      <text>{{ item.rollCode }}</text>
+      <text class="check right-text" data-roll="{{ item.rollCode }}" bindtap="checkRollLog">查看</text>
     </view>
   </view>
 </cloth-block>
 
 <view class="bottom-line"></view>
 
-<navigator url="/pages/inbound/cloth-log">
+<navigator url="/pages/inbound/cloth-log?orderNo={{orderNo}}">
   <view class="outbound-btn">
     <text>验布单跟踪</text>
   </view>

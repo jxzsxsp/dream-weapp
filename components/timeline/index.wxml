@@ -1,23 +1,46 @@
-<view wx:for="{{steps}}" wx:key="index" class='timeline'>
-  <view class="timeline-date">
-    <text wx:if="{{item.date}}">{{item.date}}</text>
+<view class="timeline">
+
+  <view wx:for="{{steps}}" wx:key="index" class='timeline-item'>
+
+    <view class="timeline-head">
+      <view class="timeline-date">
+        <text wx:if="{{item.createDate}}">{{item.createDate}}</text>
+      </view>
+
+      <view class="timeline-circle">
+        <view class="circle"></view>
+      </view>
+
+      <view class='timeline-title'>
+        <text wx:if="{{item.statusName}}">{{item.statusName}}</text>
+      </view>
+
+      <view wx:if="{{item.reportImgUrl && item.reportImgUrl.length > 0}}" class='timeline-link' 
+            bind:tap="previewImage" data-urls="{{item.reportImgUrl}}">
+        <text>查看验布报告</text>
+      </view>
+    </view>
+    
+    <view class='timeline-content'>
+      <block wx:if="{{steps.length - 1 > index}}">
+        <view class="timeline-line line" />
+      </block>
+      <block wx:else>
+        <view class="timeline-line" />
+      </block>
+
+      <view class='content'>
+        <view class='name'>
+          <text wx:if="{{item.operator}}">{{item.operator}}</text>
+          <text wx:if="{{item.createTime}}">{{item.createTime}}</text>
+        </view>
+        
+        <view class='desc'>
+          <text wx:if="{{item.description}}">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+
   </view>
-  <view class="timeline-line">
-    <view class="circle"></view>
-    <view class="line"></view>
-  </view>
-  <view class='timeline-content'>
-    <view class='title'>
-      <text wx:if="{{item.title}}">{{item.title}}</text>
-    </view>
-    <view class='name'>
-      <text wx:if="{{item.name}}">{{item.name}}</text>
-    </view>
-    <view class='time'>
-      <text wx:if="{{item.time}}">{{item.time}}</text>
-    </view>
-    <view class='desc'>
-      <text wx:if="{{item.desc}}">{{item.desc}}</text>
-    </view>
-  </view>
+
 </view>

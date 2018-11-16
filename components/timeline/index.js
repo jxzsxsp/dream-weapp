@@ -18,6 +18,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    previewImage: function previewImage(e) {
+      let urls = e.currentTarget.dataset.urls;
 
+      wx.previewImage({
+        urls: urls,
+      })
+    }
   }
 })
