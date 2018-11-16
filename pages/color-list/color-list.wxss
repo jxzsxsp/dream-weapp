@@ -67,13 +67,15 @@
 
 .color-total-container {
   margin-top: 90rpx;
-  display: flex;
+
+  /* display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 
 .color-container {
   width: 25%;
+  float: left;
   display: flex;
   flex-direction: column;
   padding: 10rpx;
