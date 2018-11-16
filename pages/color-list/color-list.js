@@ -39,6 +39,9 @@ let lifeCycle = {
 
 let viewAction = {
   beginSearch: function (data, value) {
+    if (typeof(value) === 'object') {
+      value = ''
+    }
     this.props.loadingState = http.defaultLoadingState()
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, categoryId: this.props.categoryId})
       .then((colorList) => {
