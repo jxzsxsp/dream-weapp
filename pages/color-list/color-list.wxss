@@ -67,10 +67,6 @@
 
 .color-total-container {
   margin-top: 90rpx;
-
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; */
 }
 
 .color-container {
