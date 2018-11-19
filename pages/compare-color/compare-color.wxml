@@ -22,7 +22,7 @@
   <view class="detail-container">
     <view class="remote-detail">
       <text class="remote-hexcolor">{{remoteColorDetail.hexColor}}</text>
-      <text class="remote-detail-color">sRGB: {{remoteColorDetail.rgb}}</text>
+      <text class="remote-detail-color">RGB: {{remoteColorDetail.rgb}}</text>
       <text class="remote-detail-color">LAB: {{remoteColorDetail.lab}}</text>
     </view>
   </view>

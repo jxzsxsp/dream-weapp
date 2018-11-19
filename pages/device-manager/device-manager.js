@@ -10,17 +10,14 @@ const viewAction = {
         this.setData({
           deviceConnected: false
         })
-        let deviceInfo = getApp().globalData.deviceInfo
-        deviceInfo.connected = false
-        deviceInfo.heartTimer = null
-        deviceInfo.deviceId = ''
+        getApp().resetDevice()
       })
   }
 }
 
 const data = {
   deviceConnected: false,
-  deviceId: ''
+  deviceName: ''
 }
 
 const privateMethod = {
@@ -31,7 +28,7 @@ const lifecycle = {
   onShow() {
     this.setData({
       deviceConnected: getApp().globalData.deviceInfo.connected,
-      deviceId: getApp().globalData.deviceInfo.deviceId
+      deviceName: getApp().globalData.deviceInfo.deviceName
     })
   }
 }

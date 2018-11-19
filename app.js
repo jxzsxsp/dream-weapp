@@ -8,12 +8,20 @@ App({
     })
   },
 
+  resetDevice: function () {
+    this.globalData.deviceInfo.connected = false
+    this.globalData.deviceInfo.heartTimer = null
+    this.globalData.deviceInfo.deviceId = ''
+    this.globalData.deviceInfo.deviceName = '' 
+  },
+
   globalData: {
     token: '',
     deviceInfo: {
       connected: false,
       heartTimer: null,
-      deviceId: ''
+      deviceId: '',
+      deviceName: '',
     }
   }
 })

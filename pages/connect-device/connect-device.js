@@ -62,9 +62,14 @@ const bluetoothMethod = {
     $wx.onBluetoothDeviceFound((res) => {
       console.log('找到蓝牙设备',res)
       const deviceId = res.devices[0].deviceId
+      const deviceName = res.devices[0].name
       $wx.createBLEConnection({deviceId})
         .then(res => {
           console.log('连接成功')
+          const name = deviceName.split('-')
+          getApp().globalData.deviceInfo.connected = true
+          getApp().globalData.deviceInfo.deviceId = deviceId
+          getApp().globalData.deviceInfo.deviceName = name[1]
           this.stopBluetoothDevicesDiscovery()
           this.getBLEDeviceServices(deviceId) 
         })
@@ -129,8 +134,6 @@ const bluetoothMethod = {
             $wx.navigateBack()
           }, 2000)
         })
-      getApp().globalData.deviceInfo.connected = true
-      getApp().globalData.deviceInfo.deviceId = deviceId
     }).catch(res => {
       console.error('getbledevicecharacteristics', res)
     })
