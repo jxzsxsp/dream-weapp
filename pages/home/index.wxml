@@ -1,0 +1,21 @@
+<view class='home-container'>
+  <view class='logo'>
+    <image src='/assets/images/img_yanlogo@3x.png'></image>
+  </view>
+
+  <view class='common-btn inbound-btn'>
+    入库
+  </view>
+
+  <view class='common-btn collection-btn'>
+    收款
+  </view>
+
+  <view class='common-btn outbound-btn'>
+    出库
+  </view>
+
+  <view class="footer weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__text">链尚信息科技(上海)有限公司</view>
+  </view>
+</view>

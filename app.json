@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3D88E0",
+    "navigationBarTitleText": "链尚检品",
+    "navigationBarTextStyle": "white"
+  }
+}
