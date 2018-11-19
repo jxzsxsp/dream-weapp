@@ -3,7 +3,7 @@
     <view class="fetched-color-color" style="background: {{colorDetail.hexColor}}"/>
     <view class="fetched-color-detail-container">
       <text class="fetched-color-title">{{colorDetail.hexColor}}</text>
-      <text class="fetched-color-subtitle">sRGB:{{colorDetail.rgb}}</text>
+      <text class="fetched-color-subtitle">RGB:{{colorDetail.rgb}}</text>
       <text class="fetched-color-subtitle">LAB:{{colorDetail.lab}}</text>
     </view>
   </view>
