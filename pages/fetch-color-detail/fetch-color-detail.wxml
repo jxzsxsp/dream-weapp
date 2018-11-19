@@ -9,8 +9,8 @@
   </view>
 
   <view class="share-button-container">
-    <button class="share-button" open-type="launchApp" app-parameter="{router:0,data:{{colorId}}}" bind:error="launchAppError">
-      <text class="share-button-text">打开 Chame 取色</text>
+    <button class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
+      <text class="share-button-text">打开趣色宝取色</text>
     </button>
   </view>
 

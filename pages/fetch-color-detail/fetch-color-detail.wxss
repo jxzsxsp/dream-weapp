@@ -6,6 +6,7 @@
 }
 
 .fetched-color-color {
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
   height: 200rpx;
   width: 200rpx;
   border-radius: 20rpx;
