@@ -165,9 +165,8 @@ Page({
       status = 10;
     } else if(index === 1) {
       status = 20;
-    } else if(index === 2) {
-      status = 30;
     }
+    
     _this.setData({ status: status, orderList: [] });
 
     _this.getDataList();

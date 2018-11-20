@@ -2,15 +2,15 @@
   <view class="content">
     <view class="content-text">
       <text>验布单号</text>
-      <text class="right-text">1446656138002648</text>
+      <text class="right-text">{{orderDetail.orderNo}}</text>
     </view>
     <view class="content-text">
       <text>客户名称</text>
-      <text class="right-text">湖州开顺布业</text>
+      <text class="right-text">{{orderDetail.customerName}}</text>
     </view>
     <view class="content-text">
       <text>联系方式</text>
-      <text class="right-text">18260348234</text>
+      <text class="right-text">{{orderDetail.customerMobile}}</text>
     </view>
   </view>
 </cloth-block>
@@ -18,32 +18,28 @@
 <cloth-block title="出库信息">
   <view class="content">
     <view class="content-text">
-      <text>验布类型</text>
-      <text class="right-text">打卷</text>
+      <text>面料类型</text>
+      <text class="right-text">{{ orderDetail.customerFabricTypeName}}</text>
     </view>
     <view class="content-text">
-      <text>拉货方式</text>
-      <text class="right-text">代发货</text>
+      <text>验布方式</text>
+      <text class="right-text">{{ orderDetail.bossClothTypeName}}</text>
     </view>
     <view class="content-text">
-      <text>总卷数</text>
-      <text class="right-text">5 卷</text>
+      <text>检测项目</text>
+      <text class="right-text">{{ orderDetail.bossClothTypeNameItem}}</text>
     </view>
     <view class="content-text">
-      <text>实际总卷数</text>
-      <text class="right-text">5 卷</text>
+      <text>验布卷数</text>
+      <text class="right-text">{{ orderDetail.bossFabricVolumesReadyComplete}} 卷</text>
     </view>
     <view class="content-text">
-      <text>已入库卷数</text>
-      <text class="right-text">5 卷</text>
+      <text>取货方式</text>
+      <text class="right-text">{{ orderDetail.bossLogisticsTypeName}}</text>
     </view>
     <view class="content-text">
-      <text>实收金额</text>
-      <text class="right-text">90 元</text>
-    </view>
-    <view class="content-text">
-      <text>支付金额</text>
-      <text class="right-text">已支付</text>
+      <text>支付状态</text>
+      <text class="right-text">{{ orderDetail.payName}}</text>
     </view>
   </view>
 </cloth-block>
@@ -56,16 +52,16 @@
       <text>唯一码</text>
       <text class="right-text">数量(米/公斤)</text>
     </view>
-    <view wx:for="123411111111111" wx:key="index" class="content-text">
-      <text>{{ '81807292011000000' + index }}</text>
-      <text class="right-text">24</text>
+    <view wx:for="{{ orderRoll }}" wx:key="index" class="content-text">
+      <text>{{ item.rollCode }}</text>
+      <text class="right-text">{{ item.fabricMix }}</text>
     </view>
   </view>
 </cloth-block>
 
 <view class="bottom-line"></view>
 
-<navigator url="/pages/outbound/logistics">
+<navigator url="/pages/outbound/logistics?orderNo={{orderNo}}">
   <view class="outbound-btn">
     <text>出库</text>
   </view>

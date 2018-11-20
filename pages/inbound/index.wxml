@@ -27,7 +27,7 @@
       </view>
     </van-tab>
 
-    <van-tab title="部分入库">
+    <!-- <van-tab title="部分入库">
       <view wx:for="{{orderList}}" wx:key="index" class="content-item">
         <view class="content">
           <text class="content-text">验布单号：{{item.orderNo}}</text>
@@ -42,7 +42,7 @@
           </view>
         </navigator>
       </view>
-    </van-tab>
+    </van-tab> -->
 
     <van-tab title="全部入库">
       <view wx:for="{{orderList}}" wx:key="index" class="content-item">

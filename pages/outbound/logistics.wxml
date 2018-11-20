@@ -3,29 +3,49 @@
     <van-field
       value="{{ logisticsCompany }}"
       label="物流公司"
+      required
+      clearable
       placeholder="请填写物流公司"
+      bind:change="changeLogisticsCompany"
     />
     <van-field
       value="{{ username }}"
       label="联系人"
+      required
+      clearable
       placeholder="请填写联系人"
+      bind:change="changeUsername"
     />
     <van-field
       value="{{ mobile }}"
       label="联系方式"
+      required
+      clearable
       placeholder="请填写物流联系方式"
+      bind:change="changeMobile"
     />
     <van-field
       value="{{ logisticsNo }}"
       label="物流单号"
+      required
+      clearable
       placeholder="请填写物流单号"
       icon="qr"
       icon-class="icon"
       bind:click-icon="scanCode"
+      bind:change="changeLogisticsNo"
+    />
+    <van-field
+      value="{{ memo }}"
+      label="发货备注"
+      placeholder="请填写发货备注"
+      type="textarea"
+      autosize
+      bind:change="changeMemo"
     />
   </van-cell-group>
 </cloth-block>
 
-<view class="logistics-btn">
+<view class="logistics-btn" bind:tap="outBound">
   <text>出库</text>
 </view>

@@ -1,6 +1,6 @@
 <cloth-block>
   <van-search
-    value="{{ keyword }}"
+    value="{{ searchCondition }}"
     placeholder="验布单号/客户名称/联系方式"
     use-action-slot
     bind:change="onSearchChange"
@@ -13,18 +13,18 @@
 </cloth-block>
 
 <cloth-block>
-  <view wx:for="1234" wx:key="index" class="content-item">
+  <view wx:for="{{orderList}}" wx:key="index" class="content-item">
     <view class="content">
       <view class="content-text">
-        验布单号：127386124519402
-        <text class="status-text">已支付</text>
+        验布单号：{{item.orderNo}}
+        <text class="status-text">{{item.payStatusName}}</text>
       </view>
-      <text class="content-text">客户名称：泰森布业</text>
-      <text class="content-text">联系方式：13838987766</text>
-      <view class="content-text">总卷数：<text class="num-text">5</text> 卷</view>
-      <text class="content-text">已入库卷数：5 卷</text>
+      <text class="content-text">客户名称：{{item.customerName}}</text>
+      <text class="content-text">联系方式：{{item.customerMobile}}</text>
+      <view class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</view>
+      <text class="content-text">已入库卷数：{{item.bossFabricVolumesReadyComplete}} 卷</text>
     </view>
-    <navigator url='/pages/outbound/outbound'>
+    <navigator url='/pages/outbound/outbound?orderNo={{item.orderNo}}'>
       <view class="content-btn">
         <text>出库</text>
       </view>

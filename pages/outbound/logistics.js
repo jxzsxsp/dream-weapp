@@ -1,4 +1,7 @@
 // pages/outbound/logistics.js
+import { urls } from '../../constants/urls.js'
+import { _post } from '../../utils/request.js'
+
 Page({
 
   /**
@@ -8,14 +11,15 @@ Page({
     logisticsCompany: '',
     username: '',
     mobile: '',
-    logisticsNo: ''
+    logisticsNo: '',
+    memo: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({ orderNo: options.orderNo });
   },
 
   /**
@@ -76,5 +80,51 @@ Page({
         })
       }
     })
+  },
+
+  changeLogisticsCompany(e) {
+    console.log(e.detail);
+    this.setData({ logisticsCompany: e.detail });
+  },
+
+  changeUsername(e) {
+    console.log(e.detail);
+    this.setData({ username: e.detail });
+  },
+
+  changeMobile(e) {
+    console.log(e.detail);
+    this.setData({ mobile: e.detail });
+  },
+
+  changeLogisticsNo(e) {
+    console.log(e.detail);
+    this.setData({ logisticsNo: e.detail });
+  },
+
+  changeMemo(e) {
+    console.log(e.detail);
+    this.setData({memo: e.detail});
+  },
+
+  outBound() {
+    let _this = this;
+
+    _post(urls.output_url,
+      {
+        orderNo: _this.data.orderNo,
+        logisticsCompanyName: _this.data.logisticsCompany,
+        logisticsSn: _this.data.logisticsNo,
+        contactName: _this.data.username,
+        contactMobile: _this.data.mobile,
+        memo: _this.data.memo
+      },
+      function (result) {
+        console.log(result);
+      },
+      false,
+      function () {
+        typeof callback === 'function' && callback();
+      });
   }
 })
