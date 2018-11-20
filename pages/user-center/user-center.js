@@ -2,9 +2,11 @@ import {$Page, $wx} from '../../genji4mp/index'
 import { http } from '../../net/index';
 
 const data = {
-  settingList: [{
-    name: '设备管理', icon: 'icon-ic_equipment'
-  }],
+  settingList: [
+    // {
+    // name: '设备管理', icon: 'icon-ic_equipment'
+    // }
+  ],
   userInfo: {},
 }
 
