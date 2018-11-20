@@ -35,7 +35,7 @@ let lifeCycle = {
 
 let privateMethod = {
   onReachBottom () {
-    http.getList(urls.pantone.colorSearch, this.props.loadingState)
+    http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {lab: colorDetail.lab})
       .then(colorList => {
         this.data.relativeColorList.push(...colorList)
         this.setData({
