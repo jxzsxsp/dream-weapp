@@ -23,7 +23,7 @@ let lifeCycle = {
         })
         return colorDetail.lab
       }).then(lab => {
-        return http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {labs: lab})
+        return http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {lab})
       }).then(relativeColorList => {
         this.setData({
           relativeColorList

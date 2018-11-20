@@ -1,4 +1,4 @@
-export const isOnline = false
+export const isOnline = true
 
 export default {
   Login: 'https://sso2.lian-shang.cn',
