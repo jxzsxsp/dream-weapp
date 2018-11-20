@@ -29,7 +29,7 @@ export function justifyColor (colorList) {
 
 export function fixLab (lab) {
   const labArr = lab.split(',')
-  const fixedArr = labArr.map(item => parseInt(item).toFixed(2))
+  const fixedArr = labArr.map(item => parseFloat(item).toFixed(2))
   return fixedArr.join(',')
 }
 
