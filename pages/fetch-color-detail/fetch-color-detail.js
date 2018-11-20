@@ -13,6 +13,7 @@ let data = {
 
 let lifeCycle = {
   onLoad: function (query) {
+    $wx.setNavigationBarTitle({title: '取色'})
     this.setData({
       colorId: query.colorId
     })
