@@ -5,10 +5,10 @@
       <view class="user-name-container">
         <text class="user-name">{{userInfo.nickName}}</text>
       </view>
-      <view class="edit-user">
+      <!-- <view class="edit-user">
         <text class="edit-text">编辑</text>
         <view class="iconfont icon-ic_back setting-detail"/>
-      </view>
+      </view> -->
     </view>
     <view wx:else class="not-login-container">
       <text class="not-login-text">Hello,你好</text>
