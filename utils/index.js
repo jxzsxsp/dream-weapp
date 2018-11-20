@@ -1,3 +1,4 @@
+
 function _justifyColorItem (item) {
   const rgbArr = item.rgb.split(',')
   if (rgbArr.length !== 3) {
@@ -8,6 +9,12 @@ function _justifyColorItem (item) {
   item.textColor = isDeep ? '#ffffff' : '#252525'
 }
 
+
+/**
+ * 判断颜色是深色还是浅色
+ *
+ * @param {Array | Object} colorList 颜色信息对象，对象中必须包含以逗号隔开的 rgb 字段
+ */
 export function justifyColor (colorList) {
   if (colorList instanceof Array) {
     colorList.forEach(item => {
@@ -18,5 +25,11 @@ export function justifyColor (colorList) {
   } else {
     console.error('颜色格式错误')
   }
+}
+
+export function fixLab (lab) {
+  const labArr = lab.split(',')
+  const fixedArr = labArr.map(item => parseInt(item).toFixed(2))
+  return fixedArr.join(',')
 }
 

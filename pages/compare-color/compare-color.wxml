@@ -1,6 +1,7 @@
 <view class="container">
   <view class="result-container">
-    <text class="result-title">△ = ?</text>
+    <text class="result-title" wx:if="{{isCompare}}">△ = ?</text>
+    <text class="result-title" wx:else>△ = {{colorDetail.targetColor.comparisonScore}}</text>
     <text class="result-subtitle">值越小代表颜色越接近</text>
   </view>
 
