@@ -20,8 +20,13 @@ class Http {
 
   //  静默登录
   quietLogin () {
+    let code = ''
     return $wx.login().then(res => {
-      let data = {code: res.code, appId: constant.appId, domainName: constant.domainName}
+      code = res.code
+      return $wx.getUserInfo({withCredentials: true})
+    }).then(res => {
+      let data = {code, appId: constant.appId, domainName: constant.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
+
       return this.getLogin(urls.login.quietLogin, data, true)
     }).then(res => {
       if (res.token) {
