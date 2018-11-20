@@ -107,11 +107,14 @@
   flex-direction: row;
   padding-left: 30rpx;
   margin-top: 100rpx;
+  justify-content: space-between;
+  padding-right: 30rpx;
 }
 
 .remote-detail {
   display: flex;
   flex-direction: column;
+  width: 326rpx;
 }
 
 .remote-hexcolor {

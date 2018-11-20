@@ -2,20 +2,37 @@ import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 
 let data = {
-  remoteColorDetail: {},
-  id: 0
+  colorDetail: {},
+  // 左边的颜色
+  sourceId: 0,
+  // 右边的颜色
+  targetId: 0,
+  // 发起远程对色还是完成对色
+  isCompare: true
+
 }
 
 let lifecycle = {
   onLoad: function (query) {
     $wx.setNavigationBarTitle({title: '远程对色'})
+    
+    let param = {colorComparisonSourceId: parseInt(query.localId)}
+    // 完成对色的分享
+    if (!!query.remoteId) {
+      this.data.isCompare = false
+      this.data.targetId = parseInt(query.remoteId)
+      param.colorComparisonTargetId = parseInt(query.remoteId)
+    }
     this.setData({
-      id: query.id
+      sourceId: parseInt(query.localId),
+      targetId: this.data.targetId,
+      isCompare: this.data.isCompare
     })
-    http.get(urls.pantone.compareColorDetail, {colorComparisonSourceId: parseInt(query.id)})
-      .then(remoteColorDetail => {
+
+    http.get(urls.pantone.compareColorDetail, param)
+      .then(colorDetail => {
         this.setData({
-          remoteColorDetail
+          colorDetail
         })
       })
   },

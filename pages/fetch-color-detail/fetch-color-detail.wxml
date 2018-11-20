@@ -10,7 +10,7 @@
 
   <view class="share-button-container">
     <button class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
-      <text class="share-button-text">打开趣色宝取色</text>
+      <text class="share-button-text">打开小蜥取色</text>
     </button>
   </view>
 

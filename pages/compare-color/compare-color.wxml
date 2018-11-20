@@ -6,14 +6,14 @@
 
   <view class="color-container">
     <view class="remote-color-container">
-      <view class="remote-color" style="background: {{remoteColorDetail.hexColor}}"/>
+      <view class="remote-color" style="background: {{colorDetail.sourceColor.hexColor}}"/>
       <view class="remote-text-container">
         <text class="remote-text">样本选择</text>
       </view>
     </view>
     <view class="locol-color-container">
-      <view class="locol-color"/>
-      <button class="locol-text-container" open-type="launchApp" app-parameter="{\"router\":1,\"data\":{{id}}}" bind:error="launchAppError">
+      <view class="locol-color" style="background: {{colorDetail.targetColor.hexColor}}"/>
+      <button class="locol-text-container" wx:if="{{isCompare}}" open-type="launchApp" app-parameter="{\"router\":1,\"data\":{{sourceId}}}" bind:error="launchAppError">
         <text class="locol-text">去 app</text>
       </button>
     </view>
@@ -21,9 +21,14 @@
 
   <view class="detail-container">
     <view class="remote-detail">
-      <text class="remote-hexcolor">{{remoteColorDetail.hexColor}}</text>
-      <text class="remote-detail-color">RGB: {{remoteColorDetail.rgb}}</text>
-      <text class="remote-detail-color">LAB: {{remoteColorDetail.lab}}</text>
+      <text class="remote-hexcolor">{{colorDetail.sourceColor.hexColor}}</text>
+      <text class="remote-detail-color">RGB: {{colorDetail.sourceColor.rgb}}</text>
+      <text class="remote-detail-color">LAB: {{colorDetail.sourceColor.lab}}</text>
+    </view>
+    <view class="remote-detail" wx:if="{{!isCompare}}">
+      <text class="remote-hexcolor">{{colorDetail.targetColor.hexColor}}</text>
+      <text class="remote-detail-color">RGB: {{colorDetail.targetColor.rgb}}</text>
+      <text class="remote-detail-color">LAB: {{colorDetail.targetColor.lab}}</text>
     </view>
   </view>
 
