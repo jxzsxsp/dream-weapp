@@ -17,5 +17,5 @@
       <text class="color-recipe-text">{{item.value*100}}%</text>
     </view>
   </view>
-  <text class="color-source-text">颜色来源于 PANTONE TCX</text>
+  <text class="color-source-text">颜色来源于 {{colorDetail.categoryName}}</text>
 </view>
