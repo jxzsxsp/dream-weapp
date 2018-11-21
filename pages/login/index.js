@@ -72,6 +72,7 @@ Page({
    * 授权登录
    */
   authorLogin: function (e) {
+    
     let _this = this;
 
     if (e.detail.errMsg !== 'getUserInfo:ok') {
@@ -87,6 +88,10 @@ Page({
           , {
             appId: config.app_id,
             code: res.code,
+            rawData: e.detail.rawData,
+            signature: e.detail.signature,
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv,
             domainName: config.domain_name
           }
           , function (result) {

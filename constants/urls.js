@@ -2,6 +2,7 @@ import { config } from '../config.js'
 
 const urls = {
   login_url: config.sso_url + '/wechat/oauth2/mini-auth-login',
+  bind_mobile_url: config.sso_url + '/home/mini-bind-mobile',
   order_list_url: config.base_url + '/order/list', // 订单列表接口
   input_init_url: config.base_url + '/order/input-init', // 入库初始化接口
   reject_url: config.base_url + '/order/reject', // 入库驳回接口

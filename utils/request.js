@@ -17,10 +17,10 @@ function doLogin() {
 /**
  * get请求
  */
-function _get (url, data, success, fail, complete, check_login) {
+function _get(url, data, success, fail, complete, check_login) {
 
   showLoading();
-  
+
   // 构造请求参数
   data = data || {};
   let token = wx.getStorageSync('token');
@@ -28,7 +28,7 @@ function _get (url, data, success, fail, complete, check_login) {
 
   // 构造get请求
   let request = function () {
-    
+
     wx.request({
       url: url,
       header: {
@@ -44,7 +44,7 @@ function _get (url, data, success, fail, complete, check_login) {
           })
           return false;
         }
-        if (res.data.code === -1) {
+        if (res.data.code === -100) {
           // 登录态失效, 重新登录
           doLogin();
         } else if (res.data.code < 0) {
@@ -75,8 +75,8 @@ function _get (url, data, success, fail, complete, check_login) {
 /**
  * post提交
  */
-function _post (url, data, success, fail, complete) {
-  
+function _post(url, data, success, fail, complete) {
+
   showLoading();
 
   // 构造请求参数
@@ -100,7 +100,7 @@ function _post (url, data, success, fail, complete) {
         })
         return false;
       }
-      if (res.data.code === -1) {
+      if (res.data.code === -100) {
         // 登录态失效, 重新登录
         doLogin();
       } else if (res.data.code < 0) {
