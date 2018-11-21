@@ -70,6 +70,28 @@
   margin-top: 90rpx;
 }
 
+.no-color-container {
+  margin-top: 110rpx;
+  margin-left: 56rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.no-color-title {
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #252525;
+  letter-spacing: 0;
+  margin-bottom: 46rpx;
+}
+
+.no-color-description {
+  font-family: PingFangSC-Light;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+}
+
 .color-container {
   width: 25%;
   float: left;
