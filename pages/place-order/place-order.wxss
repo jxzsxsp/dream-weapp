@@ -3,5 +3,58 @@
 }
 
 .customer-detail-container {
-  
+  height: 226rpx;
+  padding-left: 30rpx;
+  padding-right: 28rpx;
+  align-items: center;
+}
+
+.has-customer-container {
+  margin-right: 28rpx;
+  flex: 1;
+}
+
+.customer-container {
+  align-items: center
+}
+
+.customer-name-text {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0;
+  flex: 1;
+}
+
+.customer-name-text {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0; 
+}
+
+.customer-address-text {
+  margin-top: 23rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  word-wrap: break-word; 
+}
+
+.no-customer-container {
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.no-address-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  margin-left: 10rpx;
+}
+
+.detail-icon {
+  transform: rotate(180deg);
 }

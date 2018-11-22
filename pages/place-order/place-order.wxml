@@ -1,19 +1,19 @@
 <view class="container">
   <image class="seperator-pic"/>
-  <view class="customer-detail-container">
-    <view class="has-customer-container" wx:if="{{customerDetail}}">
-      <view class="customer-container">
-        <view class="location-icon"/>
-        <text class="customer-name-text">收货人：{{customerDetail.contacts}}</text>
-        <text class="customer-moble-text">{{customerDetail.contactMobile}}</text>
+  <view class="customer-detail-container flex">
+    <view class="has-customer-container flex-column" wx:if="{{customerDetail}}">
+      <view class="customer-container flex">
+        <view class="iconfont icon-ic_back"/>
+        <text class="customer-name-text">收货人:{{customerDetail.contacts}}</text>
+        <text class="customer-mobile-text">{{customerDetail.contactMobile}}</text>
       </view>
-      <text class="customer-address-text">收货地址：{{customerDetail.detailAddress}}</text>
+      <text class="customer-address-text">收货地址:{{customerDetail.detailAddress}}</text>
     </view>
-    <view class="no-customer-container" wx:else>
-      <view class="location-icon"/> 
+    <view class="no-customer-container flex" wx:else>
+      <view class="iconfont icon-ic_back"/> 
       <text class="no-address-text">请点击输入收货地址</text>
     </view>
-    <view class="detail-icon"/>
+    <view class="detail-icon iconfont icon-ic_back"/>
   </view>
   <image class="seperator-pic"/>
 
