@@ -1,4 +1,0 @@
-<view class="custom-class cloth-block {{ padding ? 'cloth-block--padding' : '' }}">
-  <view wx:if="{{ title }}" class="cloth-block__title">{{ title }}</view>
-  <slot />
-</view>

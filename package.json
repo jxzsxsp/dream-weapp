@@ -1,0 +1,15 @@
+{
+  "name": "mp-cloth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard --verbose",
+    "precommit": "npm run lint",
+    "dev": "./env/ce.sh dev",
+    "pro": "./env/ce.sh pro"
+  },
+  "author": "",
+  "license": "ISC"
+}

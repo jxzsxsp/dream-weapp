@@ -1,5 +1,79 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+} 
 
-image {
-  max-width: 100%;
-  max-height: 100%;
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
+
+@font-face {
+  font-family: 'iconfont';  /* project id 914158 */
+  src: url('//at.alicdn.com/t/font_914158_o177k1vy8cs.eot');
+  src: url('//at.alicdn.com/t/font_914158_o177k1vy8cs.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_914158_o177k1vy8cs.woff') format('woff'),
+  url('//at.alicdn.com/t/font_914158_o177k1vy8cs.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_914158_o177k1vy8cs.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ic_back:before { content: "\e8e7"; }
+
+.icon-ic_close:before { content: "\e8e8"; }
+
+.icon-ic_choose:before { content: "\e8e9"; }
+
+.icon-ic_code_show:before { content: "\e8ea"; }
+
+.icon-ic_custom_service:before { content: "\e8eb"; }
+
+.icon-ic_code_hide:before { content: "\e8ec"; }
+
+.icon-ic_history:before { content: "\e8ed"; }
+
+.icon-ic_more:before { content: "\e8ee"; }
+
+.icon-ic_mess:before { content: "\e8f5"; }
+
+.icon-ic_scan:before { content: "\e8f6"; }
+
+.icon-ic_search:before { content: "\e8f7"; }
+
+.icon-ic_search_sm:before { content: "\e8f8"; }
+
+.icon-tab_equipment_b:before { content: "\e8ef"; }
+
+.icon-tab_equipment_a:before { content: "\e8f0"; }
+
+.icon-tab_I_a:before { content: "\e8f1"; }
+
+.icon-tab_index_a:before { content: "\e8f2"; }
+
+.icon-tab_I_b:before { content: "\e8f3"; }
+
+.icon-ic_share:before { content: "\e8f9"; }
+
+.icon-tab_index_b:before { content: "\e8f4"; }
+
+.icon-ic_equipment:before { content: "\e8fa"; }
+
+.icon-ic_register_b:before { content: "\e8fb"; }
+
+.icon-ic_register_a:before { content: "\e8fc"; }
+
+.icon-ic_QA:before { content: "\e8fd"; }
+
+.icon-ic_setting:before { content: "\e8fe"; }
+
+.icon-ic_wechat:before { content: "\e8ff"; }
