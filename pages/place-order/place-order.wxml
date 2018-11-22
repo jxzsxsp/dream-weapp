@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- <image class="seperator-pic"/>
+  <view class="customer-detail-container">
+    <view class="has-customer-container" wx:if="{{customerDetail}}">
+      <view class="customer-container">
+        <view class="location-icon"/>
+        <text class="customer-name-text">收货人：{{customerDetail.contacts}}</text>
+        <text class="customer-moble-text">{{customerDetail.contactMobile}}</text>
+      </view>
+      <text class="customer-address-text">收货地址：{{customerDetail.detailAddress}}</text>
+    </view>
+    <view class="no-customer-container" wx:else>
+      <view class="location-icon"/> 
+      <text class="no-address-text">请点击输入收货地址</text>
+    </view>
+    <view class="detail-icon"/>
+  </view>
+  <image class="seperator-pic"/> -->
+
+<form-group>
+  <form-cell is-last>
+    <text slot="left">ahha</text>
+    <text slot="right" class="aaa"> hahah </text>
+  </form-cell>
+  <form-cell is-last has-detail>
+    <text slot="left">ahha</text>
+    <text slot="right" class="aaa"> hahah </text>
+  </form-cell>
+</form-group>
+
+
+</view>
