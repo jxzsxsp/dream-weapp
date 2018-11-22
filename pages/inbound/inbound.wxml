@@ -1,54 +1,89 @@
 <cloth-block title="客户信息">
-  <view class="content">
-    <view class="customer-info">
-      <text>验布单号</text>
-      <text class="right-text">{{orderNo}}</text>
-    </view>
-    <view class="customer-info">
-      <text>客户名称</text>
-      <text class="right-text">{{orderDetail.customerName}}</text>
-    </view>
-    <view class="customer-info">
-      <text>联系方式</text>
-      <text class="right-text">{{orderDetail.customerMobile}}</text>
-    </view>
-    <view class="customer-info">
-      <text>面料类型</text>
-      <text class="right-text">{{orderDetail.customerFabricTypeName}}</text>
-    </view>
-    <view class="customer-info">
-      <text>验布方式</text>
-      <text class="right-text">{{orderDetail.bossClothTypeName}}</text>
-    </view>
-    <view class="customer-info">
-      <text>检测项目</text>
-      <view class="right-text">
+
+  <van-cell-group>
+
+    <van-cell 
+    title="验布单号"
+    value="{{orderNo}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="客户名称"
+    value="{{orderDetail.customerName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="联系方式"
+    value="{{orderDetail.customerMobile}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="面料类型"
+    value="{{orderDetail.customerFabricTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="验布方式"
+    value="{{orderDetail.bossClothTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="检测项目"
+    title-width="180rpx"
+    border="{{ false }}"
+    >
+      <view class="check-item">
         <block wx:for="{{orderDetail.checkItems}}" wx:key="index">
-          <van-tag>{{item}}</van-tag>
+          <view class="item">{{item}}</view>
         </block>
       </view>
-    </view>
-    <view class="customer-info">
-      <text>验布米数</text>
-      <text class="right-text">130 m</text>
-    </view>
-    <view class="customer-info">
-      <text>验布卷数</text>
-      <text class="right-text">{{orderDetail.customerFabricVolumes}} 卷</text>
-    </view>
-    <view class="customer-info">
-      <text>取货方式</text>
-      <text class="right-text">{{orderDetail.logisticsTypeName}}</text>
-    </view>
-    <view class="customer-info">
-      <text>客户留言</text>
-      <text class="right-text">打卷不要带链尚LOGO</text>
-    </view>
-  </view>
+    </van-cell>
+
+    <van-cell 
+    title="验布米数"
+    value="130 m"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="验布卷数"
+    value="{{orderDetail.customerFabricVolumes}} 卷"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="取货方式"
+    value="{{orderDetail.logisticsTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="客户留言"
+    value="打卷不要带链尚LOGO"
+    border="{{ false }}"
+    />
+
+  </van-cell-group>
+  
 </cloth-block>
 
 <cloth-block title="实际信息">
   <van-cell-group>
+  
+    <van-cell
+      title="品名"
+      is-link
+      arrow-direction="down"
+      value="{{customerFabricTypeName}}"
+      url=""
+      bind:click="toggleFabricType"
+    />
+
     <van-cell
       title="面料类型"
       is-link
@@ -57,6 +92,7 @@
       url=""
       bind:click="toggleFabricType"
     />
+
     <van-cell
       title="验布方式"
       is-link
@@ -65,14 +101,23 @@
       url=""
       bind:click="toggleClothType"
     />
+
     <van-cell
       title="检测项目"
-      value="手写报告 克重 门幅 米数/米差 侧边贴 换纸管 换包装"
-    />
+      title-width="180rpx"
+    >
+      <view class="check-item">
+        <block wx:for="{{orderDetail.checkItems}}" wx:key="index">
+          <view class="item">{{item}}</view>
+        </block>
+      </view>
+    </van-cell>
+
     <van-cell
       title="验布卷数"
       value="10"
     />
+
     <van-cell
       title="取货方式"
       is-link
@@ -81,16 +126,18 @@
       url=""
       bind:click="toggleLogisticsType"
     />
+
     <van-cell
       title="已入库卷数"
       value="0"
     />
+
     <van-cell
       title="本次入库卷数"
-      value="5"
     >
-    <input value='{{bossFabricVolumesIn}}' />
+    <input value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' />
     </van-cell>
+
   </van-cell-group>
 
   <van-action-sheet

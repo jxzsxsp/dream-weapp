@@ -1,0 +1,7 @@
+<!--pages/codeview/index.wxml-->
+
+<image mode="aspectFit" src="https://zsyougou.uubi.cn/assets/store/img/login_bg.jpg"></image>
+
+<view class="collection-btn" bind:tap="submit">
+  <text>确认</text>
+</view>

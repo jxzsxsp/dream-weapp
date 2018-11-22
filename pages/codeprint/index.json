@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "打印唯一码",
+  "usingComponents": {
+    "van-stepper": "../../dist/stepper/index",
+    "van-cell": "../../dist/cell/index",
+    "van-switch-cell": "../../dist/switch-cell/index",
+    "van-cell-group": "../../dist/cell-group/index"
+  }
+}

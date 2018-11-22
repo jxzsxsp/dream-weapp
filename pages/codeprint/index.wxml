@@ -1,0 +1,28 @@
+<!--pages/codeprint/index.wxml-->
+
+  <van-cell-group>
+
+    <van-switch-cell
+      title="显示收货地址"
+      checked="{{ checked }}"
+      border="{{true}}"
+      active-color="#00B1EF"
+      bind:change="onChange"
+    />
+
+    <van-cell
+      title="单个唯一码打印份数"
+      border="{{ false }}"
+    >
+      <view class="num">
+      <van-stepper 
+      value="{{ num }}"
+      bind:change="changeNum" />份
+      </view>
+    </van-cell>
+
+  </van-cell-group>
+
+<view class="collection-btn" bind:tap="next">
+  <text>下一步</text>
+</view>

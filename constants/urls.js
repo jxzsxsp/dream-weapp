@@ -1,8 +1,9 @@
 import { config } from '../config.js'
 
 const urls = {
-  login_url: config.sso_url + '/wechat/oauth2/mini-auth-login',
-  bind_mobile_url: config.sso_url + '/home/mini-bind-mobile',
+  login_url: config.sso_url + '/wechat/oauth2/mini-auth-login', // 登录
+  bind_mobile_url: config.sso_url + '/home/mini-bind-mobile', // 绑定手机号
+  get_smscode_url: config.sso_url + '/home/get-authCode', // 获取短信验证码
   order_list_url: config.base_url + '/order/list', // 订单列表接口
   input_init_url: config.base_url + '/order/input-init', // 入库初始化接口
   reject_url: config.base_url + '/order/reject', // 入库驳回接口

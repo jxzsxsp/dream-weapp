@@ -1,22 +1,23 @@
-// pages/inbound/reject.js
-import Toast from '../../dist/toast/toast';
-import { urls } from '../../constants/urls.js'
-import { _post } from '../../utils/request.js'
-
+// pages/codeview/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ orderNo: options.orderNo });
+    console.log(options);
+
+    this.setData({
+      num: options.num,
+      checked: options.checked
+    });
   },
 
   /**
@@ -68,26 +69,10 @@ Page({
 
   },
 
-  reject(callback) {
-    let _this = this;
-
-    _post(urls.reject_url,
-      {
-        orderNo: _this.data.orderNo,
-        rejectDescription: _this.data.rejectDescription
-      },
-      function (result) {
-        console.log(result);
-      },
-      false,
-      function () {
-        Toast.success('成功驳回');
-        typeof callback === 'function' && callback();
-      });
-  },
-
-  onChange(e) {
-    this.setData({ rejectDescription: e.detail.value })
+  submit() {
+    wx.navigateTo({
+      url: '/pages/home/index',
+    })
   }
-
+  
 })

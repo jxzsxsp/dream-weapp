@@ -13,7 +13,10 @@
     "pages/inbound/cinbound",
     "pages/inbound/cloth-log",
     "pages/inbound/roll-log",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/bindmobile/index",
+    "pages/codeprint/index",
+    "pages/codeview/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

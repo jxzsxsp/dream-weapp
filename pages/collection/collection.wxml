@@ -32,45 +32,71 @@
 
 <cloth-block title="收款信息">
   <view class="content">
+
     <view class="content-text">
-      <text>验布类型</text>
-      <text class="right-text">打卷</text>
+      <text>面料类型</text>
+      <text class="right-text">梭织</text>
     </view>
+
     <view class="content-text">
-      <text>拉货方式</text>
-      <text class="right-text">代发货</text>
+      <text>验布方式</text>
+      <text class="right-text">快速验布</text>
     </view>
+
     <view class="content-text">
-      <text>总卷数</text>
-      <text class="right-text">5 卷</text>
+      <text>检测项目</text>
+      <text class="right-text">手写报告,克重,门幅,米数/米差</text>
     </view>
+
+    <view class="content-text">
+      <text>取货方式</text>
+      <text class="right-text">代发货至物流送货点</text>
+    </view>
+
     <view class="content-text">
       <text>实际总卷数</text>
       <text class="right-text">5 卷</text>
     </view>
+
     <view class="content-text">
       <text>已入库卷数</text>
       <text class="right-text">5 卷</text>
     </view>
+
+    <view class="content-text">
+      <text>已验布卷数</text>
+      <text class="right-text">5 卷</text>
+    </view>
+
     <view class="content-text">
       <text>总金额</text>
       <text class="right-text">100 元</text>
     </view>
+
     <view class="content-text">
       <text>客户折扣</text>
       <text class="right-text">九折</text>
     </view>
+
     <view class="content-text">
       <text>应收金额</text>
+      <text class="right-text">90元</text>
+    </view>
+
+    <view class="content-text">
+      <text>实收金额</text>
       <view class="right-text">
-        <input class="amount-text"></input>
+        <input type="number" class="amount-text" value="{{fee}}" bind:change="changeFee"></input>
         <text>元</text>
       </view>
     </view>
+
   </view>
   <view class="bottom-line"></view>
 </cloth-block>
 
-<view class="collection-btn">
+<view class="collection-btn" bind:tap="submit">
   <text>收款</text>
 </view>
+
+<van-dialog id="van-dialog" />

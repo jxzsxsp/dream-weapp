@@ -26,7 +26,7 @@ Page({
         "logisticsTypeName": "自提", //物流类型 (10.自提 20.代发货至物流送货点 30.代发货至)
         "customerName": "湖州开顺布业", //送检方客户名称
         "customerMobile": "18260348234", //送检方手机
-        "checkItems": ["克重", "门幅", "米数/米差", "侧边贴", "换纸管", "换包装"],
+        "checkItems": ["手写报告", "克重", "门幅", "米数/米差", "侧边贴", "换纸管", "换包装"],
         "bossClothType": 20,  //验布方式
         "bossClothTypeName": "快速验布",  //验布方式
         "bossFabricVolumes": 12, //实际总卷数
@@ -155,6 +155,10 @@ Page({
           title: '入库成功',
           icon: 'none'
         });
+
+        wx.navigateTo({
+          url: '/pages/codeprint/index',
+        })
 
         typeof callback === 'function' && callback();
       });

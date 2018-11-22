@@ -1,15 +1,10 @@
-<demo-block title="高度自适应">
-  <van-cell-group>
-    <van-field
-      value="{{ rejectDescription }}"
-      type="textarea"
-      placeholder="请填写驳回原因"
-      rows="25"
-      autosize
-      bind:change="onChange"
-    />
-  </van-cell-group>
-</demo-block>
+
+<textarea 
+  value="{{ rejectDescription }}"
+  placeholder="请填写驳回原因"
+  maxlength="200"
+  bindinput="onChange"
+/>
 
 <view class="operate-btn" bind:tap="reject">
   <text>确认驳回</text>

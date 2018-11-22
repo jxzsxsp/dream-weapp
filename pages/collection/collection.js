@@ -1,11 +1,13 @@
 // pages/collection/collection.js
+import Dialog from '../../dist/dialog/dialog';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    fee: ''
   },
 
   /**
@@ -62,5 +64,24 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  changeFee(e) {
+    this.setData({fee:e.detail.value})
+  },
+
+  submit() {
+    let _this=this;
+
+    Dialog.confirm({
+      message: '实收金额为'+_this.data.fee+'元，是否确认收款？'
+    }).then(() => {
+      // on confirm
+      console.log('confirm');
+    }).catch(() => {
+      // on cancel
+      console.log('cancel');
+    });
   }
+
 })

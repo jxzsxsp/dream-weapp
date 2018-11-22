@@ -1,0 +1,34 @@
+<!--pages/bindmobile/index.wxml-->
+
+  <van-cell-group>
+    <van-field
+      value="{{ mobile }}"
+      center
+      clearable
+      label="手机号"
+      placeholder="请输入手机号"
+      use-button-slot
+      bind:change="changeMobile"
+    />
+    <van-field
+      value="{{ smscode }}"
+      center
+      clearable
+      label="验证码"
+      placeholder="请输入短信验证码"
+      use-button-slot
+      border="{{ false }}"
+      bind:change="changeSmsCode"
+    >
+      <van-button 
+      slot="button" 
+      size="small" 
+      type="primary" 
+      custom-class="button"
+      bind:click="sendSmsCode">发送验证码</van-button>
+    </van-field>
+  </van-cell-group>
+
+<view class="collection-btn" bind:tap="submit">
+  <text>确认</text>
+</view>

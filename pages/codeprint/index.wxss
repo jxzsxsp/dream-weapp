@@ -1,25 +1,27 @@
-textarea {
-  background: #FFFFFF;
-  width: 720rpx;
-  padding: 20rpx;
-  height: 6em;
+/* pages/codeprint/index.wxss */
+
+.num {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 39rpx;
 }
 
-.operate-btn {
+.collection-btn {
   position: fixed;
   z-index: 100;
   left: 0rpx;
   bottom: 0rpx;
-  height: 88rpx;
-  width: 750rpx;
   background: #00B1EF;
+  width: 750rpx;
+  height: 88rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.operate-btn text {
+.collection-btn text {
   font-family: PingFangSC-Regular;
   font-size: 38rpx;
   color: #FFFFFF;

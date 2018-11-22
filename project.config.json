@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -114,7 +114,25 @@
 				{
 					"id": -1,
 					"name": "登录",
-					"pathName": "pages/login/index"
+					"pathName": "pages/login/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定手机",
+					"pathName": "pages/bindmobile/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "唯一码打印",
+					"pathName": "pages/codeprint/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "唯一码预览",
+					"pathName": "pages/codeview/index"
 				}
 			]
 		}
