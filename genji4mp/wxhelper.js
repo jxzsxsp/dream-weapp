@@ -37,16 +37,17 @@ let baseService = {
   navigateBack: function (delta=1, data={}) {
     if (typeof(delta) === 'object') {
       // 原始小程序的返回
-      wx.navigateBack(delta)
     } else if (JSON.stringify(data) === "{}") {
       // 只设置了返回级数的返回
-      wx.navigateBack({delta})
+      delta = {delta}
     } else {
       // 设置之前的数据
+      delta = {delta}
       let pages = getCurrentPages()
       let prevPage = pages[pages.length - delta]
       prevPage.setData(data)
     }
+    wx.navigateBack(delta)
   }
 }
 
