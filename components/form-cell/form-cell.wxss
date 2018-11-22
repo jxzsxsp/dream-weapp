@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 30rpx;
+  padding-left: 30rpx;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+}
+
+.right-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.detail-image {
+  height: 28rpx;
+  width: 30rpx;
+  transform: rotate(180deg);
+}
+
+.seperator {
+  height: 1rpx;
+  margin-left: 30rpx;
+  background: #E2E2E2;
+}
+

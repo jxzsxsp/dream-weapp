@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="detail-container">
+    <slot name="left"></slot>
+    <view class="right-container">
+      <slot name="right"></slot>
+    </view>
+    <image class="detail-image" src="./assets/detail.png" wx:if="{{hasDetail}}"/>
+  </view>
+  <view class="seperator" wx:if="{{!isLast}}"/>
+</view>
