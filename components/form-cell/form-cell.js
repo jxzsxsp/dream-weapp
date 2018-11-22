@@ -12,6 +12,11 @@ Component({
       value: false
     }
   },
+  methods: {
+    onTap: function () {
+      this.triggerEvent('formclick', {})
+    }
+  }
 
 
 })

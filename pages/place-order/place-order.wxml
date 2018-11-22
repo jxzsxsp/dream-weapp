@@ -1,5 +1,5 @@
 <view class="container">
-  <!-- <image class="seperator-pic"/>
+  <image class="seperator-pic"/>
   <view class="customer-detail-container">
     <view class="has-customer-container" wx:if="{{customerDetail}}">
       <view class="customer-container">
@@ -15,10 +15,10 @@
     </view>
     <view class="detail-icon"/>
   </view>
-  <image class="seperator-pic"/> -->
+  <image class="seperator-pic"/>
 
 <form-group>
-  <form-cell is-last>
+  <form-cell is-last bind:formclick="test">
     <text slot="left">ahha</text>
     <text slot="right" class="aaa"> hahah </text>
   </form-cell>

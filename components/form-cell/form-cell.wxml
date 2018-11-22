@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="detail-container">
+  <view class="detail-container" bind:tap="onTap">
     <slot name="left"></slot>
     <view class="right-container">
       <slot name="right"></slot>
