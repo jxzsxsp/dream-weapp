@@ -1,0 +1,47 @@
+.single-button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.selected-view {
+  height: 60rpx;
+  width: 120rpx;
+  border: 2rpx solid #BB2830;
+  border-radius: 30rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: center;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.selected-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #BB2830;
+  text-align: center;
+  line-height: 26rpx;
+}
+
+.unselected-view {
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  height: 60rpx;
+  width: 120rpx;
+  border: 2rpx solid #9B9B9B;
+  border-radius: 30rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: center;
+}
+
+.unselected-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  text-align: center;
+  line-height: 26rpx;
+}

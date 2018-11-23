@@ -1,4 +1,5 @@
 <view class="container">
+  <single-button maxLength="300"  datas="{{[{name: '123'}, {name: '321'}]}}" bind:clickcallback="test"/>
   <image class="seperator-pic"/>
   <view class="customer-detail-container flex">
     <view class="has-customer-container flex-column" wx:if="{{customerDetail}}">
