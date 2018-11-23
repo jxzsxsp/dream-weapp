@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/home/index",
+    "pages/home/home",
     "pages/place-order/place-order",
-    "pages/mine/index",
-    "pages/order/list/index"
+    "pages/mine/mine",
+    "pages/order-list/order-list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,19 +18,19 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home/index",
+        "pagePath": "pages/home/home",
         "iconPath": "assets/image/tab_index_b@3x.png",
         "selectedIconPath": "assets/image/tab_index_a@3x.png",
         "text": "首页"
       },
       {
-        "pagePath": "pages/order/list/index",
+        "pagePath": "pages/order-list/order-list",
         "iconPath": "assets/image/tab_order_b@3x.png",
         "selectedIconPath": "assets/image/tab_order_a@3x.png",
         "text": "订单"
       },
       {
-        "pagePath": "pages/mine/index",
+        "pagePath": "pages/mine/mine",
         "iconPath": "assets/image/tab_I_b@3x.png",
         "selectedIconPath": "assets/image/tab_I_a@3x.png",
         "text": "我的"

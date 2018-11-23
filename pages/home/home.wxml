@@ -1,0 +1,26 @@
+<view class="back-content flex-column">
+  <text>banner</text>
+</view>
+
+<view class="main-content flex-column">
+  <view class="order-content flex-column">
+    <text class="memo">最近一张订单的位置</text>
+  </view>
+
+  <view class="item-content flex-column">
+    <block wx:for="{{items}}" wx:key="index">
+      <view class="item-container flex">
+        <view class="content">
+          <view class="title">{{item.title}}</view>
+          <view class="desc">{{item.desc}}</view>
+          <view class="price">{{item.price}}</view>
+        </view>
+
+        <view class="image">
+        
+        </view>
+      </view>
+    </block>
+    <text class="memo">“基础检验”服务包含：米数、重量、克重、门幅的测量</text>
+  </view>
+</view>

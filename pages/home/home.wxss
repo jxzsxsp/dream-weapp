@@ -1,0 +1,82 @@
+.back-content {
+  background: green;
+  width: 750rpx;
+  height: 365rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content {
+  margin-top: -145rpx;
+  width: 750rpx;
+  align-items: center;
+}
+
+.order-content {
+  width: 690rpx;
+  height: 160rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2px 18px 0 rgba(0,0,0,0.20);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-content {
+  width: 690rpx;
+  margin-top: 30rpx;
+}
+
+.item-container {
+  width: 630rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2px 18px 0 rgba(0,0,0,0.20);
+  border-radius: 10px;
+  margin-bottom: 20rpx;
+  padding: 25rpx 30rpx 25rpx 30rpx;
+}
+
+.content {
+  width: 430rpx;
+}
+
+.title {
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.desc {
+  margin-top: 25rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  line-height: 40rpx;
+}
+
+.price {
+  margin-top: 15rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.image {
+  width: 180rpx;
+  height: 200rpx;
+  background: #D8D8D8;
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+}
+
+.memo {
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
