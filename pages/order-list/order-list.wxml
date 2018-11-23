@@ -1,2 +1,24 @@
-<!--pages/order-list/order-list.wxml-->
-<text>pages/order-list/order-list.wxml</text>
+<van-tabs 
+border="{{false}}"
+swipe-threshold="5" 
+color="#BB2830">
+  <van-tab title="全部">
+    <order-list list="{{list}}" />
+  </van-tab>
+
+  <van-tab title="已入库">
+    <order-list list="{{list}}" />
+  </van-tab>
+
+  <van-tab title="验布中">
+    <order-list list="{{list}}" />
+  </van-tab>
+
+  <van-tab title="待付款">
+    <order-list list="{{list}}" />
+  </van-tab>
+
+  <van-tab title="已出库">
+    <order-list list="{{list}}" />
+  </van-tab>
+</van-tabs>

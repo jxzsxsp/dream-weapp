@@ -1,1 +1,9 @@
-{}
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的验布单",
+  "usingComponents": {
+    "order-list": "../../components/order-list/order-list",
+    "van-tab": "../../components/vant/tab/index",
+    "van-tabs": "../../components/vant/tabs/index"
+  }
+}

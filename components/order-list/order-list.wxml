@@ -1,0 +1,9 @@
+<block wx:if="{{list && list.length > 0}}">
+  <block wx:for="{{list}}" wx:key="index">
+    <order-item order="{{item}}" />
+  </block>
+  <view class="bottom-line"></view>
+</block>
+<block wx:else>
+  <no-order />
+</block>

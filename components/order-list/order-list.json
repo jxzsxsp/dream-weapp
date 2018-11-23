@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "no-order": "../no-order/no-order",
+    "order-item": "../order-item/order-item"
+  }
+}

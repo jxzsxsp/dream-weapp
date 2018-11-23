@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
+	"libVersion": "2.4.0",
 	"appid": "wx57ba6267d2fec7e7",
 	"projectname": "%E9%AA%8C%E5%B8%83C%E7%AB%AF%E5%B0%8F%E7%A8%8B%E5%BA%8F",
 	"debugOptions": {
@@ -36,12 +36,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "下订单",
-					"pathName": "pages/place-order/place-order"
+					"pathName": "pages/place-order/place-order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的验布单",
+					"pathName": "pages/order-list/order-list"
 				}
 			]
 		}

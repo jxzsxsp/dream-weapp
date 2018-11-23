@@ -1,0 +1,6 @@
+.item-content {
+  width: 750rpx;
+  height: 440rpx;
+  background: #FFFFFF;
+  margin-top: 20rpx;
+}
