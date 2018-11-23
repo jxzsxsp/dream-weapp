@@ -1,0 +1,10 @@
+<view class="single-button-container">
+  <view wx:for="{{datas}}" wx:key="{{index}}">
+    <view wx:if="{{selectedIndex === index}}" class="selected-view">
+      <text class="selected-text">{{item.name}}</text>
+    </view>
+    <view wx:else class="unselected-view" bind:tap="onTap" data-index="{{index}}">
+      <text class="unselected-text" data-index="{{index}}">{{item.name}}</text>
+    </view>
+  </view>
+</view>

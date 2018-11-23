@@ -2,6 +2,7 @@
     "navigationBarTitleText": "验布下单",
     "usingComponents": {
         "form-cell": "/components/form-cell/form-cell",
-        "form-group": "/components/form-group/form-group"
+        "form-group": "/components/form-group/form-group",
+        "single-button": "/components/single-button/single-button"
     }
 }
