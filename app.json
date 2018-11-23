@@ -1,12 +1,40 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/place-order/place-order"
+    "pages/place-order/place-order",
+    "pages/mine/index",
+    "pages/order/list/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#3D88E0",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "链尚检品",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#979797",
+    "selectedColor": "#BB2830",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "assets/image/tab_index_b@3x.png",
+        "selectedIconPath": "assets/image/tab_index_a@3x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/order/list/index",
+        "iconPath": "assets/image/tab_order_b@3x.png",
+        "selectedIconPath": "assets/image/tab_order_a@3x.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "assets/image/tab_I_b@3x.png",
+        "selectedIconPath": "assets/image/tab_I_a@3x.png",
+        "text": "我的"
+      }
+    ]
   }
 }
