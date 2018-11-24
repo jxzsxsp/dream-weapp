@@ -1,0 +1,42 @@
+.container {
+  width: 690rpx;
+  height: 96rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  width: 96rpx;
+  height: 96rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.line {
+  margin-top: 33rpx;
+  height: 1rpx;
+  border-top: 1px solid #CCCCCC;
+  width: 563rpx;
+  margin-left: -30rpx;
+}
+
+.half {
+  width: 265rpx;
+}
+
+.left {
+  margin-left: -30rpx;
+}
+
+.active {
+  border-color: #BB2830
+}

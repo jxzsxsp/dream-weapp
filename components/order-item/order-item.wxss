@@ -1,6 +1,106 @@
 .item-content {
   width: 750rpx;
-  height: 440rpx;
   background: #FFFFFF;
-  margin-top: 20rpx;
+  padding-top: 30rpx;
+}
+
+.head {
+  width: 750rpx;
+  height: 42rpx;
+}
+
+.title {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0;
+  margin-left: 30rpx;
+}
+
+.status {
+  float: right;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #BB2830;
+  letter-spacing: 0;
+  text-align: right;
+  margin-right: 30rpx;
+}
+
+.roll-steps {
+  width: 750rpx;
+  height: 38rpx;
+  margin-top: 10rpx;
+  padding-left: 30rpx;
+  padding-top: 25rpx;
+}
+
+.text-item {
+  margin-top: 10rpx;
+  width: 750rpx;
+  height: 40rpx;
+}
+
+.text-title {
+  font-family: PingFangSC-Light;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  text-align: center;
+  margin-left: 30rpx;
+}
+
+.text-name {
+  float: right;
+  margin-right: 30rpx;
+  font-family: PingFangSC-Light;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.status-steps {
+  width: 750rpx;
+  height: 104rpx;
+  margin-top: 10rpx;
+  padding-left: 30rpx;
+  padding-top: 10rpx;
+}
+
+.line {
+  height: 1rpx;
+  width: 750rpx;
+  background: #F1F1F1;
+}
+
+.btn-group {
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10rpx;
+}
+
+.btn {
+  margin-right: 20rpx;
+  width: 160rpx;
+  height: 60rpx;
+  border: 1rpx solid #252525;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.active {
+  color: #BB2830;
+  border-color: #BB2830
 }

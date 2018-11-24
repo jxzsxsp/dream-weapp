@@ -1,0 +1,36 @@
+<view class="container">
+  <block wx:for="{{steps}}" wx:key="index">
+    <block wx:if="{{ index > 0 }}">
+    <view class="item left">
+      <block wx:if="{{active > index}}">
+        <icon type="success" size="32rpx" color="#BB2830" />
+      </block>
+      <block wx:else>
+        <icon type="success" size="32rpx" color="#CCCCCC" />
+      </block>
+      <text class="title">{{item.title}}</text>
+    </view>
+    </block>
+    <block wx:else>
+    <view class="item">
+      <block wx:if="{{active > index}}">
+        <icon type="success" size="32rpx" color="#BB2830" />
+      </block>
+      <block wx:else>
+        <icon type="success" size="32rpx" color="#CCCCCC" />
+      </block>
+      <text class="title">{{item.title}}</text>
+    </view>
+    </block>
+
+    <block wx:if="{{ index !== steps.length - 1 }}">
+      <view wx:if="{{ 1 === steps.length - 1 }}" class="line"></view>
+      <block wx:if="{{active - 1 > index}}">
+        <view wx:if="{{ 2 === steps.length - 1 }}" class="line half active"></view>
+      </block>
+      <block wx:else>
+        <view wx:if="{{ 2 === steps.length - 1 }}" class="line half"></view>
+      </block>
+    </block>
+  </block>
+</view>

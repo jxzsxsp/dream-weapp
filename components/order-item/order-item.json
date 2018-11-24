@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "roll-steps": "../roll-steps/roll-steps",
+    "status-steps": "../status-steps/status-steps"
+  }
 }
