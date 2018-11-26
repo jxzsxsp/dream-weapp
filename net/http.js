@@ -1,7 +1,7 @@
 import env, {isOnline} from './env'
 import mock from './mock'
 import {$wx} from '../genji4mp/index'
-import constant from '../constant/index'
+import constant from '../constants/index'
 import urls from './urls/index'
 
 class Http {
