@@ -1,258 +1,74 @@
 import urls from './urls/index'
-let colorCategory = {
-  [urls.pantone.colorCategories]: {
-    "list":[
-      {
-        "id": 1,
-        "code":"pu",
-        "name":"铜板基础色卡",
-        "description": "这是一个描述",
-        "imgUrl": "12E4RWEF"
-      },
-      {
-        "id": 2,
-        "code":"pu",
-        "name":"铜板基础色卡",
-        "description": "这是一个描述",
-        "imgUrl": "12E4RWEF"
-      },
-      {
-        "id": 3,
-        "code":"pu",
-        "name":"铜板基础色卡",
-        "description": "这是一个描述",
-        "imgUrl": "12E4RWEF"
-        }
-    ]
-  }
-}
-let searchCategory = {
-  [urls.pantone.colorSearch]: {
-    "list":[
-      {
-      "colorId": 121145997, //颜色id
-      "rgb":"255,255,255", 
-      "srgb":"255,255,255",
-      "hexColor":"#9B9B9B",
-      "labs":"2.0,2.0,2.0", 
-      "cmyk":"24,0,25,51",
-      "categoryId":1,//分类id
-      "categoryName":"1343", //分类名称
-      "name":"3514 CP" //颜色名称
-      },
-      {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-      }, {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-      }, {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-      },
-      {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-        },
-        {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-        }, {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-        }, {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-        },
-        {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-          },
-          {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-          }, {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-          }, {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-          },
-          {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-            },
-            {
-              "colorId": 121145997, //颜色id
-              "rgb":"255,255,255", 
-              "srgb":"255,255,255",
-              "hexColor":"#9B9B9B",
-              "labs":"2.0,2.0,2.0", 
-              "cmyk":"24,0,25,51",
-              "categoryId":1,//分类id
-              "categoryName":"1343", //分类名称
-              "name":"3514 CP" //颜色名称
-            }, {
-              "colorId": 121145997, //颜色id
-              "rgb":"255,255,255", 
-              "srgb":"255,255,255",
-              "hexColor":"#9B9B9B",
-              "labs":"2.0,2.0,2.0", 
-              "cmyk":"24,0,25,51",
-              "categoryId":1,//分类id
-              "categoryName":"1343", //分类名称
-              "name":"3514 CP" //颜色名称
-            }, {
-              "colorId": 121145997, //颜色id
-              "rgb":"255,255,255", 
-              "srgb":"255,255,255",
-              "hexColor":"#9B9B9B",
-              "labs":"2.0,2.0,2.0", 
-              "cmyk":"24,0,25,51",
-              "categoryId":1,//分类id
-              "categoryName":"1343", //分类名称
-              "name":"3514 CP" //颜色名称
-            },
-    ],
-    "totalCount":100,
-    "hasMore":true
+
+const orderInit = {
+  [urls.orderInit]: {
+    "storeList": [{
+      "id": 1,
+      "name": "绍兴万商路店1",
+      "address": "j上海市晋安区55路55弄j"
+    },{
+      "id": 2,
+      "name": "绍兴万商路店2",
+      "address": "j上海市晋安区55路55弄j"
+    },{
+      "id": 3,
+      "name": "绍兴万商路店3",
+      "address": "j上海市晋安区55路55弄j"
+    }],
+    "defaultCustomerAddress": {
+      "id": 1,
+      "contacts": "张成辉",
+      "contactMobile": "16602194415",
+      "detailAddress": "上海市闵行区打呼噜,上海市闵行区打呼噜,上海市闵行区打呼噜,上海市闵行区打呼噜,上海市闵行区打呼噜,上海市闵行区打呼噜"
+    },
+    "fabricTypeList": [{
+      "id": 1,
+      "name": "针织",
+      "unit": "公斤"
+    },{
+      "id": 2,
+      "name": "梭织",
+      "unit": "米"
+    }], //面料类型
+    "clothTypeList": [{
+      "id": 1,
+      "name": "高级验布",
+      "item": "高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布,高级验布"
+    },{
+      "id": 2,
+      "name": "中级验布",
+      "item": "中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布,中级验布"
+    },{
+      "id": 3,
+      "name": "初级验布",
+      "item": "初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布,初级验布"
+    }], //验布方式
+    "logisticsTypeList": [{
+      "id": 1,
+      "name": "用户自提"
+    },{
+      "id": 2,
+      "name": "上梦送货"
+    },{
+      "id": 3,
+      "name": "顺丰速递"
+    }] //取货方式
   }
 }
 
-let colorDetail = {
-  [urls.pantone.colorDetail]: {
-    "id": 2323,
-    "name": "Bright Red C",
-    "categoryId": 1,
-    "categoryName": "PANTONE+ Solid Coated-V3",
-    "cmyk": "0,52,75,36",
-    "srgb": "210,190,162",
-    "hexColor": "#9B9B9B",
-    "lab": "03744,-0.665785",
-    "xyz": "226.000000,223.000000,121.000000",
-    "colorRecipe": [
-        {
-            "name": "PANTONE Yellow",
-            "value": "0.004"
-        },
-        {
-            "name": "PANTONE Warm Red",
-            "value": "0.004"
-        }]
-  }
-}
-
-let fetchColorDetail = {
-  [urls.pantone.fetchColorDetail]: {
-    "id": 1, 
-    "deviceId":"1323", 
-    "rgb":"255,255,255",
-    "hexColor":"#456789",
-    "lab":"2.0,2.0,2.0"
-  }
-}
-
-let compareColorDetail = {
-  [urls.pantone.compareColorDetail]: {
-    "id": 1, 
-    "deviceId":"1323", 
-    "originType":1,
-    "rgb":"255,255,255",
-    "hexColor":"#678901",
-    "lab":"2.0,2.0,2.0",
-    "cmyk": ""
+const calc = {
+  [urls.orderPrice]: {
+    "clothPriceDescription":"0.1元/m", //定价描述
+    "proposedPriceDescription":"￥110.00", //参考价格描述
+    "length":"100m", //数量 描述
+    "customerDiscountDescription":"9折", //优惠VIP描述
+    "discountPriceDescription":"￥11.00",//参考优惠价格描述
+    "waitPayProposedPriceDescription":"￥99.00",//待支付参考价格描述
   }
 }
 
 
 export default {
-  ...colorCategory,
-  ...searchCategory,
-  ...colorDetail,
-  ...fetchColorDetail,
-  ...compareColorDetail,
+  ...orderInit,
+  ...calc
 }

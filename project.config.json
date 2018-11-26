@@ -36,13 +36,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "下订单",
 					"pathName": "pages/place-order/place-order",
-					"query": ""
+					"query": "id=2"
 				},
 				{
 					"id": -1,
