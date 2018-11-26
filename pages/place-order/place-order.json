@@ -3,6 +3,8 @@
     "usingComponents": {
         "form-cell": "/components/form-cell/form-cell",
         "form-group": "/components/form-group/form-group",
-        "single-button": "/components/single-button/single-button"
+        "single-button": "/components/single-button/single-button",
+        "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index",
+        "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
     }
 }

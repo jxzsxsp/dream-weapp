@@ -1,7 +1,8 @@
-<view class="container">
-  <single-button maxLength="300"  datas="{{[{name: '123'}, {name: '321'}]}}" bind:clickcallback="test"/>
+<view class="container background">
   <image class="seperator-pic"/>
+  <!-- 收货人 -->
   <view class="customer-detail-container flex">
+    <!-- 有收货人 -->
     <view class="has-customer-container flex-column" wx:if="{{customerDetail}}">
       <view class="customer-container flex">
         <view class="iconfont icon-ic_back"/>
@@ -10,6 +11,7 @@
       </view>
       <text class="customer-address-text">收货地址:{{customerDetail.detailAddress}}</text>
     </view>
+    <!-- 没有收货人 -->
     <view class="no-customer-container flex" wx:else>
       <view class="iconfont icon-ic_back"/> 
       <text class="no-address-text">请点击输入收货地址</text>
@@ -18,16 +20,109 @@
   </view>
   <image class="seperator-pic"/>
 
-<form-group>
-  <form-cell is-last bind:formclick="test">
-    <text slot="left">ahha</text>
-    <text slot="right" class="aaa"> hahah </text>
-  </form-cell>
-  <form-cell is-last has-detail>
-    <text slot="left">ahha</text>
-    <text slot="right" class="aaa"> hahah </text>
-  </form-cell>
-</form-group>
+  <form-group class="normal-text">
+    <form-cell has-detail bind:formclick="selectStore">
+      <text slot="left" class="">验布坊</text>
+      <text slot="right">{{selectedStore.name}}</text>
+    </form-cell>
+    <form-cell>
+      <text slot="left">面料类型</text>
+      <single-button slot="right" datas="{{fabricTypeList}}" bind:clickcallback="selectFabric"/>
+    </form-cell>
+      <form-cell has-detail bind:formclick="selectCheckType">
+      <text slot="left">验布方式</text>
+      <text slot="right">{{selectedCheckType.name}}</text>
+    </form-cell>
+    <form-cell>
+      <text slot="left">检验项目</text>
+      <view slot="right" class="detail-container">
+        <text class="detail-text">{{selectedCheckType.item}}</text>
+      </view>
+    </form-cell>
+    <form-cell>
+      <text slot="left">验布米数</text>
+      <view slot="right" class="detail-container">
+        <input bind:blur="finishInput" data-type="length" type="number" placeholder="请输入" class="input"/>
+        <text>米</text>
+        <!-- <text>{{selectedFabric.unit}}</text> -->
+      </view>
+    </form-cell>
+    <form-cell>
+      <text slot="left">验布卷数</text>
+      <view slot="right" class="detail-container">
+        <van-stepper custom-class="stepper-container" value="{{volumeNumber}}" min="1" bind:change="volumeNumberChange"/>
+        <text>卷</text>
+      </view>
+    </form-cell>
+    <form-cell has-detail bind:formclick="selectLogistic">
+      <text slot="left">取货方式</text>
+      <text slot="right">{{selectedLogisticType.name}}</text>
+    </form-cell>
+    <form-cell isLast has-detail bind:formclick="selectBuyerMessage">
+      <text slot="left">买家留言</text>
+      <text slot="right">{{buyerMessage}}</text>
+    </form-cell>
+  </form-group>
+
+  <form-group class="normal-text">
+    <form-cell>
+      <view slot="left" class="flex title-container">
+        <text>验布服务</text>
+        <text class="detail-text">详情</text>
+      </view>
+      <text class="price-text">{{priceDetail.proposedPriceDescription}}</text>
+    </form-cell>
+    <!-- <form-cell>
+      <text slot="left">验布邮费</text>
+      <text slot="right">到付免邮</text>
+    </form-cell> -->
+    <form-cell isLast>
+      <view slot="left" class="flex title-container">
+        <text>验布优惠</text>
+        <text class="detail-text">{{priceDetail.customerDiscountDescription}}</text>
+      </view>
+      <text class="price-text">{{priceDetail.discountPriceDescription}}</text>
+    </form-cell>
+  </form-group>
+  <view class="margin-replacer"></view>
+
+  <!-- 底部下单按钮 -->
+  <view class="place-order-container flex">
+    <view class="price-container flex-column">
+      <view class="real-price-container">
+        <text class="normal-text">参考价:</text>
+        <text class="price-text">{{priceDetail.waitPayProposedPriceDescription}}</text>
+      </view>
+      <text class="detail-text">实际价格将以验布结果重新计算</text>
+    </view>
+    <button class="place-order-button">
+      <text class="place-order-text">验布下单</text>
+    </button>
+  </view>
+
+  <!-- 弹出框 -->
+  <van-popup custom-class="popup flex-column" show="{{showPriceDetail}}" position="bottom" overlay="{{true}}" bind:close="onClose" close-on-click-overlay="{{false}}">
+    <text class="price-title price-title-text">详情</text>
+    <view class="price-detail-container normal-text">
+      <view class="seperator"/>
+      <form-cell>
+        <text slot="left">高级检验</text>
+        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+      </form-cell>
+      <form-cell>
+        <text slot="left">验布米数</text>
+        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+      </form-cell>
+      <form-cell>
+        <text slot="left">服务价格</text>
+        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+      </form-cell>
+      <view class="seperator"/>
+    </view>
+    <button class="close-price-button">
+      <text class="place-order-text">关闭</text>
+    </button>
+  </van-popup>
 
 
 </view>

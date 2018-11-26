@@ -1,3 +1,4 @@
+/* 顶部地址 */
 .seperator-pic {
   height: 10rpx;
 }
@@ -57,4 +58,123 @@
 
 .detail-icon {
   transform: rotate(180deg);
+}
+
+/* form */
+.normal-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.detail-container {
+  word-wrap: break-word;
+  width: 530rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.detail-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+}
+
+.price-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #BB2830;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.title-container {
+  align-items: center;
+  width: 180rpx;
+  justify-content: space-between;
+}
+
+.input {
+  font-size: 30rpx;
+  text-align:right;
+  margin-right: 5rpx;
+}
+
+.margin-replacer {
+  background: #F1F1F1;
+  height: 120rpx;
+}
+
+.stepper-container {
+  margin-right: 20rpx;
+}
+
+/* 底部下单 */
+.place-order-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 -2px 18px 0 rgba(0,0,0,0.15);
+}
+
+.price-container {
+  margin-left: 30rpx;
+  height: 108rpx;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+}
+
+.place-order-button {
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  border-radius: 0rpx;
+  width: 260rpx;
+  height: 108rpx;
+}
+
+.place-order-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* popup */
+.popup {
+  height: 838rpx;
+}
+
+.price-detail-container {
+  flex: 1;
+}
+
+.price-title-text {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.price-title {
+  line-height: 140rpx;
+  text-align: center;
+}
+
+.seperator {
+  height: 1rpx;
+  background: #E2E2E2;
+}
+
+.close-price-button {
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  border-radius: 0rpx;
+  width: 100%;
+  height: 98rpx; 
 }
