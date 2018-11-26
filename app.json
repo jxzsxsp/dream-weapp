@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/place-order/place-order",
     "pages/mine/mine",
-    "pages/order-list/order-list"
+    "pages/order-list/order-list",
+    "pages/order-detail/order-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
