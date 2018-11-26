@@ -52,9 +52,8 @@
 				},
 				{
 					"id": -1,
-					"name": "买家留言",
-					"pathName": "pages/buyer-message/buyer-message",
-					"query": ""
+					"name": "验布单详情",
+					"pathName": "pages/order-detail/order-detail"
 				}
 			]
 		}

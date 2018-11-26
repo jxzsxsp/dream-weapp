@@ -1,0 +1,112 @@
+<view class="status-info">
+  <view class="status-container">
+    <view class="icon-container">
+      <icon type="success" size="40rpx" color="#DF515E"></icon>
+    </view>
+    <text class="status">已评价</text>
+    <text class="price">已付款：¥ 99.90</text>
+  </view>
+</view>
+
+<view class="item-info">
+  <view class="item-cell">
+    下单数量
+    <view class="cell-value">1100 米</view>
+  </view>
+  <view class="item-cell">
+    实测数量
+    <view class="cell-value value-active">1110 米</view>
+  </view>
+  <view class="item-cell">
+    高级检测
+    <view class="cell-value value-active">× 0.5 元/米</view>
+  </view>
+  <view class="item-cell">
+    服务项目
+    <view class="cell-value value-desc">米数、重量、门幅、克重、电子报告、色差(匹布/缸差/边中差)对比、疵点图片、疵点位置标识、代发货、物流信息跟踪、检验售后、货物暂存服务</view>
+  </view>
+</view>
+
+<view class="address-info">
+  <view class="title">
+    <van-icon class="location-icon" name="location" size="28rpx" />
+    <text class="title-text name">鲍鱼力</text>
+    <text class="title-text mobile">139****7333</text>
+  </view>
+  <view class="address">上海市静安区沪太路1111弄1号楼链尚国际大厦11层沪太路1111弄1号楼链尚国际大厦11层</view>
+</view>
+
+<view class="price-info">
+
+  <view class="item-cell">
+    验布服务
+    <view class="cell-value value-active">¥ 111.00</view>
+  </view>
+  <view class="item-cell">
+    邮费价格
+    <view class="cell-value value-active">¥ 0.00</view>
+  </view>
+  <view class="item-cell">
+    VIP优惠
+    <view class="cell-value value-active">- ¥ 11.10</view>
+  </view>
+
+  <view class="price-line"></view>
+
+  <view class="pay-price">
+    应付款：<text class="total-price">¥ 99.90</text>
+  </view>
+
+</view>
+
+<view class="line"></view>
+
+<view class="order-info">
+
+  <view class="info-cell">
+    <text>验布单号：8980970808</text>
+    <view class="copy" bind:tap="copy">复制</view>
+  </view>
+
+  <view class="info-cell">
+    <text>下单时间：2018.10.22 12:00:07</text>
+  </view>
+
+  <view class="info-cell">
+    <text>验布地点：绍兴交易园店</text>
+  </view>
+
+  <view class="info-cell">
+    <text>取货方式：代发货至收货地址</text>
+  </view>
+
+  <view class="info-cell">
+    <text>买家留言：包装袋麻烦不要链尚logo</text>
+  </view>
+
+  <view class="info-line"></view>
+
+  <view class="info-cell">
+    <text>支付方式：支付宝</text>
+  </view>
+
+  <view class="info-cell">
+    <text>交易流水号：80376908689879788</text>
+  </view>
+
+  <view class="info-cell">
+    <text>支付时间：2018.11.22 13:06:07</text>
+  </view>
+
+</view>
+
+<view class="line"></view>
+
+<view class="btn-group">
+  <view class="btn">取消验布</view>
+  <view class="btn">验布报告</view>
+  <view class="btn">查看评价</view>
+  <view class="btn btn-active">评价</view>
+  <view class="btn btn-active">确认收货</view>
+  <view class="btn go-pay">去付款</view>
+</view>

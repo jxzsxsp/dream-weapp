@@ -1,0 +1,252 @@
+page {
+  background: #F1F1F1;
+}
+
+.status-info {
+  height: 140rpx;
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  padding-top: 40rpx;
+}
+
+.status-container {
+  width: 690rpx;
+  height: 48rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-container {
+  width: 48rpx;
+  height: 48rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  font-family: PingFangSC-Semibold;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  margin-left: 20rpx;
+}
+
+.price {
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: right;
+  margin-left: 320rpx;
+}
+
+.address-info {
+  margin: auto;
+  margin-top: -489rpx;
+  width: 690rpx;
+  height: 146rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
+  border-radius: 10rpx;
+}
+
+.title {
+  width: 690rpx;
+  height: 42rpx;
+  display: flex;
+  flex-direction: row;
+  padding-top: 14rpx;
+}
+
+.location-icon {
+  margin-left: 32rpx;
+}
+
+.title-text {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.name {
+  margin-left: 15rpx;
+}
+
+.mobile {
+  margin-left: 50rpx;
+}
+
+.address {
+  font-family: PingFangSC-Light;
+  font-size: 26rpx;
+  color: #252525;
+  letter-spacing: 0;
+  width: 600rpx;
+  margin-left: 61rpx;
+  margin-top: 10rpx;
+}
+
+.item-info {
+  padding-top: 130rpx;
+  height: 295rpx;
+  background: #FFFFFF;
+}
+
+.item-cell {
+  margin-top: 10rpx;
+  width: 690rpx;
+  margin-left: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.cell-value {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: right;
+  float: right;
+}
+
+.value-active {
+  color: #BB2830;
+}
+
+.value-desc {
+  width: 530rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+}
+
+.price-info {
+  padding-top: 30rpx;
+  margin-top: 365rpx;
+  height: 289rpx;
+  background: #FFFFFF;
+}
+
+.price-line {
+  height: 1rpx;
+  background: #F1F1F1;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.pay-price {
+  height: 118rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: right;
+  padding-right: 30rpx;
+}
+
+.total-price {
+  font-family: PingFangSC-Semibold;
+  font-size: 34rpx;
+  color: #BB2830;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.order-info {
+  height: 481rpx;
+  background: #FFFFFF;
+  padding-top: 10rpx;
+}
+
+.info-cell {
+  height: 40rpx;
+  padding-left: 30rpx;
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.info-cell text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.copy {
+  width: 100rpx;
+  height: 40rpx;
+  border: 1rpx solid #9B9B9B;
+  border-radius: 24rpx;
+  margin-left: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-line {
+  height: 1rpx;
+  background: #F1F1F1;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  margin-left: 30rpx;
+}
+
+.btn-group {
+  height: 108rpx;
+  background: #FFFFFF;
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10rpx;
+}
+
+.btn {
+  width: 160rpx;
+  height: 60rpx;
+  border: 1rpx solid #252525;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-active {
+  border-color: #BB2830;
+  color: #BB2830;
+}
+
+.go-pay {
+  border-color: #BB2830;
+  background: #BB2830;
+  color: #FFFFFF;
+}
+
+.line {
+  height: 20rpx;
+}
