@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -48,6 +48,12 @@
 					"id": -1,
 					"name": "我的验布单",
 					"pathName": "pages/order-list/order-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "买家留言",
+					"pathName": "pages/buyer-message/buyer-message",
 					"query": ""
 				}
 			]

@@ -64,7 +64,7 @@ const lifeCycle = {
         selectedCheckType: data.checkTypeList[checkTypeIndex]
       })
     })
-  }
+  },
 }
 
 const viewAction = {
@@ -94,10 +94,15 @@ const viewAction = {
     })
     this.openActionList(actionList)
   },
+  // 弹出底部价格详情
   selectPriceDetail: function () {
     this.setData({
       showPriceDetail: true
     })
+  },
+  // 跳转用户留言
+  selectBuyerMessage: function () {
+    $wx.navigateTo($wx.router.buyerMessage, {buyerMessage: this.data.buyerMessage})
   },
   // 结束输入
   finishInput: function (d, v) {

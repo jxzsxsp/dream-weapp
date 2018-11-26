@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="textarea-container">
+    <textarea 
+      class="message-textarea" 
+      value="{{buyerMessage}}"
+      placeholder="可填写您额外的需求"
+      placeholder-class="message-placeholder"
+      maxlength="200"
+      bindinput="onInput"
+    />
+    <view class="message-length flex">
+      <text class="message-length-text">{{messageLength}}</text>
+      <text class="message-length-text">/200</text>
+    </view>
+  </view>
+  <button class="submit" bind:tap="onSubmit">
+    <text class="submit-text">确认</text>
+  </button>
+</view>

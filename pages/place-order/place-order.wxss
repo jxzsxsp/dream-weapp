@@ -85,6 +85,14 @@
   letter-spacing: 0;
 }
 
+.message-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 500rpx;
+  text-align: right;
+}
+
 .price-text {
   font-family: PingFangSC-Regular;
   font-size: 30rpx;

@@ -60,7 +60,7 @@
     </form-cell>
     <form-cell isLast has-detail bind:formclick="selectBuyerMessage">
       <text slot="left">买家留言</text>
-      <text slot="right">{{buyerMessage}}</text>
+      <text slot="right" class="message-text">{{buyerMessage}}</text>
     </form-cell>
   </form-group>
 

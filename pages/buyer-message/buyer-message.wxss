@@ -1,0 +1,55 @@
+.textarea-container {
+  border: 1rpx solid #9B9B9B;
+  border-radius: 10rpx;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  flex: 1;
+  height: 260rpx;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.message-textarea {
+  width: 100%;
+  height: 100%;
+}
+
+.message-placeholder {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0.25rpx;
+}
+
+.message-length {
+  position: absolute;
+  right: 10rpx;
+  bottom: 10rpx;
+}
+
+.message-length-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #999999;
+  letter-spacing: -0.58rpx;
+  text-align: right;
+}
+
+.submit {
+  margin-top: 100rpx;
+  height: 88rpx;
+  width: 570rpx;
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  box-shadow: 0 2rpx 18rpx 0 rgba(187,40,48,0.20);
+  border-radius: 44rpx;
+}
+
+.submit-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}
