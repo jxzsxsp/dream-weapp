@@ -3,13 +3,13 @@
   <!-- 收货人 -->
   <view class="customer-detail-container flex">
     <!-- 有收货人 -->
-    <view class="has-customer-container flex-column" wx:if="{{customerDetail}}">
+    <view class="has-customer-container flex-column" wx:if="{{customerDetail.contacts}}">
       <view class="customer-container flex">
         <view class="iconfont icon-ic_back"/>
         <text class="customer-name-text">收货人:{{customerDetail.contacts}}</text>
         <text class="customer-mobile-text">{{customerDetail.contactMobile}}</text>
       </view>
-      <text class="customer-address-text">收货地址:{{customerDetail.detailAddress}}</text>
+      <text class="customer-address-text">收货地址: {{customerDetail.detailAddress}}</text>
     </view>
     <!-- 没有收货人 -->
     <view class="no-customer-container flex" wx:else>
@@ -42,7 +42,7 @@
     <form-cell>
       <text slot="left">验布米数</text>
       <view slot="right" class="detail-container">
-        <input bind:blur="finishInput" data-type="length" type="number" placeholder="请输入" class="input"/>
+        <input bind:blur="finishInput" data-type="clothLength" type="number" placeholder="请输入" class="input"/>
         <text>米</text>
         <!-- <text>{{selectedFabric.unit}}</text> -->
       </view>
@@ -50,7 +50,7 @@
     <form-cell>
       <text slot="left">验布卷数</text>
       <view slot="right" class="detail-container">
-        <van-stepper custom-class="stepper-container" value="{{volumeNumber}}" min="1" bind:change="volumeNumberChange"/>
+        <van-stepper custom-class="stepper-container" data-type="volumeNumber" value="{{volumeNumber}}" min="1" bind:change="finishInput"/>
         <text>卷</text>
       </view>
     </form-cell>
@@ -68,20 +68,17 @@
     <form-cell>
       <view slot="left" class="flex title-container">
         <text>验布服务</text>
-        <text class="detail-text">详情</text>
+        <text wx:if="{{priceDetail.proposedPriceDescription}}" class="subtitle-text" bind:tap="selectPriceDetail">详情</text>
       </view>
-      <text class="price-text">{{priceDetail.proposedPriceDescription}}</text>
+      <text slot="right" class="price-text">{{priceDetail.proposedPriceDescription}}</text>
     </form-cell>
-    <!-- <form-cell>
-      <text slot="left">验布邮费</text>
-      <text slot="right">到付免邮</text>
-    </form-cell> -->
     <form-cell isLast>
       <view slot="left" class="flex title-container">
         <text>验布优惠</text>
-        <text class="detail-text">{{priceDetail.customerDiscountDescription}}</text>
+        <text class="subtitle-text" wx:if="{{priceDetail.customerDiscountDescription}}">VIP</text>
+        <text class="subtitle-text">{{priceDetail.customerDiscountDescription}}</text>
       </view>
-      <text class="price-text">{{priceDetail.discountPriceDescription}}</text>
+      <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
     </form-cell>
   </form-group>
   <view class="margin-replacer"></view>
@@ -101,7 +98,14 @@
   </view>
 
   <!-- 弹出框 -->
-  <van-popup custom-class="popup flex-column" show="{{showPriceDetail}}" position="bottom" overlay="{{true}}" bind:close="onClose" close-on-click-overlay="{{false}}">
+  <van-popup
+    custom-class="popup flex-column" 
+    show="{{showPriceDetail}}" 
+    position="bottom" 
+    overlay="{{true}}" 
+    bind:close="onClose" 
+    close-on-click-overlay="{{false}}"
+  >
     <text class="price-title price-title-text">详情</text>
     <view class="price-detail-container normal-text">
       <view class="seperator"/>
@@ -119,10 +123,18 @@
       </form-cell>
       <view class="seperator"/>
     </view>
-    <button class="close-price-button">
+    <button class="close-price-button" bind:tap="closeAllPopup">
       <text class="place-order-text">关闭</text>
     </button>
   </van-popup>
+
+  <van-action-sheet 
+    show="{{showActionList}}" 
+    actions="{{actionList}}" 
+    bind:select="onActionSelected" 
+    bind:close="closeAllPopup" 
+    bind:cancel="closeAllPopup"
+  />
 
 
 </view>

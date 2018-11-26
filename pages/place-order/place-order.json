@@ -5,6 +5,7 @@
         "form-group": "/components/form-group/form-group",
         "single-button": "/components/single-button/single-button",
         "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index",
-        "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
+        "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+        "van-action-sheet": "/miniprogram_npm/vant-weapp/action-sheet/index"
     }
 }

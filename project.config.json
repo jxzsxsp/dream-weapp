@@ -36,18 +36,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "下订单",
 					"pathName": "pages/place-order/place-order",
-					"query": ""
+					"query": "id=2"
 				},
 				{
 					"id": -1,
 					"name": "我的验布单",
-					"pathName": "pages/order-list/order-list"
+					"pathName": "pages/order-list/order-list",
+					"query": ""
 				}
 			]
 		}
