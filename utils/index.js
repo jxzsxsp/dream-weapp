@@ -9,7 +9,6 @@ function _justifyColorItem (item) {
   item.textColor = isDeep ? '#ffffff' : '#252525'
 }
 
-
 /**
  * 判断颜色是深色还是浅色
  *
