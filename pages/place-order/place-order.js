@@ -37,7 +37,7 @@ const data = {
   // 价格详情
   priceDetail: {},
 
-  buyerMessage: '123',
+  buyerMessage: '',
 }
 
 const lifeCycle = {
@@ -141,6 +141,10 @@ const viewAction = {
     }
     this.closeAllPopup()
   },
+  // 下单
+  placeOrderClicked: function () {
+    
+  }
 }
 
 const privateMethod = {

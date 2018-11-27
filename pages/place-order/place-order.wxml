@@ -92,7 +92,7 @@
       </view>
       <text class="detail-text">实际价格将以验布结果重新计算</text>
     </view>
-    <button class="place-order-button">
+    <button class="place-order-button" bind:tap="placeOrderClicked">
       <text class="place-order-text">验布下单</text>
     </button>
   </view>
@@ -111,15 +111,15 @@
       <view class="seperator"/>
       <form-cell>
         <text slot="left">高级检验</text>
-        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+        <text slot="right" class="price-text">{{priceDetail.clothPriceDescription}}</text>
       </form-cell>
       <form-cell>
         <text slot="left">验布米数</text>
-        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+        <text slot="right" class="price-text">{{priceDetail.length}}</text>
       </form-cell>
       <form-cell>
         <text slot="left">服务价格</text>
-        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+        <text slot="right" class="price-text">{{priceDetail.proposedPriceDescription}}</text>
       </form-cell>
       <view class="seperator"/>
     </view>

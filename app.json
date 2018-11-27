@@ -5,7 +5,8 @@
     "pages/mine/mine",
     "pages/order-list/order-list",
     "pages/order-detail/order-detail",
-    "pages/buyer-message/buyer-message"
+    "pages/buyer-message/buyer-message",
+    "pages/order-success/order-success"
   ],
   "window": {
     "backgroundTextStyle": "light",
