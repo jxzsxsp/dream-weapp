@@ -1,5 +1,5 @@
 <view class="container background">
-  <image class="seperator-pic"/>
+  <image class="seperator-pic" src="/assets/image/seperator.png"/>
   <!-- 收货人 -->
   <view class="customer-detail-container flex" bind:tap="selectCustomer">
     <!-- 有收货人 -->
@@ -18,7 +18,7 @@
     </view>
     <view class="detail-icon iconfont icon-ic_back"/>
   </view>
-  <image class="seperator-pic"/>
+  <image class="seperator-pic" src="/assets/image/seperator.png"/>
 
   <form-group class="normal-text">
     <form-cell has-detail bind:formclick="selectStore">

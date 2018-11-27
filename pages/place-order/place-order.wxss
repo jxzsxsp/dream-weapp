@@ -1,6 +1,7 @@
 /* 顶部地址 */
 .seperator-pic {
   height: 10rpx;
+  width: 100%;
 }
 
 .customer-detail-container {
