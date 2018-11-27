@@ -1,6 +1,6 @@
 <cloth-block>
   <van-search
-    value="{{ searchCondition }}"
+    value="{{ keyword }}"
     placeholder="验布单号/客户名称/联系方式"
     use-action-slot
     bind:change="onSearchChange"
@@ -24,7 +24,7 @@
       <view class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</view>
       <text class="content-text">已入库卷数：{{item.bossFabricVolumesReadyComplete}} 卷</text>
     </view>
-    <navigator url='/pages/collection/collection'>
+    <navigator url='/pages/collection/collection?orderNo={{item.orderNo}}'>
       <view wx:if="{{ item.payStatus == 1}}" class="content-btn">
         <text>收款</text>
       </view>

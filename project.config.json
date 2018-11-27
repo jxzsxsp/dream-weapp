@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 16,
 			"list": [
 				{
 					"id": -1,
@@ -132,7 +132,13 @@
 				{
 					"id": -1,
 					"name": "唯一码预览",
-					"pathName": "pages/codeview/index"
+					"pathName": "pages/codeview/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "品名列表",
+					"pathName": "pages/productname/index"
 				}
 			]
 		}

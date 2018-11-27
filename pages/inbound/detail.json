@@ -1,6 +1,8 @@
 {
-  "navigationBarTitleText": "收货入库",
+  "navigationBarTitleText": "查看详情",
   "usingComponents": {
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
     "cloth-block": "../../components/cloth-block/index"
   }
 }

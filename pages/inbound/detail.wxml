@@ -1,55 +1,87 @@
 <cloth-block>
-  <view class="content">
-    <view class="content-text">
-      <text>验布单号</text>
-      <text class="right-text">{{orderDetail.orderNo}}</text>
-    </view>
-    <view class="content-text">
-      <text>客户名称</text>
-      <text class="right-text">{{orderDetail.customerName}}</text>
-    </view>
-    <view class="content-text">
-      <text>联系方式</text>
-      <text class="right-text">{{orderDetail.customerMobile}}</text>
-    </view>
-  </view>
+
+  <van-cell-group>
+
+    <van-cell 
+    title="验布单号"
+    value="{{orderDetail.orderNo}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="客户名称"
+    value="{{orderDetail.customerName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="联系方式"
+    value="{{orderDetail.customerMobile}}"
+    border="{{ false }}"
+    />
+
+  </van-cell-group>
+
 </cloth-block>
 
 <cloth-block title="实际信息">
-  <view class="content">
-    <view class="content-text">
-      <text>面料类型</text>
-      <text class="right-text">{{orderDetail.customerFabricTypeName}}</text>
-    </view>
-    <view class="content-text">
-      <text>验布方式</text>
-      <text class="right-text">{{orderDetail.customerClothTypeName}}</text>
-    </view>
-    <view class="content-text">
-      <text>检测项目</text>
-      <text class="right-text">{{orderDetail.customerClothTypeNameItem}}</text>
-    </view>
-    <view class="content-text">
-      <text>验布卷数</text>
-      <text class="right-text">{{orderDetail.customerFabricVolumes}} 卷</text>
-    </view>
-    <view class="content-text">
-      <text>取货方式</text>
-      <text class="right-text">{{orderDetail.customerLogisticsTypeName}}</text>
-    </view>
-    <view class="content-text">
-      <text>客户留言</text>
-      <text class="right-text">{{orderDetail.customerMessage}}</text>
-    </view>
-    <view class="content-text">
-      <text>实际总卷数</text>
-      <text class="right-text">{{orderDetail.bossFabricVolumes}} 卷</text>
-    </view>
-    <view class="content-text">
-      <text>已入库卷数</text>
-      <text class="right-text">{{orderDetail.bossFabricVolumesReadyIn}} 卷</text>
-    </view>
-  </view>
+
+  <van-cell-group>
+
+    <van-cell 
+    title="面料类型"
+    value="{{orderDetail.customerFabricTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="验布方式"
+    value="{{orderDetail.bossClothTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="检测项目"
+    title-width="180rpx"
+    border="{{ false }}"
+    >
+      <view>{{orderDetail.bossClothTypeItemString[0]}}</view>
+    </van-cell>
+
+    <van-cell 
+    title="验布卷数"
+    value="{{orderDetail.customerFabricVolumes}} 卷"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="取货方式"
+    value="{{orderDetail.customerPickUpTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="客户留言"
+    title-width="180rpx"
+    border="{{ false }}"
+    >
+      <view>{{orderDetail.customerMessage}}</view>
+    </van-cell>
+
+    <van-cell 
+    title="实际总卷数"
+    value="{{orderDetail.bossFabricVolumes}} 卷"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="已入库卷数"
+    value="{{orderDetail.bossFabricVolumesReadyIn}} 卷"
+    border="{{ false }}"
+    />
+
+  </van-cell-group>
+
 </cloth-block>
 
 <view class="line"></view>

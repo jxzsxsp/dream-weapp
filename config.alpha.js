@@ -1,9 +1,9 @@
 const config = {
   environment: 'ALPHA',
-  app_id: 2,
-  domain_name: 'sso.lianshang.com',
-  sso_url: 'http://sso.dev.lsfash.cn',
-  base_url: 'https://somersault-cloud-api.lian-shang.cn',
+  app_id: 6,
+  domain_name: 'somersault-cloud-api.lian-shang.cn',
+  sso_url: 'http://172.16.2.166:8080',
+  base_url: 'http://172.16.1.139:8080',
   pay_url: ''
 }
 

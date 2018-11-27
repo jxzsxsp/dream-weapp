@@ -78,10 +78,13 @@ Page({
       },
       function (result) {
         console.log(result);
+        Toast.success('成功驳回');
+        wx.navigateBack({
+          delta: 2
+        })
       },
       false,
       function () {
-        Toast.success('成功驳回');
         typeof callback === 'function' && callback();
       });
   },

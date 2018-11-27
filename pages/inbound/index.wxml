@@ -1,6 +1,6 @@
 <cloth-block>
   <van-search
-    value="{{ searchCondition }}"
+    value="{{ keyword }}"
     placeholder="验布单号/客户名称/联系方式"
     bind:change="onSearchChange"
     bind:search="onSearch"

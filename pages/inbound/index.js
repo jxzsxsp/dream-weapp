@@ -1,5 +1,6 @@
 // pages/inbound/index.js
 import { urls } from '../../constants/urls.js'
+import { constants } from '../../constants/constants.js'
 import { _get, _post } from '../../utils/request.js'
 import { config } from '../../config.js'
 
@@ -9,10 +10,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchCondition: '',
-    status: 10,
-    pageId: 1,
-    pageSize: 10,
+    keyword: constants.EMPTY_STRING,
+    status: constants.ORDER_STATUS.WAIT_INBOUND,
+    pageId: constants.DEFAULT_PAGE_ID,
+    pageSize: constants.DEFAULT_PAGE_SIZE,
     orderList: [],
     mock: [
       {
@@ -132,7 +133,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getDataList();
+    if(this.data.hasMore) {
+      let pageId = this.data.pageId + 1;
+      this.setData({ pageId: pageId });
+      this.getDataList();
+    }
   },
 
   /**
@@ -144,7 +149,7 @@ Page({
 
   onSearchChange(e) {
     this.setData({
-      searchCondition: e.detail
+      keyword: e.detail
     });
   },
 
@@ -158,13 +163,13 @@ Page({
    */
   onTabChange(e) {
     let _this = this;
-    let status = 10;
+    let status = constants.ORDER_STATUS.WAIT_INBOUND;
     let index = e.detail.index;
 
     if(index === 0) {
-      status = 10;
+      status = constants.ORDER_STATUS.WAIT_INBOUND;
     } else if(index === 1) {
-      status = 20;
+      status = constants.ORDER_STATUS.ALL_INBOUND;
     }
     
     _this.setData({ status: status, orderList: [] });
@@ -177,19 +182,19 @@ Page({
 
     _post(urls.order_list_url, 
     {
-      searchCondition: _this.data.searchCondition,
+      keyword: _this.data.keyword,
       pageId: _this.data.pageId,
       pageSize: _this.data.pageSize,
       status: _this.data.status
     }, 
-    function (result) {
-      console.log(result);
+      function (result) {
+        _this.setData(result.data)
+        let orderList = _this.data.orderList;
+        orderList = orderList.concat(result.data.dataList);
+        _this.setData({ orderList: orderList });
     }, 
     false, 
     function () {
-      let orderList = _this.data.orderList;
-      orderList = orderList.concat(_this.data.mock);
-      _this.setData({ orderList: orderList});
       typeof callback === 'function' && callback();
     });
   }

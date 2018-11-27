@@ -16,7 +16,8 @@
     "pages/login/index",
     "pages/bindmobile/index",
     "pages/codeprint/index",
-    "pages/codeview/index"
+    "pages/codeview/index",
+    "pages/productname/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

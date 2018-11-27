@@ -95,6 +95,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let productNameId = wx.getStorageSync("productNameId");
+    let productName = wx.getStorageSync("productName");
+
+    if (productNameId && productName) {
+      console.log(productNameId);
+      console.log(productName);
+      this.setData({ productName: productName, productNameId: productNameId});
+      wx.removeStorageSync("productNameId");
+      wx.removeStorageSync("productName");
+    }
   },
 
   /**
@@ -148,9 +158,7 @@ Page({
       },
       function (result) {
         console.log(result);
-      },
-      false,
-      function () {
+
         wx.showToast({
           title: '入库成功',
           icon: 'none'
@@ -159,7 +167,9 @@ Page({
         wx.navigateTo({
           url: '/pages/codeprint/index',
         })
-
+      },
+      false,
+      function () {
         typeof callback === 'function' && callback();
       });
   },
@@ -180,13 +190,12 @@ Page({
         orderNo: _this.data.orderNo
       },
       function (result) {
-        console.log(result);
+        let data = result.data;
+        _this.setData(data);
+        _this.setData(data.orderDetail);
       },
       false,
       function () {
-        let mock = _this.data.mock;
-        _this.setData(mock);
-        _this.setData(mock.orderDetail);
         typeof callback === 'function' && callback();
       });
   },

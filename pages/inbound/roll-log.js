@@ -147,14 +147,14 @@ Page({
       },
       function (result) {
         console.log(result);
+        let steps = _this.data.steps;
+        let data = result.data;
+        _this.setData(data);
+        steps = steps.concat(data.logList.list);
+        _this.setData({ steps: steps });
       },
       false,
       function () {
-        let steps = _this.data.steps;
-        let mock = _this.data.mock;
-        _this.setData(mock);
-        steps = steps.concat(mock.logList.list);
-        _this.setData({ steps: steps});
         typeof callback === 'function' && callback();
       });
   }

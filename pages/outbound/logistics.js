@@ -121,6 +121,9 @@ Page({
       },
       function (result) {
         console.log(result);
+        wx.showToast({
+          title: '出库成功',
+        })
       },
       false,
       function () {

@@ -119,7 +119,6 @@ function _post(url, data, success, fail, complete) {
     },
     complete: function (res) {
       wx.hideLoading();
-      console.log(res);
       complete && complete(res);
     }
   });

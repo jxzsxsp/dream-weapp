@@ -79,9 +79,8 @@
       title="品名"
       is-link
       arrow-direction="down"
-      value="{{customerFabricTypeName}}"
-      url=""
-      bind:click="toggleFabricType"
+      value="{{productName}}"
+      url="/pages/productname/index"
     />
 
     <van-cell
@@ -171,21 +170,22 @@
 <view class="bottom-line"></view>
 
 <view class="operate-btn">
-  <block wx:if="{{showBtn.reject}}">
+  <block wx:if="{{showBtn.reject && showBtn.inputAndPrint}}">
     <view class="reject-btn" bindtap="reject">
+      <text>驳回</text>
+    </view>
+    <view class="inbound-btn" bindtap="inbound">
+      <text>入库并打印</text>
+    </view>
+  </block>
+  <block wx:if="{{showBtn.reject}}">
+    <view class="reject-btn long-btn" bindtap="reject">
       <text>驳回</text>
     </view>
   </block>
   <block wx:if="{{showBtn.inputAndPrint}}">
-    <block wx:if="{{showBtn.reject}}">
-      <view class="inbound-btn" bindtap="inbound">
-        <text>入库并打印</text>
-      </view>
-    </block>
-    <block wx:else>
-      <view class="inbound-btn long-btn" bindtap="inbound">
-        <text>入库并打印</text>
-      </view>
-    </block>
+    <view class="inbound-btn long-btn" bindtap="inbound">
+      <text>入库并打印</text>
+    </view>
   </block>
 </view>

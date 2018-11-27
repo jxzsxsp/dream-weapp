@@ -7,14 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fee: ''
+    fee: '',
+    memo: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({orderNo: options.orderNo });
   },
 
   /**
@@ -78,10 +79,33 @@ Page({
     }).then(() => {
       // on confirm
       console.log('confirm');
+      _this.collection();
     }).catch(() => {
       // on cancel
       console.log('cancel');
     });
+  },
+
+  collection: function (callback) {
+    let _this = this;
+    this.navigateBack
+
+    _post(urls.receipt_url,
+      {
+        orderNo: _this.data.orderNo,
+        realPrice: _this.data.fee,
+        receiptRemark: _this.data.memo
+      },
+      function (result) {
+        wx.showToast({
+          title: '收款成功',
+        });
+        wx.navigateBack();
+      },
+      false,
+      function () {
+        typeof callback === 'function' && callback();
+      });
   }
 
 })

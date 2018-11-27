@@ -1,18 +1,27 @@
 <cloth-block>
-  <view class="content">
-    <view class="content-text">
-      <text>验布单号</text>
-      <text class="right-text">{{orderDetail.orderNo}}</text>
-    </view>
-    <view class="content-text">
-      <text>客户名称</text>
-      <text class="right-text">{{orderDetail.customerMobile}}</text>
-    </view>
-    <view class="content-text">
-      <text>联系方式</text>
-      <text class="right-text">{{orderDetail.customerName}}</text>
-    </view>
-  </view>
+
+  <van-cell-group>
+
+    <van-cell 
+    title="验布单号"
+    value="{{orderDetail.orderNo}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="客户名称"
+    value="{{orderDetail.customerName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="联系方式"
+    value="{{orderDetail.customerMobile}}"
+    border="{{ false }}"
+    />
+
+  </van-cell-group>
+
 </cloth-block>
 
 <view class="line"></view>

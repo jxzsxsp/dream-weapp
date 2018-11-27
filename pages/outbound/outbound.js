@@ -127,12 +127,12 @@ Page({
       },
       function (result) {
         console.log(result);
+        let data = result.data;
+        _this.setData(data);
+        _this.setData(data.orderDetail);
       },
       false,
       function () {
-        let mock = _this.data.mock;
-        _this.setData(mock);
-        _this.setData(mock.orderDetail);
         typeof callback === 'function' && callback();
       });
   },
