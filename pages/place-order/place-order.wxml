@@ -92,7 +92,7 @@
       </view>
       <text class="detail-text">实际价格将以验布结果重新计算</text>
     </view>
-    <button class="place-order-button">
+    <button class="place-order-button" bind:tap="placeOrderClicked">
       <text class="place-order-text">验布下单</text>
     </button>
   </view>

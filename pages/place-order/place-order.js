@@ -141,6 +141,10 @@ const viewAction = {
     }
     this.closeAllPopup()
   },
+  // 下单
+  placeOrderClicked: function () {
+    
+  }
 }
 
 const privateMethod = {

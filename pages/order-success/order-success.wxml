@@ -1,0 +1,13 @@
+<view class="container align-center">
+  <image src="" class="success-image"/>
+  <text class="success-title">下单成功</text>
+  <text class="success-subtitle">赶快去发货吧</text>
+  <view class="bottom-container flex-column">
+    <button class="check-order">
+      <text class="check-order-text">查看订单</text>
+    </button>
+    <button class="go-home">
+      <text class="go-home-text">返回首页</text>
+    </button>
+  </view>
+</view>
