@@ -1,5 +1,5 @@
 <view class="container align-center">
-  <image src="" class="success-image"/>
+  <image src="/assets/image/pay-success.png" class="success-image"/>
   <text class="success-title">下单成功</text>
   <text class="success-subtitle">赶快去发货吧</text>
   <view class="bottom-container flex-column">
