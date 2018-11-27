@@ -1,9 +1,9 @@
 <view class="back-content flex-column">
-  <text>banner</text>
+  <image src="/assets/image/banner@3x.png"></image>
 </view>
 
 <view class="main-content flex-column">
-  <view class="order-content flex-column">
+  <view wx:if="{{order}}" class="order-content flex-column">
     <text class="memo">最近一张订单的位置</text>
   </view>
 
@@ -11,13 +11,16 @@
     <block wx:for="{{items}}" wx:key="index">
       <view class="item-container flex">
         <view class="content">
-          <view class="title">{{item.title}}</view>
+          <view class="head flex">
+            <view class="title">{{item.title}}</view>
+            <view class="price">{{item.price}}</view>
+          </view>
           <view class="desc">{{item.desc}}</view>
-          <view class="price">{{item.price}}</view>
+          <view class="button flex">去验布</view>
         </view>
 
         <view class="image">
-        
+          <image src="{{item.image}}"></image>
         </view>
       </view>
     </block>

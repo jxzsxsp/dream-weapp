@@ -5,30 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
+    order: true,
     items: [
       {
         title: "高级检验",
         desc: "基础检验 电子报告 色差对比 疵点图片 疵点位置 代发货 ",
         price: "0.45-0.50 元/米",
-        image: ""
+        image: "/assets/image/img_gjjy@3x.png"
       },
       {
         title: "中级检验",
         desc: "基础检验 纸质报告 色差对比 疵点图片 代发货 ",
         price: "0.3 元/米",
-        image: ""
+        image: "/assets/image/img_zjjy@3x.png"
       },
       {
         title: "基础检验",
         desc: "基础检验 手写报告 打卷 包装 ",
         price: "0.2 元/米",
-        image: ""
+        image: "/assets/image/img_jcjy@3x.png"
       },
       {
         title: "打卷/自检",
         desc: "基础检验 打卷 包装",
         price: "0.1 元/米",
-        image: ""
+        image: "/assets/image/img_djzj@3x.png"
       }
     ]
   },
