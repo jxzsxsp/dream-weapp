@@ -1,5 +1,5 @@
 import {$Page, $wx} from '../../genji4mp/index'
-import {http, urls} from '../../net/index'
+import {http, urls, checkParam} from '../../net/index'
 
 const props = {
   STORE: 'selectStore',
@@ -36,12 +36,10 @@ const data = {
 
   // 价格详情
   priceDetail: {},
-
   buyerMessage: '',
 }
 
 const lifeCycle = {
-  //TODO: 这个要告诉水平过来的时候要传一个验布方式的 id参数
   onLoad: function (query) {
     let data = this.data
     http.get(urls.orderInit, {mock: true}).then(res => {
@@ -143,7 +141,30 @@ const viewAction = {
   },
   // 下单
   placeOrderClicked: function () {
-    
+    const data = this.data
+    const param = {
+      customerAddressId: data.customerDetail.id,
+      storeId: data.selectedStore.id,
+      customerFabricType: data.selectedFabricType.id,
+      customerClothType: data.selectedCheckType.id,
+      customerFabricMeters: data.clothLength,
+      customerFabricVolumes: data.volumeNumber,
+      logisticsTypeId: data.selectedLogisticType.id,
+      buyerMessage: data.buyerMessage,
+      mock: true
+    }
+    const hint = {
+      customerAddressId: '地址',
+      storeId: '验布坊',
+      customerFabricType: '面料类型',
+      customerClothType: '验布类型',
+      customerFabricMeters: '米数',
+      customerFabricVolumes: '卷数',
+      logisticsTypeId: '物流类型',
+    }
+    checkParam(param, hint) && http.post(urls.orderSubmit, param).then(res => {
+      $wx.navigateTo($wx.router.orderSuccess, {orderId: res.orderNo})
+    })
   }
 }
 
@@ -166,6 +187,9 @@ const privateMethod = {
         })
       })
     }
+  },
+  canSubmit: function () {
+
   },
   // 打开底部弹框
   openActionList: function (actionList) {

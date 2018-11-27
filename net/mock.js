@@ -67,8 +67,15 @@ const calc = {
   }
 }
 
+const submit = {
+  [urls.orderSubmit]: {
+    orderNo: "1234"
+  }
+}
+
 
 export default {
   ...orderInit,
-  ...calc
+  ...calc,
+  ...submit
 }
