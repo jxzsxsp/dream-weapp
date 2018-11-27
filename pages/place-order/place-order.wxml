@@ -111,15 +111,15 @@
       <view class="seperator"/>
       <form-cell>
         <text slot="left">高级检验</text>
-        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+        <text slot="right" class="price-text">{{priceDetail.clothPriceDescription}}</text>
       </form-cell>
       <form-cell>
         <text slot="left">验布米数</text>
-        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+        <text slot="right" class="price-text">{{priceDetail.length}}</text>
       </form-cell>
       <form-cell>
         <text slot="left">服务价格</text>
-        <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
+        <text slot="right" class="price-text">{{priceDetail.proposedPriceDescription}}</text>
       </form-cell>
       <view class="seperator"/>
     </view>
