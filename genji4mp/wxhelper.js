@@ -33,6 +33,11 @@ function _getUrl (baseUrl, params) {
 let baseService = {
   ...settingMethods,
   router,
+  reLaunch: function (baseUrl, params) {
+    wx.reLaunch({
+      url: _getUrl(baseUrl, params)
+    })
+  },
   navigateTo: function (baseUrl, params) {
     wx.navigateTo({
       url: _getUrl(baseUrl, params)
