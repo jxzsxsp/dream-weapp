@@ -73,9 +73,102 @@ const submit = {
   }
 }
 
+const address = {
+  [urls.addressList]:{list: [
+    {
+      "id":123, //id
+      "contacts":"aa ", //联系人姓名
+      "contactMobile":"15021825356",//联系电话
+      "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+      "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+      "addressTypeName":"仓库", //地址类型
+      "default":true
+ },
+ {
+  "id":1233, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1223, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1243, //id
+  "contacts":"aa", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1253, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1263, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1237, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1234, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":1235, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+},
+{
+  "id":12123, //id
+  "contacts":"aa ", //联系人姓名
+  "contactMobile":"15021825356",//联系电话
+  "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
+  "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
+  "addressTypeName":"仓库", //地址类型
+}
+  ]}
+}
+ 
+const defaultAddress = {
+  [urls.defaultAddress]: {
+
+  }
+}
 
 export default {
   ...orderInit,
   ...calc,
-  ...submit
+  ...submit,
+  ...address,
+  ...defaultAddress,
 }

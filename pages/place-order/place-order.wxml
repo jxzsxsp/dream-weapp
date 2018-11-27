@@ -1,7 +1,7 @@
 <view class="container background">
   <image class="seperator-pic"/>
   <!-- 收货人 -->
-  <view class="customer-detail-container flex">
+  <view class="customer-detail-container flex" bind:tap="selectCustomer">
     <!-- 有收货人 -->
     <view class="has-customer-container flex-column" wx:if="{{customerDetail.contacts}}">
       <view class="customer-container flex">

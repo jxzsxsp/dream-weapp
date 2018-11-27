@@ -66,6 +66,9 @@ const lifeCycle = {
 }
 
 const viewAction = {
+  selectCustomer: function () {
+    $wx.navigateTo($wx.router.addressList)
+  },
   // 选择验布坊
   selectStore: function () {
     let actionList = this.data.storeList.map((store, index) => {

@@ -28,7 +28,7 @@
 }
 
 .seperator {
-  height: 1rpx;
+  height: 1px;
   margin-left: 30rpx;
   background: #E2E2E2;
 }

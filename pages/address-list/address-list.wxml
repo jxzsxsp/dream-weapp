@@ -1,0 +1,45 @@
+<view class="container">
+  <block wx:for="{{addressList}}" wx:key="{{item.id}}">
+    <van-swipe-cell right-width="140">
+      <view class="flex-column item-container" bind:tap="onSelectAddress" data-index="{{index}}">
+        <view class="cell-container flex">
+          <view class="address-container flex-column">
+            <view class="buyer-container flex">
+              <text class="buyer-name">{{item.contacts}}</text>
+              <text class="buyer-phone">{{item.contactMobile}}</text>
+              <view class="tag-container red-color flex" wx:if="{{item.default}}">
+                <text class="tag-text">默认</text>
+              </view>
+              <view class="tag-container blue-color flex">
+                <text class="tag-text">{{item.addressTypeName}}</text>
+              </view>
+            </view>
+            <text class="detail-address">{{item.detailAddress}}</text>
+          </view>
+          <view class="edit-container iconfont"/>
+        </view>
+        <view class="seperator"/>
+      </view>
+
+      <view slot="right" class="action-container">
+        <button class="action-item gray-color" data-index="{{index}}" bind:tap="setDefaultAddress" >
+          <text class="action-text">设为默认</text>
+        </button>
+        <button class="action-item red-button" data-index="{{index}}" bind:tap="deleteAddress">
+          <text class="action-text">删除</text>
+        </button>
+      </view>
+    </van-swipe-cell>
+  </block>
+  <view class="placeholder"></view>
+
+  <view class="add-address-container">
+    <button class="add-address-button">
+      <view>
+        <view class="iconfont"/>
+        <text class="add-address-text">新建收货地址</text>
+      </view>
+    </button>
+  </view>
+
+</view>

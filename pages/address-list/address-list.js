@@ -1,0 +1,63 @@
+import { $Page, $wx } from '../../genji4mp/index'
+import { http, urls } from '../../net/index';
+
+const CHECKADDRESS = 1
+
+const props = {
+  loadStatus: http.defaultLoadingState(100),
+  comeFrom: 0
+}
+
+const data = {
+  addressList: []
+}
+
+const lifecycle = {
+  onLoad: function (query) {
+    this.props.comeFrom = query.comeFrom
+    http.getList(urls.addressList, this.props.loadStatus, {mock: true}).then(res => {
+      console.log(res)
+      this.setData({
+        addressList: res
+      })
+    })
+  }
+}
+
+const viewAction = {
+  onSelectAddress: function (d) {
+    // 查看地址不做响应
+    if (this.props.comeFrom === CHECKADDRESS) {
+      return
+    }
+    $wx.navigateBack(1, {customerDetail: this.data.addressList[d.index]})
+  },
+  // 设置默认地址
+  setDefaultAddress: function (d) {
+    http.post(urls.addressDefault, {id: this.data.addressList[d.index], mock: true})
+      .then(() => {
+        const addressList = this.data.addressList.map((item, index) => {
+          if (index === d.index) {
+            item.default = true
+          } else {
+            item.default = false
+          }
+          return item
+        })
+        this.setData({addressList})
+        console.log(this.selectComponent("#vanSwipeCell"))
+      })
+  },
+  // 删除地址
+  deleteAddress: function (d) {
+    http.post(urls.deleteAddress, {id: this.data.addressList[d.index], mock: true})
+      .then(() => {
+        this.data.addressList.splice(d.index, 1)
+        this.setData({addressList: this.data.addressList})
+      })
+  }
+  
+}
+
+
+$Page(props, data, lifecycle, null, viewAction)

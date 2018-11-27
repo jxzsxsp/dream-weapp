@@ -1,0 +1,145 @@
+/* 每个item */
+.item-container {
+  padding-left: 30rpx;
+}
+
+.cell-container {
+  width: 720rpx;
+  height: 140rpx;
+}
+
+.address-container {
+  width: 600rpx;
+  justify-content: center;
+}
+
+.seperator {
+  background: #e2e2e2;
+  height: 1px;
+}
+
+.buyer-container {
+  align-items: center;
+}
+
+.buyer-name {
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: left;
+  width: 140rpx;
+}
+
+.buyer-phone {
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.tag-container {
+  border-radius: 14rpx;
+  justify-content: center;
+  align-items: center;
+  width: 70rpx;
+  height: 28rpx;
+  margin-left: 20rpx;
+}
+
+.red-color {
+  background: #BB2830;
+}
+
+.tag-text {
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.blue-color {
+  background: #4D89FF;
+}
+
+.detail-address {
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #333333;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.edit-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #BB2830;
+}
+
+/* 左滑菜单 */
+.action-container {
+  width: 140px;
+  height: 140rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.action-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0rpx;
+}
+
+.action-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.gray-color {
+  background: #D4D4D4;
+}
+
+.red-button {
+  background-image: linear-gradient(0deg, #DF515E 0%, #BB2830 100%);
+}
+
+/* 底部按钮 */
+.placeholder {
+  height: 170rpx;
+}
+
+.add-address-container {
+  background: #FFFFFF;
+  display: flex;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+}
+
+.add-address-button {
+  width: 570rpx;
+  margin-bottom: 40rpx;
+  margin-top: 30rpx;
+  height: 80rpx;
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  box-shadow: 0 2rpx 18rpx 0 rgba(187,40,48,0.20);
+  border-radius: 44rpx;
+}
+
+.add-address-text {
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}

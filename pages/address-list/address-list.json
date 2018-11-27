@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "收货地址",
+    "usingComponents": {
+        "form-cell": "/components/form-cell/form-cell",
+        "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index"
+    }
+}
