@@ -3,10 +3,10 @@
   <text class="success-title">下单成功</text>
   <text class="success-subtitle">赶快去发货吧</text>
   <view class="bottom-container flex-column">
-    <button class="check-order">
+    <button class="check-order" bind:tap="checkOrderClicked">
       <text class="check-order-text">查看订单</text>
     </button>
-    <button class="go-home">
+    <button class="go-home" bind:tap="goHomeClicked">
       <text class="go-home-text">返回首页</text>
     </button>
   </view>

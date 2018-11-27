@@ -2,5 +2,6 @@
 export default {
   placeOrder: 'place-order',
   buyerMessage: 'buyer-message',
-  orderSuccess: 'order-success'
+  orderSuccess: 'order-success',
+  home: 'home'
 }

@@ -15,8 +15,8 @@ const viewAction = {
     //TODO: 跳转到详情
   },
   goHomeClicked: function () {
-    $wx.redirectTo()
+    $wx.reLaunch($wx.router.home)
   }
 }
 
-$Page(props, null, lifecycle)
+$Page(props, null, lifecycle, null, viewAction)
