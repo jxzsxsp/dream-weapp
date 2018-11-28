@@ -1,5 +1,5 @@
 import {$Page, $wx} from '../../genji4mp/index'
-import {http, urls, checkParam} from '../../net/index'
+import {http, urls} from '../../net/index'
 
 const props = {
   STORE: 'selectStore',
@@ -146,26 +146,38 @@ const viewAction = {
   placeOrderClicked: function () {
     const data = this.data
     const param = {
-      customerAddressId: data.customerDetail.id,
-      storeId: data.selectedStore.id,
-      customerFabricType: data.selectedFabricType.id,
-      customerClothType: data.selectedCheckType.id,
-      customerFabricMeters: data.clothLength,
-      customerFabricVolumes: data.volumeNumber,
-      logisticsTypeId: data.selectedLogisticType.id,
+      customerAddressId: {
+        value: data.customerDetail.id,
+        hint: '地址'
+      },
+      storeId: {
+        value: data.selectedStore.id,
+        hint: '验布坊'
+      },
+      customerFabricType: {
+        value: data.selectedFabricType.id,
+        hint: '面料类型'
+      },
+      customerClothType: {
+        value: data.selectedCheckType.id,
+        hint: '验布类型'
+      },
+      customerFabricMeters: {
+        value: data.clothLength,
+        hint: '米数'
+      },
+      customerFabricVolumes: {
+        value: data.volumeNumber,
+        hint: '卷数'
+      },
+      logisticsTypeId: {
+        value: data.selectedLogisticType.id,
+        hint: '物流类型'
+      },
       buyerMessage: data.buyerMessage,
       mock: true
     }
-    const hint = {
-      customerAddressId: '地址',
-      storeId: '验布坊',
-      customerFabricType: '面料类型',
-      customerClothType: '验布类型',
-      customerFabricMeters: '米数',
-      customerFabricVolumes: '卷数',
-      logisticsTypeId: '物流类型',
-    }
-    checkParam(param, hint) && http.post(urls.orderSubmit, param).then(res => {
+    http.post(urls.orderSubmit, param).then(res => {
       $wx.navigateTo($wx.router.orderSuccess, {orderId: res.orderNo})
     })
   }

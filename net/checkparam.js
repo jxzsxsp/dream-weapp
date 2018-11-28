@@ -1,21 +1,31 @@
+function showToast (hint) {
+  wx.showToast({
+    title: hint,
+    icon: 'none',
+  }) 
+}
+
 /**
  * 检查参数是否存在
  *
  * @export
  * @param {Object} param 参数对象
- * @param {Object} hint 提示对象
- * @returns
+ * @param {Object} check 校验对象
+ * check: {
+ *   type: '', 校验类型
+ *   hint: '', 提示语
+ * }
+ * @returns 是否校验成功
  */
-export default function (param, hint) {
+export default function (param, check) {
   for (const key in param) {
-    if (!!hint[key]) {
+    if (!check.type) {
       if (!param[key]) {
-        wx.showToast({
-          title: '请输入' + hint[key],
-          icon: 'none',
-        })
+        showToast(check[key].hint)
         return false
       }
+    } else {
+      console.error('zachary 抛出：表单校验 type 非已知类型')
     }
   }
   return true
