@@ -175,9 +175,7 @@ class Http {
     }
     data = realData
     if (!checkParam(param, check)) {
-      return new Promise((res, rej) => {
-        rej({requestParam: data})
-      })
+      return new Promise(res => {})
     }
 
     // 注入mock数据

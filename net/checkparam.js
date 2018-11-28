@@ -19,13 +19,14 @@ function showToast (hint) {
  */
 export default function (param, check) {
   for (const key in param) {
-    if (!check.type) {
+    if (!check[key].type) {
       if (!param[key]) {
         showToast(check[key].hint)
         return false
       }
     } else {
       console.error('zachary 抛出：表单校验 type 非已知类型')
+      return false
     }
   }
   return true
