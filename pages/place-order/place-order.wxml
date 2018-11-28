@@ -20,7 +20,7 @@
   </view>
   <image class="seperator-pic" src="/assets/image/seperator.png"/>
 
-  <form-group class="normal-text">
+  <form-group has-margin class="normal-text">
     <form-cell has-detail bind:formclick="selectStore">
       <text slot="left" class="">验布坊</text>
       <text slot="right">{{selectedStore.name}}</text>
@@ -64,7 +64,7 @@
     </form-cell>
   </form-group>
 
-  <form-group class="normal-text">
+  <form-group has-margin class="normal-text">
     <form-cell>
       <view slot="left" class="flex title-container">
         <text>验布服务</text>
@@ -107,8 +107,7 @@
     close-on-click-overlay="{{false}}"
   >
     <text class="price-title price-title-text">详情</text>
-    <view class="price-detail-container normal-text">
-      <view class="seperator"/>
+    <form-group class="price-detail-container normal-text">
       <form-cell>
         <text slot="left">高级检验</text>
         <text slot="right" class="price-text">{{priceDetail.clothPriceDescription}}</text>
@@ -117,12 +116,11 @@
         <text slot="left">验布米数</text>
         <text slot="right" class="price-text">{{priceDetail.length}}</text>
       </form-cell>
-      <form-cell>
+      <form-cell is-last>
         <text slot="left">服务价格</text>
         <text slot="right" class="price-text">{{priceDetail.proposedPriceDescription}}</text>
       </form-cell>
-      <view class="seperator"/>
-    </view>
+    </form-group>
     <button class="close-price-button" bind:tap="closeAllPopup">
       <text class="place-order-text">关闭</text>
     </button>
