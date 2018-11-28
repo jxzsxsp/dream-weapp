@@ -1,3 +1,4 @@
+<view class="content">
 <van-tabs 
 border="{{false}}"
 swipe-threshold="5" 
@@ -19,6 +20,7 @@ color="#BB2830">
   </van-tab>
 
   <van-tab title="已出库">
-    <order-list list="{{list}}" />
+    <order-list list="{{[]}}" />
   </van-tab>
 </van-tabs>
+</view>
