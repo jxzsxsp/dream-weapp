@@ -4,7 +4,7 @@
 }
 
 .seperator {
-  height: 1rpx;
+  height: 1px;
   background: #E2E2E2;
 }
 
