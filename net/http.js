@@ -3,6 +3,7 @@ import mock from './mock'
 import {$wx} from '../genji4mp/index'
 import constant from '../constants/index'
 import urls from './urls/index'
+import {checkParam} from './index';
 
 class Http {
   constructor () {
@@ -149,6 +150,34 @@ class Http {
   }
 
   _request (url, data={}, method, isLoading = true, mockUrl) {
+    // 校验表单参数是否合法
+    let check = {}
+    let param = {}
+    let realData = data
+    for (const key in data) {
+      const element = data[key];
+      if (typeof(element) === 'object') {
+        if (!element.hasOwnProperty('value')) {
+          console.error('zachary 抛出: 表单校验需要参数 value')
+        }
+        // 设置校验对象
+        let type = element.type || ''
+        let hint = element.hint ? ('请输入' + element.hint) : '请检查参数'
+        check[key] = {
+          type,
+          hint,
+        }
+        // 设置参数对象
+        param[key] = element.value
+        // 修改请求参数
+        realData[key] = element.value
+      }
+    }
+    data = realData
+    if (!checkParam(param, check)) {
+      return new Promise(res => {})
+    }
+
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
@@ -234,7 +263,6 @@ class Http {
           }
         },
         fail (error) {
-
           wx.showToast({
             title: '网络出错！',
             icon: 'none',

@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.back-content image{
+  width: 100%;
+}
+
 .main-content {
   margin-top: -145rpx;
   width: 750rpx;

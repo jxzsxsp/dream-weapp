@@ -2,5 +2,5 @@
   <view class="seperator"/>
   <slot></slot>
   <view class="seperator"/>
-  <view class="margin"/>
+  <view wx:if="{{hasMargin}}" class="margin"/>
 </view>
