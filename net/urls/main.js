@@ -1,4 +1,6 @@
 export default {
+  // 首页信息
+  homeInfo: '/home/info',
   // 订单初始化
   orderInit: '/order/init',
   // 提交订单

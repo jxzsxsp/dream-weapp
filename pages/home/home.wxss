@@ -21,6 +21,55 @@
   align-items: center;
 }
 
+.icon {
+  width: 160rpx;
+  height: 160rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.icon text {
+  margin-top: 20rpx;
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.order-info {
+  width: 530rpx;
+  height: 160rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.head {
+  margin-top: 20rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.status {
+  float: right;
+  color: #BB2830;
+}
+
+.order-text {
+  margin-top: 4rpx;
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
 .item-content {
   width: 690rpx;
   margin-top: 30rpx;

@@ -1,6 +1,6 @@
 <view class="content">
   <view class="image">
-    <image src="./assets/img_no_order@3x.png" />
+    <image src="./assets/img_no_order.png" />
   </view>
   <text class="title">没有订单</text>
   <text class="desc">赶快去下单吧</text>
