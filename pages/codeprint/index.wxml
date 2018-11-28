@@ -4,7 +4,7 @@
 
     <van-switch-cell
       title="显示收货地址"
-      checked="{{ checked }}"
+      checked="{{ viewAddress }}"
       border="{{true}}"
       active-color="#00B1EF"
       bind:change="onChange"
@@ -16,13 +16,13 @@
     >
       <view class="num">
       <van-stepper 
-      value="{{ num }}"
+      value="{{ pageNo }}"
       bind:change="changeNum" />份
       </view>
     </van-cell>
 
   </van-cell-group>
 
-<view class="collection-btn" bind:tap="next">
-  <text>下一步</text>
+<view class="collection-btn" bind:tap="print">
+  <text>打印</text>
 </view>

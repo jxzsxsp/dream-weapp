@@ -119,6 +119,7 @@ Page({
         orderNo: _this.data.orderNo
       },
       function (result) {
+        console.log(result);
         let data = result.data;
         _this.setData(data);
         _this.setData(data.orderDetail);

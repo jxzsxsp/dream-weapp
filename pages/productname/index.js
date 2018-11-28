@@ -1,4 +1,4 @@
-// pages/codeprint/index.js
+// pages/productname/index.js
 import { urls } from '../../constants/urls.js'
 import { _post } from '../../utils/request.js'
 
@@ -8,27 +8,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rollCodes: [],
-    viewAddress: true,
-    pageNo: 1
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let rollCodes = wx.getStorageSync("rollCodes");
-    wx.removeStorageSync("rollCodes");
-    this.setData({
-      rollCodes: rollCodes
-    });
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getProductName();
   },
 
   /**
@@ -73,34 +67,14 @@ Page({
 
   },
 
-  onChange(e) {
-    this.setData({ viewAddress: !this.data.viewAddress});
-  },
-
-  changeNum(e) {
-    this.setData({ pageNo: e.detail});
-  },
-
-  print: function (callback) {
+  getProductName: function (callback) {
     let _this = this;
 
-    _post(urls.input_print_url,
+    _post(urls.product_name_url,
       {
-        rollCodes: _this.data.rollCodes,
-        pageNo: _this.data.pageNo,
-        viewAddress: _this.data.viewAddress
       },
       function (result) {
-        console.log(result);
-
-        wx.showToast({
-          title: '打印成功',
-          icon: 'none'
-        });
-        
-        wx.navigateBack({
-          delta: 2
-        });
+        _this.setData({productNameList: result.data});
       },
       false,
       function () {
@@ -108,9 +82,10 @@ Page({
       });
   },
 
-  next() {
-    wx.navigateTo({
-      url: '/pages/codeview/index?num='+this.data.num+"&checked="+this.data.checked,
-    })
+  selectProductName(e) {
+    wx.setStorageSync("productNameId", e.target.dataset.id);
+    wx.setStorageSync("productName", e.target.dataset.name);
+    wx.navigateBack();
   }
+
 })

@@ -1,0 +1,12 @@
+<van-cell-group>
+
+  <block wx:for="{{productNameList}}" wx:key="index">
+    <van-cell 
+    title="{{item.name}}"
+    data-name="{{item.name}}"
+    data-id="{{item.id}}"
+    bind:click="selectProductName"
+    />
+  </block>
+
+</van-cell-group>

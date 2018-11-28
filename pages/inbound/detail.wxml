@@ -30,7 +30,7 @@
 
     <van-cell 
     title="面料类型"
-    value="{{orderDetail.customerFabricTypeName}}"
+    value="{{orderDetail.bossFabricTypeName}}"
     border="{{ false }}"
     />
 
@@ -45,7 +45,12 @@
     title-width="180rpx"
     border="{{ false }}"
     >
-      <view>{{orderDetail.bossClothTypeItemString[0]}}</view>
+      <!-- <view>{{orderDetail.bossClothTypeItemString[0]}}</view> -->
+      <view class="check-item">
+        <block wx:for="{{orderDetail.bossClothTypeItemString}}" wx:key="index">
+          <view class="item">{{item}}</view>
+        </block>
+      </view>
     </van-cell>
 
     <van-cell 

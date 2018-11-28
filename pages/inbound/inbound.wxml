@@ -28,7 +28,7 @@
 
     <van-cell 
     title="验布方式"
-    value="{{orderDetail.bossClothTypeName}}"
+    value="{{orderDetail.customerClothTypeName}}"
     border="{{ false }}"
     />
 
@@ -37,16 +37,17 @@
     title-width="180rpx"
     border="{{ false }}"
     >
-      <view class="check-item">
+      <!-- <view class="check-item">
         <block wx:for="{{orderDetail.checkItems}}" wx:key="index">
           <view class="item">{{item}}</view>
         </block>
-      </view>
+      </view> -->
+      <view>{{orderDetail.customerClothTypeNameItem}}</view>
     </van-cell>
 
     <van-cell 
     title="验布米数"
-    value="130 m"
+    value="{{orderDetail.customerFabricMeters}} m"
     border="{{ false }}"
     />
 
@@ -58,15 +59,17 @@
 
     <van-cell 
     title="取货方式"
-    value="{{orderDetail.logisticsTypeName}}"
+    value="{{orderDetail.customerPickUpTypeName}}"
     border="{{ false }}"
     />
 
     <van-cell 
     title="客户留言"
-    value="打卷不要带链尚LOGO"
+    title-width="180rpx"
     border="{{ false }}"
-    />
+    >
+      <view>{{orderDetail.customerMessage}}</view>
+    </van-cell>
 
   </van-cell-group>
   
@@ -87,7 +90,7 @@
       title="面料类型"
       is-link
       arrow-direction="down"
-      value="{{customerFabricTypeName}}"
+      value="{{bossFabricTypeName}}"
       url=""
       bind:click="toggleFabricType"
     />
@@ -105,36 +108,41 @@
       title="检测项目"
       title-width="180rpx"
     >
-      <view class="check-item">
+      <!-- <view class="check-item">
         <block wx:for="{{orderDetail.checkItems}}" wx:key="index">
           <view class="item">{{item}}</view>
         </block>
-      </view>
+      </view> -->
+      <view>{{bossClothTypeNameItem}}</view>
     </van-cell>
 
     <van-cell
       title="验布卷数"
-      value="10"
-    />
+    >
+      <view class="right">
+        <van-stepper value="{{bossFabricVolumes}}" 
+        bind:change="changeBossFabricVolumes" /> 卷
+      </view>
+    </van-cell>
 
     <van-cell
       title="取货方式"
       is-link
       arrow-direction="down"
-      value="{{logisticsTypeName}}"
+      value="{{bossPickUpTypeName}}"
       url=""
       bind:click="toggleLogisticsType"
     />
 
     <van-cell
       title="已入库卷数"
-      value="0"
+      value="{{bossFabricVolumesReadyIn}} 卷"
     />
 
     <van-cell
       title="本次入库卷数"
     >
-    <input value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' />
+      <input value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' />
     </van-cell>
 
   </van-cell-group>
@@ -159,7 +167,7 @@
 
   <van-action-sheet
     show="{{ showLogisticsType }}"
-    actions="{{ logisticsTypeList }}"
+    actions="{{ pickUpTypeList }}"
     cancel-text="取消"
     bind:close="toggleLogisticsType"
     bind:cancel="toggleLogisticsType"

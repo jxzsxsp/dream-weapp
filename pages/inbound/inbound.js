@@ -99,8 +99,6 @@ Page({
     let productName = wx.getStorageSync("productName");
 
     if (productNameId && productName) {
-      console.log(productNameId);
-      console.log(productName);
       this.setData({ productName: productName, productNameId: productNameId});
       wx.removeStorageSync("productNameId");
       wx.removeStorageSync("productName");
@@ -151,13 +149,19 @@ Page({
     _post(urls.input_url,
       {
         orderNo: _this.data.orderNo,
-        logisticsTypeId: _this.data.logisticsTypeId,
+        bossPickUpType: _this.data.bossPickUpType,
         bossClothType: _this.data.bossClothType,
         bossFabricVolumes: _this.data.bossFabricVolumes,
-        bossFabricVolumesIn: _this.data.bossFabricVolumesIn
+        bossFabricVolumesIn: _this.data.bossFabricVolumesIn,
+        productPrice: _this.data.productPrice,
+        productPriceUnit: _this.data.productPriceUnit,
+        productId: _this.data.productNameId,
+        bossFabricType: _this.data.bossFabricType
       },
       function (result) {
         console.log(result);
+
+        wx.setStorageSync("rollCodes", result.data);
 
         wx.showToast({
           title: '入库成功',
@@ -166,7 +170,7 @@ Page({
 
         wx.navigateTo({
           url: '/pages/codeprint/index',
-        })
+        });
       },
       false,
       function () {
@@ -190,6 +194,7 @@ Page({
         orderNo: _this.data.orderNo
       },
       function (result) {
+        console.log(result);
         let data = result.data;
         _this.setData(data);
         _this.setData(data.orderDetail);
@@ -219,16 +224,14 @@ Page({
   },
 
   selectFabricType(e) {
-    console.log(e);
     this.setData({
-        customerFabricType: e.detail.id,
-        customerFabricTypeName: e.detail.name
+      bossFabricType: e.detail.id,
+      bossFabricTypeName: e.detail.name
     })
     this.toggleFabricType();
   },
 
   selectClothType(e) {
-    console.log(e);
     this.setData({
         bossClothType: e.detail.id,
         bossClothTypeName: e.detail.name
@@ -237,12 +240,17 @@ Page({
   },
 
   selectLogisticsType(e) {
-    console.log(e);
     this.setData({
-        logisticsTypeId: e.detail.id,
-        logisticsTypeName: e.detail.name
+      bossPickUpType: e.detail.id,
+      bossPickUpTypeName: e.detail.name
     })
     this.toggleLogisticsType();
+  },
+
+  changeBossFabricVolumes(e) {
+    this.setData({
+      bossFabricVolumes: e.detail
+    })
   }
 
 })

@@ -32,6 +32,13 @@
   flex-direction: row;
 }
 
+.right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .operate-btn {
   position: fixed;
   z-index: 50;
