@@ -4,5 +4,6 @@ export default {
   buyerMessage: 'buyer-message',
   orderSuccess: 'order-success',
   home: 'home',
-  addressList: 'address-list'
+  addressList: 'address-list',
+  addressAdd: 'address-add'
 }
