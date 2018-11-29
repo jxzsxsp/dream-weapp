@@ -1,5 +1,9 @@
+import router from 'router'
+import {$wx} from './genji4mp/index'
 App({
-  onLaunch: function () {},
+  onLaunch: function () {
+    $wx.registerRouter(router)
+  },
 
   /**
    * 小程序全局数据
