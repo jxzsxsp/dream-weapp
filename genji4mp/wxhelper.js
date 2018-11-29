@@ -1,24 +1,8 @@
-import router from '../router'
-import settinghelper from './settinghelper'
-
-for (const key in router) {
-  if (router.hasOwnProperty(key)) {
-    const element = router[key];
-    router[key] = `/pages/${element}/${element}`
-  }
-}
-
-const settingArr = ['getLocation', 'getUserInfo']
-let settingMethods = {}
-for (const key of settingArr) {
-  settingMethods[key] = (info, authorizeLevel, data ) => settinghelper(key, info, authorizeLevel, data)
-}
-
 function _getUrl (baseUrl, params) {
   let paramUrl = '?'
   for (const key in params) {
     if (typeof key === 'object') {
-      throw new Error('小程序跳转参数内部不能包含 object：' + key)
+      throw new Error('zachary 抛出: 小程序跳转参数内部不能包含 object：' + key)
     }
     if (params.hasOwnProperty(key)) {
       const element = params[key];
@@ -30,25 +14,30 @@ function _getUrl (baseUrl, params) {
   return baseUrl + paramUrl
 }
 
-let baseService = {
-  ...settingMethods,
-  router,
-  reLaunch: function (baseUrl, params) {
+class BaseService {
+  constructor () {
+    this.router = {}
+  }
+
+  reLaunch (baseUrl, params) {
     wx.reLaunch({
       url: _getUrl(baseUrl, params)
     })
-  },
-  navigateTo: function (baseUrl, params) {
+  }
+
+  navigateTo (baseUrl, params) {
     wx.navigateTo({
       url: _getUrl(baseUrl, params)
     })
-  },
-  redirectTo: function (baseUrl, params) {
+  }
+
+  redirectTo (baseUrl, params) {
     wx.redirectTo({
       url: _getUrl(baseUrl, params)
     })
-  },
-  navigateBack: function (delta=1, data = {}) {
+  }
+
+  navigateBack (delta=1, data = {}) {
     let param = {}
     if (typeof(delta) === 'object') {
       // 原始小程序的返回
@@ -65,9 +54,20 @@ let baseService = {
     }
     wx.navigateBack(param)
   }
+
+  registerRouter (routers) {
+    for (const key in routers) {
+      if (routers.hasOwnProperty(key)) {
+        const element = routers[key];
+        this.router[key] = `/pages/${element}/${element}`
+      }
+    }
+  }
 }
 
-export default new Proxy(baseService, {
+const $wx = new BaseService()
+
+export default new Proxy($wx, {
   get: function (target, property) {
     if (property in target) {
       return target[property]
@@ -80,7 +80,7 @@ export default new Proxy(baseService, {
         })
       }
     } else {
-      throw new Error(property + '不存在')
+      throw new Error('zachary 抛出：' + property + '不存在')
     }
   }  
 })

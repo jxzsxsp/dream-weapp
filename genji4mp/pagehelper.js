@@ -1,6 +1,6 @@
 function isObject (key, obj) {
   if (typeof obj !== 'object') {
-    throw new Error(`${key} 必须是一个对象`)
+    throw new Error(`zachary 抛出:${key} 必须是一个对象`)
   }
 }
 
