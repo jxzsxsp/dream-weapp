@@ -10,7 +10,7 @@ Page({
    */
   data: {
     keyword: constants.EMPTY_STRING,
-    status: constants.ORDER_STATUS.WAIT_PAY,
+    status: constants.ORDER_STATUS.CHECKED,
     pageId: constants.DEFAULT_PAGE_ID,
     pageSize: constants.DEFAULT_PAGE_SIZE,
     orderList: [],
@@ -174,7 +174,7 @@ Page({
   getDataList: function (callback) {
     let _this = this;
 
-    _post(urls.order_list_url,
+    _post(urls.listbystatus_url,
       {
         keyword: _this.data.keyword,
         pageId: _this.data.pageId,

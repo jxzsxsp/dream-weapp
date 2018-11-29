@@ -83,27 +83,22 @@ Page({
   },
 
   changeLogisticsCompany(e) {
-    console.log(e.detail);
     this.setData({ logisticsCompany: e.detail });
   },
 
   changeUsername(e) {
-    console.log(e.detail);
     this.setData({ username: e.detail });
   },
 
   changeMobile(e) {
-    console.log(e.detail);
     this.setData({ mobile: e.detail });
   },
 
   changeLogisticsNo(e) {
-    console.log(e.detail);
     this.setData({ logisticsNo: e.detail });
   },
 
   changeMemo(e) {
-    console.log(e.detail);
     this.setData({memo: e.detail});
   },
 
@@ -123,7 +118,10 @@ Page({
         console.log(result);
         wx.showToast({
           title: '出库成功',
-        })
+        });
+        wx.navigateBack({
+          delta: 2
+        });
       },
       false,
       function () {

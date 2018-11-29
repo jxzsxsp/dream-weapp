@@ -17,7 +17,7 @@
     <view class="content">
       <view class="content-text">
         验布单号：{{item.orderNo}}
-        <text class="status-text">{{item.payStatusName}}</text>
+        <text class="status-text">{{item.statusName}}</text>
       </view>
       <text class="content-text">客户名称：{{item.customerName}}</text>
       <text class="content-text">联系方式：{{item.customerMobile}}</text>

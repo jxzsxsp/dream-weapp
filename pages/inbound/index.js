@@ -180,7 +180,7 @@ Page({
   getDataList: function (callback) {
     let _this = this;
 
-    _post(urls.order_list_url, 
+    _post(urls.listbyinputstatus_url, 
     {
       keyword: _this.data.keyword,
       pageId: _this.data.pageId,

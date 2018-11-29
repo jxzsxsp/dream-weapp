@@ -1,47 +1,77 @@
 <cloth-block>
-  <view class="content">
-    <view class="content-text">
-      <text>验布单号</text>
-      <text class="right-text">{{orderDetail.orderNo}}</text>
-    </view>
-    <view class="content-text">
-      <text>客户名称</text>
-      <text class="right-text">{{orderDetail.customerName}}</text>
-    </view>
-    <view class="content-text">
-      <text>联系方式</text>
-      <text class="right-text">{{orderDetail.customerMobile}}</text>
-    </view>
-  </view>
+
+  <van-cell-group>
+
+    <van-cell 
+    title="验布单号"
+    value="{{orderDetail.orderNo}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="客户名称"
+    value="{{orderDetail.customerName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="联系方式"
+    value="{{orderDetail.customerMobile}}"
+    border="{{ false }}"
+    />
+
+  </van-cell-group>
+
 </cloth-block>
 
 <cloth-block title="出库信息">
-  <view class="content">
-    <view class="content-text">
-      <text>面料类型</text>
-      <text class="right-text">{{ orderDetail.customerFabricTypeName}}</text>
-    </view>
-    <view class="content-text">
-      <text>验布方式</text>
-      <text class="right-text">{{ orderDetail.bossClothTypeName}}</text>
-    </view>
-    <view class="content-text">
-      <text>检测项目</text>
-      <text class="right-text">{{ orderDetail.bossClothTypeNameItem}}</text>
-    </view>
-    <view class="content-text">
-      <text>验布卷数</text>
-      <text class="right-text">{{ orderDetail.bossFabricVolumesReadyComplete}} 卷</text>
-    </view>
-    <view class="content-text">
-      <text>取货方式</text>
-      <text class="right-text">{{ orderDetail.bossLogisticsTypeName}}</text>
-    </view>
-    <view class="content-text">
-      <text>支付状态</text>
-      <text class="right-text">{{ orderDetail.payName}}</text>
-    </view>
-  </view>
+
+  <van-cell-group>
+
+    <van-cell 
+    title="面料类型"
+    value="{{orderDetail.customerFabricTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="验布方式"
+    value="{{orderDetail.bossClothTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="检测项目"
+    title-width="180rpx"
+    border="{{ false }}"
+    >
+      <view class="check-item">
+        <block wx:for="{{orderDetail.bossClothTypeItemString}}" wx:key="index">
+          <view class="item">{{item}}</view>
+        </block>
+      </view>
+    </van-cell>
+
+    <van-cell 
+    title="验布卷数"
+    value="{{ orderDetail.bossFabricVolumesReadyComplete}} 卷"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="取货方式"
+    value="{{orderDetail.bossPickUpTypeName}}"
+    border="{{ false }}"
+    />
+
+    <van-cell 
+    title="支付状态"
+    value="{{orderDetail.payName}}"
+    border="{{ false }}"
+    />
+
+  </van-cell-group>
+
 </cloth-block>
 
 <view class="line"></view>

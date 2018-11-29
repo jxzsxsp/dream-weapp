@@ -5,6 +5,8 @@ const urls = {
   bind_mobile_url: config.sso_url + '/home/mini-bind-mobile', // 绑定手机号
   get_smscode_url: config.sso_url + '/home/get-authCode', // 获取短信验证码
   order_list_url: config.base_url + '/order/list', // 订单列表接口
+  listbyinputstatus_url: config.base_url + '/order/listbyinputstatus', // 入库订单列表接口
+  listbystatus_url: config.base_url + '/order/listbystatus', // 收款出库订单列表接口
   input_init_url: config.base_url + '/order/input-init', // 入库初始化接口
   reject_url: config.base_url + '/order/reject', // 入库驳回接口
   input_url: config.base_url + '/order/input', // 入库接口
