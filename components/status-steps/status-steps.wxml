@@ -8,7 +8,7 @@
       <block wx:else>
         <icon type="success" size="32rpx" color="#CCCCCC" />
       </block>
-      <text class="title">{{item.title}}</text>
+      <text class="title">{{item.name}}</text>
     </view>
     </block>
     <block wx:else>
@@ -19,7 +19,7 @@
       <block wx:else>
         <icon type="success" size="32rpx" color="#CCCCCC" />
       </block>
-      <text class="title">{{item.title}}</text>
+      <text class="title">{{item.name}}</text>
     </view>
     </block>
 

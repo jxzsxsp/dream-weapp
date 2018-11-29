@@ -1,5 +1,7 @@
 
 export default {
+  orderList: 'order-list',
+  orderDetail: 'order-detail',
   placeOrder: 'place-order',
   buyerMessage: 'buyer-message',
   orderSuccess: 'order-success',

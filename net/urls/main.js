@@ -7,6 +7,10 @@ export default {
   orderSubmit: '/order/submit',
   // 订单价格
   orderPrice: '/price/calc-proposed-price',
+  // 订单列表
+  orderList: '/order/list',
+  // 订单详情
+  orderDetail: '/order/detail',
   // 获取地址类型
   addressType: '/customer-address/type-list',
   // 地址列表

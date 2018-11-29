@@ -1,290 +1,96 @@
-// pages/order-list/order-list.js
-Page({
+import { $Page, $wx } from '../../genji4mp/index'
+import { http, urls } from '../../net/index';
+import { constants } from '../../constants/constants';
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    list: [
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "待入库",
-        rollSteps: [
-          {
-            title: "共6卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 1,
-          list: [
-            {
-              title: "下单成功"
-            },
-            {
-              title: "等待收货"
-            }
-          ]
-        },
-        showCancelBtn: true,
-        showCheckBtn: false,
-        showPayBtn: false
-      },
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "已入库",
-        rollSteps: [
-          {
-            title: "共6卷"
-          },
-          {
-            title: "入库2卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 2,
-          list: [
-            {
-              title: "下单成功"
-            },
-            {
-              title: "已收货"
-            },
-            {
-              title: "等待验布"
-            }
-          ]
-        },
-        showCancelBtn: false,
-        showCheckBtn: false,
-        showPayBtn: false
-      },
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "验布中",
-        rollSteps: [
-          {
-            title: "共6卷"
-          },
-          {
-            title: "入库2卷"
-          },
-          {
-            title: "验布2卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 2,
-          list: [
-            {
-              title: "已收货"
-            },
-            {
-              title: "验布中"
-            },
-            {
-              title: "待付款"
-            }
-          ]
-        },
-        showCancelBtn: false,
-        showCheckBtn: true,
-        showPayBtn: false
-      },
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "验布完成",
-        rollSteps: [
-          {
-            title: "共6卷"
-          },
-          {
-            title: "入库6卷"
-          },
-          {
-            title: "验布6卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 2,
-          list: [
-            {
-              title: "已收货"
-            },
-            {
-              title: "验布完成"
-            },
-            {
-              title: "待付款"
-            }
-          ]
-        },
-        showCancelBtn: false,
-        showCheckBtn: true,
-        showPayBtn: false
-      },
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "待付款",
-        rollSteps: [
-          {
-            title: "共6卷"
-          },
-          {
-            title: "入库6卷"
-          },
-          {
-            title: "验布6卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 2,
-          list: [
-            {
-              title: "验布完成"
-            },
-            {
-              title: "待付款"
-            },
-            {
-              title: "待出库"
-            }
-          ]
-        },
-        showCancelBtn: false,
-        showCheckBtn: true,
-        showPayBtn: true
-      },
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "待出库",
-        rollSteps: [
-          {
-            title: "共6卷"
-          },
-          {
-            title: "入库6卷"
-          },
-          {
-            title: "验布6卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 2,
-          list: [
-            {
-              title: "待付款"
-            },
-            {
-              title: "待出库"
-            },
-            {
-              title: "已完成"
-            }
-          ]
-        },
-        showCancelBtn: false,
-        showCheckBtn: true,
-        showPayBtn: false
-      },
-      {
-        title: "梭织面料打卷/自检",
-        statusName: "已出库",
-        rollSteps: [
-          {
-            title: "共6卷"
-          },
-          {
-            title: "入库6卷"
-          },
-          {
-            title: "验布6卷"
-          }
-        ],
-        checkHouse: "绍兴交易园店",
-        logisticsTypeName: "代发货至收货地址",
-        steps: {
-          active: 2,
-          list: [
-            {
-              title: "待出库"
-            },
-            {
-              title: "已完成"
-            }
-          ]
-        },
-        showCancelBtn: false,
-        showCheckBtn: true,
-        showPayBtn: false
-      }
-    ]
-  },
+const props = {
+  loadStatus: http.defaultLoadingState(constants.DEFAULT_PAGE_SIZE)
+}
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+const data = {
+  tabStatus: [
+    constants.ORDER_STATUS.ALL_ORDER,
+    constants.ORDER_STATUS.INBOUNDED,
+    constants.ORDER_STATUS.CHECKING_CLOTH,
+    constants.ORDER_STATUS.WAIT_PAY,
+    constants.ORDER_STATUS.OUTBOUNDED,
+  ],
+  status: constants.ORDER_STATUS.ALL_ORDER,
+  list: []
+}
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+const lifecycle = {
+  onLoad: function (query) {
+    this.getDataList();
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({ list: [] });
+    this.getDataList();
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    this.getDataList();
+  },
+}
 
+const viewAction = {
+  /**
+   * 切换Tab页
+   */
+  onTabChange: function (d, v) {
+    let tabStatus = this.data.tabStatus;
+    this.setData({ list: [], status: tabStatus[v.index] });
+    this.getDataList();
+  },
+  /**
+   * 查看详情
+   */
+  gotoDetail: function (d, v) {
+    console.log(d, v);
+    $wx.navigateTo($wx.router.orderDetail, { orderNo: v.orderNo })
+  },
+  /**
+   * 取消验布
+   */
+  cancelOrder: function (d, v) {
+    console.log(d, v);
+  },
+  /**
+   * 查看报告
+   */
+  viewReport: function (d, v) {
+    console.log(d, v);
+  },
+  /**
+   * 去付款
+   */
+  goPay: function (d, v) {
+    console.log(d, v);
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+}
 
-  }
-})
+const privateMethod = {
+  /**
+   * 获取列表数据
+   */
+  getDataList: function () {
+    http.getList(urls.orderList, this.props.loadStatus, { mock: true, status: this.data.status }).then(res => {
+      console.log(res)
+      let list = this.data.list.concat(res);
+      this.setData({
+        list: list
+      })
+    });
+  },
+}
+
+
+$Page(props, data, lifecycle, privateMethod, viewAction)

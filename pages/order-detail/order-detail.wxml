@@ -1,7 +1,8 @@
 <view class="status-info">
   <view class="status-container">
     <view class="icon-container">
-      <icon type="success" size="40rpx" color="#DF515E"></icon>
+      <view wx:if="{{true}}" class="iconfont icon-ic_been_done" style="font-size:38rpx;"></view>
+      <view wx:if="{{false}}" class="iconfont icon-ic_history" style="font-size:38rpx;"></view>
     </view>
     <text class="status">已评价</text>
     <text class="price">已付款：¥ 99.90</text>
@@ -11,6 +12,8 @@
 <view class="item-info">
   <view class="item-cell">
     下单数量
+    <view class="fabric-tag blue">梭织</view>
+    <view wx:if="{{false}}" class="fabric-tag red">针织</view>
     <view class="cell-value">1100 米</view>
   </view>
   <view class="item-cell">
@@ -64,7 +67,7 @@
 <view class="order-info">
 
   <view class="info-cell">
-    <text>验布单号：8980970808</text>
+    <text>验布单号：{{orderNo}}</text>
     <view class="copy" bind:tap="copy">复制</view>
   </view>
 
@@ -103,10 +106,10 @@
 <view class="line"></view>
 
 <view class="btn-group">
-  <view class="btn">取消验布</view>
-  <view class="btn">验布报告</view>
-  <view class="btn">查看评价</view>
-  <view class="btn btn-active">评价</view>
-  <view class="btn btn-active">确认收货</view>
-  <view class="btn go-pay">去付款</view>
+  <view wx:if="{{showBtn.cancel}}" class="btn" bind:tap="cancelOrder">取消验布</view>
+  <view wx:if="{{showBtn.report}}" class="btn" bind:tap="viewReport">验布报告</view>
+  <view wx:if="{{showBtn.viewEvaluate}}" class="btn" bind:tap="">查看评价</view>
+  <view wx:if="{{showBtn.toEvaluate}}" class="btn btn-active" bind:tap="">评价</view>
+  <view wx:if="{{showBtn.confirmReceive}}" class="btn btn-active" bind:tap="confirmReceive">确认收货</view>
+  <view wx:if="{{showBtn.pay}}" class="btn go-pay" bind:tap="goPay">去付款</view>
 </view>

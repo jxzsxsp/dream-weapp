@@ -7,8 +7,7 @@
     "pages/order-detail/order-detail",
     "pages/buyer-message/buyer-message",
     "pages/order-success/order-success",
-    "pages/address-list/address-list",
-    "pages/address-add/address-add"
+    "pages/address-list/address-list"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,6 +1,6 @@
 <view class="container">
   <block wx:for="{{steps}}" wx:key="index">
-    <text class="title">{{item.title}}</text>
+    <text class="title">{{item.name}}</text>
     <block wx:if="{{ index !== steps.length - 1 }}">
     <view wx:if="{{ 1 === steps.length - 1 }}" class="line"></view>
     <view wx:if="{{ 2 === steps.length - 1 }}" class="line half"></view>

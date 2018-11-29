@@ -4,7 +4,7 @@ page {
 
 .status-info {
   height: 140rpx;
-  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  background-image: linear-gradient(-270deg, #BB2830 100%, #DF515E 0%);
   padding-top: 40rpx;
 }
 
@@ -25,6 +25,14 @@ page {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: #BB2830;
+}
+
+.icon-content {
+  width: 40rpx;
+  height: 40rpx;
+  background: #D0021B;
+  border-radius: 20rpx;
 }
 
 .status {
@@ -249,4 +257,29 @@ page {
 
 .line {
   height: 20rpx;
+}
+
+.fabric-tag {
+  width: 70rpx;
+  height: 28rpx;
+  border-radius: 14rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 325rpx;
+  left: 150rpx;
+}
+
+.blue {
+  background: #4D89FF;
+}
+
+.red {
+  background: #D0021B;
 }

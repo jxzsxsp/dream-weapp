@@ -1,33 +1,36 @@
 <view class="item-content">
-  <view class="head">
-    <text class="title">{{order.title}}</text>
-    <text class="status">{{order.statusName}}</text>
+  <view bind:tap="onDetail">
+    <view class="head">
+      <text class="title">{{order.orderName}}</text>
+      <text class="status">{{order.statusName}}</text>
+    </view>
+
+    <view class="roll-steps">
+      <roll-steps steps="{{order.fabricVolumeList}}" />
+    </view>
+
+    <view class="text-item">
+      <text class="text-title">验布坊</text>
+      <text class="text-name">{{order.storeName}}</text>
+    </view>
+    <view class="text-item">
+      <text class="text-title">取货方式</text>
+      <text class="text-name">{{order.pickUpTypeName}}</text>
+    </view>
+
+    <view class="status-steps">
+      <status-steps steps="{{order.orderStatusSteps.list}}" 
+      active="{{order.orderStatusSteps.active}}" />
+    </view>
   </view>
 
-  <view class="roll-steps">
-    <roll-steps steps="{{order.rollSteps}}" />
-  </view>
+  <block wx:if="{{order.showBtn.cancel || order.showBtn.report || order.showBtn.pay}}">
+    <view class="line"></view>
 
-  <view class="text-item">
-    <text class="text-title">验布坊</text>
-    <text class="text-name">{{order.checkHouse}}</text>
-  </view>
-  <view class="text-item">
-    <text class="text-title">取货方式</text>
-    <text class="text-name">{{order.logisticsTypeName}}</text>
-  </view>
-
-  <view class="status-steps">
-    <status-steps steps="{{order.steps.list}}" active="{{order.steps.active}}" />
-  </view>
-
-  <block wx:if="{{order.showCancelBtn || order.showCheckBtn || order.showPayBtn}}">
-  <view class="line"></view>
-
-  <view class="btn-group">
-    <view wx:if="{{order.showCancelBtn}}" class="btn">取消验布</view>
-    <view wx:if="{{order.showCheckBtn}}" class="btn">验布报告</view>
-    <view wx:if="{{order.showPayBtn}}" class="btn active">去付款</view>
-  </view>
+    <view class="btn-group">
+      <view wx:if="{{order.showBtn.cancel}}" class="btn" bind:tap="onCancel">取消验布</view>
+      <view wx:if="{{order.showBtn.report}}" class="btn" bind:tap="onView">验布报告</view>
+      <view wx:if="{{order.showBtn.pay}}" class="btn active" bind:tap="onPay">去付款</view>
+    </view>
   </block>
 </view>

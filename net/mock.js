@@ -41,6 +41,312 @@ const homeInfo = {
   }
 }
 
+const order = {
+  [urls.orderList]: {
+    "list": [
+      {
+        "orderNo": 10001,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "待入库",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 1,
+          "list": [
+            {
+              "name": "下单成功"
+            }, {
+              "name": "等待收货"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": true,
+          "report": false,
+          "pay": false,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      },
+      {
+        "orderNo": 10002,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "已入库",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          },
+          {
+            "name": "入库2卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 2,
+          "list": [
+            {
+              "name": "下单成功"
+            },
+            {
+              "name": "已收货"
+            },
+            {
+              "name": "等待验布"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": false,
+          "report": false,
+          "pay": false,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      },
+      {
+        "orderNo": 10003,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "验布中",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          },
+          {
+            "name": "入库2卷"
+          },
+          {
+            "name": "验布2卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 2,
+          "list": [
+            {
+              "name": "已收货"
+            },
+            {
+              "name": "验布中"
+            },
+            {
+              "name": "待付款"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": false,
+          "report": true,
+          "pay": false,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      },
+      {
+        "orderNo": 10004,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "验布完成",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          },
+          {
+            "name": "入库6卷"
+          },
+          {
+            "name": "验布6卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 2,
+          "list": [
+            {
+              "name": "已收货"
+            },
+            {
+              "name": "验布完成"
+            },
+            {
+              "name": "待付款"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": false,
+          "report": true,
+          "pay": false,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      },
+      {
+        "orderNo": 10005,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "待付款",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          },
+          {
+            "name": "入库6卷"
+          },
+          {
+            "name": "验布6卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 2,
+          "list": [
+            {
+              "name": "验布完成"
+            },
+            {
+              "name": "待付款"
+            },
+            {
+              "name": "待出库"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": false,
+          "report": true,
+          "pay": true,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      },
+      {
+        "orderNo": 10006,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "待出库",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          },
+          {
+            "name": "入库6卷"
+          },
+          {
+            "name": "验布6卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 2,
+          "list": [
+            {
+              "name": "待付款"
+            },
+            {
+              "name": "待出库"
+            },
+            {
+              "name": "已完成"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": false,
+          "report": true,
+          "pay": false,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      },
+      {
+        "orderNo": 10007,
+        "createTime": "2018-09-10 12:23:22",
+        "statusName": "已出库",
+        "orderName": "梭织面料打卷/自检",
+        "storeName": "绍兴交易园店",
+        "pickUpTypeName": "代发货至收货地址",
+        "fabricVolumeList": [
+          {
+            "name": "共6卷"
+          },
+          {
+            "name": "入库6卷"
+          },
+          {
+            "name": "验布6卷"
+          }
+        ],
+        "orderStatusSteps": {
+          "active": 2,
+          "list": [
+            {
+              "name": "待出库"
+            },
+            {
+              "name": "已完成"
+            }
+          ]
+        },
+        "showBtn": {
+          "cancel": false,
+          "report": true,
+          "pay": false,
+          "confirmReceive": false,
+          "toEvaluate": false,
+          "viewEvaluate": false
+        }
+      }
+    ],
+    "hasMore": true,
+    "total": 10
+  },
+  [urls.orderDetail]: {
+    "statusName": "已评价",//状态
+    "orderNo": "8980970808", //验布单号
+    "storeName": "绍兴交易园店", //验布地点（ 验布坊名称）
+    "pickUpTypeName": "代发货至收货地址", //取货方式
+    "fabricTypeName": "", //面料类型
+    "clothTypeName": "",//验布方式
+    "clothTypeItem": "米数、重量、门幅、克重、电子报告、色差(匹布/缸差/边中差)对比、疵点图片、疵点位置标识、代发货、物流信息跟踪、检验售后、货物暂存服务",//验布方式项目
+    "price": {
+      "clothPriceDescription": "0.1元/m", //定价描述
+      "proposedPriceDescription": "￥110.00", //参考价格描述
+      "length": "100m", //数量 描述
+      "customerDiscountDescription": "9折", //优惠VIP描述
+      "discountPriceDescription": "￥110.00",//参考优惠价格描述
+      "waitPayProposedPriceDescription": "￥99.00",//待支付参考价格描述  
+    },
+    "customerMessage": "", //买家留言
+    "showBtn": {
+      "cancel": true,
+      "report": true,
+      "pay": true,
+      "confirmReceive": true,
+      "toEvaluate": false,
+      "viewEvaluate": false
+    }
+  }
+}
+
 const orderInit = {
   [urls.orderInit]: {
     "storeList": [{
@@ -208,6 +514,7 @@ const defaultAddress = {
 
 export default {
   ...homeInfo,
+  ...order,
   ...orderInit,
   ...calc,
   ...submit,
