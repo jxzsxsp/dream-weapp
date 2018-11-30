@@ -16,7 +16,7 @@
             </view>
             <text class="detail-address">{{item.detailAddress}}</text>
           </view>
-          <button class="iconfont edit-container icon-ic_edit button"/>
+          <button class="iconfont edit-container icon-ic_edit button" catch:tap="editAddress" data-index="{{index}}"/>
         </view>
         <view class="seperator"/>
       </view>

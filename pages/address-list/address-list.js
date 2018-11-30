@@ -32,9 +32,13 @@ const viewAction = {
     }
     $wx.navigateBack(1, {customerDetail: this.data.addressList[d.index]})
   },
+  // 编辑地址
+  editAddress: function (d, v) {
+    $wx.navigateTo($wx.router.addressAdd, this.data.addressList[v.index])
+  },
   // 设置默认地址
   setDefaultAddress: function (d) {
-    http.post(urls.addressDefault, {id: this.data.addressList[d.index], mock: true})
+    http.post(urls.addressDefault, {id: this.data.addressList[d.index].id, mock: true})
       .then(() => {
         const addressList = this.data.addressList.map((item, index) => {
           if (index === d.index) {
@@ -45,12 +49,11 @@ const viewAction = {
           return item
         })
         this.setData({addressList})
-        console.log(this.selectComponent("#vanSwipeCell"))
       })
   },
   // 删除地址
   deleteAddress: function (d) {
-    http.post(urls.deleteAddress, {id: this.data.addressList[d.index], mock: true})
+    http.post(urls.deleteAddress, {id: this.data.addressList[d.index].id, mock: true})
       .then(() => {
         this.data.addressList.splice(d.index, 1)
         this.setData({addressList: this.data.addressList})
