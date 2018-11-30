@@ -4,7 +4,7 @@ page {
 
 .status-info {
   height: 140rpx;
-  background-image: linear-gradient(-270deg, #BB2830 100%, #DF515E 0%);
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
   padding-top: 40rpx;
 }
 
@@ -19,20 +19,11 @@ page {
 .icon-container {
   width: 48rpx;
   height: 48rpx;
-  background: #FFFFFF;
-  border-radius: 24rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: #BB2830;
-}
-
-.icon-content {
-  width: 40rpx;
-  height: 40rpx;
-  background: #D0021B;
-  border-radius: 20rpx;
+  color: #FFFFFF;
 }
 
 .status {

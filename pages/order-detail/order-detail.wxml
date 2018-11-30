@@ -1,8 +1,8 @@
 <view class="status-info">
   <view class="status-container">
     <view class="icon-container">
-      <view wx:if="{{true}}" class="iconfont icon-ic_been_done" style="font-size:38rpx;"></view>
-      <view wx:if="{{false}}" class="iconfont icon-ic_history" style="font-size:38rpx;"></view>
+      <view wx:if="{{true}}" class="iconfont icon-ic_choose" style="font-size:48rpx;"></view>
+      <view wx:if="{{false}}" class="iconfont icon-ic_history" style="font-size:48rpx;"></view>
     </view>
     <text class="status">已评价</text>
     <text class="price">已付款：¥ 99.90</text>
