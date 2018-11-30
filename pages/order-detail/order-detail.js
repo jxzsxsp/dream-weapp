@@ -1,9 +1,9 @@
 import { $Page, $wx } from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
-import { constants } from '../../constants/index';
+import constants from '../../constants/index';
 
 const props = {
-  loadStatus: http.defaultLoadingState(constants.DEFAULT_PAGE_SIZE)
+  loadStatus: http.defaultLoadingState(10)
 }
 
 const data = {
