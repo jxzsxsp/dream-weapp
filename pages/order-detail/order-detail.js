@@ -1,6 +1,6 @@
 import { $Page, $wx } from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
-import { constants } from '../../constants/constants';
+import { constants } from '../../constants/index';
 
 const props = {
   loadStatus: http.defaultLoadingState(constants.DEFAULT_PAGE_SIZE)
@@ -65,7 +65,7 @@ const privateMethod = {
   },
 
   copy(e) {
-    wx.setClipboardData({
+    $wx.setClipboardData({
       data: this.data.orderNo
     })
   }

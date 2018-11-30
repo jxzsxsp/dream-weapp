@@ -1,6 +1,6 @@
 import { $Page, $wx } from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
-import { constants } from '../../constants/constants';
+import { constants } from '../../constants/index';
 
 const props = {
   loadStatus: http.defaultLoadingState(constants.DEFAULT_PAGE_SIZE)
@@ -29,7 +29,7 @@ const lifecycle = {
   onPullDownRefresh: function () {
     this.setData({ list: [] });
     this.getDataList();
-    wx.stopPullDownRefresh();
+    $wx.stopPullDownRefresh();
   },
 
   /**
