@@ -72,3 +72,16 @@
 .bottom-line {
   height: 50rpx;
 }
+
+.check-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  border: 1rpx solid gray;
+  margin: 10rpx;
+  padding: 10rpx;
+  border-radius: 20rpx;
+}

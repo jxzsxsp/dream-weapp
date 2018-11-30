@@ -45,7 +45,8 @@ function _get(url, data, success, fail, complete, check_login) {
         if (res.statusCode !== 200 || typeof res.data !== 'object') {
           wx.showToast({
             title: '网络请求出错',
-            icon: 'none'
+            icon: 'none',
+            duration: 5000,
           })
           return false;
         }
@@ -56,7 +57,8 @@ function _get(url, data, success, fail, complete, check_login) {
         } else if (res.data.code < 0) {
           wx.showToast({
             title: res.data.message,
-            icon: 'none'
+            icon: 'none',
+            duration: 5000,
           });
         } else {
           success && success(res.data);
@@ -65,7 +67,8 @@ function _get(url, data, success, fail, complete, check_login) {
       fail: function (res) {
         wx.showToast({
           title: res.message,
-          icon: 'none'
+          icon: 'none',
+          duration: 5000,
         });
       },
       complete: function (res) {
@@ -102,7 +105,8 @@ function _post(url, data, success, fail, complete) {
       if (res.statusCode !== 200 || typeof res.data !== 'object') {
         wx.showToast({
           title: '网络请求出错',
-          icon: 'none'
+          icon: 'none',
+          duration: 5000,
         })
         return false;
       }
@@ -112,15 +116,18 @@ function _post(url, data, success, fail, complete) {
       } else if (res.data.code < 0) {
         wx.showToast({
           title: res.data.message,
-          icon: 'none'
+          icon: 'none',
+          duration: 5000,
         });
+      } else {
+        success && success(res.data);
       }
-      success && success(res.data);
     },
     fail: function (res) {
       wx.showToast({
         title: res.message,
-        icon: 'none'
+        icon: 'none',
+        duration: 5000,
       });
     },
     complete: function (res) {

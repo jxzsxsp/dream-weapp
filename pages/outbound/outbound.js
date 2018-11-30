@@ -137,12 +137,32 @@ Page({
       });
   },
 
-  outBound: function (e) {
-    const roll = e.currentTarget.dataset.roll;
+  next() {
+    let _this = this;
 
     wx.navigateTo({
-      url: 'roll-log?rollCode=' + roll,
+      url: '/pages/outbound/logistics?orderNo=' + _this.data.orderNo,
     })
+  },
+
+  outBound() {
+    let _this = this;
+
+    _post(urls.output_url,
+      {
+        orderNo: _this.data.orderNo,
+      },
+      function (result) {
+        console.log(result);
+        wx.showToast({
+          title: '出库成功',
+        });
+        wx.navigateBack();
+      },
+      false,
+      function () {
+        typeof callback === 'function' && callback();
+      });
   }
 
 })

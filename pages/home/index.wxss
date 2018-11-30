@@ -61,5 +61,6 @@ page {
   color: #666666;
   letter-spacing: 0;
   text-align: center;
-  margin-top: 130rpx;
+  position: absolute;
+  bottom: 60rpx;
 }

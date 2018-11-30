@@ -188,10 +188,13 @@ Page({
       status: _this.data.status
     }, 
       function (result) {
-        _this.setData(result.data)
-        let orderList = _this.data.orderList;
-        orderList = orderList.concat(result.data.dataList);
-        _this.setData({ orderList: orderList });
+        console.log(result);
+        if (result.data) {
+          _this.setData(result.data)
+          let orderList = _this.data.orderList;
+          orderList = orderList.concat(result.data.dataList);
+          _this.setData({ orderList: orderList });
+        }
     }, 
     false, 
     function () {

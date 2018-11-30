@@ -2,6 +2,9 @@
   "navigationBarTitleText": "收款",
   "usingComponents": {
     "cloth-block": "../../components/cloth-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-field": "../../dist/field/index",
     "van-dialog": "../../dist/dialog/index"
   }
 }

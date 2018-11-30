@@ -3,26 +3,20 @@
     <image src='/assets/images/img_yanlogo@3x.png'></image>
   </view>
 
-  <navigator url='/pages/inbound/index'>
-    <view class='common-btn inbound-btn'>
-      <text class='btn-text'>入库</text>
-      <image class='btn-img' src='/assets/images/back@3x.png'></image>
-    </view>
-  </navigator>
+  <view class='common-btn inbound-btn' bind:tap="inbound">
+    <text class='btn-text'>入库</text>
+    <image class='btn-img' src='/assets/images/back@3x.png'></image>
+  </view>
 
-  <navigator url='/pages/collection/index'>
-    <view class='common-btn collection-btn'>
-      <text class='btn-text'>收款</text>
-      <image class='btn-img' src='/assets/images/back@3x.png'></image>
-    </view>
-  </navigator>
+  <view class='common-btn collection-btn' bind:tap="collection">
+    <text class='btn-text'>收款</text>
+    <image class='btn-img' src='/assets/images/back@3x.png'></image>
+  </view>
 
-  <navigator url='/pages/outbound/index'>
-    <view class='common-btn outbound-btn'>
-      <text class='btn-text'>出库</text>
-      <image class='btn-img' src='/assets/images/back@3x.png'></image>
-    </view>
-  </navigator>
+  <view class='common-btn outbound-btn' bind:tap="outbound">
+    <text class='btn-text'>出库</text>
+    <image class='btn-img' src='/assets/images/back@3x.png'></image>
+  </view>
 
   <view class="footer">
     链尚信息科技(上海)有限公司

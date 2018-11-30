@@ -66,5 +66,24 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  inbound() {
+    wx.navigateTo({
+      url: '/pages/inbound/index',
+    })
+  },
+
+  collection() {
+    wx.navigateTo({
+      url: '/pages/collection/index',
+    })
+  },
+
+  outbound() {
+    wx.navigateTo({
+      url: '/pages/outbound/index',
+    })
   }
+
 })

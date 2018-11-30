@@ -91,8 +91,13 @@
 
 <view class="bottom-line"></view>
 
-<navigator url="/pages/outbound/logistics?orderNo={{orderNo}}">
-  <view class="outbound-btn">
-    <text>出库</text>
+<block wx:if="{{bySelf}}">
+  <view class="outbound-btn" bind:tap="outBound">
+    <text>确认出库</text>
   </view>
-</navigator>
+</block>
+<block wx:else>
+  <view class="outbound-btn" bind:tap="next">
+    <text>下一步</text>
+  </view>
+</block>

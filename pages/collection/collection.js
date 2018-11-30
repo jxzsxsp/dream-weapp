@@ -1,5 +1,7 @@
 // pages/collection/collection.js
 import Dialog from '../../dist/dialog/dialog';
+import { urls } from '../../constants/urls.js'
+import { _post } from '../../utils/request.js'
 
 Page({
 
@@ -22,7 +24,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getInitData();
   },
 
   /**
@@ -67,8 +69,31 @@ Page({
 
   },
 
+  getInitData: function (callback) {
+    let _this = this;
+
+    _post(urls.output_init_url,
+      {
+        orderNo: _this.data.orderNo
+      },
+      function (result) {
+        console.log(result);
+        let data = result.data;
+        _this.setData(data);
+        _this.setData(data.orderDetail);
+      },
+      false,
+      function () {
+        typeof callback === 'function' && callback();
+      });
+  },
+
   changeFee(e) {
     this.setData({fee:e.detail.value})
+  },
+
+  changeMemo(e) {
+    this.setData({ memo: e.detail });
   },
 
   submit() {
