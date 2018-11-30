@@ -56,7 +56,7 @@ class BasePage {
   
         let detail = {}
         if (e.detail) {
-          detail = e.detail.value || e.detail
+          detail = e.detail.hasOwnProperty('value') ? e.detail.value : e.detail
         }
         action.call(this, e.currentTarget.dataset || {}, detail)
       }
