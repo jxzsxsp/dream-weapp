@@ -55,7 +55,7 @@ class Http {
    * @returns 返回默认列表状态
    * @memberof Http
    */
-  defaultLoadingState (pageSize = 25) {
+  defaultLoadingState (pageSize = 24) {
     return {
       hasMore: true,
       param: {
