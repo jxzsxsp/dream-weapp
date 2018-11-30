@@ -14,25 +14,56 @@ for (const key of settingArr) {
   settingMethods[key] = (info, authorizeLevel, data ) => settinghelper(key, info, authorizeLevel, data)
 }
 
+function _getUrl (baseUrl, params) {
+  let paramUrl = '?'
+  for (const key in params) {
+    if (typeof key === 'object') {
+      throw new Error('小程序跳转参数内部不能包含 object：' + key)
+    }
+    if (params.hasOwnProperty(key)) {
+      const element = params[key];
+      paramUrl+=`${key}=${element}&`
+    }
+  }
+  paramUrl = paramUrl.substr(0, paramUrl.length-1)
+  paramUrl === '?' ? '' : paramUrl
+  return baseUrl + paramUrl
+}
+
 let baseService = {
   ...settingMethods,
   router,
-  navigateTo: function (baseUrl, params) {
-    let paramUrl = '?'
-    for (const key in params) {
-      if (typeof key === 'object') {
-        throw new Error('小程序跳转参数内部不能包含 object：' + key)
-      }
-      if (params.hasOwnProperty(key)) {
-        const element = params[key];
-        paramUrl+=`${key}=${element}&`
-      }
-    }
-    paramUrl = paramUrl.substr(0, paramUrl.length-1)
-
-    wx.navigateTo({
-      url: baseUrl + (paramUrl === '?' ? '' : paramUrl)
+  reLaunch: function (baseUrl, params) {
+    wx.reLaunch({
+      url: _getUrl(baseUrl, params)
     })
+  },
+  navigateTo: function (baseUrl, params) {
+    wx.navigateTo({
+      url: _getUrl(baseUrl, params)
+    })
+  },
+  redirectTo: function (baseUrl, params) {
+    wx.redirectTo({
+      url: _getUrl(baseUrl, params)
+    })
+  },
+  navigateBack: function (delta=1, data = {}) {
+    let param = {}
+    if (typeof(delta) === 'object') {
+      // 原始小程序的返回
+      param = delta
+    } else if (JSON.stringify(data) === "{}") {
+      // 只设置了返回级数的返回
+      param = {delta}
+    } else {
+      // 设置之前的数据
+      param = {delta}
+      let pages = getCurrentPages()
+      let prevPage = pages[pages.length - delta - 1]
+      prevPage.setData(data)
+    }
+    wx.navigateBack(param)
   }
 }
 

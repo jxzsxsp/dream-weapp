@@ -29,7 +29,12 @@ export default function (props = {}, data = {}, lifeCycle = {}, privateMethod = 
   !!actionsObject && Object.keys(viewAction).forEach(function (key) {
     let action = viewAction[key]
     actionsObject[key] = function (e) {
-      action.call(this, e.currentTarget.dataset || {}, e.detail.value || {})
+
+      let detail = {}
+      if (e.detail) {
+        detail = e.detail.value || e.detail
+      }
+      action.call(this, e.currentTarget.dataset || {}, detail)
     }
   })
 
