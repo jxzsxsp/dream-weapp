@@ -78,10 +78,6 @@
   background: #FFFFFF;
 }
 
-.button::after {
-  border: none;
-}
-
 /* 左滑菜单 */
 .action-container {
   width: 140px;
