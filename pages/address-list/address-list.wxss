@@ -74,10 +74,12 @@
 
 .edit-container {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 44rpx;
+  background: #FFFFFF;
+}
+
+.button::after {
+  border: none;
 }
 
 /* 左滑菜单 */
@@ -128,15 +130,12 @@
 
 .add-address-button {
   width: 570rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
   margin-top: 20rpx;
   height: 80rpx;
   background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
   box-shadow: 0 2rpx 18rpx 0 rgba(187,40,48,0.20);
   border-radius: 44rpx;
-}
-
-.add-address-text {
   font-family: PingFangSC-Regular;
   font-size: 34rpx;
   color: #FFFFFF;

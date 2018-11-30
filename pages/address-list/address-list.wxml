@@ -16,7 +16,7 @@
             </view>
             <text class="detail-address">{{item.detailAddress}}</text>
           </view>
-          <view class="iconfont edit-container icon-ic_edit "/>
+          <button class="iconfont edit-container icon-ic_edit button"/>
         </view>
         <view class="seperator"/>
       </view>
@@ -34,11 +34,7 @@
   <view class="placeholder"></view>
 
   <view class="add-address-container">
-    <button class="add-address-button">
-      <view>
-        <text class="add-address-text">+ 新建收货地址</text>
-      </view>
-    </button>
+    <button class="add-address-button">+ 新建收货地址</button>
   </view>
 
 </view>
