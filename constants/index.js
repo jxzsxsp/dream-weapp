@@ -1,5 +1,5 @@
-import { constants } from './constants';
+import states from './states';
 
-export {
-  constants
+export default {
+  ...states
 }
