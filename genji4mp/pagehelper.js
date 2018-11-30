@@ -4,41 +4,69 @@ function isObject (key, obj) {
   }
 }
 
-/**
- * 生成Page的方法
- * @param {object} props 不影响UI对象
- * @param {object} data 影响UI对象
- * @param {object} lifeCycle 生命周期对象
- * @param {object} privateMethod 私有方法对象
- * @param {object} viewAction UI点击事件对象
- */
-export default function (props = {}, data = {}, lifeCycle = {}, privateMethod = {}, viewAction = {}) {
-  isObject('props', props) && isObject('data', data) && isObject('lifeCycle', lifeCycle) && isObject('privateMethod', privateMethod) && isObject('viewAction', viewAction)
 
-  let lifeCycleObject = {}
-  !!lifeCycle && Object.keys(lifeCycle).forEach(function (key) {
-    lifeCycleObject[key] = lifeCycle[key]
-  })
+class BasePage {
+  constructor () {
+    this._mixins = {}
+  }
+  mixinLifeCycle (funcObjc) {
+    this._mixins = funcObjc
+  }
+  mixinAction (funcObjc) {
 
-  let privateMethodObject = {}
-  !!privateMethod && Object.keys(privateMethod).forEach(function (key) {
-    privateMethodObject[key] = privateMethod[key]
-  })
-
-  let actionsObject = {}
-  !!actionsObject && Object.keys(viewAction).forEach(function (key) {
-    let action = viewAction[key]
-    actionsObject[key] = function (e) {
-
-      let detail = {}
-      if (e.detail) {
-        detail = e.detail.value || e.detail
+  }
+  /**
+   * 生成Page的方法
+   * @param {object} props 不影响UI对象
+   * @param {object} data 影响UI对象
+   * @param {object} lifeCycle 生命周期对象
+   * @param {object} privateMethod 私有方法对象
+   * @param {object} viewAction UI点击事件对象
+   */
+  register (props = {}, data = {}, lifeCycle = {}, privateMethod = {}, viewAction = {}) {
+    isObject('props', props) && isObject('data', data) && isObject('lifeCycle', lifeCycle) && isObject('privateMethod', privateMethod) && isObject('viewAction', viewAction)
+  
+    let lifeCycleObject = {}
+    !!lifeCycle && Object.keys(lifeCycle).forEach(key => {
+      let hasMethod = false
+      for (const mixKey in this._mixins) {
+        const element = this._mixins[mixKey];
+        if (key === mixKey) {
+          hasMethod = true
+          lifeCycleObject[key] = function (...param) {
+            element(...param)
+            lifeCycle[key].apply(this, param)
+          }
+        }
       }
-      action.call(this, e.currentTarget.dataset || {}, detail)
-    }
-  })
+      if (!hasMethod) {
+        lifeCycleObject[key] = lifeCycle[key]
+      }
+    })
+  
+    let privateMethodObject = {}
+    !!privateMethod && Object.keys(privateMethod).forEach(function (key) {
+      privateMethodObject[key] = privateMethod[key]
+    })
+  
+    let actionsObject = {}
+    !!actionsObject && Object.keys(viewAction).forEach(function (key) {
+      let action = viewAction[key]
+      actionsObject[key] = function (e) {
+  
+        let detail = {}
+        if (e.detail) {
+          detail = e.detail.value || e.detail
+        }
+        action.call(this, e.currentTarget.dataset || {}, detail)
+      }
+    })
+  
+    const pageObject = {props, data, ...privateMethodObject, ...actionsObject, ...lifeCycleObject}
+  
+    Page(pageObject)
+  }
 
-  const pageObject = {props, data, ...privateMethodObject, ...actionsObject, ...lifeCycleObject}
-
-  Page(pageObject)
 }
+
+export default new BasePage()

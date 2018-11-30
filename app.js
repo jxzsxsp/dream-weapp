@@ -1,7 +1,10 @@
 import router from 'router'
-import {$wx} from './genji4mp/index'
+import {$wx, $Page} from './genji4mp/index'
 App({
   onLaunch: function () {
+    $Page.mixinLifeCycle({onLoad: function () {
+      console.log('陈宫啦')
+    }})
     $wx.registerRouter(router)
   },
 

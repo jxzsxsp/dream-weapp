@@ -19,4 +19,4 @@ const viewAction = {
   }
 }
 
-$Page(props, null, lifecycle, null, viewAction)
+$Page.register(props, null, lifecycle, null, viewAction)

@@ -31,4 +31,4 @@ const viewAction = {
 }
 
 
-$Page(props, data, lifecycle, null, viewAction)
+$Page.register(props, data, lifecycle, null, viewAction)

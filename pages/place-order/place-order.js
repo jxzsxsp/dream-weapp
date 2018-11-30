@@ -223,4 +223,4 @@ const privateMethod = {
 }
 
 
-$Page(props, data, lifeCycle, privateMethod, viewAction)
+$Page.register(props, data, lifeCycle, privateMethod, viewAction)

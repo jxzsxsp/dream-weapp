@@ -5,7 +5,7 @@
     <!-- 有收货人 -->
     <view class="has-customer-container flex-column" wx:if="{{customerDetail.contacts}}">
       <view class="customer-container flex">
-        <view class="iconfont icon-ic_back"/>
+        <view class="iconfont icon-ic_address"/>
         <text class="customer-name-text">收货人:{{customerDetail.contacts}}</text>
         <text class="customer-mobile-text">{{customerDetail.contactMobile}}</text>
       </view>
@@ -13,7 +13,7 @@
     </view>
     <!-- 没有收货人 -->
     <view class="no-customer-container flex" wx:else>
-      <view class="iconfont icon-ic_back"/> 
+      <view class="iconfont icon-ic_address"/> 
       <text class="no-address-text">请点击输入收货地址</text>
     </view>
     <view class="detail-icon iconfont icon-ic_back"/>
