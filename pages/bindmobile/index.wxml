@@ -21,11 +21,12 @@
       bind:change="changeSmsCode"
     >
       <van-button 
+      disabled="{{btnDisabled}}"
       slot="button" 
       size="small" 
       type="primary" 
       custom-class="button"
-      bind:click="sendSmsCode">发送验证码</van-button>
+      bind:click="sendSmsCode">{{btnText}}</van-button>
     </van-field>
   </van-cell-group>
 

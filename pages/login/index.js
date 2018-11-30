@@ -99,14 +99,13 @@ Page({
             // 记录token user_id
             if (result.data.token) {
               wx.setStorageSync('token', result.data.token);
+              // 跳转回原页面
+              _this.navigateBack();
             } else {
               wx.navigateTo({
                 url: '/pages/bindmobile/index?bindId=' + result.data.bindId,
               })
             }
-            //wx.setStorageSync('user_id', result.data.user_id);
-            // 跳转回原页面
-            _this.navigateBack();
           }
           , false
           , false);

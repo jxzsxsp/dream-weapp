@@ -8,10 +8,15 @@ function showLoading() {
  * 执行用户登录
  */
 function doLogin() {
+  let pages = getCurrentPages();
+  console.log(pages[pages.length-1].route);
+
   // 跳转授权页面
-  wx.navigateTo({
-    url: "/pages/login/index"
-  });
+  if (pages[pages.length - 1].route !== 'pages/login/index') {
+    wx.navigateTo({
+      url: "/pages/login/index"
+    });
+  }
 }
 
 /**
@@ -46,6 +51,7 @@ function _get(url, data, success, fail, complete, check_login) {
         }
         if (res.data.code === -100) {
           // 登录态失效, 重新登录
+          
           doLogin();
         } else if (res.data.code < 0) {
           wx.showToast({

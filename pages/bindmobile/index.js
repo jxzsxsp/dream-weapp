@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    btnDisabled: false,
+    btnText: '发送验证码',
     mobile: '',
     smscode: '',
     source: 20, // 验证码来源（10 - 用户注册，20 - 绑定手机号，30 - 修改手机号， 40 - 用户手机验证码登录 ..）
@@ -83,6 +85,14 @@ Page({
   sendSmsCode(e) {
     let _this = this;
 
+    if (!_this.data.mobile) {
+      wx.showToast({
+        title: '请输入手机号',
+        icon: 'none'
+      });
+      return true;
+    }
+
     _post(urls.get_smscode_url
       , {
         appId: config.app_id,
@@ -93,17 +103,39 @@ Page({
       }
       , function (result) {
         console.log(result);
-        _this.setData({uuid: result.data.uuid});
-        wx.showToast({
-          title: '验证码发送成功',
-        })
+
+        if (result.data && result.data.uuid) {
+          _this.setData({uuid: result.data.uuid});
+          wx.showToast({
+            title: '验证码发送成功',
+          });
+
+          _this.timing();
+        }
       }
       , false
       , false);
 
   },
 
+  timing() {
+    let _this = this;
+    let seconds = 60;
+    _this.setData({ btnDisabled: true });
+    setInterval(() => {
+      seconds--;
+      
+      if(seconds <= 0) {
+        _this.setData({ btnText: "发送验证码", btnDisabled: false});
+      }
+      else {
+        _this.setData({ btnText: seconds+"秒" });
+      }
+    }, 1000);
+  },
+
   submit(e) {
+    console.log(e);
     let _this = this;
 
     _post(urls.bind_mobile_url
