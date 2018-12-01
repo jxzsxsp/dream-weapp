@@ -3,8 +3,8 @@
   <van-cell-group>
 
     <van-cell 
-    title="验布单号"
-    value="{{orderDetail.orderNo}}"
+    title="唯一码"
+    value="{{rollCode}}"
     border="{{ false }}"
     />
 
