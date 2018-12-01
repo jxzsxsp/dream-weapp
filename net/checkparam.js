@@ -7,6 +7,7 @@ function showToast (hint) {
 
 /**
  * 检查参数是否存在
+ * null,undefined,空字符串，-1 都表示不存在
  *
  * @export
  * @param {Object} param 参数对象
@@ -20,7 +21,7 @@ function showToast (hint) {
 export default function (param, check) {
   for (const key in param) {
     if (!check[key].type) {
-      if (!param[key]) {
+      if ((!param[key] && param[key] !== 0) || param[key] === -1) {
         showToast(check[key].hint)
         return false
       }

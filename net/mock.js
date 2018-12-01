@@ -510,8 +510,11 @@ const address = {
   ]}
 }
  
-const defaultAddress = {
-  [urls.defaultAddress]: {
+const update= {
+  [urls.addressUpdate]: {
+
+  },
+  [urls.addressAdd]: {
 
   }
 }
@@ -523,5 +526,6 @@ export default {
   ...calc,
   ...submit,
   ...address,
-  ...defaultAddress,
+  ...update,
+
 }
