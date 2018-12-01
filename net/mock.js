@@ -11,31 +11,31 @@ const homeInfo = {
     items: [
       {
         id: 1,
-        title: "高级检验",
-        desc: "基础检验 电子报告 色差对比 疵点图片 疵点位置 代发货 ",
+        name: "高级检验",
+        item: "基础检验 电子报告 色差对比 疵点图片 疵点位置 代发货 ",
         price: "0.45-0.50 元/米",
-        image: "/assets/image/img_gjjy.png"
+        image: "http://img.lianshang.cn/mini-somersault/home/img_gjjy.png"
       },
       {
         id: 2,
-        title: "中级检验",
-        desc: "基础检验 纸质报告 色差对比 疵点图片 代发货 ",
+        name: "中级检验",
+        item: "基础检验 纸质报告 色差对比 疵点图片 代发货 ",
         price: "0.3 元/米",
-        image: "/assets/image/img_zjjy.png"
+        image: "http://img.lianshang.cn/mini-somersault/home/img_zjjy.png"
       },
       {
         id: 3,
-        title: "基础检验",
-        desc: "基础检验 手写报告 打卷 包装 ",
+        name: "基础检验",
+        item: "基础检验 手写报告 打卷 包装 ",
         price: "0.2 元/米",
-        image: "/assets/image/img_jcjy.png"
+        image: "http://img.lianshang.cn/mini-somersault/home/img_jcjy.png"
       },
       {
         id: 4,
-        title: "打卷/自检",
-        desc: "基础检验 打卷 包装",
+        name: "打卷/自检",
+        item: "基础检验 打卷 包装",
         price: "0.1 元/米",
-        image: "/assets/image/img_djzj.png"
+        image: "http://img.lianshang.cn/mini-somersault/home/img_djzj.png"
       }
     ]
   }

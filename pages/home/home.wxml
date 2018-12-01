@@ -23,10 +23,10 @@
       <view class="item-container flex">
         <view class="content">
           <view class="head flex">
-            <view class="title">{{item.title}}</view>
+            <view class="title">{{item.name}}</view>
             <view class="price">{{item.price}}</view>
           </view>
-          <view class="desc">{{item.desc}}</view>
+          <view class="desc">{{item.item}}</view>
           <view class="button flex" data-id="{{item.id}}" bind:tap="goPlaceOrder">去验布</view>
         </view>
 
