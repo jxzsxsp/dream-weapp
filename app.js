@@ -3,7 +3,7 @@ import {$wx, $Page} from './genji4mp/index'
 App({
   onLaunch: function () {
     $Page.mixinLifeCycle({onLoad: function () {
-      console.log('陈宫啦')
+      console.log('注入成功')
     }})
     $wx.registerRouter(router)
   },
