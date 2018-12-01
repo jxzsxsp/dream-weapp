@@ -35,8 +35,8 @@ const viewAction = {
   },
   // 编辑地址
   editAddress: function (d) {
-    // $wx.navigateTo($wx.router.addressAdd, this.data.addressList[d.index])
-    $wx.navigateTo($wx.router.addressAdd)
+    $wx.navigateTo($wx.router.addressAdd, this.data.addressList[d.index])
+    // $wx.navigateTo($wx.router.addressAdd)
   },
   // 设置默认地址
   setDefaultAddress: function (d) {
