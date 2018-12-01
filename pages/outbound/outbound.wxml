@@ -30,7 +30,7 @@
 
     <van-cell 
     title="面料类型"
-    value="{{orderDetail.customerFabricTypeName}}"
+    value="{{orderDetail.bossFabricTypeName}}"
     border="{{ false }}"
     />
 
@@ -84,7 +84,7 @@
     </view>
     <view wx:for="{{ orderRoll }}" wx:key="index" class="content-text">
       <text>{{ item.rollCode }}</text>
-      <text class="right-text">{{ item.fabricMix }}</text>
+      <text class="right-text">{{ item.fabricMeters || 0 }}米/{{ item.fabricWeight || 0 }}公斤</text>
     </view>
   </view>
 </cloth-block>

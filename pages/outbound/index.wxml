@@ -21,7 +21,7 @@
       </view>
       <text class="content-text">客户名称：{{item.customerName}}</text>
       <text class="content-text">联系方式：{{item.customerMobile}}</text>
-      <view class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</view>
+      <view class="content-text">总卷数：<text class="num-text">{{item.bossFabricVolumes}}</text> 卷</view>
       <text class="content-text">已入库卷数：{{item.bossFabricVolumesReadyComplete}} 卷</text>
     </view>
     <navigator url='/pages/outbound/outbound?orderNo={{item.orderNo}}'>

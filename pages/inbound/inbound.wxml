@@ -139,7 +139,7 @@
       title="本次入库卷数"
       required
     >
-      <input value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' bindinput="changeBossFabricVolumesIn" />
+      <input type="number" value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' bindinput="changeBossFabricVolumesIn" />
     </van-cell>
   
     <van-cell
@@ -156,7 +156,7 @@
       arrow-direction="down"
     >
     <view class="price">
-      <input value='{{productPrice}}' placeholder='请输入价格' bindinput="changeProductPrice" /><text bind:tap="toggleProductPriceUnit">元/{{productPriceUnit}}</text>
+      <input type="digit" value='{{productPrice}}' placeholder='请输入价格' bindinput="changeProductPrice" /><text bind:tap="toggleProductPriceUnit">元/{{productPriceUnit}}</text>
       </view>
     </van-cell>
 

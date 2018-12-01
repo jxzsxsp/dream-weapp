@@ -51,8 +51,8 @@
           <text class="content-text">验布单号：{{item.orderNo}}</text>
           <text class="content-text">客户名称：{{item.customerName}}</text>
           <text class="content-text">联系方式：{{item.customerMobile}}</text>
-          <text class="content-text">总卷数：<text class="num-text">{{item.customerFabricVolumes}}</text> 卷</text>
-          <text class="content-text">已入库卷数：{{item.bossFabricVolumes}} 卷</text>
+          <text class="content-text">总卷数：<text class="num-text">{{item.bossFabricVolumes}}</text> 卷</text>
+          <text class="content-text">已入库卷数：{{item.bossFabricVolumesReadyIn}} 卷</text>
           <text class="content-text">下单时间：{{item.createTime}}</text>
         </view>
         <navigator url="/pages/inbound/detail?orderNo={{item.orderNo}}">

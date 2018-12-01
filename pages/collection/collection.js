@@ -72,7 +72,7 @@ Page({
   getInitData: function (callback) {
     let _this = this;
 
-    _post(urls.output_init_url,
+    _post(urls.receipt_init_url,
       {
         orderNo: _this.data.orderNo
       },

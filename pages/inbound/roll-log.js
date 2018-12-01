@@ -150,7 +150,7 @@ Page({
         let steps = _this.data.steps;
         let data = result.data;
         _this.setData(data);
-        steps = steps.concat(data.logList.list);
+        steps = steps.concat(data.logList);
         _this.setData({ steps: steps });
       },
       false,
