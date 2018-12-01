@@ -11,6 +11,8 @@ Page({
     showFabricType: false,
     showClothType: false,
     showLogisticsType: false,
+    showProductPriceUnit: false,
+    productPriceUnit: "米",
     mock: {
       "showBtn": {
         "reject": true,  //是否可以驳回
@@ -146,6 +148,10 @@ Page({
   inbound: function (callback) {
     let _this = this;
 
+    if (_this.checkParams()) {
+      return false;
+    }
+
     _post(urls.input_url,
       {
         orderNo: _this.data.orderNo,
@@ -186,6 +192,54 @@ Page({
     })
   },
 
+  checkParams() {
+    let bossPickUpType = this.data.bossPickUpType;
+    let bossClothType = this.data.bossClothType;
+    let bossFabricVolumes = this.data.bossFabricVolumes;
+    let bossFabricVolumesIn = this.data.bossFabricVolumesIn;
+    let bossFabricType = this.data.bossFabricType;
+
+    if (!bossFabricType || bossFabricType <= 0) {
+      wx.showToast({
+        title: '请选择面料类型',
+        icon: 'none',
+      });
+      return true;
+    }
+
+    if (!bossClothType || bossClothType <= 0) {
+      wx.showToast({
+        title: '请选择验布方式',
+        icon: 'none',
+      });
+      return true;
+    }
+
+    if (!bossFabricVolumes || bossFabricVolumes <= 0) {
+      wx.showToast({
+        title: '请输入验布卷数',
+        icon: 'none',
+      });
+      return true;
+    }
+
+    if (!bossPickUpType || bossPickUpType <= 0) {
+      wx.showToast({
+        title: '请选择取货方式',
+        icon: 'none',
+      });
+      return true;
+    }
+
+    if (!bossFabricVolumesIn || bossFabricVolumesIn <= 0 || bossFabricVolumesIn == '') {
+      wx.showToast({
+        title: '请输入本次入库卷数',
+        icon: 'none',
+      });
+      return true;
+    }
+  },
+
   getInitData: function (callback) {
     let _this = this;
 
@@ -223,6 +277,10 @@ Page({
     this.toggle('showLogisticsType');
   },
 
+  toggleProductPriceUnit() {
+    this.toggle('showProductPriceUnit');
+  },
+
   selectFabricType(e) {
     this.setData({
       bossFabricType: e.detail.id,
@@ -233,8 +291,9 @@ Page({
 
   selectClothType(e) {
     this.setData({
-        bossClothType: e.detail.id,
-        bossClothTypeName: e.detail.name
+      bossClothType: e.detail.id,
+      bossClothTypeName: e.detail.name,
+      bossClothTypeNameItem: e.detail.item,
     })
     this.toggleClothType();
   },
@@ -247,10 +306,30 @@ Page({
     this.toggleLogisticsType();
   },
 
+  selectProductPriceUnit(e) {
+    console.log(e);
+    this.setData({
+      productPriceUnit: e.detail.name,
+    })
+    this.toggleProductPriceUnit();
+  },
+
   changeBossFabricVolumes(e) {
     this.setData({
       bossFabricVolumes: e.detail
     })
-  }
+  },
+
+  changeBossFabricVolumesIn(e) {
+    this.setData({
+      bossFabricVolumesIn: e.detail.value
+    })
+  },
+
+  changeProductPrice(e) {
+    this.setData({
+      productPrice: e.detail.value
+    })
+  },
 
 })

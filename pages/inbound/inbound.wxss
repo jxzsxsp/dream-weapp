@@ -85,3 +85,17 @@
 .bottom-line {
   height: 30rpx;
 }
+
+.price {
+  display: flex;
+  flex-direction: row;
+}
+
+.price text {
+  margin-left: 30rpx;
+  width: 250rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

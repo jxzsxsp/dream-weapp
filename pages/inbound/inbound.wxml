@@ -77,17 +77,10 @@
 
 <cloth-block title="实际信息">
   <van-cell-group>
-  
-    <van-cell
-      title="品名"
-      is-link
-      arrow-direction="down"
-      value="{{productName}}"
-      url="/pages/productname/index"
-    />
 
     <van-cell
       title="面料类型"
+      required
       is-link
       arrow-direction="down"
       value="{{bossFabricTypeName}}"
@@ -97,6 +90,7 @@
 
     <van-cell
       title="验布方式"
+      required
       is-link
       arrow-direction="down"
       value="{{bossClothTypeName}}"
@@ -118,6 +112,7 @@
 
     <van-cell
       title="验布卷数"
+      required
     >
       <view class="right">
         <van-stepper value="{{bossFabricVolumes}}" 
@@ -127,6 +122,7 @@
 
     <van-cell
       title="取货方式"
+      required
       is-link
       arrow-direction="down"
       value="{{bossPickUpTypeName}}"
@@ -141,8 +137,27 @@
 
     <van-cell
       title="本次入库卷数"
+      required
     >
-      <input value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' />
+      <input value='{{bossFabricVolumesIn}}' placeholder='请输入卷数' bindinput="changeBossFabricVolumesIn" />
+    </van-cell>
+  
+    <van-cell
+      title="品名"
+      is-link
+      arrow-direction="down"
+      value="{{productName}}"
+      url="/pages/productname/index"
+    />
+
+    <van-cell
+      title="买入价格"
+      is-link
+      arrow-direction="down"
+    >
+    <view class="price">
+      <input value='{{productPrice}}' placeholder='请输入价格' bindinput="changeProductPrice" /><text bind:tap="toggleProductPriceUnit">元/{{productPriceUnit}}</text>
+      </view>
     </van-cell>
 
   </van-cell-group>
@@ -172,6 +187,15 @@
     bind:close="toggleLogisticsType"
     bind:cancel="toggleLogisticsType"
     bind:select="selectLogisticsType"
+  />
+
+  <van-action-sheet
+    show="{{ showProductPriceUnit }}"
+    actions="{{ priceUnitList }}"
+    cancel-text="取消"
+    bind:close="toggleProductPriceUnit"
+    bind:cancel="toggleProductPriceUnit"
+    bind:select="selectProductPriceUnit"
   />
 </cloth-block>
 
