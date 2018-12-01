@@ -83,7 +83,7 @@
 }
 
 .bottom-line {
-  height: 100rpx;
+  height: 130rpx;
 }
 
 .price {

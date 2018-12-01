@@ -71,13 +71,14 @@
 }
 
 .bottom-line {
-  height: 50rpx;
+  height: 130rpx;
 }
 
 .check-item {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .item {

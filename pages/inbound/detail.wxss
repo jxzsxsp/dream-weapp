@@ -49,8 +49,7 @@
 }
 
 .bottom-line {
-  height: 30rpx;
-  background: #FFFFFF;
+  height: 130rpx;
 }
 
 .line {
@@ -65,6 +64,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .item {
