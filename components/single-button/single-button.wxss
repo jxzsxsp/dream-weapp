@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-bottom: -20rpx;
 }
 
 .selected-view {
-  height: 60rpx;
-  width: 120rpx;
+  height:50rpx;
+  width: 110rpx;
   border: 2rpx solid #BB2830;
   border-radius: 30rpx;
   justify-content: center;
@@ -15,6 +17,7 @@
   flex-direction: center;
   margin-left: 10rpx;
   margin-right: 10rpx;
+  margin-bottom: 20rpx;
 }
 
 .selected-text {
@@ -28,14 +31,15 @@
 .unselected-view {
   margin-left: 10rpx;
   margin-right: 10rpx;
-  height: 60rpx;
-  width: 120rpx;
+  height: 50rpx;
+  width: 110rpx;
   border: 2rpx solid #9B9B9B;
   border-radius: 30rpx;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: center;
+  margin-bottom: 20rpx;
 }
 
 .unselected-text {

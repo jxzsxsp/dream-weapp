@@ -2,23 +2,59 @@
   <form-group class="normal-text">
     <form-cell>
       <text slot="left">联系人</text>
-      <input slot="right" bind:blur="finishInput" placeholder="请输入" data-type="contacts" class="input"/>
+      <input 
+        slot="right" 
+        bind:blur="finishInput" 
+        placeholder="请输入" 
+        data-type="contacts" 
+        class="input" 
+        value="{{contacts}}"
+      />
     </form-cell>
     <form-cell>
       <text slot="left">联系方式</text>
-      <input slot="right" bind:blur="finishInput" placeholder="请输入" type="number" data-type="mobile" class="input" />
+      <input 
+        slot="right"
+        value="{{}}"
+        bind:blur="finishInput" 
+        placeholder="请输入" 
+        type="number" 
+        data-type="mobile" 
+        class="input" 
+        value="{{contactMobile}}"
+      />
     </form-cell>
-    <form-cell has-detail bind:formclick="selectDistrict">
+    <form-cell has-detail>
       <text slot="left">所在区域</text>
+      <picker slot="right" mode="region" bindchange="changeRegion" value="{{region}}">
+        <text class="placeholder" wx:if="{{!region.length}}">请选择收货地址所在区域</text>
+        <text wx:else>{{region[0]}} {{region[1]}} {{region[2]}}</text>
+      </picker>
       <text slot="right"></text>
     </form-cell>
     <form-cell>
       <text slot="left">详细地址</text>
-      <input slot="right" bind:blur="finishInput" placeholder="请输入收货详细地址" class="input" data-type="detailAddress"/>
+      <input
+        slot="right" 
+        bind:blur="finishInput" 
+        placeholder="请输入收货详细地址" 
+        class="input" 
+        data-type="detailAddress"
+        value="{{address}}"
+      />
+    </form-cell>
+    <form-cell>
+      <text slot="left">地址类型</text>
+      <view slot="right" class="single-button-container">
+        <single-button 
+          datas="{{addressTypeList}}"  
+          defaultSelectedId="{{addressType}}" bind:clickcallback="selectAddressType"/> 
+      </view>
     </form-cell>
     <form-cell isLast>
       <text slot="left">默认地址</text>
       <switch class="switch" slot="right" checked="{{defaultAddress}}" color="#BB2830" bind:change="switchChange"/>
     </form-cell>
   </form-group>
+  <button class="confirm-button" bind:tap="submit"> 确定 </button>
 </view>

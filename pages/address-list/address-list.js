@@ -4,7 +4,6 @@ import { http, urls } from '../../net/index';
 const CHECKADDRESS = 1
 
 const props = {
-  loadStatus: http.defaultLoadingState(100),
   comeFrom: 0
 }
 
@@ -15,8 +14,9 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     this.props.comeFrom = query.comeFrom
-    http.getList(urls.addressList, this.props.loadStatus, {mock: true}).then(res => {
-      console.log(res)
+  },
+  onShow: function () {
+    http.getList(urls.addressList, http.defaultLoadingState(100), {mock: true}).then(res => {
       this.setData({
         addressList: res
       })
@@ -35,7 +35,10 @@ const viewAction = {
   },
   // 编辑地址
   editAddress: function (d) {
-    // $wx.navigateTo($wx.router.addressAdd, this.data.addressList[d.index])
+    $wx.navigateTo($wx.router.addressAdd, this.data.addressList[d.index])
+    // $wx.navigateTo($wx.router.addressAdd)
+  },
+  addAddress: function () {
     $wx.navigateTo($wx.router.addressAdd)
   },
   // 设置默认地址

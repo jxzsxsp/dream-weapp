@@ -429,6 +429,10 @@ const address = {
       "detailAddress":"上海市静安区沪太路1111号1号楼链尚国际大楼11层",//收货地址
       "addressType":10, //地址类型 10-仓库 20-门店 30-公司 40-工厂 99-其他
       "addressTypeName":"仓库", //地址类型
+      "address": "沪太路1111号1号楼链尚国际大楼11层",
+      "provinceName": "上海市",
+      "cityName": "上海市",
+      "districtName": "静安区",
       "default":true
  },
  {
@@ -506,9 +510,25 @@ const address = {
   ]}
 }
  
-const defaultAddress = {
-  [urls.defaultAddress]: {
+const update= {
+  [urls.addressUpdate]: {
 
+  },
+  [urls.addressAdd]: {
+
+  },
+  [urls.addressDetail]: {
+    "contacts":" ", //联系人姓名
+    "contactMobile":"15021825356",//联系电话
+    "provinceId":11,
+    "provinceName":"",
+    "cityId":11,
+    "cityName":"",
+    "districtId":11,
+    "districtName":"",
+    "address":"",
+    "addressType":10,//10-仓库 20-门店 30-公司 40-工厂 99-其他
+    "defaultAddress":true
   }
 }
 
@@ -519,5 +539,6 @@ export default {
   ...calc,
   ...submit,
   ...address,
-  ...defaultAddress,
+  ...update,
+
 }

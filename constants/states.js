@@ -13,11 +13,20 @@ export default {
     ALL_ORDER: 0 // 全部
   },
   // 地址类型
-  ADDRESS_TYPE: {
-    REPERTORY: 10, // 仓库
-    STORE: 20, // 门店
-    COMPANY: 30, // 公司
-    FACTORY: 40, // 工厂
-    OTHERS: 99, // 其他
-  }
+  ADDRESS_TYPE: [{
+    name: '仓库',
+    id: 10
+  }, {
+    name: '门店',
+    id: 20
+  }, {
+    name: '公司',
+    id: 30
+  }, {
+    name: '工厂',
+    id: 40
+  }, {
+    name: '其他',
+    id: 99
+  }]
 }

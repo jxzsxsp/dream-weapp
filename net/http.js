@@ -181,7 +181,10 @@ class Http {
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
-        resolve(mock[mockUrl] || {})
+        console.log('----mock请求-------url 为-----'+ url)
+        let res = {...mock[mockUrl], requestParam: data} || {}
+        console.log(res)
+        resolve(res)
       })
     }
 
@@ -226,7 +229,7 @@ class Http {
             }
 
             resolve(resData)
-          } else if (res.data.code === 100) {
+          } else if (res.data.code === -100) {
             // 没有token，重新登录
             this.quietLogin().then(res => {
               if (!!res.token) {
