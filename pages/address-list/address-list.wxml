@@ -34,7 +34,7 @@
   <view class="placeholder"></view>
 
   <view class="add-address-container">
-    <button class="add-address-button">+ 新建收货地址</button>
+    <button class="add-address-button" bind:tap="addAddress">+ 新建收货地址</button>
   </view>
 
 </view>

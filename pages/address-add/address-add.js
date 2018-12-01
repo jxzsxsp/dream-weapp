@@ -1,10 +1,14 @@
 import { $Page, $wx } from '../../genji4mp/index'
 import constants  from '../../constants/index'
 import utils from '../../utils/index'
+import { http, urls } from '../../net/index';
+
+const props = {
+  // 如果是修改，保存收货地址的id
+  id: -1,
+}
 
 const data = {
-  // 地址id
-  id: 0,
   // 联系人姓名
   contacts: '',
   // 手机号
@@ -16,7 +20,7 @@ const data = {
   // 地址类型列表
   addressTypeList: constants.ADDRESS_TYPE,
   // 地址类型
-  addressType: 0,
+  addressType: -1,
   // 是否是默认地址
   defaultAddress: false,
 }
@@ -25,10 +29,9 @@ const lifeCycle = {
   onLoad: function (query) {
     // 修改地址
     if (!utils.isEmptyObject(query)) {
-      console.log(query)
       $wx.setNavigationBarTitle({title: '修改地址'})
+      this.props.id = query.id
       this.setData({
-        id: parseInt(query.id),
         contacts: query.contacts,
         contactMobile: query.contactMobile,
         region: [query.provinceName, query.cityName, query.districtName],
@@ -69,10 +72,34 @@ const viewAction = {
   switchChange (d, v) {
     this.setData({defaultAddress: v})
   },
+  // 提交
+  submit () {
+    let data = this.data
+    let param = {
+      contacts: {value: data.contacts, hint: '联系人'},
+      contactMobile: {value: data.contactMobile, hint: '联系方式'},
+      provinceName: {value: data.region[0], hint: '省市区'},
+      cityName: {value: data.region[1], hint: '省市区'},
+      districtName: {value: data.region[2], hint: '省市区'},
+      address: {value: data.address, hint: '详细地址'},
+      addressType: {value: data.addressType, hint: '地址类型'},
+      defaultAddress: data.defaultAddress,
+      mock: true
+    }
+    let result = null
+    if (this.props.id !== -1) {
+      result = http.post(urls.addressUpdate, {...param, id: this.props.id})
+    } else {
+      result = http.post(urls.addressAdd, param)
+    }
+    result.then(() => {
+      $wx.navigateBack()
+    })
+  }
 }
 
 const privateMethod = {
 
 }
 
-$Page.register(null, data, lifeCycle, privateMethod, viewAction)
+$Page.register(props, data, lifeCycle, privateMethod, viewAction)
