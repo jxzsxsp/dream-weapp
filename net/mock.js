@@ -516,6 +516,19 @@ const update= {
   },
   [urls.addressAdd]: {
 
+  },
+  [urls.addressDetail]: {
+    "contacts":" ", //联系人姓名
+    "contactMobile":"15021825356",//联系电话
+    "provinceId":11,
+    "provinceName":"",
+    "cityId":11,
+    "cityName":"",
+    "districtId":11,
+    "districtName":"",
+    "address":"",
+    "addressType":10,//10-仓库 20-门店 30-公司 40-工厂 99-其他
+    "defaultAddress":true
   }
 }
 

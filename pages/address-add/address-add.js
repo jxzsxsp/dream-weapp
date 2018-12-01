@@ -31,14 +31,18 @@ const lifeCycle = {
     if (!utils.isEmptyObject(query)) {
       $wx.setNavigationBarTitle({title: '修改地址'})
       this.props.id = query.id
-      this.setData({
-        contacts: query.contacts,
-        contactMobile: query.contactMobile,
-        region: [query.provinceName, query.cityName, query.districtName],
-        address: query.address,
-        addressType: parseInt(query.addressType),
-        defaultAddress: query.default
-      })
+      http.post(urls.addressDetail, {id: query.id, mock: true})
+        .then(res => {
+          this.setData({
+            contacts: res.contacts,
+            contactMobile: res.contactMobile,
+            region: [res.provinceName, res.cityName, res.districtName],
+            address: res.address,
+            addressType: parseInt(res.addressType),
+            defaultAddress: res.defaultAddress
+          })
+        })
+
     } 
   }
 }
