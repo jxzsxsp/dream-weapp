@@ -1,0 +1,14 @@
+.normal-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.input {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: right;
+}

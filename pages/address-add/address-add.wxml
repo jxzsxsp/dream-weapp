@@ -2,19 +2,23 @@
   <form-group class="normal-text">
     <form-cell>
       <text slot="left">联系人</text>
-      <input bind:blur="finishInput" placeholder="请输入" data-type="" class="input"/>
+      <input slot="right" bind:blur="finishInput" placeholder="请输入" data-type="contacts" class="input"/>
     </form-cell>
     <form-cell>
       <text slot="left">联系方式</text>
-      <input bind:blur="finishInput" placeholder="请输入" type="number" class="input"/>
+      <input slot="right" bind:blur="finishInput" placeholder="请输入" type="number" data-type="mobile" class="input" />
     </form-cell>
     <form-cell has-detail bind:formclick="selectDistrict">
       <text slot="left">所在区域</text>
-      <text ></text>
+      <text slot="right"></text>
     </form-cell>
     <form-cell>
       <text slot="left">详细地址</text>
-      <input bind:blur="finishInput" placeholder="请输入收货详细地址" class="input"/>
+      <input slot="right" bind:blur="finishInput" placeholder="请输入收货详细地址" class="input" data-type="detailAddress"/>
+    </form-cell>
+    <form-cell isLast>
+      <text slot="left">默认地址</text>
+      <switch class="switch" slot="right" checked="{{defaultAddress}}" color="#BB2830" bind:change="switchChange"/>
     </form-cell>
   </form-group>
 </view>
