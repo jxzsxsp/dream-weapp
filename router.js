@@ -2,6 +2,8 @@
 export default {
   orderList: 'order-list',
   orderDetail: 'order-detail',
+  payPlatform: 'pay-platform',
+  paySuccess: 'pay-success',
   placeOrder: 'place-order',
   buyerMessage: 'buyer-message',
   orderSuccess: 'order-success',

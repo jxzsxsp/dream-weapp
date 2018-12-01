@@ -274,3 +274,23 @@ page {
 .red {
   background: #D0021B;
 }
+
+.bottom-content {
+  width: 750rpx;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+}
+
+.tips {
+  height: 66rpx;
+  background: #FBF6D8;
+  padding-left: 30rpx;
+}
+
+.tips-text {
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #F57623;
+  letter-spacing: 0;
+}

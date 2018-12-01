@@ -43,6 +43,7 @@ const viewAction = {
    */
   goPay: function (d, v) {
     console.log(d, v, this.data.orderNo);
+    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.orderNo })
   },
   /**
    * 去付款

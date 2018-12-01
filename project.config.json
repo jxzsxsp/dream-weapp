@@ -73,6 +73,17 @@
 					"name": "新增地址",
 					"pathName": "pages/address-add/address-add",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收银台",
+					"pathName": "pages/pay-platform/pay-platform",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付成功",
+					"pathName": "pages/pay-success/pay-success"
 				}
 			]
 		}

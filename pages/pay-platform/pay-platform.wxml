@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="item-content flex" data-type="weixin" bind:tap="onSelectPay">
+    <view class="iconfont icon-ic_weixin logo weixin" />
+    <text class="title">微信支付</text>
+    <view wx:if="{{weixin}}" class="iconfont icon-ic_been_done radio active" />
+    <view wx:if="{{!weixin}}" class="iconfont icon-ic_been_done radio" />
+  </view>
+
+  <view class="line" />
+
+  <view class="item-content flex" data-type="daifu" bind:tap="onSelectPay">
+    <view class="iconfont icon-ic_daifu logo daifu" />
+    <text class="title">替我支付</text>
+    <view wx:if="{{daifu}}" class="iconfont icon-ic_been_done radio active" />
+    <view wx:if="{{!daifu}}" class="iconfont icon-ic_been_done radio" />
+  </view>
+</view>
+
+<view class="bottom-content flex">
+  <view class="price-container flex">
+    支付金额：
+    <text class="price">¥ 99.00</text>
+  </view>
+  <view class="btn flex" bind:tap="pay">支付</view>
+</view>

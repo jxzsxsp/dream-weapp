@@ -1,0 +1,8 @@
+<view class="container flex-column">
+  <view class="image">
+    <image src="/assets/image/pay-success.png" />
+  </view>
+
+  <view class="title">支付成功</view>
+  <view class="desc">实付 ¥ {{fee}}</view>
+</view>

@@ -8,7 +8,9 @@
     "pages/buyer-message/buyer-message",
     "pages/order-success/order-success",
     "pages/address-list/address-list",
-    "pages/address-add/address-add"
+    "pages/address-add/address-add",
+    "pages/pay-platform/pay-platform",
+    "pages/pay-success/pay-success"
   ],
   "window": {
     "backgroundTextStyle": "light",

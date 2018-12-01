@@ -103,13 +103,19 @@
 
 </view>
 
-<view class="line"></view>
+<view wx:for="1111111111" wx:key="index" class="line"></view>
 
-<view class="btn-group">
-  <view wx:if="{{showBtn.cancel}}" class="btn" bind:tap="cancelOrder">取消验布</view>
-  <view wx:if="{{showBtn.report}}" class="btn" bind:tap="viewReport">验布报告</view>
-  <view wx:if="{{showBtn.viewEvaluate}}" class="btn" bind:tap="">查看评价</view>
-  <view wx:if="{{showBtn.toEvaluate}}" class="btn btn-active" bind:tap="">评价</view>
-  <view wx:if="{{showBtn.confirmReceive}}" class="btn btn-active" bind:tap="confirmReceive">确认收货</view>
-  <view wx:if="{{showBtn.pay}}" class="btn go-pay" bind:tap="goPay">去付款</view>
+<view class="bottom-content">
+  <view class="tips">
+    <text class="tips-text">针织面料以实际测量公斤和门幅结果，计算最终价格。</text>
+  </view>
+
+  <view class="btn-group">
+    <view wx:if="{{showBtn.cancel}}" class="btn" bind:tap="cancelOrder">取消验布</view>
+    <view wx:if="{{showBtn.report}}" class="btn" bind:tap="viewReport">验布报告</view>
+    <view wx:if="{{showBtn.viewEvaluate}}" class="btn" bind:tap="">查看评价</view>
+    <view wx:if="{{showBtn.toEvaluate}}" class="btn btn-active" bind:tap="">评价</view>
+    <view wx:if="{{showBtn.confirmReceive}}" class="btn btn-active" bind:tap="confirmReceive">确认收货</view>
+    <view wx:if="{{showBtn.pay}}" class="btn go-pay" bind:tap="goPay">去付款</view>
+  </view>
 </view>
