@@ -25,6 +25,7 @@ const lifecycle = {
 }
 
 const viewAction = {
+  // 选中地址
   onSelectAddress: function (d) {
     // 查看地址不做响应
     if (this.props.comeFrom === CHECKADDRESS) {
@@ -33,8 +34,9 @@ const viewAction = {
     $wx.navigateBack(1, {customerDetail: this.data.addressList[d.index]})
   },
   // 编辑地址
-  editAddress: function (d, v) {
-    $wx.navigateTo($wx.router.addressAdd, this.data.addressList[v.index])
+  editAddress: function (d) {
+    // $wx.navigateTo($wx.router.addressAdd, this.data.addressList[d.index])
+    $wx.navigateTo($wx.router.addressAdd)
   },
   // 设置默认地址
   setDefaultAddress: function (d) {
