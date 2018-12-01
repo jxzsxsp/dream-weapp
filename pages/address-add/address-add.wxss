@@ -6,9 +6,20 @@
 }
 
 .input {
+  text-align: right;
+}
+
+.placeholder {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
-  color: #252525;
+  color: #9B9B9B;
   letter-spacing: 0;
   text-align: right;
+}
+
+.single-button-container {
+  width: 500rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
