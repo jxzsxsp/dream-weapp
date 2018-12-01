@@ -24,7 +24,8 @@
   background: #FFFFFF;
   border: 2rpx solid #E2E2E2;
   border-radius: 6rpx;
-  width: 100rpx;
+  width: 200rpx;
+  height: 48rpx;
 }
 
 .content-head {

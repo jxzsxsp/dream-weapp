@@ -141,7 +141,9 @@ Page({
     let _this = this;
 
     wx.navigateTo({
-      url: '/pages/outbound/logistics?orderNo=' + _this.data.orderNo,
+      url: '/pages/outbound/logistics?orderNo=' + _this.data.orderNo
+        + '&customerName=' + _this.data.customerName
+        + '&customerMobile=' + _this.data.customerMobile,
     })
   },
 

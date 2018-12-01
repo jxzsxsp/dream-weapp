@@ -19,7 +19,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ orderNo: options.orderNo });
+    this.setData({
+      orderNo: options.orderNo,
+      customerName: options.customerName,
+      customerMobile: options.customerMobile,
+    });
   },
 
   /**
@@ -102,16 +106,43 @@ Page({
     this.setData({memo: e.detail});
   },
 
+  checkParams() {
+    let logisticsCompany = this.data.logisticsCompany;
+    let logisticsNo = this.data.logisticsNo;
+
+    if (!logisticsCompany) {
+      wx.showToast({
+        title: '请输入物流公司',
+        icon: 'none',
+      });
+      return true;
+    }
+
+    if (!logisticsNo) {
+      wx.showToast({
+        title: '请输入物流单号',
+        icon: 'none',
+      });
+      return true;
+    }
+
+    return false;
+  },
+
   outBound() {
     let _this = this;
+
+    if (_this.checkParams()) {
+      return false;
+    }
 
     _post(urls.output_url,
       {
         orderNo: _this.data.orderNo,
         logisticsCompanyName: _this.data.logisticsCompany,
         logisticsSn: _this.data.logisticsNo,
-        contactName: _this.data.username,
-        contactMobile: _this.data.mobile,
+        //contactName: _this.data.username,
+        //contactMobile: _this.data.mobile,
         memo: _this.data.memo
       },
       function (result) {

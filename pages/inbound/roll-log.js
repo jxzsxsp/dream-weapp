@@ -126,7 +126,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.getLogList();
+    if (this.data.logList.hasMore) {
+      let pageId = this.data.pageId + 1;
+      this.setData({ pageId: pageId });
+      this.getLogList();
+    }
   },
 
   /**
@@ -150,7 +154,7 @@ Page({
         let steps = _this.data.steps;
         let data = result.data;
         _this.setData(data);
-        steps = steps.concat(data.logList);
+        steps = steps.concat(data.logList.list || data.logList);
         _this.setData({ steps: steps });
       },
       false,

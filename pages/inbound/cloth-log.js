@@ -126,7 +126,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if (this.logList.hasMore) {
+    if (this.data.logList.hasMore) {
+      let pageId = this.data.pageId + 1;
+      this.setData({ pageId: pageId });
       this.getLogList();
     }
   },

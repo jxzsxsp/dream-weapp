@@ -1,7 +1,7 @@
 <cloth-block>
   <van-search
     value="{{ keyword }}"
-    placeholder="验布单号/客户名称/联系方式"
+    placeholder="验布单号/客户名称/联系方式/唯一码"
     use-action-slot
     bind:change="onSearchChange"
     bind:search="onSearch"
@@ -22,7 +22,7 @@
       <text class="content-text">客户名称：{{item.customerName}}</text>
       <text class="content-text">联系方式：{{item.customerMobile}}</text>
       <view class="content-text">总卷数：<text class="num-text">{{item.bossFabricVolumes}}</text> 卷</view>
-      <text class="content-text">已入库卷数：{{item.bossFabricVolumesReadyComplete}} 卷</text>
+      <text class="content-text">验布完成卷数：{{item.bossFabricVolumesReadyComplete}} 卷</text>
     </view>
     <navigator url='/pages/outbound/outbound?orderNo={{item.orderNo}}'>
       <view class="content-btn">

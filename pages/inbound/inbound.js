@@ -238,6 +238,8 @@ Page({
       });
       return true;
     }
+
+    return false;
   },
 
   getInitData: function (callback) {

@@ -114,7 +114,7 @@
     border="{{ false }}"
     >
       <view class="right-text">
-        <input type="number" class="amount-text" value="{{fee}}" bind:change="changeFee"></input>
+        <input type="digit" class="amount-text" value="{{fee}}" bind:change="changeFee"></input>
         <text>元</text>
       </view>
     </van-cell>

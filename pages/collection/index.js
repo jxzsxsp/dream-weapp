@@ -87,7 +87,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getDataList();
   },
 
   /**
@@ -101,6 +100,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({ orderList: [] });
+    this.getDataList();
   },
 
   /**
@@ -160,9 +161,12 @@ Page({
     let _this = this;
     wx.scanCode({
       success(res) {
-        _this.setData({
-          keyword: res.result
-        })
+        let arr = res.result.split("/");
+        if (arr.length > 0) {
+          _this.setData({
+            keyword: arr[arr.length - 1],
+          });
+        }
       },
       complete() {
         _this.onSearch();

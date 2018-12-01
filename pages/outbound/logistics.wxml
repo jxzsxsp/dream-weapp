@@ -1,5 +1,13 @@
 <cloth-block>
   <van-cell-group>
+    <van-cell
+      title="联系人"
+      value="{{ customerName }}"
+    />
+    <van-cell
+      title="联系方式"
+      value="{{ customerMobile }}"
+    />
     <van-field
       value="{{ logisticsCompany }}"
       label="物流公司"
@@ -7,22 +15,6 @@
       clearable
       placeholder="请填写物流公司"
       bind:change="changeLogisticsCompany"
-    />
-    <van-field
-      value="{{ username }}"
-      label="联系人"
-      required
-      clearable
-      placeholder="请填写联系人"
-      bind:change="changeUsername"
-    />
-    <van-field
-      value="{{ mobile }}"
-      label="联系方式"
-      required
-      clearable
-      placeholder="请填写物流联系方式"
-      bind:change="changeMobile"
     />
     <van-field
       value="{{ logisticsNo }}"
