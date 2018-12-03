@@ -162,9 +162,13 @@ const viewAction = {
         value: data.selectedCheckType.id,
         hint: '验布类型'
       },
-      customerFabricMeters: {
+      customerFabricLength: {
         value: data.clothLength,
-        hint: '米数'
+        hint: '验布米数'
+      },
+      customerFabricUnit: {
+        value: data.selectedCheckType.unit,
+        hint: '验布类型'
       },
       customerFabricVolumes: {
         value: data.volumeNumber,
