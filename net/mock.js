@@ -6,36 +6,36 @@ const homeInfo = {
       title: "梭织面料打卷/自检",
       statusName: "待入库",
       orderNo: "234987989808",
-      orderTime: "2018.9.8 12:30:36"
+      createTime: "2018-9-8 12:30:36"
     },
     items: [
       {
         id: 1,
         name: "高级检验",
         item: "基础检验 电子报告 色差对比 疵点图片 疵点位置 代发货 ",
-        price: "0.45-0.50 元/米",
-        image: "http://img.lianshang.cn/mini-somersault/home/img_gjjy.png"
+        displayPrice: "0.45-0.50 元/米",
+        imageUrl: "http://img.lianshang.cn/mini-somersault/home/img_gjjy.png"
       },
       {
         id: 2,
         name: "中级检验",
         item: "基础检验 纸质报告 色差对比 疵点图片 代发货 ",
-        price: "0.3 元/米",
-        image: "http://img.lianshang.cn/mini-somersault/home/img_zjjy.png"
+        displayPrice: "0.3 元/米",
+        imageUrl: "http://img.lianshang.cn/mini-somersault/home/img_zjjy.png"
       },
       {
         id: 3,
         name: "基础检验",
         item: "基础检验 手写报告 打卷 包装 ",
-        price: "0.2 元/米",
-        image: "http://img.lianshang.cn/mini-somersault/home/img_jcjy.png"
+        displayPrice: "0.2 元/米",
+        imageUrl: "http://img.lianshang.cn/mini-somersault/home/img_jcjy.png"
       },
       {
         id: 4,
         name: "打卷/自检",
         item: "基础检验 打卷 包装",
-        price: "0.1 元/米",
-        image: "http://img.lianshang.cn/mini-somersault/home/img_djzj.png"
+        displayPrice: "0.1 元/米",
+        imageUrl: "http://img.lianshang.cn/mini-somersault/home/img_djzj.png"
       }
     ]
   }
@@ -344,6 +344,31 @@ const order = {
       "toEvaluate": false,
       "viewEvaluate": false
     }
+  },
+  [urls.viewReport]: {
+    list: [
+    {
+      "rollCode": "818072920110000004", //卷唯一码
+      "color": "蓝色",  //颜色 
+      "lengthAndWeight": "100m/12kg", //数量 描述
+      "innerUrl": "http://img.lianshang.cn/data/user/kela/201812/5/322_1543824928068.png", //内部报告 图片地址 
+      "outerUrl": "http://img.lianshang.cn/data/user/kela/201812/5/322_1543824928068.png" //外部报告 图片地址
+    },
+    {
+      "rollCode": "818072920110000005", //卷唯一码
+      "color": "蓝色",  //颜色 
+      "lengthAndWeight": "100m/12kg", //数量 描述
+      "innerUrl": "", //内部报告 图片地址 
+      "outerUrl": "" //外部报告 图片地址
+    },
+    {
+      "rollCode": "818072920110000006", //卷唯一码
+      "color": "蓝色",  //颜色 
+      "lengthAndWeight": "100m/12kg", //数量 描述
+      "innerUrl": "http://img.lianshang.cn/data/user/kela/201812/5/322_1543824928068.png", //内部报告 图片地址 
+      "outerUrl": "http://img.lianshang.cn/data/user/kela/201812/5/322_1543824928068.png" //外部报告 图片地址
+    }
+  ]
   }
 }
 

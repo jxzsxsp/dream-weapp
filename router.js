@@ -2,6 +2,7 @@
 export default {
   orderList: 'order-list',
   orderDetail: 'order-detail',
+  viewReport: 'view-report',
   payPlatform: 'pay-platform',
   paySuccess: 'pay-success',
   placeOrder: 'place-order',

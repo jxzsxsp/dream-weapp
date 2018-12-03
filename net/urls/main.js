@@ -11,6 +11,8 @@ export default {
   orderList: '/order/list',
   // 订单详情
   orderDetail: '/order/detail',
+  // 订单验布报告
+  viewReport: '/report/report-by-order',
   // 获取地址类型
   addressType: '/customer-address/type-list',
   // 地址列表

@@ -1,0 +1,37 @@
+<swiper current-item-id="{{itemId}}" bindchange="onSwiperChange">
+  <block wx:for="{{reportList}}" wx:key="index">
+    <swiper-item item-id="{{index+1}}">
+      <view class="container flex">
+        <view class="content flex-column">
+          <text>卷唯一码：{{item.rollCode}}</text>
+          <text>数量：{{item.lengthAndWeight}}</text>
+          <text>颜色：{{item.color}}</text>
+        </view>
+        <view class="iconfont icon-logo_jianpin logo"></view>
+      </view>
+      <view class="report-img flex-column">
+      <block wx:if="{{item.outerUrl}}">
+        <image src="{{item.outerUrl}}" 
+        data-url="{{item.outerUrl}}" 
+        mode="aspectFit" 
+        bind:tap="preview" />
+      </block>
+      <block wx:else>
+        <view class="no-report">
+          <image src="/assets/image/img_no_report.png" />
+        </view>
+        <text class="desc">暂无验布报告</text>
+      </block>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="op-btn flex left" bind:tap="left">
+  <view class="iconfont icon-ic_next icon" />
+</view>
+<view class="op-btn flex right" bind:tap="right">
+  <view class="iconfont icon-ic_next icon" />
+</view>
+
+<view class="dots-num flex">{{itemId}}/{{reportList.length}}</view>

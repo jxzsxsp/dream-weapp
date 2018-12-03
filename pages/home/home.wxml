@@ -14,7 +14,7 @@
         <text class="status">{{order.statusName}}</text>
       </view>
       <view class="order-text">验布单号：{{order.orderNo}}</view>
-      <view class="order-text">下单时间：{{order.orderTime}}</view>
+      <view class="order-text">下单时间：{{order.createTime}}</view>
     </view>
   </view>
 
@@ -24,14 +24,14 @@
         <view class="content">
           <view class="head flex">
             <view class="title">{{item.name}}</view>
-            <view class="price">{{item.price}}</view>
+            <view class="price">{{item.displayPrice}}</view>
           </view>
           <view class="desc">{{item.item}}</view>
           <view class="button flex" data-id="{{item.id}}" bind:tap="goPlaceOrder">去验布</view>
         </view>
 
         <view class="image">
-          <image src="{{item.image}}"></image>
+          <image src="{{item.imageUrl}}"></image>
         </view>
       </view>
     </block>

@@ -27,6 +27,7 @@ const lifecycle = {
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.props.loadStatus = http.defaultLoadingState();
     this.setData({ list: [] });
     this.getDataList();
     $wx.stopPullDownRefresh();
@@ -45,6 +46,7 @@ const viewAction = {
    * 切换Tab页
    */
   onTabChange: function (d, v) {
+    this.props.loadStatus = http.defaultLoadingState();
     let tabStatus = this.data.tabStatus;
     this.setData({ list: [], status: tabStatus[v.index] });
     this.getDataList();
@@ -67,6 +69,7 @@ const viewAction = {
    */
   viewReport: function (d, v) {
     console.log(d, v);
+    $wx.navigateTo($wx.router.viewReport, { orderNo: v.orderNo });
   },
   /**
    * 去付款

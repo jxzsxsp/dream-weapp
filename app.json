@@ -10,7 +10,8 @@
     "pages/address-list/address-list",
     "pages/address-add/address-add",
     "pages/pay-platform/pay-platform",
-    "pages/pay-success/pay-success"
+    "pages/pay-success/pay-success",
+    "pages/view-report/view-report"
   ],
   "window": {
     "backgroundTextStyle": "light",

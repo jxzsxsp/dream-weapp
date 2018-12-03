@@ -37,6 +37,7 @@ const viewAction = {
    */
   viewReport: function (d, v) {
     console.log(d, v, this.data.orderNo);
+    $wx.navigateTo($wx.router.viewReport, { orderNo: this.data.orderNo });
   },
   /**
    * 去付款
