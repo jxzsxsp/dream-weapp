@@ -1,9 +1,10 @@
 import env, {isOnline} from './env'
 import mock from './mock'
 import {$wx} from '../genji4mp/index'
-import constant from '../constants/index'
 import urls from './urls/index'
 import {checkParam} from './index';
+import constants from './constants';
+
 
 class Http {
   constructor () {
@@ -26,7 +27,7 @@ class Http {
       code = res.code
       return $wx.getUserInfo({withCredentials: true})
     }).then(res => {
-      let data = {code, appId: constant.appId, domainName: constant.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
+      let data = {code, appId: constants.APP_GLOBAL.appId, domainName: constants.APP_GLOBAL.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
 
       return this.getLogin(urls.login.quietLogin, data, true)
     }).then(res => {
@@ -214,7 +215,7 @@ class Http {
             wx.hideLoading()
           }
 
-          if (res.data.code === 200) {
+          if (res.data.code === constants.NET_STATE.SUCCESS) {
             let resData = {}
             if (res.data.data instanceof Array) {
               resData = {list: res.data.data, requestParam: data}
@@ -229,7 +230,7 @@ class Http {
             }
 
             resolve(resData)
-          } else if (res.data.code === -100) {
+          } else if (res.data.code === constants.NET_STATE.NEED_RELOGIN) {
             // 没有token，重新登录
             this.quietLogin().then(res => {
               if (!!res.token) {
