@@ -93,7 +93,7 @@
 
     <van-cell 
     title="总金额"
-    value="{{ orderDetail.proposedPrice}}元"
+    value="{{ orderDetail.price}}元"
     border="{{ false }}"
     />
 
@@ -105,7 +105,7 @@
 
     <van-cell 
     title="应收金额"
-    value="{{orderDetail.price}}元"
+    value="{{orderDetail.proposedPrice}}元"
     border="{{ false }}"
     />
 

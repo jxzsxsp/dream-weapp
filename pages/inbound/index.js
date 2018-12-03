@@ -101,7 +101,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({ orderList: [] });
+    this.setData({
+      pageId: constants.DEFAULT_PAGE_ID, 
+      orderList: [] 
+    });
     this.getDataList();
   },
 
