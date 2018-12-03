@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fee: '',
+    fee: 0,
     memo: ''
   },
 
@@ -89,7 +89,7 @@ Page({
   },
 
   changeFee(e) {
-    this.setData({fee:e.detail.value})
+    this.setData({ fee: e.detail.value ? e.detail.value : 0})
   },
 
   changeMemo(e) {

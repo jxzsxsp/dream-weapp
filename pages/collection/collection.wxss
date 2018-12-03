@@ -41,11 +41,11 @@
 }
 
 .right-head {
-  margin-left: 100rpx;
+  margin-left: 110rpx;
 }
 
 .center-text {
-  margin-left: 100rpx;
+  margin-left: 120rpx;
 }
 
 .collection-btn {

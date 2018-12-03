@@ -84,7 +84,7 @@
     </view>
     <view wx:for="{{ orderRoll }}" wx:key="index" class="content-text">
       <text>{{ item.rollCode }}</text>
-      <text class="right-text">{{ item.fabricMeters || 0 }}米/{{ item.fabricWeight || 0 }}公斤</text>
+      <text class="right-text">{{ item.fabricMeters || 0 }}/{{ item.fabricWeight || 0 }}</text>
     </view>
   </view>
 </cloth-block>

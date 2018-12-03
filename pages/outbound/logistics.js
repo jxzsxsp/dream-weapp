@@ -21,8 +21,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       orderNo: options.orderNo,
-      customerName: options.customerName,
-      customerMobile: options.customerMobile,
+      username: options.receivingName,
+      mobile: options.receivingMobile,
     });
   },
 
@@ -141,8 +141,8 @@ Page({
         orderNo: _this.data.orderNo,
         logisticsCompanyName: _this.data.logisticsCompany,
         logisticsSn: _this.data.logisticsNo,
-        //contactName: _this.data.username,
-        //contactMobile: _this.data.mobile,
+        contactName: _this.data.username,
+        contactMobile: _this.data.mobile,
         memo: _this.data.memo
       },
       function (result) {

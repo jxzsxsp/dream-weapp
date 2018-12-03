@@ -116,7 +116,7 @@ function _post(url, data, success, fail, complete) {
         })
         return false;
       }
-      if (res.data.code === -100) {
+      if (res.data.code === constants.NO_LOGIN_CODE) {
         // 登录态失效, 重新登录
         doLogin();
       } else if (res.data.code < 0) {
