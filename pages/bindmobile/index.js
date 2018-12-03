@@ -135,7 +135,7 @@ Page({
   },
 
   submit(e) {
-    console.log(e);
+    console.log("submit", e);
     let _this = this;
 
     _post(urls.bind_mobile_url

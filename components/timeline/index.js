@@ -20,9 +20,16 @@ Component({
   methods: {
     previewImage: function previewImage(e) {
       let urls = e.currentTarget.dataset.urls;
+      let imgUrls;
+
+      if (urls instanceof Array) {
+        imgUrls = urls;
+      } else {
+        imgUrls = [urls];
+      }
 
       wx.previewImage({
-        urls: urls,
+        urls: imgUrls,
       })
     }
   }

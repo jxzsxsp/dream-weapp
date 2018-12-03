@@ -33,7 +33,7 @@
     </view>
     <view wx:for="{{orderRoll}}" wx:key="index" class="content-text">
       <text>{{ item.rollCode }}</text>
-      <text class="center-text">{{item.fabricMeters}}</text>
+      <text class="center-text">{{item.fabricMeters || 0}}米/{{item.fabricWeight || 0}}公斤</text>
       <text class="right-text">{{item.price}}</text>
     </view>
   </view>
@@ -93,7 +93,7 @@
 
     <van-cell 
     title="总金额"
-    value="{{ orderDetail.proposedPrice}}"
+    value="{{ orderDetail.proposedPrice}}元"
     border="{{ false }}"
     />
 
@@ -105,7 +105,7 @@
 
     <van-cell 
     title="应收金额"
-    value="{{orderDetail.price}}"
+    value="{{orderDetail.price}}元"
     border="{{ false }}"
     />
 

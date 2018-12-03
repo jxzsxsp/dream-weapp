@@ -1,3 +1,5 @@
+import { constants } from '../constants/constants.js';
+
 function showLoading() {
   wx.showLoading({
     title: '加载中...'
@@ -33,6 +35,7 @@ function _get(url, data, success, fail, complete, check_login) {
 
   // 构造get请求
   let request = function () {
+    console.log(url, data);
 
     wx.request({
       url: url,
@@ -42,37 +45,38 @@ function _get(url, data, success, fail, complete, check_login) {
       },
       data: data,
       success: function (res) {
+        wx.hideLoading();
         if (res.statusCode !== 200 || typeof res.data !== 'object') {
           wx.showToast({
             title: '网络请求出错',
             icon: 'none',
-            duration: 5000,
+            duration: constants.SHOW_TOAST_TIME,
           })
           return false;
         }
-        if (res.data.code === -100) {
+        if (res.data.code === constants.NO_LOGIN_CODE) {
           // 登录态失效, 重新登录
-          
           doLogin();
         } else if (res.data.code < 0) {
           wx.showToast({
             title: res.data.message,
             icon: 'none',
-            duration: 5000,
+            duration: constants.SHOW_TOAST_TIME,
           });
         } else {
           success && success(res.data);
         }
       },
       fail: function (res) {
+        wx.hideLoading();
         wx.showToast({
           title: res.message,
           icon: 'none',
-          duration: 5000,
+          duration: constants.SHOW_TOAST_TIME,
         });
       },
       complete: function (res) {
-        wx.hideLoading();
+        console.log(res);
         complete && complete(res);
       },
     });
@@ -92,6 +96,7 @@ function _post(url, data, success, fail, complete) {
   data = data || {};
   let token = wx.getStorageSync('token');
   //data.token = token;
+  console.log(url, data);
 
   wx.request({
     url: url,
@@ -102,11 +107,12 @@ function _post(url, data, success, fail, complete) {
     method: 'POST',
     data: data,
     success: function (res) {
+      wx.hideLoading();
       if (res.statusCode !== 200 || typeof res.data !== 'object') {
         wx.showToast({
           title: '网络请求出错',
           icon: 'none',
-          duration: 5000,
+          duration: constants.SHOW_TOAST_TIME,
         })
         return false;
       }
@@ -117,21 +123,22 @@ function _post(url, data, success, fail, complete) {
         wx.showToast({
           title: res.data.message,
           icon: 'none',
-          duration: 5000,
+          duration: constants.SHOW_TOAST_TIME,
         });
       } else {
         success && success(res.data);
       }
     },
     fail: function (res) {
+      wx.hideLoading();
       wx.showToast({
         title: res.message,
         icon: 'none',
-        duration: 5000,
+        duration: constants.SHOW_TOAST_TIME,
       });
     },
     complete: function (res) {
-      wx.hideLoading();
+      console.log(res);
       complete && complete(res);
     }
   });

@@ -123,7 +123,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({ orderList: [] });
+    this.setData({
+      pageId: constants.DEFAULT_PAGE_ID, 
+      orderList: [] 
+    });
     this.getDataList(function () {
       wx.stopPullDownRefresh();
     });
@@ -172,7 +175,11 @@ Page({
       status = constants.ORDER_STATUS.ALL_INBOUND;
     }
     
-    _this.setData({ status: status, orderList: [] });
+    _this.setData({ 
+      pageId: constants.DEFAULT_PAGE_ID, 
+      status: status, 
+      orderList: [] 
+      });
 
     _this.getDataList();
   },

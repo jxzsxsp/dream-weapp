@@ -22,7 +22,12 @@
         </view>
         <navigator url="/pages/inbound/inbound?orderNo={{item.orderNo}}">
           <view class="content-btn">
+            <block wx:if="{{ item.bossFabricVolumesReadyIn && item.bossFabricVolumesReadyIn > 0}}">
+            <text>继续入库</text>
+            </block>
+            <block wx:else>
             <text>入库</text>
+            </block>
           </view>
         </navigator>
       </view>

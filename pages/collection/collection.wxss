@@ -37,15 +37,15 @@
 }
 
 .center-head {
-  margin-left: 270rpx;
+  margin-left: 230rpx;
 }
 
 .right-head {
-  margin-left: 60rpx;
+  margin-left: 100rpx;
 }
 
 .center-text {
-  margin-left: 150rpx;
+  margin-left: 100rpx;
 }
 
 .collection-btn {

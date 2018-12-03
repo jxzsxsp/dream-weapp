@@ -1,7 +1,9 @@
 const constants = {
   DEFAULT_PAGE_ID: 1,
   DEFAULT_PAGE_SIZE: 10,
-  EMPTY_STRING: '', 
+  EMPTY_STRING: '',
+  NO_LOGIN_CODE: -101,
+  SHOW_TOAST_TIME: 3000,
   ORDER_STATUS: { // 验布单状态 10-待入库,20-已入库,30-验布中,40-验布完成,60-待付款,70-待出库,80-已出库,110-关闭验布,120-取消验布
     WAIT_INBOUND: 10, // 待入库
     INBOUNDED: 20, // 已入库

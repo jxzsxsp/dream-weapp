@@ -55,13 +55,13 @@
 
     <van-cell 
     title="验布卷数"
-    value="{{orderDetail.customerFabricVolumes}} 卷"
+    value="{{orderDetail.bossFabricVolumesReadyComplete}} 卷"
     border="{{ false }}"
     />
 
     <van-cell 
     title="取货方式"
-    value="{{orderDetail.customerPickUpTypeName}}"
+    value="{{orderDetail.bossPickUpTypeName}}"
     border="{{ false }}"
     />
 
