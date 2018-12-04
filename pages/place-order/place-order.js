@@ -188,24 +188,24 @@ const viewAction = {
 }
 
 const privateMethod = {
-  // 计算价格
+  // 计算价格 这期不用计算
   calcPrice: function () {
-    const data = this.data
-    // 同时存在面料类型验布方式和米数后计算
-    if (data.selectedCheckType.id && data.selectedFabricType.id && data.clothLength) {
-      const params = {
-        fabricMeters: data.clothLength,
-        fabricType: data.selectedFabricType.id,
-        unit: data.selectedFabricType.unit,
-        clothType: data.selectedCheckType.id,
-        mock: true
-      }
-      http.post(urls.orderPrice, params).then(res => {
-        this.setData({
-          priceDetail: res
-        })
-      })
-    }
+    // const data = this.data
+    // // 同时存在面料类型验布方式和米数后计算
+    // if (data.selectedCheckType.id && data.selectedFabricType.id && data.clothLength) {
+    //   const params = {
+    //     fabricMeters: data.clothLength,
+    //     fabricType: data.selectedFabricType.id,
+    //     unit: data.selectedFabricType.unit,
+    //     clothType: data.selectedCheckType.id,
+    //     mock: true
+    //   }
+    //   http.post(urls.orderPrice, params).then(res => {
+    //     this.setData({
+    //       priceDetail: res
+    //     })
+    //   })
+    // }
   },
   canSubmit: function () {
 

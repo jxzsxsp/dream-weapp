@@ -143,8 +143,10 @@
 .price-container {
   margin-left: 30rpx;
   height: 108rpx;
-  align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  /* align-items: flex-start;
+  justify-content: center; */
   flex: 1;
 }
 

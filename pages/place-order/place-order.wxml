@@ -64,7 +64,8 @@
     </form-cell>
   </form-group>
 
-  <form-group has-margin class="normal-text">
+<!-- 暂时不要 -->
+  <!-- <form-group has-margin class="normal-text">
     <form-cell>
       <view slot="left" class="flex title-container">
         <text>验布服务</text>
@@ -80,17 +81,20 @@
       </view>
       <text slot="right" class="price-text">{{priceDetail.discountPriceDescription}}</text>
     </form-cell>
-  </form-group>
+  </form-group> -->
   <view class="margin-replacer"></view>
 
   <!-- 底部下单按钮 -->
   <view class="place-order-container flex">
-    <view class="price-container flex-column">
+    <view class="price-container flex">
+      <text class="normal-text">应付价：</text>
+      <text class="price-text">将以验布结果计算</text>
+    <!-- <view class="price-container flex-column">
       <view class="real-price-container">
         <text class="normal-text">参考价:</text>
         <text class="price-text">{{priceDetail.waitPayProposedPriceDescription}}</text>
       </view>
-      <text class="detail-text">实际价格将以验布结果重新计算</text>
+      <text class="detail-text">实际价格将以验布结果重新计算</text> -->
     </view>
     <button class="place-order-button" bind:tap="placeOrderClicked">
       <text class="place-order-text">验布下单</text>
