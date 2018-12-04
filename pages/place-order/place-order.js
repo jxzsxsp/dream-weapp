@@ -26,7 +26,7 @@ const data = {
   // 选中的验布方式
   selectedCheckType: {}, 
   // 选中的验布方式
-  selectedFabricType: {},
+  selectedFabricType: {unit: '米'},
   // 验布长度
   clothLength: 0,
   // 验布卷数
@@ -78,7 +78,9 @@ const viewAction = {
   },
   // 选择面料类型
   selectFabric: function (d, v) {
-    this.data.selectedFabricType = v
+    this.setData({
+      selectedFabricType: v
+    })
     this.calcPrice()
   },
   // 选择验布方式
