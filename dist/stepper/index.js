@@ -11,13 +11,17 @@ VantComponent({
     disableInput: Boolean,
     min: {
       type: null,
-      value: 1
+      value: 0
     },
     max: {
       type: null,
       value: MAX
     },
     step: {
+      type: null,
+      value: 1
+    },
+    value: {
       type: null,
       value: 1
     }

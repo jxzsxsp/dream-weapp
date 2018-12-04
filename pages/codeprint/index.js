@@ -84,6 +84,12 @@ Page({
   print: function (callback) {
     let _this = this;
 
+    if(_this.data.printing) {
+      return false;
+    }
+
+    _this.setData({ printing: true });
+
     _post(urls.input_print_url,
       {
         rollCodes: _this.data.rollCodes,
@@ -104,6 +110,7 @@ Page({
       },
       false,
       function () {
+        _this.setData({ printing: false });
         typeof callback === 'function' && callback();
       });
   },
