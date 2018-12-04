@@ -196,7 +196,7 @@ class Http {
         mask: true
       })
     }
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
       // 没有 token 先取出token
       if (!getApp().globalData.token) {
         getApp().globalData.token = wx.getStorageSync('token')
@@ -210,7 +210,7 @@ class Http {
           'content-type': 'application/json',
           'token': getApp().globalData.token
         },
-        success (res) {
+        success: function (res) {
           if (isLoading) {
             wx.hideLoading()
           }
@@ -265,7 +265,7 @@ class Http {
             })
             reject(res.data || {})
           }
-        },
+        }.bind(this),
         fail (error) {
           wx.showToast({
             title: '网络出错！',
@@ -277,7 +277,7 @@ class Http {
 
         }
       })
-    })
+    }.bind(this))
   }
 
   // otherRequest
