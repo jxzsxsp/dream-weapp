@@ -13,6 +13,10 @@ export default {
   orderDetail: '/order/detail',
   // 订单验布报告
   viewReport: '/report/report-by-order',
+  // 支付详情
+  detailForPay: '/order/detail-for-pay',
+  // 取消验布
+  cancelOrder: '/order/cancel',
   // 获取地址类型
   addressType: '/customer-address/type-list',
   // 地址列表

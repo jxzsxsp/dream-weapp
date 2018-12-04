@@ -28,11 +28,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 938438 */
-  src: url('//at.alicdn.com/t/font_938438_hu25n2tfacq.eot');
-  src: url('//at.alicdn.com/t/font_938438_hu25n2tfacq.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_938438_hu25n2tfacq.woff') format('woff'),
-  url('//at.alicdn.com/t/font_938438_hu25n2tfacq.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_938438_hu25n2tfacq.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.eot');
+  src: url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.woff') format('woff'),
+  url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -74,4 +74,6 @@
 .icon-ic_daifu:before { content: "\e902"; }
 
 .icon-logo_jianpin:before { content: "\e903"; }
+
+.icon-ic_close:before { content: "\e8ea"; }
 

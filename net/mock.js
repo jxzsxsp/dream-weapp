@@ -320,27 +320,38 @@ const order = {
     "total": 10
   },
   [urls.orderDetail]: {
+    "statusId": 20,//状态 --add
     "statusName": "已评价",//状态
     "orderNo": "8980970808", //验布单号
     "storeName": "绍兴交易园店", //验布地点（ 验布坊名称）
     "pickUpTypeName": "代发货至收货地址", //取货方式
-    "fabricTypeName": "", //面料类型
-    "clothTypeName": "",//验布方式
+    "fabricType": 10, //面料类型 －－add 10 针织 20 梭织 30-无纺布
+    "fabricTypeName": "针织", //面料类型
+    "clothTypeName": "× 0.5 元/米",//验布方式
     "clothTypeItem": "米数、重量、门幅、克重、电子报告、色差(匹布/缸差/边中差)对比、疵点图片、疵点位置标识、代发货、物流信息跟踪、检验售后、货物暂存服务",//验布方式项目
+    "payStatusName": "",//支付状态 
+    "customerMetersAndWeight": "32米", // 下单数量 米数/公斤数 －－add
+    "bossMetersAndWeight": "32米", // 实测数量 米数/公斤数 －－add
     "price": {
-      "clothPriceDescription": "0.1元/m", //定价描述
-      "proposedPriceDescription": "￥110.00", //参考价格描述
-      "length": "100m", //数量 描述
-      "customerDiscountDescription": "9折", //优惠VIP描述
-      "discountPriceDescription": "￥110.00",//参考优惠价格描述
-      "waitPayProposedPriceDescription": "￥99.00",//待支付参考价格描述  
+      "priceNameDescription": "实付款：", //参考、应付、实付价格描述  
+      "priceDescription": "￥99.99", //参考、应付、实付价格描述  
     },
-    "customerMessage": "", //买家留言
+    "receivingAddress":  // 收货地址 －－add
+    {
+      "id": 1,
+      "contacts": "鲍鱼力",
+      "contactMobile": "139****7333",
+      "detailAddress": "上海市静安区沪太路1111弄1号楼链尚国际大厦11层沪太路1111弄1号楼链尚国际大厦11层"
+    },
+    "customerMessage": "包装袋麻烦不要链尚logo", //买家留言
+    "customerAddressId": 123123,//客户地址id
+    "createTime": "2018-10-10 10:10:10", //下单时间, －－add
+    "payTime": "2018-10-10 10:10:10", //支付时间,－－add
     "showBtn": {
       "cancel": true,
       "report": true,
       "pay": true,
-      "confirmReceive": true,
+      "confirmReceive": false,
       "toEvaluate": false,
       "viewEvaluate": false
     }
@@ -367,9 +378,15 @@ const order = {
       "lengthAndWeight": "100m/12kg", //数量 描述
       "innerUrl": "http://img.lianshang.cn/data/user/kela/201812/5/322_1543824928068.png", //内部报告 图片地址 
       "outerUrl": "http://img.lianshang.cn/data/user/kela/201812/5/322_1543824928068.png" //外部报告 图片地址
-    }
-  ]
-  }
+    }],
+  },
+  [urls.detailForPay]: {
+    "clothTypeName": "", //验布方式
+    "clothPriceDescription": "0.1元/m", //定价描述
+    "metersAndWeight": "32米/2343公斤", // 米数/公斤数
+    "priceDescription": "￥99.99", //价格描述
+  },
+  [urls.cancelOrder]: {},
 }
 
 const orderInit = {

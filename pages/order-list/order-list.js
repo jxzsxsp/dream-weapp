@@ -15,7 +15,9 @@ const data = {
     constants.ORDER_STATUS.OUTBOUNDED,
   ],
   status: constants.ORDER_STATUS.ALL_ORDER,
-  list: []
+  list: [],
+  payData: {},
+  showPay: false,
 }
 
 const lifecycle = {
@@ -63,6 +65,12 @@ const viewAction = {
    */
   cancelOrder: function (d, v) {
     console.log(d, v);
+    http.get(urls.cancelOrder, { mock: true, orderNo: v.orderNo }).then(res => {
+      console.log(res)
+      $wx.showToast({
+        title: '取消成功',
+      })
+    });
   },
   /**
    * 查看报告
@@ -76,6 +84,15 @@ const viewAction = {
    */
   goPay: function (d, v) {
     console.log(d, v);
+    this.setData({showPay: true, payOrderNo: v.orderNo})
+  },
+
+  confirmPay: function () {
+    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.payOrderNo })
+  },
+
+  toggleShowPay: function () {
+    this.setData({ showPay: !this.data.showPay })
   },
 
 }

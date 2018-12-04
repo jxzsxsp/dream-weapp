@@ -50,3 +50,26 @@ color="#BB2830">
   </van-tab>
 </van-tabs>
 </view>
+
+  <van-popup
+    show="{{ showPay }}"
+    position="bottom"
+    custom-class="bottom"
+    bind:close="toggleShowPay"
+  >
+    <view class="pay-container">
+      <view class="iconfont icon-ic_close close" bind:tap="toggleShowPay"></view>
+      <view class="title">支付金额</view>
+      <view class="price">¥ 99.00</view>
+      <view class="item-cell">
+        下单数量
+        <view class="cell-value">500 公斤</view>
+      </view>
+      <view class="item-cell">
+        高级检测
+        <view class="cell-value">0.5 元/米</view>
+      </view>
+      <view class="line"></view>
+      <view class="pay-btn flex" bind:tap="confirmPay">立即去支付</view>
+    </view>
+  </van-popup>

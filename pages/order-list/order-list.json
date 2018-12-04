@@ -2,6 +2,7 @@
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "我的验布单",
   "usingComponents": {
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
     "order-list": "/components/order-list/order-list",
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index"

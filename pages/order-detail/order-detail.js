@@ -3,19 +3,11 @@ import { http, urls } from '../../net/index';
 import constants from '../../constants/index';
 
 const props = {
-  loadStatus: http.defaultLoadingState(10)
 }
 
 const data = {
-  tabStatus: [
-    constants.ORDER_STATUS.ALL_ORDER,
-    constants.ORDER_STATUS.INBOUNDED,
-    constants.ORDER_STATUS.CHECKING_CLOTH,
-    constants.ORDER_STATUS.WAIT_PAY,
-    constants.ORDER_STATUS.OUTBOUNDED,
-  ],
-  status: constants.ORDER_STATUS.ALL_ORDER,
-  list: []
+  payData: {},
+  showPay: false,
 }
 
 const lifecycle = {
@@ -31,6 +23,12 @@ const viewAction = {
    */
   cancelOrder: function (d, v) {
     console.log(d, v, this.data.orderNo);
+    http.get(urls.cancelOrder, { mock: true, orderNo: this.data.orderNo }).then(res => {
+      console.log(res)
+      $wx.showToast({
+        title: '取消成功',
+      })
+    });
   },
   /**
    * 查看报告
@@ -44,10 +42,22 @@ const viewAction = {
    */
   goPay: function (d, v) {
     console.log(d, v, this.data.orderNo);
+    http.get(urls.detailForPay, { mock: true, orderNo: this.data.orderNo }).then(res => {
+      console.log(res)
+      this.setData({ payData: res });
+    });
+    this.setData({ showPay: true });
+  },
+
+  toggleShowPay: function () {
+    this.setData({ showPay: !this.data.showPay })
+  },
+
+  confirmPay: function () {
     $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.orderNo })
   },
   /**
-   * 去付款
+   * 确认收货
    */
   confirmReceive: function (d, v) {
     console.log(d, v, this.data.orderNo);

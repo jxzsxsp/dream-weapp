@@ -1,6 +1,6 @@
 export default {
   // 订单状态
-  ORDER_STATUS: { 
+  ORDER_STATUS: {
     WAIT_INBOUND: 10, // 待入库
     INBOUNDED: 20, // 已入库
     CHECKING_CLOTH: 30, // 验布中
