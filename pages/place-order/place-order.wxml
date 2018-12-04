@@ -54,9 +54,9 @@
         <text>卷</text>
       </view>
     </form-cell>
-    <form-cell has-detail bind:formclick="selectLogistic">
+    <form-cell has-detail bind:formclick="selectPickUp">
       <text slot="left">取货方式</text>
-      <text slot="right">{{selectedLogisticType.name}}</text>
+      <text slot="right">{{selectedPickUpType.name}}</text>
     </form-cell>
     <form-cell isLast has-detail bind:formclick="selectBuyerMessage">
       <text slot="left">买家留言</text>

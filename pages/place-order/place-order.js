@@ -19,7 +19,7 @@ const data = {
   // 验布方式
   checkTypeList: [],
   // 取货方式
-  logisticsTypeList: [],
+  pickUpTypeList: [],
 
   // 选中的验布坊
   selectedStore: {},
@@ -32,7 +32,7 @@ const data = {
   // 验布卷数
   volumeNumber: 1,
   // 取货方式
-  selectedLogisticType: {},
+  selectedPickUpType: {},
 
   // 价格详情
   priceDetail: {},
@@ -47,7 +47,7 @@ const lifeCycle = {
       data.storeList = res.storeList
       data.fabricTypeList = res.fabricTypeList
       data.checkTypeList = res.clothTypeList
-      data.logisticsTypeList = res.pickUpTypeList
+      data.pickUpTypeList = res.pickUpTypeList
     }).then(() => {
       let checkTypeIndex = parseInt(data.checkTypeList[0].id)
       // 找到选中的验布方式
@@ -89,8 +89,8 @@ const viewAction = {
     this.openActionList(actionList)
   },
   // 选择取货方式
-  selectLogistic: function () {
-    let actionList = this.data.logisticsTypeList.map((logisticType, index) => {
+  selectPickUp: function () {
+    let actionList = this.data.pickUpTypeList.map((logisticType, index) => {
       return Object.assign({}, logisticType, {type: this.props.LOGISTICTYPE, index})
     })
     this.openActionList(actionList)
@@ -134,7 +134,7 @@ const viewAction = {
         break;
       case this.props.LOGISTICTYPE:
         this.setData({
-          selectedLogisticType: this.data.logisticsTypeList[v.index]
+          selectedPickUpType: this.data.pickUpTypeList[v.index]
         })
         break;
       default:
@@ -174,8 +174,8 @@ const viewAction = {
         value: data.volumeNumber,
         hint: '卷数'
       },
-      logisticsTypeId: {
-        value: data.selectedLogisticType.id,
+      pickUpTypeId: {
+        value: data.selectedPickUpType.id,
         hint: '物流类型'
       },
       buyerMessage: data.buyerMessage,
