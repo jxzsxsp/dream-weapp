@@ -47,7 +47,7 @@ const lifeCycle = {
       data.storeList = res.storeList
       data.fabricTypeList = res.fabricTypeList
       data.checkTypeList = res.clothTypeList
-      data.logisticsTypeList = res.logisticsTypeList
+      data.logisticsTypeList = res.pickUpTypeList
     }).then(() => {
       let checkTypeIndex = parseInt(data.checkTypeList[0].id)
       // 找到选中的验布方式

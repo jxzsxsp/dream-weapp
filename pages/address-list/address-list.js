@@ -16,7 +16,7 @@ const lifecycle = {
     this.props.comeFrom = query.comeFrom
   },
   onShow: function () {
-    http.getList(urls.addressList, http.defaultLoadingState(100)).then(res => {
+    http.postList(urls.addressList, http.defaultLoadingState(100)).then(res => {
       this.setData({
         addressList: res
       })
