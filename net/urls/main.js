@@ -27,4 +27,6 @@ export default {
   addressDefault: '/customer-address/default',
   // 获取地址详情
   addressDetail: '/customer-address/detail',
+  // 客户详情
+  customerDetail: '/customer/detail',
 }

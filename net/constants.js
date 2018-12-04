@@ -4,8 +4,8 @@ const NET_STATE = {
 }
 
 const APP_GLOBAL = {
-  appId: '',
-  domainName: '',
+  appId: 7,
+  domainName: 'lianshang-check-api.lian-shang.cn',
 }
 
 export default {

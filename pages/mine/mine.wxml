@@ -1,2 +1,39 @@
-<!--pages/mine/index.wxml-->
-<text>pages/mine/index.wxml</text>
+<view class="container">
+  <view class="login-container">
+    <view wx:if="{{userInfo.nickName}}" class="has-login-container">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" />
+      <view class="user-name-container flex-column">
+        <text class="user-name">{{userInfo.nickName}}</text>
+        <view class="flex vip-container">
+          <image class="vip-image" src="/assets/image/ic_vip.png"/>
+          <text class="vip-text">{{userDetail.discountDescription}}</text>
+        </view>
+      </view>
+      <!-- <view class="edit-user">
+        <text class="edit-text">编辑</text>
+        <view class="iconfont icon-ic_back setting-detail"/>
+      </view> -->
+    </view>
+    <view wx:else class="not-login-container">
+      <text class="not-login-text">Hello,你好</text>
+      <button class="not-login-button" open-type="getUserInfo" bind:getuserinfo=getUserInfo">
+        <text class="not-login-button-text">登录/注册</text>
+      </button>
+    </view>
+  </view>
+
+  <view wx:for="{{settingList}}" wx:key="{{index}}" class="setting-row-container" bind:tap="itemClicked" data-index="{{index}}">
+    <view class="iconfont {{item.icon}} setting-icon" />
+    <text class="setting-text">{{item.name}}</text>
+    <view class="iconfont icon-ic_back setting-detail" />
+  </view>
+  <view class="setting-row-container">
+    <view class="iconfont icon-ic_custom_serviceco setting-icon"/>
+    <view class="tel-container flex-column">
+      <text class="setting-text">客服电话</text>
+      <text class="sub-text">服务工作时间：{{userDetail.customerServiceTime}}</text>
+    </view>
+    <text class="tel-text">{{userDetail.customerServiceTelephone}}</text>
+  </view>
+
+</view>
