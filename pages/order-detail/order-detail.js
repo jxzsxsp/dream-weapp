@@ -60,7 +60,7 @@ const privateMethod = {
    * 获取订单详情
    */
   getDetail: function () {
-    http.get(urls.orderDetail, { mock: true, orderNo: this.data.orderNo }).then(res => {
+    http.get(urls.orderDetail, {orderNo: this.data.orderNo }).then(res => {
       console.log(res)
       this.setData(res)
     });

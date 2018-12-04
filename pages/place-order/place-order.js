@@ -42,7 +42,7 @@ const data = {
 const lifeCycle = {
   onLoad: function (query) {
     let data = this.data
-    http.get(urls.orderInit, {mock: true}).then(res => {
+    http.get(urls.orderInit).then(res => {
       data.customerDetail = res.defaultCustomerAddress || {}
       data.storeList = res.storeList
       data.fabricTypeList = res.fabricTypeList
@@ -179,7 +179,6 @@ const viewAction = {
         hint: '物流类型'
       },
       buyerMessage: data.buyerMessage,
-      mock: true
     }
     http.post(urls.orderSubmit, param).then(res => {
       $wx.navigateTo($wx.router.orderSuccess, {orderId: res.orderNo})
