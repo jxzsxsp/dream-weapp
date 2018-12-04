@@ -105,6 +105,15 @@ Page({
       wx.removeStorageSync("productNameId");
       wx.removeStorageSync("productName");
     }
+
+    let colorId = wx.getStorageSync("colorId");
+    let colorName = wx.getStorageSync("colorName");
+
+    if (colorId && colorName) {
+      this.setData({ colorId: colorId, colorName: colorName });
+      wx.removeStorageSync("colorId");
+      wx.removeStorageSync("colorName");
+    }
   },
 
   /**
@@ -162,6 +171,7 @@ Page({
         productPrice: _this.data.productPrice,
         productPriceUnit: _this.data.productPriceUnit,
         productId: _this.data.productNameId,
+        colorId: _this.data.colorId,
         bossFabricType: _this.data.bossFabricType
       },
       function (result) {

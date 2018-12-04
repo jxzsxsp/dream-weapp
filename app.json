@@ -17,7 +17,8 @@
     "pages/bindmobile/index",
     "pages/codeprint/index",
     "pages/codeview/index",
-    "pages/productname/index"
+    "pages/productname/index",
+    "pages/color-list/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "品名列表",
+  "navigationBarTitleText": "颜色列表",
   "usingComponents": {
     "cloth-block": "../../components/cloth-block/index",
     "van-search": "../../dist/search/index",

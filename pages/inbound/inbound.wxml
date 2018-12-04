@@ -47,7 +47,7 @@
 
     <van-cell 
     title="验布米数"
-    value="{{orderDetail.customerFabricMeters}} m"
+    value="{{orderDetail.customerFabricMeters||0}}米/{{orderDetail.customerFabricWeight||0}}公斤"
     border="{{ false }}"
     />
 
@@ -159,6 +159,14 @@
       <input type="digit" value='{{productPrice}}' placeholder='请输入价格' bindinput="changeProductPrice" /><text bind:tap="toggleProductPriceUnit">元/{{productPriceUnit}}</text>
       </view>
     </van-cell>
+  
+    <van-cell
+      title="颜色"
+      is-link
+      arrow-direction="down"
+      value="{{colorName}}"
+      url="/pages/color-list/index"
+    />
 
   </van-cell-group>
 

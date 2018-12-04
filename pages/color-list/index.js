@@ -1,4 +1,4 @@
-// pages/productname/index.js
+// pages/color-list/index.js
 import { urls } from '../../constants/urls.js'
 import { _post } from '../../utils/request.js'
 import { constants } from '../../constants/constants.js'
@@ -12,7 +12,7 @@ Page({
     keyword: constants.EMPTY_STRING,
     pageId: constants.DEFAULT_PAGE_ID,
     pageSize: constants.MAX_PAGE_SIZE,
-    productNameList: []
+    colorList: []
   },
 
   /**
@@ -34,9 +34,9 @@ Page({
   onShow: function () {
     this.setData({
       pageId: constants.DEFAULT_PAGE_ID,
-      productNameList: []
+      colorList: []
     });
-    this.getProductName();
+    this.getColor();
   },
 
   /**
@@ -59,9 +59,9 @@ Page({
   onPullDownRefresh: function () {
     this.setData({
       pageId: constants.DEFAULT_PAGE_ID,
-      productNameList: []
+      colorList: []
     });
-    this.getProductName(function () {
+    this.getColor(function () {
       wx.stopPullDownRefresh();
     });
   },
@@ -73,7 +73,7 @@ Page({
     if (this.data.hasMore) {
       let pageId = this.data.pageId + 1;
       this.setData({ pageId: pageId });
-      this.getProductName();
+      this.getColor();
     }
   },
 
@@ -88,30 +88,27 @@ Page({
     this.setData({
       keyword: e.detail,
       pageId: constants.DEFAULT_PAGE_ID,
-      productNameList: []
+      colorList: []
     });
-    this.getProductName();
+    this.getColor();
   },
 
   onSearch(e) {
-    this.setData({ productNameList: [] });
-    this.getProductName();
+    this.setData({ colorList: [] });
+    this.getColor();
   },
 
-  getProductName: function (callback) {
+  getColor: function (callback) {
     let _this = this;
 
-    _post(urls.product_name_url,
+    _post(urls.color_list_url,
       {
         keyword: _this.data.keyword,
         pageId: _this.data.pageId,
         pageSize: _this.data.pageSize,
       },
       function (result) {
-        _this.setData(result.data)
-        let productNameList = _this.data.productNameList;
-        productNameList = productNameList.concat(result.data.dataList);
-        _this.setData({ productNameList: productNameList });
+        _this.setData({ colorList: result.data });
       },
       false,
       function () {
@@ -119,9 +116,9 @@ Page({
       });
   },
 
-  selectProductName(e) {
-    wx.setStorageSync("productNameId", e.target.dataset.id);
-    wx.setStorageSync("productName", e.target.dataset.name);
+  selectColor(e) {
+    wx.setStorageSync("colorId", e.target.dataset.id);
+    wx.setStorageSync("colorName", e.target.dataset.name);
     wx.navigateBack();
   }
 

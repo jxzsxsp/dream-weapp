@@ -1,20 +1,20 @@
-<cloth-block>
+<!-- <cloth-block>
   <van-search
     value="{{ keyword }}"
-    placeholder="品名"
+    placeholder="颜色"
     bind:change="onSearchChange"
     bind:search="onSearch"
   />
-</cloth-block>
+</cloth-block> -->
 
 <van-cell-group>
 
-  <block wx:for="{{productNameList}}" wx:key="index">
+  <block wx:for="{{colorList}}" wx:key="index">
     <van-cell 
     title="{{item.name}}"
     data-name="{{item.name}}"
     data-id="{{item.id}}"
-    bind:click="selectProductName"
+    bind:click="selectColor"
     />
   </block>
 

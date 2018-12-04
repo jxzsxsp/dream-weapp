@@ -16,6 +16,7 @@ const urls = {
   output_init_url: config.base_url + '/order/output-init', // 出库初始化接口
   output_url: config.base_url + '/order/output', // 确认出库接口
   product_name_url: config.base_url + '/common/product-name', // 品名列表
+  color_list_url: config.base_url + '/common/color-list', // 品名列表
   receipt_init_url: config.base_url + '/order/receipt-init', // 收款初始化接口
   receipt_url: config.base_url + '/order/receipt', // 收款接口
   input_print_url: config.base_url + '/roll/input-print', // 打印接口
