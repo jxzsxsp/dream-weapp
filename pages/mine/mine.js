@@ -1,66 +1,51 @@
-// pages/mine/index.js
-Page({
+import {$Page, $wx} from '../../genji4mp/index'
+import { http, urls } from '../../net/index';
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+const data = {
+  settingList: [{
+    name: '收货地址', 
+    icon: 'icon-ic_address'
+  }],
+  userInfo: {},
+  userDetail: {},
+}
 
-  },
+const privateMethod = {
+}
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+const lifecycle = {
+  onLoad: function () {
+    this.setData({
+      userInfo: getApp().globalData.userInfo
+    })
+    http.post(urls.customerDetail).then(res => {
+      this.setData({
+        userDetail: res
+      })
+    })
   }
-})
+}
+
+const viewAction = {
+  itemClicked (data) {
+    if (data.index === 0) {
+      // 收货地址
+      $wx.navigateTo($wx.router.addressList)
+    }
+  },
+  getUserInfo (d, v) {
+    if (!v.userInfo) {
+      return
+    }
+    this.setData({
+      userInfo: v.userInfo
+    })
+    http.quietLogin().then(res => {
+      if (res.bindId) {
+        // $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId} )
+      }
+    })
+  },
+}
+
+$Page.register(null, data, lifecycle, privateMethod, viewAction)

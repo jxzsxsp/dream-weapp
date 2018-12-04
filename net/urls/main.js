@@ -2,7 +2,7 @@ export default {
   // 首页信息
   homeInfo: '/home/info',
   // 订单初始化
-  orderInit: '/order/init',
+  orderInit: '/order/submit-init',
   // 提交订单
   orderSubmit: '/order/submit',
   // 订单价格
@@ -31,4 +31,6 @@ export default {
   addressDefault: '/customer-address/default',
   // 获取地址详情
   addressDetail: '/customer-address/detail',
+  // 客户详情
+  customerDetail: '/customer/detail',
 }

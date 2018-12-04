@@ -31,7 +31,7 @@ const lifeCycle = {
     if (!utils.isEmptyObject(query)) {
       $wx.setNavigationBarTitle({title: '修改地址'})
       this.props.id = query.id
-      http.post(urls.addressDetail, {id: query.id, mock: true})
+      http.post(urls.addressDetail, {id: query.id})
         .then(res => {
           this.setData({
             contacts: res.contacts,
@@ -88,7 +88,6 @@ const viewAction = {
       address: {value: data.address, hint: '详细地址'},
       addressType: {value: data.addressType, hint: '地址类型'},
       defaultAddress: data.defaultAddress,
-      mock: true
     }
     let result = null
     if (this.props.id !== -1) {

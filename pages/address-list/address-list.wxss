@@ -28,7 +28,7 @@
   color: #333333;
   letter-spacing: 0;
   text-align: left;
-  width: 140rpx;
+  min-width: 140rpx;
 }
 
 .buyer-phone {

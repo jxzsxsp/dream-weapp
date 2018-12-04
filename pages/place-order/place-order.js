@@ -19,20 +19,20 @@ const data = {
   // 验布方式
   checkTypeList: [],
   // 取货方式
-  logisticsTypeList: [],
+  pickUpTypeList: [],
 
   // 选中的验布坊
   selectedStore: {},
   // 选中的验布方式
   selectedCheckType: {}, 
   // 选中的验布方式
-  selectedFabricType: {},
+  selectedFabricType: {unit: '米'},
   // 验布长度
   clothLength: 0,
   // 验布卷数
   volumeNumber: 1,
   // 取货方式
-  selectedLogisticType: {},
+  selectedPickUpType: {},
 
   // 价格详情
   priceDetail: {},
@@ -42,12 +42,12 @@ const data = {
 const lifeCycle = {
   onLoad: function (query) {
     let data = this.data
-    http.get(urls.orderInit, {mock: true}).then(res => {
+    http.get(urls.orderInit).then(res => {
       data.customerDetail = res.defaultCustomerAddress || {}
       data.storeList = res.storeList
       data.fabricTypeList = res.fabricTypeList
       data.checkTypeList = res.clothTypeList
-      data.logisticsTypeList = res.logisticsTypeList
+      data.pickUpTypeList = res.pickUpTypeList
     }).then(() => {
       let checkTypeIndex = parseInt(data.checkTypeList[0].id)
       // 找到选中的验布方式
@@ -78,7 +78,9 @@ const viewAction = {
   },
   // 选择面料类型
   selectFabric: function (d, v) {
-    this.data.selectedFabricType = v
+    this.setData({
+      selectedFabricType: v
+    })
     this.calcPrice()
   },
   // 选择验布方式
@@ -89,8 +91,8 @@ const viewAction = {
     this.openActionList(actionList)
   },
   // 选择取货方式
-  selectLogistic: function () {
-    let actionList = this.data.logisticsTypeList.map((logisticType, index) => {
+  selectPickUp: function () {
+    let actionList = this.data.pickUpTypeList.map((logisticType, index) => {
       return Object.assign({}, logisticType, {type: this.props.LOGISTICTYPE, index})
     })
     this.openActionList(actionList)
@@ -134,7 +136,7 @@ const viewAction = {
         break;
       case this.props.LOGISTICTYPE:
         this.setData({
-          selectedLogisticType: this.data.logisticsTypeList[v.index]
+          selectedPickUpType: this.data.pickUpTypeList[v.index]
         })
         break;
       default:
@@ -174,12 +176,11 @@ const viewAction = {
         value: data.volumeNumber,
         hint: '卷数'
       },
-      logisticsTypeId: {
-        value: data.selectedLogisticType.id,
+      pickUpTypeId: {
+        value: data.selectedPickUpType.id,
         hint: '物流类型'
       },
       buyerMessage: data.buyerMessage,
-      mock: true
     }
     http.post(urls.orderSubmit, param).then(res => {
       $wx.navigateTo($wx.router.orderSuccess, {orderId: res.orderNo})
@@ -188,24 +189,24 @@ const viewAction = {
 }
 
 const privateMethod = {
-  // 计算价格
+  // 计算价格 这期不用计算
   calcPrice: function () {
-    const data = this.data
-    // 同时存在面料类型验布方式和米数后计算
-    if (data.selectedCheckType.id && data.selectedFabricType.id && data.clothLength) {
-      const params = {
-        fabricMeters: data.clothLength,
-        fabricType: data.selectedFabricType.id,
-        unit: data.selectedFabricType.unit,
-        clothType: data.selectedCheckType.id,
-        mock: true
-      }
-      http.post(urls.orderPrice, params).then(res => {
-        this.setData({
-          priceDetail: res
-        })
-      })
-    }
+    // const data = this.data
+    // // 同时存在面料类型验布方式和米数后计算
+    // if (data.selectedCheckType.id && data.selectedFabricType.id && data.clothLength) {
+    //   const params = {
+    //     fabricMeters: data.clothLength,
+    //     fabricType: data.selectedFabricType.id,
+    //     unit: data.selectedFabricType.unit,
+    //     clothType: data.selectedCheckType.id,
+    //     mock: true
+    //   }
+    //   http.post(urls.orderPrice, params).then(res => {
+    //     this.setData({
+    //       priceDetail: res
+    //     })
+    //   })
+    // }
   },
   canSubmit: function () {
 

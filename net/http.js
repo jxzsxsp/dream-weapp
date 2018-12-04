@@ -93,9 +93,38 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.list
+      return res.dataList
     })
+  }
 
+    /**
+   * 获取列表
+   * @param {String} url 请求的url
+   * @param {Object} loadingState 通过 http.defaultLoadingState() 获取
+   * @param {Obejct} data 请求的参数
+   * @param {Bool} isLoading 是否显示加载框
+   */
+  postList (url, loadingState, data, isLoading) {
+    // 没有更多了，直接返回
+    if (!loadingState.hasMore) {
+      return new Promise((resolve) => {
+        resolve([])
+      })
+    }
+
+    let realData = {}
+    // 如果存在data，把上次的请求参数更新
+    if (!!data) {
+      loadingState.param = Object.assign({}, {pageId: loadingState.param.pageId, pageSize: loadingState.param.pageSize}, data)
+    }
+    realData = Object.assign(realData, loadingState.param)
+
+    return this.post(url, realData, isLoading).then((res) => {
+      loadingState.param.pageId += 1
+      loadingState.hasMore = res.hasMore
+      loadingState.totalCount = res.totalCount
+      return res.dataList
+    })
   }
 
   _getOtherList (baseUrlName, url, loadingState, data, isLoading) {
@@ -116,7 +145,7 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.list
+      return res.dataList
     }) 
   }
 
@@ -196,7 +225,7 @@ class Http {
         mask: true
       })
     }
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
       // 没有 token 先取出token
       if (!getApp().globalData.token) {
         getApp().globalData.token = wx.getStorageSync('token')
@@ -210,7 +239,7 @@ class Http {
           'content-type': 'application/json',
           'token': getApp().globalData.token
         },
-        success (res) {
+        success: function (res) {
           if (isLoading) {
             wx.hideLoading()
           }
@@ -265,7 +294,7 @@ class Http {
             })
             reject(res.data || {})
           }
-        },
+        }.bind(this),
         fail (error) {
           wx.showToast({
             title: '网络出错！',
@@ -277,7 +306,7 @@ class Http {
 
         }
       })
-    })
+    }.bind(this))
   }
 
   // otherRequest

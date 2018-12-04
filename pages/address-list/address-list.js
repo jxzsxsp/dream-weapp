@@ -16,7 +16,7 @@ const lifecycle = {
     this.props.comeFrom = query.comeFrom
   },
   onShow: function () {
-    http.getList(urls.addressList, http.defaultLoadingState(100), {mock: true}).then(res => {
+    http.postList(urls.addressList, http.defaultLoadingState(100)).then(res => {
       this.setData({
         addressList: res
       })
@@ -43,7 +43,7 @@ const viewAction = {
   },
   // 设置默认地址
   setDefaultAddress: function (d) {
-    http.post(urls.addressDefault, {id: this.data.addressList[d.index].id, mock: true})
+    http.post(urls.addressDefault, {id: this.data.addressList[d.index].id})
       .then(() => {
         const addressList = this.data.addressList.map((item, index) => {
           if (index === d.index) {
@@ -58,7 +58,7 @@ const viewAction = {
   },
   // 删除地址
   deleteAddress: function (d) {
-    http.post(urls.deleteAddress, {id: this.data.addressList[d.index].id, mock: true})
+    http.post(urls.deleteAddress, {id: this.data.addressList[d.index].id})
       .then(() => {
         this.data.addressList.splice(d.index, 1)
         this.setData({addressList: this.data.addressList})

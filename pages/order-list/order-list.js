@@ -102,7 +102,7 @@ const privateMethod = {
    * 获取列表数据
    */
   getDataList: function () {
-    http.getList(urls.orderList, this.props.loadStatus, { mock: true, status: this.data.status }).then(res => {
+    http.getList(urls.orderList, this.props.loadStatus, {status: this.data.status }).then(res => {
       console.log(res)
       let list = this.data.list.concat(res);
       this.setData({
