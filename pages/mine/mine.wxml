@@ -27,13 +27,13 @@
     <text class="setting-text">{{item.name}}</text>
     <view class="iconfont icon-ic_back setting-detail" />
   </view>
-  <view wx:if="{{userInfo.nickName}}" class="setting-row-container">
+  <view class="setting-row-container">
     <view class="iconfont icon-ic_custom_serviceco setting-icon"/>
     <view class="tel-container flex-column">
       <text class="setting-text">客服电话</text>
-      <text class="sub-text">服务工作时间：{{userDetail.customerServiceTime}}</text>
+      <text class="sub-text">服务工作时间：工作日 9:00-19:00</text>
     </view>
-    <text class="tel-text">{{userDetail.customerServiceTelephone}}</text>
+    <text class="tel-text">400-8217111</text>
   </view>
 
 </view>
