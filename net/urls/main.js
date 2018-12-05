@@ -15,6 +15,12 @@ export default {
   viewReport: '/report/report-by-order',
   // 支付详情
   detailForPay: '/order/detail-for-pay',
+  // 去支付接口
+  createPayment: '/pay/createPayment',
+  // 获取签名
+  signPay: '/cashier/pay',
+  // 支付扫码
+  scanPay: '/cashier/index.html',
   // 取消验布
   cancelOrder: '/order/cancel',
   // 获取地址类型

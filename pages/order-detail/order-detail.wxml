@@ -101,6 +101,7 @@
     <text>买家留言：{{customerMessage}}</text>
   </view>
 
+<block wx:if="{{payTime}}">
   <view class="info-line"></view>
 
   <!-- <view class="info-cell">
@@ -114,11 +115,13 @@
   <view class="info-cell">
     <text>支付时间：{{payTime}}</text>
   </view>
+</block>
 
 </view>
 
 <view wx:for="11111111" wx:key="index" class="line"></view>
 
+<block wx:if="{{statusId!=20 && statusId!=110 && statusId!=120}}">
 <view class="bottom-content">
   <!-- <view class="tips">
     <text class="tips-text">针织面料以实际测量公斤和门幅结果，计算最终价格。</text>
@@ -133,6 +136,7 @@
     <view wx:if="{{showBtn.pay}}" class="btn go-pay" bind:tap="goPay">去付款</view>
   </view>
 </view>
+</block>
 
   <van-popup
     show="{{ showPay }}"

@@ -19,7 +19,7 @@
 <view class="bottom-content flex">
   <view class="price-container flex">
     支付金额：
-    <text class="price">¥ 99.00</text>
+    <text class="price">{{fee}}</text>
   </view>
   <view class="btn flex" bind:tap="pay">支付</view>
 </view>

@@ -84,11 +84,16 @@ const viewAction = {
    */
   goPay: function (d, v) {
     console.log(d, v);
+    http.get(urls.detailForPay, { mock: true, orderNo: v.orderNo }).then(res => {
+      console.log(res)
+      this.setData({ payData: res });
+    });
     this.setData({showPay: true, payOrderNo: v.orderNo})
   },
 
   confirmPay: function () {
-    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.payOrderNo })
+    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.payOrderNo, 
+      fee: this.data.payData.priceDescription })
   },
 
   toggleShowPay: function () {
@@ -102,7 +107,7 @@ const privateMethod = {
    * 获取列表数据
    */
   getDataList: function () {
-    http.getList(urls.orderList, this.props.loadStatus, {status: this.data.status }).then(res => {
+    http.getList(urls.orderList, this.props.loadStatus, { mock: true, status: this.data.status }).then(res => {
       console.log(res)
       let list = this.data.list.concat(res);
       this.setData({

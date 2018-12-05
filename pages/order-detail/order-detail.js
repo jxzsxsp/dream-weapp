@@ -54,7 +54,8 @@ const viewAction = {
   },
 
   confirmPay: function () {
-    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.orderNo })
+    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.orderNo, 
+    fee: this.data.payData.priceDescription })
   },
   /**
    * 确认收货
@@ -70,7 +71,7 @@ const privateMethod = {
    * 获取订单详情
    */
   getDetail: function () {
-    http.get(urls.orderDetail, {orderNo: this.data.orderNo }).then(res => {
+    http.get(urls.orderDetail, { mock: true, orderNo: this.data.orderNo }).then(res => {
       console.log(res)
       this.setData(res)
     });

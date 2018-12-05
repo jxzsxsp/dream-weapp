@@ -9,6 +9,7 @@ export default {
   buyerMessage: 'buyer-message',
   orderSuccess: 'order-success',
   home: 'home',
+  webView: 'web-view',
   addressList: 'address-list',
   addressAdd: 'address-add'
 }

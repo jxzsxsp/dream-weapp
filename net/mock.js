@@ -43,7 +43,7 @@ const homeInfo = {
 
 const order = {
   [urls.orderList]: {
-    "list": [
+    "dataList": [
       {
         "orderNo": 10001,
         "createTime": "2018-09-10 12:23:22",
@@ -320,7 +320,7 @@ const order = {
     "total": 10
   },
   [urls.orderDetail]: {
-    "statusId": 20,//状态 --add
+    "statusId": 10,//状态 --add
     "statusName": "已评价",//状态
     "orderNo": "8980970808", //验布单号
     "storeName": "绍兴交易园店", //验布地点（ 验布坊名称）
@@ -387,6 +387,20 @@ const order = {
     "priceDescription": "￥99.99", //价格描述
   },
   [urls.cancelOrder]: {},
+  [urls.createPayment]: {
+    "orderNo": "118120472540",
+    "token": "5af1fc5885aeab293d0b59406103cf0e80be7518412de7821bcf0c09d87c3475cb34f83f425dd3bb0ae7157b2364975e933ea2a895f4b413b2a0fa430bdffe4f"
+  },
+  [urls.signPay]: {
+    "prepayId": "111111", // 预支付流水
+    "appId": "appId", // 小程序appId
+    "timeStamp": "12334234", // 生成时间
+    "nonceStr": "xxxxx",
+    "packageValue": "packageValue",
+    "paySign": "paySign", // 支付签名
+    "signType": "xxx", //签名类型
+    "redirectUrl": "", // 支付成功回调url
+  }
 }
 
 const orderInit = {
