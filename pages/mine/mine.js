@@ -40,7 +40,16 @@ const viewAction = {
   },
   getUserInfo () {
     $wx.app.bindPhone().then(res => {
-      console.log(res)
+      if (res.code === 1) {
+        this.setData({
+          userInfo: $wx.app.globalData.userInfo
+        })
+        http.post(urls.customerDetail).then(res => {
+          this.setData({
+            userDetail: res
+          })
+        })
+      }
     })
   },
 }
