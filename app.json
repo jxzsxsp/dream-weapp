@@ -12,6 +12,7 @@
     "pages/pay-platform/pay-platform",
     "pages/pay-success/pay-success",
     "pages/view-report/view-report",
+    "pages/bind-phone/bind-phone",
     "pages/web-view/web-view"
   ],
   "window": {

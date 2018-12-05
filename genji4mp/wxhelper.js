@@ -17,6 +17,7 @@ function _getUrl (baseUrl, params) {
 class BaseService {
   constructor () {
     this.router = {}
+    this.app = null
   }
 
   reLaunch (baseUrl, params) {
@@ -70,6 +71,9 @@ const $wx = new BaseService()
 export default new Proxy($wx, {
   get: function (target, property) {
     if (property in target) {
+      if (property === 'app') {
+        return getApp()
+      }
       return target[property]
     } else if (property in wx) {
       return (param = {}) => {

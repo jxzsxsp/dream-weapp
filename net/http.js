@@ -20,6 +20,8 @@ class Http {
     }
   }
 
+
+
   //  静默登录
   quietLogin () {
     let code = ''
