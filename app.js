@@ -57,25 +57,26 @@ App({
   // 校验并保存当前授权和绑定状态
   saveAuthInfo () {
     let detailInfo = {}
-    return $wx.getUserInfo({withCredentials: true})
-      .then(res => {
-        detailInfo = res
-        return $wx.login()
-      }).then(res => {
-        const data = {code: res.code, appId: constants.APP_GLOBAL.appId, domainName: constants.APP_GLOBAL.domainName, rawData: detailInfo.rawData, signature: detailInfo.signature, encryptedData: detailInfo.encryptedData, iv: detailInfo.iv}
-        return http.getLogin(urls.login.quietLogin, data, true)
-      }).then(res => {
-        this.globalData.userInfo = detailInfo.userInfo
-        if (res.token) {
-          this.globalData.token = res.token
-          wx.setStorageSync('token', res.token)
-          return {code: 1, message: '获取token成功'}
-        } else if (res.bindId) {
-          return {code: -2, message: '需要绑定手机号', bindId: res.bindId}
-        }
-      }).catch((res) => {
-        return {code: -1, message: '未授权'}
-      })
+    let code = ''
+    return $wx.login().then(res => {
+      code = res.code
+    }).then(() => {
+      return $wx.getUserInfo({withCredentials: true})
+    }).then(res => {
+      const data = {code, appId: constants.APP_GLOBAL.appId, domainName: constants.APP_GLOBAL.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
+      return http.getLogin(urls.login.quietLogin, data, true)
+    }).then(res => {
+      this.globalData.userInfo = detailInfo.userInfo
+      if (res.token) {
+        this.globalData.token = res.token
+        wx.setStorageSync('token', res.token)
+        return {code: 1, message: '获取token成功'}
+      } else if (res.bindId) {
+        return {code: -2, message: '需要绑定手机号', bindId: res.bindId}
+      }
+    }).catch((res) => {
+      return {code: -1, message: '未授权'}
+    })
   },
 
 
