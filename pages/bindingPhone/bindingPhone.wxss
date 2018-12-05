@@ -1,0 +1,91 @@
+.binding-phone {
+  padding: 80rpx;
+}
+.bp-tit {
+  font-size: 28rpx;
+  margin-top:40rpx;
+  color:#9B9B9B;
+  display:inline-block;
+}
+.bp-input {
+  font-size: 46rpx;
+  color: #4A4A4A;
+  line-height: 60rpx;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #9B9B9B;
+}
+.bp-code-box {
+  position: relative;
+  z-index: 0;
+}
+.bp-code-box .bp-input{
+  padding-right: 200rpx;
+}
+.code-btn {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  width: 180rpx;
+  height: 64rpx;
+  background-color: #F1F1F1;
+  border: 0;
+  border-radius: 32rpx;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  text-align: center;
+}
+.tips-box {
+  line-height: 100rpx;
+  height: 100rpx;
+}
+.tips {
+  font-size: 24rpx;
+  color: #BB2830;
+}
+.bp-btn {
+  background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);
+  box-shadow: 0 2rpx 18rpx 0 rgba(187,40,48,0.20);
+  border-radius: 44rpx;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+.bp-agreement{
+  margin-top: 50rpx;
+  font-size: 28rpx;
+  color: #9B9B9B;
+}
+.bp-checkbox {
+  vertical-align: 2rpx;
+}
+.bp-navi {
+  display: inline-block;
+  color: #BB2830;
+}
+
+/*  重写 checkbox 样式  */
+/* 未选中的 背景样式 */
+checkbox.bp-checkbox .wx-checkbox-input{
+  width: 32rpx; /* 背景的宽 */
+  height: 32rpx; /* 背景的高 */
+  font-size:24rpx; /* 对勾大小 30rpx */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox.bp-checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  border: 1rpx solid transparent;
+  background: #BB2830;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox.bp-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width: 32rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 32rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 32rpx;
+  text-align: center;
+  font-size:24rpx; /* 对勾大小 30rpx */
+  color:#fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}

@@ -1,0 +1,19 @@
+<view class="binding-phone">
+  <text class="bp-tit">手机号</text>
+  <input class="bp-input" type="number"></input>
+  <text class="bp-tit">验证码</text>
+  <view class="bp-code-box">
+    <input class="bp-input" type="number"></input>
+    <button class="code-btn button">发送验证码</button>
+  </view>
+  <view class="tips-box">
+    <text class="tips">密码不正确</text>
+  </view>
+  <button class="bp-btn button">确认</button>
+  <view class="bp-agreement">
+    <label class="checkbox">
+      <checkbox class="bp-checkbox" color="#BB2830" /> 我已阅读并同意
+    </label>
+    <navigator class="bp-navi" url="/page/navigate/navigate?title=navigate">《链尚检品用户协议》</navigator>
+  </view>
+</view>

@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -97,6 +97,11 @@
 					"name": "我的",
 					"pathName": "pages/mine/mine",
 					"query": "id=20"
+				},
+				{
+					"id": -1,
+					"name": "绑定手机",
+					"pathName": "pages/bindingPhone/bindingPhone"
 				}
 			]
 		}
