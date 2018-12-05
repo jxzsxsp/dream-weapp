@@ -35,12 +35,21 @@ const viewAction = {
   itemClicked (data) {
     if (data.index === 0) {
       // 收货地址
-      $wx.navigateTo($wx.router.addressList)
+      $wx.navigateTo($wx.router.addressList, {comeFrom: 1})
     }
   },
   getUserInfo () {
     $wx.app.bindPhone().then(res => {
-      console.log(res)
+      if (res.code === 1) {
+        this.setData({
+          userInfo: $wx.app.globalData.userInfo
+        })
+        http.post(urls.customerDetail).then(res => {
+          this.setData({
+            userDetail: res
+          })
+        })
+      }
     })
   },
 }
