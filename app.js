@@ -1,6 +1,8 @@
 import router from 'router'
 import {$wx, $Page} from './genji4mp/index'
-import {http} from './net/index'
+import constants from './constants/index'
+import {http, urls} from './net/index'
+import { isEmptyObject } from './utils/index';
 App({
   onLaunch: function () {
     // mixin 生命周期
@@ -11,17 +13,72 @@ App({
     // 注册路由
     $wx.registerRouter(router)
 
-    // 获取用户信息
-    $wx.getUserInfo().then(res => {
-      this.globalData.userInfo = res.userInfo
-    })
+    // 校验授权情况
+    this.saveAuthInfo()
+  },
 
-    // 静默登录
-    $wx.login().then(res => {
-      http.quietLogin(res.code) 
-      console.log(res)
+  // 绑定手机号,主动调用前必须先授权
+  bindPhone: function () {
+    return this.saveAuthInfo().then(res => {
+      let authRes = res
+      if (res.code === -1) {
+        console.error('zachary抛出: 绑定手机号前必须授权')
+        return new Promise((res, rej) => {
+          rej(authRes)
+        })
+      }
+      if (res.code === -2) {
+        $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId})
+        return new Promise((res, rej) => {
+          rej(authRes)
+        })
+      }
+      return authRes
     })
   },
+
+  // 有授权或者有绑定的时候保存
+  saveAuthInfo () {
+    return this.checkState().then(res => {
+      if (res.code !== -1) {
+        getApp().globalData.userInfo = res.data.userInfo
+        wx.setStorageSync('token', res.data.token)
+        getApp().globalData.token = res.data.token 
+      } 
+      return res
+    })
+  },
+
+  // 是否已经绑定好手机号
+  isBinded () {
+    return !!this.globalData.token && isEmptyObject(this.globalData.userInfo)
+  },
+
+  // 校验并保存当前授权和绑定状态
+  saveAuthInfo () {
+    let detailInfo = {}
+    return $wx.getUserInfo({withCredentials: true})
+      .then(res => {
+        detailInfo = res
+        return $wx.login()
+      }).then(res => {
+        const data = {code: res.code, appId: constants.APP_GLOBAL.appId, domainName: constants.APP_GLOBAL.domainName, rawData: detailInfo.rawData, signature: detailInfo.signature, encryptedData: detailInfo.encryptedData, iv: detailInfo.iv}
+        return http.getLogin(urls.login.quietLogin, data, true)
+      }).then(res => {
+        this.globalData.userInfo = detailInfo.userInfo
+        if (res.token) {
+          this.globalData.token = res.token
+          wx.setStorageSync('token', res.token)
+          return {code: 1, message: '获取token成功'}
+        } else if (res.bindId) {
+          return {code: -2, message: '需要绑定手机号', bindId: res.bindId}
+        }
+      }).catch((res) => {
+        return {code: -1, message: '未授权'}
+      })
+  },
+
+
 
   /**
    * 小程序全局数据
@@ -29,6 +86,6 @@ App({
   globalData: {
     // 用户信息
     userInfo: {},
-    token: '46dd5316b856a7e391615b78a261ff1c69dd182d63edb8b3a16d21b82accfeb2'
+    // token: '46dd5316b856a7e391615b78a261ff1c69dd182d63edb8b3a16d21b82accfeb2'
   }
 })

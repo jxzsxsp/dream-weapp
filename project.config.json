@@ -100,8 +100,9 @@
 				},
 				{
 					"id": -1,
-					"name": "绑定手机",
-					"pathName": "pages/bindingPhone/bindingPhone"
+					"name": "下单",
+					"pathName": "pages/place-order/place-order",
+					"query": "id=20"
 				}
 			]
 		}

@@ -1,5 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
+import { isObject, isEmptyObject } from '../../utils/jshelper';
 
 const data = {
   settingList: [{
@@ -15,14 +16,18 @@ const privateMethod = {
 
 const lifecycle = {
   onLoad: function () {
-    this.setData({
-      userInfo: getApp().globalData.userInfo
-    })
-    http.post(urls.customerDetail).then(res => {
+  },
+  onShow: function () {
+    if ($wx.app.isBinded()) {
       this.setData({
-        userDetail: res
+        userInfo: $wx.app.globalData.userInfo
       })
-    })
+      http.post(urls.customerDetail).then(res => {
+        this.setData({
+          userDetail: res
+        })
+      })
+    }
   }
 }
 
@@ -33,17 +38,9 @@ const viewAction = {
       $wx.navigateTo($wx.router.addressList)
     }
   },
-  getUserInfo (d, v) {
-    if (!v.userInfo) {
-      return
-    }
-    this.setData({
-      userInfo: v.userInfo
-    })
-    http.quietLogin().then(res => {
-      if (res.bindId) {
-        // $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId} )
-      }
+  getUserInfo () {
+    $wx.app.bindPhone().then(res => {
+      console.log(res)
     })
   },
 }
