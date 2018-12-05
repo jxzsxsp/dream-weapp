@@ -25,6 +25,19 @@ export default function (param, check) {
         showToast(check[key].hint)
         return false
       }
+    } else if (check[key].type === 'tel') {
+      if ((!param[key] && param[key] !== 0) || param[key] === -1) {
+        showToast(check[key].hint)
+        return false
+      }
+      if (param[key].length !== 11) {
+        showToast(check[key].hint)
+        return false
+      }
+      if (!(/^1[3|4|5|6|7|8][0-9]\d{8}$/.test(param[key]))) {
+        showToast(check[key].hint)
+        return false
+      }
     } else {
       console.error('zachary 抛出：表单校验 type 非已知类型')
       return false

@@ -1,19 +1,21 @@
 <view class="binding-phone">
   <text class="bp-tit">手机号</text>
-  <input class="bp-input" type="number"></input>
+  <input class="bp-input" type="number" maxlength="11" bind:blur="finishInput" data-type="mobile"></input>
   <text class="bp-tit">验证码</text>
   <view class="bp-code-box">
-    <input class="bp-input" type="number"></input>
-    <button class="code-btn button">发送验证码</button>
+    <input class="bp-input" type="number" bind:blur="finishInput" data-type="authCode"></input>
+    <button class="code-btn button" bind:tap="sendCode">{{codeText}}</button>
   </view>
   <view class="tips-box">
-    <text class="tips">密码不正确</text>
+    <text class="tips">{{errorText}}</text>
   </view>
-  <button class="bp-btn button">确认</button>
+  <button class="bp-btn button" bind:tap="bindPhone">确认</button>
   <view class="bp-agreement">
-    <label class="checkbox">
-      <checkbox class="bp-checkbox" color="#BB2830" /> 我已阅读并同意
-    </label>
-    <navigator class="bp-navi" url="/page/navigate/navigate?title=navigate">《链尚检品用户协议》</navigator>
+    <checkbox-group bind:change="changeCheckBox">
+      <label class="checkbox">
+        <checkbox class="bp-checkbox" value="agreement" color="#BB2830" /> 我已阅读并同意
+      </label>
+      <navigator class="bp-navi" url="/page/navigate/navigate?title=navigate">《链尚检品用户协议》</navigator>
+    </checkbox-group>
   </view>
 </view>
