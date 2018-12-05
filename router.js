@@ -10,5 +10,6 @@ export default {
   orderSuccess: 'order-success',
   home: 'home',
   addressList: 'address-list',
-  addressAdd: 'address-add'
+  addressAdd: 'address-add',
+  bindPhone: 'bind-phone'
 }

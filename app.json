@@ -12,7 +12,7 @@
     "pages/pay-platform/pay-platform",
     "pages/pay-success/pay-success",
     "pages/view-report/view-report",
-    "pages/bindingPhone/bindingPhone"
+    "pages/bind-phone/bind-phone"
   ],
   "window": {
     "backgroundTextStyle": "light",
