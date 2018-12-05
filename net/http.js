@@ -263,17 +263,22 @@ class Http {
             resolve(resData)
           } else if (res.data.code === constants.NET_STATE.NEED_RELOGIN) {
             // 没有token，重新登录
-            this.quietLogin().then(res => {
-              if (!!res.token) {
+            $wx.app.saveAuthInfo().then(res => {
+              if (res.code === 1) {
                 // token 失效的情况
                 wx.showToast({
-                  title: '请求失败，请刷新重试',
+                  title: '登录过期，请刷新重试',
                   icon: 'none',
                   mask: true
                 })
-              } else if (!!res.bindId) {
+
+              } else if (res.code === -1) {
+                $wx.showModal({title: '请先授权', content: '本功能需要授权才能体验', showCancel: false}).then(() => {
+                  $wx.switchTab($wx.router.mine)
+                })
+              } else if (res.code === -2) {
                 // 没有绑定手机号的情况
-                $wx.showModal({title: '绑定手机', content: '本功能需要绑定手机才能体验', cancelText: false}).then(res => {
+                $wx.showModal({title: '请绑定手机', content: '本功能需要绑定手机才能体验', showCancel: false}).then(res => {
                   $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId})
                 })
               }

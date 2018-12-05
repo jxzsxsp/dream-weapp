@@ -27,7 +27,7 @@
     <text class="setting-text">{{item.name}}</text>
     <view class="iconfont icon-ic_back setting-detail" />
   </view>
-  <view class="setting-row-container">
+  <view wx:if="{{userInfo.nickName}}" class="setting-row-container">
     <view class="iconfont icon-ic_custom_serviceco setting-icon"/>
     <view class="tel-container flex-column">
       <text class="setting-text">客服电话</text>
