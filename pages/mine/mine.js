@@ -35,7 +35,7 @@ const viewAction = {
   itemClicked (data) {
     if (data.index === 0) {
       // 收货地址
-      $wx.navigateTo($wx.router.addressList)
+      $wx.navigateTo($wx.router.addressList, {comeFrom: 1})
     }
   },
   getUserInfo () {
