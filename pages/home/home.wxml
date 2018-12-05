@@ -27,7 +27,7 @@
             <view class="price">{{item.displayPrice}}</view>
           </view>
           <view class="desc">{{item.item}}</view>
-          <view class="button flex" data-id="{{item.id}}" bind:tap="goPlaceOrder">去验布</view>
+          <view class="button flex" data-id="{{item.id}}" open-type="getUserInfo" bind:tap="goPlaceOrder">去验布</view>
         </view>
 
         <view class="image">

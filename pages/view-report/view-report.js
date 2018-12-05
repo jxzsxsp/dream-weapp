@@ -13,7 +13,7 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     console.log(query);
-    http.get(urls.viewReport, {orderNo: query.orderNo }).then(res => {
+    http.post(urls.viewReport, {orderNo: query.orderNo }).then(res => {
       console.log(res);
       this.setData({
         reportList: res.list

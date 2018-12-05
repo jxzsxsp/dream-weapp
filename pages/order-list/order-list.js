@@ -65,7 +65,7 @@ const viewAction = {
    */
   cancelOrder: function (d, v) {
     console.log(d, v);
-    http.get(urls.cancelOrder, { mock: true, orderNo: v.orderNo }).then(res => {
+    http.post(urls.cancelOrder, { orderNo: v.orderNo }).then(res => {
       console.log(res)
       $wx.showToast({
         title: '取消成功',
@@ -84,7 +84,7 @@ const viewAction = {
    */
   goPay: function (d, v) {
     console.log(d, v);
-    http.get(urls.detailForPay, { mock: true, orderNo: v.orderNo }).then(res => {
+    http.post(urls.detailForPay, { orderNo: v.orderNo }).then(res => {
       console.log(res)
       this.setData({ payData: res });
     });
@@ -107,7 +107,7 @@ const privateMethod = {
    * 获取列表数据
    */
   getDataList: function () {
-    http.getList(urls.orderList, this.props.loadStatus, { mock: true, status: this.data.status }).then(res => {
+    http.postList(urls.orderList, this.props.loadStatus, { status: this.data.status }).then(res => {
       console.log(res)
       let list = this.data.list.concat(res);
       this.setData({

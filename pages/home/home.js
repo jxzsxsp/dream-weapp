@@ -12,7 +12,7 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
-    http.get(urls.homeInfo).then(res => {
+    http.post(urls.homeInfo).then(res => {
       console.log(res)
       this.setData({
         items: res.items,
@@ -25,7 +25,10 @@ const lifecycle = {
 const viewAction = {
   // 去验布
   goPlaceOrder: function (d) {
-    $wx.navigateTo($wx.router.placeOrder, { id: d.id })
+    $wx.app.bindPhone().then(res => {
+      console.log(res)
+      $wx.navigateTo($wx.router.placeOrder, { id: d.id })
+    })
   },
 
 }
