@@ -83,7 +83,7 @@
 .setting-row-container {
   display: flex;
   flex-direction: row;
-  height: 100rpx;
+  height: 120rpx;
   align-items: center;
 }
 
