@@ -1,4 +1,5 @@
 import {$Page, $wx} from '../../genji4mp/index'
+import wxhelper from '../../genji4mp/wxhelper';
 
 const props={
   orderId: ''
@@ -12,10 +13,13 @@ const lifecycle = {
 
 const viewAction = {
   checkOrderClicked: function () {
-    //TODO: 跳转到详情
+    // $wx.redirectTo($wx.router.orderDetail)
+    $wx.switchTabTo($wx.router.orderList, $wx.router.orderDetail, {orderNo: this.props.orderId})
+    // $wx.switchTab($wx.router.home)
+    // $wx.redirectRootTo($wx.router.orderDetail, {orderNo: this.props.orderId})
   },
   goHomeClicked: function () {
-    $wx.reLaunch($wx.router.home)
+    $wx.switchTab($wx.router.home)
   }
 }
 

@@ -21,20 +21,48 @@ class BaseService {
   }
 
   reLaunch (baseUrl, params) {
-    wx.reLaunch({
-      url: _getUrl(baseUrl, params)
+    return new Promise((res, rej) => {
+      wx.reLaunch({
+        url: _getUrl(baseUrl, params),
+        success: res,
+        fail: rej
+      })
     })
   }
 
   navigateTo (baseUrl, params) {
-    wx.navigateTo({
-      url: _getUrl(baseUrl, params)
+    return new Promise((res, rej) => {
+      wx.navigateTo({
+        url: _getUrl(baseUrl, params),
+        success: res,
+        fail: rej
+      })
     })
   }
 
   redirectTo (baseUrl, params) {
-    wx.redirectTo({
-      url: _getUrl(baseUrl, params)
+    return new Promise((res, rej) => {
+      wx.redirectTo({
+        url: _getUrl(baseUrl, params),
+        success: res,
+        fail: rej
+      })
+    }) 
+  }
+
+  switchTab (baseUrl) {
+    return new Promise((res, rej) => {
+      wx.switchTab({
+        url: baseUrl,
+        success: res,
+        fail: rej
+      })
+    })  
+  }
+
+  switchTabTo (baseUrl, nextUrl, params={}) {
+    return this.switchTab(baseUrl).then(() => {
+      this.navigateTo(nextUrl, params)
     })
   }
 
@@ -53,7 +81,13 @@ class BaseService {
       let prevPage = pages[pages.length - delta - 1]
       prevPage.setData(data)
     }
-    wx.navigateBack(param)
+    return new Promise((res, rej) => {
+      wx.navigateBack({
+        param,
+        success: res,
+        fail: rej
+      })
+    })
   }
 
   registerRouter (routers) {
