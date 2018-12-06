@@ -35,7 +35,7 @@ const viewAction = {
       mobile: {
         type: 'tel',
         value: this.data.formInfo.mobile,
-        hint: '请输入正确的手机号码'
+        hint: '正确的手机号码'
       },
       appId: this.data.formInfo.appId,
       domainName,
@@ -106,13 +106,13 @@ const viewAction = {
 const privateMethod = {
   codeCountdown () {
     let scd = 60
-    let codeText = scd + '‘s'
+    let codeText = scd + '’s'
     this.setData({
       codeText: codeText
     })
     let timeId = setInterval(() => {
       scd--
-      codeText = scd + '‘s'
+      codeText = scd + '’s'
       if (scd < 0) {
         clearInterval(timeId)
         this.setData({
