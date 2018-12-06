@@ -42,7 +42,7 @@
     <form-cell>
       <text slot="left">验布米数</text>
       <view slot="right" class="detail-container">
-        <input bind:blur="finishInput" data-type="clothLength" type="number" placeholder="请输入" class="input"/>
+        <input bind:blur="finishInput" data-type="clothLength" type="digit" placeholder="请输入" class="input"/>
         <text>{{selectedFabricType.unit ? selectedFabricType.unit : '米'}}</text>
       </view>
     </form-cell>
