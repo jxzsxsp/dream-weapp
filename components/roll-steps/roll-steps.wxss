@@ -1,22 +1,35 @@
 .container {
   width: 690rpx;
-  height: 33rpx;
+  height: 34rpx;
+}
+
+.item-container {
+  width: 690rpx;
+  height: 17rpx;
+  border-bottom: 1px dashed #CCCCCC;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
+.single-item {
+  border: none;
+}
+
 .title {
+  background: #FFFFFF;
   font-family: PingFangSC-Light;
   font-size: 24rpx;
   color: #252525;
   letter-spacing: 0;
+  margin-bottom: -17rpx;
 }
 
 .line {
   height: 1rpx;
   border-top: 1px dashed #CCCCCC;
-  width: 500rpx;
+  width: 460rpx;
   margin-left: 10rpx;
   margin-right: 10rpx;
 }
