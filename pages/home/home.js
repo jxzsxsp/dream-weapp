@@ -12,7 +12,7 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
-    http.post(urls.homeInfo, {mock:true}).then(res => {
+    http.post(urls.homeInfo).then(res => {
       console.log(res)
       this.setData({
         items: res.items,
