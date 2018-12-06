@@ -1,6 +1,7 @@
 import { $Page, $wx } from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
 import constants from '../../constants/index';
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 
 const props = {
   loadStatus: http.defaultLoadingState()
@@ -60,16 +61,14 @@ const viewAction = {
     console.log(d, v);
     $wx.navigateTo($wx.router.orderDetail, { orderNo: v.orderNo })
   },
-  /**
-   * 取消验布
-   */
-  cancelOrder: function (d, v) {
-    console.log(d, v);
-    http.post(urls.cancelOrder, { orderNo: v.orderNo }).then(res => {
-      console.log(res)
-      $wx.showToast({
-        title: '取消成功',
-      })
+  showCancelDialog: function (d, v) {
+    Dialog.confirm({
+      message: '是否确认取消该验布单？'
+    }).then(() => {
+      console.log('confirm');
+      this.cancelOrder(d, v);
+    }).catch(() => {
+      console.log('cancel');
     });
   },
   /**
@@ -113,6 +112,22 @@ const privateMethod = {
       this.setData({
         list: list
       })
+    });
+  },
+  /**
+   * 取消验布
+   */
+  cancelOrder: function (d, v) {
+    console.log(d, v);
+
+    http.post(urls.cancelOrder, { orderNo: v.orderNo }).then(res => {
+      console.log(res);
+      this.props.loadStatus = http.defaultLoadingState();
+      this.setData({ list: [] });
+      this.getDataList();
+      $wx.showToast({
+        title: '取消成功',
+      });
     });
   },
 }

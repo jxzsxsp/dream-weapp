@@ -44,7 +44,13 @@ page {
   color: #FFFFFF;
   letter-spacing: 0;
   text-align: right;
-  margin-left: 320rpx;
+  margin-left: 150rpx;
+  width: 370rpx;
+  float: right;
+}
+
+.price text {
+  float: right;
 }
 
 .address-info {

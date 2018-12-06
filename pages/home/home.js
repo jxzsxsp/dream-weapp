@@ -7,7 +7,8 @@ const props = {
 
 const data = {
   items: [],
-  order: {}
+  order: {},
+  active: false,
 }
 
 const lifecycle = {
@@ -25,8 +26,13 @@ const lifecycle = {
 const viewAction = {
   // 去验布
   goPlaceOrder: function (d) {
+    if(this.data.active) {
+      return false;
+    }
+    this.setData({ active: true });
     $wx.app.bindPhone().then(res => {
       console.log(res)
+      this.setData({ active: false });
       $wx.navigateTo($wx.router.placeOrder, { id: d.id })
     })
   },

@@ -54,7 +54,6 @@
 }
 
 .head {
-  margin-top: 20rpx;
   font-family: PingFangSC-Medium;
   font-size: 32rpx;
   color: #252525;
@@ -89,6 +88,15 @@
   align-items: center;
 }
 
+button::after {
+  border: none;
+}
+
+button {
+  text-align: left;
+  box-sizing: inherit;
+}
+
 .content {
   width: 430rpx;
 }
@@ -101,7 +109,6 @@
 }
 
 .desc {
-  margin-top: 25rpx;
   font-family: PingFangSC-Regular;
   font-size: 24rpx;
   color: #252525;
@@ -120,7 +127,6 @@
 
 .go-check {
   margin-top: 20rpx;
-  margin-left: 0rpx;
   width: 140rpx;
   height: 42rpx;
   background-image: linear-gradient(-270deg, #DF515E 0%, #BB2830 100%);

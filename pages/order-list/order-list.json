@@ -4,6 +4,7 @@
   "usingComponents": {
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
     "order-list": "/components/order-list/order-list",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index",
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index"
   }

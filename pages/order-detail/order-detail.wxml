@@ -2,7 +2,9 @@
 <view class="status-info failed">
   <view class="status-container">
     <text class="status">{{statusName}}</text>
-    <text class="price">{{price.priceNameDescription}}{{price.priceDescription}}</text>
+    <view class="price">
+      <text>{{price.priceNameDescription}}{{price.priceDescription}}</text>
+    </view>
   </view>
 </view>
 </block>
@@ -128,7 +130,7 @@
   </view> -->
 
   <view class="btn-group">
-    <view wx:if="{{showBtn.cancel}}" class="btn" bind:tap="cancelOrder">取消验布</view>
+    <view wx:if="{{showBtn.cancel}}" class="btn" bind:tap="showCancelDialog">取消验布</view>
     <view wx:if="{{showBtn.report}}" class="btn" bind:tap="viewReport">验布报告</view>
     <view wx:if="{{showBtn.viewEvaluate}}" class="btn" bind:tap="">查看评价</view>
     <view wx:if="{{showBtn.toEvaluate}}" class="btn btn-active" bind:tap="">评价</view>
@@ -160,3 +162,5 @@
       <view class="pay-btn flex" bind:tap="confirmPay">立即去支付</view>
     </view>
   </van-popup>
+
+<van-dialog id="van-dialog" />

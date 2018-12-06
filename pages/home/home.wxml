@@ -20,20 +20,20 @@
 
   <view class="item-content flex-column">
     <block wx:for="{{items}}" wx:key="index">
-      <view class="item-container flex">
+      <button class="item-container flex" data-id="{{item.id}}" open-type="getUserInfo" bind:tap="goPlaceOrder">
         <view class="content">
           <view class="head flex">
             <view class="title">{{item.name}}</view>
             <view class="price">{{item.displayPrice}}</view>
           </view>
           <view class="desc">{{item.item}}</view>
-          <button class="go-check flex button" data-id="{{item.id}}" open-type="getUserInfo" bind:tap="goPlaceOrder">去验布</button>
+          <view class="go-check flex">去验布</view>
         </view>
 
         <view class="image">
           <image src="{{item.imageUrl}}"></image>
         </view>
-      </view>
+      </button>
     </block>
     <text class="memo">“基础检验”服务包含：米数、重量、克重、门幅的测量</text>
   </view>

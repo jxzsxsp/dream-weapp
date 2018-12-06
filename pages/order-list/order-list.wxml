@@ -7,7 +7,7 @@ color="#BB2830">
   <van-tab title="全部">
     <order-list
     bind:detail="gotoDetail"
-    bind:cancel="cancelOrder"
+    bind:cancel="showCancelDialog"
     bind:view="viewReport"
     bind:pay="goPay" 
     list="{{list}}" />
@@ -16,7 +16,7 @@ color="#BB2830">
   <van-tab title="已入库">
     <order-list 
     bind:detail="gotoDetail"
-    bind:cancel="cancelOrder"
+    bind:cancel="showCancelDialog"
     bind:view="viewReport"
     bind:pay="goPay" 
     list="{{list}}" />
@@ -25,7 +25,7 @@ color="#BB2830">
   <van-tab title="验布中">
     <order-list 
     bind:detail="gotoDetail"
-    bind:cancel="cancelOrder"
+    bind:cancel="showCancelDialog"
     bind:view="viewReport"
     bind:pay="goPay" 
     list="{{list}}" />
@@ -34,7 +34,7 @@ color="#BB2830">
   <van-tab title="待付款">
     <order-list 
     bind:detail="gotoDetail"
-    bind:cancel="cancelOrder"
+    bind:cancel="showCancelDialog"
     bind:view="viewReport"
     bind:pay="goPay" 
     list="{{list}}" />
@@ -43,7 +43,7 @@ color="#BB2830">
   <van-tab title="已出库">
     <order-list 
     bind:detail="gotoDetail"
-    bind:cancel="cancelOrder"
+    bind:cancel="showCancelDialog"
     bind:view="viewReport"
     bind:pay="goPay" 
     list="{{list}}" />
@@ -73,3 +73,5 @@ color="#BB2830">
       <view class="pay-btn flex" bind:tap="confirmPay">立即去支付</view>
     </view>
   </van-popup>
+
+<van-dialog id="van-dialog" />
