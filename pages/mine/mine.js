@@ -1,6 +1,5 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
-import { isObject, isEmptyObject } from '../../utils/jshelper';
 
 const data = {
   settingList: [{

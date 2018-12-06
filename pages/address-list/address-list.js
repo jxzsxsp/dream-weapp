@@ -58,7 +58,7 @@ const viewAction = {
   },
   // 删除地址
   deleteAddress: function (d) {
-    http.post(urls.deleteAddress, {id: this.data.addressList[d.index].id})
+    http.post(urls.addressDelete, {id: this.data.addressList[d.index].id})
       .then(() => {
         this.data.addressList.splice(d.index, 1)
         this.setData({addressList: this.data.addressList})

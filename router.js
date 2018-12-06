@@ -12,5 +12,6 @@ export default {
   webView: 'web-view',
   addressList: 'address-list',
   addressAdd: 'address-add',
-  bindPhone: 'bind-phone'
+  bindPhone: 'bind-phone',
+  mine: 'mine'
 }
