@@ -34,7 +34,10 @@ class BasePage {
         if (key === mixKey) {
           hasMethod = true
           lifeCycleObject[key] = function (...param) {
-            element(...param)
+            if (param[0].param) {
+              param[0] = JSON.parse(param[0].param)
+            }
+            element.apply(this, param)
             lifeCycle[key].apply(this, param)
           }
         }

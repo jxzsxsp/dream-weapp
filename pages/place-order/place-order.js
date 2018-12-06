@@ -178,7 +178,7 @@ const viewAction = {
       },
       pickUpTypeId: {
         value: data.selectedPickUpType.id,
-        hint: '物流类型'
+        hint: '取货方式'
       },
       buyerMessage: data.buyerMessage,
     }
