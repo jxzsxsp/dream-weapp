@@ -1,9 +1,9 @@
 <view class="binding-phone">
   <text class="bp-tit">手机号</text>
-  <input class="bp-input" type="number" maxlength="11" bind:blur="finishInput" data-type="mobile"></input>
+  <input class="bp-input" type="number" maxlength="11" bindinput="finishInput" data-type="mobile"></input>
   <text class="bp-tit">验证码</text>
   <view class="bp-code-box">
-    <input class="bp-input" type="number" bind:blur="finishInput" data-type="authCode"></input>
+    <input class="bp-input" type="number" bindinput="finishInput" data-type="authCode"></input>
     <button class="code-btn button" bind:tap="sendCode">{{codeText}}</button>
   </view>
   <view class="tips-box">
