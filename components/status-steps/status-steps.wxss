@@ -19,6 +19,8 @@
   font-size: 24rpx;
   color: #252525;
   letter-spacing: 0;
+  width: 5em;
+  text-align: center;
 }
 
 .line {
