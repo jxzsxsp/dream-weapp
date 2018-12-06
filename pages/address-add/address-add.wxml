@@ -34,13 +34,15 @@
     </form-cell>
     <form-cell>
       <text slot="left">详细地址</text>
-      <input
+      <textarea
         slot="right" 
-        bind:blur="finishInput" 
+        auto-height
+        bindinput="finishInput" 
         placeholder="请输入收货详细地址" 
         class="input" 
         data-type="detailAddress"
         value="{{address}}"
+        class="detail-address-area"
       />
     </form-cell>
     <form-cell>

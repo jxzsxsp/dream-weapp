@@ -29,6 +29,8 @@
   letter-spacing: 0;
   text-align: left;
   width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .buyer-phone {
@@ -36,6 +38,7 @@
   font-size: 32rpx;
   color: #333333;
   letter-spacing: 0;
+  width: 200rpx;
 }
 
 .tag-container {

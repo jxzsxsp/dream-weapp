@@ -2,7 +2,7 @@ import { $Page, $wx } from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
 
 const props = {
-  CHECKADDRESS: '1',
+  CHECKADDRESS: 1,
   comeFrom: 0
 }
 
@@ -35,7 +35,6 @@ const viewAction = {
   // 编辑地址
   editAddress: function (d) {
     $wx.navigateTo($wx.router.addressAdd, this.data.addressList[d.index])
-    // $wx.navigateTo($wx.router.addressAdd)
   },
   addAddress: function () {
     $wx.navigateTo($wx.router.addressAdd)
@@ -46,9 +45,9 @@ const viewAction = {
       .then(() => {
         const addressList = this.data.addressList.map((item, index) => {
           if (index === d.index) {
-            item.default = true
+            item.defaultAddress = true
           } else {
-            item.default = false
+            item.defaultAddress = false
           }
           return item
         })
