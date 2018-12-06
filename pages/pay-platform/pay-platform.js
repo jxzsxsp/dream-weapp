@@ -13,7 +13,7 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     console.log(query);
-    http.get(urls.createPayment, { mock: true, orderNo: query.orderNo }).then(res => {
+    http.get(urls.createPayment, { orderNo: query.orderNo }).then(res => {
       console.log(res);
       let daifuUrl = env.Pay+urls.scanPay+"?token=" + res.token+"&tradeId="+res.orderNo;
       console.log(daifuUrl);
@@ -24,16 +24,35 @@ const lifecycle = {
 
 const viewAction = {
   pay: function () {
+    let _this = this;
     //$wx.navigateTo($wx.router.paySuccess, { fee: this.data.fee })
-    if(this.data.weixin) {
+    if (_this.data.weixin) {
       console.log('weixin');
       http.getPay(urls.signPay,
         {
-          mock: true,
-          tradeId: this.data.orderNo,
-          token: this.data.token
+          tradeId: _this.data.orderNo,
+          token: _this.data.token
         }).then(res => {
           console.log(res);
+          $wx.requestPayment({
+            timeStamp: res.timeStamp,
+            nonceStr: res.nonceStr,
+            package: res.packageValue,
+            signType: res.signType,
+            paySign: res.paySign,
+            success: function (result) {
+              console.log("pay successed ", result);
+              $wx.navigateTo($wx.router.paySuccess, { fee: _this.data.fee });
+              // http.getPay(urls.returnPay, {
+              //   paymentId: paymentId, 
+              //   token: _this.data.token }).then(res => {
+              //   console.log(res);
+              // });
+            },
+            fail: function (result) {
+              console.log("pay failed ", result);
+            },
+          })
         });
     } else if(this.data.daifu) {
       console.log('daifu');

@@ -21,6 +21,8 @@ export default {
   signPay: '/cashier/pay',
   // 支付扫码
   scanPay: '/cashier/index.html',
+  // 支付回调
+  returnPay: '/weChatPay/return',
   // 取消验布
   cancelOrder: '/order/cancel',
   // 获取地址类型
