@@ -10,7 +10,7 @@ export default {
     OUTBOUNDED: 80, // 已出库
     CLOSED: 110, // 关闭验布
     CANCELED: 120, // 取消验布
-    ALL_ORDER: 0 // 全部
+    ALL_ORDER: "" // 全部
   },
   // 地址类型
   ADDRESS_TYPE: [{
