@@ -1,9 +1,8 @@
 import { $Page, $wx } from '../../genji4mp/index'
 import { http, urls } from '../../net/index';
 
-const CHECKADDRESS = 1
-
 const props = {
+  CHECKADDRESS: '1',
   comeFrom: 0
 }
 
@@ -28,7 +27,7 @@ const viewAction = {
   // 选中地址
   onSelectAddress: function (d) {
     // 查看地址不做响应
-    if (this.props.comeFrom === CHECKADDRESS) {
+    if (this.props.comeFrom === this.props.CHECKADDRESS) {
       return
     }
     $wx.navigateBack(1, {customerDetail: this.data.addressList[d.index]})

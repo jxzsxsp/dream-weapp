@@ -19,14 +19,14 @@
   z-index: 0;
 }
 .bp-code-box .bp-input{
-  padding-right: 200rpx;
+  padding-right: 220rpx;
 }
 .code-btn {
   position: absolute;
   z-index: 1;
   right: 0;
   top: 0;
-  width: 180rpx;
+  width: 200rpx;
   height: 64rpx;
   background-color: #F1F1F1;
   border: 0;

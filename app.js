@@ -2,7 +2,7 @@ import router from 'router'
 import {$wx, $Page} from './genji4mp/index'
 import constants from './constants/index'
 import {http, urls} from './net/index'
-import { isEmptyObject } from './utils/index';
+import utils from './utils/index';
 App({
   onLaunch: function () {
     // mixin 生命周期
@@ -39,22 +39,21 @@ App({
 
   // 是否已经绑定好手机号
   isBinded () {
-    return !!this.globalData.token && isEmptyObject(this.globalData.userInfo)
+    return !!this.globalData.token && !utils.isEmptyObject(this.globalData.userInfo)
   },
 
   // 校验并保存当前授权和绑定状态
   saveAuthInfo () {
-    let detailInfo = {}
     let code = ''
     return $wx.login().then(res => {
       code = res.code
     }).then(() => {
       return $wx.getUserInfo({withCredentials: true})
     }).then(res => {
+      this.globalData.userInfo = res.userInfo
       const data = {code, appId: constants.APP_GLOBAL.appId, domainName: constants.APP_GLOBAL.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
       return http.getLogin(urls.login.quietLogin, data, true)
     }).then(res => {
-      this.globalData.userInfo = detailInfo.userInfo
       if (res.token) {
         this.globalData.token = res.token
         wx.setStorageSync('token', res.token)
@@ -75,6 +74,6 @@ App({
   globalData: {
     // 用户信息
     userInfo: {},
-    // token: '46dd5316b856a7e391615b78a261ff1c69dd182d63edb8b3a16d21b82accfeb2'
+    token: '46dd5316b856a7e391615b78a261ff1c69dd182d63edb8b3a16d21b82accfeb2'
   }
 })

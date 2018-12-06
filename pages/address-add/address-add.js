@@ -31,14 +31,20 @@ const lifeCycle = {
     if (!utils.isEmptyObject(query)) {
       $wx.setNavigationBarTitle({title: '修改地址'})
       this.props.id = query.id
+      // 设置默认的地址类型
+      this.setData({
+        addressType: query.addressType,
+        defaultAddress: query.addressType
+      })
       http.post(urls.addressDetail, {id: query.id})
         .then(res => {
+          console.log('默认的addressType:' + res.addressType)
           this.setData({
             contacts: res.contacts,
             contactMobile: res.contactMobile,
             region: [res.provinceName, res.cityName, res.districtName],
             address: res.address,
-            addressType: parseInt(res.addressType),
+            addressType: res.addressType,
             defaultAddress: res.defaultAddress
           })
         })

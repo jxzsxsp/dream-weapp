@@ -1,17 +1,5 @@
-function _getUrl (baseUrl, params) {
-  let paramUrl = '?'
-  for (const key in params) {
-    if (typeof key === 'object') {
-      throw new Error('zachary 抛出: 小程序跳转参数内部不能包含 object：' + key)
-    }
-    if (params.hasOwnProperty(key)) {
-      const element = params[key];
-      paramUrl+=`${key}=${element}&`
-    }
-  }
-  paramUrl = paramUrl.substr(0, paramUrl.length-1)
-  paramUrl === '?' ? '' : paramUrl
-  return baseUrl + paramUrl
+function _getUrl (baseUrl, params={}) {
+  return baseUrl + '?param=' + JSON.stringify(params)
 }
 
 class BaseService {
@@ -19,6 +7,7 @@ class BaseService {
     this.router = {}
     this.app = null
   }
+
 
   reLaunch (baseUrl, params) {
     return new Promise((res, rej) => {

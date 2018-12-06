@@ -477,7 +477,7 @@ const submit = {
 }
 
 const address = {
-  [urls.addressList]:{list: [
+  [urls.addressList]:{dataList: [
     {
       "id":123, //id
       "contacts":"aa ", //联系人姓名
@@ -583,7 +583,7 @@ const update= {
     "districtId":11,
     "districtName":"",
     "address":"",
-    "addressType":10,//10-仓库 20-门店 30-公司 40-工厂 99-其他
+    "addressType":99,//10-仓库 20-门店 30-公司 40-工厂 99-其他
     "defaultAddress":true
   }
 }
