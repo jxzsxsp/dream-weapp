@@ -37,18 +37,6 @@ App({
     })
   },
 
-  // 有授权或者有绑定的时候保存
-  saveAuthInfo () {
-    return this.checkState().then(res => {
-      if (res.code !== -1) {
-        getApp().globalData.userInfo = res.data.userInfo
-        wx.setStorageSync('token', res.data.token)
-        getApp().globalData.token = res.data.token 
-      } 
-      return res
-    })
-  },
-
   // 是否已经绑定好手机号
   isBinded () {
     return !!this.globalData.token && isEmptyObject(this.globalData.userInfo)
