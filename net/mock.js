@@ -322,7 +322,7 @@ const order = {
   [urls.orderDetail]: {
     "statusId": 10,//状态 --add
     "statusName": "已评价",//状态
-    "orderNo": "8980970808", //验布单号
+    "orderNo": "118120622504", //验布单号
     "storeName": "绍兴交易园店", //验布地点（ 验布坊名称）
     "pickUpTypeName": "代发货至收货地址", //取货方式
     "fabricType": 10, //面料类型 －－add 10 针织 20 梭织 30-无纺布
@@ -388,7 +388,7 @@ const order = {
   },
   [urls.cancelOrder]: {},
   [urls.createPayment]: {
-    "orderNo": "118120472540",
+    "orderNo": "118120692628",
     "token": "5af1fc5885aeab293d0b59406103cf0e80be7518412de7821bcf0c09d87c3475cb34f83f425dd3bb0ae7157b2364975e933ea2a895f4b413b2a0fa430bdffe4f"
   },
   [urls.signPay]: {

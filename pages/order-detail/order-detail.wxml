@@ -25,6 +25,17 @@
 </view>
 </block>
 
+<view class="address-container">
+  <view class="address-info">
+    <view class="title">
+      <van-icon class="location-icon" name="location" size="28rpx" />
+      <text class="title-text name">{{receivingAddress.contacts}}</text>
+      <text class="title-text mobile">{{receivingAddress.contactMobile}}</text>
+    </view>
+    <view class="address">{{receivingAddress.detailAddress}}</view>
+  </view>
+</view>
+
 <view class="item-info">
   <view class="item-cell">
     下单数量
@@ -46,14 +57,7 @@
   </view>
 </view>
 
-<view class="address-info">
-  <view class="title">
-    <van-icon class="location-icon" name="location" size="28rpx" />
-    <text class="title-text name">{{receivingAddress.contacts}}</text>
-    <text class="title-text mobile">{{receivingAddress.contactMobile}}</text>
-  </view>
-  <view class="address">{{receivingAddress.detailAddress}}</view>
-</view>
+<view class="line"></view>
 
 <view class="price-info">
 

@@ -53,11 +53,18 @@ page {
   float: right;
 }
 
+.address-container {
+  width: 750rpx;
+  height: 116rpx;
+  background: #FFFFFF;
+}
+
 .address-info {
   margin: auto;
-  margin-top: -489rpx;
+  position: relative;
+  top: -64rpx;
   width: 690rpx;
-  height: 146rpx;
+  height: 160rpx;
   background: #FFFFFF;
   box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
   border-radius: 10rpx;
@@ -101,13 +108,13 @@ page {
 }
 
 .item-info {
-  padding-top: 130rpx;
-  height: 295rpx;
+  height: 300rpx;
+  padding-top: 30rpx;
   background: #FFFFFF;
 }
 
 .item-cell {
-  margin-top: 10rpx;
+  margin-bottom: 10rpx;
   width: 690rpx;
   margin-left: 30rpx;
   font-family: PingFangSC-Regular;
@@ -135,10 +142,10 @@ page {
   font-size: 24rpx;
   color: #9B9B9B;
   letter-spacing: 0;
+  text-align: left;
 }
 
 .price-info {
-  margin-top: 365rpx;
   background: #FFFFFF;
 }
 
@@ -271,7 +278,7 @@ page {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 325rpx;
+  top: 333rpx;
   left: 150rpx;
 }
 
