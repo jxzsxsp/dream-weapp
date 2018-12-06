@@ -39,7 +39,7 @@ App({
 
   // 是否已经绑定好手机号
   isBinded () {
-    return !!this.globalData.token && utils.isEmptyObject(this.globalData.userInfo)
+    return !!this.globalData.token && !utils.isEmptyObject(this.globalData.userInfo)
   },
 
   // 校验并保存当前授权和绑定状态

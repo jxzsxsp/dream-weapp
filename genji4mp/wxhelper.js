@@ -1,4 +1,4 @@
-function _getUrl (baseUrl, params) {
+function _getUrl (baseUrl, params={}) {
   return baseUrl + '?param=' + JSON.stringify(params)
 }
 
