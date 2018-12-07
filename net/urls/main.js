@@ -18,7 +18,7 @@ export default {
   // 去支付接口
   createPayment: '/pay/createPayment',
   // 获取签名
-  signPay: '/cashier/pay',
+  signPay: '/pay/sign',
   // 支付扫码
   scanPay: '/cashier/index.html',
   // 支付回调
