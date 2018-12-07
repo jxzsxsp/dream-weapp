@@ -1,7 +1,7 @@
 <view class="item-content">
   <view bind:tap="onDetail">
     <view class="head">
-      <text class="title">{{order.orderName}}</text>
+      <text class="title">{{order.title}}</text>
       <text class="status">{{order.statusName}}</text>
     </view>
 
