@@ -4,7 +4,7 @@
   <text class="bp-tit">验证码</text>
   <view class="bp-code-box">
     <input class="bp-input" type="number" bindinput="finishInput" data-type="authCode"></input>
-    <button class="code-btn button" bind:tap="sendCode">{{codeText}}</button>
+    <button class="code-btn button {{ canSendCode ? 'can-sendcode' : '' }}" bind:tap="sendCode">{{codeText}}</button>
   </view>
   <view class="tips-box">
     <text class="tips">{{errorText}}</text>

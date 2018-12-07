@@ -11,6 +11,7 @@
   font-size: 46rpx;
   color: #4A4A4A;
   line-height: 60rpx;
+  height: 60rpx;
   padding: 10rpx;
   border-bottom: 1rpx solid #9B9B9B;
 }
@@ -35,6 +36,12 @@
   font-size: 28rpx;
   color: #9B9B9B;
   text-align: center;
+  border: 1rpx solid #F1F1F1;
+}
+.can-sendcode {
+  background-color: #ffffff;
+  border: 1rpx solid #666666;
+  color: #666666;
 }
 .tips-box {
   line-height: 100rpx;
