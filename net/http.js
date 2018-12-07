@@ -264,6 +264,7 @@ class Http {
           } else if (res.data.code === constants.NET_STATE.NEED_RELOGIN) {
             // 没有token，重新登录
             $wx.app.saveAuthInfo().then(res => {
+              const bindId = res.bindId
               if (res.code === 1) {
                 // token 失效的情况
                 wx.showToast({
@@ -279,7 +280,7 @@ class Http {
               } else if (res.code === -2) {
                 // 没有绑定手机号的情况
                 $wx.showModal({title: '请绑定手机', content: '本功能需要绑定手机才能体验', showCancel: false}).then(res => {
-                  $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId})
+                  $wx.navigateTo($wx.router.bindPhone, {bindId})
                 })
               }
             })
