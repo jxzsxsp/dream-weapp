@@ -103,7 +103,7 @@
     <text>取货方式：{{pickUpTypeName}}</text>
   </view>
 
-  <view class="info-cell">
+  <view class="info-cell" style="height: auto; min-height: 40rpx;">
     <text>买家留言：{{customerMessage}}</text>
   </view>
 
