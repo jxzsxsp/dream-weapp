@@ -19,6 +19,7 @@ const data = {
   list: [],
   payData: {},
   showPay: false,
+  clear: false,
 }
 
 const lifecycle = {
@@ -31,7 +32,7 @@ const lifecycle = {
    */
   onPullDownRefresh: function () {
     this.props.loadStatus = http.defaultLoadingState();
-    this.setData({ list: [] });
+    this.setData({ clear: true });
     this.getDataList();
     $wx.stopPullDownRefresh();
   },
@@ -51,7 +52,7 @@ const viewAction = {
   onTabChange: function (d, v) {
     this.props.loadStatus = http.defaultLoadingState();
     let tabStatus = this.data.tabStatus;
-    this.setData({ list: [], status: tabStatus[v.index] });
+    this.setData({ clear: true, status: tabStatus[v.index] });
     this.getDataList();
   },
   /**
@@ -106,9 +107,12 @@ const privateMethod = {
    * 获取列表数据
    */
   getDataList: function () {
-    http.postList(urls.orderList, this.props.loadStatus, { status: this.data.status }).then(res => {
+    http.postList(urls.orderList, 
+    this.props.loadStatus, 
+    { status: this.data.status }).then(res => {
       console.log(res)
-      let list = this.data.list.concat(res);
+      let list = this.data.clear ? [] : this.data.list;
+      list = list.concat(res);
       this.setData({
         list: list
       })
