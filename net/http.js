@@ -273,7 +273,7 @@ class Http {
                 })
 
               } else if (res.code === -1) {
-                $wx.showModal({title: '请先授权', content: '本功能需要授权才能体验', showCancel: false}).then(() => {
+                $wx.showModal({title: '请先登录', content: '本功能需要登录才能体验', showCancel: false}).then(() => {
                   $wx.switchTab($wx.router.mine)
                 })
               } else if (res.code === -2) {
