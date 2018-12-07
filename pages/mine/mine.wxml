@@ -4,7 +4,7 @@
       <image class="avatar" src="{{userInfo.avatarUrl}}" />
       <view class="user-name-container flex-column">
         <text class="user-name">{{userInfo.nickName}}</text>
-        <view class="flex vip-container">
+        <view wx:if="{{userDetail.showBtn.vip}}" class="flex vip-container">
           <image class="vip-image" src="/assets/image/ic_vip.png"/>
           <text class="vip-text">{{userDetail.discountDescription}}</text>
         </view>
