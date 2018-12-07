@@ -159,7 +159,7 @@
         <view class="cell-value">{{payData.metersAndWeight}}</view>
       </view>
       <view class="item-cell">
-        高级检测
+        {{payData.clothTypeName}}
         <view class="cell-value">{{payData.clothPriceDescription}}</view>
       </view>
       <view class="line"></view>
