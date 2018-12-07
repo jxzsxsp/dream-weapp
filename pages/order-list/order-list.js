@@ -86,9 +86,8 @@ const viewAction = {
     console.log(d, v);
     http.post(urls.detailForPay, { orderNo: v.orderNo }).then(res => {
       console.log(res)
-      this.setData({ payData: res });
+      this.setData({ payData: res, showPay: true, payOrderNo: v.orderNo });
     });
-    this.setData({showPay: true, payOrderNo: v.orderNo})
   },
 
   confirmPay: function () {
