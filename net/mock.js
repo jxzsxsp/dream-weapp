@@ -392,14 +392,14 @@ const order = {
     "token": "5af1fc5885aeab293d0b59406103cf0e80be7518412de7821bcf0c09d87c3475cb34f83f425dd3bb0ae7157b2364975e933ea2a895f4b413b2a0fa430bdffe4f"
   },
   [urls.signPay]: {
-    "prepayId": "111111", // 预支付流水
-    "appId": "appId", // 小程序appId
-    "timeStamp": "12334234", // 生成时间
-    "nonceStr": "xxxxx",
-    "packageValue": "packageValue",
-    "paySign": "paySign", // 支付签名
-    "signType": "xxx", //签名类型
-    "redirectUrl": "", // 支付成功回调url
+    "appId": "wxecb4e3303d744467",
+    "timeStamp": "1544166604",
+    "signType": "HMAC-SHA256",
+    "packageValue": "prepay_id=wx07151003985750c56ab21de91451011488",
+    "nonceStr": "0403bbdd403b46258269b77e076ca20d",
+    "prepayId": "wx07151003985750c56ab21de91451011488",
+    "redirectUrl": "/weChatPay/return?paymentId=160695664101406&token=66d75e51e0c85e1bdc02d34edcd6a0095e09490fdcfbc64c3f12cc8086a2fa8cdd54001a6df924e38576b75447af7a8f806482fd9790fa1a7ce533d5d9ba1748",
+    "paySign": "FE6253772937430C97C4C86422E3CE6EDA932E799BFDE18A628EF0781E81C3A0"
   }
 }
 

@@ -88,7 +88,7 @@
   margin-right: 20rpx;
   width: 160rpx;
   height: 60rpx;
-  border: 1rpx solid #252525;
+  border: 1px solid #252525;
   border-radius: 30rpx;
   display: flex;
   flex-direction: row;
