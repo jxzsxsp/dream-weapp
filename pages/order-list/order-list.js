@@ -114,7 +114,8 @@ const privateMethod = {
       let list = this.data.clear ? [] : this.data.list;
       list = list.concat(res);
       this.setData({
-        list: list
+        clear: false,
+        list: list,
       })
     });
   },
