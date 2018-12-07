@@ -28,7 +28,6 @@ const viewAction = {
     let _this = this;
     if (this.data.weixin) {
       console.log('weixin');
-      console.log(constants)
       wx.login({
         success(res) {
           console.log(res);

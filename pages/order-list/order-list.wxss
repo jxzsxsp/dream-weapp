@@ -1,4 +1,6 @@
 .content {
+  width:100%;
+  overflow-x:hidden;
   background: #F1F1F1;
 }
 
