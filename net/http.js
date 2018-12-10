@@ -20,27 +20,6 @@ class Http {
     }
   }
 
-
-
-  //  静默登录
-  quietLogin () {
-    let code = ''
-    return $wx.login().then(res => {
-      code = res.code
-      return $wx.getUserInfo({withCredentials: true})
-    }).then(res => {
-      let data = {code, appId: constants.APP_GLOBAL.appId, domainName: constants.APP_GLOBAL.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
-
-      return this.getLogin(urls.login.quietLogin, data, true)
-    }).then(res => {
-      if (res.token) {
-        wx.setStorageSync('token', res.token)
-        getApp().globalData.token = res.token
-      }
-      return res
-    })
-  }
-
   /**
    * get 请求
    * @param {String} url 请求url
@@ -188,7 +167,7 @@ class Http {
     let realData = data
     for (const key in data) {
       const element = data[key];
-      if (typeof(element) === 'object') {
+      if (!!element && typeof(element) === 'object') {
         if (!element.hasOwnProperty('value')) {
           console.error('zachary 抛出: 表单校验需要参数 value')
         }
