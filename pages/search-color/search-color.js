@@ -45,5 +45,5 @@ const viewAction = {
   }
 }
 
-$Page(props, data, null, privateMethod, viewAction)
+$Page.register(props, data, null, privateMethod, viewAction)
 

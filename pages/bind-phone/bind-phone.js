@@ -53,9 +53,9 @@ const viewaction = {
     } else {
       const data = {
         mobile: phoneNumber, 
-        appId: constant.appId, 
-        domainName: constant.domainName,
-        source: constant.authCodeSource.bindMobile,
+        appId: constant.APP_GLOBAL.appId, 
+        domainName: constant.APP_GLOBAL.domainName,
+        source: constant.APP_GLOBAL.authCodeSource.bindMobile,
         randomStr: '1234',
       }
       http.postLogin(urls.login.getAuthCode, data).then(res => {
@@ -70,4 +70,4 @@ const viewaction = {
   }
 }
 
-$Page(props, data, lifecycle, null, viewaction)
+$Page.register(props, data, lifecycle, null, viewaction)

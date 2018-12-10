@@ -1,5 +1,4 @@
 import {$Page, $wx} from '../../genji4mp/index'
-import { http } from '../../net/index';
 
 const data = {
   settingList: [
@@ -11,28 +10,18 @@ const data = {
 }
 
 const privateMethod = {
-  getUserInfo (e) {
-    if (!e.detail.userInfo) {
-      return
-    }
-    this.setData({
-      userInfo: e.detail.userInfo
-    })
-    http.quietLogin().then(res => {
-      if (res.bindId) {
-        $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId} )
-      }
-    })
-  },
 }
 
 const lifecycle = {
   onLoad: function () {
-    $wx.getUserInfo().then(res => {
+  },
+
+  onShow: function () {
+    if ($wx.app.isBinded()) {
       this.setData({
-        userInfo: res.userInfo
+        userInfo: $wx.app.globalData.userInfo
       })
-    })
+    }
   }
 }
 
@@ -42,7 +31,16 @@ const viewAction = {
       // 设备管理 
       $wx.navigateTo($wx.router.deviceManager)
     }
-  }
+  },
+  getUserInfo () {
+    $wx.app.bindPhone().then(res => {
+      if (res.code === 1) {
+        this.setData({
+          userInfo: $wx.app.globalData.userInfo
+        })
+      }
+    })
+  },
 }
 
-$Page(null, data, lifecycle, privateMethod, viewAction)
+$Page.register(null, data, lifecycle, privateMethod, viewAction)

@@ -37,14 +37,17 @@ const viewAction = {
   },
   // banner 跳转
   bannerClicked: function (data) {
-    const banner = this.data.bannerList[data.index]
-    const param = {
-      url: encodeURIComponent(banner.targetUrl),
-      title: banner.title
-    }
-    $wx.navigateTo($wx.router.commonWebview, param)
+    $wx.app.bindPhone().then(res => {
+      if (res.code === 1) {
+        const banner = this.data.bannerList[data.index]
+        const param = {
+          url: encodeURIComponent(banner.targetUrl),
+          title: banner.title
+        }
+        $wx.navigateTo($wx.router.commonWebview, param)
+      }
+    })
   }
-  
 }
 
-$Page(null, data, lifeCycle, null, viewAction)
+$Page.register(null, data, lifeCycle, null, viewAction)

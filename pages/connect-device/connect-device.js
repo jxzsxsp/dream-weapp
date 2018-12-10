@@ -176,4 +176,4 @@ const privateMethod = {
   ...bluetoothMethod
 }
 
-$Page(props, data, lifecycle, privateMethod, {})
+$Page.register(props, data, lifecycle, privateMethod, {})

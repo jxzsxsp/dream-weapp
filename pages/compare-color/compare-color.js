@@ -52,4 +52,4 @@ let privateMethod = {
   }
 }
 
-$Page(null, data, lifecycle, privateMethod, {})
+$Page.register(null, data, lifecycle, privateMethod, {})

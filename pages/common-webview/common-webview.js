@@ -18,4 +18,4 @@ let lifecycle = {
   }
 }
 
-$Page(null, data, lifecycle, null, {})
+$Page.register(null, data, lifecycle, null, {})

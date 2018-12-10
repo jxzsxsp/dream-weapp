@@ -33,4 +33,4 @@ const lifecycle = {
   }
 }
 
-$Page(null, data, lifecycle, privateMethod, viewAction)
+$Page.register(null, data, lifecycle, privateMethod, viewAction)

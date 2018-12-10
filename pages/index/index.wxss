@@ -38,12 +38,21 @@
   line-height: 36rpx;
 }
 
+.auth-button {
+  margin-top: 20rpx;
+  padding-left: 0rpx;
+  padding-right: 0rpx;
+  padding-top: 0rpx;
+  padding-bottom: 0rpx;
+  display: flex;
+  flex-direction: column;
+}
+
 .banner-container {
   height: 250rpx;
 }
 
 .banner-swiper {
-  margin-top: 20rpx;
   height: 220rpx;
   width: 100%;
   border-radius: 20rpx;

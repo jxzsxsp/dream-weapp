@@ -1,54 +1,61 @@
-import router from '../router'
-import settinghelper from './settinghelper'
+function _getUrl (baseUrl, params={}) {
+  return baseUrl + '?param=' + JSON.stringify(params)
+}
 
-for (const key in router) {
-  if (router.hasOwnProperty(key)) {
-    const element = router[key];
-    router[key] = `/pages/${element}/${element}`
+class BaseService {
+  constructor () {
+    this.router = {}
+    this.app = null
   }
-}
 
-const settingArr = ['getLocation', 'getUserInfo']
-let settingMethods = {}
-for (const key of settingArr) {
-  settingMethods[key] = (info, authorizeLevel, data ) => settinghelper(key, info, authorizeLevel, data)
-}
 
-function _getUrl (baseUrl, params) {
-  let paramUrl = '?'
-  for (const key in params) {
-    if (typeof key === 'object') {
-      throw new Error('小程序跳转参数内部不能包含 object：' + key)
-    }
-    if (params.hasOwnProperty(key)) {
-      const element = params[key];
-      paramUrl+=`${key}=${element}&`
-    }
+  reLaunch (baseUrl, params) {
+    return new Promise((res, rej) => {
+      wx.reLaunch({
+        url: _getUrl(baseUrl, params),
+        success: res,
+        fail: rej
+      })
+    })
   }
-  paramUrl = paramUrl.substr(0, paramUrl.length-1)
-  paramUrl === '?' ? '' : paramUrl
-  return baseUrl + paramUrl
-}
 
-let baseService = {
-  ...settingMethods,
-  router,
-  reLaunch: function (baseUrl, params) {
-    wx.reLaunch({
-      url: _getUrl(baseUrl, params)
+  navigateTo (baseUrl, params) {
+    return new Promise((res, rej) => {
+      wx.navigateTo({
+        url: _getUrl(baseUrl, params),
+        success: res,
+        fail: rej
+      })
     })
-  },
-  navigateTo: function (baseUrl, params) {
-    wx.navigateTo({
-      url: _getUrl(baseUrl, params)
+  }
+
+  redirectTo (baseUrl, params) {
+    return new Promise((res, rej) => {
+      wx.redirectTo({
+        url: _getUrl(baseUrl, params),
+        success: res,
+        fail: rej
+      })
+    }) 
+  }
+
+  switchTab (baseUrl) {
+    return new Promise((res, rej) => {
+      wx.switchTab({
+        url: baseUrl,
+        success: res,
+        fail: rej
+      })
+    })  
+  }
+
+  switchTabTo (baseUrl, nextUrl, params={}) {
+    return this.switchTab(baseUrl).then(() => {
+      this.navigateTo(nextUrl, params)
     })
-  },
-  redirectTo: function (baseUrl, params) {
-    wx.redirectTo({
-      url: _getUrl(baseUrl, params)
-    })
-  },
-  navigateBack: function (delta=1, data = {}) {
+  }
+
+  navigateBack (delta=1, data = {}) {
     let param = {}
     if (typeof(delta) === 'object') {
       // 原始小程序的返回
@@ -63,13 +70,33 @@ let baseService = {
       let prevPage = pages[pages.length - delta - 1]
       prevPage.setData(data)
     }
-    wx.navigateBack(param)
+    return new Promise((res, rej) => {
+      wx.navigateBack({
+        param,
+        success: res,
+        fail: rej
+      })
+    })
+  }
+
+  registerRouter (routers) {
+    for (const key in routers) {
+      if (routers.hasOwnProperty(key)) {
+        const element = routers[key];
+        this.router[key] = `/pages/${element}/${element}`
+      }
+    }
   }
 }
 
-export default new Proxy(baseService, {
+const $wx = new BaseService()
+
+export default new Proxy($wx, {
   get: function (target, property) {
     if (property in target) {
+      if (property === 'app') {
+        return getApp()
+      }
       return target[property]
     } else if (property in wx) {
       return (param = {}) => {
@@ -80,7 +107,7 @@ export default new Proxy(baseService, {
         })
       }
     } else {
-      throw new Error(property + '不存在')
+      throw new Error('zachary 抛出：' + property + '不存在')
     }
   }  
 })

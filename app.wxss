@@ -5,6 +5,10 @@
   flex-direction: column;
 } 
 
+.button::after {
+  border: none;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

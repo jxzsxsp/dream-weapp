@@ -1,4 +1,4 @@
-const id = {
+const APP_GLOBAL = {
   appId: 4,
   domainName: 'chameleon.lianshang.com',
   authCodeSource: {
@@ -16,6 +16,6 @@ const colorSense = {
   ColorUUID:'1A0AD4BF-7BDC-49A3-81D0-CA96AB705ED2',
 }
 export default {
-  ...id,
+  APP_GLOBAL,
   ...colorSense
 }

@@ -1,8 +1,10 @@
 import env, {isOnline} from './env'
 import mock from './mock'
 import {$wx} from '../genji4mp/index'
-import constant from '../constant/index'
 import urls from './urls/index'
+import {checkParam} from './index';
+import constants from 'constants';
+
 
 class Http {
   constructor () {
@@ -16,25 +18,6 @@ class Http {
         this['get' + baseUrlName + 'List'] = (url, loadingState, data, isLoading) => this._getOtherList(baseUrlName, url, loadingState, data, isLoading)
       }
     }
-  }
-
-  //  静默登录
-  quietLogin () {
-    let code = ''
-    return $wx.login().then(res => {
-      code = res.code
-      return $wx.getUserInfo({withCredentials: true})
-    }).then(res => {
-      let data = {code, appId: constant.appId, domainName: constant.domainName, rawData: res.rawData, signature: res.signature, encryptedData: res.encryptedData, iv: res.iv}
-
-      return this.getLogin(urls.login.quietLogin, data, true)
-    }).then(res => {
-      if (res.token) {
-        wx.setStorageSync('token', res.token)
-        getApp().globalData.token = res.token
-      }
-      return res
-    })
   }
 
   /**
@@ -55,7 +38,7 @@ class Http {
    * @returns 返回默认列表状态
    * @memberof Http
    */
-  defaultLoadingState (pageSize = 24) {
+  defaultLoadingState (pageSize = 20) {
     return {
       hasMore: true,
       param: {
@@ -91,9 +74,38 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.list
+      return res.dataList
     })
+  }
 
+    /**
+   * 获取列表
+   * @param {String} url 请求的url
+   * @param {Object} loadingState 通过 http.defaultLoadingState() 获取
+   * @param {Obejct} data 请求的参数
+   * @param {Bool} isLoading 是否显示加载框
+   */
+  postList (url, loadingState, data, isLoading) {
+    // 没有更多了，直接返回
+    if (!loadingState.hasMore) {
+      return new Promise((resolve) => {
+        resolve([])
+      })
+    }
+
+    let realData = {}
+    // 如果存在data，把上次的请求参数更新
+    if (!!data) {
+      loadingState.param = Object.assign({}, {pageId: loadingState.param.pageId, pageSize: loadingState.param.pageSize}, data)
+    }
+    realData = Object.assign(realData, loadingState.param)
+
+    return this.post(url, realData, isLoading).then((res) => {
+      loadingState.param.pageId += 1
+      loadingState.hasMore = res.hasMore
+      loadingState.totalCount = res.totalCount
+      return res.dataList
+    })
   }
 
   _getOtherList (baseUrlName, url, loadingState, data, isLoading) {
@@ -114,7 +126,7 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.list
+      return res.dataList
     }) 
   }
 
@@ -149,10 +161,41 @@ class Http {
   }
 
   _request (url, data={}, method, isLoading = true, mockUrl) {
+    // 校验表单参数是否合法
+    let check = {}
+    let param = {}
+    let realData = data
+    for (const key in data) {
+      const element = data[key];
+      if (!!element && typeof(element) === 'object') {
+        if (!element.hasOwnProperty('value')) {
+          console.error('zachary 抛出: 表单校验需要参数 value')
+        }
+        // 设置校验对象
+        let type = element.type || ''
+        let hint = element.hint ? ('请输入' + element.hint) : '请检查参数'
+        check[key] = {
+          type,
+          hint,
+        }
+        // 设置参数对象
+        param[key] = element.value
+        // 修改请求参数
+        realData[key] = element.value
+      }
+    }
+    data = realData
+    if (!checkParam(param, check)) {
+      return new Promise(res => {})
+    }
+
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
-        resolve(mock[mockUrl] || {})
+        console.log('----mock请求-------url 为-----'+ url)
+        let res = {...mock[mockUrl], requestParam: data} || {}
+        console.log(res)
+        resolve(res)
       })
     }
 
@@ -163,7 +206,7 @@ class Http {
         mask: true
       })
     }
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
       // 没有 token 先取出token
       if (!getApp().globalData.token) {
         getApp().globalData.token = wx.getStorageSync('token')
@@ -177,12 +220,12 @@ class Http {
           'content-type': 'application/json',
           'token': getApp().globalData.token
         },
-        success (res) {
+        success: function (res) {
           if (isLoading) {
             wx.hideLoading()
           }
 
-          if (res.data.code === 200) {
+          if (res.data.code === constants.NET_STATE.SUCCESS) {
             let resData = {}
             if (res.data.data instanceof Array) {
               resData = {list: res.data.data, requestParam: data}
@@ -197,20 +240,26 @@ class Http {
             }
 
             resolve(resData)
-          } else if (res.data.code === 100) {
+          } else if (res.data.code === constants.NET_STATE.NEED_RELOGIN) {
             // 没有token，重新登录
-            this.quietLogin().then(res => {
-              if (!!res.token) {
+            $wx.app.saveAuthInfo().then(res => {
+              const bindId = res.bindId
+              if (res.code === 1) {
                 // token 失效的情况
                 wx.showToast({
-                  title: '请求失败，请刷新重试',
+                  title: '登录过期，请刷新重试',
                   icon: 'none',
                   mask: true
                 })
-              } else if (!!res.bindId) {
+
+              } else if (res.code === -1) {
+                $wx.showModal({title: '请先登录', content: '本功能需要登录才能体验', showCancel: false}).then(() => {
+                  $wx.switchTab($wx.router.mine)
+                })
+              } else if (res.code === -2) {
                 // 没有绑定手机号的情况
-                $wx.showModal({title: '绑定手机', content: '本功能需要绑定手机才能体验', cancelText: false}).then(res => {
-                  $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId})
+                $wx.showModal({title: '请绑定手机', content: '本功能需要绑定手机才能体验', showCancel: false}).then(res => {
+                  $wx.navigateTo($wx.router.bindPhone, {bindId})
                 })
               }
             })
@@ -232,9 +281,8 @@ class Http {
             })
             reject(res.data || {})
           }
-        },
+        }.bind(this),
         fail (error) {
-
           wx.showToast({
             title: '网络出错！',
             icon: 'none',
@@ -245,7 +293,7 @@ class Http {
 
         }
       })
-    })
+    }.bind(this))
   }
 
   // otherRequest

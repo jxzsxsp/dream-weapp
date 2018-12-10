@@ -56,9 +56,9 @@ const privateMethods = {
   resendCode: function () {
     const data = {
       mobile: this.data.mobile, 
-      appId: constant.appId, 
-      domainName: constant.domainName,
-      source: constant.authCodeSource.bindMobile,
+      appId: constant.APP_GLOBAL.appId, 
+      domainName: constant.APP_GLOBAL.domainName,
+      source: constant.APP_GLOBAL.authCodeSource.bindMobile,
       randomStr: '1234',
     }
     http.postLogin(urls.login.getAuthCode, data)
@@ -82,8 +82,8 @@ const viewAction = {
       bindId: this.props.bindId,
       mobile: this.data.mobile,
       uuid: this.props.uuid,
-      appId: constant.appId,
-      domainName: constant.domainName,
+      appId: constant.APP_GLOBAL.appId,
+      domainName: constant.APP_GLOBAL.domainName,
       authCode: verifyCode,
     }
     http.postLogin(urls.login.bindMobile, data)
@@ -135,4 +135,4 @@ const viewAction = {
   }
 }
 
-$Page(props, data, lifecycle, privateMethods, viewAction)
+$Page.register(props, data, lifecycle, privateMethods, viewAction)
