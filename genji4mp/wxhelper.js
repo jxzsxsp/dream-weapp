@@ -72,7 +72,7 @@ class BaseService {
     }
     return new Promise((res, rej) => {
       wx.navigateBack({
-        param,
+        ...param,
         success: res,
         fail: rej
       })
