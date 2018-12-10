@@ -16,6 +16,7 @@ const data = {
   agreement: '',
   codeText: '发送验证码',
   errorText: '',
+  timeId: null,
   canSendCode: true
 }
 
@@ -72,7 +73,13 @@ const viewAction = {
       })
       return false
     }
-    if (!formInfo.authCode) {
+    if (!formInfo.uuid) {
+      this.setData({
+        errorText: '请先点击发送验证码'
+      })
+      return false
+    }
+    if (!formInfo.authCode || !formInfo.uuid) {
       this.setData({
         errorText: '请输入验证码'
       })
@@ -96,9 +103,15 @@ const viewAction = {
         $wx.navigateBack()
       })
     }, err => {
+      clearInterval(this.timeId)
       this.setData({
+        codeText: '发送验证码',
+        canSendCode: true,
         errorText: err.message
       })
+      // this.setData({
+      //   errorText: err.message
+      // })
     })
   }
 }
@@ -110,11 +123,11 @@ const privateMethod = {
     this.setData({
       codeText: codeText
     })
-    let timeId = setInterval(() => {
+    this.timeId = setInterval(() => {
       scd--
       codeText = scd + '’s'
       if (scd < 0) {
-        clearInterval(timeId)
+        clearInterval(this.timeId)
         this.setData({
           codeText: '发送验证码',
           canSendCode: true
