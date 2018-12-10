@@ -1,6 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
-import {justifyColor, fixLab} from '../../utils/index'
+import utils from '../../utils/index'
 
 let data = {
   colorDetail: {},
@@ -13,8 +13,8 @@ let lifecycle = {
       title: colorDetail.categoryName
     })
     
-    justifyColor(colorDetail)
-    colorDetail.lab = fixLab(colorDetail.lab)
+    utils.justifyColor(colorDetail)
+    colorDetail.lab = utils.fixLab(colorDetail.lab)
     this.setData({
       colorDetail: colorDetail
     })

@@ -74,7 +74,7 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.dataList
+      return res.list
     })
   }
 
@@ -104,7 +104,7 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.dataList
+      return res.list
     })
   }
 
@@ -126,7 +126,7 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
-      return res.dataList
+      return res.list
     }) 
   }
 
