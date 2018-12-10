@@ -28,7 +28,7 @@ const data = {
   // 选中的验布方式
   selectedFabricType: {unit: '米'},
   // 验布长度
-  clothLength: 0,
+  clothLength: null,
   // 验布卷数
   volumeNumber: 1,
   // 取货方式
@@ -164,10 +164,6 @@ const viewAction = {
         value: data.selectedCheckType.id,
         hint: '验布方式'
       },
-      customerFabricLength: {
-        value: data.clothLength,
-        hint: '验布米数'
-      },
       customerFabricUnit: {
         value: data.selectedFabricType.unit,
         hint: '单位'
@@ -181,6 +177,7 @@ const viewAction = {
         hint: '取货方式'
       },
       buyerMessage: data.buyerMessage,
+      customerFabricLength: data.clothLength,
     }
     http.post(urls.orderSubmit, param).then(res => {
       $wx.navigateTo($wx.router.orderSuccess, {orderId: res.orderNo})
