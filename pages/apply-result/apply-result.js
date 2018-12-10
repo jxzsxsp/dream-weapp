@@ -14,7 +14,8 @@ const props = {
     title: '申请失败',
     subtitle: '请重新提交',
     image: 'fail_state'
-  }]
+  }],
+  inStack: false,
 }
 
 const data = {
@@ -27,8 +28,7 @@ const data = {
 
 const lifeCycle = {
   onLoad: function (query) {
-  },
-  onShow: function () {
+    this.props.inStack = true;
     if ($wx.app.isBinded()) { 
       http.post(urls.applyFacility)
         .then(res => {
@@ -49,6 +49,21 @@ const lifeCycle = {
         }
       })
     }
+  },
+  onShow: function () {
+    // inStack 表示从绑定手机页回退
+    if (this.props.inStack) {
+      http.post(urls.applyFacility)
+        .then(res => {
+          this.setData({
+            state: this.props.states[1]
+          })
+        }).catch(error => {
+          this.setData({
+            state: this.props.states[2]
+          })
+        })
+      }
   }
 }
 
