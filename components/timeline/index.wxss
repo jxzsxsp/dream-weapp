@@ -17,7 +17,7 @@
 }
 
 .timeline-date {
-  width: 150rpx;
+  width: 200rpx;
   height: 40rpx;
   display: flex;
   flex-direction: row;
@@ -47,7 +47,7 @@
 }
 
 .timeline-title {
-  width: 300rpx;
+  width: 250rpx;
   height: 40rpx;
   margin-left: 10rpx;
   display: flex;
@@ -90,7 +90,7 @@
 }
 
 .timeline-line {
-  width: 166rpx;
+  width: 241rpx;
   height: 180rpx;
 }
 

@@ -56,6 +56,7 @@ page {
 }
 
 .footer {
+  width: 750rpx;
   font-family: PingFangSC-Light;
   font-size: 22rpx;
   color: #666666;
