@@ -15,7 +15,7 @@
       <label class="checkbox">
         <checkbox class="bp-checkbox" value="agreement" color="#BB2830" /> 我已阅读并同意
       </label>
-      <navigator class="bp-navi" url="/page/navigate/navigate?title=navigate">《链尚检品用户协议》</navigator>
+      <a href="javascript:;" bind:tap="goAgreement" class="bp-navi" url="https://m.lianshang.com/activity/springboard?ls_activity_id=162196549&ls_source_id=1010&ls_content=123">《链尚检品用户协议》</a>
     </checkbox-group>
   </view>
 </view>

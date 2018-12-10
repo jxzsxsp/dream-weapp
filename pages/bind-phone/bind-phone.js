@@ -27,6 +27,12 @@ const lifecycle = {
 }
 
 const viewAction = {
+  // 
+  goAgreement () {
+    $wx.navigateTo($wx.router.webView, {
+      url:  encodeURIComponent('https://m.lianshang.com/activity/springboard?ls_activity_id=162196549&ls_source_id=1010&ls_content=123')
+    })
+  },
   // 发送验证码
   sendCode () {
     if (!this.data.canSendCode) {
