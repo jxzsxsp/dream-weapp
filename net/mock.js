@@ -321,7 +321,7 @@ const order = {
   },
   [urls.orderDetail]: {
     "statusId": 10,//状态 --add
-    "statusName": "已评价",//状态
+    "statusName": "验布完成",//状态
     "orderNo": "118120622504", //验布单号
     "storeName": "绍兴交易园店", //验布地点（ 验布坊名称）
     "pickUpTypeName": "代发货至收货地址", //取货方式

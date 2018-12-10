@@ -4,5 +4,5 @@
   </view>
 
   <view class="title">支付成功</view>
-  <view class="desc">实付 ¥ {{fee}}</view>
+  <view class="desc">实付 {{fee}}</view>
 </view>

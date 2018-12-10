@@ -20,7 +20,7 @@ export default {
   // 获取签名
   signPay: '/pay/sign',
   // 支付扫码
-  scanPay: '/cashier/index.html',
+  scanPay: '/pay/entrust-payment',
   // 支付回调
   returnPay: '/weChatPay/return',
   // 取消验布

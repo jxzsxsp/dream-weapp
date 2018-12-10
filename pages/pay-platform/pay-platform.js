@@ -14,9 +14,7 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     console.log(query);
-    let daifuUrl = env.Pay + urls.scanPay + "?token=" + query.token + "&tradeId=" + query.tradeId;
-    console.log(daifuUrl);
-    this.setData({ ...query, daifuUrl: daifuUrl });
+    this.setData({ ...query });
   },
 }
 
@@ -35,8 +33,20 @@ const viewAction = {
       })
     } else if(this.data.daifu) {
       console.log('daifu');
-      wx.setStorageSync("url", this.data.daifuUrl);
-      $wx.navigateTo($wx.router.webView, {});
+      http.get(urls.scanPay,
+        {
+          tradeId: this.data.tradeId,
+          token: this.data.token,
+        }).then(res => {
+          console.log(res);
+          if (res.qr) {
+            let imgUrl = "data:image/png;base64," + res.qr.replace(/[\r\n]/g, "");
+            console.log(imgUrl);
+            wx.previewImage({
+              urls: [imgUrl],
+            });
+          }
+        });
     }
   },
 

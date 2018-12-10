@@ -1,3 +1,5 @@
+@import '../common/iconfont.wxss';
+
 .container {
   width: 690rpx;
   height: 96rpx;
@@ -40,5 +42,15 @@
 }
 
 .active {
-  border-color: #BB2830
+  border-color: #BB2830;
+  color: #BB2830;
+}
+
+.icon {
+  font-size: 32rpx;
+  color: #CCCCCC;
+}
+
+.aicon {
+  color: #BB2830;
 }

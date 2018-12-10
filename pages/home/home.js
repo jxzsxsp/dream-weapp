@@ -12,7 +12,7 @@ const data = {
 }
 
 const lifecycle = {
-  onLoad: function (query) {
+  onShow: function (query) {
     http.post(urls.homeInfo).then(res => {
       console.log(res)
       this.setData({

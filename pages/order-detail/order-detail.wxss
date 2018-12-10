@@ -31,6 +31,7 @@ page {
 }
 
 .status {
+  width: 152rpx;
   font-family: PingFangSC-Semibold;
   font-size: 34rpx;
   color: #FFFFFF;
@@ -44,8 +45,7 @@ page {
   color: #FFFFFF;
   letter-spacing: 0;
   text-align: right;
-  margin-left: 150rpx;
-  width: 370rpx;
+  width: 470rpx;
   float: right;
 }
 

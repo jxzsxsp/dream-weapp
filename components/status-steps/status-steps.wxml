@@ -3,10 +3,10 @@
     <block wx:if="{{ index > 0 }}">
     <view class="item left">
       <block wx:if="{{active > index}}">
-        <icon type="success" size="32rpx" color="#BB2830" />
+        <icon class="iconfont icon-ic_been_done icon aicon" />
       </block>
       <block wx:else>
-        <icon type="success" size="32rpx" color="#CCCCCC" />
+        <icon class="iconfont icon-ic_will_do icon" />
       </block>
       <text class="title">{{item.name}}</text>
     </view>
@@ -14,10 +14,10 @@
     <block wx:else>
     <view class="item">
       <block wx:if="{{active > index}}">
-        <icon type="success" size="32rpx" color="#BB2830" />
+        <icon class="iconfont icon-ic_been_done icon aicon" />
       </block>
       <block wx:else>
-        <icon type="success" size="32rpx" color="#CCCCCC" />
+        <icon class="iconfont icon-ic_been_done icon" />
       </block>
       <text class="title">{{item.name}}</text>
     </view>
