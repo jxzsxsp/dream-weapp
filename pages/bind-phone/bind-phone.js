@@ -3,7 +3,8 @@ import { http, urls } from '../../net/index';
 import constant from '../../constant/index'
 
 const props = {
-  bindId: ''
+  bindId: '',
+  url: 'https://m.lianshang.com/activity/springboard?ls_activity_id=174475123&ls_source_id=1010&ls_content=123'
 }
 
 const data = {
@@ -18,7 +19,10 @@ const lifecycle = {
 
 const viewaction = {
   goAgreement: function () {
-    $wx.navigateTo($wx.router.userAgreement)
+    $wx.navigateTo($wx.router.webview, {
+      url: encodeURIComponent(this.props.url),
+      title: '小蜥用户协议'
+    })
   },
   phoneInput: function (data, value) {
     // 删除最后一个字符的时候

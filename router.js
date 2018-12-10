@@ -6,10 +6,10 @@ export default {
   colorList: 'color-list',
   fetchColorDetail: 'fetch-color-detail',
   compareColor: 'compare-color',
-  commonWebview: 'common-webview',
   bindPhone: 'bind-phone',
-  userAgreement: 'user-agreement',
+  webview: 'webview',
   inputCode: 'input-code',
   deviceManager: 'device-manager',
-  connectDevice: 'connect-device'
+  connectDevice: 'connect-device',
+  applyResult: 'apply-result',
 }

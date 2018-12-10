@@ -90,7 +90,7 @@ const viewAction = {
       .then(() => {
         return $wx.showToast({title: '绑定成功'})
       }).then(() => {
-        return http.quietLogin()
+        return $wx.app.bindPhone()
       }).then(() => {
         setTimeout(() => {
           $wx.navigateBack({delta: 2})
