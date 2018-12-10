@@ -10,9 +10,8 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     let fee = query.fee;
-    if(fee) {
-      this.setData({fee:fee});
-    }
+    let orderNo = query.orderNo;
+    this.setData({ fee: fee, orderNo: orderNo });
   },
 }
 

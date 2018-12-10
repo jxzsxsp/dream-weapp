@@ -1,4 +1,4 @@
-<swiper current-item-id="{{itemId}}" bindchange="onSwiperChange">
+<swiper current-item-id="{{itemId}}" bindchange="onSwiperChange" circular="true">
   <block wx:for="{{reportList}}" wx:key="index">
     <swiper-item item-id="{{index+1}}">
       <view class="container flex">

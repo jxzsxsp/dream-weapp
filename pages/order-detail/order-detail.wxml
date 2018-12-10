@@ -48,8 +48,8 @@
     <view class="cell-value value-active">{{bossMetersAndWeight}}</view>
   </view>
   <view class="item-cell">
-    高级检测
-    <view class="cell-value value-active">{{clothTypeName}}</view>
+    {{clothTypeName}}
+    <view class="cell-value value-active">{{clothPriceDescription}}</view>
   </view>
   <view class="item-cell">
     服务项目

@@ -36,6 +36,13 @@ const viewAction = {
       $wx.navigateTo($wx.router.placeOrder, { id: d.id })
     })
   },
+  /**
+   * 查看详情
+   */
+  gotoDetail: function (d, v) {
+    console.log(d, v, this.data);
+    $wx.navigateTo($wx.router.orderDetail, { orderNo: this.data.order.orderNo })
+  },
 
 }
 

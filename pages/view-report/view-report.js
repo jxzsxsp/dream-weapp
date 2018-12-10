@@ -35,18 +35,23 @@ const viewAction = {
   },
   left: function() {
     let itemId = this.data.itemId;
+    let length = this.data.reportList.length;
     if(itemId > 1) {
       itemId = itemId - 1;
-      this.setData({ itemId: itemId });
+    } else {
+      itemId = length;
     }
+    this.setData({ itemId: itemId });
   },
   right: function () {
     let itemId = this.data.itemId;
     let length = this.data.reportList.length;
     if (itemId < length) {
       itemId = Number(itemId)  + 1;
-      this.setData({ itemId: itemId });
+    } else {
+      itemId = 1;
     }
+    this.setData({ itemId: itemId });
   },
 }
 

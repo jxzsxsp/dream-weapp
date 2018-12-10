@@ -3,7 +3,7 @@
 </view>
 
 <view class="main-content flex-column">
-  <view wx:if="{{order && order.orderNo}}" class="order-content flex">
+  <view wx:if="{{order && order.orderNo}}" class="order-content flex" bind:tap="gotoDetail">
     <view class="icon flex-column">
       <image src="/assets/image/ic_ddgz.png" />
       <text>订单跟踪</text>

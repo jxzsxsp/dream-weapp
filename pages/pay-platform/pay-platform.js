@@ -14,12 +14,9 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     console.log(query);
-    http.get(urls.createPayment, { orderNo: query.orderNo }).then(res => {
-      console.log(res);
-      let daifuUrl = env.Pay+urls.scanPay+"?token=" + res.token+"&tradeId="+res.orderNo;
-      console.log(daifuUrl);
-      this.setData({ ...res, fee: query.fee, daifuUrl: daifuUrl });
-    });
+    let daifuUrl = env.Pay + urls.scanPay + "?token=" + query.token + "&tradeId=" + query.tradeId;
+    console.log(daifuUrl);
+    this.setData({ ...query, daifuUrl: daifuUrl });
   },
 }
 
@@ -59,7 +56,7 @@ const privateMethod = {
   payByCode: function (jscode) {
     http.get(urls.signPay,
       {
-        tradeId: this.data.orderNo,
+        tradeId: this.data.tradeId,
         token: this.data.token,
         appId: constants.APP_GLOBAL.appId,
         domainName: constants.APP_GLOBAL.domainName,
@@ -70,7 +67,9 @@ const privateMethod = {
       });
   },
   requestPayment: function (res) {
-    $wx.requestPayment({
+    console.log(res);
+    let _this = this;
+    wx.requestPayment({
       timeStamp: res.timeStamp,
       nonceStr: res.nonceStr,
       package: res.packageValue,
@@ -78,7 +77,10 @@ const privateMethod = {
       paySign: res.paySign,
       success: function (result) {
         console.log("pay successed ", result);
-        $wx.navigateTo($wx.router.paySuccess, { fee: _this.data.fee });
+        $wx.navigateTo($wx.router.paySuccess, { 
+          fee: _this.data.fee, 
+          orderNo: _this.data.orderNo 
+        });
         // http.getPay(urls.returnPay, {
         //   paymentId: paymentId, 
         //   token: _this.data.token }).then(res => {
@@ -87,6 +89,9 @@ const privateMethod = {
       },
       fail: function (result) {
         console.log("pay failed ", result);
+      },
+      complete: function (result) {
+        console.log("pay completed ", result);
       },
     })
   }

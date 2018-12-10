@@ -52,8 +52,15 @@ const viewAction = {
   },
 
   confirmPay: function () {
-    $wx.navigateTo($wx.router.payPlatform, { orderNo: this.data.orderNo, 
-    fee: this.data.payData.priceDescription })
+    http.get(urls.createPayment, { orderNo: this.data.orderNo }).then(res => {
+      console.log(res);
+      $wx.navigateTo($wx.router.payPlatform, {
+        token: res.token,
+        tradeId: res.orderNo,
+        orderNo: this.data.orderNo,
+        fee: this.data.payData.priceDescription
+      })
+    });
   },
   /**
    * 确认收货
