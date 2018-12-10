@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="title flex">
+    <text class="title-text">扫一扫，即刻支付</text>
+  </view>
+  <view class="jiao-container flex">
+    <view class="iconfont icon-img_jiaojiao icon left"></view>
+    <view class="iconfont icon-img_jiaojiao icon right"></view>
+  </view>
+
+  <view class="qr-container flex" bind:tap="preview">
+    <view class="qr-code">
+      <image wx:if="{{imgUrl}}" src="{{imgUrl}}"></image>
+    </view>
+  </view>
+</view>

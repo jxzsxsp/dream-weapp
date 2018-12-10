@@ -1,0 +1,72 @@
+page {
+  background: #F1F1F1;
+}
+
+.container {
+  width: 500rpx;
+  height: 600rpx;
+  margin: auto;
+  margin-top: 131rpx;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+.jiao-container {
+  width: 574rpx;
+  height: 74rpx;
+  margin-top: -50rpx;
+  margin-left: -36rpx;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 50rpx;
+  height: 74rpx;
+  font-size: 74rpx;
+  color: #E74C3C;
+}
+
+.left {
+  transform:rotate(180deg);
+}
+
+.right {
+  margin-top: -7rpx;
+}
+
+.title {
+  width: 500rpx;
+  height: 74rpx;
+  margin-top: 30rpx;
+  background: #E74C3C;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-text {
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.qr-container {
+  width: 330rpx;
+  height: 330rpx;
+  margin: auto;
+  background: #FFFFFF;
+  border: 6rpx solid #E74C3C;
+  border-radius: 10rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-code {
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.qr-code image {
+  width: 100%;
+  height: 100%;
+}

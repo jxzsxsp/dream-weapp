@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import '/components/common/iconfont.wxss';
+
 .container {
   height: 100%;
   display: flex;
@@ -24,56 +26,3 @@
   height: 0;
   color: transparent;
 }
-
-
-@font-face {
-  font-family: 'iconfont';  /* project id 938438 */
-  src: url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.eot');
-  src: url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.woff') format('woff'),
-  url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_938438_ghrpdw3pypj.svg#iconfont') format('svg');
-}
-
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-ic_back:before { content: "\e8e7"; }
-
-.icon-ic_choose:before { content: "\e8e8"; }
-
-.icon-ic_history:before { content: "\e8e9"; }
-
-.icon-ic_register_b:before { content: "\e8f3"; }
-
-.icon-ic_register_a:before { content: "\e8f4"; }
-
-.icon-ic_setting:before { content: "\e8f5"; }
-
-.icon-ic_next:before { content: "\e8fa"; }
-
-.icon-ic_address:before { content: "\e8fb"; }
-
-.icon-ic_edit:before { content: "\e8fc"; }
-
-.icon-ic_custom_address:before { content: "\e8fd"; }
-
-.icon-ic_custom_serviceco:before { content: "\e8fe"; }
-
-.icon-ic_will_do:before { content: "\e8ff"; }
-
-.icon-ic_been_done:before { content: "\e900"; }
-
-.icon-ic_weixin:before { content: "\e901"; }
-
-.icon-ic_daifu:before { content: "\e902"; }
-
-.icon-logo_jianpin:before { content: "\e903"; }
-
-.icon-ic_close:before { content: "\e8ea"; }
-

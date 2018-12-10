@@ -26,7 +26,7 @@
             <view class="title">{{item.name}}</view>
             <view class="price">{{item.displayPrice}}</view>
           </view>
-          <view class="desc">{{item.item}}</view>
+          <view class="desc">{{item.priceContent}}</view>
           <view class="go-check flex">去验布</view>
         </view>
 
@@ -35,6 +35,6 @@
         </view>
       </button>
     </block>
-    <text class="memo">“基础检验”服务包含：米数、重量、克重、门幅的测量</text>
+    <text class="memo">基础检验，包含：米数、重量、米差/空差、门幅、克重</text>
   </view>
 </view>

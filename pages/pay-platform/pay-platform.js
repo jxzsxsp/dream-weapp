@@ -33,20 +33,10 @@ const viewAction = {
       })
     } else if(this.data.daifu) {
       console.log('daifu');
-      http.get(urls.scanPay,
-        {
-          tradeId: this.data.tradeId,
-          token: this.data.token,
-        }).then(res => {
-          console.log(res);
-          if (res.qr) {
-            let imgUrl = "data:image/png;base64," + res.qr.replace(/[\r\n]/g, "");
-            console.log(imgUrl);
-            wx.previewImage({
-              urls: [imgUrl],
-            });
-          }
-        });
+      $wx.navigateTo($wx.router.payDaifu, {
+        tradeId: this.data.tradeId,
+        token: this.data.token,
+      });
     }
   },
 

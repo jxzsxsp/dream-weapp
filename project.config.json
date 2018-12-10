@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -115,6 +115,18 @@
 					"name": "手机绑定",
 					"pathName": "pages/bind-phone/bind-phone",
 					"query": "bineId=1232w13123123"
+				},
+				{
+					"id": 13,
+					"name": "收银台",
+					"pathName": "pages/pay-daifu/pay-daifu",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "替我支付",
+					"pathName": "pages/pay-daifu/pay-daifu",
+					"query": ""
 				}
 			]
 		}

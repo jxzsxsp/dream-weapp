@@ -13,7 +13,8 @@
     "pages/pay-success/pay-success",
     "pages/view-report/view-report",
     "pages/bind-phone/bind-phone",
-    "pages/web-view/web-view"
+    "pages/web-view/web-view",
+    "pages/pay-daifu/pay-daifu"
   ],
   "window": {
     "backgroundTextStyle": "light",

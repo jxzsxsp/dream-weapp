@@ -80,6 +80,10 @@
     {{price.priceNameDescription}}<text class="total-price">{{price.priceDescription}}</text>
   </view>
 
+  <view wx:if="{{receiptRemark}}" class="memo flex">
+    <text class="memo-text">备注：{{receiptRemark}}</text>
+  </view>
+
 </view>
 
 <view class="line"></view>
@@ -105,6 +109,14 @@
 
   <view class="info-cell" style="height: auto; min-height: 40rpx;">
     <text>买家留言：{{customerMessage}}</text>
+  </view>
+
+  <view wx:if="{{deliveryDescription}}" class="info-cell" style="height: auto; min-height: 40rpx;">
+    <text>发货备注：{{deliveryDescription}}</text>
+  </view>
+
+  <view wx:if="{{rejectDescription}}" class="info-cell" style="height: auto; min-height: 40rpx;">
+    <text>关闭原因：{{rejectDescription}}</text>
   </view>
 
 <block wx:if="{{payTime}}">

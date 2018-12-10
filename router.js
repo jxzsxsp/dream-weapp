@@ -4,6 +4,7 @@ export default {
   orderDetail: 'order-detail',
   viewReport: 'view-report',
   payPlatform: 'pay-platform',
+  payDaifu: 'pay-daifu',
   paySuccess: 'pay-success',
   placeOrder: 'place-order',
   buyerMessage: 'buyer-message',
