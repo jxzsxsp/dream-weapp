@@ -41,7 +41,13 @@ const lifeCycle = {
           })
         })
     } else {
-      $wx.navigateTo($wx.router.bindPhone)
+      $wx.app.bindPhone().then(res => {
+        if (res.code === 1) {
+          this.setData({
+            state: this.props.states[1]
+          })
+        }
+      })
     }
   }
 }
