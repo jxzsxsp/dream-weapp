@@ -49,7 +49,14 @@
     <form-cell>
       <text slot="left">验布卷数</text>
       <view slot="right" class="detail-container">
-        <van-stepper custom-class="stepper-container" disable-input data-type="volumeNumber" value="{{volumeNumber}}" min="1" bind:change="finishInput"/>
+        <van-stepper
+          custom-class="stepper-container"
+          integer
+          data-type="volumeNumber"
+          value="{{volumeNumber}}"
+          min="1"
+          bind:change="finishInput"
+        />
         <text>卷</text>
       </view>
     </form-cell>

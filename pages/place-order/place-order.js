@@ -1,5 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
+import utils from '../../utils/index'
 
 const props = {
   STORE: 'selectStore',
@@ -115,6 +116,9 @@ const viewAction = {
       })
       this.calcPrice()
     } else if (d.type === this.props.VOLUMENUMBER) {
+      if (utils.isObject(v)) {
+        v = ''
+      }
       this.setData({
         volumeNumber: v
       })
