@@ -20,7 +20,7 @@
 
   <view class="item-content flex-column">
     <block wx:for="{{items}}" wx:key="index">
-      <button class="item-container flex" data-id="{{item.id}}" open-type="getUserInfo" bind:getUserInfo="goPlaceOrder">
+      <button class="item-container flex" data-id="{{item.id}}" open-type="getUserInfo" bind:getuserinfo="goPlaceOrder">
         <view class="content">
           <view class="head flex">
             <view class="title">{{item.name}}</view>
