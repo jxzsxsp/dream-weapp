@@ -103,11 +103,11 @@ const viewAction = {
     })
     http.postLogin(urls.login.bindMobile, formInfo).then(res => {
       // console.log(res)
-      this.saveNickname();
       $wx.showToast({
         title: '绑定成功'
       })
       $wx.app.bindPhone().then(() => {
+        this.saveNickname();
         $wx.navigateBack()
       })
     }, err => {

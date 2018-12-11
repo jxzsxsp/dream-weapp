@@ -1,8 +1,7 @@
-export const isOnline = false
-
+export const isOnline = true
 
 export default {
-  Login: 'https://sso2.lian-shang.cn',
-  url: 'https://lianshang-check-api.lian-shang.cn',  //主域名
-  Pay: 'https://m.lian-shang.cn',
+  Login: 'https://sso2.lianshang.com',
+  url: 'https://lianshang-check-api.lianshang.com',  //主域名
+  Pay: 'https://m.lianshang.com',
 }
