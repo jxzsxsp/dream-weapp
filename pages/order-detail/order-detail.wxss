@@ -149,6 +149,7 @@ page {
   padding-top: 16rpx;
   padding-bottom: 16rpx;
   padding-right: 30rpx;
+  padding-left: 30rpx;
   background: #FFFFFF;
 }
 
@@ -181,7 +182,6 @@ page {
 }
 
 .memo {
-  height: 33rpx;
   justify-content: flex-end;
   align-items: center;
 }
@@ -191,7 +191,7 @@ page {
   font-size: 24rpx;
   color: #9B9B9B;
   letter-spacing: 0;
-  text-align: right;
+  text-align: left;
 }
 
 .order-info {
