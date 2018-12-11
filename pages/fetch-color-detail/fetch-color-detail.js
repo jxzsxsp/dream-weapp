@@ -1,6 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
-import {fixLab} from '../../utils/index'
+import utils from '../../utils/index'
 
 let props = {
   loadingState: http.defaultLoadingState(),
@@ -20,7 +20,7 @@ let lifeCycle = {
     })
     http.get(urls.pantone.fetchColorDetail, {colorId: parseInt(query.colorId)})
       .then(colorDetail => {
-        colorDetail.lab = fixLab(colorDetail.lab)
+        colorDetail.lab = utils.fixLab(colorDetail.lab)
         this.setData({
           colorDetail,
         })

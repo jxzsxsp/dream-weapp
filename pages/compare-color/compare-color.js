@@ -1,6 +1,6 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
-import {fixLab} from '../../utils/index'
+import utils from '../../utils/index'
 
 let data = {
   colorDetail: {},
@@ -33,9 +33,9 @@ let lifecycle = {
     http.get(urls.pantone.compareColorDetail, param)
       .then(colorDetail => {
         if (!this.data.isCompare) {
-          colorDetail.targetColor.lab = fixLab(colorDetail.targetColor.lab)
+          colorDetail.targetColor.lab = utils.fixLab(colorDetail.targetColor.lab)
         }
-        colorDetail.sourceColor.lab = fixLab(colorDetail.sourceColor.lab)
+        colorDetail.sourceColor.lab = utils.fixLab(colorDetail.sourceColor.lab)
         this.setData({
           colorDetail
         })
