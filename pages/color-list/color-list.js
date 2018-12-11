@@ -3,7 +3,7 @@ import {http, urls} from '../../net/index'
 
 let props = {
   categoryId: 0,
-  loadingState: http.defaultLoadingState()
+  loadingState: http.defaultLoadingState(24)
 }
 
 let data = {
