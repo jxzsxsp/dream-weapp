@@ -8,7 +8,7 @@ const props = {
     image: 'detail_state'
   }, {
     title: '申请已提交!',
-    subtitle: '您已提交试用申请，工作人员审核通后会与您联系，请耐心等待！',
+    subtitle: '您已提交试用申请，工作人员审核通过后会与您联系，请耐心等待！',
     image: 'success_state'
   }, {
     title: '申请失败',
