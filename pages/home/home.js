@@ -13,14 +13,13 @@ const data = {
 
 const lifecycle = {
   onShow: function (query) {
-    http.post(urls.homeInfo).then(res => {
-      console.log(res)
-      this.setData({
-        items: res.items,
-        order: res.order
-      })
-    })
-  }
+    this.homeInit();
+  },
+
+  onPullDownRefresh: function () {
+    this.homeInit();
+    $wx.stopPullDownRefresh();
+  },
 }
 
 const viewAction = {
@@ -46,5 +45,17 @@ const viewAction = {
 
 }
 
+const privateMethod = {
+  homeInit: function() {
+    http.post(urls.homeInfo).then(res => {
+      console.log(res)
+      this.setData({
+        items: res.items,
+        order: res.order
+      })
+    })
+  }
+}
 
-$Page.register(props, data, lifecycle, null, viewAction)
+
+$Page.register(props, data, lifecycle, privateMethod, viewAction)

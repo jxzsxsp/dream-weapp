@@ -35,6 +35,6 @@
         </view>
       </button>
     </block>
-    <text class="memo">基础检验，包含：米数、重量、米差/空差、门幅、克重</text>
+    <text class="memo">基础数据，包含：米数、重量、米差/空差、门幅、克重</text>
   </view>
 </view>
