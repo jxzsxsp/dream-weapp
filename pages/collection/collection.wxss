@@ -4,6 +4,9 @@
 }
 
 .content-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   height: 68rpx;
   line-height: 68rpx;
   font-family: PingFangSC-Regular;
@@ -29,23 +32,14 @@
 }
 
 .content-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-family: PingFangSC-Regular;
   font-size: 32rpx;
   color: #999999;
   letter-spacing: -0.63rpx;
   line-height: 40rpx;
-}
-
-.center-head {
-  margin-left: 230rpx;
-}
-
-.right-head {
-  margin-left: 110rpx;
-}
-
-.center-text {
-  margin-left: 120rpx;
 }
 
 .collection-btn {
