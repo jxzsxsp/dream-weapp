@@ -16,6 +16,9 @@ const lifecycle = {
     this.setData({orderNo: query.orderNo});
     this.getDetail();
   },
+  onShow: function () {
+    this.getDetail();
+  },
 }
 
 const viewAction = {
@@ -47,13 +50,10 @@ const viewAction = {
     });
   },
 
-  toggleShowPay: function () {
-    this.setData({ showPay: !this.data.showPay })
-  },
-
   confirmPay: function () {
     http.get(urls.createPayment, { orderNo: this.data.orderNo }).then(res => {
       console.log(res);
+      this.toggleShowPay();
       $wx.navigateTo($wx.router.payPlatform, {
         token: res.token,
         tradeId: res.orderNo,
@@ -96,11 +96,15 @@ const privateMethod = {
     });
   },
 
+  toggleShowPay: function () {
+    this.setData({ showPay: !this.data.showPay })
+  },
+
   copy(e) {
     $wx.setClipboardData({
       data: this.data.orderNo
     })
-  }
+  },
 
 }
 

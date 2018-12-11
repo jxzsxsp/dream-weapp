@@ -95,17 +95,14 @@ const viewAction = {
   confirmPay: function () {
     http.get(urls.createPayment, { orderNo: this.data.payOrderNo }).then(res => {
       console.log(res);
+      this.toggleShowPay();
       $wx.navigateTo($wx.router.payPlatform, {
         token: res.token,
         tradeId: res.orderNo,
         orderNo: this.data.payOrderNo,
         fee: this.data.payData.priceDescription
-      })
+      });
     });
-  },
-
-  toggleShowPay: function () {
-    this.setData({ showPay: !this.data.showPay })
   },
 
 }
@@ -142,6 +139,10 @@ const privateMethod = {
         title: '取消成功',
       });
     });
+  },
+
+  toggleShowPay: function () {
+    this.setData({ showPay: !this.data.showPay })
   },
 }
 

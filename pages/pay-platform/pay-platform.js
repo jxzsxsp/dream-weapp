@@ -33,7 +33,7 @@ const viewAction = {
       })
     } else if(this.data.daifu) {
       console.log('daifu');
-      $wx.navigateTo($wx.router.payDaifu, {
+      $wx.redirectTo($wx.router.payDaifu, {
         tradeId: this.data.tradeId,
         token: this.data.token,
       });
@@ -77,7 +77,7 @@ const privateMethod = {
       paySign: res.paySign,
       success: function (result) {
         console.log("pay successed ", result);
-        $wx.navigateTo($wx.router.paySuccess, { 
+        $wx.redirectTo($wx.router.paySuccess, { 
           fee: _this.data.fee, 
           orderNo: _this.data.orderNo 
         });
