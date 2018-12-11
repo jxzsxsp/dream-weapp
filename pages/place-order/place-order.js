@@ -64,6 +64,17 @@ const lifeCycle = {
       })
     })
   },
+  onNavigateBack: function (query) {
+    if (query.buyerMessage) {
+      this.setData({
+        buyerMessage: query.buyerMessage
+      })
+    } else if (query.customerDetail) {
+      this.setData({
+        customerDetail: query.customerDetail
+      })
+    }
+  }
 }
 
 const viewAction = {
