@@ -41,9 +41,6 @@
   width: 570rpx;
   height: 88rpx;
   margin-top: 30rpx;
-}
-
-.go-home-text {
   font-family: PingFangSC-Regular;
   font-size: 34rpx;
   color: #BB2830;
@@ -57,9 +54,6 @@
   border-radius: 44rpx;
   width: 570rpx;
   height: 88rpx;
-}
-
-.check-order-text {
   font-family: PingFangSC-Regular;
   font-size: 34rpx;
   color: #FFFFFF;

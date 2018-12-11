@@ -13,10 +13,7 @@ const lifecycle = {
 
 const viewAction = {
   checkOrderClicked: function () {
-    // $wx.redirectTo($wx.router.orderDetail)
     $wx.switchTabTo($wx.router.orderList, $wx.router.orderDetail, {orderNo: this.props.orderId})
-    // $wx.switchTab($wx.router.home)
-    // $wx.redirectRootTo($wx.router.orderDetail, {orderNo: this.props.orderId})
   },
   goHomeClicked: function () {
     $wx.switchTab($wx.router.home)
