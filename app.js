@@ -4,7 +4,11 @@ import constants from './constants/index'
 import {http, urls} from './net/index'
 import utils from './utils/index';
 App({
-  onLaunch: function () {
+  onLaunch: function (query) {
+    console.log('------------启动')
+    console.log(query)
+    console.log('------------启动')
+
     // mixin 生命周期
     $Page.mixinLifeCycle({onLoad: function () {
       console.log('注入成功')
