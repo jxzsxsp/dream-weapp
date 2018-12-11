@@ -1,0 +1,18 @@
+<view>
+    <image src='/images/alk.png' mode='widthFix' style='width:640rpx;height:513rpx;padding:55rpx'></image>
+    <view style='font-size:30rpx;text-align:center'>
+        <view>
+            <text>卡号：{{cardNumber}}，金额：￥{{balance}}</text>
+        </view>
+        <view>
+            <text>请输入卡券密码来激活领取</text>
+        </view>
+        <view>
+            <text>领取后金额直接存入您的预存款</text>
+        </view>
+    </view>
+</view>
+<view style='width:570rpx;margin:0 auto'>
+    <input type='number' focus='true' style='margin:30rpx 0;background:#fff;line-height:85rpx;height:85rpx;text-align:center' placeholder-style='font-size:30rpx;text-align:center;' bindinput='cardPasswordInput' placeholder='请输入卡券密码' name='passwd'></input>
+    <button type='warn' bindtap='activeCard'>确认领取</button>
+</view>

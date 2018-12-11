@@ -1,0 +1,123 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class='page-section'>
+    <view style='margin-top:10rpx'>
+        <view wx:for='{{brandRushInfo}}' style='margin-bottom:10rpx;padding-right:27rpx;background:#fff'>
+            <view>
+                <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
+                    <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5'>
+                        <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix'></image>
+                    </view>
+                </view>
+                <view style='height:85rpx;padding:27rpx 0 16rpx 0'>
+                    <view style='font-size:30rpx;'>{{item.mainTitle}}</view>
+                    <view>
+                        <view>
+                            <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{item.subTitle}}</view>
+
+                            <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if= "{{userInfo.IsReferral}}">最高分佣
+                                <text style='padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}%</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view style='padding-left:129rpx'>
+                <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                    <text>{{item.brandDesc}}</text>
+                </view>
+            </view>
+            <view style='padding-left:129rpx;padding-bottom:15rpx'>
+                <text style="background:url('http://img.qkmai.com/qkmbb/icon_brand_notice.png') no-repeat;background-size:35rpx 30rpx;height:30rpx;padding-left:50rpx;font-size:22rpx;color:#e54e6f">{{item.brandNotice}}</text>
+            </view>
+            <view style='padding-left:125rpx;padding-right:15rpx'>
+                <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;'>
+                    <text>距活动结束</text>
+                    <text style='float:right'>结束时间</text>
+                </view>
+                <view>
+                    <view style='float:left' class='tui-countdown-content'>
+                        <text class='tui-conutdown-box'>{{item.countDownTime.day}}</text>天
+                        <text class='tui-conutdown-box'>{{item.countDownTime.hou}}</text>时
+                        <text class='tui-conutdown-box'>{{item.countDownTime.min}}</text>分
+                        <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.sec}}</text>秒
+                    </view>
+                    <view style='float:right;height:25rpx;font-size:22rpx;color:#515151'>
+                        {{item.endTimeInfo}}
+                    </view>
+                    <view style='clear:both'></view>
+                </view>
+            </view>
+            <view style='padding-left:115rpx;padding-right:15rpx'>
+                <button style='float:right;width:123rpx;height:50rpx;background-color:#e54e6f;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #e54e6f;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
+                    plain='true' openType="share">分享专场</button>
+                
+                <view style='clear:both'></view>
+            </view>
+
+        </view>
+    </view>
+
+
+
+
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx;'>
+        <view>
+            <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
+                <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5'>
+                    <image src='{{brandLogo}}' style='width:98%' mode='widthFix'></image>
+                </view>
+            </view>
+            <view style='height:85rpx;padding:27rpx 0 16rpx 0'>
+                <view style='font-size:30rpx;'>{{mainTitle}}</view>                
+                <view>
+                    <view>
+                        <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{subTitle}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view>
+            <view style='padding-left:129rpx;'>
+                <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                    <text>{{item.infoDesc}}</text>
+                </view>
+            </view>
+            <view style='padding:12rpx 27rpx 18rpx 129rpx'>
+                <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
+                <text class='marketPrice'>¥{{item.marketPrice}}</text>
+                <view style='float:right'>
+                    <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
+                    <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
+                </view>
+            </view>
+            <view style='padding-left:129rpx'>
+                <view wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='float:left;padding-right:10rpx'>
+                        <image src='{{goodsImg}}' style='width:186rpx;height:186rpx;' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                </view>
+                <view style='clear:both'></view>
+            </view>
+            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;'>
+                <view style='padding:0 16rpx'>
+                    <text style='color:#b0b0b0;font-size:26rpx'>请选择商品规格下单</text>
+                </view>
+                <view style='padding:0 16rpx'>
+                    <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
+                        <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' bindtap='selectSkuId'>
+                            <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
+                        </view>
+                    </view>
+                    <view style='clear:both'></view>
+                </view>
+                <view style='padding:15rpx 15rpx 15rpx 0'>
+                    <!-- <view class="addCart {{goodsSkuId==sku.skuId?' active ':' '}}" style='height:50rpx;width:162rpx;background:#ff0000;border-radius:30rpx;text-align:center;float:right;line-height:50rpx;font-size:26rpx;color:#fff' bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
+                    </view> -->
+                    <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
+                    </view>
+                    <view style='clear:both'></view>
+                </view>
+            </view>
+
+            <view style='height:26rpx'></view>
+        </view>
+    </view>
+</view>

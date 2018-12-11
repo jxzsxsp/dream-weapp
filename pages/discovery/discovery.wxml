@@ -1,0 +1,74 @@
+<!-- <view>
+    <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' style='width:100%'></image>
+</view>
+<view>
+<navigator url="/pages/productdetail/productdetail?id=148" open-type="redirect" hover-class="other-navigator-hover">
+<image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' style='width:100%'></image>
+</navigator>
+<navigator url="/pages/productdetail/productdetail?id=147" open-type="redirect" hover-class="other-navigator-hover">
+<image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' style='width:100%'></image>
+</navigator>
+</view>
+<view>
+    <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' style='width:100%'></image>
+</view> -->
+
+<!-- 
+<view wx:for='{{goodsList}}'>
+    <view style='padding:25rpx 30rpx;float:left'>
+        <image src='{{item.titleImg}}' style='width:180rpx;height:180rpx'>
+        </image>
+    </view>
+    <view>
+        <view style='font-size:28rpx;color:#585858'>
+            {{item.mainTitle}}
+        </view>
+        <view style='padding-top:55rpx'>
+            <text style='font-size:38rpx;color:#ff0000'>￥{{item.salePrice}}</text>
+            <text style='font-size:24rpx;color:#959595;text-decoration:line-through'>{{item.marketPrice}}</text>
+            <view style='width:152rpx;height:60rpx;background:#e54e6f;color:#fff;float:right;' bindtap='{{addGoodsToTrade}}'>
+                购买得VIP
+            </view>
+        </view>
+    </view>
+</view> -->
+
+
+<view wx:if= "{{!userInfo.IsReferral}}">
+    <view>
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </view>
+    <view>
+        <navigator url="/pages/productdetail/productdetail?id=148" open-type="redirect" hover-class="other-navigator-hover">
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+        <navigator url="/pages/productdetail/productdetail?id=147" open-type="redirect" hover-class="other-navigator-hover">
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+        <navigator url="/pages/productdetail/productdetail?id=163" open-type="redirect" hover-class="other-navigator-hover">
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+        <navigator url="/pages/productdetail/productdetail?id=164" open-type="redirect" hover-class="other-navigator-hover">
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP5.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+
+
+    </view>
+    <view>
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </view>
+</view>
+
+
+<view wx:else>
+    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+
+    <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </button>
+    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+
+</view>

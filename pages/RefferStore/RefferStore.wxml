@@ -1,0 +1,5 @@
+<view style="background:url({{RefferImg}}); background-size:100% 100%;width:100%;height:100%;postion:relative">
+    <view class="btn">
+        <button class="other-button-hover" openType="share">分享我的专属链接</button>
+    </view>
+</view>

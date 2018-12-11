@@ -1,0 +1,9 @@
+var filter = {
+    toFix: function (value, count) {
+        var num = parseInt( value )
+        return num.toFixed(count)
+    }
+}
+module.exports = {
+    toFix: filter.toFix
+}

@@ -1,0 +1,44 @@
+<view class="yongjingbox">
+    <view class="leftbox">
+        <text class="title">直接下级成交额（元）</text>
+        <text class="money">{{LowerUserSaleTotal}}</text>
+    </view>
+</view>
+<view class="drawalsBox pd24">
+    <view class="drawals fl">
+        <view class="drawals_width">
+            <text>{{ExpandMemberInMonth}}</text>
+        </view>
+        <text>本月发展会员人数</text>
+    </view>
+    <view class="drawals fr">
+        <view class="drawals_width">
+            <text>{{ExpandMemberAll}}</text>
+        </view>
+        <text>累计发展会员人数</text>
+    </view>
+</view>
+<view class="yongjin_list" wx:for="{{subMemberList}}" wx:key="{{subMemberList}}">
+    <view class="list_li">
+        <view class="list_id">
+            <text class="idnum" wx:if="{{item.RealName}}">{{item.RealName}}</text>
+            <text class="idnum" wx:elif="{{item.CellPhone}}">{{item.CellPhone}}</text>
+            <text class="idnum" wx:else>{{item.UserName}}</text>
+            <text class="time">{{item.CreateDate}}</text>
+        </view>
+        <view class="list_id width">
+            <view class="idnum">
+                <text class="icon_money">¥</text>
+                <text class="count">{{item.SubSumOrderTotal}}</text>
+            </view>
+            <text class="time">累计消费</text>
+        </view>
+        <view class="list_id width">
+            <view class="idnum">
+                <text class="icon_money">¥</text>
+                <text class="count">{{item.SubMemberAllSplittin}}</text>
+            </view>
+            <text class="time">贡献奖励</text>
+        </view>
+    </view>
+</view>

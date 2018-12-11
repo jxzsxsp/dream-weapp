@@ -1,0 +1,4 @@
+/* pages/cardInfo/cardInfo.wxss */
+page{
+    background: #f5f5f5
+}
