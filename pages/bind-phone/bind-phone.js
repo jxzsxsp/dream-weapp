@@ -22,6 +22,7 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
+    console.log($wx.app.globalData);
     this.data.formInfo.bindId = query.bindId
   }
 }
@@ -102,6 +103,7 @@ const viewAction = {
     })
     http.postLogin(urls.login.bindMobile, formInfo).then(res => {
       // console.log(res)
+      this.saveNickname();
       $wx.showToast({
         title: '绑定成功'
       })
@@ -144,7 +146,19 @@ const privateMethod = {
         })
       }
     }, 1000)
-  }
+  },
+  saveNickname: function () {
+    $wx.login().then(res => {
+      console.log(res)
+    }).then(() => {
+      return $wx.getUserInfo({ withCredentials: true })
+    }).then(res => {
+      console.log(res)
+      http.post(urls.login.saveName, { name: res.userInfo.nickName }).then(res => {
+        console.log(res);
+      });
+    });
+  },
 }
 
 $Page.register(null, data, lifecycle, privateMethod, viewAction)
