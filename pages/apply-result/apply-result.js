@@ -8,7 +8,7 @@ const props = {
     image: 'detail_state'
   }, {
     title: '申请已提交!',
-    subtitle: '您已提交试用申请，工作人员审核通过',
+    subtitle: '您已提交试用申请，工作人员审核通后会与您联系，请耐心等待！',
     image: 'success_state'
   }, {
     title: '申请失败',
@@ -28,7 +28,6 @@ const data = {
 
 const lifeCycle = {
   onLoad: function (query) {
-    this.props.inStack = true;
     if ($wx.app.isBinded()) { 
       http.post(urls.applyFacility)
         .then(res => {
@@ -53,7 +52,8 @@ const lifeCycle = {
   onShow: function () {
     // inStack 表示从绑定手机页回退
     if (this.props.inStack) {
-      http.post(urls.applyFacility)
+      if ($wx.app.isBinded()) {
+        http.post(urls.applyFacility)
         .then(res => {
           this.setData({
             state: this.props.states[1]
@@ -63,7 +63,13 @@ const lifeCycle = {
             state: this.props.states[2]
           })
         })
+      } else {
+        this.setData({
+          state: this.props.states[2]
+        })
       }
+    }
+    this.props.inStack = true;
   }
 }
 
