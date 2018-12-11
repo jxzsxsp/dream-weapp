@@ -4,7 +4,7 @@ import { http, urls } from '../../net/index';
 const data = {
   settingList: [{
     name: '收货地址', 
-    icon: 'icon-ic_address'
+    icon: 'icon-ic_custom_address'
   }],
   userInfo: {},
   userDetail: {},
