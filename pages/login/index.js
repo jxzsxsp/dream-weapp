@@ -82,33 +82,43 @@ Page({
     // 执行微信登录
     wx.login({
       success: function (res) {
-        
-        // 发送用户信息
-        _get(urls.login_url
-          , {
-            appId: config.app_id,
-            code: res.code,
-            rawData: e.detail.rawData,
-            signature: e.detail.signature,
-            encryptedData: e.detail.encryptedData,
-            iv: e.detail.iv,
-            domainName: config.domain_name
-          }
-          , function (result) {
-            console.log(result);
-            // 记录token user_id
-            if (result.data.token) {
-              wx.setStorageSync('token', result.data.token);
-              // 跳转回原页面
-              _this.navigateBack();
-            } else {
-              wx.navigateTo({
-                url: '/pages/bindmobile/index?bindId=' + result.data.bindId,
-              })
+
+        wx.getUserInfo({
+          success: function (userInfo) {
+            console.log(userInfo);
+
+            if (userInfo.errMsg !== 'getUserInfo:ok') {
+              return false;
             }
+
+            // 发送用户信息
+            _get(urls.login_url
+              , {
+                appId: config.app_id,
+                code: res.code,
+                rawData: userInfo.rawData,
+                signature: userInfo.signature,
+                encryptedData: userInfo.encryptedData,
+                iv: userInfo.iv,
+                domainName: config.domain_name
+              }
+              , function (result) {
+                console.log(result);
+                // 记录token user_id
+                if (result.data.token) {
+                  wx.setStorageSync('token', result.data.token);
+                  // 跳转回原页面
+                  _this.navigateBack();
+                } else {
+                  wx.navigateTo({
+                    url: '/pages/bindmobile/index?bindId=' + result.data.bindId,
+                  })
+                }
+              }
+              , false
+              , false);
           }
-          , false
-          , false);
+        })
 
       }
     });
