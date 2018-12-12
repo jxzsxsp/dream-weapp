@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.1",
-	"appid": "wx779e355e765faaf5",
+	"appid": "wx9fc0ae236abe090b",
 	"projectname": "yscsp",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -27,13 +27,36 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "price",
+					"pathName": "pages/addprice/addprice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "home",
+					"pathName": "pages/home/home",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "usehome",
+					"pathName": "pages/usehome/usehome",
+					"query": ""
+				}
+			]
 		}
 	}
 }

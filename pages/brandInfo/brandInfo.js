@@ -261,5 +261,11 @@ Page({
   filterNum: function (value, count) {
       var num = Number(value)
       return num.toFixed(count)
+  },
+  
+  sharemsg: function (o) {
+    wx.navigateTo({
+      url: "../addprice/addprice"
+    });
   }
 })

@@ -13,7 +13,13 @@
                 </view>
             </view>
         </view>
+        <view class='mymoney'>
+          <view>我的收入</view>
+           <view>$</view>
+           <button>提现</button>
+        </view>
     </view>
+    
 </view>
 <view bindtap="bindOrderList" class="hdonglist" style="margin-top:0">我的订单
   <text bindtap="bindStatue" data-key="0">全部订单</text>
@@ -40,22 +46,35 @@
             <text>{{userInfo.waitFinishCount}}</text>
         </view>
     </view>
-    <view bindtap="bindStatue" class="usecdlist" data-key="21">
+     <view  class="usecdlist" bindtap="bindStatue" data-key="0"> <!--bindtap="bindStatue" data-key="21"-->
         <view class="iconfont icon__comment"></view>
-        <text>待评论</text>
+        <text >全部订单</text>
         <view class="order_num" hidden="{{userInfo.waitReviewCount==0}}">
             <text>{{userInfo.waitReviewCount}}</text>
         </view>
     </view>
     <view bindtap="bindApply" class="usecdlist">
         <view class="iconfont icon__service-1 "></view>
-        <text>售后</text>
+        <text>售后订单</text>
         <view class="order_num" hidden="{{userInfo.afterSalesCount==0}}">
             <text>{{userInfo.afterSalesCount}}</text>
         </view>
     </view>
 </view>
-<view class="producthd mt15">    
+<view class="producthd mt15"> 
+   <view class='release'>
+     <view class='releaseleft'>
+       <text class='offtake'>卖出</text><view class='allband'>全部</view>
+       <view class='logoimage'><image ></image></view>
+       <text class='headtitler'>商品标题</text>
+     </view>
+    <view class='releaseright'>
+      <view>去选品</view>
+      <text>文字文字文字</text>
+      <view>4个logo</view>
+      <text>品牌名称</text>
+    </view>
+   </view>
     <view bindtap="bindMyAddressTap" class="hdonglist">我的收货地址</view>
     <view bindtap="bindMyCouponsTap" class="hdonglist">我的优惠券
     <text wx:if="{{userInfo.couponsCount>0}}">{{userInfo.couponsCount}}张未使用</text>
@@ -67,6 +86,14 @@
     <view bindtap="bindTelPhone" class="hdonglist" data-tel="{{userInfo.ServicePhone}}">客服电话
     <text>{{userInfo.ServicePhone}}</text>
     </view>
+    <view bindtap="bindMyselection" class="hdonglist">我要选品</view>
+    <view bindtap="bindMybrand" class="hdonglist">品牌库</view>
+    <view bindtap="bindMyshoppongcart" class="hdonglist">我的购物车</view>
+    <view bindtap="bindMystoresmsg" class="hdonglist">店铺信息</view>
+    <view bindtap="bindMystore" class="hdonglist">店铺分销</view>
+    <view bindtap="bindMyincome" class="hdonglist">我的佣金</view>
+    <view bindtap="bindMysuperior" class="hdonglist" >我的下级</view>
+    
     <view bindtap="ExitLoginout" class="hdonglist outlogin">
     退出登录
   </view>

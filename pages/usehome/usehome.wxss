@@ -1,11 +1,13 @@
 .logobg {
     width: 750rpx;
     height: 240rpx;
+    
 }
 
 .uselogos {
     position: relative;
     height: 240rpx;
+   
 }
 
 .usetitle {
@@ -187,4 +189,33 @@ page {
 
 .mt0 {
     margin-top: 0;
+}
+.mymoney{
+
+  position: absolute;
+  right:-370rpx;
+  top: -20rpx
+}
+.mymoney button{
+  font-size:40rpx; 
+  height: 60rpx;
+  line-height: 60rpx
+}
+.release{
+  padding: 10rpx 18rpx;
+  background: #e0e0e0;
+  height: 270rpx;
+}
+.releaseleft{
+  float: left;
+  width: 65%;
+}
+.allband{
+  
+}
+.logoimage{
+  background: #d93527;
+  border-radius:50%; 
+  width: 60rpx;
+  height:60rpx; 
 }

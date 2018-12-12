@@ -45,7 +45,7 @@
                     </view>
                     <view class='brand-item-price-line' style='color:#515151;font-size:24rpx;padding-top:5rpx'>
                         <text style='font-size:32rpx;color:#ff0000'>￥{{item.lowerPrice}}起</text>
-                        <text wx:if= "{{userInfo.IsReferral}}" style='font-size:26rpx;color:#ff0000;padding:0 8rpx;background:#f7cfd1;border-radius: 30rpx;'>最高分佣{{item.topCommissionRate}}%</text>
+                        <text wx:if= "{{userInfo.IsReferral}}" style='font-size:26rpx;color:#ff0000;padding:0 8rpx;background:#f7cfd1;border-radius: 30rpx;'>{{item.topCommissionRate}}</text>
                     </view>
                 </view>
             </view>

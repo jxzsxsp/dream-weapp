@@ -92,7 +92,7 @@ Page({
                 }
             });
         })) : wx.setNavigationBarTitle({
-            title: "趣扫货"
+            title: "亚太奥莱"
         });
         n = this;
         e.getOpenId(function(a) {
@@ -232,7 +232,7 @@ Page({
         return {
             title: brandName + '正在清仓特卖，手慢无！',
             path: '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce,
-            imgUrl: '/images/zcfxtp.png'
+            imgUrl: 'images/zcfxtp.png'
         }
 
     },
@@ -820,5 +820,15 @@ Page({
                 });
             }
         });
-    }
+    },
+  sharemsg:function(o){
+    wx.navigateTo({
+      url: "../addprice/addprice"
+    });
+  },
+  shoppingcart:function(o){
+    wx.navigateTo({
+      url: "../shopcart/shopcart"
+    });
+  }
 });

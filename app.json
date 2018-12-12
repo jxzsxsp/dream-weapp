@@ -1,8 +1,8 @@
 {
     "pages": [
+        "pages/usehome/usehome",
         "pages/home/home",
         "pages/login/login",
-        "pages/usehome/usehome",
         "pages/goods/goods",
         "pages/countdowndetail/countdowndetail",
         "pages/productdetail/productdetail",
@@ -53,46 +53,13 @@
         "pages/brandRush/brandRush",
         "pages/brandInfo/brandInfo",
         "pages/cardBag/cardBag",
-        "pages/cardInfo/cardInfo"
+        "pages/cardInfo/cardInfo",
+        "pages/addprice/addprice"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "亚太奥莱",
         "navigationBarTextStyle": "black"
-    },
-    "tabBar": {
-        "backgroundColor": "#fff",
-        "selectedColor": "#ff5722",
-        "list": [
-            {
-                "pagePath": "pages/home/home",
-                "text": "主页",
-                "selectedColor": "#ff5722",
-                "iconPath": "images/home.png",
-                "selectedIconPath": "images/home_hover.png"
-            },
-            {
-                "pagePath": "pages/brandRush/brandRush",
-                "text": "品牌",
-                "selectedColor": "#ff5722",
-                "iconPath": "images/brandrush.png",
-                "selectedIconPath": "images/brandrush_hover.png"
-            },
-            {
-                "pagePath": "pages/shopcart/shopcart",
-                "text": "购物车",
-                "selectedColor": "#ff5722",
-                "iconPath": "images/cart.png",
-                "selectedIconPath": "images/cart_hover.png"
-            },
-            {
-                "pagePath": "pages/usehome/usehome",
-                "text": "我的",
-                "selectedColor": "#ff5722",
-                "iconPath": "images/my.png",
-                "selectedIconPath": "images/my_hover.png"
-            }
-        ]
-    }
+     }
 }

@@ -1,0 +1,112 @@
+/* pages/addprice/addprice.wxss */
+.addmain{
+  padding-left:30rpx;
+  padding-right: 30rpx;
+}
+.addprice{
+  font-size:40rpx;
+  line-height: 120rpx;
+   }
+.relayaddprice{
+  font-size:36rpx;
+  line-height: 100rpx;
+}
+.pricemain{
+ display: flex;
+  justify-content:center;
+  text-align: center;
+  
+  
+}
+.priceone{
+  display:inline-block;
+  width: 170rpx;
+  border: 1px solid firebrick;
+  text-align: center;
+}
+.pricetwo{
+  width: 170rpx;
+  display:inline-block;
+  border: 1px solid firebrick;
+  text-align: center;
+}
+.pricethree{
+  width: 170rpx;
+  display:inline-block;
+  border: 1px solid firebrick;
+  text-align: center;
+}
+.pricefour{
+ width: 170rpx;
+  display:inline-block;
+  border: 1px solid firebrick;
+  text-align: center;
+  
+}
+.minisize{
+  font-size:20rpx;
+  text-align: center;
+  display: inline-block;
+
+}
+.customprice{
+  font-size:36rpx;
+  line-height:100rpx;
+}
+.push{
+  border: 1px solid firebrick;
+  width: 690rpx;
+  padding-left: 10rpx;
+  font-size: 26rpx;
+}
+.footer{
+  height: 70rpx;
+  position: fixed;
+  bottom: 0rpx;
+  display: flex;
+  justify-content:center;
+  border: 0rpx;
+
+}
+.preview{
+  font-size: 30rpx;
+  width: 345rpx;
+  display: inline-block;
+   border: 2rpx solid firebrick;
+   text-align: center;
+  
+}
+.true{
+  font-size: 30rpx;
+  width: 345rpx;
+  display: inline-block;
+  border: 2rpx solid firebrick;
+  text-align: center;
+  background: firebrick;
+   color: #fff;
+ 
+
+}
+.active{
+  background: firebrick;
+  width: 170rpx;
+  display:inline-block;
+  border: 1px solid firebrick;
+  text-align: center;
+  color: #fff;
+}
+.addactive{
+  display: none;
+}/* 
+.ellipsis {
+    display: -webkit-box;
+    font-size:28rpx;
+    color:#000000;
+    line-height: 40rpx;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:3;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+ */

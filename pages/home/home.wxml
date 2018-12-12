@@ -80,12 +80,12 @@
                 <view style='padding-left:115rpx'>
                     <!-- 添加分享整场链接 -->
                     <view style='float:right;width:160rpx;height:50rpx;background-color:#e54e6f;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
-                        <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' plain='true' openType="share">分享专场</button>
+                        <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' plain='true'   bindtap='sharemsg' >分享专场</button><!--openType="share" -->
 
                         <view style='clear:both'></view>
                     </view>
 
-                    <view style='float:right;width:160rpx;height:50rpx;background-color:#e54e6f;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>狂扫货</view>
+                    <view style='float:right;width:160rpx;height:50rpx;background-color:#e54e6f;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>去选品</view>
                     <view style='clear:both'></view>
                 </view>
             </view>
@@ -96,6 +96,6 @@
     <view class='loadmore' wx:else>已经到底了~</view>
 
     <view class="deg">
-        <button openType="contact">联系客服</button>
+        <button bindtap='shoppingcart' >购物车</button><!-- openType="contact" -->
     </view>
 </view>

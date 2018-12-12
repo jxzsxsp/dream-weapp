@@ -14,8 +14,8 @@
                         <view>
                             <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{item.subTitle}}</view>
 
-                            <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if= "{{userInfo.IsReferral}}">最高分佣
-                                <text style='padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}%</text>
+                            <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if= "{{userInfo.IsReferral}}">
+                                <text style='padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}</text>
                             </view>
                         </view>
                     </view>
@@ -49,7 +49,7 @@
             </view>
             <view style='padding-left:115rpx;padding-right:15rpx'>
                 <button style='float:right;width:123rpx;height:50rpx;background-color:#e54e6f;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #e54e6f;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
-                    plain='true' openType="share">分享专场</button>
+                  plain='true'  bindtap='sharemsg'>分享专场</button>   <!-- openType="share" -->
                 
                 <view style='clear:both'></view>
             </view>
@@ -86,8 +86,8 @@
                 <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
                 <text class='marketPrice'>¥{{item.marketPrice}}</text>
                 <view style='float:right'>
-                    <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
-                    <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
+                    <text style='font-size:24rpx;padding-right:15rpx'></text>
+                    <text class='commissionMoney'></text>
                 </view>
             </view>
             <view style='padding-left:129rpx'>
