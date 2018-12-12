@@ -5,9 +5,12 @@ import {http, urls} from './net/index'
 import utils from './utils/index';
 App({
   onLaunch: function (query) {
-    console.log('------------启动')
-    console.log(query)
-    console.log('------------启动')
+    // 测试入口使用
+    if (JSON.stringify(query.query) !== '{}') {
+      setTimeout(()=> {
+        $wx.showToast({title: query.query.id})
+      },1000)
+    }
 
     // mixin 生命周期
     $Page.mixinLifeCycle({onLoad: function () {
