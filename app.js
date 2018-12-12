@@ -5,10 +5,12 @@ import {http, urls} from './net/index'
 import utils from './utils/index';
 App({
   onLaunch: function (options) {
-    // 测试入口使用
-    // console.log(JSON.stringify(options))
-    // getApp().globalData.testInfo = JSON.stringify(options)
-    wx.setStorageSync("test",JSON.stringify(options))
+    if (!!options.query.scene) {
+      const customScene = decodeURIComponent(options.query.scene)
+      const param = {customScene, scene: options.scene}
+
+    }
+
   
     // mixin 生命周期
     $Page.mixinLifeCycle({onLoad: function (option) {
