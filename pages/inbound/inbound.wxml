@@ -115,7 +115,7 @@
       required
     >
       <view class="right">
-        <van-stepper value="{{bossFabricVolumes}}" 
+        <van-stepper integer="true" value="{{bossFabricVolumes}}" 
         bind:change="changeBossFabricVolumes" /> 卷
       </view>
     </van-cell>

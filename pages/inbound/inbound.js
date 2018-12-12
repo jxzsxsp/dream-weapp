@@ -157,9 +157,15 @@ Page({
   inbound: function (callback) {
     let _this = this;
 
+    if (_this.data.inbounding) {
+      return false;
+    }
+
     if (_this.checkParams()) {
       return false;
     }
+
+    _this.setData({ inbounding: true });
 
     _post(urls.input_url,
       {
@@ -190,6 +196,7 @@ Page({
       },
       false,
       function () {
+        _this.setData({ inbounding: false });
         typeof callback === 'function' && callback();
       });
   },
