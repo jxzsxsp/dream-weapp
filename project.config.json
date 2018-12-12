@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -77,8 +77,9 @@
 				{
 					"id": 6,
 					"name": "收银台",
-					"pathName": "pages/pay-platform/pay-platform",
-					"query": "orderNo=118120692628&fee=0.01"
+					"pathName": "pages/home/home",
+					"query": "id=111",
+					"scene": "1011"
 				},
 				{
 					"id": -1,

@@ -4,17 +4,14 @@ import constants from './constants/index'
 import {http, urls} from './net/index'
 import utils from './utils/index';
 App({
-  onLaunch: function (query) {
+  onLaunch: function (options) {
     // 测试入口使用
-    if (JSON.stringify(query.query) !== '{}') {
-      setTimeout(()=> {
-        $wx.showToast({title: query.query.id})
-      },1000)
-    }
-
+    // console.log(JSON.stringify(options))
+    // getApp().globalData.testInfo = JSON.stringify(options)
+    wx.setStorageSync("test",JSON.stringify(options))
+  
     // mixin 生命周期
-    $Page.mixinLifeCycle({onLoad: function () {
-      console.log('注入成功')
+    $Page.mixinLifeCycle({onLoad: function (option) {
     }})
 
     // 注册路由
