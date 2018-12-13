@@ -12,12 +12,6 @@ const data = {
 }
 
 const lifecycle = {
-  onLoad: function(query) {
-    let str = wx.getStorageSync('test')
-    this.setData({
-      str
-    })
-  },
   onShow: function (query) {
     this.homeInit();
   },
