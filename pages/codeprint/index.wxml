@@ -17,6 +17,7 @@
       <view class="num">
       <van-stepper 
       value="{{ pageNo }}"
+      min="1"
       bind:change="changeNum" />份
       </view>
     </van-cell>
