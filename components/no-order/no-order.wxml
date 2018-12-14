@@ -2,6 +2,6 @@
   <view class="image">
     <image src="./assets/img_no_order.png" />
   </view>
-  <text class="title">没有订单</text>
+  <text class="title">没有验布单</text>
   <text class="desc">赶快去下单吧</text>
 </view>
