@@ -1,5 +1,5 @@
 <view class="uselogos">
-    <image class="logobg" src="/images/header_02.jpg"></image>
+    <image class="logobg" src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdbjs.png"></image>
     <view class="usetitle">
         <image class="uselogo" src="{{userInfo.picture}}"></image>
         <view class="userinfo">
@@ -13,20 +13,17 @@
                 </view>
             </view>
         </view>
-        <view class='mymoney'>
-          <view>我的收入</view>
-           <view>$</view>
-           <button>提现</button>
-        </view>
     </view>
-    
+    <!-- <view class='share-Store' bindtap="RefferStore">分享店铺</view> -->
+    <image bindtap='goToVip' class='header-tips' style='position:absolute;bottom:0;left:0;width:750rpx;height:119rpx;' src='{{userInfo.IsReferral ? "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdfc2.png" : "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdfc1.png"}}'></image>
 </view>
 <view bindtap="bindOrderList" class="hdonglist" style="margin-top:0">我的订单
-  <text bindtap="bindStatue" data-key="0">全部订单</text>
+    <text bindtap="bindStatue" data-key="0">全部订单</text>
 </view>
 <view class="usecd">
     <view bindtap="bindStatue" class="usecdlist" data-key="1">
         <view class="iconfont icon__wallet"></view>
+        <!-- <view class='status-num'>{{userInfo.waitPayCount}}</view> -->
         <text>待付款</text>
         <view class="order_num" hidden="{{userInfo.waitPayCount==0}}">
             <text>{{userInfo.waitPayCount}}</text>
@@ -34,67 +31,151 @@
     </view>
     <view bindtap="bindStatue" class="usecdlist" data-key="2">
         <view class="iconfont icon__package"></view>
-        <text>待发货</text>
+        <!-- <view class='status-num'>5</view> -->
+        <text>拣货中</text>
         <view class="order_num" hidden="{{userInfo.waitSendCount==0}}">
             <text>{{userInfo.waitSendCount}}</text>
         </view>
     </view>
     <view bindtap="bindStatue" class="usecdlist" data-key="3">
         <view class="iconfont icon__shipping"></view>
+        <!-- <view class='status-num'>5</view> -->
         <text>待收货</text>
         <view class="order_num" hidden="{{userInfo.waitFinishCount==0}}">
             <text>{{userInfo.waitFinishCount}}</text>
         </view>
     </view>
-     <view  class="usecdlist" bindtap="bindStatue" data-key="0"> <!--bindtap="bindStatue" data-key="21"-->
+    <!-- <view bindtap="bindStatue" class="usecdlist" data-key="21">
         <view class="iconfont icon__comment"></view>
-        <text >全部订单</text>
+        <text>待评论</text>
         <view class="order_num" hidden="{{userInfo.waitReviewCount==0}}">
             <text>{{userInfo.waitReviewCount}}</text>
         </view>
-    </view>
+    </view> -->
     <view bindtap="bindApply" class="usecdlist">
         <view class="iconfont icon__service-1 "></view>
-        <text>售后订单</text>
+        <!-- <view class='status-num'>5</view> -->
+        <text>售后单</text>
         <view class="order_num" hidden="{{userInfo.afterSalesCount==0}}">
             <text>{{userInfo.afterSalesCount}}</text>
         </view>
     </view>
 </view>
-<view class="producthd mt15"> 
-   <view class='release'>
-     <view class='releaseleft'>
-       <text class='offtake'>卖出</text><view class='allband'>全部</view>
-       <view class='logoimage'><image ></image></view>
-       <text class='headtitler'>商品标题</text>
-     </view>
-    <view class='releaseright'>
-      <view>去选品</view>
-      <text>文字文字文字</text>
-      <view>4个logo</view>
-      <text>品牌名称</text>
-    </view>
-   </view>
+
+
+
+
+
+<!-- 旧代码 -->
+<!-- <view class="producthd mt15">
     <view bindtap="bindMyAddressTap" class="hdonglist">我的收货地址</view>
     <view bindtap="bindMyCouponsTap" class="hdonglist">我的优惠券
-    <text wx:if="{{userInfo.couponsCount>0}}">{{userInfo.couponsCount}}张未使用</text>
+        <text wx:if="{{userInfo.couponsCount>0}}">{{userInfo.couponsCount}}张未使用</text>
     </view>
+
+    <view bindtap="bindExtension" class="hdonglist" hidden="{{userInfo.IsReferral}}">我要分销</view>
+        <view bindtap="bindDistribution" class="hdonglist" hidden="{{!userInfo.IsReferral}}">分销中心</view>
     <view class="border-bottom" hidden="{{!OpenReferral}}">
-        <!-- <view bindtap="bindExtension" class="hdonglist" hidden="{{userInfo.IsReferral}}">我要分销</view> -->
+        <view bindtap="bindExtension" class="hdonglist" hidden="{{userInfo.IsReferral}}">我要分销</view>
         <view bindtap="bindDistribution" class="hdonglist" hidden="{{!userInfo.IsReferral}}">分销中心</view>
     </view>
     <view bindtap="bindTelPhone" class="hdonglist" data-tel="{{userInfo.ServicePhone}}">客服电话
-    <text>{{userInfo.ServicePhone}}</text>
+        <text>{{userInfo.ServicePhone}}</text>
     </view>
-    <view bindtap="bindMyselection" class="hdonglist">我要选品</view>
-    <view bindtap="bindMybrand" class="hdonglist">品牌库</view>
-    <view bindtap="bindMyshoppongcart" class="hdonglist">我的购物车</view>
-    <view bindtap="bindMystoresmsg" class="hdonglist">店铺信息</view>
-    <view bindtap="bindMystore" class="hdonglist">店铺分销</view>
-    <view bindtap="bindMyincome" class="hdonglist">我的佣金</view>
-    <view bindtap="bindMysuperior" class="hdonglist" >我的下级</view>
-    
     <view bindtap="ExitLoginout" class="hdonglist outlogin">
-    退出登录
-  </view>
+        退出登录
+    </view>
+</view> -->
+
+
+
+
+
+
+
+
+<!-- 收货地址 优惠券 -->
+<view style='height:170rpx;display:flex;flex-flow:row nowrap;align-items:center;justify-content:space-between;padding:0 48rpx;background-color:#fff;'>
+    <!-- 收货地址 -->
+    <view style='width:48%;height:142rpx;' bindtap="bindMyAddressTap">
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/shdz.png' style='width:100%;height:142rpx;;'></image>
+    </view>
+    <!-- 我的优惠券 -->
+    <view style='width:48%;height:142rpx;' bindtap="bindMyCouponsTap">
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdyhq.png' style='width:100%;height:142rpx;;'></image>
+    </view>
 </view>
+
+<!-- 功能菜单列表 -->
+<view class='row-list' style='width:750rpx;background-color:#fff;' wx:if="{{userInfo.IsReferral}}">
+
+    <!-- 分销商会员显示 -->
+    <view class='list-item'>
+        <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindstoreinfo">
+            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的店铺</text>
+            <text style='font-size:12px;color:#515151;'>查看/编辑店铺信息</text>
+        </view>
+        <view style=''>
+            <image src="{{userInfo.picture ? userInfo.picture : 'https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/txzw.png'}}" style='width:100rpx;height:100rpx;;'></image>
+        </view>
+    </view>
+
+    <view class='list-item'>
+        <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindyongjin">
+            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的佣金</text>
+            <view style='font-size:12px;color:#515151;'>可提现
+                <text class='tip-text'>￥{{DistributionInfo.CanDrawSplittin}}</text> | 未结算
+                <text class='tip-text'>￥{{DistributionInfo.NoSettlementSplttin}}</text>
+            </view>
+
+        </view>
+        <view style=''>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdyj.png' style='width:100rpx;height:100rpx;'></image>
+        </view>
+    </view>
+
+    <view class='list-item'>
+        <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindxiaji">
+            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的团队</text>
+            <view style='font-size:12px;color:#515151;'>
+                <text class='tip-text'>{{DistributionInfo.teamPeopleCount?DistributionInfo.teamPeopleCount : 0}}人</text>
+                <!-- <text class='tip-text'>{{DistributionInfo.teamPeopleCount}}人</text>，距离下一级还差 -->
+                <!-- <text class='tip-text'>21人</text> -->
+            </view>
+        </view>
+        <view style=''>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdtd.png' style='width:100rpx;height:100rpx;;'></image>
+        </view>
+    </view>
+</view>
+<view class='row-list' style='width:750rpx;background-color:#fff;' wx:else>
+    <!-- 非会员显示 -->
+    <view class='list-item'>
+        <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap='goToLearn'>
+            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>新手导读</text>
+            <text style='font-size:12px;color:#515151;'>了解亚太奥莱，能省会赚</text>
+        </view>
+        <view style=''>
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/xsdd.png" style='width:100rpx;height:100rpx;;'></image>
+        </view>
+    </view>
+</view>
+<view class='row-list' style='width:750rpx;background-color:#fff;'>
+    <view class='list-item' style='position:relative;'>
+
+        <!-- 拨打电话客服 -->
+        <!-- <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap='customerService'> -->
+        <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap='customerService'>
+            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>联系客服</text>
+            <text style='font-size:12px;color:#515151;'>021-55697790</text>
+        </view>
+        <view style=''>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/lxkf.png' style='width:100rpx;height:100rpx;;'></image>
+        </view>
+        <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
+    </view>
+</view>
+<!-- 
+<view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
+    退出登录
+</view> -->

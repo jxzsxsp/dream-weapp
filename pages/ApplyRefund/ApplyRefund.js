@@ -148,17 +148,17 @@ Page({
             title: "提示",
             content: "银行卡信息不允许为空！",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }) : d ? a < 0 ? wx.showModal({
             title: "提示",
             content: "请选择要退款的原因",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }) : n.data.OrderId.length <= 0 ? wx.showModal({
             title: "提示",
             content: "请选择要退款的订单",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }) : e.getOpenId(function(t) {
             wx.request({
                 url: e.getUrl("ApplyRefund"),
@@ -179,7 +179,7 @@ Page({
                         title: "提示",
                         content: e.data.Message,
                         showCancel: !1,
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         success: function(e) {
                             wx.redirectTo({
                                 url: "../applylist/applylist"
@@ -191,7 +191,7 @@ Page({
                         title: "提示",
                         content: e.data.Message,
                         showCancel: !1,
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         success: function(e) {
                             e.confirm && wx.navigateBack({
                                 delta: 1
@@ -205,7 +205,7 @@ Page({
             title: "提示",
             content: "请选择要退款的方式",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         });
     },
     ToTrim: function(e) {

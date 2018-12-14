@@ -1,8 +1,11 @@
 <view class="page-section">
     <view hidden="{{isEmpty}}">
+        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:12px;width:750rpx;line-height:80rpx;text-align:center;background-color:#fff;z-index:100000;'>
+            <text>本场商品清仓特卖，库存紧张，超过15分钟未支付订单将被关闭</text>
+        </view>
         <view class="shopcart-t bg-wihte">
             <view class="shopcart-ck" style="margin-top:0">
-                <icon bindtap="selectAll" color="#e54e6f" style="float:left;line-height:1; margin-top:20rpx;" type="success" wx:if="{{selectAllStatus}}"></icon>
+                <icon bindtap="selectAll" color="#db3c40" style="float:left;line-height:1; margin-top:20rpx;" type="success" wx:if="{{selectAllStatus}}"></icon>
                 <icon bindtap="selectAll" style="float:left; line-height:1; margin-top:20rpx;" type="circle" wx:else></icon>
                 <view style="margin-left:16rpx;float:left">全选</view>
             </view>
@@ -10,18 +13,18 @@
         </view>
         <view class="cartlist">
             <block wx:for="{{Suppliers}}" wx:key="item.SupplierId">
-                <view class="supplier {{index==0?'mt100':''}}">
+                <view class="supplier {{index==0?'mt100':''}}" style='display:none;'>
                     <view class="supplier-icon">
                         <image class="mt8" hidden="{{item.SupplierId!=0}}" mode="widthFix" src="/images/icon_platform_v.png" style="width:45rpx;"></image>
                         <image class="mt8" hidden="{{item.SupplierId==0}}" mode="widthFix" src="/images/gongyingshang.png" style="width:45rpx;"></image>
                         <text>{{item.SupplierName}}</text>
                     </view>
                 </view>
-                <view class="shopcart-m bg-wihte">
+                <view class="shopcart-m bg-wihte" class="supplier {{index==0?'mt100':''}}">
                     <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}">
                         <view class="shopcart-ck {{items.IsValid&&items.HasEnoughStock?'':'ck-txt'}}">
                             <view wx:if="{{items.IsValid&&items.HasEnoughStock}}">
-                                <icon bindtap="selectList" color="#e54e6f" data-skuid="{{items.SkuID}}" type="success" wx:if="{{items.selected}}"></icon>
+                                <icon bindtap="selectList" color="#db3c40" data-skuid="{{items.SkuID}}" type="success" wx:if="{{items.selected}}"></icon>
                                 <icon bindtap="selectList" data-skuid="{{items.SkuID}}" type="circle" wx:else></icon>
                             </view>
                             <view style="font-size:20rpx;margin-top:16rpx;" wx:else>{{!items.IsValid?'失效':'库存不足'}}</view>
@@ -38,6 +41,17 @@
                                         <view class="txt ">
                                             <text class="iconfont icon__close"></text>{{items.Quantity}}</view>
                                     </view>
+
+
+
+
+
+
+
+
+
+
+                                    <view style='font-size:20rpx;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:35rpx;padding: 0 8rpx;text-align:center;height:35rpx;line-height:35rpx;'>库存紧张</view>
                                 </view>
                             </view>
                             <view class="shopcart-txt-b ">
@@ -67,8 +81,8 @@
                 <view class="shopcart-total-p ">
                     <text class="saleprice ">¥{{TotalPrice}} </text>
                 </view>
-        (不含运费)
-      </view>
+                (不含运费)
+            </view>
             <view bindtap="SettlementShopCart" class="shopcart-buy">
                 <text>{{SettlementText}}</text>
             </view>

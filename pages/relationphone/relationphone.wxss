@@ -116,11 +116,11 @@ button.other-button-hover {
 }
 
 .btncode {
-    border: 1rpx solid #e54e6f;
+    border: 1rpx solid #db3c40;
     border-radius: 8rpx;
     width: 260rpx;
     text-align: center;
-    color: #e54e6f;
+    color: #db3c40;
     height: 65rpx;
     line-height: 65rpx;
     overflow: hidden;

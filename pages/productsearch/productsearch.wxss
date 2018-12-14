@@ -190,7 +190,7 @@
 .search-rpo-txt-price {
     margin-top: 20rpx;
     font-size: 32rpx;
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .search-rpo-txt-price .saleprice,.search-pro-buy .l,.search-pro-buy .m {

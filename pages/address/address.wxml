@@ -7,7 +7,7 @@
         <text class="iconfont arrow_right right_icon"></text>
         <view class="addressmor">
             <view class="addressmorl">
-                <radio catchtap="bindRadioAddressChange" checked="{{item.IsDefault}}" color="#e54e6f" data-shippingid="{{item.ShippingId}}" size="20" value="value"></radio>
+                <radio catchtap="bindRadioAddressChange" checked="{{item.IsDefault}}" color="#db3c40" data-shippingid="{{item.ShippingId}}" size="20" value="value"></radio>
                 <text class="{{item.IsDefault?'active':''}}">{{item.IsDefault?'默认地址':'设为默认'}}</text>
             </view>
             <view catchtap="bindDeleteAddressTap" class="addressmorr" data-shippingid="{{item.ShippingId}}">

@@ -39,7 +39,7 @@ page {
 
 .item .hd .state {
     float: right;
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .item .bd {

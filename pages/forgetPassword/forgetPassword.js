@@ -90,7 +90,7 @@ Page({
             title: "提示",
             content: "请选择重置密码方式",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }) : t.getOpenId(function(a) {
             wx.request({
                 url: t.getUrl("ResetTradePassword"),

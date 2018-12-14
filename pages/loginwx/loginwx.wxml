@@ -1,2 +1,21 @@
 <!--pages/loginwx/loginwx.wxml-->
-<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button> 
+<!-- <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>  -->
+
+
+
+<!-- <view wx:if="{{canIUse}}"> -->
+<view>
+    <view class='header'>
+        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/qshlogored.png'></image>
+        <text style='font-size:18px;'>亚太奥莱</text>
+    </view>
+ 
+    <view class='content'>
+        <view style='font-size:16px;'>请同意授权</view>
+        <text style='font-size:14px;'>为了让亚太奥莱可以更好的为您服务</text>
+    </view>
+ 
+    <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+        授权登录
+    </button>
+</view>

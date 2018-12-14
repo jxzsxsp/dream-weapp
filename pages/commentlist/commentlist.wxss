@@ -13,7 +13,7 @@ page {
 }
 
 .coupontitlel .active {
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .commentlisttop {
@@ -40,7 +40,7 @@ page {
 }
 
 .proportion {
-    color: #e54e6f;
+    color: #db3c40;
     padding-left: 10rpx;
     display: inline-block;
 }
@@ -130,7 +130,7 @@ page {
 
 .Replyshangjia {
     float: left;
-    color: #e54e6f;
+    color: #db3c40;
     font-size: 24rpx;
 }
 

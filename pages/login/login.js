@@ -56,7 +56,7 @@ Page({
                         title: "提示",
                         content: a.data.Message,
                         showCancel: !1,
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         success: function(e) {}
                     }));
                 }

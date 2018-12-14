@@ -1,9 +1,17 @@
-<view class="searchk padding24">
+<!-- <view class="searchk padding24">
     <view class="searchl width679">
         <view class="iconfont icon__search font40 search_btn"></view>
         <input bindblur="bindBlurInput" bindconfirm="onConfirmSearch" bindfocus="gotoKeyWordPage" bindinput="bindKeyWordInput" class="ptb16" confirmType="search" placeholder="{{KeyWord==''?'搜索商品':KeyWord}}"></input>
     </view>
+</view> -->
+
+
+<view style='height:120rpx;'>
+    <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
 </view>
+<!-- <view style='position:absolute;left:0;top:0;height:200rpx;'>
+    <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
+</view> -->
 <view class="coupontitle" hidden="{{ProductList==null||ProductList.length<=0}}">
     <view class="coupontitlel">
         <view bindtap="onSortClick" class="{{Num==0?'active':''}}" data-num="0" data-sortby="ProductId">默认</view>
@@ -28,7 +36,8 @@
                 <view class="product-des">
                     <view atchtap="goToProductDetail" class="product-name" data-activeid="{{item.ActiveId}}" data-activetype="{{item.ActiveType}}" data-productid="{{item.ProductId}}">{{item.ProductName}}</view>
                     <view class="product-into">
-                        <view class="product-price">￥<text>{{item.SalePrice}}</text>
+                        <view class="product-price">￥
+                            <text>{{item.SalePrice}}</text>
                         </view>
                         <view class="product-shop">
                             <view catchtap="catchAddCart" class="product-add" data-activeId="{{item.ActiveId}}" data-activetype="{{item.ActiveType}}" data-opensku="{{item.HasSKU}}" data-operator="+" data-productid="{{item.ProductId}}" data-sku="{{item.SkuId}}" wx:if="{{item.HasSKU||!item.HasSKU&&item.CartQuantity==0}}">
@@ -67,7 +76,8 @@
                 <view class="comm-item" wx:for="{{CurrentProduct.SkuItems}}" wx:for-index="i" wx:key="AttributeId">
                     <view class="comm-title">{{item.AttributeName}}</view>
                     <view class="comm-attr">
-                        <text catchtap="onSkuClick" class="{{sku.Enable==0?'disable':''}} {{sku.UseAttributeImage=='selected'?'active':''}}" data-attributeid="{{item.AttributeId}}" data-enablevalue="{{sku.Enable}}" data-indexcount="{{i}}" data-skuvalue="{{sku.Value}}" id="{{sku.ValueId}}" wx:for="{{item.AttributeValue}}" wx:for-item="sku" wx:key="ValueId">{{sku.Value}}</text>
+                        <text catchtap="onSkuClick" class="{{sku.Enable==0?'disable':''}} {{sku.UseAttributeImage=='selected'?'active':''}}" data-attributeid="{{item.AttributeId}}" data-enablevalue="{{sku.Enable}}" data-indexcount="{{i}}" data-skuvalue="{{sku.Value}}" id="{{sku.ValueId}}"
+                            wx:for="{{item.AttributeValue}}" wx:for-item="sku" wx:key="ValueId">{{sku.Value}}</text>
                     </view>
                 </view>
             </view>
@@ -75,7 +85,7 @@
         <view class="comm-stand-shop">
             <view class="product-into">
                 <view class="product-price">￥
-          <text>{{CurrentSku.SalePrice}}</text>
+                    <text>{{CurrentSku.SalePrice}}</text>
                 </view>
                 <view class="product-shop">
                     <view catchtap="catchAddCart" class="iconfont icon__plus" data-opensku="false" data-operator="+" data-productid="{{CurrentProduct.ProductId}}" data-sku="{{CurrentSku.SkuId}}" hidden="{{CurrentSku&&CurrentSku.CartQuantity>0}}">

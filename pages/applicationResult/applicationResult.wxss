@@ -21,7 +21,7 @@
 }
 
 .shopcart-no-item .btn_go {
-    background: linear-gradient(left,#e54e6f,#FF1919);
+    background: linear-gradient(left,#db3c40,#FF1919);
     color: #fff;
     border-radius: 4px;
     width: 144rpx;

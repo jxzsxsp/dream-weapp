@@ -55,7 +55,7 @@ Page({
             title: "提示",
             content: result.data.Message,
             showCancel: !1,
-            confirmColor: "#e54e6f",
+            confirmColor: "#db3c40",
             success: function(a) {
                 a.confirm && wx.navigateBack({
                     delta: 1
@@ -90,7 +90,7 @@ Page({
         if (r.length <= 0) return wx.showModal({
             title: "提示",
             content: "文本框不存在",
-            confirmColor: "#e54e6f",
+            confirmColor: "#db3c40",
             showCancel: !1
         }), !1;
         var o = !1;
@@ -99,7 +99,7 @@ Page({
         }), o) return wx.showModal({
             title: "提示",
             content: "请输入评价内容",
-            confirmColor: "#e54e6f",
+            confirmColor: "#db3c40",
             showCancel: !1
         }), !1;
         e.setData({
@@ -140,7 +140,7 @@ Page({
                         url: "../login/login"
                     }) : wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: n.ErrorResponse.ErrorMsg,
                         showCancel: !1,
                         success: function(a) {
@@ -178,7 +178,7 @@ Page({
                         url: "../login/login"
                     }) : wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: t.ErrorResponse.ErrorMsg,
                         showCancel: !1,
                         success: function(a) {
@@ -221,7 +221,7 @@ Page({
                 success: function(a) {
                     "OK" == a.data.Status ? wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: a.data.Message,
                         showCancel: !1,
                         success: function(a) {
@@ -233,7 +233,7 @@ Page({
                         url: "../login/login"
                     }) : wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: a.data.Message,
                         showCancel: !1,
                         success: function(a) {

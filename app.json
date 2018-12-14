@@ -1,8 +1,8 @@
 {
     "pages": [
-        "pages/usehome/usehome",
         "pages/home/home",
         "pages/login/login",
+        "pages/usehome/usehome",
         "pages/goods/goods",
         "pages/countdowndetail/countdowndetail",
         "pages/productdetail/productdetail",
@@ -54,12 +54,57 @@
         "pages/brandInfo/brandInfo",
         "pages/cardBag/cardBag",
         "pages/cardInfo/cardInfo",
-        "pages/addprice/addprice"
+        "pages/discovery/discovery",
+        "pages/aboutqsh/aboutqsh",
+        "pages/screening/screening",
+        "pages/bugsm/bugsm"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "亚太奥莱",
         "navigationBarTextStyle": "black"
-     }
+    },
+    "tabBar": {
+        "backgroundColor": "#fff",
+        "color": "#959595",
+        "selectedColor": "#db3c40",
+        "list": [
+            {
+                "pagePath": "pages/home/home",
+                "text": "特卖",
+                "selectedColor": "#db3c40",
+                "iconPath": "images/temai.png",
+                "selectedIconPath": "images/temai_.png"
+            },
+            {
+                "pagePath": "pages/brandRush/brandRush",
+                "text": "品牌",
+                "selectedColor": "#db3c40",
+                "iconPath": "images/pinpai.png",
+                "selectedIconPath": "images/pinpai_.png"
+            },
+            {
+                "pagePath": "pages/discovery/discovery",
+                "text": "VIP专区",
+                "selectedColor": "#db3c40",
+                "iconPath": "images/vip.png",
+                "selectedIconPath": "images/vip_.png"
+            },
+            {
+                "pagePath": "pages/shopcart/shopcart",
+                "text": "购物车",
+                "selectedColor": "#db3c40",
+                "iconPath": "images/gouwuche.png",
+                "selectedIconPath": "images/gouwuche_.png"
+            },
+            {
+                "pagePath": "pages/usehome/usehome",
+                "text": "我的",
+                "selectedColor": "#db3c40",
+                "iconPath": "images/wode.png",
+                "selectedIconPath": "images/wode_.png"
+            }
+        ]
+    }
 }

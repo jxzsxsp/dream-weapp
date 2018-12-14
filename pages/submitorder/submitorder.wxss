@@ -274,7 +274,7 @@ page {
 }
 
 .jinge .classtext .price {
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .jinge .classtext .price text {
@@ -286,7 +286,7 @@ page {
 .jinge button {
     border: none;
     display: block;
-    background: #e54e6f;
+    background: #db3c40;
     color: #fff;
     height: 98rpx;
     line-height: 98rpx;
@@ -607,12 +607,12 @@ page {
 }
 
 .invoice_tab text.active {
-    background: #e54e6f;
+    background: #db3c40;
     color: #fff;
 }
 
 .sure-btn {
-    background: #e54e6f;
+    background: #db3c40;
     position: fixed;
     bottom: 0;
     font-size: 32rpx;
@@ -644,7 +644,7 @@ page {
 }
 
 .invoice_style text {
-    background: #e54e6f;
+    background: #db3c40;
     line-height: 56rpx;
     border-radius: 8rpx;
     padding: 16rpx;
@@ -707,7 +707,7 @@ page {
 
 .goumai {
     width: 276rpx;
-    background: linear-gradient(to right,#e54e6f,#ff1a1a);
+    background: linear-gradient(to right,#db3c40,#ff1a1a);
     height: 98rpx;
     text-align: center;
     line-height: 98rpx;

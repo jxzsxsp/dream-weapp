@@ -14,7 +14,8 @@ page {
 }
 
 .coupontitlel {
-    width: 20%;
+    /* width: 20%; */
+    width: 25%;
     text-align: center;
     font-size: 28rpx;
     line-height: 40rpx;
@@ -22,7 +23,8 @@ page {
 
 .coupontitlel view {
     border-bottom: 2rpx solid #fff;
-    width: 145rpx;
+    /* width: 145rpx; */
+    width: 184.5rpx;
     margin: 0 auto;
     line-height: 40rpx;
     font-size: 32rpx;
@@ -58,7 +60,7 @@ page {
     width: 220rpx;
     text-align: right;
     font-size: 14px;
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .orderlistcont {
@@ -112,7 +114,7 @@ page {
     color: #fff;
     background: #ff7043;
     padding: 6rpx;
-    border: 1rpx solid #e54e6f;
+    border: 1rpx solid #db3c40;
     border-radius: 4rpx;
     float: right;
     line-height: 1;
@@ -177,8 +179,8 @@ page {
 }
 
 .orderlistbt button.fukuan {
-    border: 1rpx solid #e54e6f;
-    color: #e54e6f;
+    border: 1rpx solid #db3c40;
+    color: #db3c40;
 }
 
 .kong {

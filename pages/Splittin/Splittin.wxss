@@ -33,10 +33,10 @@ page {
     height: 64rpx;
     text-align: center;
     line-height: 64rpx;
-    color: #e54e6f;
+    color: #db3c40;
     background: #fbe9e7;
     margin-top: 32rpx;
-    border: 1px #e54e6f solid;
+    border: 1px #db3c40 solid;
     border-radius: 32rpx;
     font-size: 28rpx;
 }

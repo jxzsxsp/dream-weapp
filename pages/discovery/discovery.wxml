@@ -26,7 +26,7 @@
         <view style='padding-top:55rpx'>
             <text style='font-size:38rpx;color:#ff0000'>￥{{item.salePrice}}</text>
             <text style='font-size:24rpx;color:#959595;text-decoration:line-through'>{{item.marketPrice}}</text>
-            <view style='width:152rpx;height:60rpx;background:#e54e6f;color:#fff;float:right;' bindtap='{{addGoodsToTrade}}'>
+            <view style='width:152rpx;height:60rpx;background:#db3c40;color:#fff;float:right;' bindtap='{{addGoodsToTrade}}'>
                 购买得VIP
             </view>
         </view>
@@ -39,16 +39,16 @@
         <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
     </view>
     <view>
-        <navigator url="/pages/productdetail/productdetail?id=148" open-type="redirect" hover-class="other-navigator-hover">
+        <navigator url="/pages/productdetail/productdetail?id=148" hover-class="other-navigator-hover">
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
         </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=147" open-type="redirect" hover-class="other-navigator-hover">
+        <navigator url="/pages/productdetail/productdetail?id=147" hover-class="other-navigator-hover">
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
         </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=163" open-type="redirect" hover-class="other-navigator-hover">
+        <navigator url="/pages/productdetail/productdetail?id=163" hover-class="other-navigator-hover">
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
         </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=164" open-type="redirect" hover-class="other-navigator-hover">
+        <navigator url="/pages/productdetail/productdetail?id=164" hover-class="other-navigator-hover">
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/NVIP/NVIP5.png' mode='widthFix' style='width:100%' lazy-load></image>
         </navigator>
 

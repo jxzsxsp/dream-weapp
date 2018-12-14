@@ -64,7 +64,7 @@ Page({
                         url: "../login/login"
                     }) : wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: a.ErrorResponse.ErrorMsg,
                         showCancel: !1,
                         success: function(e) {

@@ -157,9 +157,9 @@ page {
 }
 
 .houhui_name {
-    border: 1rpx solid #e54e6f;
+    border: 1rpx solid #db3c40;
     padding: 4rpx 8rpx;
-    color: #e54e6f;
+    color: #db3c40;
     display: inline-block;
     border-radius: 5rpx;
     line-height: 24rpx;
@@ -201,7 +201,7 @@ page {
 
 .btn-area navigator.goumai {
     width: 650rpx;
-    background: linear-gradient(to right,#e54e6f,#ff1a1a);
+    background: linear-gradient(to right,#db3c40,#ff1a1a);
     height: 98rpx;
     text-align: center;
     line-height: 98rpx;
@@ -389,8 +389,8 @@ page {
 }
 
 .sezhicont .SKUSelectValueClass {
-    border: 1rpx solid #e54e6f;
-    background: #e54e6f;
+    border: 1rpx solid #db3c40;
+    background: #db3c40;
     color: #fff;
 }
 
@@ -510,7 +510,7 @@ page {
 
 .guigecont .saleprice {
     font-size: 36rpx;
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .lijigoumai {

@@ -6,14 +6,14 @@
         <view bindtap="onTabClick" class="{{WaitPayActive}}" data-status="1">待付款</view>
     </view>
     <view class="coupontitlel">
-        <view bindtap="onTabClick" class="{{WaitSendActive}}" data-status="2">待发货</view>
+        <view bindtap="onTabClick" class="{{WaitSendActive}}" data-status="2">拣货中</view>
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitReceiveActive}}" data-status="3">待收货</view>
     </view>
-    <view class="coupontitlel">
+    <!-- <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitReviewActive}}" data-status="21">待评价</view>
-    </view>
+    </view> -->
 </view>
 <view class="mt96">
     <view class="orderlist mt24" wx:if="{{OrderList.length>0}}" wx:for="{{OrderList}}" wx:key="OrderId">

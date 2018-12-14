@@ -73,7 +73,7 @@ var tm=this;
 
         console.log('/pages/discovery/discovery?ReferralUserId=' + tm.data.userInfo.UserId)
         return {
-            title: '加入趣扫货VIP，能省会赚，最高返40%！',
+            title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
             path: '/pages/discovery/discovery?ReferralUserId=' + tm.data.userInfo.UserId
         }
     }
