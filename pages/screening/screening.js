@@ -17,8 +17,8 @@ Page({
         goodsSkuName: '',
         brandSoruce: '',
         userInfo: {},
-        brandId: "2c9089c2678331df01679b42336e7a3a",
-        brandSource: "dadacang",
+        brandId: "",
+        brandSource: "",
         imgUrl: 'https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdbjs.png',
         tagId: 0,
         dataIndex: 0,
@@ -29,80 +29,116 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         var tm = this;
         tm.setData({
             imgUrl: options.picUrl,
             tagId: options.tagId
         })
-        app.getUserInfo(function (t) {
+        app.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t,
             })
         });
 
         // 执行倒计时函数
-        this.getTitle();
+        this.getListGoodsData();
         this.countDown();
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
-
+    onReachBottom: function() {
+        if (this.data.hasMore) {
+            wx.showNavigationBarLoading();
+            this.loadMore();
+            wx.hideNavigationBarLoading();
+        }
     },
+    loadMore: function() {
+        if (!this.data.hasMore) return;
+        var tm = this;
+        // console.log(tm.data.dataIndex);
+        var currentUrl = app.getUrl("QSHGetPageRushGoodsByTagId");
+        var currentData = {
+            pi: ++this.data.dataIndex,
+            ps: this.data.dataSize
+        };
+        // 加载页面数据
+        wx.request({
+            url: currentUrl,
+            data: currentData,
+            success: function(jd) {
 
+                if (jd.data.length != 0) {
+                    let goodsList = [];
+                    jd.data.forEach(o => {
+                        goodsList.push(o)
+                    });
+                    var newList = tm.data.rushGoodsList.concat(goodsList)
+                    tm.setData({
+                        rushGoodsList: newList
+                    })
+
+                } else {
+                    tm.setData({
+                        hasMore: false
+                    })
+                }
+            }
+        });
+    },
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
-    }, 
+    },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
     },
-    linkProductDetail: function (event) {
+    linkProductDetail: function(event) {
         wx.navigateTo({
             url: "../productdetail/productdetail?id=" + event.currentTarget.dataset.productid
         });
     },
-    countDown: function () { //倒计时函数
+    countDown: function() { //倒计时函数
         // 获取当前时间，同时得到活动结束时间数组
         let newTime = new Date().getTime();
         var rushInfo = this.data.brandRushInfo;
@@ -143,7 +179,7 @@ Page({
         })
         setTimeout(this.countDown, 1000);
     },
-    selectSkuId: function (event) {
+    selectSkuId: function(event) {
         // if(event.currentTarget.dataset("count") == 0) return;
         var skuId = event.currentTarget.dataset["skuid"];
         var skuName = event.currentTarget.dataset["skuname"];
@@ -155,7 +191,7 @@ Page({
             goodsId: goodsId
         });
     },
-    addGoodsToCart: function (event) {
+    addGoodsToCart: function(event) {
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -181,7 +217,7 @@ Page({
                         brandSource: tm.data.brandSource,
                         salePrice: salePrice
                     },
-                    success: function (res) {
+                    success: function(res) {
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({
@@ -189,9 +225,9 @@ Page({
                                 content: jd.message,
                                 showCancel: false
                             })
-                                break;
+                            break;
                             case 'success':
-                                wx.showModal({
+                                    wx.showModal({
                                     title: '',
                                     content: '成功加入购物车',
                                     cancelText: "再逛逛",
@@ -218,7 +254,7 @@ Page({
         }
 
     },
-    previewImg: function (event) {
+    previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
 
@@ -227,31 +263,31 @@ Page({
             urls: imgs
         })
     },
-    filterNum: function (value, count) {
+    filterNum: function(value, count) {
         var num = Number(value)
         return num.toFixed(count)
     },
-    copy: function (e) {
+    copy: function(e) {
         wx.setClipboardData({
             data: e.target.dataset.val,
-            success: function (res) {
+            success: function(res) {
                 wx.showToast({
                     title: '复制成功',
                 });
             }
         });
     },
-    fixedGoToCart: function () {
+    fixedGoToCart: function() {
         wx.switchTab({
             url: '/pages/shopcart/shopcart'
         })
     },
-    fixedGoToHome: function () {
+    fixedGoToHome: function() {
         wx.switchTab({
             url: '/pages/home/home'
         })
     },
-    getTitle: function () {
+    getTitle: function() {
         var tm = this;
         //获取品牌特卖列表        
         wx.request({
@@ -261,7 +297,7 @@ Page({
                 brandId: tm.data.brandId,
                 brandSource: tm.data.brandSource
             },
-            success: function (jd) {
+            success: function(jd) {
                 var infoList = [];
                 let brandRush = jd.data;
                 var obj = {
@@ -292,7 +328,7 @@ Page({
             }
         });
     },
-    goodsListNew: function () {
+    goodsListNew: function() {
         var tm = this;
         wx.request({
             url: app.getUrl("QSHGetListRushGoods"),
@@ -300,7 +336,7 @@ Page({
                 brandId: tm.data.brandId,
                 goodsSource: tm.data.brandSource
             },
-            success: function (jd) {
+            success: function(jd) {
                 if (jd.data.length != 0) {
                     let goodsList = [];
                     jd.data.forEach(o => {
@@ -313,7 +349,7 @@ Page({
             }
         });
     },
-    getData: function () {
+    getListGoodsData: function() {
         var tm = this;
         wx.request({
             url: app.getUrl("QSHGetPageRushGoodsByTagId"),
@@ -322,7 +358,7 @@ Page({
                 pi: ++tm.data.dataIndex,
                 ps: tm.data.dataSize
             },
-            success: function (jd) {
+            success: function(jd) {
                 if (jd.data.length == 0) {
                     return;
                 } else {
@@ -332,7 +368,7 @@ Page({
                             jd.data.forEach(o => {
                                 goodsList.push(o)
                             });
-                            var newList = rushGoodsList.concat(goodsList)
+                            var newList = tm.data.rushGoodsList.concat(goodsList)
                             tm.setData({
                                 rushGoodsList: newList
                             })
@@ -342,18 +378,6 @@ Page({
                         hasMore = false;
                     }
                 }
-
-
-                // if (jd.data.length != 0) {
-                //     let goodsList = [];
-                //     jd.data.forEach(o => {
-                //         goodsList.push(o)
-                //     });
-                //     tm.setData({
-                //         rushGoodsList: goodsList
-                //     })
-                // }
-                // wx.stopPullDownRefresh();
             }
         });
 

@@ -92,7 +92,7 @@
     
     <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;'>
         <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;align-items:center;' wx:for='{{topLogoList}}'>
-            <image style='width:128rpx;height:128rpx;margin-bottom:10rpx;' mode='widthFix' src='{{item}}'></image>
+            <image style='width:128rpx;height:128rpx;margin-bottom:10rpx;' mode='widthFix' src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}' ></image>
         </view>
         <!-- <view style='width:140rpx;height:140rpx;background-color:blue;margin-bottom:10rpx;'>1</view>
         <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
@@ -123,7 +123,7 @@
                     <text style="font-size:22rpx;color:#959595;">款</text>
                 </view>
 
-                <view wx:else style='width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>
+                <view wx:else style='display:none;width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>
                     <text style="font-size:22rpx;color:#959595;">预告</text>
                 </view>
 

@@ -593,7 +593,7 @@ Page({
     onPullDownRefresh: function() {
         this.setData({
             brandRush: [],
-            pageIndex: 0,
+            pageIndex: 1,
             dataIndex: 0,
             selectedCate: "本期特卖",
             hasMore: true
@@ -895,7 +895,7 @@ Page({
     getLogo: function() {
         var tm = this;
         wx.request({
-            url: e.getUrl("QSHGetListBrandRushIsHead"),
+            url: e.getUrl("QSHGetTopListBrandRushIsHead"),
             data: {
 
             },
@@ -913,7 +913,7 @@ Page({
 
                         //     o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                         // }
-                        logoList.push(o.brandLogo)
+                        logoList.push(o)
                     });
                     
                     tm.setData({
