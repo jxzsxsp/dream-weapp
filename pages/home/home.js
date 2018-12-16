@@ -900,7 +900,7 @@ Page({
 
             },
             success: function(jd) {
-                console.log(jd.data)
+                //console.log(jd.data)
                 if (jd.data.length != 0) {
                     let logoList = [];
                     jd.data.forEach(o => {
