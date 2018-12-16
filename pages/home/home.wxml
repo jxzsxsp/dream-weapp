@@ -35,7 +35,7 @@
 
     <view style='display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:center;font-size:0;'>
         <!-- 一折专区 -->
-        <navigator url='/pages/screening/screening?picUrl=https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/1zhe_.png&tagId=1'>
+        <navigator url='/pages/screening/screening?picUrl=https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/1zhe_.png&tagId=2'>
             <image style='width:375rpx;' mode='widthFix' src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/1zhe2.png'></image>
         </navigator>
 
