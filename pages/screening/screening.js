@@ -19,7 +19,7 @@ Page({
     userInfo: {},
     brandId: "",
     brandSource: "",
-    imgUrl: 'https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdbjs.png',
+    imgUrl: 'http://img.qkmai.com/qkmbb/myytal/wdbjs.png',
     tagId: 0,
     dataIndex: 0,
     dataSize: 10,
@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+      options.ReferralUserId && app.setRefferUserId(options.ReferralUserId);
     var tm = this;
     tm.setData({
       imgUrl: options.picUrl,
@@ -95,7 +96,7 @@ Page({
     if (!this.data.hasMore) return;
     var tm = this;
     // console.log(tm.data.dataIndex);
-    var currentUrl = app.getUrl("QSHGetPageRushGoodsByTagId");
+    var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
     var currentData = {
       pi: ++this.data.dataIndex,
       ps: this.data.dataSize
@@ -128,7 +129,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+      var tm=this;
+      var picUrl = tm.data.imgUrl;
+      var tagId = tm.data.tagId;
+      
+      var i = '/pages/screening/screening?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
+      var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+      app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+//console.log(i)
+      return {
+          title: title,
+          path: i
+      }
   },
   timeFormat(param) { //小于10的格式化函数
     return param < 10 ? '0' + param : param;
@@ -208,7 +220,7 @@ Page({
         })
       } else {
         wx.request({
-          url: app.getUrl("QSHPostAddGoodsToCart"),
+          url: app.getUrl("YTALPostAddGoodsToCart"),
           data: {
             skuId: tm.data.goodsSkuId,
             skuName: tm.data.goodsSkuName,
@@ -292,7 +304,7 @@ Page({
     //获取品牌特卖列表        
     wx.request({
 
-      url: app.getUrl("QSHGetInfoBrandRush"),
+      url: app.getUrl("YTALGetInfoBrandRush"),
       data: {
         brandId: tm.data.brandId,
         brandSource: tm.data.brandSource
@@ -331,7 +343,7 @@ Page({
   goodsListNew: function() {
     var tm = this;
     wx.request({
-      url: app.getUrl("QSHGetListRushGoods"),
+      url: app.getUrl("YTALGetListRushGoods"),
       data: {
         brandId: tm.data.brandId,
         goodsSource: tm.data.brandSource
@@ -352,7 +364,7 @@ Page({
   getListGoodsData: function() {
     var tm = this;
     wx.request({
-      url: app.getUrl("QSHGetPageRushGoodsByTagId"),
+      url: app.getUrl("YTALGetPageRushGoodsByTagId"),
       data: {
         tagId: tm.data.tagId,
         pi: ++tm.data.dataIndex,

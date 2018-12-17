@@ -15,6 +15,7 @@ Page({
         LowerUserSaleTotal: ""
     },
     onLoad: function(n) {
+        n.ReferralUserId && o.setRefferUserId(n.ReferralUserId);
         var tm = this;
         var n = this;
         o.getOpenId(function (t) {
@@ -135,7 +136,7 @@ Page({
     },
     goToLearn: function () {
         wx.navigateTo({
-            url: '/pages/aboutqsh/aboutqsh',
+            url: '/pages/aboutytal/aboutytal',
         })
     },
     onShareAppMessage: function (event) {

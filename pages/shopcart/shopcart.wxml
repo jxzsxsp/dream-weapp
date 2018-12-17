@@ -4,10 +4,10 @@
             <text>本场商品清仓特卖，库存紧张，超过15分钟未支付订单将被关闭</text>
         </view>
         <view class="shopcart-t bg-wihte">
-            <view class="shopcart-ck" style="margin-top:0">
+            <view class="shopcart-ck" style="margin-top:0;position:relative;">
                 <icon bindtap="selectAll" color="#db3c40" style="float:left;line-height:1; margin-top:20rpx;" type="success" wx:if="{{selectAllStatus}}"></icon>
                 <icon bindtap="selectAll" style="float:left; line-height:1; margin-top:20rpx;" type="circle" wx:else></icon>
-                <view style="margin-left:16rpx;float:left">全选</view>
+                <view style="position:absolute;left:70rpx;width:80rpx;">全选</view>
             </view>
             <view bindtap="SwitchEdite" class="shopcart-edite">{{EditeText}}</view>
         </view>

@@ -26,6 +26,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+      if (options.brandId && options.brandSource) {
+          this.setData({
+              brandId: options.brandId,
+              brandSource: options.brandSource
+          })
+      }
     wx.showLoading({
       title: "正在加载"
     });
@@ -106,7 +112,7 @@ Page({
 
     var tm = this;
     wx.request({
-      url: app.getUrl("QSHGetListRushGoods"),
+      url: app.getUrl("YTALGetListRushGoods"),
       data: {
         brandId: tm.data.brandId,
         goodsSource: tm.data.brandSource,
@@ -123,7 +129,7 @@ Page({
           tm.setData({
             rushGoodsList: newList
           })
-          if (jd.data.length < 20) {
+          if (jd.data.length < 10) {
             tm.setData({
               hasMore: false
             })
@@ -149,6 +155,7 @@ Page({
     var url = tm.data.brandRushInfo[0].goodsImages[0];
     var brandId = tm.data.brandRushInfo[0].brandId;
     var brandSource = tm.data.brandRushInfo[0].brandSource;
+      console.log('/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource)
     return {
       title: '【品牌特卖】' + title,
       path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
@@ -225,7 +232,7 @@ Page({
         })
       } else {
         wx.request({
-          url: app.getUrl("QSHPostAddGoodsToCart"),
+          url: app.getUrl("YTALPostAddGoodsToCart"),
           data: {
             skuId: tm.data.goodsSkuId,
             skuName: tm.data.goodsSkuName,
@@ -328,7 +335,7 @@ Page({
     //获取品牌特卖列表        
     wx.request({
 
-      url: app.getUrl("QSHGetInfoBrandRush"),
+      url: app.getUrl("YTALGetInfoBrandRush"),
       data: {
         brandId: tm.data.brandId,
         brandSource: tm.data.brandSource
@@ -342,7 +349,11 @@ Page({
           min: '00',
           sec: '00'
         }
+          console.log(jd.data)
+          console.log(brandRush)
+          console.log(brandRush.countDownTime)
         brandRush.countDownTime = obj;
+
         if (brandRush.rushEndTime != null) {
           var month = brandRush.rushEndTime.split('-')[1];
           var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
@@ -355,7 +366,7 @@ Page({
         tm.setData({
           brandRushInfo: infoList,
           brandLogo: brandRush.brandLogo,
-          mainTitle: brandRush.mainTitle,
+          mainTitle: brandRush.mainTitle,                                                           
           subTitle: brandRush.subTitle,
 
           // brandSource: brandSource
@@ -368,7 +379,7 @@ Page({
   goodsListNew: function() {
     var tm = this;
     wx.request({
-      url: app.getUrl("QSHGetListRushGoods"),
+      url: app.getUrl("YTALGetListRushGoods"),
       data: {
         brandId: tm.data.brandId,
         goodsSource: tm.data.brandSource,
@@ -382,6 +393,7 @@ Page({
             hasMore: false
           })
         } else {
+            console.log(jd.data.length)
           if (jd.data.length != 0) {
 
             let goodsList = [];
@@ -392,7 +404,7 @@ Page({
             tm.setData({
               rushGoodsList: newList
             })
-          } else {
+          } else if(jd.data.length < 10) {
             tm.setData({
               hasMore: false
             })

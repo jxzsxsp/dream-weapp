@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -55,6 +55,12 @@
 					"name": "usehome",
 					"pathName": "pages/usehome/usehome",
 					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "11111",
+					"pathName": "pages/brandRush/brandRush",
+					"query": "brandId=2c9089c267aae0040167b1f9c1a21a0d&brandSource=dadacang"
 				}
 			]
 		}

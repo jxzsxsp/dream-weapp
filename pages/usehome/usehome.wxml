@@ -1,5 +1,5 @@
 <view class="uselogos">
-    <image class="logobg" src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdbjs.png"></image>
+    <image class="logobg" src="http://img.qkmai.com/qkmbb/myytal/wdbjs.png"></image>
     <view class="usetitle">
         <image class="uselogo" src="{{userInfo.picture}}"></image>
         <view class="userinfo">
@@ -15,7 +15,7 @@
         </view>
     </view>
     <!-- <view class='share-Store' bindtap="RefferStore">分享店铺</view> -->
-    <image bindtap='goToVip' class='header-tips' style='position:absolute;bottom:0;left:0;width:750rpx;height:119rpx;' src='{{userInfo.IsReferral ? "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdfc2.png" : "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdfc1.png"}}'></image>
+    <image bindtap='goToVip' class='header-tips' style='position:absolute;bottom:0;left:0;width:750rpx;height:119rpx;' src='{{userInfo.IsReferral ? "http://img.qkmai.com/qkmbb/myytal/wdfc2.png" : "http://img.qkmai.com/qkmbb/myytal/wdfc1.png"}}'></image>
 </view>
 <view bindtap="bindOrderList" class="hdonglist" style="margin-top:0">我的订单
     <text bindtap="bindStatue" data-key="0">全部订单</text>
@@ -98,11 +98,11 @@
 <view style='height:170rpx;display:flex;flex-flow:row nowrap;align-items:center;justify-content:space-between;padding:0 48rpx;background-color:#fff;'>
     <!-- 收货地址 -->
     <view style='width:48%;height:142rpx;' bindtap="bindMyAddressTap">
-        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/shdz.png' style='width:100%;height:142rpx;;'></image>
+        <image src='http://img.qkmai.com/qkmbb/myytal/shdz.png' style='width:100%;height:142rpx;;'></image>
     </view>
     <!-- 我的优惠券 -->
     <view style='width:48%;height:142rpx;' bindtap="bindMyCouponsTap">
-        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdyhq.png' style='width:100%;height:142rpx;;'></image>
+        <image src='http://img.qkmai.com/qkmbb/myytal/wdyhq.png' style='width:100%;height:142rpx;;'></image>
     </view>
 </view>
 
@@ -116,7 +116,7 @@
             <text style='font-size:12px;color:#515151;'>查看/编辑店铺信息</text>
         </view>
         <view style=''>
-            <image src="{{userInfo.picture ? userInfo.picture : 'https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/txzw.png'}}" style='width:100rpx;height:100rpx;;'></image>
+            <image src="{{userInfo.picture ? userInfo.picture : 'http://img.qkmai.com/qkmbb/myytal/txzw.png'}}" style='width:100rpx;height:100rpx;;'></image>
         </view>
     </view>
 
@@ -130,7 +130,7 @@
 
         </view>
         <view style=''>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdyj.png' style='width:100rpx;height:100rpx;'></image>
+            <image src='http://img.qkmai.com/qkmbb/myytal/wdyj.png' style='width:100rpx;height:100rpx;'></image>
         </view>
     </view>
 
@@ -144,7 +144,7 @@
             </view>
         </view>
         <view style=''>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdtd.png' style='width:100rpx;height:100rpx;;'></image>
+            <image src='http://img.qkmai.com/qkmbb/myytal/wdtd.png' style='width:100rpx;height:100rpx;;'></image>
         </view>
     </view>
 </view>
@@ -156,7 +156,7 @@
             <text style='font-size:12px;color:#515151;'>了解亚太奥莱，能省会赚</text>
         </view>
         <view style=''>
-            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/xsdd.png" style='width:100rpx;height:100rpx;;'></image>
+            <image src="http://img.qkmai.com/qkmbb/myytal/xsdd.png" style='width:100rpx;height:100rpx;;'></image>
         </view>
     </view>
 </view>
@@ -170,12 +170,12 @@
             <text style='font-size:12px;color:#515151;'>021-55697790</text>
         </view>
         <view style=''>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/lxkf.png' style='width:100rpx;height:100rpx;;'></image>
+            <image src='http://img.qkmai.com/qkmbb/myytal/lxkf.png' style='width:100rpx;height:100rpx;;'></image>
         </view>
         <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
     </view>
 </view>
-<!-- 
+
 <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
     退出登录
-</view> -->
+</view>

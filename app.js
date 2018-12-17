@@ -1,23 +1,23 @@
 function t(t, a, i) {
     if (Number.isNaN(t)) return 0;
     if (a.length <= 0) return parseFloat(t);
-    for (var s = 0, d = a.length, l = t; s < d; ) {
+    for (var s = 0, d = a.length, l = t; s < d;) {
         var u;
         if (u = a[s], !Number.isNaN(u)) switch (i) {
-          case "add":
-            l = e(l, u);
-            break;
+            case "add":
+                l = e(l, u);
+                break;
 
-          case "subtract":
-            l = o(l, u);
-            break;
+            case "subtract":
+                l = o(l, u);
+                break;
 
-          case "multiply":
-            l = r(l, u);
-            break;
+            case "multiply":
+                l = r(l, u);
+                break;
 
-          case "divide":
-            l = n(l, u);
+            case "divide":
+                l = n(l, u);
         }
         s++;
     }
@@ -55,7 +55,9 @@ function o(t, e) {
 }
 
 function r(t, e) {
-    var o = 0, r = t.toString(), n = e.toString();
+    var o = 0,
+        r = t.toString(),
+        n = e.toString();
     try {
         o += r.split(".")[1].length;
     } catch (t) {}
@@ -66,24 +68,27 @@ function r(t, e) {
 }
 
 function n(t, e) {
-    var o, r, n = 0, a = 0;
+    var o, r, n = 0,
+        a = 0;
     try {
         n = t.toString().split(".")[1].length;
     } catch (t) {}
     try {
         a = e.toString().split(".")[1].length;
     } catch (t) {}
-    return o = Number(t.toString().replace(".", "")), r = Number(e.toString().replace(".", "")), 
-    o / r * Math.pow(10, a - n);
+    return o = Number(t.toString().replace(".", "")), r = Number(e.toString().replace(".", "")),
+        o / r * Math.pow(10, a - n);
 }
 
 Number.prototype.toFixed = function(t) {
     e = this + "";
-    if (t || (t = 0), -1 == e.indexOf(".") && (e += "."), e += new Array(t + 1).join("0"), 
-    new RegExp("^(-|\\+)?(\\d+(\\.\\d{0," + (t + 1) + "})?)\\d*$").test(e)) {
-        var e = "0" + RegExp.$2, o = RegExp.$1, r = RegExp.$3.length;
-        return r == t + 2 && (e = (r = e.match(/\d/g)).join("").replace(new RegExp("(\\d+)(\\d{" + t + "})\\d$"), "$1.$2")), 
-        e = e.substr(1), (o + e).replace(/\.$/, "");
+    if (t || (t = 0), -1 == e.indexOf(".") && (e += "."), e += new Array(t + 1).join("0"),
+        new RegExp("^(-|\\+)?(\\d+(\\.\\d{0," + (t + 1) + "})?)\\d*$").test(e)) {
+        var e = "0" + RegExp.$2,
+            o = RegExp.$1,
+            r = RegExp.$3.length;
+        return r == t + 2 && (e = (r = e.match(/\d/g)).join("").replace(new RegExp("(\\d+)(\\d{" + t + "})\\d$"), "$1.$2")),
+            e = e.substr(1), (o + e).replace(/\.$/, "");
     }
     return this + "";
 }, String.prototype.toAdd = function() {
@@ -110,24 +115,24 @@ Number.prototype.toFixed = function(t) {
     onLaunch: function() {},
     getUserInfo: function(t) {
         var e = this;
-        e.globalData.userInfo && "0" == e.globalData.isReloadUser ? ("function" == typeof t && t(e.globalData.userInfo), 
-        wx.hideNavigationBarLoading()) : (e.globalData.isReloadUser = "0", wx.showNavigationBarLoading(), 
-        e.getOpenId(function(o) {
-            wx.request({
-                url: e.getUrl("LoginByOpenId"),
-                data: {
-                    openId: o
-                },
-                success: function(o) {
-                    "OK" == o.data.Status ? (e.globalData.userInfo = o.data.Data, "function" == typeof t && t(e.globalData.userInfo)) : wx.redirectTo({
-                        url: "../login/login"
-                    });
-                },
-                complete: function() {
-                    wx.hideNavigationBarLoading(), wx.stopPullDownRefresh();
-                }
-            });
-        }));
+        e.globalData.userInfo && "0" == e.globalData.isReloadUser ? ("function" == typeof t && t(e.globalData.userInfo),
+            wx.hideNavigationBarLoading()) : (e.globalData.isReloadUser = "0", wx.showNavigationBarLoading(),
+            e.getOpenId(function(o) {
+                wx.request({
+                    url: e.getUrl("LoginByOpenId"),
+                    data: {
+                        openId: o
+                    },
+                    success: function(o) {
+                        "OK" == o.data.Status ? (e.globalData.userInfo = o.data.Data, "function" == typeof t && t(e.globalData.userInfo)) : wx.redirectTo({
+                            url: "../login/login"
+                        });
+                    },
+                    complete: function() {
+                        wx.hideNavigationBarLoading(), wx.stopPullDownRefresh();
+                    }
+                });
+            }));
     },
     setRefferUserId: function(t) {
         wx.setStorageSync("ReferralUserId", t);
@@ -147,8 +152,8 @@ Number.prototype.toFixed = function(t) {
                         js_code: o.code
                     },
                     success: function(o) {
-                        void 0 != o.data && void 0 != o.data.openid && (e.globalData.openId = o.data.openid, 
-                        "function" == typeof t && t(e.globalData.openId));
+                        void 0 != o.data && void 0 != o.data.openid && (e.globalData.openId = o.data.openid,
+                            "function" == typeof t && t(e.globalData.openId));
                     }
                 }) : console.log("获取用户登录态失败！" + o.errMsg);
             }
@@ -185,21 +190,21 @@ Number.prototype.toFixed = function(t) {
                                 }
                             });
                         },
-                      fail: function () {
-                        //获取用户信息失败后。请跳转授权页面
-                        wx.showModal({
-                          title: '警告',
-                          content: '尚未进行授权，请点击确定跳转到授权页面进行授权。',
-                          success: function (res) {
-                            if (res.confirm) {
-                              console.log('用户点击确定')
-                              wx.navigateTo({
-                                url: '../loginwx/loginwx',
-                              })
-                            }
-                          }
-                        })
-                      }
+                        fail: function() {
+                            //获取用户信息失败后。请跳转授权页面
+                            wx.showModal({
+                                title: '警告',
+                                content: '尚未进行授权，请点击确定跳转到授权页面进行授权。',
+                                success: function(res) {
+                                    if (res.confirm) {
+                                        console.log('用户点击确定')
+                                        wx.navigateTo({
+                                            url: '../loginwx/loginwx',
+                                        })
+                                    }
+                                }
+                            })
+                        }
                     });
                 } else console.log("获取用户登录态失败！" + o.errMsg);
             }
@@ -241,7 +246,8 @@ Number.prototype.toFixed = function(t) {
                             fail: function(t) {
                                 wx.showModal({
                                     title: "提示",
-                                    content: "支付失败！",
+                                    // content: "支付失败！",
+                                    content: "尚未支付，等待付款",
                                     showCancel: !1,
                                     success: function(t) {
                                         o || t.confirm && wx.redirectTo({
@@ -265,13 +271,13 @@ Number.prototype.toFixed = function(t) {
             });
         });
     },
-    getRequestUrl: "https://qsh.qkmai.com",
+    getRequestUrl: "https://ytal.qkmai.com",
     getUrl: function(t) {
-      return "https://qsh.qkmai.com/API/WeChatApplet.ashx?action=" + t;
+        return "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=" + t;
     },
     globalData: {
-      appId: "wx779e355e765faaf5",
-      secret: "35d168891cd61dda57f99d825bb3a927",
+        appId: "wx779e355e765faaf5",
+        secret: "35d168891cd61dda57f99d825bb3a927",
         userInfo: null,
         siteInfo: null,
         ReferralInfo: null,
@@ -316,11 +322,13 @@ Number.prototype.toFixed = function(t) {
     }
 }), Number.prototype.toFixed = function(t) {
     e = this + "";
-    if (t || (t = 0), -1 == e.indexOf(".") && (e += "."), e += new Array(t + 1).join("0"), 
-    new RegExp("^(-|\\+)?(\\d+(\\.\\d{0," + (t + 1) + "})?)\\d*$").test(e)) {
-        var e = "0" + RegExp.$2, o = RegExp.$1, r = RegExp.$3.length;
-        return r == t + 2 && (e = (r = e.match(/\d/g)).join("").replace(new RegExp("(\\d+)(\\d{" + t + "})\\d$"), "$1.$2")), 
-        e = e.substr(1), (o + e).replace(/\.$/, "");
+    if (t || (t = 0), -1 == e.indexOf(".") && (e += "."), e += new Array(t + 1).join("0"),
+        new RegExp("^(-|\\+)?(\\d+(\\.\\d{0," + (t + 1) + "})?)\\d*$").test(e)) {
+        var e = "0" + RegExp.$2,
+            o = RegExp.$1,
+            r = RegExp.$3.length;
+        return r == t + 2 && (e = (r = e.match(/\d/g)).join("").replace(new RegExp("(\\d+)(\\d{" + t + "})\\d$"), "$1.$2")),
+            e = e.substr(1), (o + e).replace(/\.$/, "");
     }
     return this + "";
 };
