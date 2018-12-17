@@ -14,9 +14,10 @@ Page({
         PageSize: 100,
         nullOrder: t.getRequestUrl + "/Templates/xcxshop/images/nullOrder.png"
     },
-    onLoad: function(t) {
-        var e = t.status;
-        "" != t.status && void 0 != t.status || (e = 0), this.setData({
+    onLoad: function(q) {
+        q.ReferralUserId && t.setRefferUserId(q.ReferralUserId);
+        var e = q.status;
+        "" != q.status && void 0 != q.status || (e = 0), this.setData({
             Status: e
         });
     },

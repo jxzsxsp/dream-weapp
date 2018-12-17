@@ -22,7 +22,8 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function(a) {
+        a.ReferralUserId && app.setRefferUserId(a.ReferralUserId);
         var tm = this;
         app.getUserInfo(function(t) {
             tm.setData({
@@ -128,6 +129,16 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
+
+        var i = '/pages/brandRush/brandRush?from=menu';
+        var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        
+        return {
+            title: title,
+            path: i
+        }
+
 
     },
     countDown() { //倒计时函数

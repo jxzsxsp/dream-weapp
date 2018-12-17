@@ -20,14 +20,15 @@ Page({
         ShowCartIcon: !0,
         imgUrl: ''
     },
-    onLoad: function(t) {
-        console.log(t)
+    onLoad: function(q) {
+        q.ReferralUserId && t.setRefferUserId(q.ReferralUserId);
+
         this.setData ({
-            imgUrl: t.picUrl
+            imgUrl: q.picUrl
         }) 
         var a = wx.getStorageSync("keyword");
         void 0 == a && (a = "");
-        var e = t.cid;
+        var e = q.cid;
         void 0 == e ? e = "" : a = "";
         var r = this;
         r.setData({
