@@ -98,6 +98,7 @@ Page({
     // console.log(tm.data.dataIndex);
     var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
     var currentData = {
+      tagId: tm.data.tagId,
       pi: ++this.data.dataIndex,
       ps: this.data.dataSize
     };
