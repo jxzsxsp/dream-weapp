@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -57,16 +57,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "11111",
-					"pathName": "pages/brandInfo/brandInfo",
+					"pathName": "pages/brandRush/brandRush",
 					"query": "brandId=2c9089c267aae0040167b1f9c1a21a0d&brandSource=dadacang"
-				},
-				{
-					"id": 4,
-					"name": "测试推荐绑定",
-					"pathName": "pages/discovery/discovery",
-					"query": "ReferralUserId=1"
 				}
 			]
 		}
