@@ -266,9 +266,9 @@ Number.prototype.toFixed = function(t) {
             });
         });
     },
-    getRequestUrl: "https://qsh.qkmai.com",
+    getRequestUrl: "https://ytal.qkmai.com",
     getUrl: function(t) {
-      return "https://qsh.qkmai.com/API/WeChatApplet.ashx?action=" + t;
+      return "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=" + t;
     },
     globalData: {
       appId: "wx779e355e765faaf5",

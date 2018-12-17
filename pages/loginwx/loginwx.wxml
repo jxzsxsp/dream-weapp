@@ -6,7 +6,7 @@
 <!-- <view wx:if="{{canIUse}}"> -->
 <view>
     <view class='header'>
-        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/qshlogored.png'></image>
+        <image src='http://img.qkmai.com/qkmbb/ytal/ytallogored.png'></image>
         <text style='font-size:18px;'>亚太奥莱</text>
     </view>
  

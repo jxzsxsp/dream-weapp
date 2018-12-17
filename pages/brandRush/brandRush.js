@@ -233,14 +233,16 @@ Page({
                 cate: tm.data.selectedCate
             },
             success: function(jd) {
-                let tagList = [];
-                jd.data.forEach(o => {
-                    tagList.push(o)
-                });
-                tm.setData({
-                    tagList: tagList
-                })
-                tm.getList();
+                if (jd.data.length > 0) {
+                    let tagList = [];
+                    jd.data.forEach(o => {
+                        tagList.push(o)
+                    });
+                    tm.setData({
+                        tagList: tagList
+                    })
+                    tm.getList();
+                }
             }
         })
     },

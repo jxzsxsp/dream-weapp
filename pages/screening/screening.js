@@ -19,7 +19,7 @@ Page({
     userInfo: {},
     brandId: "",
     brandSource: "",
-    imgUrl: 'https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/myqsh/wdbjs.png',
+    imgUrl: 'http://img.qkmai.com/qkmbb/myytal/wdbjs.png',
     tagId: 0,
     dataIndex: 0,
     dataSize: 10,
