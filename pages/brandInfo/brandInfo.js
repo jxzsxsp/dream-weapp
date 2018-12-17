@@ -112,7 +112,7 @@ Page({
 
     var tm = this;
     wx.request({
-      url: app.getUrl("QSHGetListRushGoods"),
+      url: app.getUrl("YTALGetListRushGoods"),
       data: {
         brandId: tm.data.brandId,
         goodsSource: tm.data.brandSource,
@@ -232,7 +232,7 @@ Page({
         })
       } else {
         wx.request({
-          url: app.getUrl("QSHPostAddGoodsToCart"),
+          url: app.getUrl("YTALPostAddGoodsToCart"),
           data: {
             skuId: tm.data.goodsSkuId,
             skuName: tm.data.goodsSkuName,
@@ -335,7 +335,7 @@ Page({
     //获取品牌特卖列表        
     wx.request({
 
-      url: app.getUrl("QSHGetInfoBrandRush"),
+      url: app.getUrl("YTALGetInfoBrandRush"),
       data: {
         brandId: tm.data.brandId,
         brandSource: tm.data.brandSource
@@ -379,7 +379,7 @@ Page({
   goodsListNew: function() {
     var tm = this;
     wx.request({
-      url: app.getUrl("QSHGetListRushGoods"),
+      url: app.getUrl("YTALGetListRushGoods"),
       data: {
         brandId: tm.data.brandId,
         goodsSource: tm.data.brandSource,
