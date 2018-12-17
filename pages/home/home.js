@@ -614,7 +614,7 @@ Page({
     getCate: function() {
         var tm = this;
         wx.request({
-            url: e.getUrl("QSHGetListBrandCate"),
+            url: e.getUrl("YTALGetListBrandCate"),
             data: {
 
             },
@@ -630,7 +630,7 @@ Page({
     defaultList: function() {
         var tm = this
         wx.request({
-            url: e.getUrl("QSHGetListBrandRushIsHead"),
+            url: e.getUrl("YTALGetListBrandRushIsHead"),
             data: {},
             success: function(res) {
                 if (res.data.length > 0) {
@@ -660,7 +660,7 @@ Page({
                 }
 
                 wx.request({
-                    url: e.getUrl("QSHGetPageBrandRush"),
+                    url: e.getUrl("YTALGetPageBrandRush"),
                     data: {
                         pi: ++tm.data.dataIndex,
                         ps: 10
@@ -711,13 +711,13 @@ Page({
         var currentUrl = '';
         var currentData = {};
         if (tm.data.selectedCate == "本期特卖") {
-            currentUrl = e.getUrl("QSHGetListBrandRushIsHead");
+            currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
             currentData = {
                 // pi: ++this.data.dataIndex,
                 // ps: this.data.pageSize
             }
         } else {
-            currentUrl = e.getUrl("QSHGetListBrandRushIsHeadByCate");
+            currentUrl = e.getUrl("YTALGetListBrandRushIsHeadByCate");
             currentData = {
                 cate: this.data.selectedCate
             }
@@ -770,14 +770,14 @@ Page({
         // var currentUrl = '';
         // var currentData = {};
         // if (tm.data.selectedCate == "本期特卖") {
-        //     currentUrl = e.getUrl("QSHGetPageBrandRush");
+        //     currentUrl = e.getUrl("YTALGetPageBrandRush");
         //     currentData = {
         //         pi: ++this.data.dataIndex,
         //         ps: this.data.pageSize,
         //         cate: "本期特卖"
         //     }
         // } else {
-        //     currentUrl = e.getUrl("QSHGetPageBrandRushByCate");
+        //     currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
         //     currentData = {
         //         pi: ++this.data.dataIndex,
         //         ps: this.data.pageSize,
@@ -829,9 +829,9 @@ Page({
             cate: this.data.selectedCate
         };
         if (tm.data.selectedCate == "本期特卖") {
-            currentUrl = e.getUrl("QSHGetPageBrandRush");
+            currentUrl = e.getUrl("YTALGetPageBrandRush");
         } else {
-            currentUrl = e.getUrl("QSHGetPageBrandRushByCate");
+            currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
         }
         // 加载页面数据
         wx.request({
@@ -895,7 +895,7 @@ Page({
     getLogo: function() {
         var tm = this;
         wx.request({
-            url: e.getUrl("QSHGetTopListBrandRushIsHead"),
+            url: e.getUrl("YTALGetTopListBrandRushIsHead"),
             data: {
 
             },

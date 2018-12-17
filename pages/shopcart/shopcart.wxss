@@ -35,7 +35,7 @@ page {
 
 .shopcart-ck {
     float: left;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-right: 16rpx;
     margin-top: 40rpx;
     width: 48rpx;

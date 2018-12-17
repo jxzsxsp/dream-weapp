@@ -70,7 +70,7 @@ Page({
     //接下来写业务代码
     //最后，记得返回刚才的页面
     wx.navigateBack({
-      delta: 1
+      delta: 2
     })
   }
 })

@@ -135,7 +135,7 @@ Page({
     },
     goToLearn: function () {
         wx.navigateTo({
-            url: '/pages/aboutqsh/aboutqsh',
+            url: '/pages/aboutytal/aboutytal',
         })
     },
     onShareAppMessage: function (event) {

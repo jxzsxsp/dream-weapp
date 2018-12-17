@@ -37,7 +37,7 @@ Page({
 
         // 加载页面获取
         // wx.request({
-        //     url: app.getUrl("QSHGetListBrandCate"),
+        //     url: app.getUrl("YTALGetListBrandCate"),
         //     data: {
 
         //     },
@@ -213,7 +213,7 @@ Page({
     getCate: function() {
         var tm = this;
         wx.request({
-            url: app.getUrl("QSHGetListBrandCate"),
+            url: app.getUrl("YTALGetListBrandCate"),
             data: {
 
             },
@@ -228,26 +228,28 @@ Page({
     getTag: function(event) {
         var tm = this;
         wx.request({
-            url: app.getUrl("QSHGetListBrandRushTagByCate"),
+            url: app.getUrl("YTALGetListBrandRushTagByCate"),
             data: {
                 cate: tm.data.selectedCate
             },
             success: function(jd) {
-                let tagList = [];
-                jd.data.forEach(o => {
-                    tagList.push(o)
-                });
-                tm.setData({
-                    tagList: tagList
-                })
-                tm.getList();
+                if (jd.data.length > 0) {
+                    let tagList = [];
+                    jd.data.forEach(o => {
+                        tagList.push(o)
+                    });
+                    tm.setData({
+                        tagList: tagList
+                    })
+                    tm.getList();
+                }
             }
         })
     },
     getList: function() {
         var tm = this;
         wx.request({
-            url: app.getUrl('QSHGetListBrandRushIsHeadByCateAndTag'),
+            url: app.getUrl('YTALGetListBrandRushIsHeadByCateAndTag'),
             data: {
                 cate: tm.data.selectedCate,
                 tag: tm.data.selectedTag
@@ -271,7 +273,7 @@ Page({
         if (!this.data.hasMore) return;
         var tm = this;
         wx.request({
-            url: app.getUrl('QSHGetListBrandRushByCateAndTag'),
+            url: app.getUrl('YTALGetListBrandRushByCateAndTag'),
             data: {
                 cate: tm.data.selectedCate,
                 tag: tm.data.selectedTag,

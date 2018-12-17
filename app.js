@@ -241,7 +241,8 @@ Number.prototype.toFixed = function(t) {
                             fail: function(t) {
                                 wx.showModal({
                                     title: "提示",
-                                    content: "支付失败！",
+                                    // content: "支付失败！",
+                                    content: "尚未支付，等待付款",
                                     showCancel: !1,
                                     success: function(t) {
                                         o || t.confirm && wx.redirectTo({
@@ -265,9 +266,9 @@ Number.prototype.toFixed = function(t) {
             });
         });
     },
-    getRequestUrl: "https://qsh.qkmai.com",
+    getRequestUrl: "https://ytal.qkmai.com",
     getUrl: function(t) {
-      return "https://qsh.qkmai.com/API/WeChatApplet.ashx?action=" + t;
+      return "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=" + t;
     },
     globalData: {
       appId: "wx779e355e765faaf5",

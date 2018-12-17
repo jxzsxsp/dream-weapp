@@ -13,7 +13,7 @@
                 <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
                     <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
                 </view>
-                <image wx:if='{{item.isSoldOut}}' src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/soldout.png' style="width:500rpx;height:350rpx;position:absolute;right:70rpx;top:50rpx;"></image>
+                <image wx:if='{{item.isSoldOut}}' src='http://img.qkmai.com/qkmbb/ytal/soldout.png' style="width:500rpx;height:350rpx;position:absolute;right:70rpx;top:50rpx;"></image>
             </view>
             <view style='padding:12rpx 27rpx 18rpx 129rpx'>
                 <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>

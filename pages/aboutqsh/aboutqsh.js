@@ -1,4 +1,4 @@
-// pages/aboutqsh/aboutqsh.js
+// pages/aboutytal/aboutytal.js
 Page({
 
     /**
