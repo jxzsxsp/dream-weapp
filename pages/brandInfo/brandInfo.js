@@ -129,7 +129,7 @@ Page({
           tm.setData({
             rushGoodsList: newList
           })
-          if (jd.data.length < 20) {
+          if (jd.data.length < 10) {
             tm.setData({
               hasMore: false
             })
@@ -393,6 +393,7 @@ Page({
             hasMore: false
           })
         } else {
+            console.log(jd.data.length)
           if (jd.data.length != 0) {
 
             let goodsList = [];
@@ -403,7 +404,7 @@ Page({
             tm.setData({
               rushGoodsList: newList
             })
-          } else {
+          } else if(jd.data.length < 10) {
             tm.setData({
               hasMore: false
             })

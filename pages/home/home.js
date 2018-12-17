@@ -19,7 +19,7 @@ Page({
         CurrentSku: null,
         selectedSkuContent: null,
         isShowSkuSelectBox: !1,
-        selectedCate: "本期特卖",
+        selectedCate: "全场直播",
         TotalNum: 0,
         dataIndex: 0,
         dataSize: 10,
@@ -595,7 +595,7 @@ Page({
             brandRush: [],
             pageIndex: 1,
             dataIndex: 0,
-            selectedCate: "本期特卖",
+            selectedCate: "全场直播",
             hasMore: true
         });
         this.getCate();
@@ -710,7 +710,7 @@ Page({
         var tm = this;
         var currentUrl = '';
         var currentData = {};
-        if (tm.data.selectedCate == "本期特卖") {
+        if (tm.data.selectedCate == "全场直播") {
             currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
             currentData = {
                 // pi: ++this.data.dataIndex,
@@ -769,12 +769,12 @@ Page({
         // var tm = this;
         // var currentUrl = '';
         // var currentData = {};
-        // if (tm.data.selectedCate == "本期特卖") {
+        // if (tm.data.selectedCate == "全场直播") {
         //     currentUrl = e.getUrl("YTALGetPageBrandRush");
         //     currentData = {
         //         pi: ++this.data.dataIndex,
         //         ps: this.data.pageSize,
-        //         cate: "本期特卖"
+        //         cate: "全场直播"
         //     }
         // } else {
         //     currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
@@ -828,7 +828,7 @@ Page({
             ps: this.data.pageSize,
             cate: this.data.selectedCate
         };
-        if (tm.data.selectedCate == "本期特卖") {
+        if (tm.data.selectedCate == "全场直播") {
             currentUrl = e.getUrl("YTALGetPageBrandRush");
         } else {
             currentUrl = e.getUrl("YTALGetPageBrandRushByCate");

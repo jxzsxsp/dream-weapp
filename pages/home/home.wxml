@@ -2,19 +2,32 @@
 <view class="homecont" style="z-index:998;">
 
 
-
-    <!-- 本期特卖 滚动条 -->
     <view style='height:60rpx;background-color: #fff;z-index:1000;'>
         <scroll-view scroll-x style="width: 100%;height:60rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
-            <view class="catetitle" bindtap='changeCate' data-cateName='本期特卖'>
-                <view class="{{selectedCate=='本期特卖'?'active':''}}">本期特卖</view>
+            <view class="catetitle" bindtap='changeCate' data-cateName='全场直播'>
+                <view class="{{selectedCate=='全场直播'?'active':''}}">全场直播 (1241)</view>
             </view>
             <view bindtap="changeCate" data-cateName='{{item}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
                 <view class="{{selectedCate==item?'active':''}}">{{item}}</view>
             </view>
         </scroll-view>
     </view>
-    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;" wx:if='{{selectedCate=="本期特卖"}}'>
+
+
+
+
+    <!-- 全场直播 滚动条 -->
+    <!-- <view style='height:60rpx;background-color: #fff;z-index:1000;'>
+        <scroll-view scroll-x style="width: 100%;height:60rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
+            <view class="catetitle" bindtap='changeCate' data-cateName='全场直播'>
+                <view class="{{selectedCate=='全场直播'?'active':''}}">全场直播 ({{}})</view>
+            </view>
+            <view bindtap="changeCate" data-cateName='{{item}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
+                <view class="{{selectedCate==item?'active':''}}">{{item}}</view>
+            </view>
+        </scroll-view>
+    </view> -->
+    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;" wx:if='{{selectedCate=="全场直播"}}'>
     </template>
 
 
@@ -28,7 +41,7 @@
 
 
 
-    <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
+    <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://img.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;' mode='widthFix'></image>
     </view>
 
@@ -37,7 +50,7 @@
 
 
 
-    <view style='display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:center;font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
+    <view style='display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <!-- 一折专区 -->
         <navigator url='/pages/screening/screening?picUrl=http://img.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='width:375rpx;' mode='widthFix' src='http://img.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
@@ -91,10 +104,10 @@
 
     </view> -->
 
-    <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:750rpx;vertical-align:top;' mode='widthFix' wx:if='{{selectedCate=="本期特卖"}}'></image>
+    <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:750rpx;vertical-align:top;' mode='widthFix' wx:if='{{selectedCate=="全场直播"}}'></image>
 
 
-    <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
+    <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;align-items:center;' wx:for='{{topLogoList}}'>
             <image style='width:128rpx;height:128rpx;margin-bottom:10rpx;' mode='widthFix' src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
         </view>
@@ -111,7 +124,7 @@
     </view>
 
 
-    <view style='width:750rpx;padding:0;margin-top:10rpx;font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
+    <view style='width:750rpx;padding:0;margin-top:10rpx;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <image style='width:750rpx;padding:0;margin:0;' mode='widthFix' src='http://img.qkmai.com/qkmbb/ytal/remai.png'></image>
     </view>
 
