@@ -241,7 +241,8 @@ Number.prototype.toFixed = function(t) {
                             fail: function(t) {
                                 wx.showModal({
                                     title: "提示",
-                                    content: "支付失败！",
+                                    // content: "支付失败！",
+                                    content: "尚未支付，等待付款",
                                     showCancel: !1,
                                     success: function(t) {
                                         o || t.confirm && wx.redirectTo({

@@ -1,5 +1,9 @@
 <import src="../common/templeates.wxml"></import>
 <view class="homecont" style="z-index:998;">
+
+
+
+    <!-- 本期特卖 滚动条 -->
     <view style='height:60rpx;background-color: #fff;z-index:1000;'>
         <scroll-view scroll-x style="width: 100%;height:60rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
             <view class="catetitle" bindtap='changeCate' data-cateName='本期特卖'>
@@ -10,7 +14,7 @@
             </view>
         </scroll-view>
     </view>
-    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:key="{{item}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;">
+    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;" wx:if='{{selectedCate=="本期特卖"}}'>
     </template>
 
 
@@ -24,7 +28,7 @@
 
 
 
-    <view class='show-box' style='font-size:0;'>
+    <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
         <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/shuom.png' style='width:750rpx;' mode='widthFix'></image>
     </view>
 
@@ -33,7 +37,7 @@
 
 
 
-    <view style='display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:center;font-size:0;'>
+    <view style='display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:center;font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
         <!-- 一折专区 -->
         <navigator url='/pages/screening/screening?picUrl=https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/1zhe_.png&tagId=2'>
             <image style='width:375rpx;' mode='widthFix' src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/1zhe2.png'></image>
@@ -87,12 +91,12 @@
 
     </view> -->
 
-    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/wnzx.png' style='width:750rpx;vertical-align:top;' mode='widthFix'></image>
-    
-    
-    <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;'>
+    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/wnzx.png' style='width:750rpx;vertical-align:top;' mode='widthFix' wx:if='{{selectedCate=="本期特卖"}}'></image>
+
+
+    <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
         <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;align-items:center;' wx:for='{{topLogoList}}'>
-            <image style='width:128rpx;height:128rpx;margin-bottom:10rpx;' mode='widthFix' src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}' ></image>
+            <image style='width:128rpx;height:128rpx;margin-bottom:10rpx;' mode='widthFix' src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
         </view>
         <!-- <view style='width:140rpx;height:140rpx;background-color:blue;margin-bottom:10rpx;'>1</view>
         <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
@@ -107,7 +111,7 @@
     </view>
 
 
-    <view style='width:750rpx;padding:0;margin-top:10rpx;font-size:0;'>
+    <view style='width:750rpx;padding:0;margin-top:10rpx;font-size:0;' wx:if='{{selectedCate=="本期特卖"}}'>
         <image style='width:750rpx;padding:0;margin:0;' mode='widthFix' src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/remai.png'></image>
     </view>
 

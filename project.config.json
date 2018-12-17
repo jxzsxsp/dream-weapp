@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -55,6 +55,18 @@
 					"name": "usehome",
 					"pathName": "pages/usehome/usehome",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "11111",
+					"pathName": "pages/brandInfo/brandInfo",
+					"query": "brandId=2c9089c267aae0040167b1f9c1a21a0d&brandSource=dadacang"
+				},
+				{
+					"id": 4,
+					"name": "11111",
+					"pathName": "pages/orderlist/orderlist",
+					"query": "brandId=2c9089c267aae0040167b1f9c1a21a0d&brandSource=dadacang"
 				}
 			]
 		}

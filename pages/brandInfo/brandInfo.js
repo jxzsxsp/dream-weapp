@@ -26,6 +26,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+      if (options.brandId && options.brandSource) {
+          this.setData({
+              brandId: options.brandId,
+              brandSource: options.brandSource
+          })
+      }
     wx.showLoading({
       title: "正在加载"
     });
@@ -149,6 +155,7 @@ Page({
     var url = tm.data.brandRushInfo[0].goodsImages[0];
     var brandId = tm.data.brandRushInfo[0].brandId;
     var brandSource = tm.data.brandRushInfo[0].brandSource;
+      console.log('/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource)
     return {
       title: '【品牌特卖】' + title,
       path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
@@ -342,7 +349,11 @@ Page({
           min: '00',
           sec: '00'
         }
+          console.log(jd.data)
+          console.log(brandRush)
+          console.log(brandRush.countDownTime)
         brandRush.countDownTime = obj;
+
         if (brandRush.rushEndTime != null) {
           var month = brandRush.rushEndTime.split('-')[1];
           var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
@@ -355,7 +366,7 @@ Page({
         tm.setData({
           brandRushInfo: infoList,
           brandLogo: brandRush.brandLogo,
-          mainTitle: brandRush.mainTitle,
+          mainTitle: brandRush.mainTitle,                                                           
           subTitle: brandRush.subTitle,
 
           // brandSource: brandSource

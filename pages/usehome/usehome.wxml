@@ -175,7 +175,7 @@
         <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
     </view>
 </view>
-<!-- 
-<view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
+
+<!-- <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
     退出登录
 </view> -->
