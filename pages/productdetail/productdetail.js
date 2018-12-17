@@ -56,6 +56,14 @@ Page({
     },
     onLoad: function(t) {
         t.ReferralUserId && e.setRefferUserId(t.ReferralUserId);
+
+        var tm = this;
+        e.getUserInfo(function (t) {
+            tm.setData({
+                userInfo: t
+            })
+        });
+
         var a = t.id, o = this;
         e.globalData.userInfo && e.globalData.userInfo.IsReferral ? o.data.referralId = !0 : o.data.referralId = !1, 
         o.setData({
@@ -127,7 +135,7 @@ Page({
                             ProductName: a.ProductName,
                             ShortDescription: a.ShortDescription,
                             ShowSaleCounts: a.ShowSaleCounts,
-                            Weight: a.Weight,
+                            //Weight: a.Weight,
                             MarketPrice: a.MarketPrice,
                             IsfreeShipping: a.IsfreeShipping,
                             MaxSalePrice: a.MaxSalePrice,

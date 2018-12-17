@@ -64,9 +64,9 @@
 				},
 				{
 					"id": 4,
-					"name": "11111",
-					"pathName": "pages/orderlist/orderlist",
-					"query": "brandId=2c9089c267aae0040167b1f9c1a21a0d&brandSource=dadacang"
+					"name": "测试推荐绑定",
+					"pathName": "pages/discovery/discovery",
+					"query": "ReferralUserId=1"
 				}
 			]
 		}

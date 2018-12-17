@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+      options.ReferralUserId && app.setRefferUserId(options.ReferralUserId);
     var tm = this;
     tm.setData({
       imgUrl: options.picUrl,
@@ -128,7 +129,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+      var tm=this;
+      var picUrl = tm.data.imgUrl;
+      var tagId = tm.data.tagId;
+      
+      var i = '/pages/screening/screening?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
+      var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+      app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+//console.log(i)
+      return {
+          title: title,
+          path: i
+      }
   },
   timeFormat(param) { //小于10的格式化函数
     return param < 10 ? '0' + param : param;

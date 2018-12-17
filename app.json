@@ -75,35 +75,35 @@
                 "text": "特卖",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/temai.png",
-                "selectedIconPath": "images/temai_.png"
+                "selectedIconPath": "images/temai_hover.png"
             },
             {
                 "pagePath": "pages/brandRush/brandRush",
                 "text": "品牌",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/pinpai.png",
-                "selectedIconPath": "images/pinpai_.png"
+                "selectedIconPath": "images/pinpai_hover.png"
             },
             {
                 "pagePath": "pages/discovery/discovery",
                 "text": "VIP专区",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/vip.png",
-                "selectedIconPath": "images/vip_.png"
+                "selectedIconPath": "images/vip_hover.png"
             },
             {
                 "pagePath": "pages/shopcart/shopcart",
                 "text": "购物车",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/gouwuche.png",
-                "selectedIconPath": "images/gouwuche_.png"
+                "selectedIconPath": "images/gouwuche_hover.png"
             },
             {
                 "pagePath": "pages/usehome/usehome",
                 "text": "我的",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/wode.png",
-                "selectedIconPath": "images/wode_.png"
+                "selectedIconPath": "images/wode_hover.png"
             }
         ]
     }

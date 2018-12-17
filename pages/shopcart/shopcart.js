@@ -13,7 +13,9 @@ Page({
         isEmpty: !0,
         Suppliers: null
     },
-    onLoad: function(t) {},
+    onLoad: function(a) {
+        a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
+    },
     loadData: function(e) {
         var tm = this;
         wx.showLoading({

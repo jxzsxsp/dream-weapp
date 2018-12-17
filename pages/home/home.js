@@ -83,6 +83,7 @@ Page({
         });
     },
     onLoad: function(a) {
+        a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
         var tm = this;
         e.getUserInfo(function(t) {
             tm.setData({
@@ -130,7 +131,7 @@ Page({
 
 
 
-        
+
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -194,15 +195,26 @@ Page({
         }
     },
     onShareAppMessage: function(event) {
-        var barndId = event.target.dataset['brandid'];
-        var brandSoruce = event.target.dataset['brandsource'];
-        var brandName = event.target.dataset['maintitle'];
-        var brandBg = event.target.dataset['bg'];
+        var i = '/pages/home/home?from=menu';
+        var title ='亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+        if (event.from == 'menu') {
+
+        } else {
+            var barndId = event.target.dataset['brandid'];
+            var brandSoruce = event.target.dataset['brandsource'];
+            var brandName = event.target.dataset['maintitle'];
+            var brandBg = event.target.dataset['bg'];
+            i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
+            title = '【品牌特卖】' + brandName;
+        }
+        e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        console.log(i)
         return {
-            title: '【品牌特卖】' + brandName,
-            path: '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce,
+            title: title,
+            path: i,
             imageUrl: brandBg
         }
+
     },
     getHomeData: function(t) {
         var a = this;
@@ -900,7 +912,7 @@ Page({
 
             },
             success: function(jd) {
-                console.log(jd.data)
+                //console.log(jd.data)
                 if (jd.data.length != 0) {
                     let logoList = [];
                     jd.data.forEach(o => {
@@ -915,7 +927,7 @@ Page({
                         // }
                         logoList.push(o)
                     });
-                    
+
                     tm.setData({
                         topLogoList: logoList
                     })
