@@ -133,7 +133,7 @@ Page({
                         title: "提示",
                         content: t.data.error_response.sub_msg,
                         showCancel: !1,
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         success: function(a) {
                             loadDrawListData(n, !1), n.setData({
                                 TabType: 2

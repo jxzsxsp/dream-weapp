@@ -3,9 +3,37 @@ var o = getApp();
 Page({
     data: {
         OpenReferral: "",
-        userInfo: {}
+        userInfo: {},
+        openId: "",
+        headerbg: o.getRequestUrl + "/Templates/xcxshop/images/feixiao_header.png",
+        DistributionInfo: "",
+        openId: "",
+        subMemberList: null,
+        isempty: !0,
+        ExpandMemberInMonth: "",
+        ExpandMemberAll: "",
+        LowerUserSaleTotal: ""
     },
     onLoad: function(n) {
+        var tm = this;
+        var n = this;
+        o.getOpenId(function (t) {
+            wx.request({
+                url: o.getUrl("GetReferralInfo"),
+                data: {
+                    openId: t
+                },
+                success: function (t) {
+                    o.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+                }
+            });
+        });
+        o.getUserInfo(function (t) {
+            tm.setData({
+                userInfo: t
+            })
+        });
+
         this.setData({
             OpenReferral: o.globalData.siteInfo.OpenReferral
         });
@@ -93,5 +121,62 @@ Page({
         wx.navigateTo({
             url: "../Distribution/Distribution"
         });
+    },
+    customerService: function (){
+        wx.makePhoneCall({
+            phoneNumber: '021-55697790',
+            success: function(){
+                console.log("正在呼叫")
+            },
+            fail:function () {
+                console.log("呼叫失败")
+            }
+        })
+    },
+    goToLearn: function () {
+        wx.navigateTo({
+            url: '/pages/aboutqsh/aboutqsh',
+        })
+    },
+    onShareAppMessage: function (event) {
+        // var barndId = event.target.dataset['brandid'];
+        // var brandSoruce = event.target.dataset['brandsource'];
+        // var brandName = event.target.dataset['maintitle'];
+        // return {
+        //     title: '我在亚太奥莱发现好店，快来围观',
+        //     path: '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce,
+        //     imgUrl: '/images/zcfxtp.png'
+        // }
+    },
+    RefferStore: function () {
+        wx.navigateTo({
+            url: "../RefferStore/RefferStore"
+        });
+    },
+    GetCheckData: function () {
+        this.setData({
+            DistributionInfo: o.globalData.ReferralInfo
+        });
+    },
+    bindstoreinfo: function () {
+        wx.navigateTo({
+            url: "../storeInfo/storeInfo"
+        });
+    },
+    bindyongjin: function (e) {
+        wx.navigateTo({
+            url: "../Splittin/Splittin"
+        });
+    },
+    bindxiaji: function (e) {
+        wx.navigateTo({
+            url: "../SubMembers/SubMembers"
+        });
+    },
+    goToVip: function () {
+        wx.switchTab({
+            url: '/pages/discovery/discovery'
+        })
     }
+
 });

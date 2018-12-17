@@ -178,7 +178,7 @@ Page({
             title: "提示",
             content: "最少退1件商品",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }); else {
             a -= 1;
             var n = parseFloat(a * t.data.OneReundAmount).toFixed(2);
@@ -194,7 +194,7 @@ Page({
             title: "提示",
             content: "最多退" + n + "件商品",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }); else {
             a += 1;
             var o = parseFloat(a * t.data.OneReundAmount).toFixed(2);
@@ -210,39 +210,39 @@ Page({
             title: "提示",
             content: "请输入正确的退货数量",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }); else if (l > t.data.OneReundAmount * i) wx.showModal({
             title: "提示",
             content: "请输入正确的退款金额,金额必须小于等于" + t.data.OneReundAmount * i + "元",
             showCancel: !1,
-            confirmColor: "#e54e6f"
+            confirmColor: "#db3c40"
         }); else {
             var f = e.detail.value.txtarea, c = t.data.RefundType;
             if (2 == c && (r.length <= 0 || u.length <= 0 || d.length <= 0)) wx.showModal({
                 title: "提示",
                 content: "银行卡信息不允许为空！",
                 showCancel: !1,
-                confirmColor: "#e54e6f"
+                confirmColor: "#db3c40"
             }); else if (c <= 0) wx.showModal({
                 title: "提示",
                 content: "请选择要退款的方式",
                 showCancel: !1,
-                confirmColor: "#e54e6f"
+                confirmColor: "#db3c40"
             }); else if (a < 0) wx.showModal({
                 title: "提示",
                 content: "请选择要退款的原因",
                 showCancel: !1,
-                confirmColor: "#e54e6f"
+                confirmColor: "#db3c40"
             }); else if (o < 0) wx.showModal({
                 title: "提示",
                 content: "请选择售后类型",
                 showCancel: !1,
-                confirmColor: "#e54e6f"
+                confirmColor: "#db3c40"
             }); else if (t.data.OrderId.length <= 0) wx.showModal({
                 title: "提示",
                 content: "请选择要退款的订单",
                 showCancel: !1,
-                confirmColor: "#e54e6f"
+                confirmColor: "#db3c40"
             }); else {
                 t.setData({
                     formId: s,
@@ -285,7 +285,7 @@ Page({
                         title: "提示",
                         content: a.ErrorResponse.ErrorMsg,
                         showCancel: !1,
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         success: function(e) {
                             e.confirm && wx.navigateBack({
                                 delta: 1
@@ -323,7 +323,7 @@ Page({
                 success: function(e) {
                     "OK" == e.data.Status ? wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: e.data.Message,
                         showCancel: !1,
                         success: function(e) {
@@ -335,7 +335,7 @@ Page({
                         url: "../login/login"
                     }) : wx.showModal({
                         title: "提示",
-                        confirmColor: "#e54e6f",
+                        confirmColor: "#db3c40",
                         content: e.data.Message,
                         showCancel: !1,
                         success: function(e) {

@@ -90,7 +90,7 @@
 }
 
 .categroy.active .m {
-    border-left: 4rpx solid #e54e6f;
+    border-left: 4rpx solid #db3c40;
     color: #333;
 }
 
@@ -293,7 +293,7 @@
 .search-rpo-txt-price {
     margin-top: 16rpx;
     font-size: 32rpx;
-    color: #e54e6f;
+    color: #db3c40;
     position: relative;
 }
 
@@ -437,7 +437,7 @@
 
 .sku-item-t .saleprice {
     font-size: 14px;
-    color: #e54e6f;
+    color: #db3c40;
     line-height: 50rpx;
 }
 

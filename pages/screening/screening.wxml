@@ -1,0 +1,62 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view>
+    <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
+</view>
+
+
+
+<view>
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx;'>
+        
+        <view style='padding-top:50rpx'>
+            <view style='padding-left:129rpx;position:relative;'>
+                <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
+                </view>
+                <image wx:if='{{item.isSoldOut}}' src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/qsh/soldout.png' style="width:500rpx;height:350rpx;position:absolute;right:70rpx;top:50rpx;"></image>
+            </view>
+            <view style='padding:12rpx 27rpx 18rpx 129rpx'>
+                <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
+                <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
+                <view style='float:right' wx:if="{{userInfo.IsReferral}}">
+                    <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
+                    <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
+                </view>
+            </view>
+            <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;'>
+                <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
+                    <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                </view>
+
+                <view style='clear:both'></view>
+            </view>
+            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;'>
+                <view style='padding:0 16rpx'>
+                    <text style='color:#b0b0b0;font-size:26rpx'>请选择商品规格下单</text>
+                </view>
+                <view style='padding:0 16rpx'>
+                    <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
+                        <!-- 测试数据 如果没有返回item.count 默认为1  可以点击加购 -->
+                        <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' bindtap='selectSkuId'>
+                            <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
+                        </view>
+                    </view>
+                    <view style='clear:both'></view>
+                </view>
+                <view style='padding:15rpx 15rpx 15rpx 0'>
+                    <!-- <view class="addCart {{goodsSkuId==sku.skuId?' active ':' '}}" style='height:50rpx;width:162rpx;background:#ff0000;border-radius:30rpx;text-align:center;float:right;line-height:50rpx;font-size:26rpx;color:#fff' bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
+                    </view> -->
+                    <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
+                    </view>
+                    <view style='clear:both'></view>
+                </view>
+            </view>
+
+            <view style='height:26rpx'></view>
+        </view>
+    </view>
+</view>
+
+
+    <view class='loadmore loading' wx:if="{{ hasMore }}">正在加载中…</view>
+    <view class='loadmore' wx:else>—— 我也是有底线的 ——</view>

@@ -75,6 +75,7 @@ Page({
         isCss: !0
     },
     onLoad: function(e) {
+        console.log(e)
         this.setAreaData(), this.setAreaData();
         var t = this, i = e.productsku, n = e.buyamount, o = e.frompage, s = e.countdownid, r = e.shipaddressid;
         a.getOpenId(function(e) {

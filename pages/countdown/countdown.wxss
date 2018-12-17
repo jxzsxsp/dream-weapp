@@ -79,7 +79,7 @@ page {
 
 .saleprice {
     float: left;
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .saleprice .price {
@@ -105,7 +105,7 @@ page {
     text-align: center;
     border-radius: 8rpx;
     color: #fff;
-    background: linear-gradient(to right,#e54e6f,#FF3333);
+    background: linear-gradient(to right,#db3c40,#FF3333);
 }
 
 .countdow-start {

@@ -105,7 +105,7 @@ page {
     font-size: 36rpx;
     line-height: 48rpx;
     padding: 24rpx 0;
-    background: linear-gradient(to right,#e54e6f 0%,#FF1919 100%);
+    background: linear-gradient(to right,#db3c40 0%,#FF1919 100%);
     border: none;
 }
 

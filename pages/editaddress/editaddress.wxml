@@ -11,13 +11,41 @@
         <view catchtap="bindFullAddressTap" class="loginpassword borderbott0m padding24">
             <text class="line_height40">所在地区</text>
             <view class="regionname {{FullRegionPath?'':'regionname-color'}}"> {{FullRegionPath?FullRegionPath:'选择省、市、区/街道'}}</view>
-            <view class="iconfont arrow_right arrow_right_w"></view>
+            <!-- <view class="iconfont arrow_right arrow_right_w"></view> -->
         </view>
-        <view catchtap="bindDetailAddressTap" class="loginpassword borderbott0m padding24" data-addressdata="{{Address}}">
+
+
+
+
+
+
+
+        <view class="loginpassword borderbott0m padding24" data-addressdata="{{Address}}">
+            <text class="line_height40">详细地址</text>
+            <!-- <view bindinput="bindDetailAddressTap" class="regionname {{Address?'':'regionname-color'}}">{{Address?Address:'请输入所在小区/大厦/学校'}}</view> -->
+            <input bindinput="bindDetailAddressTap" maxlength="-1" placeholder="请输入所在小区/大厦/学校" type="text" value="{{Address}}"></input>
+            <!-- <view class="iconfont arrow_right arrow_right_w"></view> -->
+        </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <view catchtap="bindDetailAddressTap" class="loginpassword borderbott0m padding24" data-addressdata="{{Address}}">
             <text class="line_height40">详细地址</text>
             <view catchtap="bindDetailAddressTap" class="regionname {{Address?'':'regionname-color'}}">{{Address?Address:'请输入所在小区/大厦/学校'}}</view>
             <view class="iconfont arrow_right arrow_right_w"></view>
-        </view>
+        </view> -->
         <view catchtap="bindNumberTap" class="loginpassword borderbott0m padding24">
             <text class="line_height40">楼牌号</text>
             <input bindinput="bindNumberTap" maxlength="-1" placeholder="请输入楼号/门牌号" type="text" value="{{BuildingNumber}}"></input>
@@ -26,11 +54,34 @@
             <button bindtap="bindSaveTapTap">保存收货地址</button>
         </view>
     </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <view class="page2" hidden="{{!isHidePage1}}" style="transform:translate({{currentPage=='page2'?0:100}}%, 0%) translateZ(0px);">
         <view class="hdonglist">
             <text class="label">详细地址</text>
-            <input bindinput="searchKeyword" focus="{{showPage2}}" placeholder="请输入所在小区/大厦/学校" placeholderClass="placeholderColor" type="text" value="{{Address}}"></input>
-            <text catchtap="delDetailAddr" class="iconfont icon__close close-icon"></text>
+            <input bindinput="bindDetailAddressTap" focus="{{showPage2}}" placeholder="请输入所在小区/大厦/学校" placeholderClass="placeholderColor" type="text" value="{{Address}}"></input>
+            <!-- <text catchtap="delDetailAddr" class="iconfont icon__close close-icon"></text> -->
         </view>
         <view class="aroundAddr">
             <view bindtap="setAddr" class="addr-li" data-fromLatLng="{{item.location.lat}},{{item.location.lng}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}" data-name="{{item.title}}" wx:for="{{searchList}}">

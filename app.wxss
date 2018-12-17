@@ -14,9 +14,8 @@ page {
 
 .bg-white {
     background: #fff;
-    /* color:#e54e6f; */
-    /* color: #f95c27; */
-    color:  #e54e6f;
+    /* color:#db3c40; *//* color: #f95c27; */
+    color: #db3c40;
 }
 
 .icon {
@@ -35,11 +34,16 @@ image {
 }
 
 @font-face {
-    font-family:'iconfont';src:url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.eot');src:url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.eot?#iefix') format('embedded-opentype'),url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.woff') format('woff'),url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.ttf') format('truetype'),url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.svg#icontype') format('svg');
+    font-family: 'iconfont';
+    src: url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.eot');
+    src: url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.eot?#iefix') format('embedded-opentype'),
+         url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.woff') format('woff'),
+         url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.ttf') format('truetype'),
+         url('https://at.alicdn.com/t/font_332840_r8gssbavucrnqaor.svg#icontype') format('svg');
 }
 
 .iconfont {
-    font-family: "iconfont"!important;
+    font-family: "iconfont" !important;
     font-size: 48rpx;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -672,7 +676,7 @@ image {
 }
 
 .w580 {
-    width: 580rpx!important;
+    width: 580rpx !important;
 }
 
 .fl {
@@ -720,12 +724,12 @@ image {
     color: #212121;
 }
 
-.xinzheng button,.xinzheng button::after {
+.xinzheng button, .xinzheng button::after {
     border: none;
 }
 
 .xinzheng button {
-    background: linear-gradient(to right,#fe5722 0%,#ff191b 100%);
+    background: linear-gradient(to right, #fe5722 0%, #ff191b 100%);
     color: #fff;
     width: 100%;
     line-height: 48rpx;
@@ -735,7 +739,7 @@ image {
     border-radius: 0;
 }
 
-.saveaddress button,.saveaddress button::after {
+.saveaddress button, .saveaddress button::after {
     border: none;
 }
 
@@ -743,7 +747,7 @@ image {
     position: fixed;
     bottom: 24rpx;
     left: 0;
-    background: linear-gradient(to right,#fe5722 0%,#ff191b 100%);
+    background: linear-gradient(to right, #fe5722 0%, #ff191b 100%);
     color: #fff;
     width: 100%;
     line-height: 48rpx;
@@ -763,7 +767,7 @@ image {
     line-height: 72rpx;
 }
 
-.product-buy .l,.product-buy .r {
+.product-buy .l, .product-buy .r {
     width: 70rpx;
     float: left;
     color: #ff8a65;
@@ -793,7 +797,7 @@ image {
     z-index: 10;
     bottom: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .comm-stand {
@@ -880,8 +884,8 @@ image {
 }
 
 .comm-item .comm-attr text.active {
-    border: 1rpx solid #e54e6f;
-    background: #e54e6f;
+    border: 1rpx solid #db3c40;
+    background: #db3c40;
     color: #fff;
 }
 
@@ -900,7 +904,7 @@ image {
 }
 
 .comm-stand-shop .product-into .product-price {
-    color: #e54e6f;
+    color: #db3c40;
     font-weight: bold;
     font-size: 36rpx;
     width: 200rpx;
@@ -1045,15 +1049,12 @@ image {
     color: #c3c3c3;
 }
 
-
-
-
-
 /*
- *正在加载公共样式
- *auth： 潘金龙
- *data：2018-12-10
+ * 正在加载公共样式
+ * auth： 潘金龙
+ * data：2018-12-10
 */
+
 .loadmore {
     color: #888;
     font-size: 16px;
@@ -1082,4 +1083,79 @@ image {
     100% {
         transform: rotate(-360deg);
     }
+}
+
+/* 
+ * 单行文本超出显示省略号
+ * auth: 潘金龙
+ * data: 2018/12/13
+ */
+
+.overflowOne {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 
+ *
+ * auth: 潘金龙
+ * data: 2018/12/13
+ */
+
+
+/* 
+ *
+ * auth: 潘金龙
+ * data: 2018/12/13
+ */
+
+ 
+.fixedBtn {
+    position: fixed;
+    bottom: 26rpx;
+    left: 26rpx;
+    width: 96rpx;
+    height: 96rpx;
+    background: rgba(64,64, 64, 0.9);
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 100%; */
+    border-radius: 6rpx;
+}
+.fixedBtn.active {
+    background-color: #db3c40;
+}
+
+
+.fixedBtn image {
+    width:50rpx;
+    height: 50rpx;
+}
+.fixedBtn text {
+    font-size: 10px;
+    color: #fff;
+    padding-top: 6rpx;
+}
+
+
+
+
+
+.fixedBtn button {
+    border: none;
+    background: none;
+    border-radius: 0;
+    color: #fff;
+    font-size: 20rpx;
+    line-height: 48rpx;
+    padding: 26rpx 0;
+    text-align: center;
+}
+
+.fixedBtn button:after {
+    border: none;
 }

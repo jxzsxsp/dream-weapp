@@ -41,7 +41,7 @@ page {
     margin: 0 auto;
     overflow: hidden;
     text-align: center;
-    color: #e54e6f;
+    color: #db3c40;
     border-radius: 8rpx;
     margin-top: 48rpx;
     font-size: 32rpx;

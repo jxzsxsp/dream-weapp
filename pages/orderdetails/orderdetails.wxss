@@ -264,7 +264,7 @@ page {
 }
 
 .jinge .classtext .price {
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .jinge .classtext .price text {
@@ -276,7 +276,7 @@ page {
 .jinge button {
     border: none;
     display: block;
-    background: #e54e6f;
+    background: #db3c40;
     color: #fff;
     height: 98rpx;
     line-height: 98rpx;
@@ -289,7 +289,7 @@ page {
 .tuikuan {
     border: none;
     display: block;
-    background: #e54e6f;
+    background: #db3c40;
     color: #fff;
     height: 98rpx;
     line-height: 98rpx;

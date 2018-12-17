@@ -17,9 +17,14 @@ Page({
         isShowSkuSelectBox: !1,
         index: 0,
         TotalNum: 0,
-        ShowCartIcon: !0
+        ShowCartIcon: !0,
+        imgUrl: ''
     },
     onLoad: function(t) {
+        console.log(t)
+        this.setData ({
+            imgUrl: t.picUrl
+        }) 
         var a = wx.getStorageSync("keyword");
         void 0 == a && (a = "");
         var e = t.cid;

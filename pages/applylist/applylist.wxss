@@ -32,7 +32,7 @@ page {
 
 .item .hd .state {
     float: right;
-    color: #e54e6f;
+    color: #db3c40;
 }
 
 .item .bd {
@@ -140,11 +140,11 @@ page {
 }
 
 .operate .btn-apply {
-    border: 1rpx solid #e54e6f;
+    border: 1rpx solid #db3c40;
     background: #fff;
     width: 120rpx;
     height: 62rpx;
-    color: #e54e6f;
+    color: #db3c40;
     float: right;
     line-height: 62rpx;
     font-size: 28rpx;

@@ -6,22 +6,45 @@ page {
     background: #fff;
 }
 
+.tagtitle {
+    height: 80rpx;
+    text-align: center;
+    display: inline-block;  
+    font-size:26rpx;
+    line-height: 76rpx;
+    color: #fff;
+    margin-left:25rpx;
+    box-sizing: border-box;
+    padding: 0rpx 10rpx;
+}
+.tagtitle view.active {    
+    font-size: 26rpx;
+    color:red;
+    border-bottom: 4rpx solid red;
+    box-sizing: border-box;
+    height: 76rpx;
+    line-height: 76rpx;
+}
+
+
+
 .catetitle {
-    width: 114rpx;
+    /* width: 114rpx; */
     height: 49rpx;
     text-align: center;
     display: inline-block;  
-    font-size:24rpx;
-    line-height: 24rpx;
+    font-size:26rpx;
+    line-height: 26rpx;
     color: #fff;
     margin-left:25rpx;
 }
 .catetitle view.active {    
-    font-size: 24rpx;
+    font-size: 26rpx;
     line-height: 40rpx;
     background: #fff;
-    color: #f96f24;
-    border-radius: 15rpx
+    color: #db3c40;
+    border-radius: 20rpx;
+    padding: 4rpx 18rpx;
 }
 
 .mt80 {
@@ -66,7 +89,7 @@ page {
     right: 24rpx;
     width: 96rpx;
     height: 96rpx;
-    background: #e54e6f;
+    background: #db3c40;
     border-radius: 100%;
 }
 

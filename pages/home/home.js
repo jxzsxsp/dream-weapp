@@ -3,6 +3,7 @@ var t = require("../../utils/config.js"),
 
 Page({
     data: {
+        userInfo: {},
         pageIndex: 1,
         pageSize: 10,
         isDataEnd: !1,
@@ -27,10 +28,14 @@ Page({
         barndRushCate: [],
         hasMore: true,
         topArr: [],
-        bottomArr: []
+        bottomArr: [],
+        toggleText: false,
+        currentId: 0,
+        topLogoList: []
     },
     onShow: function() {
         this.GetShopCart();
+        // this.getCate();
     },
     GetShopCart: function() {
         var t = this,
@@ -67,11 +72,23 @@ Page({
                         choiceProducts: r,
                         TotalNum: a
                     });
+                    if (t.data.TotalNum > 0) {
+                        wx.setTabBarBadge({
+                            index: 3,
+                            text: t.data.TotalNum.toString()
+                        })
+                    }
                 }
             });
         });
     },
     onLoad: function(a) {
+        var tm = this;
+        e.getUserInfo(function(t) {
+            tm.setData({
+                userInfo: t
+            })
+        });
         var r, o, n = this;
         if (e.globalData.userInfo && e.globalData.userInfo.IsReferral) {
             var u = e.globalData.ReferralInfo.ShopName;
@@ -102,66 +119,18 @@ Page({
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
 
+        // 获取置顶前十头像
+        this.getLogo();
 
-        //获取品牌特卖列表        
-        var tm = this;
         // 加载页面获取
-        wx.request({
-            url: e.getUrl("QSHGetListBrandCate"),
-            data: {
-
-            },
-            success: function(res) {
-                tm.setData({
-                    barndRushCate: res.data
-                })
-            }
-        });
-        // wx.request({
-        //     url: e.getUrl("/purchase/qsh/brand/rush/cate"),
-        //     data: {},
-        //     success: function (res) {
-        //         console.log(res)
-
-        //     }
-        // });
-        // wx.request({
-        //     url: e.getUrl("QSHGetListBrandRush"),
-        //     data: {
-        //     },
-        //     success: function(jd) {
-        //         let brandRushList = [];
-        //         jd.data.forEach(o => {
-        //             var obj = {
-        //                 day: '00',
-        //                 hou: '00',
-        //                 min: '00',
-        //                 sec: '00'
-        //             }
-        //             o.countDownTime = obj;
-        //             if (o.rushEndTime != null) {
-        //                 var month = o.rushEndTime.split('-')[1];
-        //                 var day = o.rushEndTime.split('-')[2].split(' ')[0];
-        //                 var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-        //                 var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
-        //                 o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-        //             }
-        //             brandRushList.push(o)
-        //         });
-        //         tm.setData({
-        //             brandRush: brandRushList
-        //         })
-        //     }
-        // });
-
-        this.defaultList();
-        // this.loadMore();
-
+        this.getCate();
         wx.hideNavigationBarLoading();
         // 执行倒计时函数
         this.countDown();
 
+
+
+        
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -225,16 +194,15 @@ Page({
         }
     },
     onShareAppMessage: function(event) {
-
         var barndId = event.target.dataset['brandid'];
         var brandSoruce = event.target.dataset['brandsource'];
         var brandName = event.target.dataset['maintitle'];
+        var brandBg = event.target.dataset['bg'];
         return {
-            title: brandName + '正在清仓特卖，手慢无！',
+            title: '【品牌特卖】' + brandName,
             path: '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce,
-            imgUrl: 'images/zcfxtp.png'
+            imageUrl: brandBg
         }
-
     },
     getHomeData: function(t) {
         var a = this;
@@ -517,6 +485,13 @@ Page({
                     o.setData({
                         TotalNum: t + parseInt(r)
                     });
+
+                    if (o.data.TotalNum > 0) {
+                        wx.setTabBarBadge({
+                            index: 3,
+                            text: o.data.TotalNum.toString()
+                        })
+                    }
                 }
             });
         });
@@ -559,10 +534,9 @@ Page({
         let brandRushList = this.data.brandRush;
         brandRushList.forEach(o => {
             if (o.rushEndTime != null) {
-                var rushEndTime = o.rushEndTime;
+                var rushEndTime = o.rushEndTime.replace('\-', '/').replace('\-', '/');
                 let endTime = new Date(rushEndTime).getTime();
                 //endTime = endTime + 8 * 60 * 60 * 1000;    
-
                 let obj = null;
                 // 如果活动未结束，对时间进行处理
                 if (endTime - newTime > 0) {
@@ -618,12 +592,13 @@ Page({
      */
     onPullDownRefresh: function() {
         this.setData({
-            shopList: [],
-            pageIndex: 0,
+            brandRush: [],
+            pageIndex: 1,
+            dataIndex: 0,
+            selectedCate: "本期特卖",
             hasMore: true
         });
-        // this.loadMore();
-        wx.stopPullDownRefresh;
+        this.getCate();
     },
 
     /**
@@ -635,8 +610,22 @@ Page({
             this.loadMore();
             wx.hideNavigationBarLoading();
         }
-        // this.data.hasMore ? this.loadMore() : "";
+    },
+    getCate: function() {
+        var tm = this;
+        wx.request({
+            url: e.getUrl("QSHGetListBrandCate"),
+            data: {
 
+            },
+            success: function(res) {
+                tm.setData({
+                    barndRushCate: res.data
+                })
+                tm.defaultList();
+                wx.stopPullDownRefresh();
+            }
+        });
     },
     defaultList: function() {
         var tm = this
@@ -644,63 +633,78 @@ Page({
             url: e.getUrl("QSHGetListBrandRushIsHead"),
             data: {},
             success: function(res) {
-                let topArrList = [];
-                res.data.forEach(o => {
-                    var obj = {
-                        day: '00',
-                        hou: '00',
-                        min: '00',
-                        sec: '00'
-                    }
-                    o.countDownTime = obj;
-                    if (o.rushEndTime != null) {
-                        var month = o.rushEndTime.split('-')[1];
-                        var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                        var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                        var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                if (res.data.length > 0) {
+                    let topArrList = [];
+                    res.data.forEach(o => {
+                        var obj = {
+                            day: '00',
+                            hou: '00',
+                            min: '00',
+                            sec: '00'
+                        }
+                        o.countDownTime = obj;
+                        if (o.rushEndTime != null) {
+                            var month = o.rushEndTime.split('-')[1];
+                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                        o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        }
+                        topArrList.push(o)
+                    });
+                    tm.setData({
+                        topArr: topArrList,
+                        brandRush: topArrList
+                    });
+                }
+
+                wx.request({
+                    url: e.getUrl("QSHGetPageBrandRush"),
+                    data: {
+                        pi: ++tm.data.dataIndex,
+                        ps: 10
+                    },
+                    success: function(res) {
+                        if (res.data.length == 10) {
+                            let bottomArrList = [];
+                            res.data.forEach(o => {
+                                var obj = {
+                                    day: '00',
+                                    hou: '00',
+                                    min: '00',
+                                    sec: '00'
+                                }
+                                o.countDownTime = obj;
+                                if (o.rushEndTime != null) {
+                                    var month = o.rushEndTime.split('-')[1];
+                                    var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                                    var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                                    var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                                    o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                                }
+                                bottomArrList.push(o)
+                            });
+                            var newList = tm.data.topArr.concat(bottomArrList)
+                            tm.setData({
+                                bottomArr: bottomArrList,
+                                brandRush: newList
+                            })
+                        } else {
+                            tm.setData({
+                                hasMore: false
+                            })
+                        }
+                        // if (bottomArrList.length == 0) {
+                        //     tm.setData({
+                        //         hasMore: false
+                        //     })
+                        // }
                     }
-                    topArrList.push(o)
-                });
-                tm.setData({
-                    topArr: topArrList
                 })
             }
         });
-        wx.request({
-            url: e.getUrl("QSHGetPageBrandRush"),
-            data: {
-                pi: ++tm.data.dataIndex,
-                ps: 10
-            },
-            success: function(res) {
-                let bottomArrList = [];
-                res.data.forEach(o => {
-                    var obj = {
-                        day: '00',
-                        hou: '00',
-                        min: '00',
-                        sec: '00'
-                    }
-                    o.countDownTime = obj;
-                    if (o.rushEndTime != null) {
-                        var month = o.rushEndTime.split('-')[1];
-                        var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                        var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                        var min = o.rushEndTime.split(' ')[1].split(':')[1];
-                        o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                    }
-                    bottomArrList.push(o)
-                });
 
-                var newList = tm.data.topArr.concat(bottomArrList)
-                tm.setData({
-                    bottomArr: bottomArrList,
-                    brandRush: newList
-                })
-            }
-        })
     },
     loadTop: function() {
         var tm = this;
@@ -709,8 +713,8 @@ Page({
         if (tm.data.selectedCate == "本期特卖") {
             currentUrl = e.getUrl("QSHGetListBrandRushIsHead");
             currentData = {
-                pi: ++this.data.dataIndex,
-                ps: this.data.pageSize
+                // pi: ++this.data.dataIndex,
+                // ps: this.data.pageSize
             }
         } else {
             currentUrl = e.getUrl("QSHGetListBrandRushIsHeadByCate");
@@ -744,6 +748,7 @@ Page({
                 tm.setData({
                     brandRush: brandRushList
                 })
+                tm.loadMore();
             }
         });
     },
@@ -752,83 +757,172 @@ Page({
         // 初始化值
         this.setData({
             dataIndex: 0,
-            selectedCate: event.currentTarget.dataset.catename
+            selectedCate: event.currentTarget.dataset.catename,
+            hasMore: true
         })
 
         var tm = this;
         tm.loadTop();
-        tm.loadMore();
     },
     loadMore: function() {
+        // if (!this.data.hasMore) return;
+        // var tm = this;
+        // var currentUrl = '';
+        // var currentData = {};
+        // if (tm.data.selectedCate == "本期特卖") {
+        //     currentUrl = e.getUrl("QSHGetPageBrandRush");
+        //     currentData = {
+        //         pi: ++this.data.dataIndex,
+        //         ps: this.data.pageSize,
+        //         cate: "本期特卖"
+        //     }
+        // } else {
+        //     currentUrl = e.getUrl("QSHGetPageBrandRushByCate");
+        //     currentData = {
+        //         pi: ++this.data.dataIndex,
+        //         ps: this.data.pageSize,
+        //         cate: this.data.selectedCate
+        //     }
+        // }
+        // // 加载页面数据
+        // wx.request({
+        //     url: currentUrl,
+        //     data: currentData,
+        //     success: function(jd) {
+        //         if (jd.data.length != 0) {
+        //             let brandRushList = [];
+        //             jd.data.forEach(o => {
+        //                 var obj = {
+        //                     day: '00',
+        //                     hou: '00',
+        //                     min: '00',
+        //                     sec: '00'
+        //                 }
+        //                 o.countDownTime = obj;
+        //                 if (o.rushEndTime != null) {
+        //                     var month = o.rushEndTime.split('-')[1];
+        //                     var day = o.rushEndTime.split('-')[2].split(' ')[0];
+        //                     var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+        //                     var min = o.rushEndTime.split(' ')[1].split(':')[1];
+
+        //                     o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+        //                 }
+        //                 brandRushList.push(o)
+        //             });
+        //             tm.setData({
+        //                 brandRush: tm.data.brandRush.concat(brandRushList)
+        //             })
+        //         } else {
+        //             tm.setData({
+        //                 hasMore: false
+        //             })
+        //         }
+        //     }
+        // });
         if (!this.data.hasMore) return;
         var tm = this;
+        // console.log(tm.data.dataIndex);
         var currentUrl = '';
-        var currentData = {};
+        var currentData = {
+            pi: ++this.data.dataIndex,
+            ps: this.data.pageSize,
+            cate: this.data.selectedCate
+        };
         if (tm.data.selectedCate == "本期特卖") {
             currentUrl = e.getUrl("QSHGetPageBrandRush");
-            currentData = {
-                pi: ++this.data.dataIndex,
-                ps: this.data.pageSize,
-                cate: "本期特卖"
-            }
         } else {
             currentUrl = e.getUrl("QSHGetPageBrandRushByCate");
-            currentData = {
-                pi: ++this.data.dataIndex,
-                ps: this.data.pageSize,
-                cate: this.data.selectedCate
-            }
         }
-        // var currentUrl = tm.data.selectedCate == "本期特卖" ? e.getUrl("QSHGetPageBrandRush") : e.getUrl("QSHGetPageBrandRushByCate")
         // 加载页面数据
         wx.request({
             url: currentUrl,
             data: currentData,
             success: function(jd) {
-                let brandRushList = [];
-                jd.data.forEach(o => {
-                    var obj = {
-                        day: '00',
-                        hou: '00',
-                        min: '00',
-                        sec: '00'
-                    }
-                    o.countDownTime = obj;
-                    if (o.rushEndTime != null) {
-                        var month = o.rushEndTime.split('-')[1];
-                        var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                        var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                        var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                if (jd.data.length != 0) {
+                    let brandRushList = [];
+                    jd.data.forEach(o => {
+                        var obj = {
+                            day: '00',
+                            hou: '00',
+                            min: '00',
+                            sec: '00'
+                        }
+                        o.countDownTime = obj;
+                        if (o.rushEndTime != null) {
+                            var month = o.rushEndTime.split('-')[1];
+                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                        o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                    }
-                    brandRushList.push(o)
-                });
-
-                tm.setData({
-                    brandRush: tm.data.brandRush.concat(brandRushList)
-                })
+                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        }
+                        brandRushList.push(o)
+                    });
+                    tm.setData({
+                        brandRush: tm.data.brandRush.concat(brandRushList)
+                    })
+                } else {
+                    tm.setData({
+                        hasMore: false
+                    })
+                }
             }
         });
     },
     copy: function(e) {
         wx.setClipboardData({
             data: e.target.dataset.val,
-            success: function (res) {
+            success: function(res) {
                 wx.showToast({
                     title: '复制成功',
                 });
             }
         });
     },
-  sharemsg:function(o){
-    wx.navigateTo({
-      url: "../addprice/addprice"
-    });
-  },
-  shoppingcart:function(o){
-    wx.navigateTo({
-      url: "../shopcart/shopcart"
-    });
-  }
+    toggleHide: function(e) {
+        // console.log(e.currentTarget.dataset.id)
+        var tm = this;
+        tm.setData({
+            currentId: e.currentTarget.dataset.id,
+            toggleText: !tm.data.toggleText
+        });
+    },
+    happyEarn: function() {
+        wx.navigateTo({
+            url: '/pages/screening/screening?picUrl=https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/6822/31/9032/161822/5c0f578dE04dbed1a/cb0be7a8eabaa9ff.jpg!cr_1125x549_0_72!q70.jpg.dpg&tagId=2',
+        })
+    },
+    getLogo: function() {
+        var tm = this;
+        wx.request({
+            url: e.getUrl("QSHGetTopListBrandRushIsHead"),
+            data: {
+
+            },
+            success: function(jd) {
+                console.log(jd.data)
+                if (jd.data.length != 0) {
+                    let logoList = [];
+                    jd.data.forEach(o => {
+                        // o.countDownTime = obj;
+                        // if (o.rushEndTime != null) {
+                        //     var month = o.rushEndTime.split('-')[1];
+                        //     var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                        //     var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                        //     var min = o.rushEndTime.split(' ')[1].split(':')[1];
+
+                        //     o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        // }
+                        logoList.push(o)
+                    });
+                    
+                    tm.setData({
+                        topLogoList: logoList
+                    })
+                    // tm.loadMore();
+
+                }
+            }
+        });
+    }
 });
