@@ -72,7 +72,7 @@
         "list": [
             {
                 "pagePath": "pages/home/home",
-                "text": "特卖",
+                "text": "首页",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/temai.png",
                 "selectedIconPath": "images/temai_.png"
