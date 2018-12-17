@@ -176,6 +176,6 @@
     </view>
 </view>
 
-<!-- <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
+<view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
     退出登录
-</view> -->
+</view>
