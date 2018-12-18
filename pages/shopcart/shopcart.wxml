@@ -81,7 +81,7 @@
                 <view class="shopcart-total-p ">
                     <text class="saleprice ">¥{{TotalPrice}} </text>
                 </view>
-                (不含运费)
+                (包邮)
             </view>
             <view bindtap="SettlementShopCart" class="shopcart-buy">
                 <text>{{SettlementText}}</text>

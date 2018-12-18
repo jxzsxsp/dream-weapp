@@ -314,6 +314,5 @@ Page({
     onHide: function() {},
     onUnload: function() {},
     onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    onReachBottom: function() {}
 });

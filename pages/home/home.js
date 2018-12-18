@@ -607,10 +607,11 @@ Page({
             brandRush: [],
             pageIndex: 1,
             dataIndex: 0,
-            selectedCate: "全场直播",
+            // selectedCate: "全场直播",
             hasMore: true
         });
-        this.getCate();
+        // this.getCate();
+        this.defaultList();
     },
 
     /**
@@ -768,6 +769,7 @@ Page({
     changeCate: function(event) {
         // 初始化值
         this.setData({
+            brandRush: [],
             dataIndex: 0,
             selectedCate: event.currentTarget.dataset.catename,
             hasMore: true

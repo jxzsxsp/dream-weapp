@@ -31,7 +31,7 @@ Page({
             PageIndex: a
         }), e.loadData(e, !0);
     },
-    onShareAppMessage: function() {},
+    // onShareAppMessage: function() {},
     loadData: function(t, n) {
         wx.showLoading({
             title: "加载中"

@@ -139,16 +139,16 @@ Page({
             url: '/pages/aboutytal/aboutytal',
         })
     },
-    onShareAppMessage: function (event) {
-        // var barndId = event.target.dataset['brandid'];
-        // var brandSoruce = event.target.dataset['brandsource'];
-        // var brandName = event.target.dataset['maintitle'];
-        // return {
-        //     title: '我在亚太奥莱发现好店，快来围观',
-        //     path: '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce,
-        //     imgUrl: '/images/zcfxtp.png'
-        // }
-    },
+    // onShareAppMessage: function (event) {
+    //     var barndId = event.target.dataset['brandid'];
+    //     var brandSoruce = event.target.dataset['brandsource'];
+    //     var brandName = event.target.dataset['maintitle'];
+    //     return {
+    //         title: '我在亚太奥莱发现好店，快来围观',
+    //         path: '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce,
+    //         imgUrl: '/images/zcfxtp.png'
+    //     }
+    // },
     RefferStore: function () {
         wx.navigateTo({
             url: "../RefferStore/RefferStore"

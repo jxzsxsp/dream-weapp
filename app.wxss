@@ -1159,3 +1159,14 @@ image {
 .fixedBtn button:after {
     border: none;
 }
+
+
+
+
+
+/* 滚动条透明 */
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}

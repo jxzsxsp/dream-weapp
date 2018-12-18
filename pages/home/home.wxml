@@ -2,8 +2,8 @@
 <view class="homecont" style="z-index:998;">
 
 
-    <view style='height:60rpx;background-color: #fff;z-index:1000;'>
-        <scroll-view scroll-x style="width: 100%;height:60rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
+    <view style='height:70rpx;background-color: #fff;z-index:1000;'>
+        <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
             <view class="catetitle" bindtap='changeCate' data-cateName='全场直播'>
                 <view class="{{selectedCate=='全场直播'?'active':''}}">全场直播 (1241)</view>
             </view>
@@ -136,7 +136,7 @@
                 <view style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx'>
                     <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix'></image>
                 </view>
-                <view wx:if='{{item.goodsCount}}' style='display:none;width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>{{item.goodsCount? item.goodsCount : 0}}
+                <view wx:if='{{item.goodsCount}}' style='width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>{{item.goodsCount? item.goodsCount : 0}}
                     <text style="font-size:22rpx;color:#959595;">款</text>
                 </view>
 
@@ -166,7 +166,7 @@
                 <view style='padding-left:129rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                     <view style='font-size:28rpx;color:#515151;padding-bottom:16rpx;'>
                         <text bindlongpress='copy' data-length='item.brandDesc.length' class='{{toggleText? "nowrap" : ""}} {{item.brandDesc.length >50 ? "ellipsis" : ""}}' data-val="{{item.brandDesc}}">{{item.brandDesc}}</text>
-                        <text bindtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 50}}'>{{toggleText? "收起" : "全文"}}</text>
+                        <text catchtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 50}}'>{{toggleText? "收起" : "全文"}}</text>
 
                     </view>
                 </view>

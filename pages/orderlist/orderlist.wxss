@@ -57,7 +57,8 @@ page {
 }
 
 .orderzt {
-    width: 220rpx;
+    /* width: 220rpx; */
+    width: 100%;
     text-align: right;
     font-size: 14px;
     color: #db3c40;
@@ -219,4 +220,55 @@ page {
 
 .mt96 {
     margin-top: 96rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.coupontitlel {
+    /* width: 185rpx; */
+    /* text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; */
+    position: relative;
+}
+
+.coupontitlel text {
+    font-size: 24rpx;
+    line-height: 40rpx;
+    color: #424242;
+}
+
+.coupontitlel .order_num {
+    border-radius: 50%;
+    border: 3rpx solid #ff5252;
+    background: #fff;
+    top: 10rpx;
+    position: absolute;
+    right:10rpx;
+    font-size: 20rpx;
+    line-height: 32rpx;
+    padding: 0 8rpx;
+    min-width: 16rpx;
+    text-align: center;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.coupontitlel .order_num text {
+    color: #ff5252;
+    line-height: 32rpx;
 }

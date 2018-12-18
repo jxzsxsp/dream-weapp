@@ -55,7 +55,7 @@
     <view bindtap="bindApply" class="usecdlist">
         <view class="iconfont icon__service-1 "></view>
         <!-- <view class='status-num'>5</view> -->
-        <text>售后单</text>
+        <text>已取消</text>
         <view class="order_num" hidden="{{userInfo.afterSalesCount==0}}">
             <text>{{userInfo.afterSalesCount}}</text>
         </view>

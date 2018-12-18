@@ -3,6 +3,7 @@ var t = getApp();
 Page({
     data: {
         isEmpty: !0,
+        userInfo: {},
         Status: 0,
         OrderList: null,
         AllActive: "active",
@@ -15,10 +16,17 @@ Page({
         nullOrder: t.getRequestUrl + "/Templates/xcxshop/images/nullOrder.png"
     },
     onLoad: function(q) {
+        var tm = this;
         q.ReferralUserId && t.setRefferUserId(q.ReferralUserId);
         var e = q.status;
         "" != q.status && void 0 != q.status || (e = 0), this.setData({
             Status: e
+        });
+
+        t.getUserInfo(function (t) {
+            tm.setData({
+                userInfo: t
+            })
         });
     },
     onReady: function() {},
@@ -163,6 +171,7 @@ Page({
                     pageSize: a.data.PageSize
                 },
                 success: function(t) {
+                    console.log(t.data)
                     if ("OK" == t.data.Status) {
                         var r = t.data.Data;
                         if (i) {

@@ -7,7 +7,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: {}
+        userInfo: {},
+        chooseTitle: true,
+        hasTrial: false
     },
 
     /**
@@ -76,5 +78,21 @@ Page({
             title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
             path: i
         }
+    },
+    changeTitle: function (e) {
+        console.log(e)
+        var tm = this;
+        var flag = tm.data.chooseTitle
+        tm.setData({
+            chooseTitle: !flag
+        })
+    },
+    toTrial: function () {
+        // 申请试用
+        console.log("点击试用")
+        var tm = this;
+        tm.setData({
+            hasTrial: !tm.data.hasTrial
+        })
     }
 })
