@@ -1,3 +1,6 @@
 {
-    "navigationBarTitle": "远程对色"
+    "navigationBarTitle": "远程对色",
+    "usingComponents": {
+        "suspend-button": "/components/suspend-button/suspend-button"
+    }
 }

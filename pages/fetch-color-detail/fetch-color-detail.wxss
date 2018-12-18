@@ -6,6 +6,7 @@
 }
 
 .fetched-color-color {
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
   height: 200rpx;
   width: 200rpx;
   border-radius: 20rpx;
@@ -111,6 +112,26 @@
   width: 15rpx;
   height: 28rpx;
   margin-right: 34rpx;
+}
+
+.go-home-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.go-home-view {
+  color: #252525;
+  border-radius: 2rpx 4rpx 2rpx 2rpx 2rpx;
+  margin-right: 16rpx;
+}
+
+.go-home-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 22rpx;
 }
 
 

@@ -43,6 +43,7 @@
   height: 326rpx;
   width: 326rpx;
   border-radius: 20rpx;
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
 }
 
 .remote-text-container {
@@ -75,11 +76,13 @@
   width: 326rpx;
   height: 326rpx;
   border-radius: 20rpx;
+  background-color: #e6e6e6;
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
 }
 
 .locol-text-container {
   position: absolute;
-  width: 136rpx;
+  width: 150rpx;
   height: 44rpx; 
   bottom: -22rpx;
   left: 90rpx;
@@ -89,8 +92,6 @@
   background: #FFFFFF;
   box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
   border-radius: 21.5rpx;
-  width: 136rpx;
-  height: 44rpx; 
 }
 
 .locol-text {
@@ -106,11 +107,14 @@
   flex-direction: row;
   padding-left: 30rpx;
   margin-top: 100rpx;
+  justify-content: space-between;
+  padding-right: 30rpx;
 }
 
 .remote-detail {
   display: flex;
   flex-direction: column;
+  width: 326rpx;
 }
 
 .remote-hexcolor {
@@ -127,6 +131,26 @@
   font-size: 28rpx;
   color: #252525;
   letter-spacing: 0;
+}
+
+.go-home-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.go-home-view {
+  color: #252525;
+  border-radius: 2rpx 4rpx 2rpx 2rpx 2rpx;
+  margin-right: 16rpx;
+}
+
+.go-home-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 22rpx;
 }
 
 

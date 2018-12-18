@@ -36,14 +36,17 @@ const viewAction = {
     $wx.navigateTo($wx.router.colorList, this.data.pantoneList[data.index])
   },
   // banner 跳转
-  bannerClicked: function (data) {
-    const banner = this.data.bannerList[data.index]
-    const param = {
-      url: encodeURIComponent(banner.targetUrl),
-      title: banner.title
+  bannerClicked: function (data, info) {
+    // 授权成功
+    if (info.userInfo) {
+      const banner = this.data.bannerList[data.index]
+      const param = {
+        url: encodeURIComponent(banner.targetUrl),
+        title: banner.title
+      }
+      $wx.navigateTo($wx.router.webview, param)
     }
-    $wx.navigateTo($wx.router.commonWebview, param)
   }
 }
 
-$Page(null, data, lifeCycle, null, viewAction)
+$Page.register(null, data, lifeCycle, null, viewAction)

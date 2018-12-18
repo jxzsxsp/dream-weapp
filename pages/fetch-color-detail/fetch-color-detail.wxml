@@ -1,18 +1,17 @@
 <view class="container">
-  <suspend-button/>
   <view class="fetched-color-container">
     <view class="fetched-color-color" style="background: {{colorDetail.hexColor}}"/>
     <view class="fetched-color-detail-container">
       <text class="fetched-color-title">{{colorDetail.hexColor}}</text>
-      <text class="fetched-color-subtitle">sRGB:{{colorDetail.rgb}}</text>
+      <text class="fetched-color-subtitle">RGB:{{colorDetail.rgb}}</text>
       <text class="fetched-color-subtitle">LAB:{{colorDetail.lab}}</text>
     </view>
   </view>
 
   <view class="share-button-container">
-    <view class="share-button">
-      <text class="share-button-text">打开 Chame 取色</text>
-    </view>
+    <button class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
+      <text class="share-button-text">打开小蜥取色</text>
+    </button>
   </view>
 
   <view class="relative-color-container">
@@ -29,4 +28,10 @@
     </view>
   </view>
 
+  <suspend-button>
+    <view class="go-home-container">
+      <view class="iconfont icon-tab_index_a go-home-view"/>
+      <text class="go-home-text">回首页</text>
+    </view>
+  </suspend-button>
 </view>

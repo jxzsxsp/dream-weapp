@@ -12,10 +12,15 @@
     </view>
   </view>  
   <view class="color-total-container">
-    <view class="color-container" wx:for="{{colorList}}" wx:key="{{index}}" bind:tap="colorClicked" data-index="{{index}}">
+    <view wx:if="{{colorList.length === 0}}" class="no-color-container">
+      <text class="no-color-title">无匹配的色号</text>
+      <text class="no-color-description">请确认是否输入正确</text>
+      <text class="no-color-description">或者换个色号试试</text>
+    </view>
+    <button class="color-container" wx:for="{{colorList}}" wx:key="{{index}}" bind:tap="colorClicked" data-index="{{index}}">
       <view style="background: {{item.hexColor}}" class="color-color"/>
       <text class="color-title">{{item.name}}</text>
-    </view>
+    </button>
   </view>
 
 </view>

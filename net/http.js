@@ -1,5 +1,10 @@
 import env, {isOnline} from './env'
 import mock from './mock'
+import {$wx} from '../genji4mp/index'
+import urls from './urls/index'
+import {checkParam} from './index';
+import constants from 'constants';
+
 
 class Http {
   constructor () {
@@ -71,7 +76,36 @@ class Http {
       loadingState.totalCount = res.totalCount
       return res.list
     })
+  }
 
+    /**
+   * 获取列表
+   * @param {String} url 请求的url
+   * @param {Object} loadingState 通过 http.defaultLoadingState() 获取
+   * @param {Obejct} data 请求的参数
+   * @param {Bool} isLoading 是否显示加载框
+   */
+  postList (url, loadingState, data, isLoading) {
+    // 没有更多了，直接返回
+    if (!loadingState.hasMore) {
+      return new Promise((resolve) => {
+        resolve([])
+      })
+    }
+
+    let realData = {}
+    // 如果存在data，把上次的请求参数更新
+    if (!!data) {
+      loadingState.param = Object.assign({}, {pageId: loadingState.param.pageId, pageSize: loadingState.param.pageSize}, data)
+    }
+    realData = Object.assign(realData, loadingState.param)
+
+    return this.post(url, realData, isLoading).then((res) => {
+      loadingState.param.pageId += 1
+      loadingState.hasMore = res.hasMore
+      loadingState.totalCount = res.totalCount
+      return res.list
+    })
   }
 
   _getOtherList (baseUrlName, url, loadingState, data, isLoading) {
@@ -127,10 +161,41 @@ class Http {
   }
 
   _request (url, data={}, method, isLoading = true, mockUrl) {
+    // 校验表单参数是否合法
+    let check = {}
+    let param = {}
+    let realData = data
+    for (const key in data) {
+      const element = data[key];
+      if (!!element && typeof(element) === 'object') {
+        if (!element.hasOwnProperty('value')) {
+          console.error('zachary 抛出: 表单校验需要参数 value')
+        }
+        // 设置校验对象
+        let type = element.type || ''
+        let hint = element.hint ? ('请输入' + element.hint) : '请检查参数'
+        check[key] = {
+          type,
+          hint,
+        }
+        // 设置参数对象
+        param[key] = element.value
+        // 修改请求参数
+        realData[key] = element.value
+      }
+    }
+    data = realData
+    if (!checkParam(param, check)) {
+      return new Promise(res => {})
+    }
+
     // 注入mock数据
     if (data && data.hasOwnProperty('mock')) {
       return new Promise((resolve) => {
-        resolve(mock[mockUrl] || {})
+        console.log('----mock请求-------url 为-----'+ url)
+        let res = {...mock[mockUrl], requestParam: data} || {}
+        console.log(res)
+        resolve(res)
       })
     }
 
@@ -141,7 +206,11 @@ class Http {
         mask: true
       })
     }
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
+      // 没有 token 先取出token
+      if (!getApp().globalData.token) {
+        getApp().globalData.token = wx.getStorageSync('token')
+      }
       wx.request({
         url: url,
         method: method,
@@ -149,25 +218,62 @@ class Http {
         header: {
           'appType': 2,
           'content-type': 'application/json',
-          'token': wx.getStorageSync('token')
+          'token': getApp().globalData.token
         },
-        success (res) {
+        success: function (res) {
           if (isLoading) {
             wx.hideLoading()
           }
-          if (res.data.code === 200) {
+
+          if (res.data.code === constants.NET_STATE.SUCCESS) {
             let resData = {}
             if (res.data.data instanceof Array) {
               resData = {list: res.data.data, requestParam: data}
             } else {
               resData = {...res.data.data, requestParam: data}
             }
+
+            // 非线上环境打印请求
             if (!isOnline) {
-              console.log('-----------网络请求的 url 为-----'+ url)
+              console.log('----请求成功-------网络请求的 url 为-----'+ url)
               console.log(resData)
             }
+
             resolve(resData)
+          } else if (res.data.code === constants.NET_STATE.NEED_RELOGIN) {
+            // 没有token，重新登录
+            $wx.app.saveAuthInfo().then(res => {
+              const bindId = res.bindId
+              if (res.code === 1) {
+                // token 失效的情况
+                wx.showToast({
+                  title: '登录过期，请刷新重试',
+                  icon: 'none',
+                  mask: true
+                })
+
+              } else if (res.code === -1) {
+                $wx.showModal({title: '请先登录', content: '本功能需要登录才能体验', showCancel: false}).then(() => {
+                  $wx.switchTab($wx.router.mine)
+                })
+              } else if (res.code === -2) {
+                // 没有绑定手机号的情况
+                $wx.showModal({title: '请绑定手机', content: '本功能需要绑定手机才能体验', showCancel: false}).then(res => {
+                  $wx.navigateTo($wx.router.bindPhone, {bindId})
+                })
+              }
+            })
+
           } else {
+            // 非线上环境打印请求
+            if (!isOnline) {
+              console.log('----请求失败-------网络请求的 url 为-----:'+ url)
+              console.log('----错误请求参数------:')
+              console.log(data)
+              console.log('----错误请求码-------:' + res.data.code)
+              console.log('----错误请求信息------:' + res.data.message)
+            }
+
             wx.showToast({
               title: res.data.message,
               icon: 'none',
@@ -175,9 +281,8 @@ class Http {
             })
             reject(res.data || {})
           }
-        },
+        }.bind(this),
         fail (error) {
-          // console.log('获取数据失败');
           wx.showToast({
             title: '网络出错！',
             icon: 'none',
@@ -188,7 +293,7 @@ class Http {
 
         }
       })
-    })
+    }.bind(this))
   }
 
   // otherRequest
@@ -214,7 +319,7 @@ class Http {
         header: {
           'appType': 2,
           'content-type': 'application/json',
-          'token': wx.getStorageSync('token')
+          'token': getApp().globalData.token
         },
         success (res) {
           if (isLoading) {
@@ -239,45 +344,27 @@ class Http {
   }
 
   // 获取时间戳＋6位随机数
-  _randomNub () {
-    var getTime = new Date().getTime()
-    var random = Math.floor(Math.random() * 1000000)
-    return getTime + '-' + random
-  }
-
-  //  静默登录
-  quietLogin (code) {
-    let data = {code}
-    var url = this.root + '/buyer/user/mini-app/quick-login/v1'
-    this.otherPost(url, data, true).then(res => {
-      if (res.data.code == 200) {
-        wx.setStorageSync('token', res.data.data.token)
-        var lsUserInfo = {
-          avatar: res.data.data.headImgUrl,
-          imNickName: res.data.data.nickName
-        }
-        wx.setStorageSync('lsUserInfo', lsUserInfo)
-      }
-    }, res => {
-      console.log(res)
-    })
-  }
+  // _randomNub () {
+  //   var getTime = new Date().getTime()
+  //   var random = Math.floor(Math.random() * 1000000)
+  //   return getTime + '-' + random
+  // }
 
   // 保存设备信息，为后端交互提供基础信息
-  saveSystemInfo () {
-    if (!wx.getStorageSync('systemInfo')) {
-      var systemInfo = wx.getSystemInfoSync()
-      var param = {
-        'platform': systemInfo.platform,
-        'platformVersion': systemInfo.system,
-        'deviceModel': systemInfo.model,
-        'appType': 2,
-        'appVersion': systemInfo.SDKVersion,
-        'deviceId': systemInfo.brand + '-' + systemInfo.model + '-' + this.randomNub()
-      }
-      wx.setStorageSync('systemInfo', param)
-    }
-  }
+  // saveSystemInfo () {
+  //   if (!wx.getStorageSync('systemInfo')) {
+  //     var systemInfo = wx.getSystemInfoSync()
+  //     var param = {
+  //       'platform': systemInfo.platform,
+  //       'platformVersion': systemInfo.system,
+  //       'deviceModel': systemInfo.model,
+  //       'appType': 2,
+  //       'appVersion': systemInfo.SDKVersion,
+  //       'deviceId': systemInfo.brand + '-' + systemInfo.model + '-' + this.randomNub()
+  //     }
+  //     wx.setStorageSync('systemInfo', param)
+  //   }
+  // }
 }
 
 export default new Http()

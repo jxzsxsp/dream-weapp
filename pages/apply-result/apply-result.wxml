@@ -1,0 +1,9 @@
+<view class="container flex-column center">
+  <image class="image" src="/assets/{{state.image}}.png" />
+  <text class="title">{{state.title}}</text>
+  <text class="sub-title">{{state.subtitle}}</text>
+  <view class="abstract-container flex-column">
+    <image src="/assets/qrcode.png" class="qrcode"/>
+    <text class="snip">关注官方微信公众号，获取最新审核进度</text>
+  </view>
+</view>

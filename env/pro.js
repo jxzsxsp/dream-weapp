@@ -1,6 +1,7 @@
-const isOnline = true
+export const isOnline = false
 
 export default {
-  login: '10.26.4.145',
-  url: 'www.lianshang.com'  //主域名
+  Login: 'https://sso2.lianshang.com',
+  url: 'https://chameleon.lianshang.com',  //主域名
+  Pantone: 'https://colorlab.lianshang.com'
 }

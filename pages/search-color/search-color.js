@@ -1,5 +1,6 @@
 import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
+import utils from '../../utils/index'
 
 const props = {
   loadingState: http.defaultLoadingState()
@@ -15,21 +16,24 @@ const privateMethod = {
   onReachBottom () {
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState)
       .then((res) => {
-        console.log(res)
+        utils.justifyColor(res)
         this.data.searchColorList.push(...res)
         this.setData({
           searchColorList: this.data.searchColorList
         })
       })
   },
-
 }
 
 const viewAction = {
   beginSearch: function (data, value) {
+    if (typeof(value) === 'object') {
+      value = ''
+    }
     this.props.loadingState = http.defaultLoadingState()
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value})
       .then((res) => {
+        utils.justifyColor(res)
         this.setData({
           searchColorList: res,
           isSearching: true
@@ -41,5 +45,5 @@ const viewAction = {
   }
 }
 
-$Page(props, data, null, privateMethod, viewAction)
+$Page.register(props, data, null, privateMethod, viewAction)
 

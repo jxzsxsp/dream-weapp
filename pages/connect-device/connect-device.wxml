@@ -1,0 +1,14 @@
+<view class="container view-container">
+  <image class="background-image" src="/assets/img_line_phone.png" hidden="{{isAdjusting}}"/>
+  <image class="background-image" src="/assets/img_niu.png" hidden="{{!isAdjusting}}"/>
+  <text class="current-state">{{currentStateText}}</text>
+
+  <view class="step-container" hidden="bluetoothOpened">
+    <image class="step-icon" src="/assets/img_bluetooth.png"/>
+    <text class="step-text">请打开蓝牙</text> 
+  </view>
+  <view class="step-container" hidden="{{!bluetoothOpened}}">
+    <image class="step-icon" src="/assets/img_bottom_switch.png"/>
+    <text class="step-text">{{stepText}}</text>
+  </view>
+</view>

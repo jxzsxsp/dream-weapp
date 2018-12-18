@@ -3,7 +3,7 @@ import {http, urls} from '../../net/index'
 
 let props = {
   categoryId: 0,
-  loadingState: http.defaultLoadingState()
+  loadingState: http.defaultLoadingState(24)
 }
 
 let data = {
@@ -39,6 +39,9 @@ let lifeCycle = {
 
 let viewAction = {
   beginSearch: function (data, value) {
+    if (typeof(value) === 'object') {
+      value = ''
+    }
     this.props.loadingState = http.defaultLoadingState()
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {keyword: value, categoryId: this.props.categoryId})
       .then((colorList) => {
@@ -53,4 +56,4 @@ let viewAction = {
   }
 }
 
-$Page(props, data, lifeCycle, privateMethod, viewAction)
+$Page.register(props, data, lifeCycle, privateMethod, viewAction)

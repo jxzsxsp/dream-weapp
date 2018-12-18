@@ -1,29 +1,42 @@
 <view class="container">
   <view class="result-container">
-    <text class="result-title">△ = ?</text>
+    <text class="result-title" wx:if="{{isCompare}}">△ = ?</text>
+    <text class="result-title" wx:else>△ = {{colorDetail.targetColor.comparisonScore}}</text>
     <text class="result-subtitle">值越小代表颜色越接近</text>
   </view>
 
   <view class="color-container">
     <view class="remote-color-container">
-      <view class="remote-color" style="background: {{remoteColorDetail.hexColor}}"/>
+      <view class="remote-color" style="background: {{colorDetail.sourceColor.hexColor}}"/>
       <view class="remote-text-container">
         <text class="remote-text">样本选择</text>
       </view>
     </view>
     <view class="locol-color-container">
-      <view class="locol-color"/>
-      <view class="locol-text-container">
+      <view class="locol-color" style="background: {{colorDetail.targetColor.hexColor}}"/>
+      <button class="locol-text-container" wx:if="{{isCompare}}" open-type="launchApp" app-parameter="{\"router\":1,\"data\":{{sourceId}}}" bind:error="launchAppError">
         <text class="locol-text">去 app</text>
-      </view>
+      </button>
     </view>
   </view>
 
   <view class="detail-container">
     <view class="remote-detail">
-      <text class="remote-hexcolor">{{remoteColorDetail.hexColor}}</text>
-      <text class="remote-detail-color">sRGB: {{remoteColorDetail.rgb}}</text>
-      <text class="remote-detail-color">LAB: {{remoteColorDetail.lab}}</text>
+      <text class="remote-hexcolor">{{colorDetail.sourceColor.hexColor}}</text>
+      <text class="remote-detail-color">RGB: {{colorDetail.sourceColor.rgb}}</text>
+      <text class="remote-detail-color">LAB: {{colorDetail.sourceColor.lab}}</text>
+    </view>
+    <view class="remote-detail" wx:if="{{!isCompare}}">
+      <text class="remote-hexcolor">{{colorDetail.targetColor.hexColor}}</text>
+      <text class="remote-detail-color">RGB: {{colorDetail.targetColor.rgb}}</text>
+      <text class="remote-detail-color">LAB: {{colorDetail.targetColor.lab}}</text>
     </view>
   </view>
+
+  <suspend-button>
+    <view class="go-home-container">
+      <view class="iconfont icon-tab_index_a go-home-view"/>
+      <text class="go-home-text">回首页</text>
+    </view>
+  </suspend-button>
 </view>
