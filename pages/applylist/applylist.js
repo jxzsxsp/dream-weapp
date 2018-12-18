@@ -76,6 +76,5 @@ Page({
     onReachBottom: function() {
         var t = this;
         t.loadData(t, !0);
-    },
-    onShareAppMessage: function() {}
+    }
 });

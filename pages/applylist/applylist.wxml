@@ -39,5 +39,5 @@
 </view>
 <view class="kong" hidden="{{!isEmpty}}">
     <view bindtap="toproduct" class="bg_nullOrder" style="background:url({{nullOrder}}) top center no-repeat; background-size:auto 352rpx"></view>
-    <text>~暂时没有售后订单哦~</text>
+    <text>~暂时没有取消订单哦~</text>
 </view>
