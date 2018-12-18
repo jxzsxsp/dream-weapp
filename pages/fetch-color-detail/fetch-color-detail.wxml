@@ -3,14 +3,14 @@
     <view class="fetched-color-color" style="background: {{colorDetail.hexColor}}"/>
     <view class="fetched-color-detail-container">
       <text class="fetched-color-title">{{colorDetail.hexColor}}</text>
-      <text class="fetched-color-subtitle">sRGB:{{colorDetail.rgb}}</text>
+      <text class="fetched-color-subtitle">RGB:{{colorDetail.rgb}}</text>
       <text class="fetched-color-subtitle">LAB:{{colorDetail.lab}}</text>
     </view>
   </view>
 
   <view class="share-button-container">
-    <button class="share-button" open-type="launchApp" app-parameter="{{colorId}}" bind:error="launchAppError">
-      <text class="share-button-text">打开 Chame 取色</text>
+    <button class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
+      <text class="share-button-text">打开小蜥取色</text>
     </button>
   </view>
 

@@ -1,0 +1,110 @@
+.login-container {
+  height: 300rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.not-login-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-login-text {
+  font-family: PingFangSC-Regular;
+  font-size: 40rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.not-login-button {
+  background: #252525;
+  border: 1rpx solid #979797;
+  box-shadow: 0 2rpx 18rrpx 0 rgba(0,0,0,0.20);
+  border-radius: 32rpx;
+  margin-top: 28rpx;
+  height: 64rpx;
+  width: 253rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-login-button-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.edit-user {
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  margin-right: 10rpx;
+}
+
+.has-login-container {
+  height: 300rpx;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.avatar {
+  height: 140rpx;
+  width: 140rpx;
+  border-radius: 70rpx;
+  margin-left: 40rpx;
+}
+
+.user-name-container {
+  flex: 1;
+}
+
+.user-name {
+  margin-left: 40rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #252525;
+  letter-spacing: 0;
+}
+
+.setting-row-container {
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  align-items: center;
+}
+
+.setting-icon {
+  height: 28rpx;
+  width: 28rpx;
+  margin-left: 66rpx;
+}
+
+.setting-text {
+  margin-left: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #252525;
+  letter-spacing: 0;
+  flex: 1;
+}
+
+.setting-detail {
+  transform: rotate(180deg);
+  margin-right: 40rpx;
+  color: #979797;
+}

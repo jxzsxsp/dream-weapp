@@ -43,6 +43,7 @@
   height: 326rpx;
   width: 326rpx;
   border-radius: 20rpx;
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
 }
 
 .remote-text-container {
@@ -76,6 +77,7 @@
   height: 326rpx;
   border-radius: 20rpx;
   background-color: #e6e6e6;
+  box-shadow: 0 -2rpx 18rpx 0 rgba(0,0,0,0.15);
 }
 
 .locol-text-container {
@@ -105,11 +107,14 @@
   flex-direction: row;
   padding-left: 30rpx;
   margin-top: 100rpx;
+  justify-content: space-between;
+  padding-right: 30rpx;
 }
 
 .remote-detail {
   display: flex;
   flex-direction: column;
+  width: 326rpx;
 }
 
 .remote-hexcolor {

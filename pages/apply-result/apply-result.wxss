@@ -1,0 +1,51 @@
+.center {
+  align-items: center;
+  height: 100%;
+}
+
+.image {
+  height: 150rpx;
+  width: 150rpx;
+  margin-top: 159rpx;
+}
+
+.title {
+  margin-top: 46rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 40rpx;
+  color: #0076FF;
+  text-align: center;
+}
+
+.sub-title {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #888888;
+  text-align: center;
+  line-height: 42rpx;
+  text-align: center;
+  width: 500rpx;
+}
+
+.abstract-container {
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  width: 100%;
+  height: 350rpx;
+  align-items: center;
+}
+
+.qrcode {
+  height: 250rpx;
+  width: 250rpx;
+}
+
+.snip {
+  opacity: 0.5;
+  font-family: PingFangSC-Light;
+  font-size: 24rpx;
+  color: #000000;
+  letter-spacing: 0;
+  text-align: center;
+}
