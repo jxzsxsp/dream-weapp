@@ -34,6 +34,7 @@ Page({
         topLogoList: []
     },
     onShow: function() {
+       
         this.GetShopCart();
         // this.getCate();
     },
@@ -83,6 +84,13 @@ Page({
         });
     },
     onLoad: function(a) {
+        if (a.q) {
+            var q = decodeURIComponent(a.q);
+            var str = q.split("=");
+            console.log(str[1])
+            e.setRefferUserId(str[1]);
+        }
+
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
         var tm = this;
         e.getUserInfo(function(t) {

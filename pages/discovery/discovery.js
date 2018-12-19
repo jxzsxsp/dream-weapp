@@ -27,13 +27,13 @@ Page({
         });
 
 
-        app.getOpenId(function (t) {
+        app.getOpenId(function(t) {
             wx.request({
                 url: app.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
                 },
-                success: function (t) {
+                success: function(t) {
                     app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
@@ -43,7 +43,7 @@ Page({
         // });
     },
 
-    GetCheckData: function () {
+    GetCheckData: function() {
         this.setData({
             DistributionInfo: app.globalData.ReferralInfo
         });
@@ -102,7 +102,7 @@ Page({
             path: i
         }
     },
-    changeTitle: function (e) {
+    changeTitle: function(e) {
         console.log(e)
         var tm = this;
         var flag = tm.data.chooseTitle
@@ -110,10 +110,51 @@ Page({
             chooseTitle: !flag
         })
     },
-    toTrial: function () {
+    toTrial: function() {
         // 申请试用
-        console.log("点击试用")
         var tm = this;
+
+
+        // app.getOpenId(function(t) {
+        //     wx.request({
+        //         url: app.getUrl("GetReferralInfo"),
+        //         data: {
+        //             openId: t
+        //         },
+        //         success: function(t) {
+        //             app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+        //         }
+        //     });
+        // });
+
+
+
+
+
+        // wx.request({
+        //     url: app.getUrl("YTALSignupDistribution"),
+        //     data: {
+        //         openId: tm.data.userInfo.UserId
+        //     },
+        //     success: function () {
+        //         app.getOpenId(function (t) {
+        //             wx.request({
+        //                 url: app.getUrl("GetReferralInfo"),
+        //                 data: {
+        //                     openId: t
+        //                 },
+        //                 success: function (t) {
+        //                     app.globalData.ReferralInfo = t.data.referral_get_response, n.GetCheckData();
+        //                 }
+        //             });
+        //         });
+        //     }
+        // })
+
+
+
+
+
         tm.setData({
             hasTrial: !tm.data.hasTrial
         })
@@ -121,15 +162,15 @@ Page({
 
         // DistributionInfo.ReferralGradeName  接口调用成功
     },
-    changeList: function (e) {
+    changeList: function(e) {
 
 
         var tm = this;
         console.log(e.currentTarget.dataset.flag === tm.data.isDefault);
         if (e.currentTarget.dataset.flag === tm.data.isDefault) return;
-            tm.setData({
-                isDefault: !tm.data.isDefault
-            })
+        tm.setData({
+            isDefault: !tm.data.isDefault
+        })
 
     }
 })
