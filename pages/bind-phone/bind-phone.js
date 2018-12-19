@@ -107,6 +107,7 @@ const viewAction = {
         title: '绑定成功'
       })
       $wx.app.bindPhone().then(() => {
+        this.saveScene()
         this.saveNickname();
         $wx.navigateBack()
       })
@@ -159,6 +160,10 @@ const privateMethod = {
       });
     });
   },
+  saveScene: function () {
+    const scene = wx.getStorageSync('scene') || ''
+    http.post(urls.customerQR, {scene})
+  }
 }
 
 $Page.register(null, data, lifecycle, privateMethod, viewAction)

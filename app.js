@@ -7,8 +7,7 @@ App({
   onLaunch: function (options) {
     if (!!options.query.scene) {
       const customScene = decodeURIComponent(options.query.scene)
-      const param = {customScene, scene: options.scene}
-
+      $wx.setStorageSync('scene', customScene)
     }
 
   
