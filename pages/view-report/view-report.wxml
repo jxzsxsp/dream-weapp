@@ -10,9 +10,9 @@
         <view class="iconfont icon-logo_jianpin logo"></view>
       </view>
       <view class="report-img flex-column">
-      <block wx:if="{{item.outerUrl}}">
-        <image src="{{item.outerUrl}}" 
-        data-url="{{item.outerUrl}}" 
+      <block wx:if="{{item.innerUrl}}">
+        <image src="{{item.innerUrl}}" 
+        data-url="{{item.innerUrl}}" 
         mode="aspectFit" 
         bind:tap="preview" />
       </block>
