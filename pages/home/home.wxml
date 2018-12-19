@@ -202,7 +202,7 @@
                 </view>
                 <view style='padding-left:115rpx'>
                     <!-- 添加分享整场链接 -->
-                    <view style='float:right;width:160rpx;height:65rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
+                    <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
                         <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">分享专场</button>
 
                         <view style='clear:both'></view>

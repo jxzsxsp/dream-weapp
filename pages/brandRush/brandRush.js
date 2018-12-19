@@ -324,6 +324,12 @@ Page({
         // 获取item项的id，和数组的下标值
         let name = e.target.dataset.name,
             index = parseInt(e.target.dataset.index);
+
+
+            
+
+
+
         // 把点击到的某一项，设为当前index
         this.setData({
             selectedTag: name

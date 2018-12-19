@@ -42,10 +42,10 @@
                 </view>
                 <view>
                     <view style='float:left' class='tui-countdown-content'>
-                        <text class='tui-conutdown-box'>{{item.countDownTime.day}}</text>天
+                        <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.day}}</text>天
                         <text class='tui-conutdown-box'>{{item.countDownTime.hou}}</text>时
                         <text class='tui-conutdown-box'>{{item.countDownTime.min}}</text>分
-                        <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.sec}}</text>秒
+                        <text class='tui-conutdown-box'>{{item.countDownTime.sec}}</text>秒
                     </view>
                     <view style='float:right;height:25rpx;font-size:22rpx;color:#515151'>
                         {{item.endTimeInfo}}

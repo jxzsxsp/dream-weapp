@@ -9,7 +9,9 @@ Page({
     data: {
         userInfo: {},
         chooseTitle: true,
-        hasTrial: false
+        hasTrial: false,
+        isDefault: true,
+        DistributionInfo: "",
     },
 
     /**
@@ -23,8 +25,29 @@ Page({
                 userInfo: t
             })
         });
+
+
+        app.getOpenId(function (t) {
+            wx.request({
+                url: app.getUrl("GetReferralInfo"),
+                data: {
+                    openId: t
+                },
+                success: function (t) {
+                    app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+                }
+            });
+        });
+        // tm.setData({
+        //     DistributionInfo: app.globalData.ReferralInfo
+        // });
     },
 
+    GetCheckData: function () {
+        this.setData({
+            DistributionInfo: app.globalData.ReferralInfo
+        });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -94,5 +117,19 @@ Page({
         tm.setData({
             hasTrial: !tm.data.hasTrial
         })
+
+
+        // DistributionInfo.ReferralGradeName  接口调用成功
+    },
+    changeList: function (e) {
+
+
+        var tm = this;
+        console.log(e.currentTarget.dataset.flag === tm.data.isDefault);
+        if (e.currentTarget.dataset.flag === tm.data.isDefault) return;
+            tm.setData({
+                isDefault: !tm.data.isDefault
+            })
+
     }
 })

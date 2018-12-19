@@ -10,6 +10,7 @@
 
 page {
     font-family: microsoft yahei;
+    
 }
 
 .bg-white {

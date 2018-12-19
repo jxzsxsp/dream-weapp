@@ -9,8 +9,8 @@
                 <view class="addressmor pt24 pb24">
                     <view class="addressmorl">
                         <radio class="font28" color="#333333" value="{{item.ShippingId}}">
-            选择地址
-            </radio>
+                            选择地址
+                        </radio>
                     </view>
                     <view catchtap="bindDeleteAddressTap" class="addressmorr" data-shippingid="{{item.ShippingId}}">
                         <view class="iconfont icon__trash"></view>

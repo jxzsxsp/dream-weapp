@@ -74,28 +74,31 @@
 </view> -->
 
 <!-- 替换判断条件 -->
-<view wx:if="{{chooseTitle}}" style='height:100%;'>
-    <view class='chooseTabTitleBox' style='display:flex;flex-flow:row nowrap;font-size:14px;'>
-        <view class='{{chooseTitle? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:1.6;'>试用VIP</view>
-        <view class='{{!chooseTitle? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:1.6;'>终身VIP</view>
+<view wx:if="{{DistributionInfo.ReferralGradeName != '永久会员'}}" style='height:100%;'>
+    <view class='chooseTabTitleBox' style='position:fixed;left:0;top:0;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;'>
+        <view class='{{chooseTitle? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>试用VIP</view>
+        <view class='{{!chooseTitle? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>终身VIP</view>
     </view>
-    <view class='show-box' wx:if='{{chooseTitle}}'>
 
 
 
-        <!-- genggai -->
-        <view class='show-box-1' style='' wx:if='{{hasTrial}}'>
+    <view class='show-box' wx:if='{{chooseTitle}}' style='margin-top:80rpx;'>
+        <!-- 如果当前没有会员信息为空 则提示申请试用 -->
+        <!-- <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'> -->
+
+        <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName}}'>
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial'></image>
 
-            <view class='' style='display:none;position:absolute;bottom:100rpx;width:60%;height:80rpx;line-height:80rpx;border-radius:40rpx;border:1px solid red;margin-left:20%;text-align:center;'>申请免费试用</view>
+            <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;'>申请免费试用</view>
         </view>
 
 
         <view wx:else>
-            <view class='text-box' style='font-size:14px;display:flex;flex-flow:column nowrap;justify-content:space-between;align-items:center;height:100rpx;margin-bottom:100rpx;'>
-                <text style='font-size:16px;margin-bottom:40rpx;'>VIP体验期还有6天</text>
+            <view class='text-box' style='font-size:14px;display:flex;flex-flow:column nowrap;justify-content:space-between;align-items:center;margin-bottom:100rpx;position:relative;padding-top:40rpx;'>
+                <text style='font-size:16px;margin-bottom:25rpx;'>VIP体验期还有<text style='font-size:24px;padding:0 60rpx;'>6</text>天</text>
                 <text style='font-size:14px;'>每消费一笔/每邀请5人即奖励延长5天会员期</text>
                 <text style='font-size:12px;color:#666;'>奖励可累计，上不封顶</text>
+                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vipdjs.png' style='width:750rpx;position:absolute;left:0;top:0;z-index:-1;' mode='widthFix'></image>
             </view>
 
             <!-- 立即邀请按钮 -->
@@ -104,15 +107,15 @@
 
 
             <!-- 下方tab标签 -->
-            <view style='width:50%;;margin:0 auto;font-size:14px;'>
-                <text style='padding:10rpx 50rpx;width:50%;border:1px solid red;box-sizing:border-box;text-align:center;line-height:1.8;' class='active text'>已邀请</text>
-                <text style='padding:10rpx 50rpx;width:50%;border:1px solid red;box-sizing:border-box;text-align:center;line-height:1.8;' class='text'>已购买</text>
+            <view style='width:50%;;margin:0 auto 10rpx auto;font-size:14px;'>
+                <text style='padding:10rpx 50rpx;width:50%;border:1px solid red;box-sizing:border-box;text-align:center;line-height:1.8;' class='{{isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{true}}">已邀请</text>
+                <text style='padding:10rpx 50rpx;width:50%;border:1px solid red;box-sizing:border-box;text-align:center;line-height:1.8;' class='{{!isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{false}}">已购买</text>
 
             </view>
 
 
             <!-- 切换已邀请好友列表显示 -->
-            <view>
+            <view wx:if='{{isDefault}}'>
                 <view style='text-align:center;padding:20rpx;'>
                     <text style='font-size:12px;'>好友点击您的分享页面浏览，即可计入</text>
                 </view>
@@ -126,19 +129,10 @@
                     </view>
                     <view style='line-height:114rpx;box-sizing:border-box;font-size:12px;'>已激活五天</view>
                 </view>
-
-
-
-
-
-                
             </view>
 
-
-
-
             <!-- 切换已购买订单列表显示 -->
-            <view>
+            <view wx:else>
                 <view style='display:flex;flex-flow:row nowarp;border:1px solid #666;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
                     <text style='padding:20rpx;width:120rpx;text-align:center;'>编号</text>
                     <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>1234546131</text>
@@ -185,33 +179,37 @@
 
 
     <!-- 如果当前是永久会员 -->
-    <view wx:else>
-        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
-        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
-
-        <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
-            <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
-        </button>
-        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <view wx:else style='margin-top:80rpx;'>
+        <view>
+            <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' style='width:100%'></image>
+        </view>
+        <view>
+            <navigator url="/pages/productdetail/productdetail?id=148" open-type="redirect" hover-class="other-navigator-hover">
+                <image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' style='width:100%'></image>
+            </navigator>
+            <navigator url="/pages/productdetail/productdetail?id=147" open-type="redirect" hover-class="other-navigator-hover">
+                <image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' style='width:100%'></image>
+            </navigator>
+        </view>
+        <view>
+            <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' style='width:100%'></image>
+        </view>
 
     </view>
 
 </view>
 
-
+<!-- 如果当前是永久会员 -->
 <view wx:else>
-    <view>
-        <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' style='width:100%'></image>
-    </view>
-    <view>
-        <navigator url="/pages/productdetail/productdetail?id=148" open-type="redirect" hover-class="other-navigator-hover">
-            <image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' style='width:100%'></image>
-        </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=147" open-type="redirect" hover-class="other-navigator-hover">
-            <image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' style='width:100%'></image>
-        </navigator>
-    </view>
-    <view>
-        <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' style='width:100%'></image>
-    </view>
+
+
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+
+    <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
+        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </button>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+
+
 </view>

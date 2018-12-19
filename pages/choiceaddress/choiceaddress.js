@@ -76,7 +76,6 @@ Page({
         }) : wx.hideNavigationBarLoading();
     },
     bindEditAddressTap: function(t) {
-        console.log(t);
         var d = t.currentTarget.dataset.addressdata, e = this;
         0 == this.data.IsCheck && wx.redirectTo({
             url: "../editaddress/editaddress?extra=" + JSON.stringify(d) + "&title=编辑收货地址&Source=choiceaddress&productsku=" + e.data.ProductSku + "&buyamount=" + e.data.BuyAmount + "&frompage=" + e.data.FromPage + "&countdownid=" + e.data.CountdownId
@@ -120,7 +119,6 @@ Page({
         });
     },
     onAddressCheck: function(t) {
-        console.log(t);
         var d = t.detail.value;
         this.data.IsCheck = 1, wx.redirectTo({
             url: "../submitorder/submitorder?productsku=" + this.data.ProductSku + "&buyamount=" + this.data.BuyAmount + "&frompage=" + this.data.FromPage + "&countdownid=" + this.data.CountdownId + "&shipaddressid=" + d

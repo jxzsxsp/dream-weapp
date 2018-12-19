@@ -31,7 +31,7 @@
                 <view class="orderhao">订单清单</view>
             </view>
             <block wx:for="{{Suppliers}}" wx:key="item.SupplierId">
-                <view class="supplier">
+                <view class="supplier" style='display:none;'>
                     <view class="supplier-icon">
                         <image class="mt8" hidden="{{item.SupplierId==0}}" mode="widthFix" src="/images/gongyingshang.png" style="width:45rpx;"></image>
                         <image class="mt8" hidden="{{item.SupplierId!=0}}" mode="widthFix" src="/images/icon_platform_v.png" style="width:45rpx;"></image>

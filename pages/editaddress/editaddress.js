@@ -29,9 +29,14 @@ Page({
         ShipAddressId: "",
         FullRegionName: "请填写所在地区",
         isCss: !0,
-        isHidePage1: !1
+        isHidePage1: !1,
+        ProductSku: ""
     },
     onLoad: function (i) {
+        this.setData({
+            ProductSku: i.productsku
+        })
+
         this.setAreaData(), t = new a({
             key: g.globalData.QQMapKey
         });
@@ -130,7 +135,8 @@ Page({
                     cellphone: a.data.CellPhone,
                     regionId: a.data.regionId,
                     BuildingNumber: a.data.BuildingNumber ? a.data.BuildingNumber : "",
-                    latlng: a.data.lat + "," + a.data.lng
+                    latlng: a.data.lat + "," + a.data.lng,
+                    ProductSku: a.data.ProductSku
                 };
                 e.httpPost(g.getUrl(g.globalData.updateShippingAddress), i, a.getEditAddressData);
             }
@@ -153,8 +159,9 @@ Page({
         });
     },
     getEditAddressData: function (t) {
+        var tm = this;
         if (wx.hideNavigationBarLoading(), "NOUser" == t.Message) wx.navigateTo({
-            url: "../login/login"
+            url: "../login/login?ProductSku=" + tm.data.ProductSku
         }); else if ("OK" == t.Status) {
             var e = getCurrentPages(), a = e[e.length - 2], i = this.data.Source, s = "";
             void 0 == i || "" == i ? (s = "../address/address", a.initData(), wx.navigateBack()) : "chooseaddr" == i ? (a.refreshData(),
@@ -337,7 +344,6 @@ Page({
 
         var e = t.detail.value;
         this.data.Address = e;
-        console.log(e)
     },
     bindHidePage2: function () {
         var t = this;

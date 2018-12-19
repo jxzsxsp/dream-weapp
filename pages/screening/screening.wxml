@@ -5,7 +5,7 @@
 
 
 
-<view>
+<view style='width:750rpx;overflow-x: hidden;'>
     <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx;'>
         
         <view style='padding-top:50rpx'>

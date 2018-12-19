@@ -48,7 +48,7 @@
         <view class="orderhao">订单清单</view>
     </view>
     <block wx:for="{{Suppliers}}" wx:key="item.SupplierId">
-        <view class="supplier {{index==0?'mt100':''}}">
+        <!-- <view class="supplier {{index==0?'mt100':''}}">
             <view class="supplier-icon">
                 <block wx:if="{{item.LineItems[index].StoreName.length>0}}">
                     <image class="mt8" mode="widthFix" src="/images/store-16.png" style="width:45rpx;"></image>
@@ -64,7 +64,7 @@
                     <text>{{item.SupplierName}}</text>
                 </block>
             </view>
-        </view>
+        </view> -->
         <view class="orderlistcont {{i+1==item.LineItems.length?'lastitem':''}}" wx:for="{{item.LineItems}}" wx:for-index="i" wx:for-item="items" wx:key="Id">
             <image bindtap="goToProductDetail" data-productid="{{items.ProductId}}" src="{{items.Image}}"></image>
             <view bindtap="goToProductDetail" class="orderlisc" data-productid="{{items.ProductId}}">
