@@ -226,5 +226,5 @@ page {
     height: 100%;
     padding: 10px;
     box-sizing: border-box;
-    background: #fff;
+    background: #f5f5f5;
 }
