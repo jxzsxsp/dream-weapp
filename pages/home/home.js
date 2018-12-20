@@ -632,14 +632,36 @@ Page({
             wx.hideNavigationBarLoading();
         }
     },
+
+
+
+    // getCate: function () {
+    //     var tm = this;
+    //     wx.request({
+    //         url: e.getUrl("YTALGetListBrandCate"),
+    //         data: {
+
+    //         },
+    //         success: function (res) {
+    //             tm.setData({
+    //                 barndRushCate: res.data
+    //             })
+    //             tm.defaultList();
+    //             wx.stopPullDownRefresh();
+    //         }
+    //     });
+    // },
+
+
     getCate: function() {
         var tm = this;
         wx.request({
-            url: e.getUrl("YTALGetListBrandCate"),
+            url: e.getUrl("YTALGetListCateInfoIncludeBrandCount"),
             data: {
-
+                
             },
             success: function(res) {
+                console.log(res)
                 tm.setData({
                     barndRushCate: res.data
                 })
