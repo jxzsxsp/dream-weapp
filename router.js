@@ -12,4 +12,5 @@ export default {
   deviceManager: 'device-manager',
   connectDevice: 'connect-device',
   applyResult: 'apply-result',
+  settingTag: 'setting-tag',
 }
