@@ -9,20 +9,21 @@
   <block wx:for="{{labels}}" wx:key="index">
   <view class='input-item item'>
     <text class='item-text'>{{item}}</text>
-    <view class='close-icon' data-index='{{index}}' bind:tap='removeLabel'>
-      <view class='iconfont icon-ic_close close'></view>
+    <view class='iconfont icon-tag_close close-icon' data-index='{{index}}' bind:tap='removeLabel'>
     </view>
   </view>
   </block>
-  <view class='input-item'>
+  <view wx:if="{{labels.length < maxLabelNum}}" class='input-item'>
     <input 
     value='{{label}}' 
     placeholder='输入标签名…'
     bindinput='inputEvent'
-    bindblur='confirmEvent'
+    bindconfirm='confirmEvent'
     />
   </view>
-  <view class='num-limit'>{{labels.length}}/5</view>
+  <view class='num-limit'>{{labels.length}}/{{maxLabelNum}}</view>
+
+  <view></view>
 </view>
 
 <view class='latest-tag'>

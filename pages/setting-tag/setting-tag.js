@@ -1,6 +1,5 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
-import constant from '../../constant/index'
 
 const props = {
   maxLabelNum: 5,
@@ -8,11 +7,12 @@ const props = {
 }
 
 const data = {
+  maxLabelNum: 5,
   libraryColorId: 1,
   color: '#FD7CB0',
   name: 'PANTONE C 201',
   labels: [],
-  latestLabels: ['注意前后间隙', '标签1', '标签2', '标签3', '标签4', '标签5', '标签6'],
+  latestLabels: [],
   selected: [],
   thinkLabels: [],
   label: ''
@@ -20,6 +20,11 @@ const data = {
 
 const lifecycle = {
   onLoad(query) {
+    this.getLabelList(res => {
+      this.setData({
+        latestLabels: res.labels
+      })
+    })
   },
   onShow() {
     this.checkSelected()
@@ -29,11 +34,11 @@ const lifecycle = {
 const viewAction = {
   complete: function (d, v) {
     console.log(d, v)
-
+    this.setLabel();
   },
   inputEvent: function (d, v) {
     console.log(d, v, this.data.label)
-    if (this.checkLabelTextNum(d)) {
+    if (this.checkLabelTextNum(v)) {
       this.setData({
         label: this.data.label
       })
@@ -43,6 +48,17 @@ const viewAction = {
     this.setData({
       label: v
     })
+
+    let params = {
+      libraryColorId: this.data.libraryColorId,
+      labelName: this.data.label
+    }
+
+    this.getLabelList(res => {
+      this.setData({
+        thinkLabels: res.labels
+      })
+    }, params)
   },
   confirmEvent: function (d, v) {
     console.log(d, v)
@@ -141,6 +157,21 @@ const privateMethods = {
 
     this.setData({
       selected: selected
+    })
+  },
+  getLabelList: function(callback, params) {
+    http.get(urls.labelList, { mock: true, ...params }).then(res => {
+      console.log(res);
+      callback(res);
+    })
+  },
+  setLabel: function () {
+    http.post(urls.setLabel, {
+      mock: true,
+      libraryColorId: this.data.libraryColorId, 
+      labels: this.data.labels
+      }).then(res => {
+      console.log(res);
     })
   }
 }

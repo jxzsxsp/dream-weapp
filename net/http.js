@@ -173,7 +173,7 @@ class Http {
     let realData = data
     for (const key in data) {
       const element = data[key];
-      if (!!element && typeof(element) === 'object') {
+      if (!!element && typeof (element) === 'object' && !Array.isArray(element)) {
         if (!element.hasOwnProperty('value')) {
           console.error('zachary 抛出: 表单校验需要参数 value')
         }
