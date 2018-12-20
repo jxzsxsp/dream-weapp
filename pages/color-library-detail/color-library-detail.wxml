@@ -26,7 +26,12 @@
         <view class="select-color" bind:tap="beginSelect">选择</view>
       </view>
       <!-- 取消多选-占位 -->
-      <view wx:if="{{isMultiSelect}}" style="height: {{canEdit ? '260rpx': '88rpx'}}"/>
+      <!-- <view wx:if="{{isMultiSelect}}" style="height: {{canEdit ? '260rpx': '88rpx'}}"/> -->
+      <view 
+        class="header-placeholder"
+        wx:if="{{isMultiSelect}}"
+        style="animation-name: {{canEdit ? 'short-to-long' : 'long-to-short'}}"
+      />
 
       <!-- cell 的布局 -->
       <view 
@@ -77,8 +82,18 @@
         <view class="select-color" bind:tap="resetSelect">重置</view> 
         <view class="select-color" bind:tap="cancelSelect">取消</view> 
       </view>
-      <scroll-view wx:if="{{canEdit}}">
-
+      <scroll-view 
+        wx:if="{{canEdit}}" 
+        class="flex header-scroll" 
+        style="animation-name: {{canEdit ? 'scroll-short-to-long' : 'scroll-long-to-short'}}"
+        scroll-x
+      >
+        <block wx:for="{{selectedColorList}}" wx:key="id">
+          <view
+            class="scroll-color"
+            style="background: {{item.hexColor}};"
+          />
+        </block>
       </scroll-view>
     </view>
 

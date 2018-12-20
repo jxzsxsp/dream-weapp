@@ -1,8 +1,6 @@
 import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 
-const FIXEDHEADER = 'fixed-header'
-
 const libraryType =  {
   DEFAULT: false,
   CUSTOM: true,
@@ -29,6 +27,8 @@ const data = {
   isCustom: libraryType.CUSTOM,
   // 颜色列表
   colorList: [],
+  // 选中的颜色列表
+  selectedColorList: [],
   // 色库详情
   libraryDetail: {},
   // 全部数量
@@ -75,9 +75,18 @@ const viewAction = {
     if (!this.data.isMultiSelect) {
       return
     }
-    this.data.colorList[d.index].isSelected = !this.data.colorList[d.index].isSelected
+    const selectedColor = this.data.colorList[d.index]
+    this.setSelectedColorList(selectedColor)
+    if (this.data.selectedColorList.length > 0) {
+      this.data.canEdit = true
+    } else {
+      this.data.canEdit = false
+    }
+    selectedColor.isSelected = !selectedColor.isSelected
     this.setData({
-      colorList: this.data.colorList
+      colorList: this.data.colorList,
+      selectedColorList: this.data.selectedColorList,
+      canEdit: this.data.canEdit
     })
   },
   doMore: function (d) {
@@ -145,6 +154,22 @@ const privateMethod = {
         })
       }
     })
+  },
+  // 选中与反选颜色
+  setSelectedColorList: function (selectedColor) {
+    if (selectedColor.isSelected) {
+      let colorIndex = -1
+      this.data.selectedColorList.forEach((value, index) => {
+        if (value.id === selectedColor.id) {
+          colorIndex = index
+        }
+      })
+      if (colorIndex > -1) { 
+        this.data.selectedColorList.splice(colorIndex, 1); 
+      } 
+    } else {
+      this.data.selectedColorList.unshift(selectedColor)
+    }
   }
 }
 
