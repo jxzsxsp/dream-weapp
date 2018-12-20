@@ -224,14 +224,15 @@ Page({
             }
         });
     },
-    getTag: function(event) {
+    getTag: function (event) {
         var tm = this;
         wx.request({
-            url: app.getUrl("YTALGetListBrandRushTagByCate"),
+            url: app.getUrl("YTALGetListBrandRushTagFull"),
             data: {
-                cate: "本期特卖"
+
             },
-            success: function(jd) {
+            success: function (jd) {
+                console.log(jd.data)
                 if (jd.data.length > 0) {
                     let tagList = [];
                     jd.data.forEach(o => {
@@ -247,6 +248,29 @@ Page({
             }
         })
     },
+    // getTag: function(event) {
+    //     var tm = this;
+    //     wx.request({
+    //         url: app.getUrl("YTALGetListBrandRushTagByCate"),
+    //         data: {
+    //             cate: "本期特卖"
+    //         },
+    //         success: function(jd) {
+    //             if (jd.data.length > 0) {
+    //                 let tagList = [];
+    //                 jd.data.forEach(o => {
+    //                     tagList.push(o)
+    //                 });
+    //                 tm.setData({
+    //                     tagList: tagList,
+    //                     selectedTag: jd.data[0]
+    //                 })
+    //                 // tm.getList();
+    //                 tm.rewrite();
+    //             }
+    //         }
+    //     })
+    // },
     getList: function() {
         var tm = this;
         wx.request({

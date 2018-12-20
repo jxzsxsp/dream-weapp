@@ -663,7 +663,8 @@ Page({
             success: function(res) {
                 console.log(res)
                 tm.setData({
-                    barndRushCate: res.data
+                    barndRushCate: res.data,
+                    selectedCate: res.data[0].cateName
                 })
                 tm.defaultList();
                 wx.stopPullDownRefresh();
