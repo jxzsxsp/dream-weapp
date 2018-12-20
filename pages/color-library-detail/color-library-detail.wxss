@@ -148,6 +148,15 @@
   opacity: 0;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 50rpx;
+  text-align: center;
+}
+
+.header-placeholder {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; 
 }
 
 .selected-icon {
@@ -194,6 +203,30 @@
   animation-fill-mode: forwards; 
 }
 
+.header-scroll {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;  
+  height: 172rpx;
+  background: #FFFFFF;
+  white-space: nowrap;
+  border-bottom: 1px solid #DBDBDB;
+}
+
+.scroll-color {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 26rpx; 
+  margin-right: 20rpx;
+  opacity: 0;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-name: fade-in;  
+  display: inline-block;
+}
+
+
+
+
 @keyframes left-to-right {
   to {transform: translateX(60rpx)}
 }
@@ -204,4 +237,24 @@
 
 @keyframes fade-out {
   to {opacity: 0;}
+}
+
+@keyframes short-to-long {
+  from {height: 88rpx; }
+  to {height: 260rpx}
+}
+
+@keyframes long-to-short {
+  from {height: 260rpx}
+  to {height: 88rpx}
+}
+
+@keyframes scroll-short-to-long {
+  from {height: 0rpx;}
+  to {height: 172rpx;}
+}
+
+@keyframes scroll-long-to-short {
+  from {height: 172rpx;}
+  to {height: 0rpx;}
 }
