@@ -31,12 +31,6 @@
                 <view style='clear:both'></view>
 
 
-
-
-
-
-
-
                 <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:750rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
 
                     <image src='http://img.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
@@ -45,14 +39,6 @@
 
 
             </view>
-
-
-
-
-
-
-
-
 
 
             <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;'>
@@ -73,7 +59,7 @@
                 <view style='padding:15rpx 15rpx 15rpx 0'>
                     <!-- <view class="addCart {{goodsSkuId==sku.skuId?' active ':' '}}" style='height:50rpx;width:162rpx;background:#ff0000;border-radius:30rpx;text-align:center;float:right;line-height:50rpx;font-size:26rpx;color:#fff' bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
                     </view> -->
-                    <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
+                    <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-source='{{item.goodsSource}}'>加入购物车
                     </view>
                     <view style='clear:both'></view>
                 </view>
