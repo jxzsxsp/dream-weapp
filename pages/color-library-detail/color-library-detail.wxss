@@ -1,0 +1,177 @@
+.none-container {
+  background-color: rgb(240, 240, 245);
+  height: 100vh;
+}
+
+.none-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 48rpx;
+  color: #A5A5A5;
+  letter-spacing: 1.6rpx;
+  text-align: center;
+}
+
+.none-subtitle {
+  margin-top: 15rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #A5A5A5;
+  letter-spacing: 0.93rpx;
+  text-align: center;
+}
+
+.shared-container {
+  height: 174rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.save-button {
+  width: 670rpx;
+  height: 94rpx;
+  background: #0156FE;
+  border-radius: 16rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 1.35rpx;
+  text-align: center;
+  
+}
+
+.header-container {
+  height: 88rpx;
+}
+
+.multi-select-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  padding: 0 -32rpx 0 32rpx;
+  background-color: #FFFFFF;
+}
+
+.multi-add {
+  width: 218rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #F0F0F5;
+  border-radius: 13rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #4B4B4B;
+  letter-spacing: -0.21rpx;
+}
+
+.multi-delete {
+  width: 218rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #BD061C;
+  border-radius: 13rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: -0.21rpx; 
+}
+
+.body-padding {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+
+.main-title {
+  font-family: PingFangSC-Medium;
+  font-size: 64rpx;
+  color: #000000;
+  letter-spacing: 0.77rpx;
+  line-height: 82rpx;
+}
+
+.edit-icon {
+  margin-left: 40rpx;
+  font-size: 24px;
+}
+
+.main-subtitle {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  line-height: 36rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  height: 108rpx;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  margin-top: 21rpx;
+  margin-right: 100rpx;
+}
+
+.select-color {
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #0156FE;
+  letter-spacing: 0.41rpx;
+  text-align: right;
+}
+
+.detail-text {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #616161;
+  letter-spacing: -0.15rpx;
+}
+
+.fixed-header {
+  position: fixed;
+  width: 687rpx;
+  left: 0;
+  top: 0;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  background-color: #FFFFFF;
+  height: 88rpx;
+}
+
+.color-container {
+  height: 156rpx;
+  align-items: center;
+}
+
+.select-icon {
+  font-size: 20px;
+  opacity: 0;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.color-detail {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  margin-left: -30rpx;
+}
+
+.more-icon {
+  font-size: 20px;
+  opacity: 1;
+  margin-left: 200rpx;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; 
+}
+
+@keyframes left-to-right {
+  to {transform: translateX(30rpx)}
+}
+
+@keyframes fade-in {
+  to {opacity: 1;}
+}
+
+@keyframes fade-out {
+  to {opacity: 0;}
+}

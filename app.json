@@ -12,7 +12,8 @@
     "pages/input-code/input-code",
     "pages/device-manager/device-manager",
     "pages/connect-device/connect-device",
-    "pages/apply-result/apply-result"
+    "pages/apply-result/apply-result",
+    "pages/color-library-detail/color-library-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
