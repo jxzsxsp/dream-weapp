@@ -91,6 +91,53 @@
   right: 40rpx;
 }
 
+.think-list {
+  width: 750rpx;
+  height: 440rpx;
+  position: absolute;
+  left: 0rpx;
+  bottom: -441rpx;
+  background: #FFFFFF;
+}
+
+.think-item {
+  width: 678rpx;
+  height: 88rpx;
+  padding-left: 32rpx;
+  padding-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.think-text {
+  font-family: PingFangSC-Semibold;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0.93rpx;
+}
+
+.think-text text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0.93rpx;
+  line-height: 40rpx;
+}
+
+.line {
+  width: 718rpx;
+  height: 1px;
+  margin-left: 32rpx;
+  background: #F0F0F5;
+}
+
+.xuanze {
+  color: #CBCBCB;
+  font-size: 21.4rpx;
+}
+
 .latest-tag {
   width: 750rpx;
   min-height: 237rpx;

@@ -175,7 +175,7 @@ let colorLibraryDetail = {
 
 let colorLabel = {
   [urls.labelList]: {
-    "labels": ['注意前后间隙', '标签1', '标签2', '标签3', '标签4', '标签5', '标签6']
+    "labels": ['注意前后间隙', '标签1', '标签2', '标签3', '标签4', '标签5', '标签6', '标签5', '标签6']
   },
   [urls.setLabel]: {}
 }

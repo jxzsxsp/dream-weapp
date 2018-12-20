@@ -19,14 +19,15 @@ const data = {
 }
 
 const lifecycle = {
-  onLoad(query) {
+  onLoad: function(query) {
+    console.log(query)
     this.getLabelList(res => {
       this.setData({
         latestLabels: res.labels
       })
     })
   },
-  onShow() {
+  onShow: function() {
     this.checkSelected()
   }
 }
@@ -38,6 +39,7 @@ const viewAction = {
   },
   inputEvent: function (d, v) {
     console.log(d, v, this.data.label)
+
     if (this.checkLabelTextNum(v)) {
       this.setData({
         label: this.data.label
@@ -49,16 +51,22 @@ const viewAction = {
       label: v
     })
 
-    let params = {
-      libraryColorId: this.data.libraryColorId,
-      labelName: this.data.label
-    }
+    if (!!this.data.label) {
+      let params = {
+        libraryColorId: this.data.libraryColorId,
+        labelName: this.data.label
+      }
 
-    this.getLabelList(res => {
+      this.getLabelList(res => {
+        this.setData({
+          thinkLabels: res.labels
+        })
+      }, params)
+    } else {
       this.setData({
-        thinkLabels: res.labels
+        thinkLabels: []
       })
-    }, params)
+    }
   },
   confirmEvent: function (d, v) {
     console.log(d, v)
@@ -78,6 +86,7 @@ const viewAction = {
     labels.push(v)
     this.setData({
       labels: labels,
+      thinkLabels: [],
       label: ''
     })
 
@@ -108,6 +117,31 @@ const viewAction = {
     labels.push(d.label)
     this.setData({
       labels: labels
+    })
+
+    this.checkSelected()
+  },
+  selectThink: function (d, v) {
+    console.log(d, v)
+
+    let labels = this.data.labels
+
+    this.setData({
+      thinkLabels: [],
+      label: ''
+    })
+
+    if (labels.indexOf(d.label) > -1) {
+      return
+    }
+
+    if (this.checkLabelNum()) {
+      return
+    }
+
+    labels.push(d.label)
+    this.setData({
+      labels: labels,
     })
 
     this.checkSelected()

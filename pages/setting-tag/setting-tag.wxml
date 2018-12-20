@@ -9,7 +9,7 @@
   <block wx:for="{{labels}}" wx:key="index">
   <view class='input-item item'>
     <text class='item-text'>{{item}}</text>
-    <view class='iconfont icon-tag_close close-icon' data-index='{{index}}' bind:tap='removeLabel'>
+    <view class='iconfont icon-xiaochacha close-icon' data-index='{{index}}' bind:tap='removeLabel'>
     </view>
   </view>
   </block>
@@ -23,7 +23,18 @@
   </view>
   <view class='num-limit'>{{labels.length}}/{{maxLabelNum}}</view>
 
-  <view></view>
+  <scroll-view wx:if="{{!!thinkLabels && thinkLabels.length > 0}}" scroll-y class='think-list'>
+    <wxs src="./setting-tag.wxs" module="tools" />
+    <block wx:for="{{thinkLabels}}" wx:key="index">
+    <view wx:if="{{index > 0}}" class='line'></view>
+    <view class='think-item' data-label='{{item}}' bind:tap="selectThink">
+      <view class='think-text'>
+        {{label}}<text>{{tools.subItem(item, label)}}</text>
+      </view>
+      <view class='iconfont icon-xuanze xuanze'></view>
+    </view>
+    </block>
+  </scroll-view>
 </view>
 
 <view class='latest-tag'>

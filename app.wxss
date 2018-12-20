@@ -153,5 +153,5 @@
 
 .icon-chuangjian:before { content: "\e919"; }
 
-.icon-tag_close:before { content: "\e91a"; }
+.icon-xiaochacha:before { content: "\e91a"; }
 

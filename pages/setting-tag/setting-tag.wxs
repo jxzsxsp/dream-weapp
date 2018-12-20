@@ -1,0 +1,6 @@
+var subItem = function (item, label) {
+  return item.substring(label.length);
+}
+module.exports = {
+  subItem: subItem,
+};
