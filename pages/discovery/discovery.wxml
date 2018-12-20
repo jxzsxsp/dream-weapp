@@ -76,17 +76,17 @@
 <!-- 替换判断条件 -->
 <view wx:if="{{DistributionInfo.ReferralGradeName != '永久会员'}}" style='height:100%;'>
     <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:0;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;'>
-        <view class='{{chooseTitle? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>试用VIP</view>
-        <view class='{{!chooseTitle? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>终身VIP</view>
+        <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
+        <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
     </view>
 
 
 
-    <view class='show-box' wx:if='{{chooseTitle}}' style='margin-top:80rpx;'>
+    <view class='show-box' wx:if='{{isForever}}' style='margin-top:80rpx;'>
         <!-- 如果当前没有会员信息为空 则提示申请试用 -->
-        <!-- <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'> -->
+        <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
 
-        <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName}}'>
+        <!-- <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName}}'> -->
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
 
             <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;' lazy-load>申请免费试用</view>

@@ -12,6 +12,7 @@ Page({
         hasTrial: false,
         isDefault: true,
         DistributionInfo: "",
+        isForever: true
     },
 
     /**
@@ -96,7 +97,7 @@ Page({
     onShareAppMessage: function() {
         var i = '/pages/discovery/discovery?from=menu';
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        console.log(i);
+        // console.log(i);
         return {
             title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
             path: i,
@@ -104,70 +105,50 @@ Page({
         }
     },
     changeTitle: function(e) {
-        console.log(e)
         var tm = this;
-        var flag = tm.data.chooseTitle
+        if (e.currentTarget.dataset.flag === tm.data.isForever) return;
         tm.setData({
-            chooseTitle: !flag
+            isForever: !tm.data.isForever
         })
+
+
+
+        // var flag = tm.data.chooseTitle
+        // tm.setData({
+        //     chooseTitle: !flag
+        // })
     },
     toTrial: function() {
-        // 申请试用
+        // 申请试用vip
         var tm = this;
-
-
-        // app.getOpenId(function(t) {
-        //     wx.request({
-        //         url: app.getUrl("GetReferralInfo"),
-        //         data: {
-        //             openId: t
-        //         },
-        //         success: function(t) {
-        //             app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
-        //         }
-        //     });
-        // });
-
-
-
-
-
-        // wx.request({
-        //     url: app.getUrl("YTALSignupDistribution"),
-        //     data: {
-        //         openId: tm.data.userInfo.UserId
-        //     },
-        //     success: function () {
-        //         app.getOpenId(function (t) {
-        //             wx.request({
-        //                 url: app.getUrl("GetReferralInfo"),
-        //                 data: {
-        //                     openId: t
-        //                 },
-        //                 success: function (t) {
-        //                     app.globalData.ReferralInfo = t.data.referral_get_response, n.GetCheckData();
-        //                 }
-        //             });
-        //         });
-        //     }
-        // })
-
-
-
-
-
-        tm.setData({
-            hasTrial: !tm.data.hasTrial
-        })
-
-
-        // DistributionInfo.ReferralGradeName  接口调用成功
+        wx.request({
+            url: app.getUrl("YTALSignupDistribution"),
+            data: {
+                openId: tm.data.userInfo.OpenId
+            },
+            success: function(res) {
+                app.getOpenId(function() {
+                    wx.request({
+                        url: app.getUrl("GetReferralInfo"),
+                        data: {
+                            openId: tm.data.userInfo.OpenId
+                        },
+                        success: function(t) {
+                            wx.showModal({
+                                title: '提示',
+                                content: '领取成功',
+                            })
+                            app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+                        }
+                    });
+                });
+            }
+        });
     },
     changeList: function(e) {
 
 
         var tm = this;
-        console.log(e.currentTarget.dataset.flag === tm.data.isDefault);
         if (e.currentTarget.dataset.flag === tm.data.isDefault) return;
         tm.setData({
             isDefault: !tm.data.isDefault
