@@ -26,7 +26,6 @@
         <view class="select-color" bind:tap="beginSelect">选择</view>
       </view>
       <!-- 取消多选-占位 -->
-      <!-- <view wx:if="{{isMultiSelect}}" style="height: {{canEdit ? '260rpx': '88rpx'}}"/> -->
       <view 
         class="header-placeholder"
         wx:if="{{isMultiSelect}}"
