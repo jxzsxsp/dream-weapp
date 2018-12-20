@@ -12,6 +12,8 @@ const props = {
   loadingState: http.defaultLoadingState(),
   // 颜色库id
   libraryId: 0,
+  // 当前滚动量
+  scrollTop: 0,
 }
 
 const data = {
@@ -38,16 +40,7 @@ const data = {
 const lifeCycle = {
   onLoad: function (query) {
     this.props.libraryId = query.id
-    http.getList(urls.colorLibraryDetail, this.props.loadingState, {mock: true}).then(res => {
-      $wx.setNavigationBarTitle({
-        title: this.props.loadingState.others.library.name
-      })
-      this.setData({
-        colorList: res,
-        libraryDetail: this.props.loadingState.others.library,
-        totalCount: this.props.loadingState.totalCount,
-      })
-    })
+    this.getColorList()
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
@@ -55,27 +48,15 @@ const lifeCycle = {
     if (this.data.isMultiSelect) {
       return
     }
-    let query = wx.createSelectorQuery()
-    query.select('#select').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(res => {
-      console.log(res[0].top)
-      if (res[0].top <= 0 && this.data.hideBeginSelect === true) {
-        this.setData({
-          hideBeginSelect: false
-        })
-      } else if (res[0].top > 0 && this.data.hideBeginSelect !== true) {
-        this.setData({
-          hideBeginSelect: true
-        })
-      }
-    })
+    this.showHeader()
+  },
+  onReachBottom: function () {
+    this.getColorList()
   }
-
 }
 
 const viewAction = {
-  selectColor: function () {
+  beginSelect: function () {
     this.setData({
       isMultiSelect: !this.data.isMultiSelect
     })
@@ -87,13 +68,84 @@ const viewAction = {
     // 必须手动滚动一像素，否则可能会有两个开始选择标题栏
     wx.pageScrollTo({scrollTop: this.props.scrollTop + 1})
   },
-  test: function () {
-    console.log('haha')
-  }
+  resetSelect: function () {
+
+  },
+  selectColor: function (d) {
+    if (!this.data.isMultiSelect) {
+      return
+    }
+    this.data.colorList[d.index].isSelected = !this.data.colorList[d.index].isSelected
+    this.setData({
+      colorList: this.data.colorList
+    })
+  },
+  doMore: function (d) {
+    if (this.data.isMultiSelect) {
+      return
+    }
+  },
+  editLibrary: function () {
+
+  },
+  shareLibrary: function () {
+
+  },
 }
 
 const privateMethod = {
-
+  // 获取完整的 label
+  getFullLabel: function (labelList) {
+    if (!labelList || labelList.length === 0) {
+      return ''
+    }
+    switch (labelList.length) {
+      case 1:
+        return labelList[0].name
+      case 2:
+        return labelList[0].name + '·' + labelList[1].name
+      default:
+        return labelList[0].name + '·' + labelList[1].name + '·' + labelList[2].name
+    }
+  },
+  // 获取类表
+  getColorList: function () {
+    http.getList(urls.colorLibraryDetail, this.props.loadingState, {mock: true}).then(res => {
+      $wx.setNavigationBarTitle({
+        title: this.props.loadingState.others.library.name
+      })
+      const colorList = res.map((item) => {
+        item.isSelected = false
+        item.fullLabel = this.getFullLabel(item.labelList)
+        return item
+      })
+      colorList.forEach(element => {
+        this.data.colorList.push(element)
+      });
+      this.setData({
+        colorList: this.data.colorList,
+        libraryDetail: this.props.loadingState.others.library,
+        totalCount: this.props.loadingState.totalCount,
+      }) 
+    })
+  },
+  // 控制是否显示悬浮头部
+  showHeader: function () {
+    let query = wx.createSelectorQuery()
+    query.select('#select').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(res => {
+      if (res[0].top <= 0 && this.data.hideBeginSelect === true) {
+        this.setData({
+          hideBeginSelect: false
+        })
+      } else if (res[0].top > 0 && this.data.hideBeginSelect !== true) {
+        this.setData({
+          hideBeginSelect: true
+        })
+      }
+    })
+  }
 }
 
 $Page.register(props, data, lifeCycle, privateMethod, viewAction)
