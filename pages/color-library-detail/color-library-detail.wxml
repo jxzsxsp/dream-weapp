@@ -14,8 +14,8 @@
         <view class="flex-between-center">
           <text class="main-title">{{libraryDetail.name}}</text>
           <view wx:if="{{!isShared}}" class="flex">
-            <view wx:if="{{isCustom}}" class="iconfont icon-bianji edit-icon"/>
-            <view class="iconfont icon-fenxiang edit-icon"/>
+            <view wx:if="{{isCustom}}" class="iconfont icon-bianji edit-icon" bind:tap="editLibrary"/>
+            <view class="iconfont icon-fenxiang edit-icon" bind:tap="shareLibrary"/>
           </view>
         </view>
         <text class="main-subtitle">{{libraryDetail.description}}</text>
@@ -23,7 +23,7 @@
       <!-- 开始选择-占位 -->
       <view wx:if="{{!isMultiSelect}}" id="select" class="flex-between-center header-container">
         <text class="detail-text">{{totalCount}}个颜色</text>
-        <view class="select-color" bind:tap="selectColor">选择</view>
+        <view class="select-color" bind:tap="beginSelect">选择</view>
       </view>
       <!-- 取消多选-占位 -->
       <view wx:if="{{isMultiSelect}}" style="height: {{canEdit ? '260rpx': '88rpx'}}"/>
@@ -35,32 +35,46 @@
         class="flex color-container" 
       >
         <view 
-          class="iconfont icon-quangouxuan select-icon" 
-          bind:tap="test"
+          class="iconfont {{item.isSelected ? 'icon-quangouxuan selected-icon' : 'icon-quan'}}  select-icon-base" 
+          bind:tap="selectColor"
+          data-index="{{index}}"
           style="animation-name:{{isMultiSelect ? 'fade-in' : ''}}"
         />
-        <text 
-          class="color-detail"
-          style="animation-name: {{isMultiSelect ? 'left-to-right' : ''}}"
-        >测试一下</text>
         <view 
-          class="iconfont icon-quangouxuan more-icon" 
-          bind:tap="test"
+          class="color-detail-container flex" 
+          style="animation-name: {{isMultiSelect ? 'left-to-right' : ''}}"
+        >
+          <view 
+            class="color-color" 
+            style="background: {{item.hexColor}}"
+          />
+          <view class="flex-column color-name-container">
+            <text class="color-title">{{item.name}}</text>
+            <text class="color-subtitle">{{item.fullLabel}}</text>
+          </view>
+        </view>
+        <view 
+          class="iconfont icon-gengduo more-icon" 
+          bind:tap="doMore"
+          data-index="{{index}}"
           style="animation-name:{{isMultiSelect ? 'fade-out' : ''}}"
         />
       </view>
+      <!-- 底部占位 -->
+      <view wx:if="{{isShared}}" style="height:174rpx"/>
+      <view wx:if="{{isMultiSelect}}" style="height:120rpx"/>
     </view>
 
     <!-- 开始选择-顶部悬停 -->
     <view wx:if="{{!isMultiSelect}}" class="flex-between-center fixed-header" style="display: {{hideBeginSelect ? 'none' : 'flex'}}">
       <text class="detail-text">{{totalCount}}个颜色</text>
-      <view class="select-color" bind:tap="selectColor">选择</view>
+      <view class="select-color" bind:tap="beginSelect">选择</view>
     </view>
 
     <!-- 取消多选-顶部悬停  -->
     <view wx:if="{{isMultiSelect}}"  class="fixed-header">
       <view class="flex-between-center header-container">
-        <view class="select-color" bind:tap="selectColor">重置</view> 
+        <view class="select-color" bind:tap="resetSelect">重置</view> 
         <view class="select-color" bind:tap="cancelSelect">取消</view> 
       </view>
       <scroll-view wx:if="{{canEdit}}">
@@ -73,9 +87,9 @@
       <button class="save-button button">收藏颜色库</button>
     </view>
     <view wx:if="{{isMultiSelect}}" class="multi-select-container flex-between-center">
-      <button class="multi-add button" disabled="{{canEdit}}">添加到</button>
-      <button class="multi-add button" disabled="{{canEdit}}">移动到</button>
-      <button class="multi-delete button" disabled="{{canEdit}}">删除</button>
+      <button class="multi-add button" disabled="{{!canEdit}}">添加到</button>
+      <button class="multi-add button" disabled="{{!canEdit}}">移动到</button>
+      <button class="multi-delete button" disabled="{{!canEdit}}">删除</button>
     </view>
   </view>
 </view>
