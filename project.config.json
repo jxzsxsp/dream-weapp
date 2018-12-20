@@ -107,6 +107,16 @@
 				},
 				{
 					"id": -1,
+					"name": "颜色库详情",
+					"pathName": "pages/color-library-detail/color-library-detail",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": -1,
 					"name": "设置标签",
 					"pathName": "pages/setting-tag/setting-tag"
 				}

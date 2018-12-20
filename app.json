@@ -1,5 +1,5 @@
 {
-  "pages": [
+  "pages":[
     "pages/index/index",
     "pages/search-color/search-color",
     "pages/color-detail/color-detail",
@@ -13,6 +13,7 @@
     "pages/device-manager/device-manager",
     "pages/connect-device/connect-device",
     "pages/apply-result/apply-result",
+    "pages/color-library-detail/color-library-detail",
     "pages/setting-tag/setting-tag"
   ],
   "window": {

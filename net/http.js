@@ -74,6 +74,12 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
+      loadingState.others = {}
+      for (const key in res) {
+        if (key !== 'hasMore' && key !== 'totalCount && key !== list') {
+          loadingState.others[key] = res[key]
+        }
+      }
       return res.list
     })
   }
