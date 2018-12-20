@@ -17,7 +17,8 @@ Page({
         dataIndex: 0,
         dataSize: 20,
         hasMore: true,
-
+        selectedTag: "",
+        selectedImg: "http://m.360buyimg.com/mobilecms/s750x366_jfs/t1/6326/25/9872/92392/5c16504fE2790aba9/104958c5e6199f71.jpg!cr_1125x549_0_72!q70.jpg.dpg",
 
         // 重写
         curNav: 1,
@@ -232,7 +233,6 @@ Page({
 
             },
             success: function (jd) {
-                console.log(jd.data)
                 if (jd.data.length > 0) {
                     let tagList = [];
                     jd.data.forEach(o => {
@@ -240,7 +240,8 @@ Page({
                     });
                     tm.setData({
                         tagList: tagList,
-                        selectedTag: jd.data[0]
+                        selectedTag: jd.data[0].tagName,
+                        selectedImg: jd.data[0].titlePic
                     })
                     // tm.getList();
                     tm.rewrite();
@@ -348,7 +349,7 @@ Page({
         // 获取item项的id，和数组的下标值
         let name = e.target.dataset.name,
             index = parseInt(e.target.dataset.index);
-
+        let img = e.target.dataset.img
 
             
 
@@ -356,29 +357,38 @@ Page({
 
         // 把点击到的某一项，设为当前index
         this.setData({
-            selectedTag: name
+            selectedTag: name,
+            selectedImg: img
         });
         this.rewrite();
     },
     rewrite: function() {
         var tm = this
-        wx.request({
-            url: app.getUrl('YTALGetListBrandRushTagShort'),
-            data: {
-                tag: tm.data.selectedTag
-            },
-            success: function(jd) {
-                if (jd.data.length <= 0) return;
-                let brandRushList = [];
-                jd.data.forEach(o => {
-                    brandRushList.push(o)
-                });
-                // var newList = tm.data.brandRush.concat(brandRushList)
-                tm.setData({
-                    brandRush: brandRushList
-                })
-                wx.stopPullDownRefresh();
-            }
-        })
+
+
+
+
+
+
+        // 接口调整以后开放 short短接口
+        // wx.request({
+        //     url: app.getUrl('YTALGetListBrandRushIsHeadByTag'),
+        //     data: {
+        //         tag: tm.data.selectedTag
+        //     },
+        //     success: function(jd) {
+        //         console.log(jd.data)
+        //         if (jd.data.length <= 0) return;
+        //         let brandRushList = [];
+        //         jd.data.forEach(o => {
+        //             brandRushList.push(o)
+        //         });
+        //         // var newList = tm.data.brandRush.concat(brandRushList)
+        //         tm.setData({
+        //             brandRush: brandRushList
+        //         })
+        //         wx.stopPullDownRefresh();
+        //     }
+        // })
     }
 })

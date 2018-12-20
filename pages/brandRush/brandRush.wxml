@@ -91,8 +91,8 @@
                 <!--当前项的id等于item项的id，那个就是当前状态-->
                 <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
                 <!-- <view class="nav_left_items {{selectedCate==item?'active':''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item}}</view> -->
-                <view class="nav_left_items {{selectedTag==item?'active':''}}" catchtap="switchRightTab" data-name="{{item}}">
-                    <view class='brcontainer' catchtap="switchRightTab" data-name="{{item}}">{{item}}</view>
+                <view class="nav_left_items {{selectedTag==item.tagName?'active':''}}" catchtap="switchRightTab" data-name="{{item.tagName}}" data-img="{{item.titlePic}}">
+                    <view class='brcontainer' catchtap="switchRightTab" data-name="{{item.tagName}}" data-img="{{item.titlePic}}">{{item.tagName}}</view>
                 </view>
             </block>
         </scroll-view>
@@ -100,7 +100,7 @@
     </view>
     <!--右侧栏-->
     <view class="nav_right">
-        <image style='width:100%;margin-bottom:30rpx;' src='//m.360buyimg.com/mobilecms/s750x366_jfs/t1/6326/25/9872/92392/5c16504fE2790aba9/104958c5e6199f71.jpg!cr_1125x549_0_72!q70.jpg.dpg' mode='widthFix'></image>
+        <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image>
         <!--如果有数据，才遍历项-->
         <view wx:if="{{brandRush}}" style='display:flex;flex-flow:row wrap;'>
             <block wx:for="{{brandRush}}">
@@ -118,6 +118,7 @@
                         <!--如果有文字，就用文字；无文字就用其他-->
                         <view wx:if="{{item.mainTitle}}" class='overflowOne' style='font-size:10px;max-width:140rpx;'>
                             <text>{{item.mainTitle}}</text>
+                            <text style='display:none;'>{{item.LowerDiscount}}</text>
                         </view>
                         <view wx:else>
                             <text>{{item.tree.desc2}}</text>

@@ -661,7 +661,6 @@ Page({
                 
             },
             success: function(res) {
-                console.log(res)
                 tm.setData({
                     barndRushCate: res.data,
                     selectedCate: res.data[0].cateName

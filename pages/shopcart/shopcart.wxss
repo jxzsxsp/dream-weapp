@@ -66,7 +66,8 @@ page {
 .shopcart-m-item {
     overflow: hidden;
     width: 702rpx;
-    padding: 32rpx 24rpx;
+    padding: 50rpx 24rpx 32rpx 24rpx;
+    /* padding: 32rpx 24rpx; */
     position: relative;
     display: flex;
     flex-direction: row;
@@ -118,6 +119,7 @@ page {
     width: 320rpx;
     /* height: 72rpx; */
     /* line-height: 36rpx; */
+    line-height:40rpx;
     overflow: hidden;
     font-size: 28rpx;
 }
