@@ -26,7 +26,6 @@
         <view class="select-color" bind:tap="beginSelect">选择</view>
       </view>
       <!-- 取消多选-占位 -->
-      <!-- <view wx:if="{{isMultiSelect}}" style="height: {{canEdit ? '260rpx': '88rpx'}}"/> -->
       <view 
         class="header-placeholder"
         wx:if="{{isMultiSelect}}"
@@ -36,13 +35,14 @@
       <!-- cell 的布局 -->
       <view 
         wx:for="{{colorList}}" 
-        wx:key="index" 
+        wx:key="id" 
         class="flex color-container" 
       >
         <view 
           class="iconfont {{item.isSelected ? 'icon-quangouxuan selected-icon' : 'icon-quan'}}  select-icon-base" 
           bind:tap="selectColor"
           data-index="{{index}}"
+          data-type="select"
           style="animation-name:{{isMultiSelect ? 'fade-in' : ''}}"
         />
         <view 
@@ -92,7 +92,14 @@
           <view
             class="scroll-color"
             style="background: {{item.hexColor}};"
-          />
+          >
+            <view
+              class="iconfont icon-guanbi close-icon" 
+              bind:tap="selectColor" 
+              data-index="{{index}}" 
+              data-type="unselect"
+            /> 
+          </view>
         </block>
       </scroll-view>
     </view>
