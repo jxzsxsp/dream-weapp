@@ -222,6 +222,19 @@
   animation-fill-mode: forwards;
   animation-name: fade-in;  
   display: inline-block;
+  position: relative;
+}
+.close-icon {
+  position: absolute;
+  font-size: 12px;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #FFFFFF;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.50);
 }
 
 

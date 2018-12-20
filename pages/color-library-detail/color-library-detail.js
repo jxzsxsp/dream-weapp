@@ -69,20 +69,29 @@ const viewAction = {
     wx.pageScrollTo({scrollTop: this.props.scrollTop + 1})
   },
   resetSelect: function () {
-
+    this.data.colorList.forEach(item => {
+      item.isSelected = false;
+    })
+    this.setData({
+      selectedColorList: [],
+      colorList: this.data.colorList,
+      canEdit: false
+    })
   },
   selectColor: function (d) {
     if (!this.data.isMultiSelect) {
       return
     }
-    const selectedColor = this.data.colorList[d.index]
-    this.setSelectedColorList(selectedColor)
-    if (this.data.selectedColorList.length > 0) {
-      this.data.canEdit = true
-    } else {
-      this.data.canEdit = false
+    let selectedColor = {}
+    if (d.type === 'select') {
+      selectedColor = this.data.colorList[d.index]
+    } else if (d.type === 'unselect') {
+      selectedColor = this.data.selectedColorList[d.index]
     }
-    selectedColor.isSelected = !selectedColor.isSelected
+    this.setSelectedColorList(selectedColor)
+    this.setColorList(selectedColor)
+    this.setCanEdit()
+
     this.setData({
       colorList: this.data.colorList,
       selectedColorList: this.data.selectedColorList,
@@ -155,7 +164,7 @@ const privateMethod = {
       }
     })
   },
-  // 选中与反选颜色
+  // 重置选中的颜色
   setSelectedColorList: function (selectedColor) {
     if (selectedColor.isSelected) {
       let colorIndex = -1
@@ -169,6 +178,21 @@ const privateMethod = {
       } 
     } else {
       this.data.selectedColorList.unshift(selectedColor)
+    }
+  },
+  // 重置所有颜色的选中
+  setColorList: function (selectedColor) {
+    this.data.colorList.forEach(item => {
+      if (item.id === selectedColor.id) {
+        item.isSelected = !item.isSelected
+      }
+    })
+  },
+  setCanEdit: function () {
+    if (this.data.selectedColorList.length > 0) {
+      this.data.canEdit = true
+    } else {
+      this.data.canEdit = false
     }
   }
 }
