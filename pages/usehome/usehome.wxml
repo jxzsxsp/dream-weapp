@@ -112,8 +112,8 @@
     <!-- 分销商会员显示 -->
     <view class='list-item'>
         <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindstoreinfo">
-            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的店铺</text>
-            <text style='font-size:12px;color:#515151;'>查看/编辑店铺信息</text>
+            <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>个人信息</text>
+            <text style='font-size:12px;color:#515151;'>完善我的分享信息</text>
         </view>
         <view style=''>
             <image src="{{userInfo.picture ? userInfo.picture : 'http://img.qkmai.com/qkmbb/myytal/txzw.png'}}" style='width:100rpx;height:100rpx;;'></image>
@@ -176,6 +176,6 @@
     </view>
 </view>
 
-<view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
+<!-- <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
     退出登录
-</view>
+</view> -->

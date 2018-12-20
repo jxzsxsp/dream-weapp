@@ -344,7 +344,6 @@ Page({
                 tag: tm.data.selectedTag
             },
             success: function(jd) {
-                console.log(jd.data.length)
                 if (jd.data.length <= 0) return;
                 let brandRushList = [];
                 jd.data.forEach(o => {

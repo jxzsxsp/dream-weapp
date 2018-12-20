@@ -149,6 +149,7 @@ Page({
         parseInt(o) <= 1 || e.ChangeQuantiy(e, -1, s.CartItemInfo[a].SkuID);
     },
     AddNum: function(t) {
+        console.log(t)
         var e = this,
             a = t.currentTarget.dataset.index,
             n = t.currentTarget.dataset.supplierid,
@@ -161,18 +162,32 @@ Page({
         }) : e.ChangeQuantiy(e, 1, s.CartItemInfo[a].SkuID);
     },
     bindblurNum: function(t) {
-        var e = this,
-            a = t.currentTarget.dataset.index,
-            n = t.currentTarget.dataset.supplierid,
-            s = e.getSupplierCarts(n),
-            o = parseInt(t.detail.value),
-            i = s.CartItemInfo[a].Quantity,
-            l = s.CartItemInfo[a].Stock;
-        (isNaN(o) || o < 1) && (o = 1), o != i && (l - o <= 0 ? wx.showModal({
-            title: "提示",
-            content: "超出库存",
-            showCancel: !1
-        }) : e.ChangeQuantiy(e, o - i, s.CartItemInfo[a].SkuID));
+
+        if (parseInt(t.detail.value) > 50) {
+            console.log(1)
+            wx.showModal({
+                title: "提示",
+                content: "限购50件",
+                showCancel: !1
+            })
+        } else {
+
+            var e = this,
+                a = t.currentTarget.dataset.index,
+                n = t.currentTarget.dataset.supplierid,
+                s = e.getSupplierCarts(n),
+                o = parseInt(t.detail.value),
+                i = s.CartItemInfo[a].Quantity,
+                l = s.CartItemInfo[a].Stock;
+            (isNaN(o) || o < 1) && (o = 1), o != i && (l - o <= 0 ? wx.showModal({
+                title: "提示",
+                content: "超出库存",
+                showCancel: !1
+            }) : e.ChangeQuantiy(e, o - i, s.CartItemInfo[a].SkuID));
+        }
+
+
+
     },
     DelCarts: function(e) {
         var a = this,
@@ -269,6 +284,9 @@ Page({
         }
     },
     ChangeQuantiy: function(e, a, n) {
+        console.log(e)
+        console.log(a)
+        console.log(n)
         t.getOpenId(function(s) {
             wx.request({
                 url: t.getUrl("addToCart"),

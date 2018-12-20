@@ -1,7 +1,7 @@
 <view class="container mt32 font30 borderbott0m">
     <view class="w100">
         <view class="borderbott0m ml24 mt24">
-            <view>店铺logo：</view>
+            <view>我的头像：</view>
             <view class="logo">
                 <view class="logoimg">
                     <image bindtap="ChooseImg" src="{{UserCredentials}}" style="width:158rpx;height:158rpx;"></image>
@@ -13,7 +13,7 @@
     </view>
     <view class="w100">
         <view class="loginpassword borderbott0m ">
-            <text>店铺名称</text>
+            <text>我的昵称</text>
             <input bindinput="InputValue" data-key="ShopName" maxlength="20" placeholder="请输入店铺名称" placeholderStyle="color:#bdbdbd" type="text" value="{{ShopName}}"></input>
         </view>
     </view>

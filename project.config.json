@@ -4,14 +4,15 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.1",
+	"libVersion": "2.4.2",
 	"appid": "wx779e355e765faaf5",
 	"projectname": "ytalwxsp",
 	"debugOptions": {

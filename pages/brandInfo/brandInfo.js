@@ -349,9 +349,7 @@ Page({
           min: '00',
           sec: '00'
         }
-          console.log(jd.data)
-          console.log(brandRush)
-          console.log(brandRush.countDownTime)
+         
         brandRush.countDownTime = obj;
 
         if (brandRush.rushEndTime != null) {

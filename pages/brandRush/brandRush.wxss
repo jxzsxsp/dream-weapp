@@ -1,5 +1,5 @@
 page {
-    background: #f5f5f5;
+    background: #fff;
 }
 
 .page-section {
@@ -141,7 +141,7 @@ page {
 /* 重写 */
 
 page {
-    background: #f5f5f5;
+    background: #fff;
 }
 
 /*总体主盒子*/
@@ -161,6 +161,7 @@ page {
     display: inline-block;
     width: 25%;
     height: 100%;
+    min-height: 100%;
     /*主盒子设置背景色为灰色*/
     background-color: #f5f5f5;
     text-align: center;
@@ -185,7 +186,7 @@ page {
 
 .nav_left .nav_left_items .brcontainer {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     width:100%;
     border-left: 5rpx solid transparent;
     height: 50rpx;
@@ -195,7 +196,7 @@ page {
 
 
 .nav_left .nav_left_items.active .brcontainer {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     background: #fff;
     width:100%;
@@ -226,5 +227,5 @@ page {
     height: 100%;
     padding: 10px;
     box-sizing: border-box;
-    background: #f5f5f5;
+    background: #fff;
 }
