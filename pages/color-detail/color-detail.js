@@ -5,6 +5,8 @@ import utils from '../../utils/index'
 let data = {
   colorDetail: {},
   colorRecipe: {},
+  favorite: false,
+  originType: 1,
 }
 
 let lifecycle = {
@@ -24,7 +26,63 @@ let lifecycle = {
           colorRecipe: res.colorRecipe
         })
       })
+    
+    this.getFavorite(res => {
+      this.setData({
+        favorite: res.status
+      })
+    }, colorDetail.colorId)
   }
 }
 
-$Page.register(null, data, lifecycle, null, {})
+let viewAction = {
+  favoriteColor: function() {
+    let favorite = !this.data.favorite
+
+    if (favorite) {
+      this.addFavorite(res => {
+        this.setData({
+          favorite: favorite
+        })
+      })
+    } else {
+      this.cancelFavorite(res => {
+        this.setData({
+          favorite: favorite
+        })
+      })
+    }
+  }
+}
+
+let privateMethods = {
+  getFavorite: function (callback, colorId) {
+    http.get(urls.isInFavorite, { 
+      mock: true, 
+      colorId: colorId, 
+      originType: this.data.originType 
+      }).then(res => {
+      callback(res);
+    })
+  },
+  addFavorite: function (callback) {
+    http.post(urls.addFavorite, {
+      mock: true,
+      colorId: this.data.colorDetail.colorId,
+      originType: this.data.originType 
+    }).then(res => {
+      callback(res);
+    })
+  },
+  cancelFavorite: function (callback) {
+    http.post(urls.cancelFavorite, {
+      mock: true,
+      colorId: this.data.colorDetail.colorId,
+      originType: this.data.originType
+    }).then(res => {
+      callback(res);
+    })
+  }
+}
+
+$Page.register(null, data, lifecycle, privateMethods, viewAction)

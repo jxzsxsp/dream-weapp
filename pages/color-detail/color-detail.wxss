@@ -80,3 +80,13 @@
   margin-left: 30rpx;
   margin-top: 50rpx;
 }
+
+.favorite-container {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+}
+
+.favorite {
+  font-size: 50rpx;
+}

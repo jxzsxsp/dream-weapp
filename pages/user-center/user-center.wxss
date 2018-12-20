@@ -89,8 +89,7 @@
 }
 
 .setting-icon {
-  height: 28rpx;
-  width: 28rpx;
+  font-size: 40rpx;
   margin-left: 66rpx;
 }
 

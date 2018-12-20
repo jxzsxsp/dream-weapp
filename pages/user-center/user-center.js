@@ -2,9 +2,7 @@ import {$Page, $wx} from '../../genji4mp/index'
 
 const data = {
   settingList: [
-    // {
-    // name: '设备管理', icon: 'icon-ic_equipment'
-    // }
+    { name: '我的收藏', icon: 'icon-xing' }
   ],
   userInfo: {},
 }
@@ -28,6 +26,9 @@ const lifecycle = {
 const viewAction = {
   itemClicked (data) {
     if (data.index === 0) {
+      // 我的收藏
+      $wx.navigateTo($wx.router.deviceManager)
+    } else if (data.index === 1) {
       // 设备管理 
       $wx.navigateTo($wx.router.deviceManager)
     }

@@ -18,10 +18,12 @@
     </view>
   </view>
 
+  <block wx:if="{{userInfo.nickName}}">
   <view wx:for="{{settingList}}" wx:key="{{index}}" class="setting-row-container" bind:tap="itemClicked" data-index="{{index}}" >
     <view class="iconfont {{item.icon}} setting-icon"/>
     <text class="setting-text">{{item.name}}</text>
     <view class="iconfont icon-ic_back setting-detail"/>
   </view>
+  </block>
 
 </view>
