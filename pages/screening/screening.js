@@ -302,68 +302,68 @@ Page({
             url: '/pages/home/home'
         })
     },
-    getTitle: function() {
-        var tm = this;
-        //获取品牌特卖列表        
-        wx.request({
+    // getTitle: function() {
+    //     var tm = this;
+    //     //获取品牌特卖列表        
+    //     wx.request({
 
-            url: app.getUrl("YTALGetInfoBrandRush"),
-            data: {
-                brandId: tm.data.brandId,
-                brandSource: tm.data.brandSource
-            },
-            success: function(jd) {
-                var infoList = [];
-                let brandRush = jd.data;
-                var obj = {
-                    day: '00',
-                    hou: '00',
-                    min: '00',
-                    sec: '00'
-                }
-                brandRush.countDownTime = obj;
-                if (brandRush.rushEndTime != null) {
-                    var month = brandRush.rushEndTime.split('-')[1];
-                    var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
-                    var hour = brandRush.rushEndTime.split(' ')[1].split(':')[0];
-                    var min = brandRush.rushEndTime.split(' ')[1].split(':')[1];
+    //         url: app.getUrl("YTALGetInfoBrandRush"),
+    //         data: {
+    //             brandId: tm.data.brandId,
+    //             brandSource: tm.data.brandSource
+    //         },
+    //         success: function(jd) {
+    //             var infoList = [];
+    //             let brandRush = jd.data;
+    //             var obj = {
+    //                 day: '00',
+    //                 hou: '00',
+    //                 min: '00',
+    //                 sec: '00'
+    //             }
+    //             brandRush.countDownTime = obj;
+    //             if (brandRush.rushEndTime != null) {
+    //                 var month = brandRush.rushEndTime.split('-')[1];
+    //                 var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
+    //                 var hour = brandRush.rushEndTime.split(' ')[1].split(':')[0];
+    //                 var min = brandRush.rushEndTime.split(' ')[1].split(':')[1];
 
-                    brandRush.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                }
-                infoList.push(brandRush);
-                tm.setData({
-                    brandRushInfo: infoList,
-                    brandLogo: brandRush.brandLogo,
-                    mainTitle: brandRush.mainTitle,
-                    subTitle: brandRush.subTitle,
-                    // brandSource: brandSource
-                });
-                tm.goodsListNew();
-                wx.stopPullDownRefresh();
-            }
-        });
-    },
-    goodsListNew: function() {
-        var tm = this;
-        wx.request({
-            url: app.getUrl("YTALGetListRushGoods"),
-            data: {
-                brandId: tm.data.brandId,
-                goodsSource: tm.data.brandSource
-            },
-            success: function(jd) {
-                if (jd.data.length != 0) {
-                    let goodsList = [];
-                    jd.data.forEach(o => {
-                        goodsList.push(o)
-                    });
-                    tm.setData({
-                        rushGoodsList: goodsList
-                    })
-                }
-            }
-        });
-    },
+    //                 brandRush.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+    //             }
+    //             infoList.push(brandRush);
+    //             tm.setData({
+    //                 brandRushInfo: infoList,
+    //                 brandLogo: brandRush.brandLogo,
+    //                 mainTitle: brandRush.mainTitle,
+    //                 subTitle: brandRush.subTitle,
+    //                 // brandSource: brandSource
+    //             });
+    //             tm.goodsListNew();
+    //             wx.stopPullDownRefresh();
+    //         }
+    //     });
+    // },
+    // goodsListNew: function() {
+    //     var tm = this;
+    //     wx.request({
+    //         url: app.getUrl("YTALGetListRushGoods"),
+    //         data: {
+    //             brandId: tm.data.brandId,
+    //             goodsSource: tm.data.brandSource
+    //         },
+    //         success: function(jd) {
+    //             if (jd.data.length != 0) {
+    //                 let goodsList = [];
+    //                 jd.data.forEach(o => {
+    //                     goodsList.push(o)
+    //                 });
+    //                 tm.setData({
+    //                     rushGoodsList: goodsList
+    //                 })
+    //             }
+    //         }
+    //     });
+    // },
     getListGoodsData: function() {
         var tm = this;
         wx.request({
