@@ -1,6 +1,7 @@
 import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 import utils from '../../utils/index'
+import constant from '../../constant/index'
 
 const libraryType =  {
   DEFAULT: false,
@@ -33,6 +34,8 @@ const data = {
   isCustom: libraryType.CUSTOM,
   // 是否展示 Action 弹出框
   showAction: false,
+  // 是否显示删除确认
+  showDeleteConfirm: false,
   // 颜色列表
   colorList: [],
   // 选中的颜色列表
@@ -86,7 +89,7 @@ const lifeCycle = {
     this.getColorList()
   },
   onNavigateBack: function (d) {
-    
+
   }
 }
 
@@ -115,6 +118,17 @@ const viewAction = {
       colorList: this.data.colorList,
       canEdit: false
     })
+  },
+  selectCell: function (d) {
+    if (this.data.isMultiSelect) {
+      return
+    }
+    const selectedCell = this.data.colorList[d.index]
+    if (selectedCell.originType === constant.ColorSource.pantone) {
+      $wx.navigateTo($wx.router.colorDetail, {colorId: selectedCell.colorId})
+    } else if (selectedCell.originType === constant.ColorSource.selfFetch) {
+      $wx.navigateTo($wx.router.fetchColorDetail, {colorId: selectedCell.colorId, fromLibrary: true})
+    }
   },
   selectColor: function (d) {
     if (!this.data.isMultiSelect) {
@@ -147,7 +161,12 @@ const viewAction = {
   },
   closeAction: function () {
     this.setData({
-      showAction: false
+      showAction: false,
+    })
+  },
+  closeDeleteConfirm: function () {
+    this.setData({
+      showDeleteConfirm: false
     })
   },
   doAction: function (d) {
@@ -163,10 +182,10 @@ const viewAction = {
       case 'SHARE':
         break
       case 'DELETE':
-        $wx.showModal({title: '提示', content: '确认要删除选中的颜色吗？', confirmColor: '#BD061C'})
-          .then(() => {
-            this._deleteColors(deleteType.SINGLE)
-          })
+        this.setData({
+          showAction: false,
+          showDeleteConfirm: true
+        })
         break
       default:
         break
@@ -185,11 +204,20 @@ const viewAction = {
 
   },
   deleteColors: function() {
-    $wx.showModal({title: '提示', content: '确认要删除选中的颜色吗？', confirmColor: '#BD061C'})
-    .then(() => {
-      this._deleteColors(deleteType.MUTIPLE)
+    this.setData({
+      showDeleteConfirm: true
     })
   },
+  confirmDelete: function () {
+    this.setData({
+      showDeleteConfirm: false
+    })
+    if (this.data.isMultiSelect) {
+      this._deleteColors(deleteType.MUTIPLE)
+    } else {
+      this._deleteColors(deleteType.SINGLE)
+    }
+  }
 }
 
 const privateMethod = {

@@ -1,0 +1,8 @@
+<view class="flex">
+  <view
+    wx:for="{{colorList}}" 
+    wx:key="item.id" 
+    class="color-block" 
+    style="background: {{item.hexColor}}; display: {{index > 2 ? 'none' : ''}}; margin-left: {{index === 0 ? '0' : '-100rpx'}}; box-shadow: 0 20rpx 18rpx 0 rgba({{item.rgb}},0.2)"
+  />
+</view>

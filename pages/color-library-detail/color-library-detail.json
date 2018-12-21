@@ -1,6 +1,7 @@
 {
     "navigationBarTitleText": "颜色库详情",
     "usingComponents": {
-        "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
+        "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+        "color-block": "/components/color-block/color-block"
     }
 }

@@ -12,7 +12,7 @@ let colorLibraryDetail = {
       "colorId": 11,
       "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
       "name": "PANTONG 3514CP",
-      "rgb": "255,255,255",
+      "rgb": "187,40,48",
       "hexColor": "#837475",
       "labelList": [{
           "id": 1,
@@ -28,7 +28,7 @@ let colorLibraryDetail = {
       "colorId": 11,
       "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
       "name": "PANTONG 3514CP",
-      "rgb": "255,255,255",
+      "rgb": "187,40,48",
       "hexColor": "#F777AB",
       "labelList": [{
           "id": 1,
@@ -44,7 +44,7 @@ let colorLibraryDetail = {
       "colorId": 11,
       "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
       "name": "PANTONG 3514CP",
-      "rgb": "255,255,255",
+      "rgb": "187,40,48",
       "hexColor": "#ab3491",
       "labelList": [{
           "id": 1,
@@ -60,7 +60,7 @@ let colorLibraryDetail = {
       "colorId": 11,
       "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
       "name": "PANTONG 3514CP",
-      "rgb": "255,255,255",
+      "rgb": "187,40,48",
       "hexColor": "#F777AB",
       "labelList": [{
           "id": 1,
@@ -76,7 +76,7 @@ let colorLibraryDetail = {
       "colorId": 11,
       "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
       "name": "PANTONG 3514CP",
-      "rgb": "255,255,255",
+      "rgb": "25,25,55",
       "hexColor": "#F777AB",
       "labelList": [{
           "id": 1,

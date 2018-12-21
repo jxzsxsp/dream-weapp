@@ -1,0 +1,10 @@
+.color-block {
+  height: 124rpx;
+  width: 124rpx;
+  border-radius: 26rpx;
+}
+
+.flex {
+  display: flex;
+  
+}
