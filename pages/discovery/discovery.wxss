@@ -1,11 +1,14 @@
 /* pages/discovery/discovery.wxss */
-
+page {
+    background-color: #f5f5f5;
+}
 .changeTabTitle.active {
     color: #db3c40;
 }
 
+
 .text.active {
     color: #db3c40;
-    border-bottom:2rpx solid #db3c40;
+    border-bottom:6rpx solid #db3c40;
 }
 

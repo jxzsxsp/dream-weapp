@@ -37,7 +37,7 @@
             </view>
         </view>
     </view>
-    <view class="supplier" hidden="{{SupplierId<=0}}">
+    <view class="supplier" hidden="{{SupplierId<=0}}" style='display:none;'>
         <view class="supplier-icon">
             <image class="mt8" mode="widthFix" src="/images/ic_store.png" style="width:45rpx;"></image>
             <text>{{SupplierName}}</text>

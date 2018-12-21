@@ -62,21 +62,10 @@
 
     <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:750rpx;vertical-align:top;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image>
 
-
     <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;align-items:center;' wx:for='{{topLogoList}}'>
-            <image style='width:128rpx;height:128rpx;margin-bottom:10rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
+        <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;' wx:for='{{topLogoList}}'>
+            <image style='width:115rpx;height:115rpx;margin-bottom:10rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
         </view>
-        <!-- <view style='width:140rpx;height:140rpx;background-color:blue;margin-bottom:10rpx;'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx;background-color:blue;margin-bottom:10rpx;'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view>
-        <view style='width:140rpx;height:140rpx; background-color:blue;margin-bottom:10rpx;>'>1</view> -->
     </view>
 
 
@@ -89,7 +78,7 @@
     <view style='padding:0 0 27rpx 0'>
         <view wx:key="{{item}}" wx:for='{{brandRush}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
-                <view style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx'>
+                <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
                     <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix' lazy-load></image>
                 </view>
                 <view wx:if='{{item.goodsCount}}' style='width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>{{item.goodsCount? item.goodsCount : 0}}
@@ -122,13 +111,13 @@
                 <view style='padding-left:129rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                     <view style='font-size:28rpx;color:#515151;padding-bottom:16rpx;'>
                         <text bindlongpress='copy' data-length='item.brandDesc.length' class='{{toggleText? "nowrap" : ""}} {{item.brandDesc.length >65 ? "ellipsis" : ""}}' data-val="{{item.brandDesc}}">{{item.brandDesc}}</text>
-                            <text catchtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 65}}'>{{toggleText? "收起" : "全文"}}</text>
+                        <text catchtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 65}}'>{{toggleText? "收起" : "全文"}}</text>
 
                     </view>
                 </view>
                 <view style='padding-left:129rpx'>
                     <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='float:left;padding-right:10rpx'>
-                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}' lazy-load></image>
                     </view>
                     <view style='clear:both'></view>
                 </view>

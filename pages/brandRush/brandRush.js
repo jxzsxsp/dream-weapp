@@ -371,24 +371,24 @@ Page({
 
 
         // 接口调整以后开放 short短接口
-        // wx.request({
-        //     url: app.getUrl('YTALGetListBrandRushIsHeadByTag'),
-        //     data: {
-        //         tag: tm.data.selectedTag
-        //     },
-        //     success: function(jd) {
-        //         console.log(jd.data)
-        //         if (jd.data.length <= 0) return;
-        //         let brandRushList = [];
-        //         jd.data.forEach(o => {
-        //             brandRushList.push(o)
-        //         });
-        //         // var newList = tm.data.brandRush.concat(brandRushList)
-        //         tm.setData({
-        //             brandRush: brandRushList
-        //         })
-        //         wx.stopPullDownRefresh();
-        //     }
-        // })
+        wx.request({
+            url: app.getUrl('YTALGetListBrandRushIsHeadByTag'),
+            data: {
+                tag: tm.data.selectedTag
+            },
+            success: function(jd) {
+                console.log(jd.data)
+                if (jd.data.length <= 0) return;
+                let brandRushList = [];
+                jd.data.forEach(o => {
+                    brandRushList.push(o)
+                });
+                // var newList = tm.data.brandRush.concat(brandRushList)
+                tm.setData({
+                    brandRush: brandRushList
+                })
+                wx.stopPullDownRefresh();
+            }
+        })
     }
 })

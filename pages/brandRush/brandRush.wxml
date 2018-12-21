@@ -1,3 +1,4 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <!-- <view class="page-section">
     <view style='height:70rpx;z-index:1000;background-color: #fff;'>
         <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
@@ -57,30 +58,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--主盒子-->
 <view class="container-box">
     <!--左侧栏-->
@@ -104,24 +81,30 @@
         <!--如果有数据，才遍历项-->
         <view wx:if="{{brandRush}}" style='display:flex;flex-flow:row wrap;'>
             <block wx:for="{{brandRush}}">
-                <view class="nav_right_items" style='display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;width:33.33%;height:140rpx;margin-bottom:20rpx;'>
-                    <navigator url="/pages/brandInfo/brandInfo?brandId={{item.brandId}}&brandSource={{item.brandSource}}" style='display:flex;flex-flow:column nowrap;align-items:center;justify-content:space-between;width:100%;height:140rpx;'>
+                <view class="nav_right_items" style='display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;width:33.33%;height:240rpx;margin-bottom:25rpx;'>
+                    <navigator url="/pages/brandInfo/brandInfo?brandId={{item.brandId}}&brandSource={{item.brandSource}}" style='display:flex;flex-flow:column nowrap;align-items:center;justify-content:space-between;width:100%;height:240rpx;'>
                         <!--用view包裹图片组合，如果有图片就用，无图片提供就使用50x30的这个默认图片-->
                         <!-- <view style='text-align:center;'> -->
-                        <block wx:if="{{item.brandLogo}}">
-                            <image src="{{item.brandLogo}}" style='width:140rpx;' mode='widthFix'></image>
-                        </block>
+                        <view wx:if="{{item.brandLogo}}" style='position:relative;width:140rpx;height:140rpx;display:flex;align-items:center;justify-content:center;'>
+                            <image src="{{item.brandLogo}}" style='width:112rpx;' mode='widthFix'></image>
+
+                        </view>
                         <block wx:else>
                             <image src="http://temp.im/50x30"></image>
                         </block>
                         <!-- </view> -->
                         <!--如果有文字，就用文字；无文字就用其他-->
-                        <view wx:if="{{item.mainTitle}}" class='overflowOne' style='font-size:10px;max-width:140rpx;'>
-                            <text>{{item.mainTitle}}</text>
-                            <text style='display:none;'>{{item.LowerDiscount}}</text>
+                        <!-- <view wx:if="{{item.mainTitle}}" class='overflowOne' style='font-size:12px;max-width:140rpx;'> -->
+                        <view wx:if="{{item.mainTitle}}" class='' style='position:relative;text-align:center;font-size:12px;width:140rpx;-webkit-line-clamp:2;display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;color:#515151;height:60rpx;'>
+                            <text style='line-height:26rpx;'>{{item.mainTitle}}</text>
+                            <!-- <text>1折起</text> -->                                   
                         </view>
+
                         <view wx:else>
-                            <text>{{item.tree.desc2}}</text>
+                            <text style='color:red;font-size:10px;'>{{item.tree.desc2}}</text>
+                        </view>
+                         <view style='position:relative;width:140rpx;height:30rpx;'>
+                            <view style='position:absolute;right:14rpx;bottom:0;color:#db3c40;font-size:9px;background-color:#fff0f0;border-radius:4rpx;padding:0 4rpx;width:104rpx;text-align:center;'>{{filter.toFix(item.lowerDiscount/10,1)}}折起</view>
                         </view>
                     </navigator>
                 </view>

@@ -89,7 +89,7 @@
                 "text": "VIP专区",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/vip.png",
-                "selectedIconPath": "images/vip_hover.png"
+                "selectedIconPath": "images/vip.png"
             },
             {
                 "pagePath": "pages/shopcart/shopcart",

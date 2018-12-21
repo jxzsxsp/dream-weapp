@@ -43,10 +43,15 @@ Page({
                             TotalPrice: a.toFixed(2)
                         });
 
-                        wx.setTabBarBadge({
-                            index: 3,
-                            text: n.RecordCount.toString()
-                        })
+
+
+                        if (n.RecordCount > 0) {
+                            wx.setTabBarBadge({
+                                index: 3,
+                                text: n.RecordCount.toString()
+                            })
+
+                        }
 
                     } else "NOUser" == t.data.Message || wx.showModal({
                         title: "提示",

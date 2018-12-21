@@ -1,6 +1,6 @@
 var filter = {
     toFix: function (value, count) {
-        var num = parseInt( value )
+        var num = parseFloat( value )
         return num.toFixed(count)
     }
 }

@@ -1097,7 +1097,11 @@ image {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
+.overflowTwo {
+    overflow: hidden;
+    text-overflow: '.';
+    white-space: nowrap;
+}
 /* 
  *
  * auth: 潘金龙
@@ -1170,4 +1174,11 @@ image {
 width: 0;
 height: 0;
 color: transparent;
+}
+
+
+.fcc{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
