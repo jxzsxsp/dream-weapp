@@ -1,2 +1,38 @@
-<!--pages/join-library/join-library.wxml-->
-<text>pages/join-library/join-library.wxml</text>
+<view class='container add'>
+  <view class='iconfont icon-chuangjian chuangjian'></view>
+  <text>创建新颜色库</text>
+</view>
+
+<view class='container default'>
+  <block wx:if="{{!!defaultColorLibrary.colorIcon}}">
+  <view class='color-icon' style='background:{{defaultColorLibrary.colorIcon}};'></view>
+  </block>
+  <block wx:else>
+  <view class='color-icon' style='opacity: 0.5;'>空</view>
+  </block>
+  <view class='color-content'>
+    <text class='color-title'>{{defaultColorLibrary.name}}</text>
+    <view class='color-desc'>
+      <text class='color-num'>{{defaultColorLibrary.colorCount}}个颜色</text>
+    </view>
+  </view>
+</view>
+
+<block wx:for='{{colorLibraryList}}' wx:key='index'>
+<view wx:if="{{item.type === 1}}" class='container'>
+  <block wx:if="{{!!item.colorIcon}}">
+  <view class='color-icon' style='background:{{item.colorIcon}};'></view>
+  </block>
+  <block wx:else>
+  <view class='color-icon' style='opacity: 0.5;'>空</view>
+  </block>
+  <view class='color-content'>
+    <text class='color-title'>{{item.name}}</text>
+    <view class='color-desc'>
+      <text class='color-num'>{{item.colorCount}}个颜色</text>
+      <view class='point'></view>
+      <text class='color-time'>{{item.timeLabel}}</text>
+    </view>
+  </view>
+</view>
+</block>
