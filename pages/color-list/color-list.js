@@ -52,7 +52,7 @@ let viewAction = {
   },
 
   colorClicked: function (data) {
-    $wx.navigateTo($wx.router.colorDetail, {...this.data.colorList[data.index]})
+    $wx.navigateTo($wx.router.colorDetail, {colorId: this.data.colorList[data.index].colorId})
   }
 }
 
