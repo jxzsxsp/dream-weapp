@@ -39,10 +39,7 @@ let lifeCycle = {
       })
 
     this.getFavorite(query.colorId)
-  }
-}
-
-let privateMethod = {
+  },
   onReachBottom () {
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {lab: this.data.colorDetail.lab})
       .then(colorList => {
@@ -58,6 +55,23 @@ let privateMethod = {
         console.log(e.detail.errMsg)
       })
   },
+}
+
+let viewAction = {
+  relativeColorClicked: function (data) {
+    $wx.navigateTo($wx.router.colorDetail, {...this.data.relativeColorList[data.index]})
+  },
+  favoriteColor: function() {
+    let favorite = !this.data.favorite
+    if (favorite) {
+      this.addFavorite()
+    } else {
+      this.cancelFavorite()
+    }
+  }
+}
+
+let privateMethod = {
   getFavorite: function (colorId) {
     http.get(urls.isInFavorite, {
       mock: true,
@@ -93,18 +107,6 @@ let privateMethod = {
   }
 }
 
-let viewAction = {
-  relativeColorClicked: function (data) {
-    $wx.navigateTo($wx.router.colorDetail, {...this.data.relativeColorList[data.index]})
-  },
-  favoriteColor: function() {
-    let favorite = !this.data.favorite
-    if (favorite) {
-      this.addFavorite()
-    } else {
-      this.cancelFavorite()
-    }
-  }
-}
+
 
 $Page.register(props, data, lifeCycle, privateMethod, viewAction)
