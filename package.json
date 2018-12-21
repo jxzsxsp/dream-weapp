@@ -11,5 +11,8 @@
     "pro": "./env/ce.sh pro"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vant-weapp": "^0.4.6"
+  }
 }
