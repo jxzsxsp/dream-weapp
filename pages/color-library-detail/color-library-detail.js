@@ -25,16 +25,42 @@ const data = {
   canEdit: false,
   // 是否是自定义色库
   isCustom: libraryType.CUSTOM,
+  // 是否展示 Action 弹出框
+  showAction: false,
   // 颜色列表
   colorList: [],
   // 选中的颜色列表
   selectedColorList: [],
+  // 选中的颜色
+  selectedColor: {},
   // 色库详情
   libraryDetail: {},
   // 全部数量
   totalCount: 0,
   // 顶部悬停选择标签是否显示
   hideBeginSelect: true,
+  // 操作列表
+  actions: [{
+    icon: 'icon-biaoqian',
+    title: '标签',
+    type: 'TAG'
+  }, {
+    icon: 'icon-yidong',
+    title: '移动...',
+    type: 'MOVE'
+  }, {
+    icon: 'icon-tianjia',
+    title: '添加到...',
+    type: 'ADD'
+  }, {
+    icon: 'icon-fenxiang',
+    title: '分享到...',
+    type: 'SHARE'
+  }, {
+    icon: 'icon-shanchu',
+    title: '删除',
+    type: 'DELETE'
+  }]
 }
 
 const lifeCycle = {
@@ -98,10 +124,37 @@ const viewAction = {
       canEdit: this.data.canEdit
     })
   },
-  doMore: function (d) {
+  showAction: function (d) {
     if (this.data.isMultiSelect) {
       return
     }
+    this.setData({
+      showAction: true,
+      selectedColor: this.data.colorList[d.index]
+    })
+  },
+  closeAction: function () {
+    this.setData({
+      showAction: false
+    })
+  },
+  doAction: function (d) {
+    this.closeAction()
+    // switch (d.type) {
+    //   case 'TAG':
+    //     $wx.navigateTo($wx.router.settingTag, {id: this.data.selectedColor.id})
+    //     break
+    //   case 'MOVE':
+    //     break
+    //   case 'ADD':
+    //     break
+    //   case 'SHARE':
+    //     break
+    //   case 'DELETE':
+    //     break
+    //   default:
+    //     break
+    // }
   },
   editLibrary: function () {
 

@@ -237,8 +237,54 @@
   background: rgba(0,0,0,0.50);
 }
 
+.action-container {
+  border-radius: 34rpx 34rpx 0 0;
+  height: 800rpx;
+  background: #FFFFFF;
+  padding: 34rpx 
+}
 
+.van-popup--bottom {
+  background: transparent!important;
+}
 
+.action-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 24rpx;
+  color: #616161;
+  letter-spacing: 0.46rpx;
+}
+
+.action-row-container {
+  height: 120rpx;
+}
+
+.action-icon {
+  color: #0156FE;
+  font-size: 24px;
+}
+
+.action-row-title {
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  color: #000000;
+  letter-spacing: -0.22rpx;
+  margin-left: 42rpx;
+}
+
+.action-cancel {
+  width: 686rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  background: #EFEFF4;
+  border-radius: 16px;
+  align-items: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  color: #4B4B4B;
+  letter-spacing: -0.22px;
+  margin-top: 40rpx;
+}
 
 @keyframes left-to-right {
   to {transform: translateX(60rpx)}

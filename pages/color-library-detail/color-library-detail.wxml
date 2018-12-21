@@ -60,7 +60,7 @@
         </view>
         <view 
           class="iconfont icon-gengduo more-icon" 
-          bind:tap="doMore"
+          bind:tap="showAction"
           data-index="{{index}}"
           style="animation-name:{{isMultiSelect ? 'fade-out' : ''}}"
         />
@@ -114,4 +114,18 @@
       <button class="multi-delete button" disabled="{{!canEdit}}">删除</button>
     </view>
   </view>
+  <van-popup
+    show="{{showAction}}"
+    position="bottom"
+    bind:close="closeAction"
+  >
+    <view class="action-container flex-column">
+      <text class="action-title">{{selectedColor.name}}</text>
+      <view wx:for="{{actions}}" wx:key="type" data-type="{{item.type}}" class="action-row-container flex-start-center" bind:tap="doAction">
+        <view class="iconfont {{item.icon}} action-icon"/>
+        <text class="action-row-title">{{item.title}}</text>
+      </view>
+      <button class="action-cancel button" bind:tap="closeAction">取消</button>
+    </view>
+  </van-popup>
 </view>
