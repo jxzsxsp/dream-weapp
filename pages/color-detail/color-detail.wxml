@@ -21,6 +21,6 @@
 </view>
 
 <view class='favorite-container' bind:tap="favoriteColor">
-  <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite' style="color: {{colorDetail.textColor}}"></view>
-  <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite' style="color: {{colorDetail.textColor}}"></view>
+  <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite' style="color: {{colorDetail.textColor}}"/>
+  <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite' style="color: {{colorDetail.textColor}}"/>
 </view>

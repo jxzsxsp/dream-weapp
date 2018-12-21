@@ -1,86 +1,74 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 import utils from '../../utils/index'
+import constant from '../../constant/index'
 
 let data = {
   colorDetail: {},
   colorRecipe: {},
   favorite: false,
-  originType: 1,
 }
 
 let lifecycle = {
-  onLoad: function(colorDetail) {
-    $wx.setNavigationBarTitle({
-      title: colorDetail.categoryName
-    })
-    
-    utils.justifyColor(colorDetail)
-    colorDetail.lab = utils.fixLab(colorDetail.lab)
-    this.setData({
-      colorDetail: colorDetail
-    })
-    http.getPantone(urls.pantone.colorDetail, {colorId: parseInt(colorDetail.colorId)})
-      .then((res) => {
+  onLoad: function(query) {
+    http.getPantone(urls.pantone.colorDetail, {colorId: query.colorId})
+      .then(res => {
+        $wx.setNavigationBarTitle({title: res.categoryName})
+        utils.justifyColor(res)
+        res.lab = utils.fixLab(res.lab)
         this.setData({
-          colorRecipe: res.colorRecipe
+          colorRecipe: res.colorRecipe,
+          colorDetail: res
         })
       })
     
-    this.getFavorite(res => {
-      this.setData({
-        favorite: res.status
-      })
-    }, colorDetail.colorId)
+    this.getFavorite(query.colorId)
   }
 }
 
 let viewAction = {
   favoriteColor: function() {
     let favorite = !this.data.favorite
-
     if (favorite) {
-      this.addFavorite(res => {
-        this.setData({
-          favorite: favorite
-        })
-      })
+      this.addFavorite()
     } else {
-      this.cancelFavorite(res => {
-        this.setData({
-          favorite: favorite
-        })
-      })
+      this.cancelFavorite()
     }
   }
 }
 
 let privateMethods = {
-  getFavorite: function (callback, colorId) {
-    http.get(urls.isInFavorite, { 
+  getFavorite: function (colorId) {
+    return http.get(urls.isInFavorite, { 
       mock: true, 
       colorId: colorId, 
-      originType: this.data.originType 
-      }).then(res => {
-      callback(res);
+      originType: constant.ColorSource.pantone
+    }).then((res) => {
+      this.setData({
+        favorite: res.status
+      })
     })
   },
-  addFavorite: function (callback) {
-    http.post(urls.addFavorite, {
+  addFavorite: function () {
+    return http.post(urls.addFavorite, {
       mock: true,
       colorId: this.data.colorDetail.colorId,
-      originType: this.data.originType 
-    }).then(res => {
-      callback(res);
+      originType: constant.ColorSource.pantone
+    }).then(() => {
+      this.setData({
+        favorite: false
+      })
     })
   },
   cancelFavorite: function (callback) {
-    http.post(urls.cancelFavorite, {
+    return http.post(urls.cancelFavorite, {
       mock: true,
       colorId: this.data.colorDetail.colorId,
-      originType: this.data.originType
-    }).then(res => {
-      callback(res);
+      originType: constant.ColorSource.pantone
+    }).then(() => {
+      this.setData({
+        favorite: true
+      })
     })
   }
 }
