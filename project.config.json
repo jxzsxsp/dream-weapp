@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -51,6 +51,25 @@
 					"pathName": "pages/brandRush/brandRush",
 					"query": "",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "brandrush",
+					"pathName": "pages/webPage/webPage",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "213123",
+					"pathName": "/pages/aboutqsh/aboutqsh",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "213123",
+					"pathName": "pages/aboutytal/aboutytal",
+					"query": ""
 				}
 			]
 		}

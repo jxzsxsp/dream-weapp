@@ -77,7 +77,9 @@
     </view>
     <!--右侧栏-->
     <view class="nav_right">
-        <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image>
+        <!-- <navigator> -->
+            <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image>
+        <!-- </navigator> -->
         <!--如果有数据，才遍历项-->
         <view wx:if="{{brandRush}}" style='display:flex;flex-flow:row wrap;'>
             <block wx:for="{{brandRush}}">

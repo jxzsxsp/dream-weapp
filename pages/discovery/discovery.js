@@ -12,7 +12,8 @@ Page({
         hasTrial: false,
         isDefault: true,
         DistributionInfo: "",
-        isForever: true
+        isForever: true,
+        vipInfo: {}
     },
 
     /**
@@ -39,9 +40,8 @@ Page({
                 }
             });
         });
-        // tm.setData({
-        //     DistributionInfo: app.globalData.ReferralInfo
-        // });
+        tm.getVipInfo();
+
     },
 
     GetCheckData: function() {
@@ -154,5 +154,25 @@ Page({
             isDefault: !tm.data.isDefault
         })
 
+    },
+    getVipInfo: function () {
+        var tm = this;
+        wx.request({
+            url: app.getUrl("YTALGetInfoDistribution"),
+            data: {
+                openId: tm.data.userInfo.OpenId
+            },
+            success: function (res) {
+                console.log(res);
+                tm.setData({
+                    vipInfo: res.data
+                })
+                // var emptyArr = []
+                // if(res.length/5) {
+
+                // }
+
+            }
+        })
     }
 })

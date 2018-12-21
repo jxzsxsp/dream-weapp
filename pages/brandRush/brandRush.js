@@ -353,8 +353,6 @@ Page({
 
             
 
-
-
         // 把点击到的某一项，设为当前index
         this.setData({
             selectedTag: name,
@@ -364,11 +362,6 @@ Page({
     },
     rewrite: function() {
         var tm = this
-
-
-
-
-
 
         // 接口调整以后开放 short短接口
         wx.request({

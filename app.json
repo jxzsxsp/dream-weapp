@@ -57,7 +57,8 @@
         "pages/discovery/discovery",
         "pages/aboutytal/aboutytal",
         "pages/screening/screening",
-        "pages/bugsm/bugsm"
+        "pages/bugsm/bugsm",
+        "pages/webPage/webPage"
     ],
     "window": {
         "backgroundTextStyle": "light",

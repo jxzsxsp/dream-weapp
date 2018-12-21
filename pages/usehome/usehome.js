@@ -15,21 +15,43 @@ Page({
         LowerUserSaleTotal: ""
     },
     onLoad: function(n) {
+
+
+        wx.getSystemInfo({
+            success: function(res) {
+
+                console.log(res)
+
+
+            }
+        })
+
+        wx.getSystemInfoSync({
+            success: function(res) {
+
+                console.log(res)
+
+
+            }
+        })
+
+
+
         n.ReferralUserId && o.setRefferUserId(n.ReferralUserId);
         var tm = this;
         var n = this;
-        o.getOpenId(function (t) {
+        o.getOpenId(function(t) {
             wx.request({
                 url: o.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
                 },
-                success: function (t) {
+                success: function(t) {
                     o.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
         });
-        o.getUserInfo(function (t) {
+        o.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t
             })
@@ -123,18 +145,18 @@ Page({
             url: "../Distribution/Distribution"
         });
     },
-    customerService: function (){
+    customerService: function() {
         wx.makePhoneCall({
             phoneNumber: '021-55697790',
-            success: function(){
+            success: function() {
                 console.log("正在呼叫")
             },
-            fail:function () {
+            fail: function() {
                 console.log("呼叫失败")
             }
         })
     },
-    goToLearn: function () {
+    goToLearn: function() {
         wx.navigateTo({
             url: '/pages/aboutytal/aboutytal',
         })
@@ -149,35 +171,34 @@ Page({
     //         imgUrl: '/images/zcfxtp.png'
     //     }
     // },
-    RefferStore: function () {
+    RefferStore: function() {
         wx.navigateTo({
             url: "../RefferStore/RefferStore"
         });
     },
-    GetCheckData: function () {
+    GetCheckData: function() {
         this.setData({
             DistributionInfo: o.globalData.ReferralInfo
         });
     },
-    bindstoreinfo: function () {
+    bindstoreinfo: function() {
         wx.navigateTo({
             url: "../storeInfo/storeInfo"
         });
     },
-    bindyongjin: function (e) {
+    bindyongjin: function(e) {
         wx.navigateTo({
             url: "../Splittin/Splittin"
         });
     },
-    bindxiaji: function (e) {
+    bindxiaji: function(e) {
         wx.navigateTo({
             url: "../SubMembers/SubMembers"
         });
     },
-    goToVip: function () {
+    goToVip: function() {
         wx.switchTab({
             url: '/pages/discovery/discovery'
         })
     }
-
 });

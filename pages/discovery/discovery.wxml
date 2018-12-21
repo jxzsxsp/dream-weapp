@@ -95,7 +95,7 @@
 
         <view wx:else>
             <view class='text-box' style='font-size:14px;display:flex;flex-flow:column nowrap;justify-content:space-between;align-items:center;margin-bottom:60rpx;position:relative;padding-top:70rpx;background-color:transparent;'>
-                <text style='z-index:2;font-size:16px;margin-bottom:25rpx;'>VIP体验期还有<text style='font-size:24px;padding:0 60rpx;'>16</text>天</text>
+                <text style='z-index:2;font-size:16px;margin-bottom:25rpx;'>VIP体验期还有<text style='font-size:24px;padding:0 60rpx;'>{{vipInfo.expireDays}}</text>天</text>
                 <text style='z-index:2;font-size:14px;'>每消费一笔/每邀请5人即奖励延长5天会员期</text>
                 <text style='z-index:2;font-size:12px;color:#666;'>奖励可累计，上不封顶</text>
                 <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vipdjs.png' style='width:750rpx;position:absolute;left:0;top:30rpx;z-index:1;' mode='widthFix' lazy-load></image>
@@ -135,17 +135,52 @@
 
 
             <!-- 切换已邀请好友列表显示 -->
-            <view wx:if='{{isDefault}}'>
+            <view wx:if='{{isDefault}}' style='padding-bottom:30rpx;'>
                 <!-- <view style='text-align:center;padding:10rpx;background-color:#f5f5f5;'>
                     <text style='font-size:12px;'>好友点击您的分享页面浏览，即可计入</text>
                 </view> -->
                 <view style='display:flex;flex-flow:row nowrap;justify-content:center;'>
-                    <view class='pic-container' style='height:140rpx;display:flex;flex-flow:row nowrap;width:85%;justify-content:space-between;align-items:center;'>
-                        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                    <view class='pic-container' style='display:flex;flex-flow:row wrap;width:85%;justify-content:space-between;align-items:center;'>
+                        <block wx:for='{{vipInfo.memberGroup}}'>
+                            <view style='width:20%;padding-top:30rpx;' wx:for='{{item}}'>
+                                <image src='{{item.titlePic}}' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                            </view>
+
+                        </block>
+
+
+
+
+                        <!-- <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view>
+                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
+                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                        </view> -->
                     </view>
                     <!-- <view style='line-height:114rpx;box-sizing:border-box;font-size:12px;'>已激活五天</view> -->
                 </view>
@@ -153,10 +188,22 @@
 
             <!-- 切换已购买订单列表显示 -->
             <view wx:else>
+
+
+                <block wx:for='{{vipInfo.tradeList}}'>
+                    <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+                        <!-- <text style='padding:20rpx;width:120rpx;text-align:center;'>编号</text> -->
+                        <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}</text>
+                        <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+                    </view>
+                    <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+                </block>
+
+
                 <!-- <view style='text-align:center;padding:10rpx;background-color:#f5f5f5;'>
                     <text style='font-size:12px;'>购买订单已发货,即可计入</text>
                 </view> -->
-                <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+                <!-- <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
                     <text style='padding:20rpx;width:120rpx;text-align:center;'>编号</text>
                     <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>1234546131</text>
                     <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
@@ -196,8 +243,8 @@
                     <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>1234546131</text>
                     <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
 
-                </view>
-                <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+                </view> -->
+
             </view>
 
         </view>
@@ -228,7 +275,7 @@
 </view>
 
 <!-- 如果当前是永久会员 -->
-<view wx:else>
+<!-- <view wx:else>
 
 
     <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
@@ -240,4 +287,31 @@
     <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
 
 
+</view> -->
+
+<view wx:else>
+    <view>
+        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </view>
+    <view>
+        <navigator url="/pages/productdetail/productdetail?id=148" hover-class="other-navigator-hover">
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+        <navigator url="/pages/productdetail/productdetail?id=147" hover-class="other-navigator-hover">
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+        <navigator url="/pages/productdetail/productdetail?id=163" hover-class="other-navigator-hover">
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+        <navigator url="/pages/productdetail/productdetail?id=164" hover-class="other-navigator-hover">
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP5.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </navigator>
+
+
+    </view>
+    <view>
+        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </view>
 </view>
