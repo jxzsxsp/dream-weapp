@@ -68,7 +68,11 @@ class BaseService {
       param = {delta}
       let pages = getCurrentPages()
       let prevPage = pages[pages.length - delta - 1]
-      prevPage.setData(data)
+      if (!prevPage.hasOwnProperty('onNavigateBack')) {
+        console.error('zachary 抛出: 上级页面未实现 onNavigateBack 方法接收参数')
+      } else {
+        prevPage.onNavigateBack(data)
+      }
     }
     return new Promise((res, rej) => {
       wx.navigateBack({
