@@ -10,4 +10,6 @@ export default {
   isInFavorite: '/library-color/is-in-favorites', // 通过颜色的id 和 类型 判断是否已经收藏了
   addFavorite: '/library-color/add-favorite-color', // 添加收藏接口
   cancelFavorite: '/library-color/cancel-favorite-color', // 取消收藏接口
+  colorLibraryList: '/color-library/list', // 颜色库列表接口
+  colorLibrarySave: '/color-library/save', // 添加/编辑颜色库接口
 }

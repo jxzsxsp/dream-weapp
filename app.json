@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/search-color/search-color",
     "pages/color-detail/color-detail",
@@ -14,7 +14,9 @@
     "pages/connect-device/connect-device",
     "pages/apply-result/apply-result",
     "pages/color-library-detail/color-library-detail",
-    "pages/setting-tag/setting-tag"
+    "pages/setting-tag/setting-tag",
+    "pages/join-library/join-library",
+    "pages/add-library/add-library"
   ],
   "window": {
     "backgroundTextStyle": "light",

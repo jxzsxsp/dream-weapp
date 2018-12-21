@@ -21,7 +21,7 @@ const data = {
 const lifecycle = {
   onLoad: function(query) {
     console.log(query)
-    this.getLabelList(res => {
+    this.getLabelList().then(res => {
       this.setData({
         latestLabels: res.labels
       })
@@ -57,11 +57,11 @@ const viewAction = {
         labelName: this.data.label
       }
 
-      this.getLabelList(res => {
+      this.getLabelList(params).then(res => {
         this.setData({
           thinkLabels: res.labels
         })
-      }, params)
+      })
     } else {
       this.setData({
         thinkLabels: []
@@ -193,11 +193,8 @@ const privateMethods = {
       selected: selected
     })
   },
-  getLabelList: function(callback, params) {
-    http.get(urls.labelList, { mock: true, ...params }).then(res => {
-      console.log(res);
-      callback(res);
-    })
+  getLabelList: function(params) {
+    return http.get(urls.labelList, { mock: true, ...params })
   },
   setLabel: function () {
     http.post(urls.setLabel, {

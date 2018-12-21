@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -119,6 +119,18 @@
 					"id": -1,
 					"name": "设置标签",
 					"pathName": "pages/setting-tag/setting-tag",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "加入颜色库",
+					"pathName": "pages/join-library/join-library",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新增颜色库",
+					"pathName": "pages/add-library/add-library",
 					"query": ""
 				}
 			]

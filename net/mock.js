@@ -175,7 +175,24 @@ let colorLibraryDetail = {
     "status": true // true 已经收藏 false 未收藏
   },
   [urls.addFavorite]: 1,
-  [urls.cancelFavorite]: {}
+  [urls.cancelFavorite]: {},
+  [urls.colorLibraryList]: {
+    "list": [
+      {
+        "id": 12,
+        "name": "春季流行",
+        "decription": "",
+        "colorCount": "",
+        "lastColorUpdateTime": "",
+        "timeLabel": "一个月前",
+        "colorIcon": "",
+        "type": 0 // 1-自定义库 0-默认库
+      }
+    ],
+    "totalCount": 100,
+    "hasMore": false
+  },
+  [urls.colorLibrarySave]: 1,
 }
 
 let colorLabel = {

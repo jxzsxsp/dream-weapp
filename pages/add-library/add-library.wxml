@@ -1,0 +1,29 @@
+<view class='name-container'>
+  <text class='title'>颜色库名称</text>
+  <view class='name'>
+    <input 
+    value='{{name}}' 
+    maxlength='{{maxTitleTextNum}}' 
+    placeholder='输入颜色库名称'
+    bindinput='nameChange'
+    />
+    <text class='num-limit'>{{name.length}}/{{maxTitleTextNum}}</text>
+  </view>
+</view>
+
+<view class='content-container'>
+  <text class='title'>颜色库介绍</text>
+  <view class='content'>
+    <textarea 
+    value='{{desc}}'
+    maxlength='{{maxDescTextNum}}' 
+    placeholder='添加描述'
+    bindinput='descChange'
+    />
+  </view>
+  <text class='num-limit'>{{desc.length}}/{{maxDescTextNum}}</text>
+</view>
+
+<view class='bottom-btn'>
+  <view class="btn {{canSave ? 'btn-active':''}}" bind:tap='save'>保存</view>
+</view>
