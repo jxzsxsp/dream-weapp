@@ -85,7 +85,6 @@
     <view class='show-box' wx:if='{{isForever}}' style='margin-top:90rpx;background-color: #fff;'>
         <!-- 如果当前没有会员信息为空 则提示申请试用 -->
         <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
-
             <!-- <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName}}'> -->
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
 
@@ -131,9 +130,6 @@
 
             <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
 
-
-
-
             <!-- 切换已邀请好友列表显示 -->
             <view wx:if='{{isDefault}}' style='padding-bottom:30rpx;'>
                 <!-- <view style='text-align:center;padding:10rpx;background-color:#f5f5f5;'>
@@ -148,41 +144,8 @@
 
                         </block>
 
-
-
-
-                        <!-- <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view>
-                        <view style='width:20%;padding-top:30rpx;display:flex;justify-content:center;'>
-                            <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKXyqWTEtYnHeTwpjnf8tPcv5XibSvCaJiazF6m2b6NbRzYvcXtDXK7fiaQpsBNoQnnUUjvibw7zd5RSg/132' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-                        </view> -->
                     </view>
-                    <!-- <view style='line-height:114rpx;box-sizing:border-box;font-size:12px;'>已激活五天</view> -->
+
                 </view>
             </view>
 
@@ -252,66 +215,50 @@
 
 
 
-
-    <!-- 如果当前是永久会员 -->
-    <view wx:else style='margin-top:80rpx;background-color: #fff;'>
+    <view wx:else>
         <view>
-            <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
         </view>
         <view>
-            <navigator url="/pages/productdetail/productdetail?id=148" open-type="navigate" hover-class="other-navigator-hover">
-                <image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' lazy-load style='width:100%'></image>
+            <navigator url="/pages/productdetail/productdetail?id=148" hover-class="other-navigator-hover">
+                <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
             </navigator>
-            <navigator url="/pages/productdetail/productdetail?id=147" open-type="navigate" hover-class="other-navigator-hover">
-                <image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' lazy-load style='width:100%'></image>
+            <navigator url="/pages/productdetail/productdetail?id=147" hover-class="other-navigator-hover">
+                <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
             </navigator>
+            <navigator url="/pages/productdetail/productdetail?id=163" hover-class="other-navigator-hover">
+                <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+            </navigator>
+            <navigator url="/pages/productdetail/productdetail?id=164" hover-class="other-navigator-hover">
+                <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP5.png' mode='widthFix' style='width:100%' lazy-load></image>
+            </navigator>
+
+
         </view>
         <view>
-            <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
         </view>
-
     </view>
-
 </view>
 
 <!-- 如果当前是永久会员 -->
-<!-- <view wx:else>
-
-
-    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
-    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
-
-    <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
-        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
-    </button>
-    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
-
-
-</view> -->
-
-<view wx:else>
+<!-- 如果当前是永久会员 -->
+<view wx:else style='margin-top:80rpx;background-color: #fff;'>
     <view>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
     </view>
     <view>
-        <navigator url="/pages/productdetail/productdetail?id=148" hover-class="other-navigator-hover">
-            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <navigator url="/pages/productdetail/productdetail?id=148" open-type="navigate" hover-class="other-navigator-hover">
+            <image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' lazy-load style='width:100%'></image>
         </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=147" hover-class="other-navigator-hover">
-            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <navigator url="/pages/productdetail/productdetail?id=147" open-type="navigate" hover-class="other-navigator-hover">
+            <image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' lazy-load style='width:100%'></image>
         </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=163" hover-class="other-navigator-hover">
-            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
-        </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=164" hover-class="other-navigator-hover">
-            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP5.png' mode='widthFix' style='width:100%' lazy-load></image>
-        </navigator>
-
-
     </view>
     <view>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
+        <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
     </view>
+
 </view>
