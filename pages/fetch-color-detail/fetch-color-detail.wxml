@@ -9,7 +9,7 @@
   </view>
 
   <view class="share-button-container">
-    <button class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
+    <button wx:if="{{selfFetch}}" class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
       <text class="share-button-text">打开小蜥取色</text>
     </button>
   </view>
@@ -34,4 +34,9 @@
       <text class="go-home-text">回首页</text>
     </view>
   </suspend-button>
+</view>
+
+<view class='favorite-container' bind:tap="favoriteColor">
+  <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite'></view>
+  <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite favorite-active'></view>
 </view>

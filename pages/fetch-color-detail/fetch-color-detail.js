@@ -9,7 +9,10 @@ let props = {
 let data = {
   colorDetail: {},
   relativeColorList: [],
-  colorId: 0
+  colorId: 0,
+  favorite: false,
+  originType: 0,
+  selfFetch: true,
 }
 
 let lifeCycle = {
@@ -32,6 +35,12 @@ let lifeCycle = {
           relativeColorList
         })
       })
+
+    this.getFavorite(res => {
+      this.setData({
+        favorite: res.status
+      })
+    }, query.colorId)
   }
 }
 
@@ -50,6 +59,33 @@ let privateMethod = {
       .then(() => {
         console.log(e.detail.errMsg)
       })
+  },
+  getFavorite: function (callback, colorId) {
+    http.get(urls.isInFavorite, {
+      mock: true,
+      colorId: colorId,
+      originType: this.data.originType
+    }).then(res => {
+      callback(res);
+    })
+  },
+  addFavorite: function (callback) {
+    http.post(urls.addFavorite, {
+      mock: true,
+      colorId: this.data.colorDetail.colorId,
+      originType: this.data.originType
+    }).then(res => {
+      callback(res);
+    })
+  },
+  cancelFavorite: function (callback) {
+    http.post(urls.cancelFavorite, {
+      mock: true,
+      colorId: this.data.colorDetail.colorId,
+      originType: this.data.originType
+    }).then(res => {
+      callback(res);
+    })
   }
 }
 
@@ -57,6 +93,23 @@ let viewAction = {
   relativeColorClicked: function (data) {
     $wx.navigateTo($wx.router.colorDetail, {...this.data.relativeColorList[data.index]})
   },
+  favoriteColor: function () {
+    let favorite = !this.data.favorite
+
+    if (favorite) {
+      this.addFavorite(res => {
+        this.setData({
+          favorite: favorite
+        })
+      })
+    } else {
+      this.cancelFavorite(res => {
+        this.setData({
+          favorite: favorite
+        })
+      })
+    }
+  }
 }
 
 $Page.register(props, data, lifeCycle, privateMethod, viewAction)

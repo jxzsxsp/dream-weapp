@@ -134,7 +134,16 @@
   margin-right: 22rpx;
 }
 
+.favorite-container {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+}
 
+.favorite {
+  font-size: 50rpx;
+}
 
-
-
+.favorite-active {
+  color: #FF9500;
+}
