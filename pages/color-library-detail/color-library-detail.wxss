@@ -26,6 +26,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  background: #FFFFFF;
 }
 
 .save-button {
@@ -245,7 +246,7 @@
 }
 
 .van-popup--bottom {
-  background: transparent!important;
+  border-radius: 34rpx 34rpx 0 0;
 }
 
 .action-title {

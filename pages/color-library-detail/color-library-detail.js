@@ -1,9 +1,15 @@
 import {$wx, $Page} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
+import utils from '../../utils/index'
 
 const libraryType =  {
   DEFAULT: false,
   CUSTOM: true,
+}
+
+const deleteType = {
+  SINGLE: 0,
+  MUTIPLE: 1
 }
 
 const props = {
@@ -78,10 +84,16 @@ const lifeCycle = {
   },
   onReachBottom: function () {
     this.getColorList()
+  },
+  onNavigateBack: function (d) {
+    
   }
 }
 
 const viewAction = {
+  saveLibrary: function () {
+
+  },
   beginSelect: function () {
     this.setData({
       isMultiSelect: !this.data.isMultiSelect
@@ -140,27 +152,43 @@ const viewAction = {
   },
   doAction: function (d) {
     this.closeAction()
-    // switch (d.type) {
-    //   case 'TAG':
-    //     $wx.navigateTo($wx.router.settingTag, {id: this.data.selectedColor.id})
-    //     break
-    //   case 'MOVE':
-    //     break
-    //   case 'ADD':
-    //     break
-    //   case 'SHARE':
-    //     break
-    //   case 'DELETE':
-    //     break
-    //   default:
-    //     break
-    // }
+    switch (d.type) {
+      case 'TAG':
+        $wx.navigateTo($wx.router.settingTag, {id: this.data.selectedColor.id})
+        break
+      case 'MOVE':
+        break
+      case 'ADD':
+        break
+      case 'SHARE':
+        break
+      case 'DELETE':
+        $wx.showModal({title: '提示', content: '确认要删除选中的颜色吗？', confirmColor: '#BD061C'})
+          .then(() => {
+            this._deleteColors(deleteType.SINGLE)
+          })
+        break
+      default:
+        break
+    }
   },
   editLibrary: function () {
 
   },
   shareLibrary: function () {
 
+  },
+  addColors: function () {
+    
+  },
+  moveColors: function () {
+
+  },
+  deleteColors: function() {
+    $wx.showModal({title: '提示', content: '确认要删除选中的颜色吗？', confirmColor: '#BD061C'})
+    .then(() => {
+      this._deleteColors(deleteType.MUTIPLE)
+    })
   },
 }
 
@@ -217,7 +245,7 @@ const privateMethod = {
       }
     })
   },
-  // 重置选中的颜色
+  // 选中的移出数组，没选中的移到数组第一个
   setSelectedColorList: function (selectedColor) {
     if (selectedColor.isSelected) {
       let colorIndex = -1
@@ -233,7 +261,7 @@ const privateMethod = {
       this.data.selectedColorList.unshift(selectedColor)
     }
   },
-  // 重置所有颜色的选中
+  // 选中的状态设为未选中，未选中的状态设为选中
   setColorList: function (selectedColor) {
     this.data.colorList.forEach(item => {
       if (item.id === selectedColor.id) {
@@ -247,6 +275,27 @@ const privateMethod = {
     } else {
       this.data.canEdit = false
     }
+  },
+  _deleteColors: function (type) {
+    let deletedColors = []
+    if (deleteType.SINGLE === type) {
+      deletedColors.push(this.data.selectedColor)
+    } else if (deleteType.MUTIPLE === type) {
+      deletedColors.push(...this.data.selectedColorList)
+    }
+    let deletedColorIds = deletedColors.map(item => {
+      return  item.id
+    })
+    http.post(urls.deleteColor, {mock: true, libraryColorIdList: deletedColorIds}).then(() => {
+      this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')
+      this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, deletedColorIds, 'id')
+      this.setCanEdit()
+      this.setData({
+        colorList: this.data.colorList,
+        selectedColorList: this.data.selectedColorList,
+        canEdit: this.data.canEdit
+      })
+    })
   }
 }
 
