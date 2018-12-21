@@ -171,6 +171,9 @@ let colorLibraryDetail = {
     "totalCount": 12,
     "hasMore": true
   },
+  [urls.deleteColor]: {
+
+  },
   [urls.isInFavorite]: {
     "status": true // true 已经收藏 false 未收藏
   },
