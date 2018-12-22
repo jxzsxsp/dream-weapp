@@ -360,24 +360,28 @@ const privateMethod = {
     })
   },
   saveColor: function (library, colorList) {
-    const libraryColorIdList = colorList.map(item => {
-      return item.id
-    })
-    http.post(urls.addColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
-      .then(() => {
-        $wx.showToast({title: '已添加到'+library.name})
-      })
+    // const libraryColorIdList = colorList.map(item => {
+    //   return item.id
+    // })
+    // http.post(urls.addColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
+    //   .then(() => {
+    //     $wx.showToast({title: '已添加到'+library.name})
+    //   })
+    $wx.showToast({title: '已添加到'+library.name})
   },
   moveColor: function (library, colorList) {
-    const libraryColorIdList = colorList.map(item => {
-      return item.id
-    })
-    http.post(urls.moveColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
-      .then(() => {
-        $wx.showToast({title: '已移动到'+library.name})
-        utils.removeArrayInArray(this.data.colorDetail, libraryColorIdList, 'id')
-        utils.removeArrayInArray(this.data.selectedColorList, libraryColorIdList, 'id')
-      })
+    // const libraryColorIdList = colorList.map(item => {
+    //   return item.id
+    // })
+    // http.post(urls.moveColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
+    //   .then(() => {
+    //     $wx.showToast({title: '已移动到'+library.name})
+    //     utils.removeArrayInArray(this.data.colorDetail, libraryColorIdList, 'id')
+    //     utils.removeArrayInArray(this.data.selectedColorList, libraryColorIdList, 'id')
+    //   })
+    $wx.showToast({title: '已移动到'+library.name})
+    utils.removeArrayInArray(this.data.colorDetail, libraryColorIdList, 'id')
+    utils.removeArrayInArray(this.data.selectedColorList, libraryColorIdList, 'id')
     this.setData({
       selectedColorList: this.data.selectedColorList,
       colorList: this.data.colorList
