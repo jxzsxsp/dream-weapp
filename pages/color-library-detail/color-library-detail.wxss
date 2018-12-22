@@ -351,6 +351,7 @@
   letter-spacing: -0.16rpx;
   text-align: center;
   line-height: 36rpx;
+  margin-top: 20rpx;
 }
 
 @keyframes left-to-right {

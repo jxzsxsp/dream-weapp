@@ -14,6 +14,6 @@ export default {
   applyResult: 'apply-result',
   colorLibraryDetail: 'color-library-detail',
   settingTag: 'setting-tag',
-  addColorLibrary: 'add-library',
-  joinColorLibrary: 'join-library',
+  joinLibrary: 'join-library',
+  addLibrary: 'add-library',
 }

@@ -11,4 +11,5 @@ export default {
   colorLibraryList: '/color-library/list', // 颜色库列表接口
   colorLibrarySave: '/color-library/save', // 添加/编辑颜色库接口
   addColor: '/library-color/add-color', // 颜色保存（复制）至颜色库接口
+  moveColor: '/library-color/move-to-library', // 移动颜色到特定库
 }

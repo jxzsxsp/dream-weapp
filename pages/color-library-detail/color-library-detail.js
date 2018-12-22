@@ -89,13 +89,45 @@ const lifeCycle = {
     this.getColorList()
   },
   onNavigateBack: function (d) {
-
+    const libraryDetail = d.libraryDetail
+    switch (d.type) {
+      case constant.ColorLibraryActionType.Tag:
+        this.data.selectedColor.labelList = d.labelList
+        this.getFullLabel([this.data.selectedColor])
+        this.setData({
+          colorList: this.data.colorList
+        })
+        break
+      case constant.ColorLibraryActionType.EditLibrary:
+        this.data.libraryDetail = d.libraryDetail
+        this.setData({
+          libraryDetail: this.data.libraryDetail
+        })
+        break
+      case constant.ColorLibraryActionType.SaveLibrary:
+        this.saveColor(libraryDetail, this.data.colorList)
+        break
+      case constant.ColorLibraryActionType.Add_Single:
+        this.saveColor(libraryDetail, [this.data.selectedColor])
+        break
+      case constant.ColorLibraryActionType.Add_Multiple:
+        this.saveColor(libraryDetail, this.data.selectedColorList)
+        break
+      case constant.ColorLibraryActionType.Move_Single:
+        this.moveColor(libraryDetail, [this.data.selectedColor])
+        break
+      case constant.ColorLibraryActionType.Move_Multiple:
+        this.moveColor(libraryDetail, this.data.selectedColorList)
+        break
+      default:
+        break;
+    }
   }
 }
 
 const viewAction = {
   saveLibrary: function () {
-
+    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail})
   },
   beginSelect: function () {
     this.setData({
@@ -173,11 +205,13 @@ const viewAction = {
     this.closeAction()
     switch (d.type) {
       case 'TAG':
-        $wx.navigateTo($wx.router.settingTag, {id: this.data.selectedColor.id})
+        $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.Tag, id: this.data.selectedColor.id})
         break
       case 'MOVE':
+        $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Move_Single, colorList: [this.data.selectedColor]})
         break
       case 'ADD':
+        $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Add_Single, colorList: [this.data.selectedColor]})
         break
       case 'SHARE':
         break
@@ -192,16 +226,16 @@ const viewAction = {
     }
   },
   editLibrary: function () {
-
+    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.EditLibrary, libraryDetail: this.data.libraryDetail})
   },
   shareLibrary: function () {
 
   },
   addColors: function () {
-    
+    $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Add_Multiple, colorList: this.data.selectedColorList})
   },
   moveColors: function () {
-
+    $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Move_Multiple, colorList: this.data.selectedColorList})
   },
   deleteColors: function() {
     this.setData({
@@ -221,7 +255,7 @@ const viewAction = {
 }
 
 const privateMethod = {
-  // 获取完整的 label
+  // 获取完整的标签
   getFullLabel: function (labelList) {
     if (!labelList || labelList.length === 0) {
       return ''
@@ -323,6 +357,30 @@ const privateMethod = {
         selectedColorList: this.data.selectedColorList,
         canEdit: this.data.canEdit
       })
+    })
+  },
+  saveColor: function (library, colorList) {
+    const libraryColorIdList = colorList.map(item => {
+      return item.id
+    })
+    http.post(urls.addColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
+      .then(() => {
+        $wx.showToast({title: '已添加到'+library.name})
+      })
+  },
+  moveColor: function (library, colorList) {
+    const libraryColorIdList = colorList.map(item => {
+      return item.id
+    })
+    http.post(urls.moveColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
+      .then(() => {
+        $wx.showToast({title: '已移动到'+library.name})
+        utils.removeArrayInArray(this.data.colorDetail, libraryColorIdList, 'id')
+        utils.removeArrayInArray(this.data.selectedColorList, libraryColorIdList, 'id')
+      })
+    this.setData({
+      selectedColorList: this.data.selectedColorList,
+      colorList: this.data.colorList
     })
   }
 }

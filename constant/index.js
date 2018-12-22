@@ -14,6 +14,16 @@ const ColorSource = {
   selfFetch: 0
 }
 
+const ColorLibraryActionType = {
+  EditLibrary: 0,
+  Move_Single: 1,
+  Move_Multiple: 2,
+  Add_Single: 3,
+  Add_Multiple: 4,
+  Tag: 5,
+  SaveLibrary: 6,
+}
+
 const ColorSense = {
   ColorSenseService: '26DB67AB-FC40-420A-B080-2CE709BFB7D0',
   ClickUUID: '4229BDB5-8B55-4C6F-9216-D71AB06F246A',
@@ -24,5 +34,6 @@ const ColorSense = {
 export default {
   APP_GLOBAL,
   ColorSource,
-  ColorSense
+  ColorSense,
+  ColorLibraryActionType,
 }
