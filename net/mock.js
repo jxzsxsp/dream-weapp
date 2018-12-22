@@ -221,9 +221,99 @@ let colorLibraryDetail = {
         "colorIcon": "#F5A623",
         "type": 1 // 1-自定义库 0-默认库
       },
+      {
+        "id": 2,
+        "name": "春季流行色",
+        "decription": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 3,
+        "name": "冬季流行色",
+        "decription": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 4,
+        "name": "2017畅销色",
+        "decription": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 2,
+        "name": "春季流行色",
+        "decription": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 3,
+        "name": "冬季流行色",
+        "decription": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 4,
+        "name": "2017畅销色",
+        "decription": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 2,
+        "name": "春季流行色",
+        "decription": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 3,
+        "name": "冬季流行色",
+        "decription": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 4,
+        "name": "2017畅销色",
+        "decription": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
+      },
     ],
     "totalCount": 100,
-    "hasMore": false
+    "hasMore": true
   },
   [urls.colorLibrarySave]: 1,
 }

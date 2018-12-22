@@ -1,9 +1,9 @@
-<view class='container add'>
+<view class='container add' bind:tap='addColorLibrary'>
   <view class='iconfont icon-chuangjian chuangjian'></view>
   <text>创建新颜色库</text>
 </view>
 
-<view class='container default'>
+<view wx:if='{{defaultColorLibrary && defaultColorLibrary.name}}' class='container default'>
   <block wx:if="{{!!defaultColorLibrary.colorIcon}}">
   <view class='color-icon' style='background:{{defaultColorLibrary.colorIcon}};'></view>
   </block>
@@ -19,7 +19,7 @@
 </view>
 
 <block wx:for='{{colorLibraryList}}' wx:key='index'>
-<view wx:if="{{item.type === 1}}" class='container'>
+<view wx:if="{{item.type === 1}}" class='container' data-id='{{item.id}}' data-name='{{item.name}}' bind:tap='joinColorLibrary'>
   <block wx:if="{{!!item.colorIcon}}">
   <view class='color-icon' style='background:{{item.colorIcon}};'></view>
   </block>

@@ -27,6 +27,7 @@ const viewAction = {
     if(this.data.canSave) {
       this.createColorLibrary().then(res => {
         console.log(res)
+        $wx.navigateBack({})
       })
     }
 

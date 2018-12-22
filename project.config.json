@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -122,10 +122,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "加入颜色库",
 					"pathName": "pages/join-library/join-library",
-					"query": ""
+					"query": "colorId=1"
 				},
 				{
 					"id": -1,
