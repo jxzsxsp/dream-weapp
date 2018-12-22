@@ -88,6 +88,14 @@ const lifeCycle = {
   onReachBottom: function () {
     this.getColorList()
   },
+  onShareAppMessage: function () {
+    console.log($wx.app.globalData.userInfo)
+    const nickName = $wx.app.globalData.userInfo.nickName
+    return {
+      title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
+      path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
+    }
+  },
   onNavigateBack: function (d) {
     const libraryDetail = d.libraryDetail
     switch (d.type) {

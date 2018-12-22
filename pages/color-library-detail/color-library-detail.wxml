@@ -15,7 +15,9 @@
           <text class="main-title">{{libraryDetail.name}}</text>
           <view wx:if="{{!isShared}}" class="flex">
             <view wx:if="{{isCustom}}" class="iconfont icon-bianji edit-icon" bind:tap="editLibrary"/>
-            <view class="iconfont icon-fenxiang edit-icon" bind:tap="shareLibrary"/>
+            <button class="button" open-type="share" style="background: white;padding: 0 0 0 0;">
+              <view class="iconfont icon-fenxiang edit-icon" bind:tap="shareLibrary"/>
+            </button>
           </view>
         </view>
         <text class="main-subtitle">{{libraryDetail.description}}</text>

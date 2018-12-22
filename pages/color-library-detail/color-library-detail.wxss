@@ -94,7 +94,9 @@
 }
 
 .edit-icon {
-  margin-left: 40rpx;
+  line-height: 50rpx;
+  width: 50rpx;
+  margin-left: 20rpx;
   font-size: 24px;
 }
 
