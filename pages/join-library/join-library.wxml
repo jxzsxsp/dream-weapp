@@ -1,3 +1,9 @@
+<scroll-view wx:if='{{colorList && colorList.length > 0}}' scroll-x class='color-container'>
+  <block wx:for='{{colorList}}' wx:key='index'>
+  <view class='color-item' style='background: {{item.hexColor}};'></view>
+  </block>
+</scroll-view>
+
 <view class='container add' bind:tap='addColorLibrary'>
   <view class='iconfont icon-chuangjian chuangjian'></view>
   <text>创建新颜色库</text>
@@ -19,7 +25,7 @@
 </view>
 
 <block wx:for='{{colorLibraryList}}' wx:key='index'>
-<view wx:if="{{item.type === 1}}" class='container' data-id='{{item.id}}' data-name='{{item.name}}' bind:tap='joinColorLibrary'>
+<view wx:if="{{item.type === 1}}" class='container' data-detail='{{item}}' bind:tap='joinColorLibrary'>
   <block wx:if="{{!!item.colorIcon}}">
   <view class='color-icon' style='background:{{item.colorIcon}};'></view>
   </block>

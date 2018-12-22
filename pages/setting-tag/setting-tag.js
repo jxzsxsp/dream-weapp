@@ -35,7 +35,17 @@ const lifecycle = {
 const viewAction = {
   complete: function (d, v) {
     console.log(d, v)
-    this.setLabel();
+    this.setLabel().then(res => {
+      let labels = this.data.labels
+      let labelList = []
+      for (let i = 0; i < labels.length; i++) {
+        labelList.push({ name: labels[i] })
+      }
+
+      $wx.navigateBack({
+        labelList: labelList
+      })
+    })
   },
   inputEvent: function (d, v) {
     console.log(d, v, this.data.label)
@@ -197,13 +207,11 @@ const privateMethods = {
     return http.get(urls.labelList, { mock: true, ...params })
   },
   setLabel: function () {
-    http.post(urls.setLabel, {
+    return http.post(urls.setLabel, {
       mock: true,
       libraryColorId: this.data.libraryColorId, 
       labels: this.data.labels
-      }).then(res => {
-      console.log(res);
-    })
+      })
   }
 }
 

@@ -1,5 +1,6 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
   loadingState: http.defaultLoadingState(),
@@ -10,13 +11,37 @@ const data = {
   defaultColorLibrary: {},
   libraryId: 0,
   libraryColorIdList: [],
+  colorList: [],
+  type: 0,
 }
 
 const lifecycle = {
   onLoad: function (query) {
+    console.log(query, constant)
+    
+    if (query.type === constant.ColorLibraryActionType.Move_Single || query.type === constant.ColorLibraryActionType.Move_Multiple) {
+      $wx.setNavigationBarTitle({
+        title: '移动到颜色库',
+      })
+    } else if (query.type === constant.ColorLibraryActionType.Add_Single || query.type === constant.ColorLibraryActionType.Add_Multiple) {
+      $wx.setNavigationBarTitle({
+        title: '添加到颜色库',
+      })
+    }
+
+    let libraryColorIdList = []
+    if(query.colorList && query.colorList.length > 0) {
+      let colorList = query.colorList
+      for(let i = 0; i < colorList.length; i++) {
+        libraryColorIdList.push(colorList[i].id)
+      }
+    }
+
     this.setData({
-      libraryColorIdList: [query.colorId]
+      ...query,
+      libraryColorIdList: libraryColorIdList
     })
+
     this.getColorLibraryList().then(res => {
       console.log(res)
 
@@ -32,6 +57,7 @@ const lifecycle = {
           break
         }
       }
+
     })
   },
   onShow: function (query) {
@@ -76,17 +102,17 @@ const lifecycle = {
 
 const viewAction = {
   addColorLibrary: function () {
-    $wx.navigateTo($wx.router.addColorLibrary, {})
+    $wx.navigateTo($wx.router.addLibrary, {})
   },
   joinColorLibrary: function(d, v) {
     console.log(d, v)
     this.setData({
-      libraryId: d.id
+      libraryId: d.detail.id
     })
     this.addColorToLibrary()
     $wx.navigateBack({
-      id: d.id,
-      name: d.name,
+      type: this.data.type,
+      libraryDetail: d.detail
     })
   },
 }

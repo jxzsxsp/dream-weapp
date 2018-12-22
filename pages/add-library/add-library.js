@@ -11,10 +11,25 @@ const data = {
   id: 0,
   name: '',
   desc: '',
+  libraryDetail: {},
 }
 
 const lifecycle = {
   onLoad: function (query) {
+    if(query.libraryDetail && query.libraryDetail.name) {
+      if (query.libraryDetail.id > 0) {
+        $wx.setNavigationBarTitle({
+          title: '编辑颜色库',
+        })
+      }
+      
+      this.setData({
+        id: query.libraryDetail.id,
+        name: query.libraryDetail.name,
+        desc: query.libraryDetail.description,
+        libraryDetail: query.libraryDetail,
+      })
+    }
   },
   onShow: function() {
     this.checkCanSave()
@@ -27,7 +42,13 @@ const viewAction = {
     if(this.data.canSave) {
       this.createColorLibrary().then(res => {
         console.log(res)
-        $wx.navigateBack({})
+        let libraryDetail = this.data.libraryDetail
+        libraryDetail.id = this.data.id
+        libraryDetail.name = this.data.name
+        libraryDetail.description = this.data.desc
+        $wx.navigateBack({
+          libraryDetail: libraryDetail
+        })
       })
     }
 

@@ -1,3 +1,22 @@
+.color-container {
+  width: 686rpx;
+  height: 172rpx;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+}
+
+.color-item {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 26rpx;
+  margin-top: 24rpx;
+  margin-right: 14rpx;
+  display: inline-block;
+}
+
 .container {
   padding-left: 32rpx;
   height: 120rpx;
