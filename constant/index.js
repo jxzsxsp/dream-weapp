@@ -22,7 +22,7 @@ const ColorLibraryActionType = {
   Add_Multiple: 4,
   Tag: 5,
   SaveLibrary: 6,
-  SvaeColor: 7
+  SaveColor: 7
 }
 
 const ColorSense = {
