@@ -24,3 +24,11 @@
   <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite' style="color: {{colorDetail.textColor}}"/>
   <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite' style="color: {{colorDetail.textColor}}"/>
 </view>
+
+<van-transition name="fade" show="{{showHint}}" duration="1500" custom-class="hint-container">
+  <view class="hint-button-container flex-center" bind:tap="gotoColorLibrary">
+    <text class="hint-style1">已收藏!继续</text>
+    <text class="hint-style2">添加到颜色库</text>
+    <!-- <view class="iconfont icon-"/> -->
+  </view>
+</van-transition>

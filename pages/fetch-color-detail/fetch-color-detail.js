@@ -4,6 +4,7 @@ import utils from '../../utils/index'
 
 let props = {
   loadingState: http.defaultLoadingState(),
+  timeout: null,
 }
 
 let data = {
@@ -12,7 +13,8 @@ let data = {
   colorId: 0,
   favorite: false,
   // 是从颜色库打开，还是从分享直接打开
-  fromLibrary: false
+  fromLibrary: false,
+  showHint: false,
 }
 
 let lifeCycle = {
@@ -68,6 +70,15 @@ let viewAction = {
     } else {
       this.cancelFavorite()
     }
+  },
+  gotoColorLibrary: function () {
+    const colorDetail = this.data.colorDetail
+    const color = {
+      id: colorDetail.colorId,
+      hexColor: colorDetail.hexColor,
+      name: colorDetail.name,
+    }
+    $wx.navigateTo($wx.router.joinLibrary, {colorList: [color]})
   }
 }
 
@@ -89,8 +100,11 @@ let privateMethod = {
       colorId: this.data.colorDetail.colorId,
       originType: this.data.originType
     }).then(() => {
+      this.clearTimeout()
+      this.setTimeout()
       this.setData({
-        favorite: true
+        favorite: true,
+        showHint: true,
       })
     })
   },
@@ -100,10 +114,25 @@ let privateMethod = {
       colorId: this.data.colorDetail.colorId,
       originType: this.data.originType
     }).then(() => {
+      this.clearTimeout()
       this.setData({
-        favorite: false
+        favorite: false,
+        showHint: false,
       })
     })
+  },
+  clearTimeout: function () {
+    if (this.props.timeInterval) {
+      clearTimeout(this.props.timeInterval)
+      this.props.timeInterval = null
+    }
+  },
+  setTimeout: function () {
+    this.props.timeout = setTimeout(() => {
+      this.setData({
+        showHint: false
+      })
+    }, 3000)
   }
 }
 

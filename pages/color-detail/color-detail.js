@@ -3,10 +3,16 @@ import {http, urls} from '../../net/index'
 import utils from '../../utils/index'
 import constant from '../../constant/index'
 
+
+let props = {
+  timeout: null
+}
+
 let data = {
   colorDetail: {},
   colorRecipe: {},
   favorite: false,
+  showHint: false,
 }
 
 let lifecycle = {
@@ -21,7 +27,6 @@ let lifecycle = {
           colorDetail: res
         })
       })
-    
     this.getFavorite(query.colorId)
   }
 }
@@ -34,6 +39,15 @@ let viewAction = {
     } else {
       this.cancelFavorite()
     }
+  },
+  gotoColorLibrary: function () {
+    const colorDetail = this.data.colorDetail
+    const color = {
+      id: colorDetail.colorId,
+      hexColor: colorDetail.hexColor,
+      name: colorDetail.name,
+    }
+    $wx.navigateTo($wx.router.joinLibrary, {colorList: [color]})
   }
 }
 
@@ -55,8 +69,11 @@ let privateMethods = {
       colorId: this.data.colorDetail.colorId,
       originType: constant.ColorSource.pantone
     }).then(() => {
+      this.clearTimeout()
+      this.setTimeout()
       this.setData({
-        favorite: false
+        showHint: true,
+        favorite: true
       })
     })
   },
@@ -66,11 +83,26 @@ let privateMethods = {
       colorId: this.data.colorDetail.colorId,
       originType: constant.ColorSource.pantone
     }).then(() => {
+      this.clearTimeout()
       this.setData({
-        favorite: true
+        favorite: false,
+        showHint: false,
       })
     })
+  },
+  clearTimeout: function () {
+    if (this.props.timeInterval) {
+      clearTimeout(this.props.timeInterval)
+      this.props.timeInterval = null
+    }
+  },
+  setTimeout: function () {
+    this.props.timeout = setTimeout(() => {
+      this.setData({
+        showHint: false
+      })
+    }, 3000)
   }
 }
 
-$Page.register(null, data, lifecycle, privateMethods, viewAction)
+$Page.register(props, data, lifecycle, privateMethods, viewAction)

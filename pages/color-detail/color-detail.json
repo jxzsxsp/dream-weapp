@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "颜色详情"
+    "navigationBarTitleText": "颜色详情",
+    "usingComponents": {
+        "van-transition": "/miniprogram_npm/vant-weapp/transition/index"
+    }
 }

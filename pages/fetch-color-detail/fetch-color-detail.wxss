@@ -147,3 +147,31 @@
 .favorite-active {
   color: #FF9500;
 }
+
+.hint-container {
+  position: fixed;
+  right: 20rpx;
+  top: 100rpx;
+  display: flex;
+}
+
+.hint-button-container {
+  width: 340rpx;
+  height: 88rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 10rpx 0 rgba(0,0,0,0.15);
+  border-radius: 28rpx;
+
+  font-family: PingFangSC-Medium;
+  font-size: 20rpx;
+  letter-spacing: 0.24rpx;
+}
+
+.hint-style1 {
+  color: #000000;
+}
+
+.hint-style2 {
+  margin-left: 5rpx;
+  color: rgb(34, 124, 249);
+}

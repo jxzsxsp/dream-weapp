@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 13,
 			"list": [
 				{
 					"id": 0,
@@ -141,6 +141,26 @@
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": ""
+					}
+				},
+				{
+					"id": -1,
+					"name": "颜色详情",
+					"pathName": "pages/color-detail/color-detail",
+					"query": "colorId=1",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
+					}
+				},
+				{
+					"id": -1,
+					"name": "分享的取色详情",
+					"pathName": "pages/fetch-color-detail/fetch-color-detail",
+					"query": "colorId=1",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
 					}
 				}
 			]
