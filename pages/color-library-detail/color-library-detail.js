@@ -271,7 +271,7 @@ const privateMethod = {
   },
   // 获取类表
   getColorList: function () {
-    http.getList(urls.colorLibraryDetail, this.props.loadingState, {mock: true}).then(res => {
+    http.getList(urls.colorLibraryDetail, this.props.loadingState, {mock: true, libraryId: this.props.libraryId}).then(res => {
       $wx.setNavigationBarTitle({
         title: this.props.loadingState.others.library.name
       })
