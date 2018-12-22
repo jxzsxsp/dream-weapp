@@ -1,6 +1,5 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
-import constant from '../../constant/index'
 
 const props = {
   loadingState: http.defaultLoadingState(),
@@ -9,38 +8,26 @@ const props = {
 const data = {
   colorLibraryList: [],
   defaultColorLibrary: {},
-  libraryId: 0,
-  libraryColorIdList: [],
-  colorList: [],
-  type: 0,
+  showAction: false,
+  showDeleteConfirm: false,
+  selectedLibrary: {},
+  actions: [{
+    icon: 'icon-bianji',
+    title: '编辑',
+    type: 'EDIT'
+  }, {
+    icon: 'icon-fenxiang',
+    title: '分享到...',
+    type: 'SHARE'
+  }, {
+    icon: 'icon-shanchu',
+    title: '删除',
+    type: 'DELETE'
+  }],
 }
 
 const lifecycle = {
   onLoad: function (query) {
-    console.log(query, constant)
-    
-    if (query.type === constant.ColorLibraryActionType.Move_Single || query.type === constant.ColorLibraryActionType.Move_Multiple) {
-      $wx.setNavigationBarTitle({
-        title: '移动到颜色库',
-      })
-    } else if (query.type === constant.ColorLibraryActionType.Add_Single || query.type === constant.ColorLibraryActionType.Add_Multiple) {
-      $wx.setNavigationBarTitle({
-        title: '添加到颜色库',
-      })
-    }
-
-    let libraryColorIdList = []
-    if(query.colorList && query.colorList.length > 0) {
-      let colorList = query.colorList
-      for(let i = 0; i < colorList.length; i++) {
-        libraryColorIdList.push(colorList[i].id)
-      }
-    }
-
-    this.setData({
-      ...query,
-      libraryColorIdList: libraryColorIdList
-    })
 
     this.getColorLibraryList().then(res => {
       console.log(res)
@@ -49,7 +36,7 @@ const lifecycle = {
         colorLibraryList: res
       })
 
-      for(let i = 0; i < res.length; i++) {
+      for (let i = 0; i < res.length; i++) {
         if (res[i].type === 0) {
           this.setData({
             defaultColorLibrary: res[i]
@@ -104,17 +91,51 @@ const viewAction = {
   addColorLibrary: function () {
     $wx.navigateTo($wx.router.addLibrary, {})
   },
-  joinColorLibrary: function(d, v) {
+  viewColorLibrary: function(d, v) {
     console.log(d, v)
+
+    $wx.navigateTo($wx.router.colorLibraryDetail, { id: d.detail.id })
+  },
+  showAction: function (d) {
+    console.log(d)
     this.setData({
-      libraryId: d.detail.id
+      showAction: true,
+      selectedLibrary: d.detail
     })
-    this.addColorToLibrary().then(res => {
-      $wx.navigateBack({
-        type: this.data.type,
-        libraryDetail: d.detail
-      })
+  },
+  closeAction: function () {
+    this.setData({
+      showAction: false,
     })
+  },
+  closeDeleteConfirm: function () {
+    this.setData({
+      showDeleteConfirm: false
+    })
+  },
+  doAction: function (d) {
+    this.closeAction()
+    switch (d.type) {
+      case 'TAG':
+        $wx.navigateTo($wx.router.settingTag, { type: constant.ColorLibraryActionType.Tag, id: this.data.selectedColor.id })
+        break
+      case 'MOVE':
+        $wx.navigateTo($wx.router.joinLibrary, { type: constant.ColorLibraryActionType.Move_Single, colorList: [this.data.selectedColor] })
+        break
+      case 'ADD':
+        $wx.navigateTo($wx.router.joinLibrary, { type: constant.ColorLibraryActionType.Add_Single, colorList: [this.data.selectedColor] })
+        break
+      case 'SHARE':
+        break
+      case 'DELETE':
+        this.setData({
+          showAction: false,
+          showDeleteConfirm: true
+        })
+        break
+      default:
+        break
+    }
   },
 }
 
@@ -122,13 +143,6 @@ const privateMethods = {
   getColorLibraryList: function () {
     return http.getList(urls.colorLibraryList, this.props.loadingState, {
       mock: true,
-    })
-  },
-  addColorToLibrary: function () {
-    return http.post(urls.addColor, {
-      mock: true,
-      libraryId: this.data.libraryId,
-      libraryColorIdList: this.data.libraryColorIdList,
     })
   },
 }

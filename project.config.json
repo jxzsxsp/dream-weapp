@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -132,6 +132,16 @@
 					"name": "新增颜色库",
 					"pathName": "pages/add-library/add-library",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收藏夹",
+					"pathName": "pages/favorites/favorites",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
 				}
 			]
 		}
