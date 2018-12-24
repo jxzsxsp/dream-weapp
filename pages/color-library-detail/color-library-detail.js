@@ -98,6 +98,9 @@ const lifeCycle = {
   },
   onNavigateBack: function (d) {
     const libraryDetail = d.libraryDetail
+    this.setData({
+      isMultiSelect: false,
+    })
     switch (d.type) {
       case constant.ColorLibraryActionType.Tag:
         this.data.selectedColor.labelList = d.labelList
@@ -113,19 +116,17 @@ const lifeCycle = {
         })
         break
       case constant.ColorLibraryActionType.SaveLibrary:
-        this._addColor(libraryDetail, this.data.colorList)
+        this._saveColor(libraryDetail, this.data.colorList)
         break
       case constant.ColorLibraryActionType.Add_Single:
-        this._addColor(libraryDetail, [this.data.selectedColor])
         break
       case constant.ColorLibraryActionType.Add_Multiple:
-        this._addColor(libraryDetail, this.data.selectedColorList)
         break
       case constant.ColorLibraryActionType.Move_Single:
-        this._moveColor(libraryDetail, [this.data.selectedColor])
+        this._moveColor([this.data.selectedColor])
         break
       case constant.ColorLibraryActionType.Move_Multiple:
-        this._moveColor(libraryDetail, this.data.selectedColorList)
+        this._moveColor(this.data.selectedColorList)
         break
       default:
         break;
@@ -367,12 +368,16 @@ const privateMethod = {
       })
     })
   },
-  _addColor: function (library, colorList) {
-    this.setData({
-      isMultiSelect: false,
+  _saveColor: function (libraryDetail, colorList) {
+    const libraryColorIdList = colorList.map(item => {
+      return item.id
     })
+    http.post(urls.addColor, {libraryId: libraryDetail.id, libraryColorIdList})
+      .then(() => {
+        $wx.showToast({title: '已添加到'+library.name})
+      })
   },
-  _moveColor: function (library, colorList) {
+  _moveColor: function (colorList) {
     let movedColorIds = colorList.map(item => {
       return  item.id
     })
@@ -380,7 +385,6 @@ const privateMethod = {
     this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, movedColorIds, 'id')
     this.setCanEdit()
     this.setData({
-      isMultiSelect: false,
       selectedColorList: this.data.selectedColorList,
       colorList: this.data.colorList,
       canEdit: this.data.canEdit
