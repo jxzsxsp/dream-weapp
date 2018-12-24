@@ -118,3 +118,9 @@
   margin-left: 5rpx;
   color: rgb(34, 124, 249);
 }
+
+.hint-style3 {
+  font-size: 12px;
+  text-align: center;
+  color: rgb(34, 124, 249);
+}
