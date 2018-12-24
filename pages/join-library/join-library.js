@@ -98,6 +98,9 @@ const lifecycle = {
       })
     })
   },
+  onNavigateBack: function (d) {
+    console.log(d)
+  },
 }
 
 const viewAction = {

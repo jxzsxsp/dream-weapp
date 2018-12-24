@@ -33,7 +33,7 @@ const lifecycle = {
   },
   onShow: function() {
     this.checkCanSave()
-  }
+  },
 }
 
 const viewAction = {
