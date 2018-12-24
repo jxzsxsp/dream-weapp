@@ -119,13 +119,13 @@ const viewAction = {
           type: this.data.type,
           libraryDetail: d.detail
         })
-      })
+      }, '已移动到 ' + d.detail.name)
     } else {
       this.addColorToLibrary().then(res => {
         $wx.navigateBack(1, {
           type: this.data.type,
           libraryDetail: d.detail
-        })
+        }, '已加入到 ' + d.detail.name)
       })
     }
   },

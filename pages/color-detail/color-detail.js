@@ -34,12 +34,12 @@ let lifecycle = {
   onNavigateBack: function(d) {
     console.log(d)
 
-    this.clearTimeout()
-    this.setToastTimeout()
-    this.setData({
-      showToast: true,
-      libraryDetail: d.libraryDetail
-    })
+    // this.clearTimeout()
+    // this.setToastTimeout()
+    // this.setData({
+    //   showToast: true,
+    //   libraryDetail: d.libraryDetail
+    // })
   },
 }
 
