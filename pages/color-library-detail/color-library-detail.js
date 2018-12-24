@@ -24,8 +24,8 @@ const props = {
 const data = {
   // 是否色库已被删除
   isDeleted: false,
-  // 是否是从分享卡片而来
-  isShared: false,
+  // 是否是从
+  fromLibrary: false,
   // 是否是多选状态
   isMultiSelect: false,
   // 多选状态下是否可以操作
@@ -70,6 +70,9 @@ const data = {
 
 const lifeCycle = {
   onLoad: function (query) {
+    if (!!query.fromLibrary) {
+      this.props.fromLibrary = true
+    }
     this.props.libraryId = query.id
     this.getColorList()
   },

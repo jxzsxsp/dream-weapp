@@ -360,6 +360,26 @@
   margin-top: 20rpx;
 }
 
+.go-home-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.go-home-view {
+  color: #252525;
+  border-radius: 2rpx 4rpx 2rpx 2rpx 2rpx;
+  margin-right: 16rpx;
+}
+
+.go-home-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 22rpx;
+}
+
 @keyframes left-to-right {
   to {transform: translateX(60rpx)}
 }
