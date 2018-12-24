@@ -43,7 +43,7 @@ let lifecycle = {
   },
   onShareAppMessage: function () {
     return {
-      title: `推荐颜色${this.data.selectedColor.name}给你`,
+      title: `推荐颜色${this.data.colorDetail.name}给你`,
       path: `/pages/color-detail/color-detail?colorId=${this.data.colorDetail.colorId}`
     }
   }
