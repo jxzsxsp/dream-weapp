@@ -1,118 +1,43 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-<!-- <view class="page-section">
-    <view style='height:70rpx;z-index:1000;background-color: #fff;'>
-        <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
-            <view class="catetitle" bindtap='changeCate' data-cateName='本期特卖'>
-                <view class="{{selectedCate=='本期特卖'?'active':''}}">本期特卖</view>
-            </view>
-            <view bindtap="changeCate" data-cateName='{{item}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
-                <view class="{{selectedCate==item?'active':''}}">{{item}}</view>
-            </view>
-        </scroll-view>
-    </view>
- -->
-
-
-
-<!-- 品牌列表页分类筛选 -->
-<!-- <view style='height:80rpx;line-height:80rpx;background-color: #fff;z-index:1000;'>
-        <scroll-view scroll-x style="width: 100%;height:80rpx;line-height:80rpx;white-space: nowrap; display: flex;background:#f7f7f7;position:fixed;flex-flow:row nowrap;top:60rpx;z-index:1000;align-items:flex-start;justify-content:flex-start;">
-
-            <view class="tagtitle" bindtap='changeTag' data-tagName='所有品牌'>
-                <view style='color:#000;' class="{{selectedTag=='所有品牌'?'active':''}}">所有品牌</view>
-            </view>
-            <view bindtap="changeTag" data-tagName='{{item}}' class="tagtitle" wx:key="{{item}}" wx:for='{{tagList}}'>
-                <view style='color:#000;' class="{{selectedTag==item?'active':''}}">{{item}}</view>
-            </view>
-        </scroll-view>
-    </view> -->
-<!-- 
-    <view>
-        <view wx:for='{{brandRush}}' class='brand-item-box' style='height:140rpx;border-bottom:1px solid #e5e5e5;background:#fff' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
-            <view class='brand-img-box'>
-                <image src='{{item.brandLogo}}' class='brandLogo'></image>
-            </view>
-            <view class='brand-desc'>
-                <view class='item-right-box'>
-                    <view style='padding-top:20rpx;margin-bottom:10rpx;font-size:26rpx;color:#000;' class='overflowOne'>
-                        {{item.mainTitle}}
-                    </view>
-                    <view class='brand-item-price-line' style='color:#515151;font-size:24rpx;padding-top:5rpx'>
-                        <text style='font-size:32rpx;color:#ff0000'>￥{{item.lowerPrice}}起</text>
-                        <text wx:if="{{userInfo.IsReferral}}" style='font-size:26rpx;color:#959595;padding:0 8rpx;background:#fff;border-radius: 30rpx;'>最高分佣{{item.topCommissionRate}}%</text>
-                    </view>
-                </view>
-            </view>
-
-        </view>
-    </view>
-
-    <view class='loadmore loading' wx:if="{{hasMore}}">正在加载中…</view>
-    <view class='loadmore' wx:else>—— 我也是有底线的 ——</view>
-</view> -->
-<!-- <view class="deg">
-    <button openType="contact">联系客服</button>
-</view> -->
-
-
-
-
-
 <!--主盒子-->
 <view class="container-box">
     <!--左侧栏-->
     <view class="nav_left">
         <scroll-view scroll-y style="width: 25%;min-height:100%;white-space: nowrap; display: flex;background:#f5f5f5;position:fixed;top:0;z-index:1000;align-items:flex-start;">
-
             <block wx:for='{{tagList}}'>
-                <!--当前项的id等于item项的id，那个就是当前状态-->
-                <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
-                <!-- <view class="nav_left_items {{selectedCate==item?'active':''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">{{item}}</view> -->
                 <view class="nav_left_items {{selectedTag==item.tagName?'active':''}}" catchtap="switchRightTab" data-name="{{item.tagName}}" data-img="{{item.titlePic}}">
                     <view class='brcontainer' catchtap="switchRightTab" data-name="{{item.tagName}}" data-img="{{item.titlePic}}">{{item.tagName}}</view>
                 </view>
             </block>
         </scroll-view>
-
     </view>
     <!--右侧栏-->
     <view class="nav_right">
-        <!-- <navigator> -->
-            <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image>
-        <!-- </navigator> -->
-        <!--如果有数据，才遍历项-->
+        <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image>
         <view wx:if="{{brandRush}}" style='display:flex;flex-flow:row wrap;'>
             <block wx:for="{{brandRush}}">
                 <view class="nav_right_items" style='display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;width:33.33%;height:240rpx;margin-bottom:25rpx;'>
                     <navigator url="/pages/brandInfo/brandInfo?brandId={{item.brandId}}&brandSource={{item.brandSource}}" style='display:flex;flex-flow:column nowrap;align-items:center;justify-content:space-between;width:100%;height:240rpx;'>
-                        <!--用view包裹图片组合，如果有图片就用，无图片提供就使用50x30的这个默认图片-->
-                        <!-- <view style='text-align:center;'> -->
+
                         <view wx:if="{{item.brandLogo}}" style='position:relative;width:140rpx;height:140rpx;display:flex;align-items:center;justify-content:center;'>
                             <image src="{{item.brandLogo}}" style='width:112rpx;' mode='widthFix'></image>
-
                         </view>
                         <block wx:else>
                             <image src="http://temp.im/50x30"></image>
                         </block>
-                        <!-- </view> -->
-                        <!--如果有文字，就用文字；无文字就用其他-->
-                        <!-- <view wx:if="{{item.mainTitle}}" class='overflowOne' style='font-size:12px;max-width:140rpx;'> -->
                         <view wx:if="{{item.mainTitle}}" class='' style='position:relative;text-align:center;font-size:12px;width:140rpx;-webkit-line-clamp:2;display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;color:#515151;height:60rpx;'>
                             <text style='line-height:26rpx;'>{{item.mainTitle}}</text>
-                            <!-- <text>1折起</text> -->                                   
                         </view>
-
                         <view wx:else>
                             <text style='color:red;font-size:10px;'>{{item.tree.desc2}}</text>
                         </view>
-                         <view style='position:relative;width:140rpx;height:30rpx;'>
+                        <view style='position:relative;width:140rpx;height:30rpx;'>
                             <view style='position:absolute;right:14rpx;bottom:0;color:#db3c40;font-size:9px;background-color:#fff0f0;border-radius:4rpx;padding:0 4rpx;width:104rpx;text-align:center;'>{{filter.toFix(item.lowerDiscount/10,1)}}折起</view>
                         </view>
                     </navigator>
                 </view>
             </block>
         </view>
-        <!--如果无数据，则显示数据-->
         <view wx:else>暂无数据</view>
     </view>
 </view>
