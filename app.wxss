@@ -10,7 +10,6 @@
 
 page {
     font-family: microsoft yahei;
-    
 }
 
 .bg-white {
@@ -1087,7 +1086,7 @@ image {
 }
 
 /* 
- * 单行文本超出显示省略号
+ * 
  * auth: 潘金龙
  * data: 2018/12/13
  */
@@ -1097,17 +1096,12 @@ image {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .overflowTwo {
     overflow: hidden;
     text-overflow: '.';
     white-space: nowrap;
 }
-/* 
- *
- * auth: 潘金龙
- * data: 2018/12/13
- */
-
 
 /* 
  *
@@ -1115,14 +1109,13 @@ image {
  * data: 2018/12/13
  */
 
- 
 .fixedBtn {
     position: fixed;
     bottom: 26rpx;
     left: 26rpx;
     width: 96rpx;
     height: 96rpx;
-    background: rgba(64,64, 64, 0.9);
+    background: rgba(64, 64, 64, 0.9);
     text-align: center;
     display: flex;
     flex-flow: column nowrap;
@@ -1131,24 +1124,21 @@ image {
     /* border-radius: 100%; */
     border-radius: 6rpx;
 }
+
 .fixedBtn.active {
     background-color: #db3c40;
 }
 
-
 .fixedBtn image {
-    width:50rpx;
+    width: 50rpx;
     height: 50rpx;
 }
+
 .fixedBtn text {
     font-size: 10px;
     color: #fff;
     padding-top: 6rpx;
 }
-
-
-
-
 
 .fixedBtn button {
     border: none;
@@ -1165,20 +1155,14 @@ image {
     border: none;
 }
 
-
-
-
-
-/* 滚动条透明 */
-::-webkit-scrollbar{
-width: 0;
-height: 0;
-color: transparent;
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
 }
 
-
-.fcc{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.fcc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

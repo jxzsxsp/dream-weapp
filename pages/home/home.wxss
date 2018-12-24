@@ -1,11 +1,9 @@
 page {
     background-color: #f5f5f5;
-    /* background-color: red; */
 }
 
 .homecont {
     background-color: #f5f5f5;
-    /* background-color: red; */
 }
 
 image {
@@ -13,12 +11,10 @@ image {
 }
 
 .catetitle {
-    /* width: 114rpx; */
     height: 49rpx;
     text-align: center;
     display: inline-block;  
     font-size:30rpx;
-    /* line-height: 26rpx; */
     color: #fff;
     margin-left:25rpx;
     

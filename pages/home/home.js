@@ -812,7 +812,6 @@ Page({
         });
     },
     toggleHide: function(e) {
-        // console.log(e.currentTarget.dataset.id)
         var tm = this;
         tm.setData({
             currentId: e.currentTarget.dataset.id,
