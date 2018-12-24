@@ -109,12 +109,22 @@ const viewAction = {
     this.setData({
       libraryId: d.detail.id
     })
-    this.addColorToLibrary().then(res => {
-      $wx.navigateBack(1, {
-        type: this.data.type,
-        libraryDetail: d.detail
+    if (this.data.type === constant.ColorLibraryActionType.Move_Single 
+      || this.data.type === constant.ColorLibraryActionType.Move_Multiple) {
+      this.moveColorToLibrary().then(res => {
+        $wx.navigateBack(1, {
+          type: this.data.type,
+          libraryDetail: d.detail
+        })
       })
-    })
+    } else {
+      this.addColorToLibrary().then(res => {
+        $wx.navigateBack(1, {
+          type: this.data.type,
+          libraryDetail: d.detail
+        })
+      })
+    }
   },
 }
 
@@ -126,6 +136,13 @@ const privateMethods = {
   },
   addColorToLibrary: function () {
     return http.post(urls.addColor, {
+      mock: true,
+      libraryId: this.data.libraryId,
+      libraryColorIdList: this.data.libraryColorIdList,
+    })
+  },
+  moveColorToLibrary: function () {
+    return http.post(urls.moveColor, {
       mock: true,
       libraryId: this.data.libraryId,
       libraryColorIdList: this.data.libraryColorIdList,
