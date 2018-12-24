@@ -1,0 +1,3 @@
+<button class="button-class inner-class" open-type="getUserInfo" bind:getuserinfo="getUserInfo">
+  <slot/>
+</button>
