@@ -34,9 +34,7 @@ Page({
         topLogoList: []
     },
     onShow: function() {
-       
         this.GetShopCart();
-        // this.getCate();
     },
     GetShopCart: function() {
         var t = this,
@@ -90,7 +88,6 @@ Page({
             console.log(str[1])
             e.setRefferUserId(str[1]);
         }
-
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
         var tm = this;
         e.getUserInfo(function(t) {
@@ -127,19 +124,10 @@ Page({
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
-
-        // 获取置顶前十头像
         this.getLogo();
-
-        // 加载页面获取
         this.getCate();
         wx.hideNavigationBarLoading();
-        // 执行倒计时函数
         this.countDown();
-
-
-
-
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -204,10 +192,8 @@ Page({
     },
     onShareAppMessage: function(event) {
         var i = '/pages/home/home?from=menu';
-        var title ='亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
-        if (event.from == 'menu') {
-
-        } else {
+        var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+        if (event.from == 'menu') {} else {
             var barndId = event.target.dataset['brandid'];
             var brandSoruce = event.target.dataset['brandsource'];
             var brandName = event.target.dataset['maintitle'];
@@ -296,9 +282,7 @@ Page({
                     TopicData: e.data
                 });
             },
-            complete: function() {
-                //console.log(t.data.TopicData);
-            }
+            complete: function() {}
         });
     },
     bindSearchInput: function(t) {
@@ -356,7 +340,6 @@ Page({
                 case "=":
                     u.CartQuantity = e;
                     break;
-
                 case "+":
                     u.CartQuantity += e;
             }
@@ -601,7 +584,6 @@ Page({
     previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
-
         wx.previewImage({
             current: imgSrc,
             urls: imgs
@@ -615,13 +597,10 @@ Page({
             brandRush: [],
             pageIndex: 1,
             dataIndex: 0,
-            // selectedCate: "全场直播",
             hasMore: true
         });
-        // this.getCate();
         this.defaultList();
     },
-
     /**
      * 页面上拉触底事件的处理函数
      */
@@ -632,34 +611,11 @@ Page({
             wx.hideNavigationBarLoading();
         }
     },
-
-
-
-    // getCate: function () {
-    //     var tm = this;
-    //     wx.request({
-    //         url: e.getUrl("YTALGetListBrandCate"),
-    //         data: {
-
-    //         },
-    //         success: function (res) {
-    //             tm.setData({
-    //                 barndRushCate: res.data
-    //             })
-    //             tm.defaultList();
-    //             wx.stopPullDownRefresh();
-    //         }
-    //     });
-    // },
-
-
     getCate: function() {
         var tm = this;
         wx.request({
             url: e.getUrl("YTALGetListCateInfoIncludeBrandCount"),
-            data: {
-                
-            },
+            data: {},
             success: function(res) {
                 tm.setData({
                     barndRushCate: res.data,
@@ -701,7 +657,6 @@ Page({
                         brandRush: topArrList
                     });
                 }
-
                 wx.request({
                     url: e.getUrl("YTALGetPageBrandRush"),
                     data: {
@@ -738,16 +693,10 @@ Page({
                                 hasMore: false
                             })
                         }
-                        // if (bottomArrList.length == 0) {
-                        //     tm.setData({
-                        //         hasMore: false
-                        //     })
-                        // }
                     }
                 })
             }
         });
-
     },
     loadTop: function() {
         var tm = this;
@@ -755,10 +704,7 @@ Page({
         var currentData = {};
         if (tm.data.selectedCate == "全场直播") {
             currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
-            currentData = {
-                // pi: ++this.data.dataIndex,
-                // ps: this.data.pageSize
-            }
+            currentData = {}
         } else {
             currentUrl = e.getUrl("YTALGetListBrandRushIsHeadByCate");
             currentData = {
@@ -797,75 +743,18 @@ Page({
     },
 
     changeCate: function(event) {
-        // 初始化值
         this.setData({
             brandRush: [],
             dataIndex: 0,
             selectedCate: event.currentTarget.dataset.catename,
             hasMore: true
         })
-
         var tm = this;
         tm.loadTop();
     },
     loadMore: function() {
-        // if (!this.data.hasMore) return;
-        // var tm = this;
-        // var currentUrl = '';
-        // var currentData = {};
-        // if (tm.data.selectedCate == "全场直播") {
-        //     currentUrl = e.getUrl("YTALGetPageBrandRush");
-        //     currentData = {
-        //         pi: ++this.data.dataIndex,
-        //         ps: this.data.pageSize,
-        //         cate: "全场直播"
-        //     }
-        // } else {
-        //     currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
-        //     currentData = {
-        //         pi: ++this.data.dataIndex,
-        //         ps: this.data.pageSize,
-        //         cate: this.data.selectedCate
-        //     }
-        // }
-        // // 加载页面数据
-        // wx.request({
-        //     url: currentUrl,
-        //     data: currentData,
-        //     success: function(jd) {
-        //         if (jd.data.length != 0) {
-        //             let brandRushList = [];
-        //             jd.data.forEach(o => {
-        //                 var obj = {
-        //                     day: '00',
-        //                     hou: '00',
-        //                     min: '00',
-        //                     sec: '00'
-        //                 }
-        //                 o.countDownTime = obj;
-        //                 if (o.rushEndTime != null) {
-        //                     var month = o.rushEndTime.split('-')[1];
-        //                     var day = o.rushEndTime.split('-')[2].split(' ')[0];
-        //                     var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-        //                     var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
-        //                     o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-        //                 }
-        //                 brandRushList.push(o)
-        //             });
-        //             tm.setData({
-        //                 brandRush: tm.data.brandRush.concat(brandRushList)
-        //             })
-        //         } else {
-        //             tm.setData({
-        //                 hasMore: false
-        //             })
-        //         }
-        //     }
-        // });
         if (!this.data.hasMore) return;
         var tm = this;
-        // console.log(tm.data.dataIndex);
         var currentUrl = '';
         var currentData = {
             pi: ++this.data.dataIndex,
@@ -877,7 +766,6 @@ Page({
         } else {
             currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
         }
-        // 加载页面数据
         wx.request({
             url: currentUrl,
             data: currentData,
@@ -944,27 +832,14 @@ Page({
 
             },
             success: function(jd) {
-                //console.log(jd.data)
                 if (jd.data.length != 0) {
                     let logoList = [];
                     jd.data.forEach(o => {
-                        // o.countDownTime = obj;
-                        // if (o.rushEndTime != null) {
-                        //     var month = o.rushEndTime.split('-')[1];
-                        //     var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                        //     var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                        //     var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
-                        //     o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                        // }
                         logoList.push(o)
                     });
-
                     tm.setData({
                         topLogoList: logoList
                     })
-                    // tm.loadMore();
-
                 }
             }
         });
