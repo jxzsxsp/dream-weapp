@@ -113,19 +113,19 @@ const lifeCycle = {
         })
         break
       case constant.ColorLibraryActionType.SaveLibrary:
-        this.saveColor(libraryDetail, this.data.colorList)
+        this._addColor(libraryDetail, this.data.colorList)
         break
       case constant.ColorLibraryActionType.Add_Single:
-        this.saveColor(libraryDetail, [this.data.selectedColor])
+        this._addColor(libraryDetail, [this.data.selectedColor])
         break
       case constant.ColorLibraryActionType.Add_Multiple:
-        this.saveColor(libraryDetail, this.data.selectedColorList)
+        this._addColor(libraryDetail, this.data.selectedColorList)
         break
       case constant.ColorLibraryActionType.Move_Single:
-        this.moveColor(libraryDetail, [this.data.selectedColor])
+        this._moveColor(libraryDetail, [this.data.selectedColor])
         break
       case constant.ColorLibraryActionType.Move_Multiple:
-        this.moveColor(libraryDetail, this.data.selectedColorList)
+        this._moveColor(libraryDetail, this.data.selectedColorList)
         break
       default:
         break;
@@ -367,32 +367,23 @@ const privateMethod = {
       })
     })
   },
-  saveColor: function (library, colorList) {
-    // const libraryColorIdList = colorList.map(item => {
-    //   return item.id
-    // })
-    // http.post(urls.addColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
-    //   .then(() => {
-    //     $wx.showToast({title: '已添加到'+library.name})
-    //   })
-    $wx.showToast({title: '已添加到'+library.name})
-  },
-  moveColor: function (library, colorList) {
-    // const libraryColorIdList = colorList.map(item => {
-    //   return item.id
-    // })
-    // http.post(urls.moveColorToLibrary, {mock: true, libraryId: library.id, libraryColorIdList})
-    //   .then(() => {
-    //     $wx.showToast({title: '已移动到'+library.name})
-    //     utils.removeArrayInArray(this.data.colorDetail, libraryColorIdList, 'id')
-    //     utils.removeArrayInArray(this.data.selectedColorList, libraryColorIdList, 'id')
-    //   })
-    $wx.showToast({title: '已移动到'+library.name})
-    utils.removeArrayInArray(this.data.colorDetail, libraryColorIdList, 'id')
-    utils.removeArrayInArray(this.data.selectedColorList, libraryColorIdList, 'id')
+  _addColor: function (library, colorList) {
     this.setData({
+      isMultiSelect: false,
+    })
+  },
+  _moveColor: function (library, colorList) {
+    let movedColorIds = colorList.map(item => {
+      return  item.id
+    })
+    this.data.colorList = utils.removeArrayInArray(this.data.colorList, movedColorIds, 'id')
+    this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, movedColorIds, 'id')
+    this.setCanEdit()
+    this.setData({
+      isMultiSelect: false,
       selectedColorList: this.data.selectedColorList,
-      colorList: this.data.colorList
+      colorList: this.data.colorList,
+      canEdit: this.data.canEdit
     })
   }
 }
