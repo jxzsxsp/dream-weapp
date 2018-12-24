@@ -1,0 +1,7 @@
+<view class="container">
+    <view class="img-box">
+        <canvas bindtap="onPreviewQrc" hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="qrcCanvas" />
+    </view>
+</view>
+<view hidden="{{maskHidden}}" class="mask"></view>
+<view class="canvas-box"></view>

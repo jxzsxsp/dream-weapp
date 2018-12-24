@@ -167,5 +167,15 @@ Page({
         wx.switchTab({
             url: '/pages/discovery/discovery'
         })
+    },
+    goToCode: function () {
+        var tm = this;
+        console.log("../myCode/myCode?id=" + tm.data.userInfo.UserId)
+        // wx.navigateTo({
+        //     url: "../myCode/myCode?id=" + tm.data.userInfo.UserId
+        // });
+        wx.navigateTo({
+            url: "../a/a?id=" + tm.data.userInfo.UserId + "&src=" + tm.data.userInfo.picture
+        });
     }
 });

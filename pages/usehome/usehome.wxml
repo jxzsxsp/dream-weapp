@@ -15,6 +15,8 @@
         </view>
     </view>
     <image bindtap='goToVip' class='header-tips' style='position:absolute;bottom:0;left:0;width:750rpx;height:119rpx;' src='{{userInfo.IsReferral ? "http://img.qkmai.com/qkmbb/myytal/wdfc2.png" : "http://img.qkmai.com/qkmbb/myytal/wdfc1.png"}}' lazy-load></image>
+
+    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/erweima.png' style='position:absolute;right:20rpx;top:60rpx;width:100rpx;' mode='widthFix' bindtap='goToCode'></image>
 </view>
 <view bindtap="bindOrderList" class="hdonglist" style="margin-top:0">我的订单
     <text bindtap="bindStatue" data-key="0">全部订单</text>

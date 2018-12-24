@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -69,6 +69,12 @@
 					"id": 4,
 					"name": "213123",
 					"pathName": "pages/aboutytal/aboutytal",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "213123",
+					"pathName": "pages/myCode/myCode",
 					"query": ""
 				}
 			]

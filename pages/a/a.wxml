@@ -1,0 +1,6 @@
+<view class="container-box">
+    <view class="logoQRCode" style='position:relative;border:1px solid red;width:686rpx;'>
+      <canvas style="width: 550rpx;height: 550rpx;background:#f1f1f1;border:1px solid blue;position:relative;top:-500rpx;" canvas-id="logoQRCode" bindlongtap='saveCode' />
+      <image src='{{canvasUrl}}' style='border:1px solid green;position:absolute;left:0;top:0;width:300rpx;z-index:999999999999999999999;' mode='widthFix'></image>
+    </view>
+</view>

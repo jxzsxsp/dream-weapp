@@ -58,6 +58,8 @@
         "pages/aboutytal/aboutytal",
         "pages/screening/screening",
         "pages/bugsm/bugsm",
+        "pages/myCode/myCode",
+        "pages/a/a",
         "pages/webPage/webPage"
     ],
     "window": {
