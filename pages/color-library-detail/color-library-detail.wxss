@@ -242,7 +242,7 @@
 
 .action-container {
   border-radius: 34rpx 34rpx 0 0;
-  height: 800rpx;
+  height: 700rpx;
   background: #FFFFFF;
   padding: 34rpx 34rpx 0 34rpx; 
 }
@@ -264,6 +264,10 @@
 
 .action-row-container {
   height: 120rpx;
+}
+
+.van-overlay {
+  background-color: #8F8F8F!important
 }
 
 .action-icon {
