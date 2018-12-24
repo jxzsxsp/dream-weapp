@@ -63,8 +63,7 @@ const privateMethod = {
       this.props.loadingState = http.defaultLoadingState()
     }
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {keyword: this.props.keyword}).then((res) => {
-        console.log(res)
-        // utils.justifyColor(res)
+        utils.justifyColor(res)
         if (addMore) {
           this.data.searchColorList.push(...res)
         } else {
