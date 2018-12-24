@@ -48,3 +48,10 @@
     <view class="iconfont icon-jiantou hint-style3"/>
   </view>
 </van-transition>
+
+<van-transition name="fade" show="{{showToast}}" duration="1500" custom-class="toast-container">
+  <view class="hint-button-container flex-center">
+    <text class="hint-style2">已加入到</text>
+    <text class="hint-style4">{{libraryDetail.name}}</text>
+  </view>
+</van-transition>

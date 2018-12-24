@@ -155,6 +155,13 @@
   display: flex;
 }
 
+.toast-container {
+  position: fixed;
+  right: 205rpx;
+  top: 600rpx;
+  display: flex;
+}
+
 .hint-button-container {
   width: 340rpx;
   height: 88rpx;
@@ -180,4 +187,10 @@
   font-size: 12px;
   text-align: center;
   color: rgb(34, 124, 249);
+}
+
+.hint-style4 {
+  margin-left: 5rpx;
+  color: rgb(34, 124, 249);
+  font-family: PingFangSC-Semibold;
 }

@@ -9,12 +9,14 @@ let props = {
 
 let data = {
   colorDetail: {},
+  libraryDetail: {},
   relativeColorList: [],
   colorId: 0,
   favorite: false,
   // 是从颜色库打开，还是从分享直接打开
   fromLibrary: false,
   showHint: false,
+  showToast: false,
 }
 
 let lifeCycle = {
@@ -57,6 +59,16 @@ let lifeCycle = {
         console.log(e.detail.errMsg)
       })
   },
+  onNavigateBack: function (d) {
+    console.log(d)
+
+    this.clearTimeout()
+    this.setToastTimeout()
+    this.setData({
+      showToast: true,
+      libraryDetail: d.libraryDetail
+    })
+  },
 }
 
 let viewAction = {
@@ -78,12 +90,18 @@ let viewAction = {
       hexColor: colorDetail.hexColor,
       name: colorDetail.name,
     }
+    this.clearTimeout()
     $wx.navigateTo($wx.router.joinLibrary, {colorList: [color]})
   }
 }
 
 let privateMethod = {
   getFavorite: function (colorId) {
+    let token = wx.getStorageSync('token')
+    if (!token) {
+      return
+    }
+    
     http.get(urls.isInFavorite, {
       mock: true,
       colorId: colorId,
@@ -125,6 +143,10 @@ let privateMethod = {
     if (this.props.timeout) {
       clearTimeout(this.props.timeout)
       this.props.timeout = null
+      this.setData({
+        showHint: false,
+        showToast: false
+      })
     }
   },
   setTimeout: function () {
@@ -133,7 +155,14 @@ let privateMethod = {
         showHint: false
       })
     }, 3000)
-  }
+  },
+  setToastTimeout: function () {
+    this.props.timeout = setTimeout(() => {
+      this.setData({
+        showToast: false
+      })
+    }, 3000)
+  },
 }
 
 
