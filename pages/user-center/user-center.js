@@ -27,7 +27,7 @@ const viewAction = {
   itemClicked (data) {
     if (data.index === 0) {
       // 我的收藏
-      $wx.navigateTo($wx.router.favorites)
+      $wx.navigateTo($wx.router.favoriteLibrary)
     } else if (data.index === 1) {
       // 设备管理 
       $wx.navigateTo($wx.router.deviceManager)

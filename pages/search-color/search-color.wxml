@@ -3,12 +3,13 @@
   <view class="search-bar-container">
     <view class="search-bar">
       <view class="search-icon"/>
-      <input 
+      <input
         class="search-input" 
         placeholder="请输入要搜索的色号" 
         placeholder-class="search-placeholder" 
         focus="{{true}}" 
         confirm-type="search"
+        bindinput="onInput"
         bind:confirm="beginSearch"
       />
     </view>

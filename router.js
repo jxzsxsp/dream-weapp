@@ -16,5 +16,5 @@ export default {
   settingTag: 'setting-tag',
   joinLibrary: 'join-library',
   addLibrary: 'add-library',
-  favorites: 'favorites',
+  favoriteLibrary: 'favorite-library',
 }

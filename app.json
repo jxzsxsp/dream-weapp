@@ -17,7 +17,7 @@
     "pages/setting-tag/setting-tag",
     "pages/join-library/join-library",
     "pages/add-library/add-library",
-    "pages/favorites/favorites"
+    "pages/favorite-library/favorite-library"
   ],
   "window": {
     "backgroundTextStyle": "light",

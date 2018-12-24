@@ -122,9 +122,9 @@ let privateMethod = {
     })
   },
   clearTimeout: function () {
-    if (this.props.timeInterval) {
-      clearTimeout(this.props.timeInterval)
-      this.props.timeInterval = null
+    if (this.props.timeout) {
+      clearTimeout(this.props.timeout)
+      this.props.timeout = null
     }
   },
   setTimeout: function () {
