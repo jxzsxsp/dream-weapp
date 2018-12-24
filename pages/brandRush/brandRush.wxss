@@ -138,14 +138,6 @@ page {
     justify-content: space-between;
 }
 
-/* 重写 */
-
-page {
-    background: #fff;
-}
-
-/*总体主盒子*/
-
 .container-box {
     position: relative;
     width: 100%;
@@ -154,76 +146,52 @@ page {
     color: #939393;
 }
 
-/*左侧栏主盒子*/
-
 .nav_left {
-    /*设置行内块级元素（没使用定位）*/
     display: inline-block;
     width: 25%;
     height: 100%;
     min-height: 100%;
-    /*主盒子设置背景色为灰色*/
     background-color: #f5f5f5;
     text-align: center;
 }
 
-/*左侧栏list的item*/
-
 .nav_left .nav_left_items {
-    width:100%;
-    /*每个高80rpx*/
+    width: 100%;
     height: 120rpx;
-    /*垂直居中*/
     line-height: 120rpx;
-    /*再设上下padding增加高度，总高42px*//* margin: 40rpx 0; *//*只设下边线*//* border-bottom: 1px solid #dedede; *//*文字14px*/
     font-size: 13px;
     box-sizing: margin-box;
-    display:flex;
-    /* justify-content: center; */
+    display: flex;
     align-items: center;
 }
-
 
 .nav_left .nav_left_items .brcontainer {
     font-size: 14px;
     font-weight: 400;
-    width:100%;
+    width: 100%;
     border-left: 5rpx solid transparent;
     height: 50rpx;
-    /*垂直居中*/
     line-height: 50rpx;
 }
-
 
 .nav_left .nav_left_items.active .brcontainer {
     font-size: 15px;
     font-weight: 700;
     background: #fff;
-    color:#000;
-    width:100%;
+    color: #000;
+    width: 100%;
     border-left: 5rpx solid red;
-    /* height: 50rpx;
-    line-height: 50rpx; */
 }
 
-/*左侧栏list的item被选中时*/
-
 .nav_left .nav_left_items.active {
-    /*背景色变成白色*//* font-size: 14px;
-  font-weight: 700;
-  border-left: 5rpx solid red; */
     background: #fff;
 }
 
-/*右侧栏主盒子*/
-
 .nav_right {
-    /*右侧盒子使用了绝对定位*/
     position: absolute;
     top: 0;
     right: 0;
     flex: 1;
-    /*宽度75%，高度占满，并使用百分比布局*/
     width: 75%;
     height: 100%;
     padding: 10px;
