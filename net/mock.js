@@ -184,7 +184,7 @@ let colorLibraryDetail = {
       {
         "id": 1,
         "name": "默认收藏",
-        "decription": "默认收藏",
+        "description": "默认收藏",
         "colorCount": "0",
         "lastColorUpdateTime": "",
         "timeLabel": "",
@@ -194,7 +194,7 @@ let colorLibraryDetail = {
       {
         "id": 2,
         "name": "春季流行色",
-        "decription": "春季流行色",
+        "description": "春季流行色",
         "colorCount": "52",
         "lastColorUpdateTime": "",
         "timeLabel": "1小时前",
@@ -204,7 +204,7 @@ let colorLibraryDetail = {
       {
         "id": 3,
         "name": "冬季流行色",
-        "decription": "冬季流行色",
+        "description": "冬季流行色",
         "colorCount": "16",
         "lastColorUpdateTime": "",
         "timeLabel": "12天前",
@@ -214,7 +214,7 @@ let colorLibraryDetail = {
       {
         "id": 4,
         "name": "2017畅销色",
-        "decription": "2017畅销色",
+        "description": "2017畅销色",
         "colorCount": "32",
         "lastColorUpdateTime": "",
         "timeLabel": "1个月前",
@@ -224,7 +224,7 @@ let colorLibraryDetail = {
       {
         "id": 2,
         "name": "春季流行色",
-        "decription": "春季流行色",
+        "description": "春季流行色",
         "colorCount": "52",
         "lastColorUpdateTime": "",
         "timeLabel": "1小时前",
@@ -234,7 +234,7 @@ let colorLibraryDetail = {
       {
         "id": 3,
         "name": "冬季流行色",
-        "decription": "冬季流行色",
+        "description": "冬季流行色",
         "colorCount": "16",
         "lastColorUpdateTime": "",
         "timeLabel": "12天前",
@@ -244,7 +244,7 @@ let colorLibraryDetail = {
       {
         "id": 4,
         "name": "2017畅销色",
-        "decription": "2017畅销色",
+        "description": "2017畅销色",
         "colorCount": "32",
         "lastColorUpdateTime": "",
         "timeLabel": "1个月前",
@@ -254,7 +254,7 @@ let colorLibraryDetail = {
       {
         "id": 2,
         "name": "春季流行色",
-        "decription": "春季流行色",
+        "description": "春季流行色",
         "colorCount": "52",
         "lastColorUpdateTime": "",
         "timeLabel": "1小时前",
@@ -264,7 +264,7 @@ let colorLibraryDetail = {
       {
         "id": 3,
         "name": "冬季流行色",
-        "decription": "冬季流行色",
+        "description": "冬季流行色",
         "colorCount": "16",
         "lastColorUpdateTime": "",
         "timeLabel": "12天前",
@@ -274,7 +274,7 @@ let colorLibraryDetail = {
       {
         "id": 4,
         "name": "2017畅销色",
-        "decription": "2017畅销色",
+        "description": "2017畅销色",
         "colorCount": "32",
         "lastColorUpdateTime": "",
         "timeLabel": "1个月前",
@@ -284,7 +284,7 @@ let colorLibraryDetail = {
       {
         "id": 2,
         "name": "春季流行色",
-        "decription": "春季流行色",
+        "description": "春季流行色",
         "colorCount": "52",
         "lastColorUpdateTime": "",
         "timeLabel": "1小时前",
@@ -294,7 +294,7 @@ let colorLibraryDetail = {
       {
         "id": 3,
         "name": "冬季流行色",
-        "decription": "冬季流行色",
+        "description": "冬季流行色",
         "colorCount": "16",
         "lastColorUpdateTime": "",
         "timeLabel": "12天前",
@@ -304,7 +304,7 @@ let colorLibraryDetail = {
       {
         "id": 4,
         "name": "2017畅销色",
-        "decription": "2017畅销色",
+        "description": "2017畅销色",
         "colorCount": "32",
         "lastColorUpdateTime": "",
         "timeLabel": "1个月前",

@@ -48,27 +48,13 @@ const lifecycle = {
     })
   },
   onShow: function (query) {
-    this.props.loadingState = http.defaultLoadingState();
-    this.getColorLibraryList().then(res => {
-      console.log(res)
-
-      this.setData({
-        colorLibraryList: res
-      })
-    })
+    this.refresh()
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.props.loadingState = http.defaultLoadingState();
-    this.getColorLibraryList().then(res => {
-      console.log(res)
-
-      this.setData({
-        colorLibraryList: res
-      })
-    })
+    this.refresh()
     $wx.stopPullDownRefresh();
   },
   /**
@@ -84,6 +70,15 @@ const lifecycle = {
         colorLibraryList: colorLibraryList.concat(res)
       })
     })
+  },
+  onShareAppMessage: function () {
+    if (this.data.selectedLibrary && this.data.selectedLibrary.name) {
+      let nickName = $wx.app.globalData.userInfo.nickName
+      return {
+        title: `分享${nickName}的色库《${this.data.selectedLibrary.name}》给你！`,
+        path: `/pages/color-library-detail/color-library-detail?id=${this.data.selectedLibrary.id}`
+      }
+    }
   },
 }
 
@@ -116,14 +111,8 @@ const viewAction = {
   doAction: function (d) {
     this.closeAction()
     switch (d.type) {
-      case 'TAG':
-        $wx.navigateTo($wx.router.settingTag, { type: constant.ColorLibraryActionType.Tag, id: this.data.selectedColor.id })
-        break
-      case 'MOVE':
-        $wx.navigateTo($wx.router.joinLibrary, { type: constant.ColorLibraryActionType.Move_Single, colorList: [this.data.selectedColor] })
-        break
-      case 'ADD':
-        $wx.navigateTo($wx.router.joinLibrary, { type: constant.ColorLibraryActionType.Add_Single, colorList: [this.data.selectedColor] })
+      case 'EDIT':
+        $wx.navigateTo($wx.router.addLibrary, { libraryDetail: this.data.selectedLibrary })
         break
       case 'SHARE':
         break
@@ -137,6 +126,18 @@ const viewAction = {
         break
     }
   },
+  confirmDelete: function () {
+    this.setData({
+      showDeleteConfirm: false
+    })
+    
+    http.post(urls.deleteColorLibrary, {
+      mock: true,
+      libraryId: this.data.selectedLibrary.id
+    }).then(res => {
+      this.refresh()
+    })
+  }
 }
 
 const privateMethods = {
@@ -145,6 +146,16 @@ const privateMethods = {
       mock: true,
     })
   },
+  refresh: function() {
+    this.props.loadingState = http.defaultLoadingState();
+    this.getColorLibraryList().then(res => {
+      console.log(res)
+
+      this.setData({
+        colorLibraryList: res
+      })
+    })
+  }
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

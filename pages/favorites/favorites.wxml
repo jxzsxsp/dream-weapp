@@ -48,7 +48,13 @@
   <view class="action-container flex-column">
     <text class="action-title">{{selectedLibrary.name}}</text>
     <block wx:for="{{actions}}" wx:key="type">
-    <block wx:if="{{selectedLibrary.type === 1 || (selectedLibrary.type === 0 && item.type === 'SHARE')}}">
+    <block wx:if="{{item.type === 'SHARE'}}">
+    <button open-type="share" class="action-row-container flex-start-center button share-btn">
+      <view class="iconfont {{item.icon}} action-icon"/>
+      <text class="action-row-title">{{item.title}}</text>
+    </button>
+    </block>
+    <block wx:elif="{{selectedLibrary.type === 1}}">
     <view data-type="{{item.type}}" class="action-row-container flex-start-center" bind:tap="doAction">
       <view class="iconfont {{item.icon}} action-icon"/>
       <text class="action-row-title">{{item.title}}</text>
