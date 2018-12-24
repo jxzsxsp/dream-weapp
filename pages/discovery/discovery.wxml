@@ -3,7 +3,6 @@
         <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
         <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
     </view>
-
     <view class='show-box' wx:if='{{isForever}}' style='margin-top:90rpx;background-color: #fff;'>
         <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
@@ -89,5 +88,4 @@
     <view>
         <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
     </view>
-
 </view>

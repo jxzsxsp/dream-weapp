@@ -1,11 +1,6 @@
 var conf = require("../../utils/config.js"),
     app = getApp();
-// pages/discovery/discovery.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         userInfo: {},
         chooseTitle: true,
@@ -27,8 +22,6 @@ Page({
                 userInfo: t
             })
         });
-
-
         app.getOpenId(function(t) {
             wx.request({
                 url: app.getUrl("GetReferralInfo"),
@@ -41,7 +34,6 @@ Page({
             });
         });
         tm.getVipInfo();
-
     },
 
     GetCheckData: function() {
@@ -110,16 +102,8 @@ Page({
         tm.setData({
             isForever: !tm.data.isForever
         })
-
-
-
-        // var flag = tm.data.chooseTitle
-        // tm.setData({
-        //     chooseTitle: !flag
-        // })
     },
     toTrial: function() {
-        // 申请试用vip
         var tm = this;
         wx.request({
             url: app.getUrl("YTALSignupDistribution"),
@@ -146,32 +130,24 @@ Page({
         });
     },
     changeList: function(e) {
-
-
         var tm = this;
         if (e.currentTarget.dataset.flag === tm.data.isDefault) return;
         tm.setData({
             isDefault: !tm.data.isDefault
         })
-
     },
-    getVipInfo: function () {
+    getVipInfo: function() {
         var tm = this;
         wx.request({
             url: app.getUrl("YTALGetInfoDistribution"),
             data: {
                 openId: tm.data.userInfo.OpenId
             },
-            success: function (res) {
+            success: function(res) {
                 console.log(res);
                 tm.setData({
                     vipInfo: res.data
                 })
-                // var emptyArr = []
-                // if(res.length/5) {
-
-                // }
-
             }
         })
     }

@@ -5,8 +5,6 @@ page {
 .changeTabTitle.active {
     color: #db3c40;
 }
-
-
 .text.active {
     color: #db3c40;
     border-bottom:6rpx solid #db3c40;
