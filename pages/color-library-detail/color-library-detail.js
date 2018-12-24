@@ -89,11 +89,24 @@ const lifeCycle = {
     this.getColorList()
   },
   onShareAppMessage: function () {
-    console.log($wx.app.globalData.userInfo)
     const nickName = $wx.app.globalData.userInfo.nickName
-    return {
-      title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
-      path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
+    if (this.data.showAction) {
+      let path = ''
+      if (this.data.selectedColor.originType === constant.ColorSource.pantone) {
+        path = `/pages/color-detail/color-detail?colorId=${this.data.selectedColor.colorId}`
+      } else {
+        path = `/pages/fetch-color-detail/fetch-color-detail?colorId=${this.data.selectedColor.colorId}`
+      }
+      return {
+        title: `推荐${nickName}收藏的颜色${this.data.selectedColor.name}给你`,
+        path
+      }
+    } else {
+      return {
+        title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
+        path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
+      }
+
     }
   },
   onNavigateBack: function (d) {
@@ -223,6 +236,7 @@ const viewAction = {
         $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Add_Single, colorList: [this.data.selectedColor]})
         break
       case 'SHARE':
+      wx.showShareMenu()
         break
       case 'DELETE':
         this.setData({
