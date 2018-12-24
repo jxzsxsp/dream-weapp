@@ -2,15 +2,12 @@ import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
 
 const props = {
-  maxLabelNum: 5,
-  maxLabelTextNum: 8
 }
 
 const data = {
   maxLabelNum: 5,
-  libraryColorId: 1,
-  color: '#FD7CB0',
-  name: 'PANTONE C 201',
+  maxLabelTextNum: 8,
+  colorDetail: {},
   labels: [],
   latestLabels: [],
   selected: [],
@@ -21,6 +18,10 @@ const data = {
 const lifecycle = {
   onLoad: function(query) {
     console.log(query)
+    this.setData({
+      colorDetail: query.colorDetail
+    })
+
     this.getLabelList().then(res => {
       this.setData({
         latestLabels: res.labels
@@ -63,7 +64,7 @@ const viewAction = {
 
     if (!!this.data.label) {
       let params = {
-        libraryColorId: this.data.libraryColorId,
+        libraryColorId: this.data.colorDetail.id,
         labelName: this.data.label
       }
 
@@ -160,19 +161,19 @@ const viewAction = {
 
 const privateMethods = {
   checkLabelNum: function (labels) {
-    if(this.data.labels.length >= this.props.maxLabelNum) {
+    if(this.data.labels.length >= this.data.maxLabelNum) {
       $wx.showToast({
-        title: '标签最多' + this.props.maxLabelNum + '个',
+        title: '标签最多' + this.data.maxLabelNum + '个',
         icon: 'none'
       })
       return true
     }
   },
   checkLabelTextNum: function (value) {
-    if (this.data.label.length >= this.props.maxLabelTextNum
-      && value.length >= this.props.maxLabelTextNum) {
+    if (this.data.label.length >= this.data.maxLabelTextNum
+      && value.length >= this.data.maxLabelTextNum) {
       $wx.showToast({
-        title: '标签名最多' + this.props.maxLabelTextNum + '个字',
+        title: '标签名最多' + this.data.maxLabelTextNum + '个字',
         icon: 'none'
       })
       return true
@@ -209,7 +210,7 @@ const privateMethods = {
   setLabel: function () {
     return http.post(urls.setLabel, {
       mock: true,
-      libraryColorId: this.data.libraryColorId, 
+      libraryColorId: this.data.colorDetail.id, 
       labels: this.data.labels
       })
   }

@@ -213,7 +213,7 @@ const viewAction = {
     this.closeAction()
     switch (d.type) {
       case 'TAG':
-        $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.Tag, id: this.data.selectedColor.id})
+        $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.Tag, colorDetail: this.data.selectedColor})
         break
       case 'MOVE':
         $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Move_Single, colorList: [this.data.selectedColor]})

@@ -1,8 +1,8 @@
 <view class='content'>
-  <view class='color-img' style='background: {{color}};'>
-    <view class='shadow' style='background: {{color}};'></view>
+  <view class='color-img' style='background: {{colorDetail.hexColor}};'>
+    <view class='shadow' style='background: {{colorDetail.hexColor}};'></view>
   </view>
-  <view class='color-name'>{{name}}</view>
+  <view class='color-name'>{{colorDetail.name}}</view>
 </view>
 
 <view class='tag-input'>
@@ -16,6 +16,7 @@
   <view wx:if="{{labels.length < maxLabelNum}}" class='input-item'>
     <input 
     value='{{label}}' 
+    length='{{maxLabelTextNum}}'
     placeholder='输入标签名…'
     bindinput='inputEvent'
     bindconfirm='confirmEvent'
