@@ -8,7 +8,7 @@ const data = {
   maxTitleTextNum: 8,
   maxDescTextNum: 140,
   canSave: false,
-  id: 0,
+  id: '',
   name: '',
   desc: '',
   libraryDetail: {},

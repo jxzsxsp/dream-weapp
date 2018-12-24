@@ -86,7 +86,7 @@ let viewAction = {
   gotoColorLibrary: function () {
     const colorDetail = this.data.colorDetail
     const color = {
-      id: colorDetail.colorId,
+      id: this.data.favoriteId,
       hexColor: colorDetail.hexColor,
       name: colorDetail.name,
     }
@@ -117,12 +117,13 @@ let privateMethod = {
       // mock: true,
       colorId: this.data.colorDetail.colorId,
       originType: this.data.originType
-    }).then(() => {
+    }).then((res) => {
       this.clearTimeout()
       this.setTimeout()
       this.setData({
         favorite: true,
         showHint: true,
+        favoriteId: res.data
       })
     })
   },
