@@ -55,12 +55,12 @@ class BaseService {
     })
   }
 
-  navigateBack (delta=1, data = {}) {
+  navigateBack (delta=1, data = {}, hintString) {
     let param = {}
     if (typeof(delta) === 'object') {
       // 原始小程序的返回
       param = delta
-    } else if (JSON.stringify(data) === "{}") {
+    } else if (JSON.stringify(data) === "{}" && !hintString) {
       // 只设置了返回级数的返回
       param = {delta}
     } else {
@@ -71,6 +71,14 @@ class BaseService {
       if (!prevPage.hasOwnProperty('onNavigateBack')) {
         console.error('zachary 抛出: 上级页面未实现 onNavigateBack 方法接收参数')
       } else {
+        if (!!hintString) {
+          setTimeout(() => {
+            wx.showToast({
+              title: hintString,
+              icon: 'none',
+            }) 
+          }, 500)
+        }
         prevPage.onNavigateBack(data)
       }
     }
