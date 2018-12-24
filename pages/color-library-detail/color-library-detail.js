@@ -368,9 +368,6 @@ const privateMethod = {
     })
   },
   _addColor: function (library, colorList) {
-    setTimeout(() => {
-      $wx.showToast({title: '已添加到'+library.name})
-    },500)
     this.setData({
       isMultiSelect: false,
     })
@@ -379,9 +376,6 @@ const privateMethod = {
     let movedColorIds = colorList.map(item => {
       return  item.id
     })
-    setTimeout(() => {
-      $wx.showToast({title: '已移动到'+library.name})
-    }, 500)
     this.data.colorList = utils.removeArrayInArray(this.data.colorList, movedColorIds, 'id')
     this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, movedColorIds, 'id')
     this.setCanEdit()
