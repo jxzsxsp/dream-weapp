@@ -4,6 +4,7 @@ import constant from '../../constant/index'
 
 const props = {
   bindId: '',
+  type: null,
   uuid: '',
   timer: null
 }
@@ -24,6 +25,7 @@ const data = {
 const lifecycle = {
   onLoad (query) {
     this.props.bindId = query.bindId
+    this.props.type = query.type
     this.props.uuid = query.uuid
     this.setData({
       mobile: query.phoneNumber
@@ -93,7 +95,11 @@ const viewAction = {
         return $wx.app.bindPhone()
       }).then(() => {
         setTimeout(() => {
-          $wx.navigateBack({delta: 2})
+          if (!!this.props.type) {
+            $wx.navigateBack(2, {loginCallBackType: this.props.type})
+          } else {
+            $wx.navigateBack(2)
+          }
         }, 2000)
       })
   },
