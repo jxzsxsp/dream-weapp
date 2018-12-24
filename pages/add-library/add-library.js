@@ -90,7 +90,7 @@ const privateMethods = {
   },
   createColorLibrary: function () {
     return http.post(urls.colorLibrarySave, {
-      mock: true,
+      // mock: true,
       id: this.data.id,
       name: this.data.name,
       description: this.data.desc

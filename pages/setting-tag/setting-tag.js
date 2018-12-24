@@ -205,11 +205,14 @@ const privateMethods = {
     })
   },
   getLabelList: function(params) {
-    return http.get(urls.labelList, { mock: true, ...params })
+    return http.get(urls.labelList, { 
+      // mock: true, 
+      ...params 
+    })
   },
   setLabel: function () {
     return http.post(urls.setLabel, {
-      mock: true,
+      // mock: true,
       libraryColorId: this.data.colorDetail.id, 
       labels: this.data.labels
       })

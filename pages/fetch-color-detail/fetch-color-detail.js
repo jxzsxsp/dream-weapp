@@ -103,7 +103,7 @@ let privateMethod = {
     }
     
     http.get(urls.isInFavorite, {
-      mock: true,
+      // mock: true,
       colorId: colorId,
       originType: this.data.originType
     }).then(res => {
@@ -114,7 +114,7 @@ let privateMethod = {
   },
   addFavorite: function () {
     http.post(urls.addFavorite, {
-      mock: true,
+      // mock: true,
       colorId: this.data.colorDetail.colorId,
       originType: this.data.originType
     }).then(() => {
@@ -128,7 +128,7 @@ let privateMethod = {
   },
   cancelFavorite: function () {
     http.post(urls.cancelFavorite, {
-      mock: true,
+      // mock: true,
       colorId: this.data.colorDetail.colorId,
       originType: this.data.originType
     }).then(() => {

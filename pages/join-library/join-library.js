@@ -134,19 +134,19 @@ const viewAction = {
 const privateMethods = {
   getColorLibraryList: function () {
     return http.getList(urls.colorLibraryList, this.props.loadingState, {
-      mock: true,
+      // mock: true,
     })
   },
   addColorToLibrary: function () {
     return http.post(urls.addColor, {
-      mock: true,
+      // mock: true,
       libraryId: this.data.libraryId,
       libraryColorIdList: this.data.libraryColorIdList,
     })
   },
   moveColorToLibrary: function () {
     return http.post(urls.moveColor, {
-      mock: true,
+      // mock: true,
       libraryId: this.data.libraryId,
       libraryColorIdList: this.data.libraryColorIdList,
     })

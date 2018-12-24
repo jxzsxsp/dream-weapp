@@ -135,7 +135,7 @@ const viewAction = {
     })
     
     http.post(urls.deleteColorLibrary, {
-      mock: true,
+      // mock: true,
       libraryId: this.data.selectedLibrary.id
     }).then(res => {
       this.refresh()
@@ -146,7 +146,7 @@ const viewAction = {
 const privateMethods = {
   getColorLibraryList: function () {
     return http.getList(urls.colorLibraryList, this.props.loadingState, {
-      mock: true,
+      // mock: true,
     })
   },
   refresh: function() {

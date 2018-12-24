@@ -279,7 +279,10 @@ const privateMethod = {
   },
   // 获取类表
   getColorList: function () {
-    http.getList(urls.colorLibraryDetail, this.props.loadingState, {mock: true, libraryId: this.props.libraryId}).then(res => {
+    http.getList(urls.colorLibraryDetail, this.props.loadingState, {
+      // mock: true, 
+      libraryId: this.props.libraryId
+      }).then(res => {
       $wx.setNavigationBarTitle({
         title: this.props.loadingState.others.library.name
       })
@@ -356,7 +359,10 @@ const privateMethod = {
     let deletedColorIds = deletedColors.map(item => {
       return  item.id
     })
-    http.post(urls.deleteColor, {mock: true, libraryColorIdList: deletedColorIds}).then(() => {
+    http.post(urls.deleteColor, {
+      // mock: true, 
+      libraryColorIdList: deletedColorIds
+      }).then(() => {
       this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')
       this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, deletedColorIds, 'id')
       this.setCanEdit()
