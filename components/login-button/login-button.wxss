@@ -1,0 +1,8 @@
+.inner-class::after {
+  border: none;
+}
+
+.inner-class {
+  background: #ffffff;
+  border-radius: 0rpx;
+}
