@@ -235,6 +235,8 @@ class Http {
             let resData = {}
             if (res.data.data instanceof Array) {
               resData = {list: res.data.data, requestParam: data}
+            } else if (typeof(res.data.data) !== 'object') {
+              resData = {data: res.data.data, requestParam: data}
             } else {
               resData = {...res.data.data, requestParam: data}
             }
