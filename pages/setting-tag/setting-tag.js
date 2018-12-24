@@ -42,7 +42,7 @@ const viewAction = {
         labelList.push({ name: labels[i] })
       }
 
-      $wx.navigateBack({
+      $wx.navigateBack(1, {
         labelList: labelList
       })
     })

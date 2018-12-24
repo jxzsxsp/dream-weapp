@@ -46,7 +46,7 @@ const viewAction = {
         libraryDetail.id = this.data.id
         libraryDetail.name = this.data.name
         libraryDetail.description = this.data.desc
-        $wx.navigateBack({
+        $wx.navigateBack(1, {
           libraryDetail: libraryDetail
         })
       })

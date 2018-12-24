@@ -110,7 +110,7 @@ const viewAction = {
       libraryId: d.detail.id
     })
     this.addColorToLibrary().then(res => {
-      $wx.navigateBack({
+      $wx.navigateBack(1, {
         type: this.data.type,
         libraryDetail: d.detail
       })
