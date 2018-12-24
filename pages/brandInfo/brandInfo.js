@@ -306,10 +306,6 @@ Page({
       urls: imgs
     })
   },
-  filterNum: function(value, count) {
-    var num = Number(value)
-    return num.toFixed(count)
-  },
   copy: function(e) {
     wx.setClipboardData({
       data: e.target.dataset.val,

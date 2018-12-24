@@ -129,49 +129,6 @@ Page({
 
 
     },
-    // countDown() { //倒计时函数
-    //     // 获取当前时间，同时得到活动结束时间数组
-    //     let newTime = new Date().getTime();
-    //     let brandRushList = this.data.brandRush;
-    //     brandRushList.forEach(o => {
-    //         var rushEndTime = o.rushEndTime;
-    //         let endTime = new Date(rushEndTime).getTime();
-    //         endTime = endTime + 8 * 60 * 60 * 1000;
-
-
-    //         let obj = null;
-    //         // 如果活动未结束，对时间进行处理
-    //         if (endTime - newTime > 0) {
-    //             let time = (endTime - newTime) / 1000;
-    //             // 获取天、时、分、秒
-    //             let day = parseInt(time / (60 * 60 * 24));
-    //             let hou = parseInt(time % (60 * 60 * 24) / 3600);
-    //             let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
-    //             let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
-
-    //             obj = {
-    //                 day: this.timeFormat(day),
-    //                 hou: this.timeFormat(hou),
-    //                 min: this.timeFormat(min),
-    //                 sec: this.timeFormat(sec)
-    //             }
-    //         } else { //活动已结束，全部设置为'00'
-    //             obj = {
-    //                 day: '00',
-    //                 hou: '00',
-    //                 min: '00',
-    //                 sec: '00'
-    //             }
-    //         }
-    //         o.countDownTime = obj;
-    //     });
-    //     // 渲染，然后每隔一秒执行一次倒计时函数
-    //     this.setData({
-    //         brandRush: brandRushList
-    //     })
-
-    //     setTimeout(this.countDown, 1000);
-    // },
     linkToBrandRush: function(event) {
         var barndId = event.currentTarget.dataset['brandid'];
         var brandSoruce = event.currentTarget.dataset['brandsource'];
@@ -181,26 +138,16 @@ Page({
     },
 
     changeCate: function(event) {
-        // 初始化值
         this.setData({
             brandRush: [],
             dataIndex: 0,
             selectedCate: event.currentTarget.dataset.catename,
             hasMore: true,
-            // selectedTag: "所有品牌"
         })
-        // this.getTag();
 
-
-
-
-
-
-        // 取消tag列表后的更改
         this.getList();
     },
     changeTag: function(event) {
-        // 初始化值
         this.setData({
             brandRush: [],
             dataIndex: 0,
@@ -209,22 +156,22 @@ Page({
         })
         this.getList();
     },
-    getCate: function() {
-        var tm = this;
-        wx.request({
-            url: app.getUrl("YTALGetListBrandCate"),
-            data: {
+    // getCate: function() {
+    //     var tm = this;
+    //     wx.request({
+    //         url: app.getUrl("YTALGetListBrandCate"),
+    //         data: {
 
-            },
-            success: function(res) {
-                tm.setData({
-                    barndRushCate: res.data,
-                    selectedCate: res.data[0]
-                });
-                tm.getTag();
-            }
-        });
-    },
+    //         },
+    //         success: function(res) {
+    //             tm.setData({
+    //                 barndRushCate: res.data,
+    //                 selectedCate: res.data[0]
+    //             });
+    //             tm.getTag();
+    //         }
+    //     });
+    // },
     getTag: function (event) {
         var tm = this;
         wx.request({
@@ -249,29 +196,6 @@ Page({
             }
         })
     },
-    // getTag: function(event) {
-    //     var tm = this;
-    //     wx.request({
-    //         url: app.getUrl("YTALGetListBrandRushTagByCate"),
-    //         data: {
-    //             cate: "本期特卖"
-    //         },
-    //         success: function(jd) {
-    //             if (jd.data.length > 0) {
-    //                 let tagList = [];
-    //                 jd.data.forEach(o => {
-    //                     tagList.push(o)
-    //                 });
-    //                 tm.setData({
-    //                     tagList: tagList,
-    //                     selectedTag: jd.data[0]
-    //                 })
-    //                 // tm.getList();
-    //                 tm.rewrite();
-    //             }
-    //         }
-    //     })
-    // },
     getList: function() {
         var tm = this;
         wx.request({
@@ -307,21 +231,6 @@ Page({
                 ps: tm.data.dataSize
             },
             success: function(jd) {
-                // if (jd.data.length == 20) {
-                //     let brandRushList = [];
-                //     jd.data.forEach(o => {
-                //         brandRushList.push(o)
-                //     });
-                //     var newList = tm.data.brandRush.concat(brandRushList)
-                //     tm.setData({
-                //         brandRush: newList
-                //     })
-                // } else {
-
-                //     tm.setData({
-                //         hasMore: false
-                //     })
-                // }
                 if (jd.data.length <= 20 && jd.data.length > 0) {
                     let brandRushList = [];
                     jd.data.forEach(o => {
@@ -337,7 +246,6 @@ Page({
                         })
                     }
                 } else {
-
                     tm.setData({
                         hasMore: false
                     })
@@ -350,8 +258,6 @@ Page({
         let name = e.target.dataset.name,
             index = parseInt(e.target.dataset.index);
         let img = e.target.dataset.img
-
-            
 
         // 把点击到的某一项，设为当前index
         this.setData({
@@ -376,7 +282,6 @@ Page({
                 jd.data.forEach(o => {
                     brandRushList.push(o)
                 });
-                // var newList = tm.data.brandRush.concat(brandRushList)
                 tm.setData({
                     brandRush: brandRushList
                 })
