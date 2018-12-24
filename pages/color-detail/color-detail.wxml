@@ -29,6 +29,6 @@
   <view class="hint-button-container flex-center" bind:tap="gotoColorLibrary">
     <text class="hint-style1">已收藏!继续</text>
     <text class="hint-style2">添加到颜色库</text>
-    <!-- <view class="iconfont icon-"/> -->
+    <view class="iconfont icon-jiantou hint-style3"/>
   </view>
 </van-transition>
