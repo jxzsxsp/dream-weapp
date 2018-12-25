@@ -18,7 +18,7 @@
           <view wx:if="{{fromLibrary}}" class="flex">
             <view wx:if="{{isCustom}}" class="iconfont icon-bianji edit-icon" bind:tap="editLibrary"/>
             <button class="button" open-type="share" style="background: white;padding: 0 0 0 0;">
-              <view class="iconfont icon-fenxiang edit-icon" bind:tap="shareLibrary"/>
+              <view class="iconfont icon-fenxiang edit-icon"/>
             </button>
           </view>
         </view>

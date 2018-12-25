@@ -7,6 +7,47 @@ class BaseService {
     this.router = {}
     this.app = null
   }
+  
+  registerEvent (eventName, callback) {
+    let globalCallback = getApp().globalEventCallback
+    if (!globalCallback) {
+      getApp().globalEventCallback = new Map()
+      globalCallback = getApp().globalEventCallback
+    }
+    if (!globalCallback.has(eventName)) {
+      globalCallback.set(eventName, new Map())
+    }
+    let callbackMap = globalCallback.get(eventName)
+    let pages = getCurrentPages()
+    const url = pages[pages.length - 1]
+    callbackMap.set(url, callback)
+  }
+
+  resignEvent (eventName) {
+    let globalCallback = getApp().globalEventCallback
+    if (!globalCallback) {
+      console.error('zachary抛出: 未注册 event')
+      return
+    }
+    if (!globalCallback.has(eventName)) {
+      console.error(`zachary抛出: 未注册 ${eventName}`)
+      return
+    }
+    let callbackMap = globalCallback.get(eventName)
+    let pages = getCurrentPages()
+    const url = pages[pages.length - 1] 
+    callbackMap.delete(url)
+  }
+
+  executeEvent (eventName, data) {
+    let globalCallback = getApp().globalEventCallback
+    if (!globalCallback || !globalCallback.has(eventName)) {
+      return
+    }
+    globalCallback.get(eventName).forEach((callback) => {
+      callback(data)
+    })
+  }
 
 
   reLaunch (baseUrl, params) {

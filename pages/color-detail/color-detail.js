@@ -29,6 +29,7 @@ let lifecycle = {
           colorDetail: res
         })
       })
+
     this.getFavorite(query.colorId)
   },
   onNavigateBack: function(d) {
@@ -93,7 +94,6 @@ let privateMethods = {
       colorId: this.data.colorDetail.colorId,
       originType: constant.ColorSource.pantone
     }).then((res) => {
-      console.log(res)
       this.clearTimeout()
       this.setTimeout()
       this.setData({
@@ -109,6 +109,8 @@ let privateMethods = {
       colorId: this.data.colorDetail.colorId,
       originType: constant.ColorSource.pantone
     }).then(() => {
+      console.log(this)
+      $wx.executeEvent('removeFromLibrary', {colorId: this.data.colorDetail.colorId})
       this.clearTimeout()
       this.setData({
         favorite: false,
