@@ -297,9 +297,11 @@ const privateMethod = {
       case 1:
         return labelList[0].name
       case 2:
-        return labelList[0].name + '·' + labelList[1].name
+        return `${labelList[0].name}·${labelList[1].name}`
+      case 3:
+        return `${labelList[0].name}·${labelList[1].name}·${labelList[2].name}`
       default:
-        return labelList[0].name + '·' + labelList[1].name + '·' + labelList[2].name
+        return `${labelList[0].name}·${labelList[1].name}·${labelList[2].name}...`
     }
   },
   // 获取类表

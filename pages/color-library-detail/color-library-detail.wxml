@@ -22,7 +22,7 @@
             </button>
           </view>
         </view>
-        <text wx:if="{{isCustom}}" class="main-subtitle">{{libraryDetail.description}}</text>
+        <text wx:if="{{isCustom && !!libraryDetail.description}}" class="main-subtitle">{{libraryDetail.description}}</text>
       </view>
       <!-- 开始选择-占位 -->
       <view wx:if="{{!isMultiSelect}}" id="select" class="flex-between-center header-container">
