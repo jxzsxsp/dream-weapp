@@ -698,7 +698,7 @@ var QR = (function () {
         var imgPosFix = width / 120;
         ctx.strokeStyle = '#fff';
         ctx.lineWidth = 1;
-        ctx.globalAlpha = 0.8;
+        ctx.globalAlpha = 1;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 

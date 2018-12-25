@@ -18,8 +18,9 @@ Page({
         var src = options.src
         QRCodeJS.qrApi.draw(str, "logoQRCode", 275, 275, null, src);
 
-
-        
+        setTimeout(function () {
+            tm.saveCode()
+        }, 100)
     },
 
     /**
@@ -84,23 +85,57 @@ Page({
 
         //     }
         // })
-        // var tm = this;
-        // wx.canvasToTempFilePath({
-        //     x: 100,
-        //     y: 200,
-        //     width: 50,
-        //     height: 50,
-        //     destWidth: 100,
-        //     destHeight: 100,
-        //     canvasId: 'logoQRCode',
-        //     success(res) {
-        //         console.log(res.tempFilePath)
-        //         tm.setData({
-        //             canvasUrl: res.tempFilePath
-        //         })
-        //     },
-        //     complete(res) {
-        //         console.log(res)
+        var tm = this;
+        wx.canvasToTempFilePath({
+            x: -22,
+            y: -22,
+            width: 277,
+            height: 277,
+            destWidth: 700,
+            destHeight: 700,
+            fileType: 'jpg',
+            quality: 1,
+            canvasId: 'logoQRCode',
+            success(res) {
+                console.log(res.tempFilePath)
+                tm.setData({
+                    canvasUrl: res.tempFilePath
+                })
+            },
+            complete(res) {
+                console.log(res)
+            }
+        })
+    },
+    saveImage: function (e) {
+        console.log(e.currentTarget.dataset.src)
+        var src = e.currentTarget.dataset.src
+
+        wx.previewImage({
+            current: src, // 当前显示图片的http链接
+            urls: [src,'https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/21392/22/2256/160847/5c1b0978Ef1147970/5ced72341c7c05c9.jpg!cr_1125x549_0_72!q70.jpg.dpg'] // 需要预览的图片http链接列表
+        })
+
+
+        // wx.downloadFile({
+        //     url: src,     //仅为示例，并非真实的资源
+        //     success: function (res) {
+        //         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        //         if (res.statusCode === 200) {
+        //             wx.saveImageToPhotosAlbum({
+        //                 filePath: res.tempFilePath,
+        //                 success(res) {
+        //                     wx.showToast({
+        //                         title: '保存图片成功！',
+        //                     })
+        //                 },
+        //                 fail(res) {
+        //                     wx.showToast({
+        //                         title: '保存图片失败！',
+        //                     })
+        //                 }
+        //             })
+        //         }
         //     }
         // })
     }
