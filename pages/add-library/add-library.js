@@ -78,7 +78,7 @@ const privateMethods = {
     return !!str && str.length > 0
   },
   checkCanSave: function () {
-    if (this.isNotEmpty(this.data.name) && this.isNotEmpty(this.data.desc)) {
+    if (this.isNotEmpty(this.data.name)) {
       this.setData({
         canSave: true
       })
