@@ -1,6 +1,7 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 import utils from '../../utils/index'
+import constant from '../../constant/index'
 
 let props = {
   loadingState: http.defaultLoadingState(),
@@ -111,7 +112,7 @@ let privateMethod = {
     http.get(urls.isInFavorite, {
       // mock: true,
       colorId: colorId,
-      originType: this.data.originType
+      originType: constant.ColorSource.selfFetch
     }).then(res => {
       this.setData({
         favorite: res.status
@@ -122,7 +123,7 @@ let privateMethod = {
     http.post(urls.addFavorite, {
       // mock: true,
       colorId: this.data.colorDetail.colorId,
-      originType: this.data.originType
+      originType: constant.ColorSource.selfFetch
     }).then((res) => {
       this.clearTimeout()
       this.setTimeout()
@@ -137,7 +138,7 @@ let privateMethod = {
     http.post(urls.cancelFavorite, {
       // mock: true,
       colorId: this.data.colorDetail.colorId,
-      originType: this.data.originType
+      originType: constant.ColorSource.selfFetch
     }).then(() => {
       this.clearTimeout()
       this.setData({
