@@ -149,7 +149,7 @@
 .select-icon-base {
   font-size: 20px;
   opacity: 0;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
   height: 50rpx;
   line-height: 50rpx;
@@ -392,6 +392,7 @@
   to {opacity: 0;}
 }
 
+/* 占位的视图的高度，高度88是重置取消视图的高度，260是选中后，scrollview 弹出的时候占位视图应有的高度 */
 @keyframes short-to-long {
   from {height: 88rpx; }
   to {height: 260rpx}
