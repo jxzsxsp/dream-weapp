@@ -14,6 +14,10 @@
     <text class='color-title'>{{defaultColorLibrary.name}}</text>
     <view class='color-desc'>
       <text class='color-num'>{{defaultColorLibrary.colorCount}}个颜色</text>
+      <block wx:if='{{defaultColorLibrary.timeLabel && defaultColorLibrary.timeLabel !== null}}'>
+      <view class='point'></view>
+      <text class='color-time'>{{defaultColorLibrary.timeLabel}}</text>
+      </block>
     </view>
   </view>
   <view class='iconfont icon-gengduo more-icon' data-detail='{{defaultColorLibrary}}' bind:tap='showAction'></view>
