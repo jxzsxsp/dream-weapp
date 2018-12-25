@@ -77,6 +77,8 @@ const lifeCycle = {
     }
     this.props.libraryId = query.id
     this.getColorList()
+    this.registerEvent()
+
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
@@ -95,6 +97,9 @@ const lifeCycle = {
       title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
+  },
+  onUnload: function () {
+    $wx.resignEvent('removeFromLibrary')
   },
   onNavigateBack: function (d) {
     const libraryDetail = d.libraryDetail
@@ -262,6 +267,23 @@ const viewAction = {
 }
 
 const privateMethod = {
+  registerEvent: function () {
+    $wx.registerEvent('removeFromLibrary', (data) => {
+      const newColorList = this.data.colorList.filter(item => {
+        return data.colorId !== item.colorId
+      })
+      const newSelectedColorList = this.data.selectedColorList.filter(item => {
+        return data.colorId !== item.icolorId
+      })
+      this.setCanEdit()
+      this.setData({
+        colorList: newColorList,
+        selectedColorList: newSelectedColorList,
+        canEdit: this.data.canEdit
+      })
+    })
+
+  },
   // 获取完整的标签
   getFullLabel: function (labelList) {
     if (!labelList || labelList.length === 0) {
