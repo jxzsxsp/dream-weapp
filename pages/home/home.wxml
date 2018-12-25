@@ -89,7 +89,7 @@
 
                         <view style='clear:both'></view>
                     </view>
-                    <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>狂扫货</view>
+                    <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>去抢购</view>
                     <view style='clear:both'></view>
                 </view>
             </view>

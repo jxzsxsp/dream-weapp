@@ -23,9 +23,27 @@ Page({
     onLoad: function(q) {
         q.ReferralUserId && t.setRefferUserId(q.ReferralUserId);
 
-        this.setData ({
-            imgUrl: q.picUrl
-        }) 
+        var pages = getCurrentPages()    //获取加载的页面
+
+        var currentPage = pages[pages.length - 1]    //获取当前页面的对象
+
+        var url = currentPage.route    //当前页面url
+        var options = currentPage.options    //如果要获取url中所带的参数可以查看options
+        console.log(url)
+        console.log(options)
+        console.log(q)
+
+        if(q.imgUrl) {
+            this.setData({
+                imgUrl: q.picUrl
+            })
+        }
+
+        // this.setData({
+        //     imgUrl: q.picUrl
+        // })
+
+        
         var a = wx.getStorageSync("keyword");
         void 0 == a && (a = "");
         var e = q.cid;
@@ -49,7 +67,8 @@ Page({
         }), a.loadData(a, !1);
     },
     onReachBottom: function() {
-        var t = this, a = t.data.PageIndex + 1;
+        var t = this,
+            a = t.data.PageIndex + 1;
         t.setData({
             PageIndex: a
         }), t.loadData(t, !0);
@@ -60,7 +79,8 @@ Page({
         });
     },
     onConfirmSearch: function(t) {
-        var a = this, e = t.detail.value;
+        var a = this,
+            e = t.detail.value;
         a.setData({
             KeyWord: e,
             PageIndex: 1
@@ -75,7 +95,11 @@ Page({
         });
     },
     onSortClick: function(t) {
-        var a = this, e = t.target.dataset.sortby, r = t.currentTarget.dataset.num, u = "asc", n = "shengxu";
+        var a = this,
+            e = t.target.dataset.sortby,
+            r = t.currentTarget.dataset.num,
+            u = "asc",
+            n = "shengxu";
         a.data.SortOrder == u && (u = "desc", n = "jiangxu"), a.setData({
             PageIndex: 1,
             SortBy: e,
@@ -85,11 +109,31 @@ Page({
         }), a.loadData(a, !1);
     },
     goToProductDetail: function(t) {
-        var a = t.currentTarget.dataset.productid, e = t.currentTarget.dataset.activeid, r = "../productdetail/productdetail?id=" + a;
-        1 == t.currentTarget.dataset.activetype && (r = "../countdowndetail/countdowndetail?id=" + e), 
-        wx.navigateTo({
-            url: r
-        });
+        var a = t.currentTarget.dataset.productid,
+            e = t.currentTarget.dataset.activeid,
+            r = "../productdetail/productdetail?id=" + a;
+        1 == t.currentTarget.dataset.activetype && (r = "../countdowndetail/countdowndetail?id=" + e),
+            wx.navigateTo({
+                url: r
+            });
+    },
+    onShareAppMessage: function () {
+        var tm = this;
+        var i = '';
+        var title = '商品列表'
+        if (tm.data.CouponId) {
+            title = "领取优惠券"
+            i = '/pages/searchresult/searchresult?CouponId=' + tm.data.CouponId;
+        } else {
+            i = '/pages/searchresult/searchresult?CategoryId=' + tm.data.CategoryId;
+        }
+            e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+            console.log(i)
+        return {
+            title: title,
+            path: i,
+            // imageUrl: brandBg
+        }
     },
     loadData: function(a, e) {
         wx.showNavigationBarLoading(), t.getOpenId(function(r) {
@@ -133,7 +177,8 @@ Page({
         });
     },
     GetShopCart: function() {
-        var a = this, e = 0;
+        var a = this,
+            e = 0;
         t.getOpenId(function(r) {
             wx.request({
                 url: t.getUrl("getShoppingCartList"),
@@ -168,17 +213,20 @@ Page({
         });
     },
     setProductCartQuantity: function(t, a, e) {
-        var r = this, u = !1, n = r.data.ProductList, d = n.find(function(a) {
-            return a.ProductId == t;
-        });
+        var r = this,
+            u = !1,
+            n = r.data.ProductList,
+            d = n.find(function(a) {
+                return a.ProductId == t;
+            });
         if (d) {
             switch (a = parseInt(a), e) {
-              case "=":
-                d.CartQuantity = a;
-                break;
+                case "=":
+                    d.CartQuantity = a;
+                    break;
 
-              case "+":
-                d.CartQuantity += a;
+                case "+":
+                    d.CartQuantity += a;
             }
             d.CartQuantity < 0 && (d.CartQuantity = 0), u = !0;
         }
@@ -190,22 +238,25 @@ Page({
         }
     },
     setSkuCartQuantity: function(t, a, e) {
-        var r = this, u = !1, n = r.data.CurrentProduct;
+        var r = this,
+            u = !1,
+            n = r.data.CurrentProduct;
         if (n && n.Skus) {
             var d = n.Skus.find(function(a) {
-                return a.SkuId == t;
-            }), o = r.data.CurrentSku;
+                    return a.SkuId == t;
+                }),
+                o = r.data.CurrentSku;
             if (d) {
                 switch (a = parseInt(a), e) {
-                  case "=":
-                    d.CartQuantity = a;
-                    break;
+                    case "=":
+                        d.CartQuantity = a;
+                        break;
 
-                  case "+":
-                    d.CartQuantity += a;
+                    case "+":
+                        d.CartQuantity += a;
                 }
-                d.CartQuantity < 0 && (d.CartQuantity = 0), o && o.SkuId == d.SkuId && (o.CartQuantity = d.CartQuantity), 
-                u = !0;
+                d.CartQuantity < 0 && (d.CartQuantity = 0), o && o.SkuId == d.SkuId && (o.CartQuantity = d.CartQuantity),
+                    u = !0;
             }
         }
         if (u) {
@@ -217,9 +268,14 @@ Page({
         }
     },
     catchAddCart: function(a) {
-        var e = this, r = a.currentTarget;
+        var e = this,
+            r = a.currentTarget;
         if (1 != r.dataset.activetype) {
-            var u = r.dataset.productid, n = r.dataset.operator, d = parseInt(n + "1"), o = r.dataset.opensku, i = e.findProductById(u);
+            var u = r.dataset.productid,
+                n = r.dataset.operator,
+                d = parseInt(n + "1"),
+                o = r.dataset.opensku,
+                i = e.findProductById(u);
             if (!i.HasSKU || i.HasSKU && "false" == o) {
                 var s = r.dataset.sku;
                 e.addToCart(u, s, d);
@@ -234,12 +290,14 @@ Page({
                     },
                     success: function(t) {
                         if (wx.hideLoading(), "OK" == t.data.Status) {
-                            var a = t.data.Data, r = a.DefaultSku, u = [];
+                            var a = t.data.Data,
+                                r = a.DefaultSku,
+                                u = [];
                             null != a && a.SkuItems.forEach(function(t, a, e) {
                                 t.AttributeValue.reverse(), t.AttributeValue[0].UseAttributeImage = "selected";
                                 var r = new Object();
-                                r.ValueId = t.AttributeValue[0].ValueId, r.Value = t.AttributeValue[0].Value, r.attributeid = t.AttributeId, 
-                                u.push(r);
+                                r.ValueId = t.AttributeValue[0].ValueId, r.Value = t.AttributeValue[0].Value, r.attributeid = t.AttributeId,
+                                    u.push(r);
                             }), e.setData({
                                 CurrentProduct: a,
                                 CurrentSku: r,
@@ -256,13 +314,19 @@ Page({
         });
     },
     onSkuClick: function(t) {
-        var a = this, e = t.target.dataset.indexcount, r = t.target.id, u = t.target.dataset.skuvalue, n = t.target.dataset.attributeid;
+        var a = this,
+            e = t.target.dataset.indexcount,
+            r = t.target.id,
+            u = t.target.dataset.skuvalue,
+            n = t.target.dataset.attributeid;
         if (0 != t.target.dataset.enablevalue) {
             var d = new Object();
             d.ValueId = r, d.Value = u, d.attributeid = n;
             var o = this.data.selectedskuList;
             o[e] = d;
-            var i = "", s = this.data.CurrentProduct, c = this.data.CurrentProduct.SkuItems;
+            var i = "",
+                s = this.data.CurrentProduct,
+                c = this.data.CurrentProduct.SkuItems;
             s.SkuItems.length == o.length && !0;
             for (var l = s.ProductId, f = 0; f < o.length; f++) {
                 var g = o[f];
@@ -271,8 +335,8 @@ Page({
             for (var h = 0; h < s.SkuItems[e].AttributeValue.length; h++) s.SkuItems[e].AttributeValue[h].ValueId == r ? s.SkuItems[e].AttributeValue[h].UseAttributeImage = "selected" : s.SkuItems[e].AttributeValue[h].UseAttributeImage = "False";
             var S = null;
             this.data.CurrentProduct.Skus.forEach(function(t, e, r) {
-                for (var u = !0, n = 0; n < o.length; n++) -1 == t.SkuId.indexOf("_" + o[n].ValueId) && (u = !1);
-                if (u && c.length == o.length) return S = t, l = t.SkuId, void (a.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
+                for (var u = !0, n = 0; n < o.length; n++) - 1 == t.SkuId.indexOf("_" + o[n].ValueId) && (u = !1);
+                if (u && c.length == o.length) return S = t, l = t.SkuId, void(a.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
             });
             var I = a.data.CurrentProduct.Skus;
             this.data.CurrentProduct.SkuItems.forEach(function(t, a) {

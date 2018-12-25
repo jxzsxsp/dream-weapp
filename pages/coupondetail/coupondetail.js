@@ -8,6 +8,7 @@ Page({
         CanUseProducts: "",
         CouponsDate: "",
         CouponId: "",
+        isGet: false,
         coupimg: t.getRequestUrl + "/Templates/xcxshop/images/coupdetail-back.jpg",
         coupimgLine: t.getRequestUrl + "/Templates/xcxshop/images/coup-line.jpg"
     },
@@ -55,6 +56,7 @@ Page({
     },
     GetCoupon: function() {
         var e = this.data.CouponId;
+        var that = this
         "" == e || parseInt(e) <= 0 ? wx.showModal({
             title: "提示",
             content: "领取的优惠券不存在",
@@ -80,7 +82,8 @@ Page({
                         url: "../login/login"
                     }) : (that.setData({
                         backShow: "none",
-                        couponShow: "none"
+                        couponShow: "none",
+                        isGet: true
                     }), wx.showToast({
                         title: e.data.Message,
                         image: "../../images/warning.png"
@@ -95,5 +98,22 @@ Page({
     onUnload: function() {},
     onPullDownRefresh: function() {},
     onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    onShareAppMessage: function() {
+        var tm = this;
+        var i = '/pages/coupondetail/coupondetail?CouponId=' + tm.data.CouponId;
+        e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        console.log(i)
+        return {
+            title: '领取优惠券',
+            path: i,
+            // imageUrl: brandBg
+        }
+    },
+    goToSx: function () {
+        var tm = this;
+        var cid = tm.data.CouponId
+        wx.navigateTo({
+            url: '/pages/searchresult/searchresult?couponId=' + cid,
+        })
+    }   
 });

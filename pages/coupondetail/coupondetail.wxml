@@ -1,6 +1,6 @@
 <view class="page-section">
     <view class="counp">
-        <view class="pic" style="background:url({{coupimg}}); background-size:100% 100%">
+        <view class="pic" style="background:url({{coupimg}});position:relative; background-size:100% 100%">
             <view class="counpinfo">
                 <view class="counp-title line_height40" style="background:url({{coupimgLine}}) repeat-x; background-size:100% 100%;">
                     <text>{{CouponName}}</text>
@@ -11,13 +11,25 @@
                 </view>
                 <view class="counp-area line_height32">{{CanUseProducts}}</view>
             </view>
+
+
+
+
+
+            <image wx:if='{{isGet}}' src='../../images/coupicon_03.jpg' style='width:100rpx;position:absolute;right:30rpx;top:120rpx;' mode='widthFix'></image>
         </view>
         <view class="counp-des">
             <view class="coupon-txt line_height32">{{LimitText}}</view>
             <view class="coupon-txt line_height32">{{CouponsDate}}</view>
         </view>
     </view>
-    <view class="btn">
+    <view class="btn" wx:if='{{!isGet}}'>
         <button bindtap="GetCoupon" class="btn_coup" type="default">领取优惠券</button>
+    </view>
+    <view class="btn" wx:else>
+        <button class="btn_coup" type="default">已领取</button>
+    </view>
+    <view class="btn">
+        <button bindtap="goToSx" class="btn_coup" type="default">点击查看可用商品</button>
     </view>
 </view>
