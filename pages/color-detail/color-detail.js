@@ -41,6 +41,12 @@ let lifecycle = {
     //   libraryDetail: d.libraryDetail
     // })
   },
+  onShareAppMessage: function () {
+    return {
+      title: `推荐颜色${this.data.colorDetail.name}给你`,
+      path: `/pages/color-detail/color-detail?colorId=${this.data.colorDetail.colorId}`
+    }
+  }
 }
 
 let viewAction = {

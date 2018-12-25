@@ -24,8 +24,8 @@ const props = {
 const data = {
   // 是否色库已被删除
   isDeleted: false,
-  // 是否是从分享卡片而来
-  isShared: false,
+  // 是否是从
+  fromLibrary: false,
   // 是否是多选状态
   isMultiSelect: false,
   // 多选状态下是否可以操作
@@ -62,10 +62,6 @@ const data = {
     title: '添加到...',
     type: 'ADD'
   }, {
-    icon: 'icon-fenxiang',
-    title: '分享到...',
-    type: 'SHARE'
-  }, {
     icon: 'icon-shanchu',
     title: '删除',
     type: 'DELETE'
@@ -74,6 +70,9 @@ const data = {
 
 const lifeCycle = {
   onLoad: function (query) {
+    if (!!query.fromLibrary) {
+      this.props.fromLibrary = true
+    }
     this.props.libraryId = query.id
     this.getColorList()
   },
@@ -90,23 +89,9 @@ const lifeCycle = {
   },
   onShareAppMessage: function () {
     const nickName = $wx.app.globalData.userInfo.nickName
-    if (this.data.showAction) {
-      let path = ''
-      if (this.data.selectedColor.originType === constant.ColorSource.pantone) {
-        path = `/pages/color-detail/color-detail?colorId=${this.data.selectedColor.colorId}`
-      } else {
-        path = `/pages/fetch-color-detail/fetch-color-detail?colorId=${this.data.selectedColor.colorId}`
-      }
-      return {
-        title: `推荐${nickName}收藏的颜色${this.data.selectedColor.name}给你`,
-        path
-      }
-    } else {
-      return {
-        title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
-        path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
-      }
-
+    return {
+      title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
+      path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
   onNavigateBack: function (d) {
@@ -235,9 +220,6 @@ const viewAction = {
       case 'ADD':
         $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Add_Single, colorList: [this.data.selectedColor]})
         break
-      case 'SHARE':
-      wx.showShareMenu()
-        break
       case 'DELETE':
         this.setData({
           showAction: false,
@@ -295,7 +277,7 @@ const privateMethod = {
   // 获取类表
   getColorList: function () {
     http.getList(urls.colorLibraryDetail, this.props.loadingState, {
-      // mock: true, 
+      mock: true, 
       libraryId: this.props.libraryId
       }).then(res => {
       $wx.setNavigationBarTitle({
@@ -375,7 +357,7 @@ const privateMethod = {
       return  item.id
     })
     http.post(urls.deleteColor, {
-      // mock: true, 
+      mock: true, 
       libraryColorIdList: deletedColorIds
       }).then(() => {
       this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')

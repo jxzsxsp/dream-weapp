@@ -74,7 +74,7 @@ const viewAction = {
   viewColorLibrary: function(d, v) {
     console.log(d, v)
 
-    $wx.navigateTo($wx.router.colorLibraryDetail, { id: d.detail.id })
+    $wx.navigateTo($wx.router.colorLibraryDetail, { id: d.detail.id, fromLibrary: true})
   },
   showAction: function (d) {
     console.log(d)

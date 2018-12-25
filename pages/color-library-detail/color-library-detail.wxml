@@ -15,7 +15,7 @@
       <view wx:if="{{!isMultiSelect}}" class="flex-column">
         <view class="flex-between-center">
           <text class="main-title">{{libraryDetail.name}}</text>
-          <view wx:if="{{!isShared}}" class="flex">
+          <view wx:if="{{fromLibrary}}" class="flex">
             <view wx:if="{{isCustom}}" class="iconfont icon-bianji edit-icon" bind:tap="editLibrary"/>
             <button class="button" open-type="share" style="background: white;padding: 0 0 0 0;">
               <view class="iconfont icon-fenxiang edit-icon" bind:tap="shareLibrary"/>
@@ -27,7 +27,7 @@
       <!-- 开始选择-占位 -->
       <view wx:if="{{!isMultiSelect}}" id="select" class="flex-between-center header-container">
         <text class="detail-text">{{totalCount}}个颜色</text>
-        <view wx:if="{{!isShared}}" class="select-color" bind:tap="beginSelect">选择</view>
+        <view wx:if="{{fromLibrary}}" class="select-color" bind:tap="beginSelect">选择</view>
       </view>
       <!-- 取消多选-占位 -->
       <view 
@@ -65,7 +65,7 @@
           </view>
         </view>
         <view 
-          wx:if="{{!isShared}}"
+          wx:if="{{fromLibrary}}"
           class="iconfont icon-gengduo more-icon" 
           catch:tap="showAction"
           data-index="{{index}}"
@@ -73,14 +73,14 @@
         />
       </view>
       <!-- 底部占位 -->
-      <view wx:if="{{isShared}}" style="height:174rpx"/>
+      <view wx:if="{{!fromLibrary}}" style="height:174rpx"/>
       <view wx:if="{{isMultiSelect}}" style="height:120rpx"/>
     </view>
 
     <!-- 开始选择-顶部悬停 -->
     <view wx:if="{{!isMultiSelect}}" class="flex-between-center fixed-header" style="display: {{hideBeginSelect ? 'none' : 'flex'}}">
       <text class="detail-text">{{totalCount}}个颜色</text>
-      <view wx:if="{{!isShared}}" class="select-color" bind:tap="beginSelect">选择</view>
+      <view wx:if="{{fromLibrary}}" class="select-color" bind:tap="beginSelect">选择</view>
     </view>
 
     <!-- 取消多选-顶部悬停  -->
@@ -112,7 +112,7 @@
     </view>
 
     <!-- 底部操作 -->
-    <view wx:if="{{isShared}}" class="flex-column-center shared-container">
+    <view wx:if="{{!fromLibrary}}" class="flex-column-center shared-container">
       <button class="save-button button" bind:tap="saveLibrary">收藏颜色库</button>
     </view>
     <view wx:if="{{isMultiSelect}}" class="multi-select-container flex-between-center">
@@ -168,3 +168,9 @@
   </view>
 </van-popup>
 
+<suspend-button wx:if="{{!fromLibrary}}">
+  <view class="go-home-container">
+    <view class="iconfont icon-tab_index_a go-home-view"/>
+    <text class="go-home-text">回首页</text>
+  </view>
+</suspend-button>
