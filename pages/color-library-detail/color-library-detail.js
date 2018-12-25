@@ -110,7 +110,7 @@ const lifeCycle = {
     switch (d.type) {
       case constant.ColorLibraryActionType.Tag:
         this.data.selectedColor.labelList = d.labelList
-        this.getFullLabel([this.data.selectedColor])
+        this.data.selectedColor.fullLabel = this.getFullLabel(d.labelList)
         this.setData({
           colorList: this.data.colorList
         })
