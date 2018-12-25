@@ -6,11 +6,8 @@
     <text class="none-subtitle">主人删掉了颜色库，什么也没留下</text>
   </view>
   <view wx:else>
-    <view class="none-container flex-column-center" wx:if="{{colorList.length === 0}}">
-      <text class="none-subtitle">里面空空如也...</text>
-    </view>
     <!-- 内容主体 -->
-    <view wx:else class="body-padding flex-column">
+    <view class="body-padding flex-column">
       <!-- 标题与备注 -->
       <view wx:if="{{!isMultiSelect}}" class="flex-column">
         <view class="flex-between-center">
@@ -27,7 +24,7 @@
       <!-- 开始选择-占位 -->
       <view wx:if="{{!isMultiSelect}}" id="select" class="flex-between-center header-container">
         <text class="detail-text">{{totalCount}}个颜色</text>
-        <view wx:if="{{fromLibrary}}" class="select-color" bind:tap="beginSelect">选择</view>
+        <view wx:if="{{fromLibrary && colorList.length !== 0}}" class="select-color" bind:tap="beginSelect">选择</view>
       </view>
       <!-- 取消多选-占位 -->
       <view 
@@ -35,6 +32,10 @@
         wx:if="{{isMultiSelect}}"
         style="animation-name: {{canEdit ? 'short-to-long' : 'long-to-short'}}"
       />
+
+      <view class="none-container flex-column-center" wx:if="{{colorList.length === 0}}">
+        <text class="none-subtitle">里面空空如也...</text>
+      </view>
 
       <!-- cell 的布局 -->
       <view 
