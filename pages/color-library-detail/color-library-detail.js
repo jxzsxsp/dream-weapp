@@ -55,7 +55,7 @@ const data = {
     type: 'TAG'
   }, {
     icon: 'icon-yidong',
-    title: '移动...',
+    title: '移动到...',
     type: 'MOVE'
   }, {
     icon: 'icon-tianjia',
