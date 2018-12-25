@@ -1,4 +1,4 @@
-<scroll-view wx:if='{{colorList && colorList.length > 0}}' scroll-x class='color-container'>
+<scroll-view wx:if='{{type && colorList && colorList.length > 0}}' scroll-x class='color-container'>
   <block wx:for='{{colorList}}' wx:key='index'>
   <view class='color-item' style='background: {{item.hexColor}};'></view>
   </block>
@@ -9,7 +9,7 @@
   <text>创建新颜色库</text>
 </view>
 
-<view wx:if='{{defaultColorLibrary && defaultColorLibrary.name}}' class='container default'>
+<view wx:if='{{defaultColorLibrary && defaultColorLibrary.name}}' class='container default' data-detail='{{defaultColorLibrary}}' bind:tap='joinColorLibrary'>
   <block wx:if="{{!!defaultColorLibrary.colorIcon}}">
   <view class='color-icon' style='background:{{defaultColorLibrary.colorIcon}};'></view>
   </block>
@@ -36,8 +36,10 @@
     <text class='color-title'>{{item.name}}</text>
     <view class='color-desc'>
       <text class='color-num'>{{item.colorCount}}个颜色</text>
+      <block wx:if='{{item.timeLabel && item.timeLabel !== null}}'>
       <view class='point'></view>
       <text class='color-time'>{{item.timeLabel}}</text>
+      </block>
     </view>
   </view>
 </view>

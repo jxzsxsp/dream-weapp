@@ -57,7 +57,7 @@ const lifecycle = {
     if (this.data.selectedLibrary && this.data.selectedLibrary.name) {
       let nickName = $wx.app.globalData.userInfo.nickName
       return {
-        title: `分享${nickName}的色库《${this.data.selectedLibrary.name}》给你！`,
+        title: `分享颜色库《${this.data.selectedLibrary.name}》给你！快来小蜥看看吧！`,
         path: `/pages/color-library-detail/color-library-detail?id=${this.data.selectedLibrary.id}`
       }
     }

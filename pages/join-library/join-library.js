@@ -12,7 +12,6 @@ const data = {
   libraryId: 0,
   libraryColorIdList: [],
   colorList: [],
-  type: 0,
 }
 
 const lifecycle = {
