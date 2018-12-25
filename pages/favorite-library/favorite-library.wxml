@@ -31,8 +31,10 @@
     <text class='color-title'>{{item.name}}</text>
     <view class='color-desc'>
       <text class='color-num'>{{item.colorCount}}个颜色</text>
+      <block wx:if='{{item.timeLabel && item.timeLabel !== null}}'>
       <view class='point'></view>
       <text class='color-time'>{{item.timeLabel}}</text>
+      </block>
     </view>
   </view>
   <view class='iconfont icon-gengduo more-icon' data-detail='{{item}}' bind:tap='showAction'></view>
@@ -73,9 +75,9 @@
   <view class="confirm-container flex-column">
     <view class="confirm-delete-container flex-column">
       <view class="confirm-color-container flex-column-center">
-        <text class="confirm-title">{{selectedLibrary.name}}</text>
-        <text class="confirm-subtitle">确定删除这个颜色库吗？</text>
-        <text class="confirm-subtitle">里面的所有颜色都会被删除</text>
+        <!-- <text class="confirm-title">{{selectedLibrary.name}}</text> -->
+        <text class="confirm-subtitle">确定删除这个颜色库吗？里面的所有颜色都会被清除</text>
+        <!-- <text class="confirm-subtitle">里面的所有颜色都会被删除</text> -->
       </view>
       <button class="confirm-button button" bind:tap="confirmDelete">确认删除</button>
     </view>
