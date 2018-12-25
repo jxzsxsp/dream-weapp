@@ -123,9 +123,8 @@ const lifeCycle = {
       case constant.ColorLibraryActionType.SaveLibrary:
         this._saveColor(libraryDetail, this.data.colorList)
         break
-      case constant.ColorLibraryActionType.Add_Single:
-        break
       case constant.ColorLibraryActionType.Add_Multiple:
+        this.resetSelectedColorList()
         break
       case constant.ColorLibraryActionType.Move_Single:
         this._moveColor([this.data.selectedColor])
@@ -140,31 +139,30 @@ const lifeCycle = {
 }
 
 const viewAction = {
+  // 收藏颜色库
   saveLibrary: function () {
     $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail})
   },
+  // 点击选择后
   beginSelect: function () {
     this.setData({
       isMultiSelect: !this.data.isMultiSelect
     })
   },
+  // 点击取消后
   cancelSelect: function () {
+    this.resetSelectedColorList()
     this.setData({
-      isMultiSelect: !this.data.isMultiSelect
+      isMultiSelect: !this.data.isMultiSelect,
     })
     // 必须手动滚动一像素，否则可能会有两个开始选择标题栏
     wx.pageScrollTo({scrollTop: this.props.scrollTop + 1})
   },
+  // 点击重置后
   resetSelect: function () {
-    this.data.colorList.forEach(item => {
-      item.isSelected = false;
-    })
-    this.setData({
-      selectedColorList: [],
-      colorList: this.data.colorList,
-      canEdit: false
-    })
+    this.resetSelectedColorList()
   },
+  // 点击 Cell 后
   selectCell: function (d) {
     if (this.data.isMultiSelect) {
       return
@@ -176,6 +174,7 @@ const viewAction = {
       $wx.navigateTo($wx.router.fetchColorDetail, {colorId: selectedCell.colorId, fromLibrary: true})
     }
   },
+  // 多选的时候选中或者反选
   selectColor: function (d) {
     if (!this.data.isMultiSelect) {
       return
@@ -193,9 +192,9 @@ const viewAction = {
     this.setData({
       colorList: this.data.colorList,
       selectedColorList: this.data.selectedColorList,
-      canEdit: this.data.canEdit
     })
   },
+  // 展示颜色的具体操作
   showAction: function (d) {
     if (this.data.isMultiSelect) {
       return
@@ -205,16 +204,19 @@ const viewAction = {
       selectedColor: this.data.colorList[d.index]
     })
   },
+  // 关闭颜色的具体操作
   closeAction: function () {
     this.setData({
       showAction: false,
     })
   },
+  // 关闭删除确认
   closeDeleteConfirm: function () {
     this.setData({
       showDeleteConfirm: false
     })
   },
+  // 执行颜色的具体操作
   doAction: function (d) {
     this.closeAction()
     switch (d.type) {
@@ -237,12 +239,11 @@ const viewAction = {
         break
     }
   },
+  // 编辑颜色库
   editLibrary: function () {
     $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.EditLibrary, libraryDetail: this.data.libraryDetail})
   },
-  shareLibrary: function () {
-
-  },
+  // 点击添加多个颜色
   addColors: function () {
     $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.Add_Multiple, colorList: this.data.selectedColorList})
   },
@@ -279,14 +280,10 @@ const privateMethod = {
       const newColorList = this.data.colorList.filter(item => {
         return data.colorId !== item.colorId
       })
-      const newSelectedColorList = this.data.selectedColorList.filter(item => {
-        return data.colorId !== item.icolorId
-      })
       this.setCanEdit()
       this.minusTotalCount(1)
       this.setData({
         colorList: newColorList,
-        selectedColorList: newSelectedColorList,
       })
     })
   },
@@ -369,6 +366,18 @@ const privateMethod = {
       }
     })
   },
+  // 重置
+  resetSelectedColorList: function () {
+    this.data.colorList.forEach(item => {
+      item.isSelected = false;
+    })
+    this.setData({
+      selectedColorList: [],
+      colorList: this.data.colorList,
+      canEdit: false
+    }) 
+  },
+  // 多选的时候是否可以操作
   setCanEdit: function () {
     if (this.data.selectedColorList.length > 0) {
       this.data.canEdit = true
@@ -379,6 +388,7 @@ const privateMethod = {
       canEdit: this.data.canEdit
     })
   },
+  // 删除多个颜色或者单个颜色
   _deleteColors: function (type) {
     let deletedColors = []
     if (deleteType.SINGLE === type) {
@@ -393,15 +403,14 @@ const privateMethod = {
       libraryColorIdList: deletedColorIds
       }).then(() => {
       this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')
-      this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, deletedColorIds, 'id')
-      this.setCanEdit()
+      this.resetSelectedColorList()
       this.minusTotalCount(deletedColorIds.length)
       this.setData({
         colorList: this.data.colorList,
-        selectedColorList: this.data.selectedColorList,
       })
     })
   },
+  // 保存颜色库成功后，要将颜色添加到创建的颜色库中
   _saveColor: function (libraryDetail, colorList) {
     const libraryColorIdList = colorList.map(item => {
       return item.id
@@ -411,16 +420,15 @@ const privateMethod = {
         $wx.showToast({title: '已添加到'+library.name})
       })
   },
+  // 移动单个颜色以及多个颜色调用
   _moveColor: function (colorList) {
     let movedColorIds = colorList.map(item => {
       return  item.id
     })
     this.data.colorList = utils.removeArrayInArray(this.data.colorList, movedColorIds, 'id')
-    this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, movedColorIds, 'id')
-    this.setCanEdit()
+    this.resetSelectedColorList()
     this.minusTotalCount(colorList.length)
     this.setData({
-      selectedColorList: this.data.selectedColorList,
       colorList: this.data.colorList,
     })
   }
