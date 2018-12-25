@@ -18,17 +18,25 @@ const data = {
 const lifecycle = {
   onLoad: function(query) {
     console.log(query)
+    let labels = []
+    let colorDetail = query.colorDetail
+    for (let i = 0; i < colorDetail.labelList.length; i++) {
+      labels.push(colorDetail.labelList[i].name)
+    }
+    
     this.setData({
-      colorDetail: query.colorDetail
+      colorDetail: query.colorDetail,
+      labels: labels
     })
 
     this.getLabelList().then(res => {
       this.setData({
         latestLabels: res.labels
       })
+      this.checkSelected()
     })
   },
-  onShow: function() {
+  onShow: function () {
     this.checkSelected()
   }
 }
@@ -64,7 +72,7 @@ const viewAction = {
 
     if (!!this.data.label) {
       let params = {
-        libraryColorId: this.data.colorDetail.id,
+        // libraryColorId: this.data.colorDetail.id,
         labelName: this.data.label
       }
 

@@ -28,24 +28,6 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
-
-    this.getColorLibraryList().then(res => {
-      console.log(res)
-
-      this.setData({
-        colorLibraryList: res
-      })
-
-      for (let i = 0; i < res.length; i++) {
-        if (res[i].type === 0) {
-          this.setData({
-            defaultColorLibrary: res[i]
-          })
-          break
-        }
-      }
-
-    })
   },
   onShow: function (query) {
     this.refresh()
@@ -157,6 +139,15 @@ const privateMethods = {
       this.setData({
         colorLibraryList: res
       })
+
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].type === 0) {
+          this.setData({
+            defaultColorLibrary: res[i]
+          })
+          break
+        }
+      }
     })
   }
 }
