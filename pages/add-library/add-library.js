@@ -23,18 +23,25 @@ const lifecycle = {
       ...query,
     })
 
-    if(query.libraryDetail && query.libraryDetail.name) {
-      if (query.libraryDetail.id > 0) {
-        $wx.setNavigationBarTitle({
-          title: '编辑颜色库',
+    if (query.libraryDetail && query.libraryDetail.name) {
+      if (query.type !== constant.ColorLibraryActionType.SaveLibrary) {
+        if (query.libraryDetail.id > 0) {
+          $wx.setNavigationBarTitle({
+            title: '编辑颜色库',
+          })
+        }
+        
+        this.setData({
+          id: query.libraryDetail.id,
+          name: query.libraryDetail.name,
+          desc: query.libraryDetail.description,
+        })
+      } else {
+        this.setData({
+          name: query.libraryDetail.name,
+          desc: query.libraryDetail.description,
         })
       }
-      
-      this.setData({
-        id: query.libraryDetail.id,
-        name: query.libraryDetail.name,
-        desc: query.libraryDetail.description,
-      })
     }
   },
   onShow: function() {
