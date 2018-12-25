@@ -5,22 +5,14 @@
   flex-direction: column;
   align-items: center; */
   /* justify-content: space-between; */
-  border:1px solid lightskyblue;
 }
 
 .logoQRCode {
   padding-top:100rpx;
-    border:1px solid lightsalmon;
   /* background-color: #6495ED; */
-  height: 100vh; 
+  /* height: 100vh;  */
   /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between; */
-  /* margin-top: 150px; */
-}
-.logoQRCode canvas {
-    position:relative;
-    /* left:0; */
-    /* top:-700rpx; */
 }

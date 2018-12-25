@@ -16,11 +16,18 @@ Page({
         var tm = this;
         var str = "http://ytal.qkmai.com/wxsp?ReferralUserId=" + options.id
         var src = options.src
+        var bg = 'https://m.360buyimg.com/babel/jfs/t1/26738/28/2202/95400/5c1a164fEeab2bf20/763811495f123f69.jpg'
+
+        // QRCodeJS.qrApi.draw('https://m.360buyimg.com/babel/jfs/t1/26738/28/2202/95400/5c1a164fEeab2bf20/763811495f123f69.jpg', "logoQRCode", 375, 375);
+
+
+        // QRCodeJS.qrApi.draw(str, "logoQRCode", 275, 275, null, src, bg);
+
         QRCodeJS.qrApi.draw(str, "logoQRCode", 275, 275, null, src);
 
         setTimeout(function () {
             tm.saveCode()
-        }, 100)
+        }, 600)
     },
 
     /**
@@ -93,7 +100,7 @@ Page({
             height: 277,
             destWidth: 700,
             destHeight: 700,
-            fileType: 'jpg',
+            // fileType: 'jpg',
             quality: 1,
             canvasId: 'logoQRCode',
             success(res) {
@@ -103,7 +110,7 @@ Page({
                 })
             },
             complete(res) {
-                console.log(res)
+                // console.log(res)
             }
         })
     },

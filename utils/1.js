@@ -706,10 +706,10 @@ var QR = (function () {
         ctx.moveTo(imgPos - imgPosFix, imgPos - imgPosFix);
 
         // 绘制layer
-        // ctx.lineTo(imgPos + imgSize + imgPosFix, imgPos - imgPosFix);
-        // ctx.lineTo(imgPos + imgSize + imgPosFix, imgPos + imgSize + imgPosFix);
-        // ctx.lineTo(imgPos - imgPosFix, imgPos + imgSize + imgPosFix);
-        // ctx.lineTo(imgPos - imgPosFix, imgPos - imgPosFix);
+        ctx.lineTo(imgPos + imgSize + imgPosFix, imgPos - imgPosFix);
+        ctx.lineTo(imgPos + imgSize + imgPosFix, imgPos + imgSize + imgPosFix);
+        ctx.lineTo(imgPos - imgPosFix, imgPos + imgSize + imgPosFix);
+        ctx.lineTo(imgPos - imgPosFix, imgPos - imgPosFix);
 
         ctx.stroke();
         ctx.closePath();
