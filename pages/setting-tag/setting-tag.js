@@ -25,7 +25,7 @@ const lifecycle = {
     }
     
     this.setData({
-      colorDetail: query.colorDetail,
+      ...query,
       labels: labels
     })
 
@@ -52,6 +52,7 @@ const viewAction = {
       }
 
       $wx.navigateBack(1, {
+        type: this.data.type,
         labelList: labelList
       })
     })

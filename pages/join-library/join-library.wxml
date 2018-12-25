@@ -1,4 +1,4 @@
-<scroll-view wx:if='{{type && colorList && colorList.length > 0}}' scroll-x class='color-container'>
+<scroll-view wx:if='{{type !== SaveColor && colorList && colorList.length > 0}}' scroll-x class='color-container'>
   <block wx:for='{{colorList}}' wx:key='index'>
   <view class='color-item' style='background: {{item.hexColor}};'></view>
   </block>

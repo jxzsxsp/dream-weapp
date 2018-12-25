@@ -7,6 +7,7 @@ const props = {
 }
 
 const data = {
+  ...constant.ColorLibraryActionType,
   colorLibraryList: [],
   defaultColorLibrary: {},
   libraryId: 0,
@@ -20,11 +21,11 @@ const lifecycle = {
     
     if (query.type === constant.ColorLibraryActionType.Move_Single || query.type === constant.ColorLibraryActionType.Move_Multiple) {
       $wx.setNavigationBarTitle({
-        title: '移动到颜色库',
+        title: '颜色移动到',
       })
     } else if (query.type === constant.ColorLibraryActionType.Add_Single || query.type === constant.ColorLibraryActionType.Add_Multiple) {
       $wx.setNavigationBarTitle({
-        title: '添加到颜色库',
+        title: '颜色添加到',
       })
     }
 
@@ -104,7 +105,11 @@ const lifecycle = {
 
 const viewAction = {
   addColorLibrary: function () {
-    $wx.navigateTo($wx.router.addLibrary, {})
+    $wx.navigateTo($wx.router.addLibrary, { 
+      type: this.data.type,
+      libraryId: this.data.libraryId,
+      libraryColorIdList: this.data.libraryColorIdList,
+    })
   },
   joinColorLibrary: function(d, v) {
     console.log(d, v)

@@ -1,5 +1,6 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
 }
@@ -16,6 +17,12 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
+    console.log(query)
+
+    this.setData({
+      ...query,
+    })
+
     if(query.libraryDetail && query.libraryDetail.name) {
       if (query.libraryDetail.id > 0) {
         $wx.setNavigationBarTitle({
@@ -27,7 +34,6 @@ const lifecycle = {
         id: query.libraryDetail.id,
         name: query.libraryDetail.name,
         desc: query.libraryDetail.description,
-        libraryDetail: query.libraryDetail,
       })
     }
   },
@@ -42,13 +48,39 @@ const viewAction = {
     if(this.data.canSave) {
       this.createColorLibrary().then(res => {
         console.log(res)
+        this.setData({
+          libraryId: res.data
+        })
+        
         let libraryDetail = this.data.libraryDetail
-        libraryDetail.id = this.data.id
+        libraryDetail.id = res.data
         libraryDetail.name = this.data.name
         libraryDetail.description = this.data.desc
-        $wx.navigateBack(1, {
-          libraryDetail: libraryDetail
-        })
+
+        if (this.data.type === constant.ColorLibraryActionType.Move_Single
+          || this.data.type === constant.ColorLibraryActionType.Move_Multiple) {
+          this.moveColorToLibrary().then(res => {
+            $wx.navigateBack(2, {
+              type: this.data.type,
+              libraryDetail: libraryDetail
+            })
+          }, '已移动到 ' + libraryDetail.name)
+        } else if (this.data.type === constant.ColorLibraryActionType.Add_Single
+          || this.data.type === constant.ColorLibraryActionType.Add_Multiple
+          || this.data.type === constant.ColorLibraryActionType.SaveColor
+          ) {
+          this.addColorToLibrary().then(res => {
+            $wx.navigateBack(2, {
+              type: this.data.type,
+              libraryDetail: libraryDetail
+            }, '已加入到 ' + libraryDetail.name)
+          })
+        } else {
+          $wx.navigateBack(1, {
+            type: this.data.type,
+            libraryDetail: libraryDetail
+          })
+        }
       })
     }
 
@@ -94,6 +126,20 @@ const privateMethods = {
       id: this.data.id,
       name: this.data.name,
       description: this.data.desc
+    })
+  },
+  addColorToLibrary: function () {
+    return http.post(urls.addColor, {
+      // mock: true,
+      libraryId: this.data.libraryId,
+      libraryColorIdList: this.data.libraryColorIdList,
+    })
+  },
+  moveColorToLibrary: function () {
+    return http.post(urls.moveColor, {
+      // mock: true,
+      libraryId: this.data.libraryId,
+      libraryColorIdList: this.data.libraryColorIdList,
     })
   },
 }

@@ -101,6 +101,7 @@ const lifeCycle = {
     }
   },
   onNavigateBack: function (d) {
+    console.log(d)
     const libraryDetail = d.libraryDetail
     this.setData({
       isMultiSelect: false,

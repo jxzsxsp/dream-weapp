@@ -97,7 +97,7 @@ let viewAction = {
       name: colorDetail.name,
     }
     this.clearTimeout()
-    $wx.navigateTo($wx.router.joinLibrary, {colorList: [color]})
+    $wx.navigateTo($wx.router.joinLibrary, { type: constant.ColorLibraryActionType.SaveColor, colorList: [color]})
   }
 }
 
