@@ -408,6 +408,11 @@ const privateMethod = {
       this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')
       this.resetSelectedColorList()
       this.minusTotalCount(deletedColorIds.length)
+      if (this.data.colorList.length === 0) {
+        this.setData({
+          isMultiSelect: false
+        })
+      }
       this.setData({
         colorList: this.data.colorList,
       })
