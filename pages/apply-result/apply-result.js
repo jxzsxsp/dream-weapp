@@ -69,17 +69,17 @@ const privateMethod = {
           break
         case 20:
           this.setData({
-            state: status[2]
+            state: States[2]
           })
           break
         case 30:
           this.setData({
-            state: status[3]
+            state: States[3]
           })
           break
         case 40:
           this.setData({
-            state: state[4]
+            state: States[4]
           })
           break
         default:
