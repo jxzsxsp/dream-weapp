@@ -267,6 +267,13 @@ const viewAction = {
 }
 
 const privateMethod = {
+  minusTotalCount: function (count) {
+    this.props.loadingState.totalCount -= count
+    this.setData({
+      totalCount: this.props.loadingState.totalCount
+    })
+    
+  },
   registerEvent: function () {
     $wx.registerEvent('removeFromLibrary', (data) => {
       const newColorList = this.data.colorList.filter(item => {
@@ -276,13 +283,12 @@ const privateMethod = {
         return data.colorId !== item.icolorId
       })
       this.setCanEdit()
+      this.minusTotalCount(1)
       this.setData({
         colorList: newColorList,
         selectedColorList: newSelectedColorList,
-        canEdit: this.data.canEdit
       })
     })
-
   },
   // 获取完整的标签
   getFullLabel: function (labelList) {
@@ -369,6 +375,9 @@ const privateMethod = {
     } else {
       this.data.canEdit = false
     }
+    this.setData({
+      canEdit: this.data.canEdit
+    })
   },
   _deleteColors: function (type) {
     let deletedColors = []
@@ -386,10 +395,10 @@ const privateMethod = {
       this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')
       this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, deletedColorIds, 'id')
       this.setCanEdit()
+      this.minusTotalCount(deletedColorIds.length)
       this.setData({
         colorList: this.data.colorList,
         selectedColorList: this.data.selectedColorList,
-        canEdit: this.data.canEdit
       })
     })
   },
@@ -409,10 +418,10 @@ const privateMethod = {
     this.data.colorList = utils.removeArrayInArray(this.data.colorList, movedColorIds, 'id')
     this.data.selectedColorList = utils.removeArrayInArray(this.data.selectedColorList, movedColorIds, 'id')
     this.setCanEdit()
+    this.minusTotalCount(colorList.length)
     this.setData({
       selectedColorList: this.data.selectedColorList,
       colorList: this.data.colorList,
-      canEdit: this.data.canEdit
     })
   }
 }
