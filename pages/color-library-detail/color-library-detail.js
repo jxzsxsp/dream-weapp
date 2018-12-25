@@ -4,8 +4,8 @@ import utils from '../../utils/index'
 import constant from '../../constant/index'
 
 const libraryType =  {
-  DEFAULT: false,
-  CUSTOM: true,
+  DEFAULT: 0,
+  CUSTOM: 1,
 }
 
 const deleteType = {
@@ -24,7 +24,7 @@ const props = {
 const data = {
   // 是否色库已被删除
   isDeleted: false,
-  // 是否是从
+  // 是否是从颜色库列表中进入
   fromLibrary: false,
   // 是否是多选状态
   isMultiSelect: false,
@@ -71,10 +71,16 @@ const data = {
 const lifeCycle = {
   onLoad: function (query) {
     if (!!query.fromLibrary) {
-      this.props.fromLibrary = true
+      this.setData({
+        fromLibrary: true
+      })
     }
     this.props.libraryId = query.id
-    this.getColorList()
+    // this.getColorList()
+  },
+  onShow: function (query) {
+    console.log('hahah')
+    this.getColorList() 
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
@@ -277,7 +283,6 @@ const privateMethod = {
   // 获取类表
   getColorList: function () {
     http.getList(urls.colorLibraryDetail, this.props.loadingState, {
-      mock: true, 
       libraryId: this.props.libraryId
       }).then(res => {
       $wx.setNavigationBarTitle({
@@ -294,6 +299,7 @@ const privateMethod = {
       this.setData({
         colorList: this.data.colorList,
         libraryDetail: this.props.loadingState.others.library,
+        isCustom: this.props.loadingState.others.library.type,
         totalCount: this.props.loadingState.totalCount,
       }) 
     })
@@ -357,7 +363,6 @@ const privateMethod = {
       return  item.id
     })
     http.post(urls.deleteColor, {
-      mock: true, 
       libraryColorIdList: deletedColorIds
       }).then(() => {
       this.data.colorList = utils.removeArrayInArray(this.data.colorList, deletedColorIds, 'id')
