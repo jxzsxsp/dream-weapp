@@ -76,11 +76,7 @@ const lifeCycle = {
       })
     }
     this.props.libraryId = query.id
-    // this.getColorList()
-  },
-  onShow: function (query) {
-    console.log('hahah')
-    this.getColorList() 
+    this.getColorList()
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
