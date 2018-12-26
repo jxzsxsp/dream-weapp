@@ -112,7 +112,7 @@ class BaseService {
             title: hintString,
             icon: 'none',
           }) 
-        }, 500)
+        }, 1000)
       }
     }
     let pages = getCurrentPages()
