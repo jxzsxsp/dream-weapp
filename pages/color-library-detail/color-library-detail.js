@@ -76,9 +76,9 @@ const lifeCycle = {
       })
     }
     this.props.libraryId = query.id
-    this.getColorList()
-    this.registerEvent()
-
+  },
+  onShow: function () {
+    this.getColorList(true)
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
@@ -98,40 +98,14 @@ const lifeCycle = {
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
-  onUnload: function () {
-    $wx.resignEvent('removeFromLibrary')
-  },
   onNavigateBack: function (d) {
-    console.log(d)
     const libraryDetail = d.libraryDetail
     this.setData({
       isMultiSelect: false,
     })
     switch (d.type) {
-      case constant.ColorLibraryActionType.Tag:
-        this.data.selectedColor.labelList = d.labelList
-        this.data.selectedColor.fullLabel = this.getFullLabel(d.labelList)
-        this.setData({
-          colorList: this.data.colorList
-        })
-        break
-      case constant.ColorLibraryActionType.EditLibrary:
-        this.data.libraryDetail = d.libraryDetail
-        this.setData({
-          libraryDetail: this.data.libraryDetail
-        })
-        break
       case constant.ColorLibraryActionType.SaveLibrary:
         this._saveColor(libraryDetail, this.data.colorList)
-        break
-      case constant.ColorLibraryActionType.Add_Multiple:
-        this.resetSelectedColorList()
-        break
-      case constant.ColorLibraryActionType.Move_Single:
-        this._moveColor([this.data.selectedColor])
-        break
-      case constant.ColorLibraryActionType.Move_Multiple:
-        this._moveColor(this.data.selectedColorList)
         break
       default:
         break;
@@ -188,12 +162,11 @@ const viewAction = {
     }
     this.setSelectedColorList(selectedColor)
     this.setColorList(selectedColor)
-    this.setCanEdit()
 
-    this.setData({
-      colorList: this.data.colorList,
-      selectedColorList: this.data.selectedColorList,
-    })
+    // this.setData({
+      // colorList: this.data.colorList,
+      // selectedColorList: this.data.selectedColorList,
+    // })
   },
   // 展示颜色的具体操作
   showAction: function (d) {
@@ -269,23 +242,11 @@ const viewAction = {
 }
 
 const privateMethod = {
+  // 删除或者移动时需要移动总数量
   minusTotalCount: function (count) {
     this.props.loadingState.totalCount -= count
     this.setData({
       totalCount: this.props.loadingState.totalCount
-    })
-    
-  },
-  registerEvent: function () {
-    $wx.registerEvent('removeFromLibrary', (data) => {
-      const newColorList = this.data.colorList.filter(item => {
-        return data.colorId !== item.colorId
-      })
-      this.setCanEdit()
-      this.minusTotalCount(1)
-      this.setData({
-        colorList: newColorList,
-      })
     })
   },
   // 获取完整的标签
@@ -305,28 +266,41 @@ const privateMethod = {
     }
   },
   // 获取类表
-  getColorList: function () {
+  getColorList: function (reset = false) {
+    if (reset) {
+      this.props.loadingState = http.defaultLoadingState()
+    }
     http.getList(urls.colorLibraryDetail, this.props.loadingState, {
       libraryId: this.props.libraryId
       }).then(res => {
-      $wx.setNavigationBarTitle({
-        title: this.props.loadingState.others.library.name
+        if (!this.props.loadingState.others.library) {
+          this.setData({
+            isDeleted: true
+          })
+          return
+        }
+        $wx.setNavigationBarTitle({
+          title: this.props.loadingState.others.library.name
+        })
+        const colorList = res.map((item) => {
+          item.isSelected = false
+          item.fullLabel = this.getFullLabel(item.labelList)
+          return item
+        })
+        if (reset) {
+          this.data.colorList = colorList
+        } else {
+          colorList.forEach(element => {
+            this.data.colorList.push(element)
+          });
+        }
+        this.setData({
+          colorList: this.data.colorList,
+          libraryDetail: this.props.loadingState.others.library,
+          isCustom: this.props.loadingState.others.library.type,
+          totalCount: this.props.loadingState.totalCount,
+        }) 
       })
-      const colorList = res.map((item) => {
-        item.isSelected = false
-        item.fullLabel = this.getFullLabel(item.labelList)
-        return item
-      })
-      colorList.forEach(element => {
-        this.data.colorList.push(element)
-      });
-      this.setData({
-        colorList: this.data.colorList,
-        libraryDetail: this.props.loadingState.others.library,
-        isCustom: this.props.loadingState.others.library.type,
-        totalCount: this.props.loadingState.totalCount,
-      }) 
-    })
   },
   // 控制是否显示悬浮头部
   showHeader: function () {
@@ -360,6 +334,15 @@ const privateMethod = {
     } else {
       this.data.selectedColorList.unshift(selectedColor)
     }
+    if (this.data.selectedColorList.length > 0) {
+      this.data.canEdit = true
+    } else {
+      this.data.canEdit = false
+    }
+    this.setData({
+      canEdit: this.data.canEdit,
+      selectedColorList: this.data.selectedColorList
+    })
   },
   // 选中的状态设为未选中，未选中的状态设为选中
   setColorList: function (selectedColor) {
@@ -367,6 +350,9 @@ const privateMethod = {
       if (item.id === selectedColor.id) {
         item.isSelected = !item.isSelected
       }
+    })
+    this.setData({
+      colorList: this.data.colorList
     })
   },
   // 重置
@@ -379,17 +365,6 @@ const privateMethod = {
       colorList: this.data.colorList,
       canEdit: false
     }) 
-  },
-  // 多选的时候是否可以操作
-  setCanEdit: function () {
-    if (this.data.selectedColorList.length > 0) {
-      this.data.canEdit = true
-    } else {
-      this.data.canEdit = false
-    }
-    this.setData({
-      canEdit: this.data.canEdit
-    })
   },
   // 删除多个颜色或者单个颜色
   _deleteColors: function (type) {
