@@ -402,6 +402,7 @@ const privateMethod = {
     this.minusTotalCount(colorList.length)
     this.setData({
       colorList: this.data.colorList,
+      isMultiSelect: false
     })
   }
 }
