@@ -392,16 +392,6 @@ const privateMethod = {
       })
     })
   },
-  // 保存颜色库成功后，要将颜色添加到创建的颜色库中
-  _saveColor: function (libraryDetail, colorList) {
-    const libraryColorIdList = colorList.map(item => {
-      return item.id
-    })
-    http.post(urls.addColor, {libraryId: libraryDetail.id, libraryColorIdList})
-      .then(() => {
-        $wx.showToast({title: '已添加到'+library.name})
-      })
-  },
   // 移动单个颜色以及多个颜色调用
   _moveColor: function (colorList) {
     let movedColorIds = colorList.map(item => {

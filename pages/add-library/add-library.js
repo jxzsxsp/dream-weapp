@@ -22,6 +22,7 @@ const lifecycle = {
     if (!utils.isEmptyObject(query)) {
       this.props.type = query.type
       this.props.libraryDetail = query.libraryDetail
+      this.props.libraryColorIdList = query.libraryColorIdList || []
       // 除了分享跳到该界面，其他都是编辑颜色库
       if (query.type !== constant.ColorLibraryActionType.SaveLibrary) {
         $wx.setNavigationBarTitle({
@@ -34,7 +35,6 @@ const lifecycle = {
       this.setData({
         name: query.libraryDetail.name,
         desc: query.libraryDetail.description,
-        libraryColorIdList: query.libraryColorIdList || []
       })
     }
   },
