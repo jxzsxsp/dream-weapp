@@ -66,7 +66,9 @@ Page({
                 },
                 complete: function() {
                     wx.hideLoading();
+                    // if (tm.data.selectAllStatus == false) {
 
+                    // }
                     // 默认购物车全选
                     tm.selectAll();
                 }
@@ -143,7 +145,8 @@ Page({
             DelskuId: "",
             SettlementText: "结算",
             selectAllStatus: !0
-        }), t.selectAll());
+            // }), t.selectAll());
+        }));
     },
     MuseNum: function(t) {
         var e = this,
@@ -154,7 +157,6 @@ Page({
         parseInt(o) <= 1 || e.ChangeQuantiy(e, -1, s.CartItemInfo[a].SkuID);
     },
     AddNum: function(t) {
-        console.log(t)
         var e = this,
             a = t.currentTarget.dataset.index,
             n = t.currentTarget.dataset.supplierid,
@@ -167,9 +169,7 @@ Page({
         }) : e.ChangeQuantiy(e, 1, s.CartItemInfo[a].SkuID);
     },
     bindblurNum: function(t) {
-
         if (parseInt(t.detail.value) > 50) {
-            console.log(1)
             wx.showModal({
                 title: "提示",
                 content: "限购50件",
@@ -289,9 +289,7 @@ Page({
         }
     },
     ChangeQuantiy: function(e, a, n) {
-        console.log(e)
-        console.log(a)
-        console.log(n)
+        var tm = this;
         t.getOpenId(function(s) {
             wx.request({
                 url: t.getUrl("addToCart"),
@@ -310,7 +308,18 @@ Page({
                         success: function(t) {}
                     });
                 },
-                complete: function() {}
+                complete: function() {
+                    
+
+
+
+
+
+
+
+                    tm.selectAll();
+
+                }
             });
         });
     },
