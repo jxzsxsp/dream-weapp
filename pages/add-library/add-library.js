@@ -8,6 +8,8 @@ const props = {
   type: null,
   libraryDetail: {},
   libraryColorIdList: [],
+  originLibraryId: -1,
+  libraryId: -1,
 }
 
 const data = {
@@ -28,9 +30,9 @@ const lifecycle = {
         $wx.setNavigationBarTitle({
           title: '编辑颜色库'
         })
-        this.setData({
-          libraryId: query.libraryDetail.id
-        }) 
+        this.props.libraryId = query.libraryDetail.id
+      } else {
+        this.props.originLibraryId = query.originLibraryId
       }
       this.setData({
         name: query.libraryDetail.name,
@@ -46,9 +48,7 @@ const lifecycle = {
 const viewAction = {
   save: function () {
     this.createColorLibrary().then(res => {
-      this.setData({
-        libraryId: res.data
-      })
+      this.props.libraryId = res.data
 
       if (this.props.type === constant.ColorLibraryActionType.Move_Single
         || this.props.type === constant.ColorLibraryActionType.Move_Multiple) {
@@ -63,7 +63,7 @@ const viewAction = {
           $wx.navigateBack(2, {}, '已加入到 ' + this.data.name)
         })
       } else if (this.props.type === constant.ColorLibraryActionType.SaveLibrary) {
-        this.addColorToLibrary().then(() => {
+        this.addLibraryColorToLibrary().then(() => {
           $wx.navigateBack(1, {}, '已加入到 ' + this.data.name)
         })
       } else {
@@ -96,22 +96,28 @@ const privateMethods = {
   createColorLibrary: function () {
     return http.post(urls.colorLibrarySave, {
       // mock: true,
-      id: this.data.libraryId,
+      id: this.props.libraryId,
       name: this.data.name,
       description: this.data.desc
+    })
+  },
+  addLibraryColorToLibrary: function () {
+    return http.post(urls.addColorFromLibrary, {
+      libraryId: this.props.libraryId,
+      originLibraryId: this.props.originLibraryId
     })
   },
   addColorToLibrary: function () {
     return http.post(urls.addColor, {
       // mock: true,
-      libraryId: this.data.libraryId,
+      libraryId: this.props.libraryId,
       libraryColorIdList: this.props.libraryColorIdList,
     })
   },
   moveColorToLibrary: function () {
     return http.post(urls.moveColor, {
       // mock: true,
-      libraryId: this.data.libraryId,
+      libraryId: this.props.libraryId,
       libraryColorIdList: this.props.libraryColorIdList,
     })
   },

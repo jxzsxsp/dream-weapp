@@ -151,7 +151,7 @@
 .hint-container {
   position: fixed;
   right: 20rpx;
-  top: 100rpx;
+  top: 130rpx;
   display: flex;
 }
 

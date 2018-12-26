@@ -112,10 +112,7 @@ const lifeCycle = {
 const viewAction = {
   // 收藏颜色库
   saveLibrary: function () {
-    const libraryColorIdList = this.data.colorList.map(item => {
-      return item.id
-    })
-    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail, libraryColorIdList})
+    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail, originLibraryId: this.libraryDetail.id})
   },
   // 点击选择后
   beginSelect: function () {
