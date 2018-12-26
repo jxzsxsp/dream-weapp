@@ -3,5 +3,5 @@
       <canvas style="width: 550rpx;height: 550rpx;background:#fff;position:relative;top:-1000rpx;" canvas-id="logoQRCode" bindlongtap='saveCode' />
       <image src='{{canvasUrl}}' style='position:absolute;left:98rpx;top:250rpx;width:554rpx;z-index:999999999999999999999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image>
     </view>
-    <!-- <view srtle='text-align:center;width:750rpx;'>单击查看并下载二维码</view> -->
+    <view style='text-align:center;width:750rpx;padding-top:250rpx;font-size:18px;'>单击查看并下载二维码</view>
 </view> 
