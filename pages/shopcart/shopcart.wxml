@@ -21,7 +21,7 @@
                     </view>
                 </view>
                 <view class="shopcart-m bg-wihte" class="supplier {{index==0?'mt100':''}}">
-                    <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}" style='padding-bottom:0;'>
+                    <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}">
                         <view class="shopcart-ck {{items.IsValid&&items.HasEnoughStock?'':'ck-txt'}}">
                             <view wx:if="{{items.IsValid&&items.HasEnoughStock}}">
                                 <icon bindtap="selectList" color="#db3c40" data-skuid="{{items.SkuID}}" type="success" wx:if="{{items.selected}}"></icon>
@@ -33,30 +33,25 @@
                             <image mode="aspectFill " src="{{items.ThumbnailUrl100}} "></image>
                         </view>
                         <view bindtap="goToProductDetail" class="shpcart-item-txt " data-productid="{{items.ProductId}}" hidden="{{isEdite&&items.IsValid&&items.HasEnoughStock}}">
-                            <view class="shopcart-txt-t" style='overflow:hidden;'>
-                                <view class="shopcart-txt-name">{{items.Name}}</view>
+                            <view class="shopcart-txt-t" style='overflow:hidden;display:flex;flex-flow:row nowrap;justify-content:space-around;'>
+                                <view style='display:flex;flex-flow:column nowrap;'>
+                                    <view class="shopcart-txt-name">{{items.Name}}</view>
+                                    <view class="shopcart-txt-b ">
+                                        <view class="shpcart-item-skuname">{{items.SkuContent}}</view>
+                                    </view>
+                                </view>
                                 <view class="shopcart-txt-saleprice " hidden="{{isEdite}}">
                                     <text>¥ {{items.MemberPrice}}</text>
                                     <view class="shopcart-item-num ">
                                         <view class="txt ">
                                             <text class="iconfont icon__close"></text>{{items.Quantity}}</view>
                                     </view>
-
-
-
-
-
-
-
-
-
-
                                     <view style='font-size:20rpx;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:35rpx;padding: 0 8rpx;text-align:center;height:35rpx;line-height:35rpx;'>库存紧张</view>
                                 </view>
                             </view>
-                            <view class="shopcart-txt-b ">
+                            <!-- <view class="shopcart-txt-b ">
                                 <view class="shpcart-item-skuname">{{items.SkuContent}}</view>
-                            </view>
+                            </view> -->
                         </view>
                         <view class=" shpcart-item-txt shopcart-item-edite " hidden="{{!isEdite}}">
                             <view class="shopcart-item-edite-l " hidden="{{!items.IsValid||!items.HasEnoughStock}}">

@@ -129,7 +129,7 @@ page {
 }
 
 .shopcart-txt-b {
-    margin-top: 16rpx;
+    /* margin-top: 16rpx; */
     overflow: hidden;
 }
 

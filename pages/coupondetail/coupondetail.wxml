@@ -11,11 +11,6 @@
                 </view>
                 <view class="counp-area line_height32">{{CanUseProducts}}</view>
             </view>
-
-
-
-
-
             <image wx:if='{{isGet}}' src='../../images/coupicon_03.jpg' style='width:100rpx;position:absolute;right:30rpx;top:120rpx;' mode='widthFix'></image>
         </view>
         <view class="counp-des">
