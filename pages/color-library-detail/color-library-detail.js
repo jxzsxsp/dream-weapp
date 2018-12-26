@@ -98,25 +98,20 @@ const lifeCycle = {
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
-  onNavigateBack: function (d) {
-    const libraryDetail = d.libraryDetail
+  onNavigateBack: function () {
     this.setData({
       isMultiSelect: false,
     })
-    switch (d.type) {
-      case constant.ColorLibraryActionType.SaveLibrary:
-        this._saveColor(libraryDetail, this.data.colorList)
-        break
-      default:
-        break;
-    }
   }
 }
 
 const viewAction = {
   // 收藏颜色库
   saveLibrary: function () {
-    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail})
+    const libraryColorIdList = this.data.colorList.map(item => {
+      return item.id
+    })
+    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail, libraryColorIdList})
   },
   // 点击选择后
   beginSelect: function () {

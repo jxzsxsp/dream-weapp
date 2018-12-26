@@ -62,6 +62,10 @@ const viewAction = {
         this.addColorToLibrary().then(() => {
           $wx.navigateBack(2, {}, '已加入到 ' + this.data.name)
         })
+      } else if (this.props.type === constant.ColorLibraryActionType.SaveLibrary) {
+        this.addColorToLibrary().then(() => {
+          $wx.navigateBack(1, {}, '已加入到 ' + this.data.name)
+        })
       } else {
         $wx.navigateBack()
       }
