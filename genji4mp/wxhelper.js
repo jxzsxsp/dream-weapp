@@ -105,6 +105,7 @@ class BaseService {
       // 只设置了返回级数的返回
       param = {delta}
     } else {
+      param = {delta}
       // 设置之前的数据
       if (!!hintString) {
         setTimeout(() => {
@@ -117,7 +118,7 @@ class BaseService {
     }
     let pages = getCurrentPages()
     let prevPage = pages[pages.length - delta - 1]
-    if (prevPage.hasOwnProperty('onNavigateback')) {
+    if (prevPage.hasOwnProperty('onNavigateBack')) {
       prevPage.onNavigateBack(data)
     }
     return new Promise((res, rej) => {

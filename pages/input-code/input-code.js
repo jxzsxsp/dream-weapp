@@ -95,12 +95,8 @@ const viewAction = {
         return $wx.app.bindPhone()
       }).then(() => {
         setTimeout(() => {
-          if (!!this.props.type) {
-            $wx.navigateBack(2, {loginCallBackType: this.props.type})
-          } else {
-            $wx.navigateBack(2)
-          }
-        }, 2000)
+          $wx.navigateBack(2, {loginCallBackType: this.props.type})
+        }, 1000)
       })
   },
 

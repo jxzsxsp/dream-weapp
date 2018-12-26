@@ -33,7 +33,7 @@ let lifecycle = {
     this.getFavorite(query.colorId)
   },
   onNavigateBack: function(d) {
-    if (d.loginCallBackType) {
+    if (d.hasOwnProperty('loginCallBackType')) {
       this.addFavorite()
     }
   },
@@ -68,11 +68,9 @@ let viewAction = {
 
 let privateMethods = {
   getFavorite: function (colorId) {
-    let token = wx.getStorageSync('token')
-    if(!token) {
+    if (!$wx.app.isBinded()) {
       return
     }
-
     http.get(urls.isInFavorite, {
       // mock: true, 
       colorId: colorId, 

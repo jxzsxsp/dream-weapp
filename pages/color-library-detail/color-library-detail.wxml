@@ -114,7 +114,7 @@
 
     <!-- 底部操作 -->
     <view wx:if="{{!fromLibrary}}" class="flex-column-center shared-container">
-      <button class="save-button button" bind:tap="saveLibrary">收藏颜色库</button>
+      <login-button button-class="save-button button" bind:loginsuccess="saveLibrary">收藏颜色库</login-button>
     </view>
     <view wx:if="{{isMultiSelect}}" class="multi-select-container flex-between-center">
       <button class="multi-add button" disabled="{{!canEdit}}" bind:tap="addColors">添加到</button>
