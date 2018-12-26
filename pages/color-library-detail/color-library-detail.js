@@ -78,7 +78,9 @@ const lifeCycle = {
     this.props.libraryId = query.id
   },
   onShow: function () {
-    this.getColorList(true)
+    if (!this.data.isMultiSelect) {
+      this.getColorList(true)
+    }
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
@@ -101,6 +103,8 @@ const lifeCycle = {
   onNavigateBack: function () {
     this.setData({
       isMultiSelect: false,
+      selectedColorList: [],
+      canEdit: false
     })
   }
 }
