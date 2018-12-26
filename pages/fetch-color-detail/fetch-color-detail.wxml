@@ -36,10 +36,10 @@
   </suspend-button>
 </view>
 
-<view class='favorite-container' bind:tap="favoriteColor">
+<login-button button-class='favorite-container' bind:loginsuccess="favoriteColor">
   <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite'></view>
   <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite favorite-active'></view>
-</view>
+</login-button>
 
 <van-transition name="fade" show="{{showHint}}" duration="1500" custom-class="hint-container">
   <view class="hint-button-container flex-center" bind:tap="gotoColorLibrary">

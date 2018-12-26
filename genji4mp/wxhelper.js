@@ -7,7 +7,7 @@ class BaseService {
     this.router = {}
     this.app = null
   }
-  
+
   registerEvent (eventName, callback) {
     let globalCallback = getApp().globalEventCallback
     if (!globalCallback) {
@@ -106,22 +106,19 @@ class BaseService {
       param = {delta}
     } else {
       // 设置之前的数据
-      param = {delta}
-      let pages = getCurrentPages()
-      let prevPage = pages[pages.length - delta - 1]
-      if (!prevPage.hasOwnProperty('onNavigateBack')) {
-        console.error('zachary 抛出: 上级页面未实现 onNavigateBack 方法接收参数')
-      } else {
-        if (!!hintString) {
-          setTimeout(() => {
-            wx.showToast({
-              title: hintString,
-              icon: 'none',
-            }) 
-          }, 500)
-        }
-        prevPage.onNavigateBack(data)
+      if (!!hintString) {
+        setTimeout(() => {
+          wx.showToast({
+            title: hintString,
+            icon: 'none',
+          }) 
+        }, 500)
       }
+    }
+    let pages = getCurrentPages()
+    let prevPage = pages[pages.length - delta - 1]
+    if (prevPage.hasOwnProperty('onNavigateback')) {
+      prevPage.onNavigateBack(data)
     }
     return new Promise((res, rej) => {
       wx.navigateBack({

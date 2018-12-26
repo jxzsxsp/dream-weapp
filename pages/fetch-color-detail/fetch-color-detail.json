@@ -2,6 +2,7 @@
     "navigationBarTitleText": "取色",
     "usingComponents": {
         "suspend-button": "/components/suspend-button/suspend-button",
-        "van-transition": "/miniprogram_npm/vant-weapp/transition/index"
+        "van-transition": "/miniprogram_npm/vant-weapp/transition/index",
+        "login-button": "/components/login-button/login-button"
       }
 }

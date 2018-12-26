@@ -19,11 +19,11 @@
   </view>
 
   <block wx:if="{{userInfo.nickName}}"  wx:for="{{settingList}}" wx:key="{{index}}">
-    <login-button button-class="setting-row-container" bind:loginsuccess="itemClicked" type="{{index}}" >
+    <view class="setting-row-container" bind:tap="itemClicked" data-index="{{index}}" >
       <view class="iconfont {{item.icon}} setting-icon"/>
       <text class="setting-text">{{item.name}}</text>
       <view class="iconfont icon-ic_back setting-detail"/>
-    </login-button>
+    </view>
   </block>
 
 </view>

@@ -106,4 +106,5 @@
 .setting-detail {
   transform: rotate(180deg);
   color: #979797;
+  margin-right: 20rpx;
 }

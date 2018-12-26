@@ -25,10 +25,10 @@ const lifecycle = {
 
 const viewAction = {
   itemClicked (d, v) {
-    if (v.type === 0) {
+    if (d.index === 0) {
       // 我的收藏
       $wx.navigateTo($wx.router.favoriteLibrary)
-    } else if (v.type === 1) {
+    } else if (d.index === 1) {
       // 设备管理 
       $wx.navigateTo($wx.router.deviceManager)
     }

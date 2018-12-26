@@ -19,7 +19,7 @@ App({
   },
 
   // 绑定手机号,主动调用前必须先授权
-  bindPhone: function (callBackType) {
+  bindPhone: function (callBackType = 0) {
     return this.saveAuthInfo().then(res => {
       let authRes = res
       if (res.code === -1) {
