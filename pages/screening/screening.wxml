@@ -94,6 +94,10 @@
 <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:136rpx;' bindtap='fixedGoToCart'>
     <image src='http://img.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
     <text>购物车</text>
+
+    <view class="order_num" hidden="{{0}}" style='position:absolute;right:10rpx;top:0;'>
+        <text>{{userInfo.waitPayCount}}</text>
+    </view>
 </view>
 <view class="fixedBtn" bindtap='fixedGoToHome'>
     <image src='http://img.qkmai.com/qkmbb/ytal/shouye_1.png'></image>

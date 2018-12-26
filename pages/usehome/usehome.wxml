@@ -1,5 +1,5 @@
 <view class="uselogos">
-    <image class="logobg" src="http://img.qkmai.com/qkmbb/myytal/wdbjs.png" lazy-load></image>
+    <image class="logobg" src="http://img.qkmai.com/qkmbb/myytal/wdbjs.png" style='width:100%;' lazy-load></image>
     <view class="usetitle">
         <image class="uselogo" src="{{userInfo.picture}}" lazy-load></image>
         <view class="userinfo">

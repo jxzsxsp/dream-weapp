@@ -155,7 +155,7 @@ Page({
     var url = tm.data.brandRushInfo[0].goodsImages[0];
     var brandId = tm.data.brandRushInfo[0].brandId;
     var brandSource = tm.data.brandRushInfo[0].brandSource;
-      console.log('/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource)
+    //   console.log('/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource)
     return {
       title: '【品牌特卖】' + title,
       path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
@@ -387,7 +387,7 @@ Page({
             hasMore: false
           })
         } else {
-            console.log(jd.data.length)
+            // console.log(jd.data.length)
           if (jd.data.length != 0) {
 
             let goodsList = [];
