@@ -15,7 +15,6 @@ const data = {
   libraryId: '',
   name: '',
   desc: '',
-  libraryDetail: {},
 }
 
 const lifecycle = {
