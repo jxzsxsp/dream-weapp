@@ -10,9 +10,9 @@ const States = [{
   subtitle: '您已提交试用申请，工作人员审核通过后会与您联系，请耐心等待！',
   image: 'success_state'
 }, {
-  title: '申请失败',
-  subtitle: '请重新提交',
-  image: 'fail_state'
+  title: '申请已提交',
+  subtitle: '您已提交试用申请，工作人员审核中，请勿重复提交',
+  image: 'success_state'
 }, {
   title: '申请已通过!',
   subtitle: '您的试用申请已通过，工作人员会与您联系，请保持手机畅通',
