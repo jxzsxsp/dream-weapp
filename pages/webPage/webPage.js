@@ -16,9 +16,7 @@ Page({
         if (options.artUrl) {
             this.setData({
                 artUrl: decodeURIComponent(options.artUrl)
-                // artUrl: 'https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=4&from=singlemessage&isappinstalled=0'
             })
-
         }
     },
 
@@ -33,7 +31,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        // this.onLoad()
     },
 
     /**
@@ -47,7 +44,6 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-        console.log(1)
     },
 
     /**
