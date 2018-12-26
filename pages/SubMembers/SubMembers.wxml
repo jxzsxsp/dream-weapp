@@ -43,7 +43,7 @@
     </view>
 </view>
 
-<view style='text-align:center;padding-top:50rpx;padding-left:155rpx;position:relative;'>
+<view style='text-align:center;padding-top:50rpx;padding-bottom:60rpx;padding-left:155rpx;position:relative;'>
     <image style='width:439rpx;' mode='widthFix' src='http://img.qkmai.com/qkmbb/ytal/notice.png'></image>
     <button openType="contact" plain='true' style='border:none;width:100%;height:100%;color:transparent;position:absolute;left:0;top:0;'>联系客服</button>
 </view>
