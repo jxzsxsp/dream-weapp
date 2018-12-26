@@ -13,10 +13,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options)
         if (options.artUrl) {
             this.setData({
-                artUrl: options.artUrl
+                artUrl: decodeURIComponent(options.artUrl)
                 // artUrl: 'https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=4&from=singlemessage&isappinstalled=0'
             })
 

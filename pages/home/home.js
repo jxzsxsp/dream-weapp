@@ -842,5 +842,13 @@ Page({
                 }
             }
         });
+    },
+    goView: function (e) {
+        var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + e.currentTarget.dataset.id
+        var deurl = encodeURIComponent(url)
+        var s = '/pages/webPage/webPage?artUrl=' + deurl
+        wx.navigateTo({
+            url: s
+        })
     }
 });
