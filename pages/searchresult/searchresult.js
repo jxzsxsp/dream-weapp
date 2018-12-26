@@ -21,6 +21,7 @@ Page({
         imgUrl: ''
     },
     onLoad: function(q) {
+        var tm =this;
         q.ReferralUserId && t.setRefferUserId(q.ReferralUserId);
 
         var pages = getCurrentPages()    //获取加载的页面
@@ -29,9 +30,6 @@ Page({
 
         var url = currentPage.route    //当前页面url
         var options = currentPage.options    //如果要获取url中所带的参数可以查看options
-        console.log(url)
-        console.log(options)
-        console.log(q)
 
         if(q.imgUrl) {
             this.setData({
@@ -53,6 +51,10 @@ Page({
             KeyWord: a,
             CategoryId: e
         }), r.loadData(r, !1);
+
+
+        
+        console.log(tm.data.imgUrl != '' && tm.data.imgUrl != null)
     },
     onReady: function() {},
     onShow: function() {

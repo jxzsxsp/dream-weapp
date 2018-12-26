@@ -6,7 +6,7 @@
 </view> -->
 
 
-<view style='height:120rpx;'>
+<view style='height:120rpx;' wx:if="{{imgUrl!='' && imgUrl != null}}">
     <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
 </view>
 <!-- <view style='position:absolute;left:0;top:0;height:200rpx;'>

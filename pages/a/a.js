@@ -100,7 +100,7 @@ Page({
             height: 277,
             destWidth: 700,
             destHeight: 700,
-            // fileType: 'jpg',
+            fileType: 'jpg',
             quality: 1,
             canvasId: 'logoQRCode',
             success(res) {
