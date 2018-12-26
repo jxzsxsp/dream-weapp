@@ -253,16 +253,10 @@ const privateMethod = {
     if (!labelList || labelList.length === 0) {
       return ''
     }
-    switch (labelList.length) {
-      case 1:
-        return labelList[0].name
-      case 2:
-        return `${labelList[0].name}·${labelList[1].name}`
-      case 3:
-        return `${labelList[0].name}·${labelList[1].name}·${labelList[2].name}`
-      default:
-        return `${labelList[0].name}·${labelList[1].name}·${labelList[2].name}...`
-    }
+    let labelString = labelList.reduce((prev, current) => {
+      return prev + current.name + '·'
+    }, '')
+    return labelString.slice(0, labelString.length -1 )
   },
   // 获取类表
   getColorList: function (reset = false) {

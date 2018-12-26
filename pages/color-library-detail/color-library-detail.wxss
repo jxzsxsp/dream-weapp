@@ -197,6 +197,10 @@
   font-size: 24rpx;
   color: #616161;
   letter-spacing: 0.8rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 500rpx;
 }
 
 .more-icon {
