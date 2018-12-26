@@ -40,8 +40,8 @@ Page({
             wx.request({
                 url: a.getUrl("SubMembers"),
                 data: {
-                    // openId: o,
-                    openId: 'o_rWK5YTqOJ2ruCGdsjZn4YJ8ovI',
+                    openId: o,
+                    // openId: 'o_rWK5YTqOJ2ruCGdsjZn4YJ8ovI',
                     pageIndex: t.data.PageIndex,
                     pageSize: t.data.PageSize
                 },
@@ -51,7 +51,6 @@ Page({
 
                     if (void 0 == a.data.error_response) {
                         var o = a.data.SubMember_get_response, r = o.SubMembers;
-                        console.log(n)
                         if (n) {
                             // var s = t.data.subMemberData;
                             // s.push.apply(s, r), t.setData({
@@ -70,8 +69,6 @@ Page({
 
                         } else {
                             r.Total;
-                            console.log(r)
-                            console.log(r.Total)
                             t.setData({
                                 subMemberList: r,
                                 isEmpty: t.data.isempty,
