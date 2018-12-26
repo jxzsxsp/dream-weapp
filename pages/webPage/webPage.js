@@ -5,14 +5,22 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        artUrl: 'https://ytal.qkmai.com/articles',
+        isNum: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options)
+        if (options.artUrl) {
+            this.setData({
+                artUrl: options.artUrl
+                // artUrl: 'https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=4&from=singlemessage&isappinstalled=0'
+            })
 
+        }
     },
 
     /**
@@ -26,7 +34,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        // this.onLoad()
     },
 
     /**

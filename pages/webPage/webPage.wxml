@@ -1,1 +1,2 @@
-<web-view src='https://ytal.qkmai.com/articles'></web-view> 
+<!-- <web-view src='{{isNum?"https://ytal.qkmai.com/article/show/4":"https://ytal.qkmai.com/articles"}}'></web-view>  -->
+<web-view src='{{artUrl}}'></web-view> 
