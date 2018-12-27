@@ -211,8 +211,6 @@ Page({
                         e >= 0 && s.splice(e, 1), a.setData({
                             SelectskuId: s
                         });
-                        console.log(t.data.Data.CartItemInfo)
-                        console.log(t.data.Data.CartItemInfo.length)
                         if (t.data.Data.CartItemInfo.length > 0) {
                             wx.setTabBarBadge({
                                 index: 3,
@@ -223,12 +221,6 @@ Page({
                                 index: 3
                             })
                         }
-
-
-
-
-
-
                     } else "NOUser" == t.data.Message ? wx.navigateTo({
                         url: "../login/login"
                     }) : wx.showModal({

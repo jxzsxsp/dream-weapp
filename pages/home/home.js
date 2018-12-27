@@ -55,6 +55,14 @@ Page({
                         }), r.forEach(function(t, a, r) {
                             void 0 != e[t.ProductId] ? t.CartQuantity = parseInt(e[t.ProductId]) : t.CartQuantity = 0;
                         });
+
+                        console.log(t.data)
+                        if (t.data.TotalNum > 0) {
+                            wx.setTabBarBadge({
+                                index: 3,
+                                text: t.data.TotalNum.toString()
+                            })
+                        }
                     } else "NOUser" == t.data.Message || wx.showModal({
                         title: "提示",
                         content: t.data.Message,
@@ -71,6 +79,7 @@ Page({
                         choiceProducts: r,
                         TotalNum: a
                     });
+                    console.log(t.data)
                     if (t.data.TotalNum > 0) {
                         wx.setTabBarBadge({
                             index: 3,

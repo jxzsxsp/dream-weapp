@@ -1130,10 +1130,13 @@ image {
 }
 
 .fixedBtn image {
+    width: 40rpx;
+    height: 40rpx;
+}
+/* .fixedBtn image {
     width: 50rpx;
     height: 50rpx;
-}
-
+} */
 .fixedBtn text {
     font-size: 10px;
     color: #fff;
