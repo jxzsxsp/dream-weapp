@@ -101,7 +101,10 @@ const lifeCycle = {
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
-  onNavigateBack: function () {
+  onNavigateBack: function (d) {
+    if (d.loginCallbackType) {
+      this.saveLibrary()
+    }
     this.setData({
       isMultiSelect: false,
       selectedColorList: [],
