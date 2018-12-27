@@ -67,7 +67,7 @@ let lifeCycle = {
     }
   },
   onNavigateBack: function (d) {
-    if (d.loginCallBackType) {
+    if (d.loginCallbackType) {
       this.addFavorite()
     }
   },

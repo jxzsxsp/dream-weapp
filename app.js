@@ -19,7 +19,7 @@ App({
   },
 
   // 绑定手机号,主动调用前必须先授权
-  bindPhone: function (callBackType = 0) {
+  bindPhone: function (callbackType = 0) {
     return this.saveAuthInfo().then(res => {
       let authRes = res
       if (res.code === -1) {
@@ -29,7 +29,7 @@ App({
         })
       }
       if (res.code === -2) {
-        $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId, type: callBackType})
+        $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId, type: callbackType})
         return new Promise((res, rej) => {
           rej(authRes)
         })
