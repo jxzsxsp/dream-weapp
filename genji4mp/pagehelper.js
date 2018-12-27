@@ -73,7 +73,6 @@ class BasePage {
   
     Page(pageObject)
   }
-
 }
 
 export default new BasePage()

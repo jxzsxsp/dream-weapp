@@ -40,7 +40,7 @@ const privateMethod = {
   setTimeoutSearch: function () {
     this.props.timeout = setTimeout(() => {
       this.searchColor(false)
-    }, 1000)
+    }, 500)
   },
   clearTimeoutSearch: function () {
     if (this.props.timeout) {

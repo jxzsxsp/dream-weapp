@@ -58,7 +58,8 @@ const lifecycle = {
       let nickName = $wx.app.globalData.userInfo.nickName
       return {
         title: `分享颜色库《${this.data.selectedLibrary.name}》给你！快来小蜥看看吧！`,
-        path: `/pages/color-library-detail/color-library-detail?id=${this.data.selectedLibrary.id}`
+        path: `/pages/color-library-detail/color-library-detail?id=${this.data.selectedLibrary.id}`,
+        imageUrl: 'http://img50.lianshang.cn/data/share.jpg'
       }
     }
   },

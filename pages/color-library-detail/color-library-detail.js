@@ -78,7 +78,9 @@ const lifeCycle = {
     this.props.libraryId = query.id
   },
   onShow: function () {
-    this.getColorList(true)
+    if (!this.data.isMultiSelect) {
+      this.getColorList(true)
+    }
   },
   onPageScroll: function (e) {
     this.props.scrollTop = e.scrollTop
@@ -98,25 +100,19 @@ const lifeCycle = {
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
-  onNavigateBack: function (d) {
-    const libraryDetail = d.libraryDetail
+  onNavigateBack: function () {
     this.setData({
       isMultiSelect: false,
+      selectedColorList: [],
+      canEdit: false
     })
-    switch (d.type) {
-      case constant.ColorLibraryActionType.SaveLibrary:
-        this._saveColor(libraryDetail, this.data.colorList)
-        break
-      default:
-        break;
-    }
   }
 }
 
 const viewAction = {
   // 收藏颜色库
   saveLibrary: function () {
-    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail})
+    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail, originLibraryId: this.libraryDetail.id})
   },
   // 点击选择后
   beginSelect: function () {
@@ -254,16 +250,10 @@ const privateMethod = {
     if (!labelList || labelList.length === 0) {
       return ''
     }
-    switch (labelList.length) {
-      case 1:
-        return labelList[0].name
-      case 2:
-        return `${labelList[0].name}·${labelList[1].name}`
-      case 3:
-        return `${labelList[0].name}·${labelList[1].name}·${labelList[2].name}`
-      default:
-        return `${labelList[0].name}·${labelList[1].name}·${labelList[2].name}...`
-    }
+    let labelString = labelList.reduce((prev, current) => {
+      return prev + current.name + '·'
+    }, '')
+    return labelString.slice(0, labelString.length -1 )
   },
   // 获取类表
   getColorList: function (reset = false) {
@@ -393,16 +383,6 @@ const privateMethod = {
       })
     })
   },
-  // 保存颜色库成功后，要将颜色添加到创建的颜色库中
-  _saveColor: function (libraryDetail, colorList) {
-    const libraryColorIdList = colorList.map(item => {
-      return item.id
-    })
-    http.post(urls.addColor, {libraryId: libraryDetail.id, libraryColorIdList})
-      .then(() => {
-        $wx.showToast({title: '已添加到'+library.name})
-      })
-  },
   // 移动单个颜色以及多个颜色调用
   _moveColor: function (colorList) {
     let movedColorIds = colorList.map(item => {
@@ -413,6 +393,7 @@ const privateMethod = {
     this.minusTotalCount(colorList.length)
     this.setData({
       colorList: this.data.colorList,
+      isMultiSelect: false
     })
   }
 }

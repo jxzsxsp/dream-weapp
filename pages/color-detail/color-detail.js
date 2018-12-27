@@ -33,14 +33,9 @@ let lifecycle = {
     this.getFavorite(query.colorId)
   },
   onNavigateBack: function(d) {
-    console.log(d)
-
-    // this.clearTimeout()
-    // this.setToastTimeout()
-    // this.setData({
-    //   showToast: true,
-    //   libraryDetail: d.libraryDetail
-    // })
+    if (d.hasOwnProperty('loginCallBackType')) {
+      this.addFavorite()
+    }
   },
   onShareAppMessage: function () {
     return {
@@ -73,11 +68,9 @@ let viewAction = {
 
 let privateMethods = {
   getFavorite: function (colorId) {
-    let token = wx.getStorageSync('token')
-    if(!token) {
+    if (!$wx.app.isBinded()) {
       return
     }
-
     http.get(urls.isInFavorite, {
       // mock: true, 
       colorId: colorId, 
