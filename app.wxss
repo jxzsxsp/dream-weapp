@@ -55,11 +55,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 914158 */
-  src: url('//at.alicdn.com/t/font_914158_bjlntnt3yzp.eot');
-  src: url('//at.alicdn.com/t/font_914158_bjlntnt3yzp.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_914158_bjlntnt3yzp.woff') format('woff'),
-  url('//at.alicdn.com/t/font_914158_bjlntnt3yzp.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_914158_bjlntnt3yzp.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_914158_s9qfyjw84rg.eot');
+  src: url('//at.alicdn.com/t/font_914158_s9qfyjw84rg.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_914158_s9qfyjw84rg.woff') format('woff'),
+  url('//at.alicdn.com/t/font_914158_s9qfyjw84rg.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_914158_s9qfyjw84rg.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -157,4 +157,6 @@
 .icon-xiaochacha:before { content: "\e91a"; }
 
 .icon-jiantou:before { content: "\e91b"; }
+
+.icon-done:before { content: "\e91c"; }
 

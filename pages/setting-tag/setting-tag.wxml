@@ -16,7 +16,7 @@
   <view wx:if="{{labels.length < maxLabelNum}}" class='input-item'>
     <input 
     value='{{label}}' 
-    length='{{maxLabelTextNum}}'
+    maxlength='{{maxLabelTextNum}}'
     placeholder='输入标签名…'
     bindinput='inputEvent'
     bindconfirm='confirmEvent'

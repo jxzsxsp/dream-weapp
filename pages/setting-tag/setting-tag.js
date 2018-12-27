@@ -61,9 +61,6 @@ const viewAction = {
     console.log(d, v, this.data.label)
 
     if (this.checkLabelTextNum(v)) {
-      this.setData({
-        label: this.data.label
-      })
       return
     }
 
@@ -177,16 +174,17 @@ const privateMethods = {
       })
       return true
     }
+    return false
   },
   checkLabelTextNum: function (value) {
-    if (this.data.label.length >= this.data.maxLabelTextNum
-      && value.length >= this.data.maxLabelTextNum) {
+    if (value.length >= this.data.maxLabelTextNum) {
       $wx.showToast({
         title: '标签名最多' + this.data.maxLabelTextNum + '个字',
         icon: 'none'
       })
       return true
     }
+    return false
   },
   removeArr: function (arr, dx) {
     if (isNaN(dx) || dx > arr.length) { return arr }

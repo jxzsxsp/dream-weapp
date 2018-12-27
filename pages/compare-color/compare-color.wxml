@@ -1,42 +1,205 @@
-<view class="container">
-  <view class="result-container">
-    <text class="result-title" wx:if="{{isCompare}}">△ = ?</text>
-    <text class="result-title" wx:else>△ = {{colorDetail.targetColor.comparisonScore}}</text>
-    <text class="result-subtitle">值越小代表颜色越接近</text>
-  </view>
+<view class='compare-container flex'>
+  <view class='color-container'>
+    <view class='color' style='background: #1673DF;'></view>
 
-  <view class="color-container">
-    <view class="remote-color-container">
-      <view class="remote-color" style="background: {{colorDetail.sourceColor.hexColor}}"/>
-      <view class="remote-text-container">
-        <text class="remote-text">样本选择</text>
+    <block wx:if='{{showLab}}'>
+    <view class='color-value flex'>
+      <view class='label flex-column'>
+        <text>L</text>
+        <text>a</text>
+        <text>b</text>
+      </view>
+      <view class='value flex-column'>
+        <text>23.79</text>
+        <text>116.79</text>
+        <text>-227.87</text>
       </view>
     </view>
-    <view class="locol-color-container">
-      <view class="locol-color" style="background: {{colorDetail.targetColor.hexColor}}"/>
-      <button class="locol-text-container" wx:if="{{isCompare}}" open-type="launchApp" app-parameter="{\"router\":1,\"data\":{{sourceId}}}" bind:error="launchAppError">
-        <text class="locol-text">去 app</text>
-      </button>
+    </block>
+
+    <block wx:if='{{showRgb}}'>
+    <view class='color-value flex'>
+      <view class='label flex-column'>
+        <text>R</text>
+        <text>G</text>
+        <text>B</text>
+      </view>
+      <view class='value flex-column'>
+        <text>83</text>
+        <text>57</text>
+        <text>69</text>
+      </view>
+    </view>
+    </block>
+
+    <view class='color-btn flex'>
+      <text class='color-btn-text color-btn-active'>样本色</text>
     </view>
   </view>
 
-  <view class="detail-container">
-    <view class="remote-detail">
-      <text class="remote-hexcolor">{{colorDetail.sourceColor.hexColor}}</text>
-      <text class="remote-detail-color">RGB: {{colorDetail.sourceColor.rgb}}</text>
-      <text class="remote-detail-color">LAB: {{colorDetail.sourceColor.lab}}</text>
+  <view class='color-container'>
+    <view class='color' style='background: #1673DF;'></view>
+
+    <block wx:if='{{showLab}}'>
+    <view class='color-value flex'>
+      <view class='label flex-column'>
+        <text>L</text>
+        <text>a</text>
+        <text>b</text>
+      </view>
+      <view class='value flex-column'>
+        <text>23.79</text>
+        <text>116.79</text>
+        <text>-227.87</text>
+      </view>
     </view>
-    <view class="remote-detail" wx:if="{{!isCompare}}">
-      <text class="remote-hexcolor">{{colorDetail.targetColor.hexColor}}</text>
-      <text class="remote-detail-color">RGB: {{colorDetail.targetColor.rgb}}</text>
-      <text class="remote-detail-color">LAB: {{colorDetail.targetColor.lab}}</text>
+    </block>
+
+    <block wx:if='{{showRgb}}'>
+    <view class='color-value flex'>
+      <view class='label flex-column'>
+        <text>R</text>
+        <text>G</text>
+        <text>B</text>
+      </view>
+      <view class='value flex-column'>
+        <text>83</text>
+        <text>57</text>
+        <text>69</text>
+      </view>
+    </view>
+    </block>
+
+    <view class='color-btn flex'>
+      <text class='color-btn-text color-btn-active'>去 App</text>
     </view>
   </view>
-
-  <suspend-button>
-    <view class="go-home-container">
-      <view class="iconfont icon-tab_index_a go-home-view"/>
-      <text class="go-home-text">回首页</text>
-    </view>
-  </suspend-button>
 </view>
+
+<view class='btn-container flex'>
+  <view class="left-btn flex {{showLab ? 'selected' : ''}}" bind:tap='showLabValue'>Lab</view>
+  <view class="right-btn flex {{showRgb ? 'selected' : ''}}" bind:tap='showRgbValue'>RGB</view>
+</view>
+
+<view class='detail-container flex-column'>
+  <view class='result-detail flex-column'>
+    <view class='result result-active'>
+      <text>色差可接受</text>
+      <image src='/assets/icon_info.png'></image>
+    </view>
+    <view class='standard flex' bind:tap='switchStandard'>
+      <text>切换标准</text>
+    </view>
+  </view>
+
+  <view class='result-value flex'>
+    <block wx:if='{{showLab}}'>
+      <view class='lab-item flex-column'>
+        <text>△L</text>
+        <text>0.71</text>
+        <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType["1"]}};'>
+          <view class='tag-color' style='background: {{ColorCompareLabelType["1"]}};'></view>
+          <view class='tag-name flex'>偏白</view>
+        </view>
+        <view class='zuidasecha'>
+          <image src='/assets/zuidasecha.png'></image>
+        </view>
+      </view>
+
+      <view class='line'></view>
+
+      <view class='lab-item flex-column'>
+        <text>△a</text>
+        <text>0.83</text>
+        <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType["3"]}};'>
+          <view class='tag-color' style='background: {{ColorCompareLabelType["3"]}};'></view>
+          <view class='tag-name flex'>偏红</view>
+        </view>
+        <view class='zuidasecha'>
+          <image src='/assets/zuidasecha.png'></image>
+        </view>
+      </view>
+
+      <view class='line'></view>
+
+      <view class='lab-item flex-column'>
+        <text>△b</text>
+        <text>-25.43</text>
+        <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType["5"]}};'>
+          <view class='tag-color' style='background: {{ColorCompareLabelType["5"]}};'></view>
+          <view class='tag-name flex'>偏黄</view>
+        </view>
+        <view class='zuidasecha'>
+          <image src='/assets/zuidasecha.png'></image>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if='{{showRgb}}'>
+    <view class='rgb-container flex-column'>
+
+      <view class='rgb-item flex'>
+        <text class='rgb-value right'>83</text>
+        <view class='r-container flex right' style='background: #E7D4DC;'>
+          <view class='r-bar' style='background: #FF0000;'></view>
+        </view>
+        <text class='rgb-title'>R</text>
+        <view class='r-container left' style='background: #E7D4DC;'>
+          <view class='r-bar' style='background: #FF0000;'></view>
+        </view>
+        <text class='rgb-value left'>83</text>
+      </view>
+
+      <view class='rgb-item flex'>
+        <text class='rgb-value right'>83</text>
+        <view class='r-container flex right' style='background: #CDEEDC;'>
+          <view class='r-bar' style='background: #3BD63B;'></view>
+        </view>
+        <text class='rgb-title'>G</text>
+        <view class='r-container left' style='background: #CDEEDC;'>
+          <view class='r-bar' style='background: #3BD63B;'></view>
+        </view>
+        <text class='rgb-value left'>83</text>
+      </view>
+
+      <view class='rgb-item flex'>
+        <text class='rgb-value right'>83</text>
+        <view class='r-container flex right' style='background: #CDD4F6;'>
+          <view class='r-bar' style='background: #1630D5;'></view>
+        </view>
+        <text class='rgb-title'>B</text>
+        <view class='r-container left' style='background: #CDD4F6;'>
+          <view class='r-bar' style='background: #1630D5;'></view>
+        </view>
+        <text class='rgb-value left'>83</text>
+      </view>
+
+    </view>
+    </block>
+  </view>
+  <view class='detail-text flex'>色差明细</view>
+</view>
+
+<view class='standard-title flex'>{{standardType.description}}</view>
+
+<van-popup
+  show="{{ showStandard }}"
+  position="bottom"
+  bind:close="closeStandard"
+>
+  <view class='standard-list flex-column'>
+    <text class='list-title'>请选择要切换的标准</text>
+
+    <block wx:for='{{standardTypeList}}' wx:key='index'>
+    <view class="list-item flex {{item.type === standardType.type ? 'item-active' : ''}}"
+    data-standard='{{item}}' bind:tap='selectStandard'>
+      <text>{{item.title}}</text>
+      <block wx:if='{{item.type === standardType.type}}'>
+      <view class='iconfont icon-done'></view>
+      </block>
+    </view>
+    </block>
+
+    <view class='cancel flex' bind:tap='closeStandard'>取消</view>
+  </view>
+</van-popup>

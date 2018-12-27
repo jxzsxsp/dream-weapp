@@ -1,15 +1,33 @@
 import {$Page, $wx} from '../../genji4mp/index'
 import {http, urls} from '../../net/index'
 import utils from '../../utils/index'
+import constant from '../../constant/index'
 
 let data = {
+  ColorCompareLabelType: constant.ColorCompareLabelType,
   colorDetail: {},
   // 左边的颜色
   sourceId: 0,
   // 右边的颜色
   targetId: 0,
   // 发起远程对色还是完成对色
-  isCompare: true
+  isCompare: true,
+  showLab: true,
+  showRgb: false,
+  standardType: {},
+  standardTypeList: [
+    {
+      type: 1,
+      title: '国标GB/T250',
+      description: '国标GB/T250',
+    },
+    {
+      type: 2,
+      title: 'CEMC',
+      description: 'CMC色差评定',
+    }
+  ],
+  showStandard: false,
 
 }
 
@@ -27,7 +45,8 @@ let lifecycle = {
     this.setData({
       sourceId: parseInt(query.localId),
       targetId: this.data.targetId,
-      isCompare: this.data.isCompare
+      isCompare: this.data.isCompare,
+      standardType: this.data.standardTypeList[0]
     })
 
     http.get(urls.pantone.compareColorDetail, param)
@@ -52,4 +71,36 @@ let privateMethod = {
   }
 }
 
-$Page.register(null, data, lifecycle, privateMethod, {})
+let viewAction = {
+  showLabValue: function() {
+    this.setData({
+      showLab: true,
+      showRgb: false,
+    })
+  },
+  showRgbValue: function () {
+    this.setData({
+      showLab: false,
+      showRgb: true,
+    })
+  },
+  switchStandard: function() {
+    this.setData({
+      showStandard: true
+    })
+  },
+  closeStandard: function () {
+    this.setData({
+      showStandard: false
+    })
+  },
+  selectStandard: function(d) {
+    console.log(d)
+    this.setData({
+      standardType: d.standard
+    })
+    this.closeStandard()
+  }
+}
+
+$Page.register(null, data, lifecycle, privateMethod, viewAction)

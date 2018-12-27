@@ -1,6 +1,7 @@
 {
     "navigationBarTitle": "远程对色",
     "usingComponents": {
-        "suspend-button": "/components/suspend-button/suspend-button"
+        "suspend-button": "/components/suspend-button/suspend-button",
+        "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
     }
 }

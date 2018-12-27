@@ -32,9 +32,20 @@ const ColorSense = {
   ColorUUID:'1A0AD4BF-7BDC-49A3-81D0-CA96AB705ED2',
 }
 
+// 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
+const ColorCompareLabelType = {
+  1: '#FFFFFF',
+  2: '#000000',
+  3: '#FF1B1B',
+  4: '#00C37C',
+  5: '#F5A623',
+  6: '#0156FE',
+}
+
 export default {
   APP_GLOBAL,
   ColorSource,
   ColorSense,
   ColorLibraryActionType,
+  ColorCompareLabelType,
 }
