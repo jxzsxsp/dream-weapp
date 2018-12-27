@@ -22,6 +22,8 @@ const props = {
 }
 
 const data = {
+  // 是否是第一次点进来。第一次点进来什么也不显示
+  isFirstShow: true,
   // 是否色库已被删除
   isDeleted: false,
   // 是否是从颜色库列表中进入
@@ -289,6 +291,7 @@ const privateMethod = {
           libraryDetail: this.props.loadingState.others.library,
           isCustom: this.props.loadingState.others.library.type,
           totalCount: this.props.loadingState.totalCount,
+          isFirstShow: false
         }) 
       })
   },
