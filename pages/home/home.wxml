@@ -101,7 +101,19 @@
                         <view style='clear:both'></view>
                     </view>
                 </view>
-                <view style='padding-left:115rpx'>
+                <view style='padding-left:115rpx;display:flex;flex-flow:row nowrap;padding-top:20rpx;'>
+                    <view style='position:relative;width:50%;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
+                        <button style='width:100%;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">分享专场</button>
+<image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/qianggoutb.png' style='width:55rpx;position:absolute;right:20rpx;top:20rpx;' mode='widthFix'></image>
+                        <view style='clear:both'></view>
+                    </view>
+                    <view style='position:relative;width:50%;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>去抢购<image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/qianggoutb.png' style='width:55rpx;position:absolute;right:20rpx;top:20rpx;' mode='widthFix'></image></view>
+                    <view style='clear:both'></view>
+                </view>
+
+
+
+                <!-- <view style='padding-left:115rpx'>
                     <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
                         <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">分享专场</button>
 
@@ -109,7 +121,7 @@
                     </view>
                     <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>去抢购</view>
                     <view style='clear:both'></view>
-                </view>
+                </view> -->
             </view>
         </view>
     </view>

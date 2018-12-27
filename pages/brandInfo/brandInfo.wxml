@@ -54,7 +54,7 @@
                 </view>
             </view>
             <view style='padding-left:115rpx;padding-right:15rpx'>
-                <button style='float:right;width:123rpx;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' data-brandId='{{item.brandId}}'
+                <button style='float:right;width:100%;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' data-brandId='{{item.brandId}}'
                     plain='true' openType="share">分享专场</button>
                 <!-- <button style='float:right;width:123rpx;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
                     plain='true' openType="share">分享专场</button>
@@ -130,7 +130,7 @@
                     </view>
                     <view style='clear:both'></view>
                 </view>
-                <view style='padding:15rpx 15rpx 15rpx 0'>
+                <view style='padding:20rpx 25rpx 20rpx 5rpx'>
                     <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
                     </view>
                     <view style='clear:both'></view>

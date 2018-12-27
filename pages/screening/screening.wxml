@@ -95,9 +95,9 @@
     <image src='http://img.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
     <text>购物车</text>
 
-    <!-- <view class="order_num" hidden="{{0}}" style='position:absolute;right:10rpx;top:0;'>
+    <view class="order_num" style='position:absolute;right:10rpx;top:-6rpx;color:red;'>
         <text>{{userInfo.waitPayCount}}</text>
-    </view> -->
+    </view>
 </view>
 <view class="fixedBtn" bindtap='fixedGoToHome'>
     <image src='http://img.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
