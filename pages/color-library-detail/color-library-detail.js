@@ -96,9 +96,8 @@ const lifeCycle = {
     this.getColorList()
   },
   onShareAppMessage: function () {
-    const nickName = $wx.app.globalData.userInfo.nickName
     return {
-      title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
+      title: `分享色库《${this.data.libraryDetail.name}》给你！`,
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
