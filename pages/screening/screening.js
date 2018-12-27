@@ -205,6 +205,7 @@ Page({
         });
     },
     addGoodsToCart: function(event) {
+        
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -221,6 +222,9 @@ Page({
                     content: '',
                 })
             } else {
+                wx.showLoading({
+                    title: '加载中~~~',
+                })
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {
@@ -232,6 +236,7 @@ Page({
                         salePrice: salePrice
                     },
                     success: function(res) {
+                        wx.hideLoading();
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({

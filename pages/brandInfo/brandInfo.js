@@ -231,6 +231,9 @@ Page({
                     content: '',
                 })
             } else {
+                wx.showLoading({
+                    title: '加载中~~~',
+                })
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {
@@ -269,6 +272,7 @@ Page({
 
                                     //     }
                                     // }
+                                    wx.hideLoading();
                                     wx.showModal({
                                         title: '',
                                         content: '成功加入购物车',
