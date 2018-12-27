@@ -20,11 +20,10 @@
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/99.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </navigator>
         <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=4" data-id='4'>
-        <!-- <view url='/pages/webPage/webPage?artUrl=encodeURIComponent(https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=4)' bindtap='goView'> -->
             <image style='width:375rpx;' mode='widthFix' lazy-load src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/alzm.png'></image>
         </view>
 
-        <navigator bindtap='goView' url='/pages/webPage/webPage'>
+        <navigator url='/pages/webPage/webPage'>
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </navigator>
         <!-- <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=3" data-id='3'>
