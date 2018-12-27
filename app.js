@@ -125,7 +125,8 @@ Number.prototype.toFixed = function(t) {
                     },
                     success: function(o) {
                         "OK" == o.data.Status ? (e.globalData.userInfo = o.data.Data, "function" == typeof t && t(e.globalData.userInfo)) : wx.redirectTo({
-                            url: "../login/login"
+                            // url: "../login/login"
+                            url: "../loginwx/loginwx"
                         });
                     },
                     complete: function() {

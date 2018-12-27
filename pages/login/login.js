@@ -7,9 +7,14 @@ Page({
         password: "",
         ReferralUserId: ""
     },
-    onLoad: function(e) {},
+    onLoad: function(e) {
+
+        // this.quickLogin()
+    },
     onReady: function() {},
-    onShow: function() {},
+    onShow: function() {
+        // this.quickLogin()
+    },
     onHide: function() {},
     onUnload: function() {},
     bindUserNameInput: function(e) {
