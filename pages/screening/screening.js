@@ -23,7 +23,8 @@ Page({
         tagId: 0,
         dataIndex: 0,
         dataSize: 10,
-        hasMore: true
+        hasMore: true,
+        shopcartCount: 0
     },
 
     /**
@@ -61,6 +62,7 @@ Page({
         this.GetShopCart()
     },
     GetShopCart: function () {
+        var tm = this;
         var t = this,
             a = 0,
             r = t.data.choiceProducts;
@@ -72,17 +74,17 @@ Page({
                 },
                 success: function (t) {
                     if ("OK" == t.data.Status) {
-                        console.log(t.data.Data.CartItemInfo)
-                        console.log(t.data.Data.CartItemInfo.length)
-                        console.log(t.data.Data.CartItemInfo.length == 0)
+                            tm.setData({
+                                shopcartCount: t.data.Data.CartItemInfo.length
+                            })
                         if (t.data.Data.CartItemInfo.length == 0) return;
                         var e = {};
-                        t.data.Data.CartItemInfo.forEach(function (t, r, o) {
-                            t.IsValid && (void 0 != e[t.ProductId] ? e[t.ProductId] = parseInt(e[t.ProductId]) + parseInt(t.Quantity) : e[t.ProductId] = t.Quantity,
-                                a += parseInt(t.Quantity));
-                        }), r.forEach(function (t, a, r) {
-                            void 0 != e[t.ProductId] ? t.CartQuantity = parseInt(e[t.ProductId]) : t.CartQuantity = 0;
-                        });
+                        // t.data.Data.CartItemInfo.forEach(function (t, r, o) {
+                        //     t.IsValid && (void 0 != e[t.ProductId] ? e[t.ProductId] = parseInt(e[t.ProductId]) + parseInt(t.Quantity) : e[t.ProductId] = t.Quantity,
+                        //         a += parseInt(t.Quantity));
+                        // }), r.forEach(function (t, a, r) {
+                        //     void 0 != e[t.ProductId] ? t.CartQuantity = parseInt(e[t.ProductId]) : t.CartQuantity = 0;
+                        // });
                         if (t.data.TotalNum > 0) {
                             wx.setTabBarBadge({
                                 index: 3,
@@ -313,7 +315,8 @@ Page({
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
-                                    goodsSkuName: ''
+                                    goodsSkuName: '',
+                                    shopcartCount: tm.data.shopcartCount + 1
                                 });
                         }
                     },

@@ -120,7 +120,7 @@ Page({
 
         wx.previewImage({
             current: src, // 当前显示图片的http链接
-            urls: [src,'https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/21392/22/2256/160847/5c1b0978Ef1147970/5ced72341c7c05c9.jpg!cr_1125x549_0_72!q70.jpg.dpg'] // 需要预览的图片http链接列表
+            urls: [src] // 需要预览的图片http链接列表
         })
 
 
