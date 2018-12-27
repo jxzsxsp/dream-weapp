@@ -6,7 +6,6 @@ import utils from '../../utils/index'
 const props = {
   // 编辑颜色库的类型
   type: null,
-  libraryDetail: {},
   libraryColorIdList: [],
   originLibraryId: -1,
   libraryId: -1,
@@ -23,7 +22,6 @@ const lifecycle = {
   onLoad: function (query) {
     if (!utils.isEmptyObject(query)) {
       this.props.type = query.type
-      this.props.libraryDetail = query.libraryDetail
       this.props.libraryColorIdList = query.libraryColorIdList || []
       // 除了分享跳到该界面，其他都是编辑颜色库
       if (query.type !== constant.ColorLibraryActionType.SaveLibrary) {
@@ -32,7 +30,7 @@ const lifecycle = {
         })
         this.props.libraryId = query.libraryDetail.id
       } else {
-        this.props.originLibraryId = query.originLibraryId
+        this.props.originLibraryId = query.libraryDetail.id
       }
       this.setData({
         name: query.libraryDetail.name,
@@ -94,12 +92,16 @@ const privateMethods = {
     })
   },
   createColorLibrary: function () {
-    return http.post(urls.colorLibrarySave, {
-      // mock: true,
+    let param = {
       id: this.props.libraryId,
       name: this.data.name,
-      description: this.data.desc
-    })
+      description: this.data.desc 
+    }
+    // 如果是添加色库，不传 id
+    if (param.id === -1) {
+      delete param.id
+    }
+    return http.post(urls.colorLibrarySave, param)
   },
   addLibraryColorToLibrary: function () {
     return http.post(urls.addColorFromLibrary, {
