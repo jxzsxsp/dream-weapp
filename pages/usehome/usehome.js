@@ -98,7 +98,7 @@ Page({
                 },
                 success: function(o) {
                     wx.redirectTo({
-                        url: "../login/login"
+                        url: "../loginwx/loginwx"
                     });
                 }
             });

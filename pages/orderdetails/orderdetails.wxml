@@ -129,7 +129,7 @@
     </view>
     <view class="yunfei">
         <view class="yunfeil">订单状态</view>
-        <view class="yunfeir">{{OrderInfo.StatusText}} </view>
+        <view class="yunfeir">{{OrderInfo.StatusText == "待发货" ? "拣货中" : OrderInfo.StatusText}} </view>
     </view>
     <view class="yunfei">
         <view class="yunfeil">下单时间</view>

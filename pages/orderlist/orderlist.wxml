@@ -49,7 +49,7 @@
                 </view>
                 <text>{{item.ShipperName}}</text>
             </view> -->
-            <view class="orderzt">{{item.StatusText}}</view>
+            <view class="orderzt">{{item.StatusText == "待发货" ? "拣货中" : item.StatusText}}</view>
         </view>
         <view bindtap="goToOrderDetail" class="orderlistcont {{i+1==item.LineItems.length?'lastitem':''}}" data-orderid="{{item.OrderId}}" wx:for="{{item.LineItems}}" wx:for-index="i" wx:for-item="pro" wx:key="Id">
             <image class="mr16" src="{{pro.Image}}"></image>
