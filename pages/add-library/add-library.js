@@ -23,19 +23,25 @@ const lifecycle = {
     if (!utils.isEmptyObject(query)) {
       this.props.type = query.type
       this.props.libraryColorIdList = query.libraryColorIdList || []
-      // 除了分享跳到该界面，其他都是编辑颜色库
-      if (query.type !== constant.ColorLibraryActionType.SaveLibrary) {
+      if (query.type === constant.ColorLibraryActionType.SaveLibrary) {
+        this.props.originLibraryId = query.libraryDetail.id
+        this.setData({
+          name: query.libraryDetail.name,
+          desc: query.libraryDetail.description,
+        })
+      } else if (query.type === constant.ColorLibraryActionType.EditLibrary) {
+        this.props.libraryId = query.libraryDetail.id
         $wx.setNavigationBarTitle({
           title: '编辑颜色库'
+        }) 
+        this.setData({
+          name: query.libraryDetail.name,
+          desc: query.libraryDetail.description,
         })
-        this.props.libraryId = query.libraryDetail.id
       } else {
-        this.props.originLibraryId = query.libraryDetail.id
+        // 添加和移动单个或者多个颜色的时候直接使用 libraryId
+        this.props.libraryId = query.libraryId
       }
-      this.setData({
-        name: query.libraryDetail.name,
-        desc: query.libraryDetail.description,
-      })
     }
   },
   onShow: function() {
