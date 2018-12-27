@@ -17,6 +17,7 @@ page {
 
 .color {
   height: 326rpx;
+  background: #F1F1F1;
 }
 
 .color-value {
@@ -59,6 +60,12 @@ page {
   margin-top: -210rpx;
   justify-content: center;
   align-items: center;
+}
+
+.go-app {
+  padding: 0;
+  border: none;
+  box-sizing: inherit;
 }
 
 .color-btn-text {
@@ -301,7 +308,7 @@ page {
 }
 
 .r-bar {
-  width: 83rpx;
+  width: 0;
   height: 24rpx;
   background: #FF0000;
   border-radius: 12rpx;
@@ -345,16 +352,21 @@ page {
 }
 
 .list-item {
-  margin-left: 15rpx;
-  margin-top: 35rpx;
+  height: 120rpx;
   font-family: PingFangSC-Regular;
   font-size: 36rpx;
   color: #000000;
   letter-spacing: -0.22rpx;
   justify-content: space-between;
+  align-items: center;
 }
 
 .item-active {
+  color: #0156FE;
+}
+
+.xuanzhong {
+  font-size: 24rpx;
   color: #0156FE;
 }
 
@@ -364,7 +376,7 @@ page {
   background: #EFEFF4;
   border-radius: 49.5rpx;
   margin: auto;
-  margin-top: 50rpx;
+  margin-top: 14rpx;
   justify-content: center;
   align-items: center;
   font-family: PingFangSC-Semibold;
@@ -372,4 +384,81 @@ page {
   color: #4B4B4B;
   letter-spacing: -0.25rpx;
   text-align: center;
+}
+
+.info-container {
+  height: 1000rpx;
+  background: #FFFFFF;
+  border-radius: 34rpx 34rpx 0 0;
+}
+
+.info {
+  height: 310rpx;
+  align-items: center;
+  position: relative;
+}
+
+.guanbi {
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+}
+
+.info-title {
+  margin-top: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 34rpx;
+  color: #000000;
+  letter-spacing: 1.13rpx;
+}
+
+.info-subtitle {
+  margin-top: 60rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 44rpx;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+.info-desc {
+  margin-top: 10rpx;
+  opacity: 0.5;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0;
+  line-height: 24rpx;
+}
+
+.standard-info {
+  height: 690rpx;
+}
+
+.standard-scroll {
+  width: 100%;
+  height: 100%;
+}
+
+.standard-scroll image {
+  width: 100%;
+}
+
+.go-home-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.go-home-view {
+  color: #252525;
+  border-radius: 2rpx 4rpx 2rpx 2rpx 2rpx;
+  margin-right: 16rpx;
+}
+
+.go-home-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 22rpx;
 }

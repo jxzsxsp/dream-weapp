@@ -1,6 +1,6 @@
 <view class='compare-container flex'>
   <view class='color-container'>
-    <view class='color' style='background: #1673DF;'></view>
+    <view class='color' style='background: {{colorDetail.sourceColor.hexColor}}'></view>
 
     <block wx:if='{{showLab}}'>
     <view class='color-value flex'>
@@ -10,9 +10,16 @@
         <text>b</text>
       </view>
       <view class='value flex-column'>
-        <text>23.79</text>
-        <text>116.79</text>
-        <text>-227.87</text>
+        <block wx:if='{{colorDetail.sourceColor.labArr && colorDetail.sourceColor.labArr.length === 3}}'>
+        <text>{{colorDetail.sourceColor.labArr[0]}}</text>
+        <text>{{colorDetail.sourceColor.labArr[1]}}</text>
+        <text>{{colorDetail.sourceColor.labArr[2]}}</text>
+        </block>
+        <block wx:else>
+        <text>-</text>
+        <text>-</text>
+        <text>-</text>
+        </block>
       </view>
     </view>
     </block>
@@ -25,20 +32,27 @@
         <text>B</text>
       </view>
       <view class='value flex-column'>
-        <text>83</text>
-        <text>57</text>
-        <text>69</text>
+        <block wx:if='{{colorDetail.sourceColor.rgbArr && colorDetail.sourceColor.rgbArr.length === 3}}'>
+        <text>{{colorDetail.sourceColor.rgbArr[0]}}</text>
+        <text>{{colorDetail.sourceColor.rgbArr[1]}}</text>
+        <text>{{colorDetail.sourceColor.rgbArr[2]}}</text>
+        </block>
+        <block wx:else>
+        <text>-</text>
+        <text>-</text>
+        <text>-</text>
+        </block>
       </view>
     </view>
     </block>
 
     <view class='color-btn flex'>
-      <text class='color-btn-text color-btn-active'>样本色</text>
+      <text class="color-btn-text {{colorDetail.sourceColor.rgbArr && colorDetail.sourceColor.rgbArr.length === 3 ? '' : 'color-btn-active'}}">样本色</text>
     </view>
   </view>
 
   <view class='color-container'>
-    <view class='color' style='background: #1673DF;'></view>
+    <view class='color' style='background: {{colorDetail.targetColor.hexColor}}'></view>
 
     <block wx:if='{{showLab}}'>
     <view class='color-value flex'>
@@ -48,9 +62,16 @@
         <text>b</text>
       </view>
       <view class='value flex-column'>
-        <text>23.79</text>
-        <text>116.79</text>
-        <text>-227.87</text>
+        <block wx:if='{{colorDetail.targetColor.labArr && colorDetail.targetColor.labArr.length === 3}}'>
+        <text>{{colorDetail.targetColor.labArr[0]}}</text>
+        <text>{{colorDetail.targetColor.labArr[1]}}</text>
+        <text>{{colorDetail.targetColor.labArr[2]}}</text>
+        </block>
+        <block wx:else>
+        <text>-</text>
+        <text>-</text>
+        <text>-</text>
+        </block>
       </view>
     </view>
     </block>
@@ -63,16 +84,30 @@
         <text>B</text>
       </view>
       <view class='value flex-column'>
-        <text>83</text>
-        <text>57</text>
-        <text>69</text>
+        <block wx:if='{{colorDetail.targetColor.rgbArr && colorDetail.targetColor.rgbArr.length === 3}}'>
+        <text>{{colorDetail.targetColor.rgbArr[0]}}</text>
+        <text>{{colorDetail.targetColor.rgbArr[1]}}</text>
+        <text>{{colorDetail.targetColor.rgbArr[2]}}</text>
+        </block>
+        <block wx:else>
+        <text>-</text>
+        <text>-</text>
+        <text>-</text>
+        </block>
       </view>
     </view>
     </block>
 
-    <view class='color-btn flex'>
-      <text class='color-btn-text color-btn-active'>去 App</text>
-    </view>
+    <block wx:if='{{isCompare}}'>
+      <button class="color-btn go-app flex" open-type="launchApp" app-parameter="{\"router\":1,\"data\":{{sourceId}}}" bind:error="launchAppError">
+        <text class="color-btn-text color-btn-active">去 App</text>
+      </button>
+    </block>
+    <block wx:else>
+      <view class='color-btn flex'>
+        <text class='color-btn-text color-btn-active'>对比色</text>
+      </view>
+    </block>
   </view>
 </view>
 
@@ -83,8 +118,23 @@
 
 <view class='detail-container flex-column'>
   <view class='result-detail flex-column'>
-    <view class='result result-active'>
-      <text>色差可接受</text>
+    <view class="result {{resultDetail.cmcChromaticAberrationLevel ? 'result-active' : ''}}" bind:tap='showStandardInfo'>
+      <block wx:if='{{resultDetail.cmcChromaticAberrationLevel}}'>
+        <block wx:if='{{standardType.type === 1}}'>
+        <text>牢度级别：{{resultDetail.cie1976ColorFastnessLevel}}</text>
+        </block>
+        <block wx:if='{{standardType.type === 2}}'>
+        <text>{{resultDetail.cmcChromaticAberrationLevel}}</text>
+        </block>
+      </block>
+      <block wx:else>
+        <block wx:if='{{standardType.type === 1}}'>
+        <text>牢度级别：暂无</text>
+        </block>
+        <block wx:if='{{standardType.type === 2}}'>
+        <text>暂无</text>
+        </block>
+      </block>
       <image src='/assets/icon_info.png'></image>
     </view>
     <view class='standard flex' bind:tap='switchStandard'>
@@ -94,84 +144,79 @@
 
   <view class='result-value flex'>
     <block wx:if='{{showLab}}'>
-      <view class='lab-item flex-column'>
-        <text>△L</text>
-        <text>0.71</text>
-        <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType["1"]}};'>
-          <view class='tag-color' style='background: {{ColorCompareLabelType["1"]}};'></view>
-          <view class='tag-name flex'>偏白</view>
-        </view>
-        <view class='zuidasecha'>
-          <image src='/assets/zuidasecha.png'></image>
-        </view>
-      </view>
+      <block wx:if='{{resultDetail.colorCompareDetailList && resultDetail.colorCompareDetailList.length === 3}}'>
+        <block wx:for='{{resultDetail.colorCompareDetailList}}' wx:key='index'>
+          <view class='lab-item flex-column'>
+            <text>△{{item.colorCompareType}}</text>
+            <text>{{item.colorCompareValue}}</text>
+            <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType[item.colorCompareLabelType]}};'>
+              <view class='tag-color' style='background: {{ColorCompareLabelType[item.colorCompareLabelType]}};'></view>
+              <view class='tag-name flex'>{{item.colorCompareLabel}}</view>
+            </view>
+            <view wx:if='{{item.maxValue === 1}}' class='zuidasecha'>
+              <image src='/assets/zuidasecha.png'></image>
+            </view>
+          </view>
 
-      <view class='line'></view>
+          <view wx:if='{{index < 2}}' class='line'></view>
+        </block>
+      </block>
+      <block wx:else>
+        <block wx:for='Lab' wx:key='index'>
+          <view class='lab-item flex-column'>
+            <text>△{{item}}</text>
+            <text>-</text>
+          </view>
 
-      <view class='lab-item flex-column'>
-        <text>△a</text>
-        <text>0.83</text>
-        <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType["3"]}};'>
-          <view class='tag-color' style='background: {{ColorCompareLabelType["3"]}};'></view>
-          <view class='tag-name flex'>偏红</view>
-        </view>
-        <view class='zuidasecha'>
-          <image src='/assets/zuidasecha.png'></image>
-        </view>
-      </view>
+          <view wx:if='{{index < 2}}' class='line'></view>
+        </block>
+      </block>
 
-      <view class='line'></view>
-
-      <view class='lab-item flex-column'>
-        <text>△b</text>
-        <text>-25.43</text>
-        <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType["5"]}};'>
-          <view class='tag-color' style='background: {{ColorCompareLabelType["5"]}};'></view>
-          <view class='tag-name flex'>偏黄</view>
-        </view>
-        <view class='zuidasecha'>
-          <image src='/assets/zuidasecha.png'></image>
-        </view>
-      </view>
     </block>
 
     <block wx:if='{{showRgb}}'>
     <view class='rgb-container flex-column'>
 
       <view class='rgb-item flex'>
-        <text class='rgb-value right'>83</text>
+        <text class='rgb-value right'>{{colorDetail.sourceColor.rgbArr[0]}}</text>
         <view class='r-container flex right' style='background: #E7D4DC;'>
-          <view class='r-bar' style='background: #FF0000;'></view>
+          <view class='r-bar' style='background: #FF0000; width: {{colorDetail.sourceColor.rgbArr[0]*156/255}}rpx;'></view>
         </view>
         <text class='rgb-title'>R</text>
+        <block wx:if='{{colorDetail.targetColor.rgbArr && colorDetail.targetColor.rgbArr.length === 3}}'>
         <view class='r-container left' style='background: #E7D4DC;'>
-          <view class='r-bar' style='background: #FF0000;'></view>
+          <view class='r-bar' style='background: #FF0000; width: {{colorDetail.targetColor.rgbArr[0]*156/255}}rpx;'></view>
         </view>
-        <text class='rgb-value left'>83</text>
+        <text class='rgb-value left'>{{colorDetail.targetColor.rgbArr[0]}}</text>
+        </block>
       </view>
 
       <view class='rgb-item flex'>
-        <text class='rgb-value right'>83</text>
+        <text class='rgb-value right'>{{colorDetail.sourceColor.rgbArr[1]}}</text>
         <view class='r-container flex right' style='background: #CDEEDC;'>
-          <view class='r-bar' style='background: #3BD63B;'></view>
+          <view class='r-bar' style='background: #3BD63B; width: {{colorDetail.sourceColor.rgbArr[1]*156/255}}rpx;'></view>
         </view>
         <text class='rgb-title'>G</text>
+        <block wx:if='{{colorDetail.targetColor.rgbArr && colorDetail.targetColor.rgbArr.length === 3}}'>
         <view class='r-container left' style='background: #CDEEDC;'>
-          <view class='r-bar' style='background: #3BD63B;'></view>
+          <view class='r-bar' style='background: #3BD63B; width: {{colorDetail.targetColor.rgbArr[1]*156/255}}rpx;'></view>
         </view>
-        <text class='rgb-value left'>83</text>
+        <text class='rgb-value left'>{{colorDetail.targetColor.rgbArr[1]}}</text>
+        </block>
       </view>
 
       <view class='rgb-item flex'>
-        <text class='rgb-value right'>83</text>
+        <text class='rgb-value right'>{{colorDetail.sourceColor.rgbArr[2]}}</text>
         <view class='r-container flex right' style='background: #CDD4F6;'>
-          <view class='r-bar' style='background: #1630D5;'></view>
+          <view class='r-bar' style='background: #1630D5; width: {{colorDetail.sourceColor.rgbArr[2]*156/255}}rpx;'></view>
         </view>
         <text class='rgb-title'>B</text>
+        <block wx:if='{{colorDetail.targetColor.rgbArr && colorDetail.targetColor.rgbArr.length === 3}}'>
         <view class='r-container left' style='background: #CDD4F6;'>
-          <view class='r-bar' style='background: #1630D5;'></view>
+          <view class='r-bar' style='background: #1630D5; width: {{colorDetail.targetColor.rgbArr[2]*156/255}}rpx;'></view>
         </view>
-        <text class='rgb-value left'>83</text>
+        <text class='rgb-value left'>{{colorDetail.targetColor.rgbArr[2]}}</text>
+        </block>
       </view>
 
     </view>
@@ -180,7 +225,7 @@
   <view class='detail-text flex'>色差明细</view>
 </view>
 
-<view class='standard-title flex'>{{standardType.description}}</view>
+<view class='standard-title flex'>{{standardType.title}}</view>
 
 <van-popup
   show="{{ showStandard }}"
@@ -195,7 +240,7 @@
     data-standard='{{item}}' bind:tap='selectStandard'>
       <text>{{item.title}}</text>
       <block wx:if='{{item.type === standardType.type}}'>
-      <view class='iconfont icon-done'></view>
+      <view class='iconfont icon-xuanzhong xuanzhong'></view>
       </block>
     </view>
     </block>
@@ -203,3 +248,50 @@
     <view class='cancel flex' bind:tap='closeStandard'>取消</view>
   </view>
 </van-popup>
+
+<van-popup
+  show="{{ showGbtStandardInfo }}"
+  position="bottom"
+  bind:close="closeStandardInfo"
+>
+  <view class='info-container flex-column'>
+    <view class='info flex-column'>
+      <text class='info-title'>{{standardType.title}}</text>
+      <text class='info-subtitle'>牢度级别：{{resultDetail.cie1976ColorFastnessLevel ? resultDetail.cie1976ColorFastnessLevel : '暂无'}}</text>
+      <text wx:if='{{resultDetail.cie1976ColorCompareResult}}' class='info-desc'>对应牢度级别的△E1964={{resultDetail.cie1976ColorCompareResult}}</text>
+      <view class='iconfont icon-guanbi guanbi' bind:tap='closeStandardInfo'></view>
+    </view>
+    <view class='standard-info'>
+      <scroll-view scroll-y class='standard-scroll'>
+        <image mode='widthFix' src='/assets/GBT250.png'></image>
+      </scroll-view>
+    </view>
+  </view>
+</van-popup>
+
+<van-popup
+  show="{{ showCmcStandardInfo }}"
+  position="bottom"
+  bind:close="closeStandardInfo"
+>
+  <view class='info-container flex-column'>
+    <view class='info flex-column'>
+      <text class='info-title'>{{standardType.title}}</text>
+      <text class='info-subtitle'>{{resultDetail.cmcChromaticAberrationLevel ? resultDetail.cmcChromaticAberrationLevel : '暂无'}}</text>
+      <text wx:if='{{resultDetail.cmcColorCompareResult}}' class='info-desc'>对应△ECMC={{resultDetail.cmcColorCompareResult}}</text>
+      <view class='iconfont icon-guanbi guanbi' bind:tap='closeStandardInfo'></view>
+    </view>
+    <view class='standard-info'>
+      <scroll-view scroll-y class='standard-scroll'>
+        <image mode='widthFix' src='/assets/CMC.png'></image>
+      </scroll-view>
+    </view>
+  </view>
+</van-popup>
+<!-- 
+  <suspend-button>
+    <view class="go-home-container">
+      <view class="iconfont icon-tab_index_a go-home-view"/>
+      <text class="go-home-text">回首页</text>
+    </view>
+  </suspend-button> -->

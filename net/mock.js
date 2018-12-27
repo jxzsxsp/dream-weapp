@@ -316,6 +316,61 @@ let colorLibraryDetail = {
     "hasMore": true
   },
   [urls.colorLibrarySave]: 1,
+  [urls.pantone.fetchResultV2]: {
+    "cie1976ColorFastnessLevel": "1-2",
+    "cie1976ColorCompareResult": "2.22",
+    "cie2000ColorFastnessLevel": "1-2",
+    "cie2000ColorCompareResult": "1.2",
+    "cmcColorFastnessLevel": "1-2",
+    "cmcColorCompareResult": "1.2",
+    "cmcChromaticAberrationLevel": "细微色差", // cmc标准色差描述
+    "colorCompareDetail": [
+      {
+        "colorCompareType": "L", // L, A, B
+        "colorCompareValue": "12.0",
+        "colorCompareLabelType": 2, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
+        "colorCompareLabel": "偏暗",
+        "maxValue": 1 //1-最大色差
+      },
+      {
+        "colorCompareType": "a", // L, A, B
+        "colorCompareValue": "22.0",
+        "colorCompareLabelType": 4, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
+        "colorCompareLabel": "偏绿",
+        "maxValue": 0 //1-最大色差
+      },
+      {
+        "colorCompareType": "b", // L, A, B
+        "colorCompareValue": "32.0",
+        "colorCompareLabelType": 6, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
+        "colorCompareLabel": "偏蓝",
+        "maxValue": 0 //1-最大色差
+      }
+    ]
+  },
+  [urls.pantone.compareColorDetail]: {
+    "sourceColor": {
+      "id": 1,
+      "deviceId": "1323",
+      "colorId": 12,
+      "originType": 1,
+      "rgb": "0,64,128",
+      "hexColor": "#1673DF",
+      "lab": "23.79,116.79,-227.87",
+      "cmyk": ""
+    },
+    "targetColor": {
+      "id": 1,
+      "deviceId": "1323",
+      "colorId": 12,
+      "originType": 1,
+      "rgb": "128,172,255",
+      "hexColor": "#1673DF",
+      "lab": "23.79,116.79,-227.87",
+      "cmyk": "",
+      "comparisonScore": 12.21
+    }
+  }
 }
 
 let colorLabel = {
