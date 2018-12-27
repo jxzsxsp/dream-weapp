@@ -3,7 +3,8 @@ import {http, urls} from '../../net/index'
 
 let props = {
   categoryId: 0,
-  loadingState: http.defaultLoadingState(24)
+  loadingState: http.defaultLoadingState(24),
+  keyword: ''
 }
 
 let data = {
@@ -65,9 +66,6 @@ const privateMethod = {
   },
   /* 搜索颜色方法，addMore 表示搜索后面页面还是重新搜索第一页 */
   searchColor: function (addMore) {
-    if (!this.props.keyword) {
-      return
-    }
     if (!addMore) {
       this.props.loadingState = http.defaultLoadingState()
     }
