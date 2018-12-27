@@ -1,5 +1,6 @@
 function _getUrl (baseUrl, params={}) {
-  return baseUrl + '?param=' + JSON.stringify(params)
+  let url = baseUrl + '?param=' + encodeURIComponent(JSON.stringify(params))
+  return url
 }
 
 class BaseService {
@@ -118,13 +119,16 @@ class BaseService {
     }
     let pages = getCurrentPages()
     let prevPage = pages[pages.length - delta - 1]
-    if (prevPage.hasOwnProperty('onNavigateBack')) {
-      prevPage.onNavigateBack(data)
-    }
     return new Promise((res, rej) => {
+      let preFunc = function () {
+        if (prevPage.hasOwnProperty('onNavigateBack')) {
+          prevPage.onNavigateBack(data)
+        } 
+        res(prevPage)
+      }
       wx.navigateBack({
         ...param,
-        success: res,
+        success: preFunc,
         fail: rej
       })
     })

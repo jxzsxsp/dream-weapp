@@ -178,10 +178,6 @@ const privateMethods = {
   },
   checkLabelTextNum: function (value) {
     if (value.length >= this.data.maxLabelTextNum) {
-      $wx.showToast({
-        title: '标签名最多' + this.data.maxLabelTextNum + '个字',
-        icon: 'none'
-      })
       return true
     }
     return false

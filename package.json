@@ -8,7 +8,8 @@
     "lint": "standard --verbose",
     "precommit": "npm run lint",
     "dev": "./env/ce.sh dev",
-    "pro": "./env/ce.sh pro"
+    "pro": "./env/ce.sh pro",
+    "pre-release": "./env/ce.sh pre-release"
   },
   "author": "",
   "license": "ISC",

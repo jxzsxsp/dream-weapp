@@ -33,7 +33,7 @@ let lifecycle = {
     this.getFavorite(query.colorId)
   },
   onNavigateBack: function(d) {
-    if (d.hasOwnProperty('loginCallBackType')) {
+    if (d.loginCallbackType) {
       this.addFavorite()
     }
   },

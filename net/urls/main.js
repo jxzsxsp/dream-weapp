@@ -13,5 +13,5 @@ export default {
   addColor: '/library-color/add-color', // 颜色保存（复制）至颜色库接口
   moveColor: '/library-color/move-to-library', // 移动颜色到特定库
   deleteColorLibrary: '/color-library/delete', // 颜色库删除接口
-  addColorFromLibrary: '/library-color/add-favorite-color', // 添加一个库的颜色到另一个库
+  addColorFromLibrary: '/library-color/add-favorite-color-library' // 添加一个库的颜色到另一个库
 }

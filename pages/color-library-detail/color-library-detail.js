@@ -22,6 +22,8 @@ const props = {
 }
 
 const data = {
+  // 是否是第一次点进来。第一次点进来什么也不显示
+  isFirstShow: true,
   // 是否色库已被删除
   isDeleted: false,
   // 是否是从颜色库列表中进入
@@ -94,13 +96,15 @@ const lifeCycle = {
     this.getColorList()
   },
   onShareAppMessage: function () {
-    const nickName = $wx.app.globalData.userInfo.nickName
     return {
-      title: `分享${nickName}的色库《${this.data.libraryDetail.name}》给你！`,
+      title: `分享色库《${this.data.libraryDetail.name}》给你！`,
       path: `/pages/color-library-detail/color-library-detail?id=${this.data.libraryDetail.id}`
     }
   },
-  onNavigateBack: function () {
+  onNavigateBack: function (d) {
+    if (d.loginCallbackType) {
+      this.saveLibrary()
+    }
     this.setData({
       isMultiSelect: false,
       selectedColorList: [],
@@ -112,7 +116,7 @@ const lifeCycle = {
 const viewAction = {
   // 收藏颜色库
   saveLibrary: function () {
-    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail, originLibraryId: this.libraryDetail.id})
+    $wx.navigateTo($wx.router.addLibrary, {type: constant.ColorLibraryActionType.SaveLibrary, libraryDetail: this.data.libraryDetail})
   },
   // 点击选择后
   beginSelect: function () {
@@ -289,6 +293,7 @@ const privateMethod = {
           libraryDetail: this.props.loadingState.others.library,
           isCustom: this.props.loadingState.others.library.type,
           totalCount: this.props.loadingState.totalCount,
+          isFirstShow: false
         }) 
       })
   },

@@ -33,7 +33,7 @@
         style="animation-name: {{canEdit ? 'short-to-long' : 'long-to-short'}}"
       />
 
-      <view class="none-container flex-column-center" wx:if="{{colorList.length === 0}}">
+      <view class="none-container flex-column-center" wx:if="{{!isFirstShow && colorList.length === 0}}">
         <text class="none-subtitle">里面空空如也...</text>
       </view>
 
