@@ -28,6 +28,12 @@ export function justifyColor (colorList) {
 export function fixLab (lab) {
   const labArr = lab.split(',')
   const fixedArr = labArr.map(item => parseFloat(item).toFixed(2))
-  return fixedArr.join(',')
+  return fixedArr
+}
+
+export function fixRgb(rgb) {
+  const rgbArr = rgb.split(',')
+  const fixedArr = rgbArr.map(item => parseInt(item))
+  return fixedArr
 }
 
