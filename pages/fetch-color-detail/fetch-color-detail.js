@@ -117,7 +117,7 @@ let privateMethod = {
   addFavorite: function () {
     http.post(urls.addFavorite, {
       // mock: true,
-      colorId: this.data.colorDetail.colorId,
+      colorId: this.data.colorId,
       originType: constant.ColorSource.selfFetch
     }).then((res) => {
       this.clearTimeout()
@@ -132,7 +132,7 @@ let privateMethod = {
   cancelFavorite: function () {
     http.post(urls.cancelFavorite, {
       // mock: true,
-      colorId: this.data.colorDetail.colorId,
+      colorId: this.data.colorId,
       originType: constant.ColorSource.selfFetch
     }).then(() => {
       this.clearTimeout()
