@@ -1,7 +1,22 @@
-<view class="container-box" style='max-width:750rpx;'>
-    <view class="logoQRCode" style='position:relative;width:750rpx;'>
-      <canvas style="width: 550rpx;height: 550rpx;background:#fff;position:relative;top:-1000rpx;" canvas-id="logoQRCode" bindlongtap='saveCode' />
-      <image src='{{canvasUrl}}' style='position:absolute;left:98rpx;top:250rpx;width:554rpx;z-index:999999999999999999999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image>
+<view class="container-box" style='max-width:750rpx;' wx:if="{{isHidden}}">
+  <view class="logoQRCode" style='position:relative;width:750rpx;'>
+    <canvas style="width: 550rpx;height: 550rpx;background:#fff;position:relative;top:-1000rpx;" canvas-id="logoQRCode" bindlongtap='saveCode' />
+    <view class='code_container'>
+      <image src='{{canvasUrl}}' style='z-index:999999999999999999999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image>
+      <text>长按保存您的分享码到手机相册</text>
     </view>
-    <view style='text-align:center;width:750rpx;padding-top:250rpx;font-size:18px;'>单击查看并下载二维码</view>
-</view> 
+
+  </view>
+  <view class='postlist_container'>
+    <view class='post_title'>我的海报</view>
+    <text class='post_des'>点击海报查看大图，长按大图保存至手机相册</text>
+    <view class='postlist'>
+      <view wx:for="{{postUrl}}" wx:for-index="index" wx:for-item="item" class='images_container'>
+        <view style='background:url("{{item.url}}");background-size:100%' class='images'  bindtap='onShowPost' data-url="{{item.url}}"></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <view class='postshow_container'wx:if="{{isShow}}">
+  <image src="{{showUrl}}"></image>
+</view> -->
