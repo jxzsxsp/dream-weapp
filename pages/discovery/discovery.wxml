@@ -1,4 +1,4 @@
-<view wx:if="{{DistributionInfo.ReferralGradeName != '永久会员'}}" style='height:100%;'>
+<view wx:if="{{!DistributionInfo.ReferralGradeName || DistributionInfo.ReferralGradeName=='试用'}}" style='height:100%;'>
     <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:0;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;'>
         <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
         <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
@@ -24,7 +24,7 @@
 
 
 
-<!--             
+            
             <view style='width:100%;margin-bottom:10rpx;font-size:14px;display:flex;justify-content:space-around;align-items:center;'>
                 <view style='line-height:2.6;' class='{{isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{true}}">已分享邀请</view>
                 <view style='line-height:2.6;' class='{{!isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{false}}">已购买发货</view>
@@ -49,10 +49,10 @@
                     </view>
                     <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
                 </block>
-            </view> -->
+            </view>
         </view>
     </view>
-    <view wx:else>
+    <view wx:else style='margin-top:90rpx;'>
         <view>
             <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
         </view>
@@ -77,7 +77,7 @@
         </view>
     </view>
 </view>
-<view wx:else style='margin-top:80rpx;background-color: #fff;'>
+<view wx:else style='background-color: #fff;'>
     <view>
         <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
     </view>
