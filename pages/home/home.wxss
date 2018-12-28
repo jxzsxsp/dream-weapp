@@ -1,9 +1,9 @@
 page {
-    background-color: #db3c40;
+    background-color: #0a023a;
 }
 
 .homecont {
-    background-color: #db3c40;
+    background-color: #0a023a;
 }
 
 image {
