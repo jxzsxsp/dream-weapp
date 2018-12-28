@@ -1,5 +1,6 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index';
 
 const props = {
   loadingState: http.defaultLoadingState(),
@@ -98,7 +99,7 @@ const viewAction = {
     this.closeAction()
     switch (d.type) {
       case 'EDIT':
-        $wx.navigateTo($wx.router.addLibrary, { libraryDetail: this.data.selectedLibrary })
+        $wx.navigateTo($wx.router.addLibrary, { libraryDetail: this.data.selectedLibrary, type: constant.ColorLibraryActionType.EditLibrary })
         break
       case 'SHARE':
         break
