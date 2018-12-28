@@ -433,13 +433,19 @@ page {
 }
 
 .info-desc {
-  margin-top: 10rpx;
   opacity: 0.5;
   font-family: PingFangSC-Medium;
   font-size: 28rpx;
   color: #000000;
   letter-spacing: 0;
-  line-height: 24rpx;
+  justify-content: center;
+  align-items: center;
+  height: 48rpx;
+}
+
+.xiabiao {
+  font-size: 15rpx;
+  margin-bottom: -12rpx;
 }
 
 .standard-info {

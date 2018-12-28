@@ -261,7 +261,9 @@
       <text class='info-title'>{{standardType.title}}</text>
       <text class='info-subtitle'>牢度级别：{{resultDetail.cie1976ColorFastnessLevel ?
         resultDetail.cie1976ColorFastnessLevel : '暂无'}}</text>
-      <text wx:if='{{resultDetail.cie1976ColorCompareResult}}' class='info-desc'>对应牢度级别的△E1964={{resultDetail.cie1976ColorCompareResult}}</text>
+      <view wx:if='{{resultDetail.cie1976ColorCompareResult}}' class='info-desc flex'>
+        对应牢度级别的△<text class='xiabiao'>E1964</text>={{resultDetail.cie1976ColorCompareResult}}
+      </view>
       <view class='guanbi-event flex' bind:tap='closeStandardInfo'>
         <view class='iconfont icon-guanbi guanbi'></view>
       </view>
@@ -280,7 +282,9 @@
       <text class='info-title'>{{standardType.title}}</text>
       <text class='info-subtitle'>{{resultDetail.cmcChromaticAberrationLevel ? resultDetail.cmcChromaticAberrationLevel
         : '暂无'}}</text>
-      <text wx:if='{{resultDetail.cmcColorCompareResult}}' class='info-desc'>对应△ECMC={{resultDetail.cmcColorCompareResult}}</text>
+      <view wx:if='{{resultDetail.cmcColorCompareResult}}' class='info-desc flex'>
+        对应△<text class='xiabiao'>ECMC</text>={{resultDetail.cmcColorCompareResult}}
+      </view>
       <view class='guanbi-event flex' bind:tap='closeStandardInfo'>
         <view class='iconfont icon-guanbi guanbi'></view>
       </view>
