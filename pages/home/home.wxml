@@ -1,5 +1,5 @@
 <import src="../common/templeates.wxml"></import>
-<view class="homecont" style="z-index:998;">
+<view class="homecont" style="z-index:998;width:750rpx;overflow:hidden;">
     <view style='height:70rpx;background-color: #fff;z-index:1000;'>
         <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
             <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
@@ -7,24 +7,24 @@
             </view>
         </scroll-view>
     </view>
-    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;" wx:if='{{selectedCate=="全场直播"}}'>
+    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;">
     </template>
     <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image src='http://img.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;width:100%;' mode='widthFix' lazy-load></image>
+        <image src='http://img.qkmai.com/qkmbb/ytal/shuom.png' style='width:730rpx;' mode='widthFix' lazy-load></image>
     </view>
-    <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
+    <view style='width:730rpx;margin-left:10rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator url='/pages/screening/screening?picUrl=http://img.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
-            <image style='width:375rpx;' mode='widthFix' lazy-load src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/1zhe2.png'></image>
+            <image style='width:365rpx;' mode='widthFix' lazy-load src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/1zhe2.png'></image>
         </navigator>
         <navigator url='/pages/searchresult/searchresult?cid=24&picUrl=http://img.qkmai.com/qkmbb/ytal/99_.png'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/99.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/99.png' style='width:365rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </navigator>
         <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=5" data-id='5'>
-            <image style='width:375rpx;' mode='widthFix' lazy-load src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/alzm.png'></image>
+            <image style='width:365rpx;' mode='widthFix' lazy-load src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/alzm.png'></image>
         </view>
 
         <navigator url='/pages/webPage/webPage'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/xsdd.png' style='width:365rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </navigator>
         <!-- <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=3" data-id='3'>
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
@@ -38,19 +38,19 @@
             <image src='http://img.qkmai.com/qkmbb/ytal/99.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </navigator>
     </view> -->
-    <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:750rpx;vertical-align:top;margin-bottom:9rpx;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image>
-    <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;' wx:for='{{topLogoList}}'>
-            <image style='width:115rpx;height:115rpx;margin-bottom:10rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
+    <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:730rpx;margin-left:10rpx;vertical-align:top;margin-bottom:10rpx;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image>
+    <view style='width:730rpx;margin-left:10rpx;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
+        <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;border:1px solid blue;' wx:for='{{topLogoList}}'>
+            <image style='width:115rpx;height:115rpx;margin-bottom:10rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
         </view>
     </view>
-    <view style='width:750rpx;padding:0;margin-top:10rpx;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image style='width:750rpx;padding:0;margin:0;margin-bottom:9rpx;' mode='widthFix' lazy-load src='http://img.qkmai.com/qkmbb/ytal/remai.png'></image>
+    <view style='width:730rpx;padding:0;margin-left:10rpx;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
+        <image style='width:730rpx;padding:0;margin:0;margin-bottom:10rpx;' mode='widthFix' lazy-load src='http://img.qkmai.com/qkmbb/ytal/remai.png'></image>
     </view>
 
 
 
-    <view style='padding:0 0 27rpx 0;box-sizing:margin-box;margin-left:10rpx;margin-right:10rpx;'>
+    <view style='padding:0 0 27rpx 0;width:730rpx;margin-left:10rpx;'>
         <view wx:key="{{item}}" wx:for='{{brandRush}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                 <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
@@ -68,7 +68,7 @@
                     <view style='font-size:30rpx;'>{{item.mainTitle}}</view>
                     <view>
                         <view>
-                            <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{item.subTitle}}</view>
+                            <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:10rpx;height:35rpx;padding: 0 8rpx;float:left'>{{item.subTitle}}</view>
                             <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if="{{userInfo.IsReferral}}">最高分佣
                                 <text style='cursor:pointer;padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}%</text>
                             </view>
