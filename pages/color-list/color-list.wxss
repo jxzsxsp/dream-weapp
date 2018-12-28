@@ -54,7 +54,8 @@
   font-size: 26rpx;
   color: #4A4A4A;
   letter-spacing: 0;
-  line-height: 40rpx;
+  height: 36rpx;
+  line-height: 36rpx;
   flex: 1;
 }
 
