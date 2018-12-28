@@ -245,13 +245,13 @@ page {
 }
 
 .tag-color {
-  width: 64rpx;
+  width: 66rpx;
   height: 44rpx;
   background: #FFFFFF;
 }
 
 .tag-name {
-  min-width: 64rpx;
+  min-width: 66rpx;
   height: 44rpx;
   line-height: 44rpx;
   font-family: PingFangSC-Regular;

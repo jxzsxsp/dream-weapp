@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "float-area": "/components/float-area/float-area"
+  }
+}

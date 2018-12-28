@@ -53,7 +53,7 @@
 					"id": 1,
 					"name": "compare-color",
 					"pathName": "pages/compare-color/compare-color",
-					"query": "localId=239&remoteId=123",
+					"query": "localId=443&remoteId=241",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "12345"

@@ -1,0 +1,3 @@
+<view class='float-container' bind:touchmove='move' style='left:{{x}}; top:{{y}};'>
+  <slot />
+</view>

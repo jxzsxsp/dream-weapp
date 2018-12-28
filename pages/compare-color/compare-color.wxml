@@ -299,3 +299,4 @@
       <text class="go-home-text">回首页</text>
     </view>
   </suspend-button> -->
+  <go-home />
