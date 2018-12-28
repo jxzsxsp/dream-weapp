@@ -2,6 +2,7 @@ var QRCodeJS = require("../../utils/1.js");
 
 Page({
 
+
   /**
    * 页面的初始数据
    */
@@ -90,16 +91,16 @@ Page({
   onShowPost: function (e) {
     var that = this;
     this.setData({
-      // isShow: true,
-      // isHidden:false,
+      isShow: true,
+      isHidden:false,
       showUrl: e.currentTarget.dataset.url
     })
     var url = this.data.showUrl;
     //console.log(url)
-    wx.previewImage({
-      current: url,
-      urls: [url]
-    })
+    // wx.previewImage({
+    //   current: url,
+    //   urls: [url]
+    // })
     
   },
   saveCode: function () {
@@ -131,6 +132,7 @@ Page({
         console.log(res.tempFilePath)
         tm.setData({
           canvasUrl: res.tempFilePath
+
         })
       },
       complete(res) {

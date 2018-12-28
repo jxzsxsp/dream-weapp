@@ -5,11 +5,10 @@
       <image src='{{canvasUrl}}' style='z-index:999999999999999999999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image>
       <text>长按保存您的分享码到手机相册</text>
     </view>
-
   </view>
   <view class='postlist_container'>
     <view class='post_title'>我的海报</view>
-    <text class='post_des'>点击海报查看大图，长按大图保存至手机相册</text>
+    <text class='post_des'>点击海报查看大图，截图保存至手机相册</text>
     <view class='postlist'>
       <view wx:for="{{postUrl}}" wx:for-index="index" wx:for-item="item" class='images_container'>
         <view style='background:url("{{item.url}}");background-size:100%' class='images'  bindtap='onShowPost' data-url="{{item.url}}"></view>
@@ -17,6 +16,8 @@
     </view>
   </view>
 </view>
-<!-- <view class='postshow_container'wx:if="{{isShow}}">
-  <image src="{{showUrl}}"></image>
-</view> -->
+<view class='postshow_container'wx:if="{{isShow}}">
+  <image src="{{showUrl}}" class='post_bigimage'></image>
+  <image src="{{canvasUrl}}" class='code_image'></image>
+</view>
+

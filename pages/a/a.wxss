@@ -74,8 +74,17 @@ line-height: 80rpx;
   height: 100%;
  
 }
-.postshow_container image{
+.postshow_container .post_bigimage{
   width: 750rpx;
-  height: 1300rpx;
-  z-index: 9999999999
+  height:1300rpx;
+  z-index: 9999999999;
+  position: relative
+}
+.postshow_container .code_image{
+  position: absolute;
+  top:1070rpx ;
+  left: 275rpx;
+  width:210rpx ;
+  height: 210rpx;
+   z-index: 9999999999;
 }
