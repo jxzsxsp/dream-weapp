@@ -61,22 +61,22 @@ Page({
     onShow: function() {
         this.GetShopCart()
     },
-    GetShopCart: function () {
+    GetShopCart: function() {
         var tm = this;
         var t = this,
             a = 0,
             r = t.data.choiceProducts;
-        app.getOpenId(function (o) {
+        app.getOpenId(function(o) {
             wx.request({
                 url: app.getUrl("getShoppingCartList"),
                 data: {
                     openId: o
                 },
-                success: function (t) {
+                success: function(t) {
                     if ("OK" == t.data.Status) {
-                            tm.setData({
-                                shopcartCount: t.data.Data.CartItemInfo.length
-                            })
+                        tm.setData({
+                            shopcartCount: t.data.Data.CartItemInfo.length
+                        })
                         if (t.data.Data.CartItemInfo.length == 0) return;
                         var e = {};
                         // t.data.Data.CartItemInfo.forEach(function (t, r, o) {
@@ -95,14 +95,14 @@ Page({
                         title: "提示",
                         content: t.data.Message,
                         showCancel: !1,
-                        success: function (t) {
+                        success: function(t) {
                             t.confirm && wx.navigateBack({
                                 delta: 1
                             });
                         }
                     });
                 },
-                complete: function () {
+                complete: function() {
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -256,7 +256,7 @@ Page({
         });
     },
     addGoodsToCart: function(event) {
-        
+
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -300,8 +300,8 @@ Page({
                                     wx.showModal({
                                     title: '',
                                     content: '成功加入购物车',
-                                    cancelText: "再逛逛",
-                                    confirmText: "去结算",
+                                    cancelText: "去结算",
+                                    confirmText: "再逛逛",
                                     success(res) {
                                         if (res.confirm) {
                                             wx.switchTab({
@@ -320,8 +320,7 @@ Page({
                                 });
                         }
                     },
-                    complete: function (res) {
-                    }
+                    complete: function(res) {}
                 })
             }
         }

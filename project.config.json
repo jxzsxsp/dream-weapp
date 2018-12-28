@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -92,7 +92,13 @@
 				{
 					"id": -1,
 					"name": "132",
-					"pathName": "pages/relationlogin/relationlogin"
+					"pathName": "pages/relationlogin/relationlogin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的佣金",
+					"pathName": "pages/Splittin/Splittin"
 				}
 			]
 		}

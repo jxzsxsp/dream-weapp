@@ -38,16 +38,19 @@
             <image src='http://img.qkmai.com/qkmbb/ytal/99.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </navigator>
     </view> -->
-    <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:750rpx;vertical-align:top;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image>
+    <image src='http://img.qkmai.com/qkmbb/ytal/wnzx.png' style='width:750rpx;vertical-align:top;margin-bottom:9rpx;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image>
     <view style='display:flex;flex-flow:row wrap;background-color:#fff;justify-content:space-around;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <view style='font-size:0;width:128rpx;height:128rpx;background-color:#fff;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;' wx:for='{{topLogoList}}'>
             <image style='width:115rpx;height:115rpx;margin-bottom:10rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
         </view>
     </view>
     <view style='width:750rpx;padding:0;margin-top:10rpx;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image style='width:750rpx;padding:0;margin:0;' mode='widthFix' lazy-load src='http://img.qkmai.com/qkmbb/ytal/remai.png'></image>
+        <image style='width:750rpx;padding:0;margin:0;margin-bottom:9rpx;' mode='widthFix' lazy-load src='http://img.qkmai.com/qkmbb/ytal/remai.png'></image>
     </view>
-    <view style='padding:0 0 27rpx 0'>
+
+
+
+    <view style='padding:0 0 27rpx 0;'>
         <view wx:key="{{item}}" wx:for='{{brandRush}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                 <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
