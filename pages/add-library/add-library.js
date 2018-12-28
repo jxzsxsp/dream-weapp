@@ -40,7 +40,7 @@ const lifecycle = {
         })
       } else {
         // 添加和移动单个或者多个颜色的时候直接使用 libraryId
-        this.props.libraryId = query.libraryId
+        this.props.originLibraryId = query.libraryId
       }
     }
   },
