@@ -10,7 +10,8 @@ Page({
         SplittinTotal: "",
         CanDrawSplittin: "",
         NoSettlementSplttin: "",
-        DrawSplittinTotal: ""
+        DrawSplittinTotal: "",
+        isDefault: true,
     },
     onLoad: function(t) {},
     onReady: function() {},
@@ -79,5 +80,12 @@ Page({
         wx.navigateTo({
             url: "../Draw/Draw"
         });
-    }
+    },
+    changeList: function (e) {
+        var tm = this;
+        if (e.currentTarget.dataset.flag === tm.data.isDefault) return;
+        tm.setData({
+            isDefault: !tm.data.isDefault
+        })
+    },
 });

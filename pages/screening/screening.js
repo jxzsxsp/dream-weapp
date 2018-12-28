@@ -75,7 +75,7 @@ Page({
                 success: function(t) {
                     if ("OK" == t.data.Status) {
                         tm.setData({
-                            shopcartCount: t.data.Data.CartItemInfo.length
+                            shopcartCount: t.data.Data.RecordCount
                         })
                         if (t.data.Data.CartItemInfo.length == 0) return;
                         var e = {};

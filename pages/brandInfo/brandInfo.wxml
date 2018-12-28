@@ -53,12 +53,11 @@
                     <view style='clear:both'></view>
                 </view>
             </view>
-            <view style='position:relative;width:750rpx;height:70rpx;line-height:70rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;'>
-                <button style='width:100%;height:70rpx;line-height:70rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#db3c40;border-radius:0;position:relative;left:35rpx;' data-brandId='{{item.brandId}}'
-                    plain='true' openType="share">分享专场</button>
+            <view style='position:relative;width:750rpx;height:70rpx;line-height:70rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;'>
+                <button style='width:30%;height:70rpx;line-height:70rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#db3c40;border-radius:0;position:relative;' data-brandId='{{item.brandId}}' plain='true' openType="share">分享专场</button>
 
-                    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;left:300rpx;top:15rpx;' mode='widthFix'></image>
-                    
+                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:180rpx;top:15rpx;' mode='widthFix'></image>
+
                 <!-- <button style='float:right;width:123rpx;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
                     plain='true' openType="share">分享专场</button>
                 <view style='clear:both'></view> -->
@@ -94,7 +93,7 @@
                     <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
                 </view>
                 <!-- <image wx:if='{{item.isSoldOut}}' src='http://img.qkmai.com/qkmbb/ytal/soldout.png' style="width:500rpx;height:350rpx;position:absolute;right:70rpx;top:50rpx;"></image> -->
-                
+
             </view>
             <view style='padding:12rpx 27rpx 18rpx 129rpx'>
                 <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
@@ -111,7 +110,7 @@
                 <view style='clear:both'></view>
 
                 <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:750rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
-                
+
                     <image src='http://img.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
                 </view>
             </view>
@@ -164,7 +163,22 @@
     <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:136rpx;' bindtap='fixedGoToCart'>
         <image src='http://img.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
         <text>购物车</text>
+
+
+
+        <view wx:if="{{shopcartCount != 0 && shopcartCount}}" style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
+            <!-- <text style='color:#db3c40;'></text> -->
+        </view>
     </view>
+
+    
+
+
+
+
+
+
+
     <view class="fixedBtn" bindtap='fixedGoToHome'>
         <image src='http://img.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
         <text>首页</text>

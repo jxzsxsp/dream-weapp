@@ -45,8 +45,85 @@
     </view>
 </view>
 
-<view style='text-align:center;padding-top:50rpx;padding-left:155rpx;position:relative;'>
+<!-- <view style='text-align:center;padding-top:50rpx;padding-left:155rpx;position:relative;'>
     <image style='width:439rpx;' mode='widthFix' src='http://img.qkmai.com/qkmbb/ytal/notice.png'></image>
     <button openType="contact" plain='true' style='border:none;width:100%;height:100%;color:transparent;position:absolute;left:0;top:0;'>联系客服</button>
-</view>
+</view> -->
 
+<!-- <view style='border:1px solid red;position:relative;'> -->
+<!-- <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:320rpx;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;background-color:red;'>
+    <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
+    <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
+</view>
+<view>
+
+</view> -->
+<!-- </view> -->
+
+
+
+
+<view style='width:100%;margin-bottom:10rpx;font-size:14px;display:flex;justify-content:space-around;align-items:center;position:fixed;left:0;top:320rpx;width:750rpx;display:flex;flex-flow:row nowrap;z-index:30;height:80rpx;line-height:80rpx;'>
+    <view style='' class='{{isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{true}}">已分享邀请</view>
+    <view style='' class='{{!isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{false}}">已购买发货</view>
+</view>
+<view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+<view wx:if='{{isDefault}}' style='padding-bottom:30rpx;'>
+    <view style='display:flex;flex-flow:row nowrap;justify-content:center;'>
+        <view class='pic-container' style='display:flex;flex-flow:row wrap;width:85%;justify-content:space-between;align-items:center;'>
+            <block wx:for='{{vipInfo.memberGroup}}'>
+                <view style='width:20%;padding-top:30rpx;' wx:for='{{item}}'>
+                    <image src='{{item.titlePic}}' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>
+<view wx:else style="padding-top:80rpx;">
+    <!-- <block wx:for='{{vipInfo.tradeList}}'> -->
+        <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}123</text>
+            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+        </view>
+        <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+    <!-- </block> -->
+
+    <!-- <block wx:for='{{vipInfo.tradeList}}'> -->
+        <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}123</text>
+            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+        </view>
+        <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+    <!-- </block> -->
+    <!-- <block wx:for='{{vipInfo.tradeList}}'> -->
+        <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}123</text>
+            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+        </view>
+        <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+    <!-- </block> -->
+    <!-- <block wx:for='{{vipInfo.tradeList}}'> -->
+        <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}123</text>
+            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+        </view>
+        <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+    <!-- </block> -->
+    <!-- <block wx:for='{{vipInfo.tradeList}}'> -->
+        <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}123</text>
+            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+        </view>
+        <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+    <!-- </block> -->
+    <!-- <block wx:for='{{vipInfo.tradeList}}'> -->
+        <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}123</text>
+            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+        </view>
+        <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+    <!-- </block> -->
+
+
+    
+</view>

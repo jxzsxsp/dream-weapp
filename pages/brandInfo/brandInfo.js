@@ -19,7 +19,8 @@ Page({
         showNoList: false,
         dataIndex: 0,
         dataSize: 10,
-        hasMore: true
+        hasMore: true,
+        shopcartCount: 0
     },
 
     /**
@@ -49,6 +50,7 @@ Page({
         this.countDown();
         //this.goodsListNew();
     },
+
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
     },
@@ -68,9 +70,60 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        this.GetShopCart();
     },
-
+    GetShopCart: function() {
+        var tm = this;
+        var t = this,
+            a = 0,
+            r = t.data.choiceProducts;
+        app.getOpenId(function(o) {
+            wx.request({
+                url: app.getUrl("getShoppingCartList"),
+                data: {
+                    openId: o
+                },
+                success: function(t) {
+                    if ("OK" == t.data.Status) {
+                        console.log(t.data)
+                        tm.setData({
+                            shopcartCount: t.data.Data.RecordCount
+                        })
+                        if (t.data.Data.CartItemInfo.length == 0) return;
+                        var e = {};
+                        // t.data.Data.CartItemInfo.forEach(function (t, r, o) {
+                        //     t.IsValid && (void 0 != e[t.ProductId] ? e[t.ProductId] = parseInt(e[t.ProductId]) + parseInt(t.Quantity) : e[t.ProductId] = t.Quantity,
+                        //         a += parseInt(t.Quantity));
+                        // }), r.forEach(function (t, a, r) {
+                        //     void 0 != e[t.ProductId] ? t.CartQuantity = parseInt(e[t.ProductId]) : t.CartQuantity = 0;
+                        // });
+                        if (t.data.TotalNum > 0) {
+                            wx.setTabBarBadge({
+                                index: 3,
+                                text: t.data.TotalNum.toString()
+                            })
+                        }
+                    } else "NOUser" == t.data.Message || wx.showModal({
+                        title: "提示",
+                        content: t.data.Message,
+                        showCancel: !1,
+                        success: function(t) {
+                            t.confirm && wx.navigateBack({
+                                delta: 1
+                            });
+                        }
+                    });
+                },
+                complete: function(f) {
+                    console.log(f)
+                    wx.hideLoading(), null != r && t.setData({
+                        choiceProducts: r,
+                        TotalNum: a
+                    });
+                }
+            });
+        });
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */
@@ -273,26 +326,27 @@ Page({
                                     //     }
                                     // }
                                     wx.hideLoading();
-                                    wx.showModal({
-                                        title: '',
-                                        content: '成功加入购物车',
-                                        cancelText: "去结算",
-                                        confirmText: "再逛逛",
-                                        success(res) {
-                                            if (res.confirm) {
+                                wx.showModal({
+                                    title: '',
+                                    content: '成功加入购物车',
+                                    cancelText: "去结算",
+                                    confirmText: "再逛逛",
+                                    success(res) {
+                                        if (res.confirm) {
 
-                                            } else if (res.cancel) {
-                                                wx.switchTab({
-                                                    url: '/pages/shopcart/shopcart'
-                                                })
+                                        } else if (res.cancel) {
+                                            wx.switchTab({
+                                                url: '/pages/shopcart/shopcart'
+                                            })
 
-                                            }
                                         }
-                                    })
+                                    }
+                                })
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
-                                    goodsSkuName: ''
+                                    goodsSkuName: '',
+                                    shopcartCount: tm.data.shopcartCount + 1
                                 });
                         }
                     }
@@ -372,7 +426,7 @@ Page({
                 tm.goodsListNew();
                 wx.stopPullDownRefresh();
             },
-            complete: function () {
+            complete: function() {
                 wx.stopPullDownRefresh();
             }
         });

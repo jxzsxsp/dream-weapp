@@ -135,3 +135,14 @@ page {
 .width {
     width: 200rpx!important;
 }
+
+.changeTabTitle.active {
+    color: #db3c40;
+}
+.text{
+    border-bottom:6rpx solid transparent;
+}
+.text.active {
+    color: #db3c40;
+    border-bottom:6rpx solid #db3c40;
+}
