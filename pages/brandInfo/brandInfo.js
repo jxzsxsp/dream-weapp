@@ -371,6 +371,9 @@ Page({
                 });
                 tm.goodsListNew();
                 wx.stopPullDownRefresh();
+            },
+            complete: function () {
+                wx.stopPullDownRefresh();
             }
         });
     },

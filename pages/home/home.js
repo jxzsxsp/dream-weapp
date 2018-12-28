@@ -602,6 +602,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
+        
         this.setData({
             brandRush: [],
             pageIndex: 1,
@@ -704,6 +705,9 @@ Page({
                         }
                     }
                 })
+            },
+            complete: function () {
+                wx.stopPullDownRefresh();
             }
         });
     },
@@ -807,7 +811,11 @@ Page({
                         hasMore: false
                     })
                 }
+            },
+            complete: function () {
+                wx.hideNavigationBarLoading();
             }
+            
         });
     },
     copy: function(e) {
