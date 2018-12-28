@@ -22,9 +22,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onLoad: function() {
-      console.log(this.data.x)
-    },
 
     move: function (e) {
       let x = e.touches[0].clientX - this.data.width / 2
@@ -41,6 +38,7 @@ Component({
       })
     }
   },
+
   ready: function () {
 
     // 获取屏幕宽高
@@ -69,7 +67,7 @@ Component({
 
       // 设置初始坐标
       if (!that.data.x && !that.data.y) {
-        console.log('haha', that.data.x, that.data.y)
+        console.log('input x:' + that.data.x, 'input y:' + that.data.y)
         that.setData({
           x: (that.data.windowWidth - that.data.width) + 'px',
           y: (that.data.windowHeight - that.data.height - 130) + 'px',
