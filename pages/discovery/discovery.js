@@ -8,7 +8,9 @@ Page({
         isDefault: true,
         DistributionInfo: "",
         isForever: true,
-        vipInfo: {}
+        vipInfo: {},
+        CategoryId:22,
+        dataList:{}
     },
 
     /**
@@ -34,8 +36,9 @@ Page({
             });
         });
         tm.getVipInfo();
+        tm.onShowProduct();
     },
-
+    
     GetCheckData: function() {
         this.setData({
             DistributionInfo: app.globalData.ReferralInfo
@@ -144,11 +147,68 @@ Page({
                 openId: tm.data.userInfo.OpenId
             },
             success: function(res) {
-                console.log(res);
+                //console.log(res);
                 tm.setData({
                     vipInfo: res.data
                 })
             }
         })
-    }
+    },
+  onShowProduct: function () {
+
+    console.log('onShowProduct')
+    var tm = this;
+    wx.request({
+      url: app.getUrl("GetProducts"),
+      data: {
+        // openId: r,
+        // keyword: tm.data.KeyWord,
+        // cId: tm.data.CategoryId,
+        // pageIndex: a.data.PageIndex,
+        // pageSize: a.data.PageSize,
+        // sortBy: a.data.SortBy,
+        // sortOrder: a.data.SortOrder
+        // openId:"o_rWK5ULNm46IJqvZOEFWIj_xWVc",
+        openId: tm.data.userInfo.OpenId,
+        cId:22
+        // pageIndex:1,
+        // pageSize:10,
+        // keyword: "",
+        // sortBy: "",
+        // sortOrder:"asc"
+      },
+      success: function (t) {
+        
+        tm.setData({
+          dataList: t.data.Data
+        })
+        console.log(t.data.Data)
+        console.log(tm.data.dataList)
+        // if ("OK" == t.data.Status) {
+        //   var r = t.data.Data;
+        //   if (e) {
+        //     var u = a.data.ProductList;
+        //     u.push.apply(u, r), a.setData({
+        //       ProductList: u
+        //     });
+        //   } else a.setData({
+        //     ProductList: r
+        //   });
+        // } else "NOUser" == t.data.Message || wx.showModal({
+        //   title: "提示",
+        //   content: t.data.Message,
+        //   showCancel: !1,
+        //   success: function (t) {
+        //     t.confirm && wx.navigateBack({
+        //       delta: 1
+        //     });
+        //   }
+        // });
+      },
+      complete: function () {
+        wx.hideNavigationBarLoading();
+      }
+    })
+
+  },
 })

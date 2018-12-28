@@ -9,4 +9,45 @@ page {
     color: #db3c40;
     border-bottom:6rpx solid #db3c40;
 }
-
+.package_container{
+  background: #cc2d2c;
+}
+.package_container .package{
+  width: 690rpx;
+  height: 240rpx;
+  background: #fcfcfc;
+  margin: 0 auto 10rpx auto;
+  display: flex;
+  flex-direction: row;
+}
+.package_container .pro_img{
+  width: 180rpx;
+  height: 180rpx;
+  padding: 10px;
+}
+.package_container .right_container{
+  width: 460rpx;
+}
+.package_container .package_tit{
+  font-size: 22rpx;
+  color: #757575;
+  line-height: 20rpx;
+}
+.package_container .bottom_container{
+  margin-top: 35rpx;
+}
+.package_container .prize{
+  color: #ff0000;
+}
+.package_container .buy_btn{
+  width: 110rpx;
+  height: 40rpx;
+  background: #ff5b00;
+  padding: 10rpx 20rpx;
+  color: #fff;
+  font-size: 22rpx;
+  float: right;
+  margin-right: 30rpx;
+  line-height: 40rpx;
+  text-align: center
+}
