@@ -702,6 +702,12 @@ var QR = (function () {
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
+
+        ctx.fillStyle = "#FFF";
+        ctx.fillRect(imgPos - imgPosFix, imgPos - imgPosFix, imgSize + imgPosFix + imgPosFix, imgSize + imgPosFix + imgPosFix);
+
+
+
         ctx.beginPath();
         ctx.moveTo(imgPos - imgPosFix, imgPos - imgPosFix);
 
@@ -781,7 +787,7 @@ var QR = (function () {
                 return;
             }
             var size = Math.min(cavW, cavH);
-            str = this.utf16to8(str);//增加中文显示
+            str = this.utf16to8(str);
             //console.log(str)
             var frame = this.getFrame(str),
                 ctx = wx.createCanvasContext(canvas),
