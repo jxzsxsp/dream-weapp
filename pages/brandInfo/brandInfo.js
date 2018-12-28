@@ -85,7 +85,7 @@ Page({
                 },
                 success: function(t) {
                     if ("OK" == t.data.Status) {
-                        console.log(t.data)
+                        // console.log(t.data)
                         tm.setData({
                             shopcartCount: t.data.Data.RecordCount
                         })
@@ -115,7 +115,7 @@ Page({
                     });
                 },
                 complete: function(f) {
-                    console.log(f)
+                    // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -208,9 +208,9 @@ Page({
         var url = tm.data.brandRushInfo[0].goodsImages[0];
         var brandId = tm.data.brandRushInfo[0].brandId;
         var brandSource = tm.data.brandRushInfo[0].brandSource;
-        //   console.log('/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource)
+        var lower = (tm.data.brandRushInfo[0].lowerDiscount / 10).toFixed(1)
         return {
-            title: '【品牌特卖】' + title,
+            title: '【品牌特卖】' + title + ' ' + lower + '折起',
             path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
             imageUrl: url
         }

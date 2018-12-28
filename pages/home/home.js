@@ -56,7 +56,6 @@ Page({
                             void 0 != e[t.ProductId] ? t.CartQuantity = parseInt(e[t.ProductId]) : t.CartQuantity = 0;
                         });
 
-                        console.log(t.data)
                         if (t.data.TotalNum > 0) {
                             wx.setTabBarBadge({
                                 index: 3,
@@ -79,7 +78,6 @@ Page({
                         choiceProducts: r,
                         TotalNum: a
                     });
-                    console.log(t.data)
                     if (t.data.TotalNum > 0) {
                         wx.setTabBarBadge({
                             index: 3,
@@ -94,7 +92,7 @@ Page({
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");
-            console.log(str[1])
+            // console.log(str[1])
             e.setRefferUserId(str[1]);
         }
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
@@ -207,13 +205,13 @@ Page({
             var brandSoruce = event.target.dataset['brandsource'];
             var brandName = event.target.dataset['maintitle'];
             var brandBg = event.target.dataset['bg'];
+            var lower = (event.target.dataset['lower'] / 10).toFixed(1);
             i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
             title = '【品牌特卖】' + brandName;
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-        console.log(i)
         return {
-            title: title,
+            title: title + ' ' + lower + '折起',
             path: i,
             imageUrl: brandBg
         }
