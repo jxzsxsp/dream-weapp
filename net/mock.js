@@ -324,12 +324,12 @@ let colorLibraryDetail = {
     "cmcColorFastnessLevel": "1-2",
     "cmcColorCompareResult": "1.2",
     "cmcChromaticAberrationLevel": "细微色差", // cmc标准色差描述
-    "colorCompareDetail": [
+    "colorCompareDetailList": [
       {
         "colorCompareType": "L", // L, A, B
         "colorCompareValue": "12.0",
-        "colorCompareLabelType": 2, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
-        "colorCompareLabel": "偏暗",
+        "colorCompareLabelType": 0, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝,0-无偏差
+        "colorCompareLabel": "无偏差",
         "maxValue": 1 //1-最大色差
       },
       {

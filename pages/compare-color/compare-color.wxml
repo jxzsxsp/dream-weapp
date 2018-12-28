@@ -119,7 +119,7 @@
 
 <view class='detail-container flex-column'>
   <view class='result-detail flex-column'>
-    <view class="result {{resultDetail.cmcChromaticAberrationLevel ? 'result-active' : ''}}" bind:tap='showStandardInfo'>
+    <view class="result flex {{resultDetail.cmcChromaticAberrationLevel ? 'result-active' : ''}}" bind:tap='showStandardInfo'>
       <block wx:if='{{resultDetail.cmcChromaticAberrationLevel}}'>
         <block wx:if='{{standardType.type === 1}}'>
           <text>牢度级别：{{resultDetail.cie1976ColorFastnessLevel}}</text>
@@ -136,7 +136,7 @@
           <text>暂无</text>
         </block>
       </block>
-      <image src='/assets/icon_info.png'></image>
+      <view class='iconfont icon-xingxi xingxi'></view>
     </view>
     <view class='standard flex' bind:tap='switchStandard'>
       <text>切换标准</text>
@@ -150,12 +150,21 @@
           <view class='lab-item flex-column'>
             <text>△{{item.colorCompareType}}</text>
             <text>{{item.colorCompareValue}}</text>
-            <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType[item.colorCompareLabelType]}};'>
-              <view class='tag-color' style='background: {{ColorCompareLabelType[item.colorCompareLabelType]}};'></view>
-              <view class='tag-name flex'>{{item.colorCompareLabel}}</view>
-            </view>
+
+            <block wx:if='{{item.colorCompareLabelType === 0}}'>
+              <view class='color-tag flex'>
+                <view class='tag-name'>{{item.colorCompareLabel}}</view>
+              </view>
+            </block>
+            <block wx:else>
+              <view class='color-tag flex' style='border: 1px solid {{ColorCompareLabelType[item.colorCompareLabelType]}};'>
+                <view class='tag-color' style='background: {{ColorCompareLabelType[item.colorCompareLabelType]}};'></view>
+                <view class='tag-name flex'>{{item.colorCompareLabel}}</view>
+              </view>
+            </block>
+
             <view wx:if='{{item.maxValue === 1}}' class='zuidasecha'>
-              <image src='/assets/zuidasecha.png'></image>
+              <view class='iconfont icon-zuidasecha secha'></view>
             </view>
           </view>
 
@@ -253,7 +262,9 @@
       <text class='info-subtitle'>牢度级别：{{resultDetail.cie1976ColorFastnessLevel ?
         resultDetail.cie1976ColorFastnessLevel : '暂无'}}</text>
       <text wx:if='{{resultDetail.cie1976ColorCompareResult}}' class='info-desc'>对应牢度级别的△E1964={{resultDetail.cie1976ColorCompareResult}}</text>
-      <view class='iconfont icon-guanbi guanbi' bind:tap='closeStandardInfo'></view>
+      <view class='guanbi-event flex' bind:tap='closeStandardInfo'>
+        <view class='iconfont icon-guanbi guanbi'></view>
+      </view>
     </view>
     <view class='standard-info'>
       <scroll-view scroll-y class='standard-scroll'>
@@ -270,7 +281,9 @@
       <text class='info-subtitle'>{{resultDetail.cmcChromaticAberrationLevel ? resultDetail.cmcChromaticAberrationLevel
         : '暂无'}}</text>
       <text wx:if='{{resultDetail.cmcColorCompareResult}}' class='info-desc'>对应△ECMC={{resultDetail.cmcColorCompareResult}}</text>
-      <view class='iconfont icon-guanbi guanbi' bind:tap='closeStandardInfo'></view>
+      <view class='guanbi-event flex' bind:tap='closeStandardInfo'>
+        <view class='iconfont icon-guanbi guanbi'></view>
+      </view>
     </view>
     <view class='standard-info'>
       <scroll-view scroll-y class='standard-scroll'>

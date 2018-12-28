@@ -141,7 +141,8 @@ page {
   font-size: 48rpx;
   color: #000000;
   letter-spacing: 0;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .desc {
@@ -163,9 +164,9 @@ page {
   right: 20rpx;
 }
 
-.result image {
-  width: 24rpx;
-  height: 24rpx;
+.xingxi {
+  color: #0156FE;
+  font-size: 24rpx;
   margin-left: 20rpx;
 }
 
@@ -212,9 +213,9 @@ page {
   right: 8rpx;
 }
 
-.zuidasecha image {
-  width: 60rpx;
-  height: 60rpx;
+.secha {
+  color: #73A2FA;
+  font-size: 60rpx;
 }
 
 .line {
@@ -239,6 +240,8 @@ page {
   border-radius: 23.25rpx;
   margin-top: 14rpx;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
 .tag-color {
@@ -248,8 +251,9 @@ page {
 }
 
 .tag-name {
-  width: 64rpx;
+  min-width: 64rpx;
   height: 44rpx;
+  line-height: 44rpx;
   font-family: PingFangSC-Regular;
   font-size: 24rpx;
   color: #000000;
@@ -398,10 +402,18 @@ page {
   position: relative;
 }
 
-.guanbi {
+.guanbi-event {
+  width: 96rpx;
+  height: 96rpx;
   position: absolute;
-  top: 32rpx;
-  right: 32rpx;
+  top: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.guanbi {
+  font-size: 38rpx;
 }
 
 .info-title {
