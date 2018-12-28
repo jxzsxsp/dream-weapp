@@ -25,8 +25,6 @@ Page({
     var tm = this;
     var str = "http://ytal.qkmai.com/wxsp?ReferralUserId=" + options.id
     var src = options.src
-    console.log('src')
-    console.log(src)
     var bg = 'https://m.360buyimg.com/babel/jfs/t1/26738/28/2202/95400/5c1a164fEeab2bf20/763811495f123f69.jpg'
 
     // QRCodeJS.qrApi.draw('https://m.360buyimg.com/babel/jfs/t1/26738/28/2202/95400/5c1a164fEeab2bf20/763811495f123f69.jpg', "logoQRCode", 375, 375);
