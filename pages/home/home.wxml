@@ -1,7 +1,7 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <import src="../common/templeates.wxml"></import>
 <view class="homecont" style="z-index:998;width:750rpx;overflow:hidden;">
-    <view style='height:70rpx;background-color: #fff;z-index:1000;margin-left:10rpx;'>
+    <view style='height:70rpx;background-color: #fff;z-index:1000;'>
         <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
             <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
                 <view class="{{selectedCate==item.cateName?'active':''}}">{{item.cateName}}({{item.brandCount}})</view>
@@ -10,18 +10,18 @@
     </view>
     <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" style="z-index:999;" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;">
     </template>
-    <view class='show-box' style='font-size:0;margin-left:10rpx;' wx:if='{{selectedCate=="全场直播"}}'>
+    <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://img.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;' mode='widthFix' lazy-load></image>
     </view>
 
 
 
-    <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;'
+    <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:50rpx;'
         wx:if='{{selectedCate=="全场直播"}}'>
         <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/pinpaibg.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image>
         <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;z-idnex:3;' wx:for='{{topLogoList}}'>
-            <view style='box-sizing:border-box;width:115rpx;height:115rpx;margin-bottom:10rpx;border-radius:50%;display:flex;justify-content:center;align-items:center;background-color:#fff;z-index:10;'>
-                <image style='box-sizing:border-box;width:115rpx;height:115rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
+            <view style='box-sizing:border-box;width:110rpx;height:110rpx;margin-bottom:10rpx;border-radius:50%;display:flex;justify-content:center;align-items:center;background-color:#fff;z-index:10;'>
+                <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
 
@@ -154,14 +154,14 @@
                             data-lower='{{item.lowerDiscount}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">
                             <view style='position:relative;left:25rpx;'>分享专场</view>
                         </button>
-                        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;left:35rpx;top:15rpx;' mode='widthFix'></image>
+                        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;left:35rpx;top:25rpx;' mode='widthFix'></image>
                         <!-- <view style='clear:both'></view> -->
                     </view>
 
                     <view style='position:relative;width:30%;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}'
                         data-brandsource='{{item.brandSource}}'>
                         <view style='position:relative;left:20rpx;'>去抢购</view>
-                        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/qianggoutb.png' style='width:40rpx;position:absolute;left:40rpx;top:15rpx;' mode='widthFix'></image>
+                        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/qianggoutb.png' style='width:40rpx;position:absolute;left:40rpx;top:25rpx;' mode='widthFix'></image>
                     </view>
                     <!-- <view style='clear:both'></view> -->
                 </view>
