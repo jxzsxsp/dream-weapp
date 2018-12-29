@@ -17,9 +17,12 @@ page {
 
 .color {
   height: 326rpx;
-  background: #F1F1F1;
   align-items: center;
   justify-content: flex-end;
+}
+
+.no-color {
+  border: 2rpx solid #FFFFFF;
 }
 
 .color-value {
@@ -71,7 +74,7 @@ page {
 
 .tips image {
   width: 310rpx;
-  height: 190rpx;
+  height: 200rpx;
 }
 
 .color-btn-text {

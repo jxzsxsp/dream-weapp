@@ -54,8 +54,8 @@
 
   </view>
 
-  <view class='color-container'>
-    <view class='color flex-column' style='background: {{colorDetail.targetColor.hexColor}}'>
+  <view class="color-container {{isCompare ? 'no-color' : ''}}">
+    <view class="color flex-column" style='background: {{colorDetail.targetColor.hexColor}}'>
     
       <block wx:if='{{isCompare}}'>
         <view class='tips'>
