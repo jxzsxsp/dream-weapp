@@ -18,7 +18,7 @@ Page({
         dataSize: 20,
         hasMore: true,
         selectedTag: "",
-        selectedImg: "http://m.360buyimg.com/mobilecms/s750x366_jfs/t1/6326/25/9872/92392/5c16504fE2790aba9/104958c5e6199f71.jpg!cr_1125x549_0_72!q70.jpg.dpg",
+        selectedImg: "",
 
         // 重写
         curNav: 1,
