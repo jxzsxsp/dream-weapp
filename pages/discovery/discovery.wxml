@@ -53,41 +53,47 @@
       <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
     </view>
     <view>
-      <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item"> 
-      <navigator url="/pages/productdetail/productdetail?id={{item.ProductId}}" hover-class="other-navigator-hover">
-        <view class='package'>
-          <image src="{{item.Pic}}" class='pro_img'></image>
-          <view class='right_container'>
-            <text class='package_tit'>{{item.ProductName}}</text>
-            <view class='bottom_container'>
-              <text class='prize'>￥{{item.SalePrice}}</text>
-              <text class='buy_btn'>购买得VIP</text>
+      <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item">
+        <navigator url="/pages/productdetail/productdetail?id={{item.ProductId}}" hover-class="other-navigator-hover">
+          <view class='package'>
+            <image src="{{item.Pic}}" class='pro_img'></image>
+            <view class='right_container'>
+              <text class='package_tit'>{{item.ProductName}}</text>
+              <view class='bottom_container'>
+                <text class='prize'>￥{{item.SalePrice}}</text>
+                <text class='buy_btn'>购买得VIP</text>
+              </view>
             </view>
           </view>
-        </view>
-      </navigator>
-      </block> 
-    </view>
-      <view>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
-        <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
-      </view>
-      </view>
-    </view>
-    <view wx:else style='margin-top:80rpx;background-color: #fff;'>
-      <view>
-        <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
-      </view>
-      <view>
-        <navigator url="/pages/productdetail/productdetail?id=148" open-type="navigate" hover-class="other-navigator-hover">
-          <image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' lazy-load style='width:100%'></image>
         </navigator>
-        <navigator url="/pages/productdetail/productdetail?id=147" open-type="navigate" hover-class="other-navigator-hover">
-          <image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' lazy-load style='width:100%'></image>
-        </navigator>
-      </view>
-      <view>
-        <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
-      </view>
+      </block>
     </view>
+    <view>
+      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
+      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
+      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </view>
+  </view>
+</view>
+<view wx:else style='background-color: #fff;'>
+  <!-- <view>
+<image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
+</view>
+<view>
+<navigator url="/pages/productdetail/productdetail?id=148" open-type="navigate" hover-class="other-navigator-hover">
+<image src='http://img.qkmai.com/qkmbb/goods_shuibei.png' mode='widthFix' lazy-load style='width:100%'></image>
+</navigator>
+<navigator url="/pages/productdetail/productdetail?id=147" open-type="navigate" hover-class="other-navigator-hover">
+<image src='http://img.qkmai.com/qkmbb/goods_beizi.png' mode='widthFix' lazy-load style='width:100%'></image>
+</navigator>
+</view>
+<view>
+<image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
+</view> -->
+  <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+  <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+  <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+  </button>
+  <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+</view>
