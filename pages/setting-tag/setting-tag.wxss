@@ -96,7 +96,7 @@
   height: 600rpx;
   position: absolute;
   left: 0rpx;
-  bottom: -441rpx;
+  bottom: -601rpx;
   background: #FFFFFF;
 }
 
