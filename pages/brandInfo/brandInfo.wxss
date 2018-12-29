@@ -1,9 +1,11 @@
 page {
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
+    background-color:red;
 }
 
 .page-section {
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
+    background-color:red;
 }
 
 .bg-white {
