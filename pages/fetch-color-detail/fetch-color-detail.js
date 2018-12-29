@@ -120,13 +120,20 @@ let privateMethod = {
       colorId: this.data.colorId,
       originType: constant.ColorSource.selfFetch
     }).then((res) => {
-      this.clearTimeout()
-      this.setTimeout()
+      // this.clearTimeout()
+      // this.setTimeout()
       this.setData({
+        // showHint: true,
         favorite: true,
-        showHint: true,
         favoriteId: res.data
       })
+      const colorDetail = this.data.colorDetail
+      const color = {
+        id: this.data.favoriteId,
+        hexColor: colorDetail.hexColor,
+        name: colorDetail.name,
+      }
+      $wx.navigateTo($wx.router.joinLibrary, {type: constant.ColorLibraryActionType.SaveColor, colorList: [color]})
     })
   },
   cancelFavorite: function () {

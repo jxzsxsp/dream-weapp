@@ -135,6 +135,7 @@
 }
 
 .favorite-container {
+  background: #FFFFFF;
   position: absolute;
   top: 32rpx;
   right: 32rpx;
