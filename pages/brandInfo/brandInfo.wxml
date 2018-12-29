@@ -54,9 +54,9 @@
                 </view>
             </view>
             <view style='position:relative;width:750rpx;height:70rpx;line-height:70rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;'>
-                <button style='width:30%;height:70rpx;line-height:70rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#db3c40;border-radius:0;position:relative;' data-brandId='{{item.brandId}}' data-lower='{{item.lowerDiscount}}' plain='true' openType="share">分享专场</button>
+                <button style='width:30%;height:70rpx;line-height:70rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#db3c40;border-radius:0;position:relative;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));padding-right:30rpx;text-align:right;' data-brandId='{{item.brandId}}' data-lower='{{item.lowerDiscount}}' plain='true' openType="share">分享专场</button>
 
-                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:180rpx;top:15rpx;' mode='widthFix'></image>
+                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:15rpx;' mode='widthFix'></image>
 
                 <!-- <button style='float:right;width:123rpx;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
                     plain='true' openType="share">分享专场</button>
