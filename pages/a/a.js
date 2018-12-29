@@ -35,9 +35,9 @@ Page({
 
     QRCodeJS.qrApi.draw(str, "logoQRCode", 275, 275, null, src);
 
-    setTimeout(function () {
-      tm.saveCode()
-    }, 600)
+    // setTimeout(function () {
+    //   tm.saveCode()
+    // }, 3000)
   },
 
   /**

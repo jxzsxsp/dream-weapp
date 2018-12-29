@@ -300,14 +300,14 @@ Page({
                                     wx.showModal({
                                     title: '',
                                     content: '成功加入购物车',
-                                    confirmText: "去结算",
-                                    cancelText: "再逛逛",
+                                    cancelText: "去结算",
+                                    confirmText: "再逛逛",
                                     success(res) {
-                                        if (res.confirm) {
+                                        if (res.cancel) {
                                             wx.switchTab({
                                                 url: '/pages/shopcart/shopcart'
                                             })
-                                        } else if (res.cancel) {
+                                        } else if (res.confirm) {
 
                                         }
                                     }

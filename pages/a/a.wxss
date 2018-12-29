@@ -30,6 +30,7 @@
   width: 100%;
 }
 .code_container text{
+  margin-top:20rpx;
   font-size: 28rpx;
   text-align: center
 }
