@@ -37,6 +37,9 @@ Page({
                 userInfo: t
             })
         });
+      wx.showLoading({
+        title: '加载中',
+      })
         tm.getTag();
     },
     timeFormat(param) { //小于10的格式化函数
@@ -180,6 +183,7 @@ Page({
 
             },
             success: function (jd) {
+                wx.hideLoading()
                 if (jd.data.length > 0) {
                     let tagList = [];
                     jd.data.forEach(o => {
@@ -193,6 +197,10 @@ Page({
                     // tm.getList();
                     tm.rewrite();
                 }
+
+            },
+            complete:function(){
+              wx.hideLoading()
             }
         })
     },
