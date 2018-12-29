@@ -135,7 +135,7 @@ const privateMethods = {
   addColorToLibrary: function () {
     return http.post(urls.addSingleColor, {
       libraryId: this.props.libraryId,
-      libraryColorIdList: this.props.libraryColorIdList[0],
+      libraryColorId: this.props.libraryColorIdList[0],
     })
   },
   moveColorToLibrary: function () {
