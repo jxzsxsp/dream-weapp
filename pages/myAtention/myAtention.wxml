@@ -1,0 +1,5 @@
+<!--pages/myAtention/myAtention.wxml-->
+<view class='container'>
+<image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/qidaitb.png' style='width:100rpx;height:100rpx'></image>
+<text>关注品牌即可订阅上架推送，功能即将上线</text>
+</view>
