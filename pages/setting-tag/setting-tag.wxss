@@ -93,7 +93,7 @@
 
 .think-list {
   width: 750rpx;
-  height: 440rpx;
+  height: 600rpx;
   position: absolute;
   left: 0rpx;
   bottom: -441rpx;
