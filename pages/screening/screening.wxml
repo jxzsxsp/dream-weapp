@@ -6,7 +6,7 @@
 
 
 <view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx;'>
-    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px red;border-radius:20rpx;'>
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
 
         <view style='padding-top:50rpx'>
             <view style='padding-left:129rpx;position:relative;'>
