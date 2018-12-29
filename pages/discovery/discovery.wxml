@@ -24,7 +24,7 @@
 
 
 
-            
+
             <view style='width:100%;margin-bottom:10rpx;font-size:14px;display:flex;justify-content:space-around;align-items:center;'>
                 <view style='line-height:2.6;' class='{{isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{true}}">已分享邀请</view>
                 <view style='line-height:2.6;' class='{{!isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{false}}">已购买发货</view>
@@ -78,7 +78,7 @@
     </view>
 </view>
 <view wx:else style='background-color: #fff;'>
-    <view>
+    <!-- <view>
         <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
     </view>
     <view>
@@ -91,5 +91,11 @@
     </view>
     <view>
         <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
-    </view>
+    </view> -->
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
+        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </button>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
 </view>
