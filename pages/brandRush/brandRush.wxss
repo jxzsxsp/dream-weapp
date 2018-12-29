@@ -198,3 +198,18 @@ page {
     box-sizing: border-box;
     background: #fff;
 }
+.emptyShow{
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.emptyShow image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.emptyShow text{
+  text-align: center
+}
