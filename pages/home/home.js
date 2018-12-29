@@ -205,7 +205,9 @@ Page({
             var brandSoruce = event.target.dataset['brandsource'];
             var brandName = event.target.dataset['maintitle'];
             var brandBg = event.target.dataset['bg'];
-            var lower = (event.target.dataset['lower'] / 10).toFixed(1);
+            var lower = (parseFloat(event.target.dataset['lower']) / 10).toFixed(1);
+            // console.log(event.target.dataset['lower'] / 10)
+            // console.log(lower)
             i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
             title = '【品牌特卖】' + brandName;
         }

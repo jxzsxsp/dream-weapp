@@ -145,7 +145,7 @@
                     <!-- <view style=''> -->
                     <view style='width:40%;text-align:center;height:90rpx;line-height:90rpx;background-color:#f7f7f7;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
                         距结束
-                        <text class='tui-conutdown-box'>{{item.countDownTime.day}}</text>天
+                        <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.day}}</text>天
                         <text class='tui-conutdown-box'>{{item.countDownTime.hou}}</text>时
                     </view>
                     <!-- </view> -->

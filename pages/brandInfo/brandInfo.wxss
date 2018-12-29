@@ -38,7 +38,7 @@ page {
     width: 30rpx;
     line-height: 26rpx;
     text-align: center;
-    background-color: #000;
+    background-color: #515151;
     color: #fff;
     margin: 0 5rpx;
     padding: 5rpx;

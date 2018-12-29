@@ -87,7 +87,7 @@
 
 
 
-                <button style='width:30%;height:90rpx;line-height:90rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));'
+                <button style='width:30%;height:90rpx;line-height:90rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-radius:0;border-bottom-right-radius:20rpx;'
                     data-brandId='{{item.brandId}}' data-lower='{{item.lowerDiscount}}' plain='true' openType="share">分享专场</button>
 
                 <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:25rpx;' mode='widthFix'></image>
