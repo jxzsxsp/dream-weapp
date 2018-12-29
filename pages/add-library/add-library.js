@@ -64,11 +64,16 @@ const viewAction = {
       } else if (this.props.type === constant.ColorLibraryActionType.Add_Single
         || this.props.type === constant.ColorLibraryActionType.Add_Multiple
         ) {
-        this.addColorToLibrary().then(() => {
+        this.addColorsToLibrary().then(() => {
           $wx.navigateBack(2, {}, '已加入到 ' + this.data.name)
         })
       } else if (this.props.type === constant.ColorLibraryActionType.SaveColor) {
-        this.addColorToLibrary().then(() => {
+        this.addColorToLibrary().then(res => {
+          // 非颜色库中的操作只会有一个 color
+          let colorDetail = Object.assign({}, this.data.colorList[0])
+          // 设置标签的时候，原本颜色详情中表示颜色的 id 变为 colorId，id 则变为加入到颜色库中的颜色的 id
+          colorDetail.colorId = colorDetail.id
+          colorDetail.id = res.data
           $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.SaveColorInNewLibrary, colorDetail: this.props.colorList[0]})
         })
       } else if (this.props.type === constant.ColorLibraryActionType.SaveLibrary) {
@@ -120,11 +125,17 @@ const privateMethods = {
       originLibraryId: this.props.originLibraryId
     })
   },
-  addColorToLibrary: function () {
+  addColorsToLibrary: function () {
     return http.post(urls.addColor, {
       // mock: true,
       libraryId: this.props.libraryId,
       libraryColorIdList: this.props.libraryColorIdList,
+    })
+  },
+  addColorToLibrary: function () {
+    return http.post(urls.addSingleColor, {
+      libraryId: this.props.libraryId,
+      libraryColorIdList: this.props.libraryColorIdList[0],
     })
   },
   moveColorToLibrary: function () {

@@ -13,7 +13,9 @@ const data = {
   labels: [],
   latestLabels: [],
   selected: [],
+  // 联想的 label
   thinkLabels: [],
+  // 当前输入的 label
   label: ''
 }
 
@@ -25,20 +27,20 @@ const lifecycle = {
       this.props.type = query.type
     }
 
-    // 存在 labelList 表示是编辑标签
-    let labels = []
     let colorDetail = query.colorDetail
-    if (!!query.colorDetail.labelList) {
-      labels = colorDetail.labelList.map(item => {
-        return item.name
-      })
-    }
-
     this.setData({
-      colorDetail,
-      labels
+      colorDetail
     })
 
+    // 获取当前颜色的标签
+    this.getLabelList({libraryColorId: query.colorDetail.id}).then(res => {
+      this.setData({
+        labels: res.labels
+      })
+      this.checkSelected()
+    })
+
+    // 获取当前颜色的最近标签
     this.getLabelList().then(res => {
       this.setData({
         latestLabels: res.labels
@@ -46,9 +48,6 @@ const lifecycle = {
       this.checkSelected()
     })
   },
-  onShow: function () {
-    this.checkSelected()
-  }
 }
 
 const viewAction = {
