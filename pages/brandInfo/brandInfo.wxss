@@ -86,6 +86,7 @@ page {
     line-height:50rpx;
     font-size:14px;
     padding:5rpx 20rpx;
+    background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));
 }
  .addCart.active {
      background:#ff0000;
@@ -93,7 +94,7 @@ page {
  }
 
  .videoLed {
-    animation: video 15s linear infinite;
+    animation: video 20s linear infinite;
  }
 
  @keyframes video {
@@ -101,16 +102,16 @@ page {
         transform: translate3d(0, 0, 0)
     }
     49.8% {
-        transform: translate3d(-750rpx, 0, 0)
+        transform: translate3d(-1000rpx, 0, 0)
     }
     49.9% {
-        transform: translate3d(-7500rpx, 0, 0)
+        transform: translate3d(-10000rpx, 0, 0)
     }
     50% {
-       transform: translate3d(7500rpx, 0, 0)
+       transform: translate3d(10000rpx, 0, 0)
     }
     50.1% {
-        transform: translate3d(750rpx, 0, 0)
+        transform: translate3d(1000rpx, 0, 0)
     }
     100% {
         transform: translate3d(0, 0, 0)

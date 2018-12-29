@@ -73,7 +73,7 @@
 
 
     <view style='padding:0 0 27rpx 0;width:730rpx;margin-left:10rpx;'>
-        <view wx:key="{{item}}" wx:for='{{brandRush}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx'>
+        <view wx:key="{{item}}" wx:for='{{brandRush}}' style='padding-top:15rpx;margin-bottom:10rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                 <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
                     <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix' lazy-load></image>
