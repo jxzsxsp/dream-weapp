@@ -300,8 +300,8 @@ Page({
                                     wx.showModal({
                                     title: '',
                                     content: '成功加入购物车',
-                                    cancelText: "去结算",
-                                    confirmText: "再逛逛",
+                                    confirmText: "去结算",
+                                    cancelText: "再逛逛",
                                     success(res) {
                                         if (res.confirm) {
                                             wx.switchTab({
