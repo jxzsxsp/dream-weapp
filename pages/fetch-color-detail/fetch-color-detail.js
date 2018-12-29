@@ -30,7 +30,7 @@ let lifeCycle = {
 
     http.get(urls.pantone.fetchColorDetail, {colorId: parseInt(query.colorId)})
       .then(colorDetail => {
-        colorDetail.lab = utils.fixLab(colorDetail.lab)
+        colorDetail.lab = utils.fixLab(colorDetail.lab, true)
         this.setData({
           colorDetail,
         })

@@ -25,15 +25,16 @@ export function justifyColor (colorList) {
   }
 }
 
-export function fixLab (lab) {
+
+export function fixLab (lab, isString = false) {
   const labArr = lab.split(',')
   const fixedArr = labArr.map(item => parseFloat(item).toFixed(2))
-  return fixedArr
+  return isString ? fixedArr.join(',') : fixedArr
 }
 
-export function fixRgb(rgb) {
+export function fixRgb(rgb, isString = false) {
   const rgbArr = rgb.split(',')
   const fixedArr = rgbArr.map(item => parseInt(item))
-  return fixedArr
+  return isString ? fixedArr.join(',') : fixedArr
 }
 

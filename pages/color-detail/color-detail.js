@@ -23,7 +23,7 @@ let lifecycle = {
       .then(res => {
         $wx.setNavigationBarTitle({title: res.categoryName})
         utils.justifyColor(res)
-        res.lab = utils.fixLab(res.lab)
+        res.lab = utils.fixLab(res.lab, true)
         this.setData({
           colorRecipe: res.colorRecipe,
           colorDetail: res
