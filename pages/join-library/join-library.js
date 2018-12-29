@@ -4,14 +4,16 @@ import constant from '../../constant/index'
 
 const props = {
   loadingState: http.defaultLoadingState(),
+  // 要操作的颜色列表的 id
+  libraryColorIdList: [],
 }
 
 const data = {
-  ...constant.ColorLibraryActionType,
+  // 颜色库列表
   colorLibraryList: [],
+  // 默认颜色库
   defaultColorLibrary: {},
-  libraryId: 0,
-  libraryColorIdList: [],
+  // 颜色列表
   colorList: [],
 }
 
@@ -29,70 +31,46 @@ const lifecycle = {
       })
     }
 
-    let libraryColorIdList = []
-    if(query.colorList && query.colorList.length > 0) {
-      let colorList = query.colorList
-      for(let i = 0; i < colorList.length; i++) {
-        libraryColorIdList.push(colorList[i].id)
-      }
-    }
-
-    this.setData({
-      ...query,
-      libraryColorIdList: libraryColorIdList
+    this.props.type = query.type
+    this.props.libraryColorIdList = query.colorList.map(item => {
+      return item.id
     })
 
-    this.getColorLibraryList().then(res => {
-      console.log(res)
-
-      this.setData({
-        colorLibraryList: res
-      })
-
-      for(let i = 0; i < res.length; i++) {
-        if (res[i].type === 0) {
-          this.setData({
-            defaultColorLibrary: res[i]
-          })
-          break
-        }
-      }
-
+    this.setData({
+      colorList: query.colorList,
     })
   },
   onShow: function (query) {
     this.props.loadingState = http.defaultLoadingState();
     this.getColorLibraryList().then(res => {
-      console.log(res)
-
       this.setData({
         colorLibraryList: res
       })
+      res.forEach((item) => {
+        // type 为0 表示默认颜色库
+        if (item.type === 0) {
+          this.setData({
+            defaultColorLibrary: item
+          }) 
+        }
+      });
     })
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+
   onPullDownRefresh: function () {
     this.props.loadingState = http.defaultLoadingState();
     this.getColorLibraryList().then(res => {
-      console.log(res)
-
       this.setData({
         colorLibraryList: res
       })
     })
     $wx.stopPullDownRefresh();
   },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+
   onReachBottom: function () {
     let colorLibraryList = this.data.colorLibraryList
 
     this.getColorLibraryList().then(res => {
-      console.log(res)
-
       this.setData({
         colorLibraryList: colorLibraryList.concat(res)
       })
@@ -106,30 +84,28 @@ const lifecycle = {
 const viewAction = {
   addColorLibrary: function () {
     $wx.navigateTo($wx.router.addLibrary, { 
-      type: this.data.type,
-      libraryId: this.data.libraryId,
-      libraryColorIdList: this.data.libraryColorIdList,
+      type: this.props.type,
+      colorList: this.data.colorList,
+      libraryColorIdList: this.props.libraryColorIdList,
     })
   },
   joinColorLibrary: function(d, v) {
-    console.log(d, v)
-    this.setData({
-      libraryId: d.detail.id
-    })
-    if (this.data.type === constant.ColorLibraryActionType.Move_Single 
-      || this.data.type === constant.ColorLibraryActionType.Move_Multiple) {
-      this.moveColorToLibrary().then(res => {
+    let libraryDetail = d.detail
+    if (this.props.type === constant.ColorLibraryActionType.Move_Single 
+      || this.props.type === constant.ColorLibraryActionType.Move_Multiple) {
+      this.moveColorToLibrary(d.detail.id).then(res => {
         $wx.navigateBack(1, {
-          type: this.data.type,
-          libraryDetail: d.detail
+          type: this.props.type,
+          libraryDetail,
         })
       }, '已移动到 ' + d.detail.name)
-    } else {
-      this.addColorToLibrary().then(res => {
-        $wx.navigateBack(1, {
-          type: this.data.type,
-          libraryDetail: d.detail
-        }, '已加入到 ' + d.detail.name)
+    } else if (this.props.type === constant.ColorLibraryActionType.Add_Single || this.props.type === constant.ColorLibraryActionType.Add_Multiple) {
+      this.addColorToLibrary(libraryDetail.id).then(() => { 
+        $wx.navigateBack(1, {}, '已加入到' + libraryDetail.name)
+      })
+    } else if (this.props.type === constant.ColorLibraryActionType.SaveColor) {
+      this.addColorToLibrary(libraryDetail.id).then(() => {
+        $wx.navigateTo($wx.router.settingTag, {colorDetail: this.data.colorList[0], type: this.props.type})
       })
     }
   },
@@ -137,22 +113,18 @@ const viewAction = {
 
 const privateMethods = {
   getColorLibraryList: function () {
-    return http.getList(urls.colorLibraryList, this.props.loadingState, {
-      // mock: true,
-    })
+    return http.getList(urls.colorLibraryList, this.props.loadingState)
   },
-  addColorToLibrary: function () {
+  addColorToLibrary: function (libraryId) {
     return http.post(urls.addColor, {
-      // mock: true,
-      libraryId: this.data.libraryId,
-      libraryColorIdList: this.data.libraryColorIdList,
+      libraryId,
+      libraryColorIdList: this.props.libraryColorIdList,
     })
   },
-  moveColorToLibrary: function () {
+  moveColorToLibrary: function (libraryId) {
     return http.post(urls.moveColor, {
-      // mock: true,
-      libraryId: this.data.libraryId,
-      libraryColorIdList: this.data.libraryColorIdList,
+      libraryId,
+      libraryColorIdList: this.props.libraryColorIdList,
     })
   },
 }

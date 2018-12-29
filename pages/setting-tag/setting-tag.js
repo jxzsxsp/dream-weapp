@@ -1,7 +1,9 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
+  type: -1
 }
 
 const data = {
@@ -18,15 +20,23 @@ const data = {
 const lifecycle = {
   onLoad: function(query) {
     console.log(query)
+    // 存在 type 表示是收藏后添加标签
+    if (!!query.type) {
+      this.props.type = query.type
+    }
+
+    // 存在 labelList 表示是编辑标签
     let labels = []
     let colorDetail = query.colorDetail
-    for (let i = 0; i < colorDetail.labelList.length; i++) {
-      labels.push(colorDetail.labelList[i].name)
+    if (!!query.colorDetail.labelList) {
+      labels = colorDetail.labelList.map(item => {
+        return item.name
+      })
     }
-    
+
     this.setData({
-      ...query,
-      labels: labels
+      colorDetail,
+      labels
     })
 
     this.getLabelList().then(res => {
@@ -45,16 +55,17 @@ const viewAction = {
   complete: function (d, v) {
     console.log(d, v)
     this.setLabel().then(res => {
-      let labels = this.data.labels
-      let labelList = []
-      for (let i = 0; i < labels.length; i++) {
-        labelList.push({ name: labels[i] })
+      switch (this.props.type) {
+        case constant.ColorLibraryActionType.SaveColor:
+          $wx.navigateBack(2, {}, '标签设置成功')
+          break
+        case constant.ColorLibraryActionType.SaveColorInNewLibrary:
+          $wx.navigateBack(3, {}, '标签设置成功')
+          break
+        default:
+          $wx.navigateBack()
+          break
       }
-
-      $wx.navigateBack(1, {
-        type: this.data.type,
-        labelList: labelList
-      })
     })
   },
   inputEvent: function (d, v) {

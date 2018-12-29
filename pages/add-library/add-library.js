@@ -6,14 +6,18 @@ import utils from '../../utils/index'
 const props = {
   // 编辑颜色库的类型
   type: null,
+  // 要添加到新建颜色库中的颜色id列表
   libraryColorIdList: [],
+  // 要添加到新建颜色库中的颜色列表
+  colorList: [],
+  // 原始的颜色库的 id，用于添加和移动颜色
   originLibraryId: -1,
+  // 当前颜色操作的颜色库
   libraryId: -1,
 }
 
 const data = {
   canSave: false,
-  libraryId: '',
   name: '',
   desc: '',
 }
@@ -22,6 +26,7 @@ const lifecycle = {
   onLoad: function (query) {
     if (!utils.isEmptyObject(query)) {
       this.props.type = query.type
+      this.props.colorList = query.colorList || []
       this.props.libraryColorIdList = query.libraryColorIdList || []
       if (query.type === constant.ColorLibraryActionType.SaveLibrary) {
         this.props.originLibraryId = query.libraryDetail.id
@@ -38,9 +43,6 @@ const lifecycle = {
           name: query.libraryDetail.name,
           desc: query.libraryDetail.description,
         })
-      } else {
-        // 添加和移动单个或者多个颜色的时候直接使用 libraryId
-        this.props.originLibraryId = query.libraryId
       }
     }
   },
@@ -61,10 +63,13 @@ const viewAction = {
         }, {}, '已移动到 ' + this.data.name)
       } else if (this.props.type === constant.ColorLibraryActionType.Add_Single
         || this.props.type === constant.ColorLibraryActionType.Add_Multiple
-        || this.props.type === constant.ColorLibraryActionType.SaveColor
         ) {
         this.addColorToLibrary().then(() => {
           $wx.navigateBack(2, {}, '已加入到 ' + this.data.name)
+        })
+      } else if (this.props.type === constant.ColorLibraryActionType.SaveColor) {
+        this.addColorToLibrary().then(() => {
+          $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.SaveColorInNewLibrary, colorDetail: this.props.colorList[0]})
         })
       } else if (this.props.type === constant.ColorLibraryActionType.SaveLibrary) {
         this.addLibraryColorToLibrary().then(() => {

@@ -22,7 +22,10 @@ const ColorLibraryActionType = {
   Add_Multiple: 4,
   Tag: 5,
   SaveLibrary: 6,
-  SaveColor: 7
+  SaveColor: 7, // 潘通色或自取色列表收藏颜色
+  SaveColorInNewLibrary: 8, // 潘通色或自取色列表收藏颜色后，并且添加到新的色库中
+
+
 }
 
 const ColorSense = {
