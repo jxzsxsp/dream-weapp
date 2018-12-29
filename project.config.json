@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -98,7 +98,13 @@
 				{
 					"id": -1,
 					"name": "我的佣金",
-					"pathName": "pages/Splittin/Splittin"
+					"pathName": "pages/Splittin/Splittin",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/brandInfo/brandInfo"
 				}
 			]
 		}

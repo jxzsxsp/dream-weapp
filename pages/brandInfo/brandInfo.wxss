@@ -79,12 +79,14 @@ page {
     height:50rpx;
     width:162rpx;
     background-color: #ebebeb;
-    color:#515151;
+    /* color:#515151; */
+    color:#fff;
     border-radius:30rpx;
     text-align:center;
     float:right;
     line-height:50rpx;
-    font-size:14px;
+    /* font-size:14px; */
+    font-size: 15px;
     padding:5rpx 20rpx;
     background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));
 }
