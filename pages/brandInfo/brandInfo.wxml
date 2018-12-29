@@ -56,7 +56,7 @@
 
                 </view>
             </view>
-            <view style='padding-left:125rpx;padding-right:15rpx'>
+            <!-- <view style='padding-left:125rpx;padding-right:15rpx'>
                 <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;overflow:hidden;'>
                     <text>距活动结束</text>
                     <text style='float:right'>结束时间</text>
@@ -73,12 +73,42 @@
                     </view>
                     <view style='clear:both'></view>
                 </view>
+            </view> -->
+
+
+
+
+
+
+
+
+
+            <view style='padding-left:125rpx;padding-right:15rpx'>
+                <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;overflow:hidden;'>
+                    <text style=''>结束时间{{item.endTimeInfo}}</text>
+                </view>
             </view>
-            <view style='position:relative;width:750rpx;height:70rpx;line-height:70rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;background-color:#f7f7f7;'>
-                <button style='width:30%;height:70rpx;line-height:70rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;border-radius:0;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));'
+
+
+
+
+            <view style='position:relative;width:750rpx;height:90rpx;line-height:90rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;background-color:#f7f7f7;'>
+
+
+                <view style='width:70%;text-align:center;height:90rpx;line-height:90rpx;background-color:#f7f7f7;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
+                距结束
+                    <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.day}}</text>天
+                    <text class='tui-conutdown-box'>{{item.countDownTime.hou}}</text>时
+                    <text class='tui-conutdown-box'>{{item.countDownTime.min}}</text>分
+                    <text class='tui-conutdown-box'>{{item.countDownTime.sec}}</text>秒
+                </view>
+
+
+
+                <button style='width:30%;height:90rpx;line-height:90rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;border-radius:0;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));'
                     data-brandId='{{item.brandId}}' data-lower='{{item.lowerDiscount}}' plain='true' openType="share">分享专场</button>
 
-                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:15rpx;' mode='widthFix'></image>
+                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:25rpx;' mode='widthFix'></image>
 
                 <!-- <button style='float:right;width:123rpx;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
                     plain='true' openType="share">分享专场</button>
