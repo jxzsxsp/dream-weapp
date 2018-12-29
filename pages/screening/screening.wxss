@@ -84,8 +84,10 @@ page {
 .addCart {
     height:50rpx;
     width:162rpx;
-    background-color: #ebebeb;
-    color:#515151;
+    /* background-color: #ebebeb; */
+    background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));
+    color:#fff;
+    /* color:#515151; */
     border-radius:30rpx;
     text-align:center;
     float:right;

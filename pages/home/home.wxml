@@ -120,7 +120,7 @@
 
 
 
-                <view style='padding-left:119rpx;padding-right:10rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                     <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;'>
                         <view style='height:25rpx;font-size:22rpx;color:#515151'>
                             {{item.endTimeInfo}}
@@ -191,7 +191,7 @@
     </view>
     <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>
-    <navigator url='/pages/screening/screening?picUrl=http://img.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;' wx:if="{{userInfo.IsReferral}}">
+    <navigator url='/pages/screening/screening?picUrl=http://img.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:9999;' wx:if="{{userInfo.IsReferral}}">
         <image src='http://img.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;' mode='widthFix' lazy-load></image>
     </navigator>
 </view>

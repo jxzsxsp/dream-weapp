@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;'>
-    <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;'>
+    <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
         <view wx:for='{{brandRushInfo}}' style='padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;'>
             <view style='overflow:hidden;'>
                 <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
@@ -13,7 +13,6 @@
                     <view>
                         <view style='overflow:hidden;'>
                             <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{item.subTitle}}</view>
-
                             <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.lowerDiscount / 10),1)}}折起</view>
 
                             <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if="{{userInfo.IsReferral}}">最高分佣
@@ -34,7 +33,7 @@
                 </view>
                 <view style='overflow:hidden;'>
                     <view class='videoLed'>
-                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">{{item.brandNotice}}商品在活动结束后按付款顺序发货，谢谢理解！</text>
+                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!</text>
                     </view>
 
                 </view>
@@ -75,11 +74,11 @@
 
 
 
-            <view style='position:relative;width:730rpx;height:90rpx;line-height:90rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;background-color:#f7f7f7;margin-left:10rpx;'>
+            <view style='position:relative;width:730rpx;height:90rpx;line-height:90rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;background-color:#eee;border-botton-left-radius:20rpx;border-botton-right-radius:20rpx;'>
 
 
-                <view style='width:70%;text-align:center;height:90rpx;line-height:90rpx;background-color:#f7f7f7;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
-                距结束
+                <view style='width:70%;text-align:center;height:90rpx;line-height:90rpx;background-color:#eee;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
+                    距结束
                     <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.day}}</text>天
                     <text class='tui-conutdown-box'>{{item.countDownTime.hou}}</text>时
                     <text class='tui-conutdown-box'>{{item.countDownTime.min}}</text>分
@@ -88,7 +87,7 @@
 
 
 
-                <button style='width:30%;height:90rpx;line-height:90rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;border-radius:0;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));'
+                <button style='width:30%;height:90rpx;line-height:90rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));'
                     data-brandId='{{item.brandId}}' data-lower='{{item.lowerDiscount}}' plain='true' openType="share">分享专场</button>
 
                 <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:25rpx;' mode='widthFix'></image>
@@ -129,7 +128,7 @@
         <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
     </view>
 
-    <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;'>
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;'>
         <view style='padding-right:27rpx;'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                 <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
@@ -140,9 +139,9 @@
                 <view style='font-size:30rpx;'>{{mainTitle}}</view>
                 <view>
                     <view>
-                        <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{brandRushInfo[0].subTitle}}</view>
+                        <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{brandRushInfo[0].subTitle}}</view>
 
-                        <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:10rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view>
+                        <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view>
                     </view>
                 </view>
             </view>
@@ -172,7 +171,7 @@
                     <image src='http://img.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
                 </view>
             </view>
-            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;padding-right:27rpx;'>
+            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;width:590rpx;'>
                 <view style='padding:0 16rpx'>
                     <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
                 </view>
