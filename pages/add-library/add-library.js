@@ -70,11 +70,11 @@ const viewAction = {
       } else if (this.props.type === constant.ColorLibraryActionType.SaveColor) {
         this.addColorToLibrary().then(res => {
           // 非颜色库中的操作只会有一个 color
-          let colorDetail = Object.assign({}, this.data.colorList[0])
+          let colorDetail = Object.assign({}, this.props.colorList[0])
           // 设置标签的时候，原本颜色详情中表示颜色的 id 变为 colorId，id 则变为加入到颜色库中的颜色的 id
           colorDetail.colorId = colorDetail.id
           colorDetail.id = res.data
-          $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.SaveColorInNewLibrary, colorDetail: this.props.colorList[0]})
+          $wx.navigateTo($wx.router.settingTag, {type: constant.ColorLibraryActionType.SaveColorInNewLibrary, colorDetail})
         })
       } else if (this.props.type === constant.ColorLibraryActionType.SaveLibrary) {
         this.addLibraryColorToLibrary().then(() => {
