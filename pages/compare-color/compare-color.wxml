@@ -1,6 +1,12 @@
 <view class='compare-container flex'>
   <view class='color-container'>
-    <view class='color' style='background: {{colorDetail.sourceColor.hexColor}}'></view>
+    <view class='color flex-column' style='background: {{colorDetail.sourceColor.hexColor}}'>
+
+      <view class='color-btn flex'>
+        <text class="color-btn-text {{colorDetail.sourceColor.rgbArr && colorDetail.sourceColor.rgbArr.length === 3 ? '' : 'color-btn-active'}}">样本色</text>
+      </view>
+
+    </view>
 
     <block wx:if='{{showLab}}'>
       <view class='color-value flex'>
@@ -46,13 +52,28 @@
       </view>
     </block>
 
-    <view class='color-btn flex'>
-      <text class="color-btn-text {{colorDetail.sourceColor.rgbArr && colorDetail.sourceColor.rgbArr.length === 3 ? '' : 'color-btn-active'}}">样本色</text>
-    </view>
   </view>
 
-  <view class='color-container'>
-    <view class='color' style='background: {{colorDetail.targetColor.hexColor}}'></view>
+  <view class="color-container {{isCompare ? 'no-color' : ''}}">
+    <view class="color flex-column" style='background: {{colorDetail.targetColor.hexColor}}'>
+    
+      <block wx:if='{{isCompare}}'>
+        <view class='tips'>
+          <image src='/assets/img_tips.png'></image>
+        </view>
+
+        <button class="color-btn go-app flex" open-type="launchApp" app-parameter="{\" router\":1,\"data\":{{sourceId}}}"
+          bind:error="launchAppError">
+          <text class="color-btn-text color-btn-active">去 App</text>
+        </button>
+      </block>
+      <block wx:else>
+        <view class='color-btn flex'>
+          <text class='color-btn-text color-btn-active'>对比色</text>
+        </view>
+      </block>
+
+    </view>
 
     <block wx:if='{{showLab}}'>
       <view class='color-value flex'>
@@ -98,17 +119,6 @@
       </view>
     </block>
 
-    <block wx:if='{{isCompare}}'>
-      <button class="color-btn go-app flex" open-type="launchApp" app-parameter="{\" router\":1,\"data\":{{sourceId}}}"
-        bind:error="launchAppError">
-        <text class="color-btn-text color-btn-active">去 App</text>
-      </button>
-    </block>
-    <block wx:else>
-      <view class='color-btn flex'>
-        <text class='color-btn-text color-btn-active'>对比色</text>
-      </view>
-    </block>
   </view>
 </view>
 
