@@ -4,7 +4,7 @@
         <view wx:for='{{brandRushInfo}}' style='margin-bottom:10rpx;padding-right:27rpx;background:#fff;overflow:hidden;'>
             <view style='overflow:hidden;'>
                 <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
-                    <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5'>
+                    <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
                         <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix'></image>
                     </view>
                 </view>
@@ -74,7 +74,7 @@
     <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx;'>
         <view>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
-                <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5'>
+                <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
                     <image src='{{brandLogo}}' style='width:98%' mode='widthFix'></image>
                 </view>
             </view>
