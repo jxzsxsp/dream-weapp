@@ -85,16 +85,16 @@ page{
 .usecd {
     display: flex;
     background: #fff;
-    margin: 24rpx;
-    padding: 24rpx;
+    margin:24rpx 10rpx;
+    padding: 24rpx 0;
     overflow: hidden;
     border-radius:15rpx;  
 }
 .usecdsecond {
     display: flex;
     background: #fff;
-    margin: 24rpx;
-    padding: 24rpx;
+    margin:24rpx 10rpx;
+    padding: 24rpx 0;
     overflow: hidden;
     border-radius:15rpx;  
 }
@@ -227,7 +227,7 @@ page{
 
 .goout {
 	/* width: 720rpx; */
-  margin: 24rpx;
+  margin:24rpx 10rpx;
 	height: 88rpx;
     line-height: 88rpx;
 	background-color: #e0e0e0;
@@ -266,7 +266,7 @@ page{
 }
 .row-list{
   background: #fff;
-  margin: 24rpx;
+  margin:24rpx 10rpx;
   overflow: hidden;
   border-radius:15rpx;  
 }
