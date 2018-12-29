@@ -18,6 +18,8 @@ page {
 .color {
   height: 326rpx;
   background: #F1F1F1;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .color-value {
@@ -56,8 +58,7 @@ page {
   background: #FFFFFF;
   box-shadow: 0 2rpx 18rpx 0 rgba(0,0,0,0.20);
   border-radius: 21.5rpx;
-  margin: auto;
-  margin-top: -210rpx;
+  margin-bottom: -22rpx;
   justify-content: center;
   align-items: center;
 }
@@ -66,6 +67,11 @@ page {
   padding: 0;
   border: none;
   box-sizing: inherit;
+}
+
+.tips image {
+  width: 310rpx;
+  height: 190rpx;
 }
 
 .color-btn-text {
