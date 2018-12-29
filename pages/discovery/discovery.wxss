@@ -11,6 +11,7 @@ page {
 }
 .package_container{
   background: #cc2d2c;
+  margin-top:80rpx;
 }
 .package_container .package{
   width: 690rpx;
@@ -19,6 +20,8 @@ page {
   margin: 0 auto 10rpx auto;
   display: flex;
   flex-direction: row;
+  /* justify-content:space-around; */
+  align-items:center;
 }
 .package_container .pro_img{
   width: 180rpx;
@@ -29,9 +32,18 @@ page {
   width: 460rpx;
 }
 .package_container .package_tit{
-  font-size: 22rpx;
+  font-size: 14px;
   color: #757575;
-  line-height: 20rpx;
+  /* line-height: 20rpx; */
+  overflow:hidden; 
+
+text-overflow:ellipsis;
+
+display:-webkit-box; 
+
+-webkit-box-orient:vertical;
+
+-webkit-line-clamp:2; 
 }
 .package_container .bottom_container{
   margin-top: 35rpx;

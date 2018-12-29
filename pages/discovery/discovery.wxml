@@ -1,82 +1,82 @@
 <view wx:if="{{DistributionInfo.ReferralGradeName != '永久会员'}}" style='height:100%;'>
-  <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:0;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;'>
-    <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
-    <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
-  </view>
-  <view class='show-box' wx:if='{{isForever}}' style='margin-top:90rpx;background-color: #fff;'>
-    <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
-      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
+    <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:0;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;'>
+        <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
+        <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
+    </view>
+    <view class='show-box' wx:if='{{isForever}}' style='margin-top:80rpx;background-color: #fff;'>
+        <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
 
-      <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;' lazy-load>申请免费试用</view>
-    </view>
-    <view wx:else>
-      <view class='text-box' style='font-size:14px;display:flex;flex-flow:column nowrap;justify-content:space-between;align-items:center;margin-bottom:60rpx;position:relative;padding-top:70rpx;background-color:transparent;'>
-        <text style='z-index:2;font-size:16px;margin-bottom:25rpx;'>VIP体验期还有<text style='font-size:24px;padding:0 60rpx;'>{{vipInfo.expireDays}}</text>天</text>
-        <text style='z-index:2;font-size:14px;'>每消费一笔/每邀请5人即奖励延长5天会员期</text>
-        <text style='z-index:2;font-size:12px;color:#666;'>奖励可累计，上不封顶</text>
-        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vipdjs.png' style='width:750rpx;position:absolute;left:0;top:30rpx;z-index:1;' mode='widthFix' lazy-load></image>
-      </view>
-      <view style='position:relative;'>
-        <button style='width:88%;height:132rpx;line-heigh:100rpx;margin-left:6%;background:linear-gradient(to right, rgb(253,71,0) , red);border-radius:80rpx;color:#fff;margin-bottom:60rpx;border:none;padding-top:40rpx;' plain='true' openType='share'>立即分享,得免费VIP</button>
-        <view style='width:100%;font-size:12px;position:absolute;left:0;top:20rpx;z-index:100000;text-align:center;color:#fff;'>好友点击您的分享页面浏览，即可计入</view>
-      </view>
-      <view style='width:750rpx;height:10rpx;border-bottom:10rpx solid #f5f5f5;'></view>
-      <view style='width:100%;margin-bottom:10rpx;font-size:14px;display:flex;justify-content:space-around;align-items:center;'>
-        <view style='line-height:2.6;' class='{{isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{true}}">已分享邀请</view>
-        <view style='line-height:2.6;' class='{{!isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{false}}">已购买发货</view>
-      </view>
-      <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
-      <view wx:if='{{isDefault}}' style='padding-bottom:30rpx;'>
-        <view style='display:flex;flex-flow:row nowrap;justify-content:center;'>
-          <view class='pic-container' style='display:flex;flex-flow:row wrap;width:85%;justify-content:space-between;align-items:center;'>
-            <block wx:for='{{vipInfo.memberGroup}}'>
-              <view style='width:20%;padding-top:30rpx;' wx:for='{{item}}'>
-                <image src='{{item.titlePic}}' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
-              </view>
-            </block>
-          </view>
+            <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;' lazy-load>申请免费试用</view>
         </view>
-      </view>
-      <view wx:else>
-        <block wx:for='{{vipInfo.tradeList}}'>
-          <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
-            <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}</text>
-            <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
-          </view>
-          <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
-        </block>
-      </view>
-    </view>
-  </view>
-  <view wx:else class='package_container'>
-    <view>
-      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
-    </view>
-    <view>
-      <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item">
-        <navigator url="/pages/productdetail/productdetail?id={{item.ProductId}}" hover-class="other-navigator-hover">
-          <view class='package'>
-            <image src="{{item.Pic}}" class='pro_img'></image>
-            <view class='right_container'>
-              <text class='package_tit'>{{item.ProductName}}</text>
-              <view class='bottom_container'>
-                <text class='prize'>￥{{item.SalePrice}}</text>
-                <text class='buy_btn'>购买得VIP</text>
-              </view>
+        <view wx:else>
+            <view class='text-box' style='font-size:14px;display:flex;flex-flow:column nowrap;justify-content:space-between;align-items:center;margin-bottom:60rpx;position:relative;padding-top:70rpx;background-color:transparent;'>
+                <text style='z-index:2;font-size:16px;margin-bottom:25rpx;'>VIP体验期还有<text style='font-size:24px;padding:0 60rpx;'>{{vipInfo.expireDays}}</text>天</text>
+                <text style='z-index:2;font-size:14px;'>每消费一笔/每邀请5人即奖励延长5天会员期</text>
+                <text style='z-index:2;font-size:12px;color:#666;'>奖励可累计，上不封顶</text>
+                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vipdjs.png' style='width:750rpx;position:absolute;left:0;top:30rpx;z-index:1;' mode='widthFix' lazy-load></image>
             </view>
-          </view>
-        </navigator>
-      </block>
+            <view style='position:relative;'>
+                <button style='width:88%;height:132rpx;line-heigh:100rpx;margin-left:6%;background:linear-gradient(to right, rgb(253,71,0) , red);border-radius:80rpx;color:#fff;margin-bottom:60rpx;border:none;padding-top:40rpx;' plain='true' openType='share'>立即分享,得免费VIP</button>
+                <view style='width:100%;font-size:12px;position:absolute;left:0;top:20rpx;z-index:100000;text-align:center;color:#fff;'>好友点击您的分享页面浏览，即可计入</view>
+            </view>
+            <view style='width:750rpx;height:10rpx;border-bottom:10rpx solid #f5f5f5;'></view>
+            <view style='width:100%;margin-bottom:10rpx;font-size:14px;display:flex;justify-content:space-around;align-items:center;'>
+                <view style='line-height:2.6;' class='{{isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{true}}">已分享邀请</view>
+                <view style='line-height:2.6;' class='{{!isDefault? "active": ""}} text' catchtap='changeList' data-flag="{{false}}">已购买发货</view>
+            </view>
+            <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+            <view wx:if='{{isDefault}}' style='padding-bottom:30rpx;'>
+                <view style='display:flex;flex-flow:row nowrap;justify-content:center;'>
+                    <view class='pic-container' style='display:flex;flex-flow:row wrap;width:85%;justify-content:space-between;align-items:center;'>
+                        <block wx:for='{{vipInfo.memberGroup}}'>
+                            <view style='width:20%;padding-top:30rpx;' wx:for='{{item}}'>
+                                <image src='{{item.titlePic}}' style='width:100rpx;border-radius:50%;' mode='widthFix' lazy-load></image>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view wx:else>
+                <block wx:for='{{vipInfo.tradeList}}'>
+                    <view style='display:flex;flex-flow:row nowarp;width:100%;box-sizing:border-box;font-size:14px;justify-content:space-around;'>
+                        <text style='padding:20rpx 0rpx;text-align:left;width:340rpx;'>{{item.tradeNumber}}</text>
+                        <text style='padding:20rpx; width:120rpx;text-algin:right;'>延长5天</text>
+                    </view>
+                    <view style='width:750rpx;height:2rpx;border-bottom:2rpx solid #f5f5f5;'></view>
+                </block>
+            </view>
+        </view>
     </view>
-    <view>
-      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
-      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
-      <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <view wx:else class='package_container'>
+        <view>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </view>
+        <view>
+            <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item">
+                <navigator url="/pages/productdetail/productdetail?id={{item.ProductId}}" hover-class="other-navigator-hover">
+                    <view class='package'>
+                        <image src="{{item.Pic}}" class='pro_img'></image>
+                        <view class='right_container'>
+                            <view class='package_tit'>{{item.ProductName}}</view>
+                            <view class='bottom_container'>
+                                <text class='prize'>￥{{item.SalePrice}}</text>
+                                <text class='buy_btn'>购买得VIP</text>
+                            </view>
+                        </view>
+                    </view>
+                </navigator>
+            </block>
+        </view>
+        <view>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
+            <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
+        </view>
     </view>
-  </view>
 </view>
 <view wx:else style='background-color: #fff;'>
-  <!-- <view>
+    <!-- <view>
 <image src='http://img.qkmai.com/qkmbb/faxianpagetop.png' mode='widthFix' lazy-load style='width:100%'></image>
 </view>
 <view>
@@ -90,10 +90,10 @@
 <view>
 <image src='http://img.qkmai.com/qkmbb/faxianpagebottom.png' mode='widthFix' lazy-load style='width:100%'></image>
 </view> -->
-  <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
-  <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
-  <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
-    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
-  </button>
-  <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP2.png' mode='widthFix' style='width:100%' lazy-load></image>
+    <button style='width:100%;padding:0;margin:0;border:0;' plain='true' openType="share">
+        <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP3.png' mode='widthFix' style='width:100%' lazy-load></image>
+    </button>
+    <image src='http://img.qkmai.com/qkmbb/YVIP/YVIP4.png' mode='widthFix' style='width:100%' lazy-load></image>
 </view>
