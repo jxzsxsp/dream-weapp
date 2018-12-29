@@ -93,19 +93,24 @@ const viewAction = {
     let libraryDetail = d.detail
     if (this.props.type === constant.ColorLibraryActionType.Move_Single 
       || this.props.type === constant.ColorLibraryActionType.Move_Multiple) {
-      this.moveColorToLibrary(d.detail.id).then(res => {
+      this.moveColorToLibrary(d.detail.id).then(() => {
         $wx.navigateBack(1, {
           type: this.props.type,
           libraryDetail,
         })
       }, '已移动到 ' + d.detail.name)
     } else if (this.props.type === constant.ColorLibraryActionType.Add_Single || this.props.type === constant.ColorLibraryActionType.Add_Multiple) {
-      this.addColorToLibrary(libraryDetail.id).then(() => { 
+      this.addColorsToLibrary(libraryDetail.id).then(() => { 
         $wx.navigateBack(1, {}, '已加入到' + libraryDetail.name)
       })
     } else if (this.props.type === constant.ColorLibraryActionType.SaveColor) {
-      this.addColorToLibrary(libraryDetail.id).then(() => {
-        $wx.navigateTo($wx.router.settingTag, {colorDetail: this.data.colorList[0], type: this.props.type})
+      this.addColorToLibrary(libraryDetail.id).then(res => {
+        // 非颜色库中的操作只会有一个 color
+        let colorDetail = Object.assign({}, this.data.colorList[0])
+        // 设置标签的时候，原本颜色详情中表示颜色的 id 变为 colorId，id 则变为加入到颜色库中的颜色的 id
+        colorDetail.colorId = colorDetail.id
+        colorDetail.id = res.data
+        $wx.navigateTo($wx.router.settingTag, {colorDetail, type: this.props.type})
       })
     }
   },
@@ -115,10 +120,16 @@ const privateMethods = {
   getColorLibraryList: function () {
     return http.getList(urls.colorLibraryList, this.props.loadingState)
   },
-  addColorToLibrary: function (libraryId) {
+  addColorsToLibrary: function (libraryId) {
     return http.post(urls.addColor, {
       libraryId,
       libraryColorIdList: this.props.libraryColorIdList,
+    })
+  },
+  addColorToLibrary: function (libraryId) {
+    return http.post(urls.addSingleColor, {
+      libraryId,
+      libraryColorId: this.props.libraryColorIdList[0]
     })
   },
   moveColorToLibrary: function (libraryId) {
