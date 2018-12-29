@@ -5,8 +5,8 @@
 
 
 
-<view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;overflow-x: hidden;border-radius:20rpx;'>
-    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
+<view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx;'>
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px red;border-radius:20rpx;'>
 
         <view style='padding-top:50rpx'>
             <view style='padding-left:129rpx;position:relative;'>
@@ -95,7 +95,7 @@
     <image src='http://img.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
     <text>购物车</text>
 
-    <view style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
+    <view wx:if='{{shopcartCount > 0}}' style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
         <!-- <text style='color:#db3c40;'></text> -->
     </view>
 </view>

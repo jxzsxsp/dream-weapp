@@ -85,7 +85,7 @@
         </view>
     </view>
     <view class="shopcart-no" hidden="{{!isEmpty}}">
-        <view class="shopcart-no-item">
+        <view class="shopcart-no-item fcc" style='flex-flow:column nowrap;'>
             <view class="pic">
                 <image src="../../images/shopcart-empty.jpg"></image>
             </view>

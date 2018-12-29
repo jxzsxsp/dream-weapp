@@ -254,6 +254,9 @@ Page({
                         SkuIds: a
                     },
                     success: function(t) {
+                        wx.removeTabBarBadge({
+                            index: 3
+                        })
                         "OK" == t.data.Status ? e.setData({
                             SelectskuId: [],
                             selectAllStatus: !1
@@ -268,6 +271,7 @@ Page({
                     },
                     complete: function() {
                         e.loadData(e);
+                        console.log("complete")
                     }
                 });
             });
