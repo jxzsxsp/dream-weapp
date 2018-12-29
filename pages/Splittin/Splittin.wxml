@@ -53,7 +53,7 @@
 <!-- <view style='border:1px solid red;position:relative;'> -->
 <!-- <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:320rpx;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;background-color:red;'>
     <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
-    <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终身VIP</view>
+    <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终生VIP</view>
 </view>
 <view>
 

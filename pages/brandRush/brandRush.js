@@ -183,7 +183,7 @@ Page({
 
             },
             success: function (jd) {
-                wx.hideLoading()
+                // wx.hideLoading()
                 if (jd.data.length > 0) {
                     let tagList = [];
                     jd.data.forEach(o => {
@@ -200,7 +200,7 @@ Page({
 
             },
             complete:function(){
-              wx.hideLoading()
+            //   wx.hideLoading()
             }
         })
     },
@@ -294,6 +294,9 @@ Page({
                     brandRush: brandRushList
                 })
                 wx.stopPullDownRefresh();
+                setTimeout(function () {
+                    wx.hideLoading()
+                }, 1000)
             }
         })
     }
