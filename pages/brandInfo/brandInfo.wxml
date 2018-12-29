@@ -1,7 +1,7 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;'>
-    <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;;'>
-        <view wx:for='{{brandRushInfo}}' style='padding-right:27rpx;background:#fff;overflow:hidden;'>
+    <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;'>
+        <view wx:for='{{brandRushInfo}}' style='padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;'>
             <view style='overflow:hidden;'>
                 <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                     <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
@@ -129,8 +129,8 @@
         <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
     </view>
 
-    <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;padding-right:27rpx;width:730rpx;margin-left:10rpx;border:1px solid blue;box-sizing:content-box;'>
-        <view>
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;'>
+        <view style='padding-right:27rpx;'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                 <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
                     <image src='{{brandLogo}}' style='width:98%' mode='widthFix'></image>
@@ -172,7 +172,7 @@
                     <image src='http://img.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
                 </view>
             </view>
-            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;'>
+            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;padding-right:27rpx;'>
                 <view style='padding:0 16rpx'>
                     <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
                 </view>
