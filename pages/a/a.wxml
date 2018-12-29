@@ -3,7 +3,7 @@
     <canvas style="width: 550rpx;height: 550rpx;background:#fff;position:relative;top:-1000rpx;" canvas-id="logoQRCode" bindlongtap='saveCode' />
     <view class='code_container'>
       <image src='{{canvasUrl}}' style='z-index:999999999999999999999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image>
-      <text>长按保存您的分享码到手机相册</text>
+      <text>点击查看分享码,保存到相册</text>
     </view>
   </view>
   <view class='postlist_container'>

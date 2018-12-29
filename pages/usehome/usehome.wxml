@@ -66,10 +66,15 @@
       <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb2.png" class='small_icon'></image>
       <text>优惠券</text>
     </view>
-    <view bindtap="customerService" class="usecdlist">
+    <view bindtap="" class="usecdlist" style='position:;relative'>
       <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb3.png" class='small_icon'></image>
       <text>咨询服务</text>
+      <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
     </view>
+    <!-- <view bindtap="customerService" class="usecdlist">
+      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb3.png" class='small_icon'></image>
+      <text>咨询服务</text>
+    </view> -->
     <!-- <navigator   url='/pages/webPage/webPage'> -->
     <view class="usecdlist" bindtap='bindHelp'>
       <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb4.png" class='small_icon'></image>

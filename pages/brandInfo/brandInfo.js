@@ -285,7 +285,7 @@ Page({
                 })
             } else {
                 wx.showLoading({
-                    title: '加载中~~~',
+                    // title: '加载中~~~',
                 })
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
