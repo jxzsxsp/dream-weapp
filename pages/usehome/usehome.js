@@ -37,6 +37,7 @@ Page({
         this.setData({
             OpenReferral: o.globalData.siteInfo.OpenReferral
         });
+       
     },
     onShow: function() {
         var o = this;
@@ -63,6 +64,16 @@ Page({
         wx.navigateTo({
             url: "../orderlist/orderlist?status=" + n
         });
+    },
+    bindHelp:function(){
+      wx.navigateTo({
+        url: "/pages/webPage/webPage"
+      });
+    },
+    bindAtention: function () {
+      wx.navigateTo({
+        url: "/pages/myAtention/myAtention"
+      });
     },
     bindApply: function(o) {
         wx.navigateTo({
