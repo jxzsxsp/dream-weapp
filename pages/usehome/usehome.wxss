@@ -241,7 +241,7 @@ page{
     box-sizing:border-box;
     width:600rpx;
     height:140rpx;
-    padding:48rpx;
+    padding:28rpx;
     display:flex;
     flex-flow:row nowrap;
     align-items:center;
