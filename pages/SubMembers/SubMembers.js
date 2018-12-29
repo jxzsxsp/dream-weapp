@@ -47,7 +47,7 @@ Page({
                 },
                 success: function(a) {
 
-                    if (!tm.data.subMemberList && a.data.SubMember_get_response.SubMembers.length == 0) return;
+                    // if (!tm.data.subMemberList && a.data.SubMember_get_response.SubMembers.length == 0) return;
 
                     if (void 0 == a.data.error_response) {
                         var o = a.data.SubMember_get_response, r = o.SubMembers;
