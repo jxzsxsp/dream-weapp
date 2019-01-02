@@ -18,7 +18,7 @@ Page({
         userInfo: {},
         showNoList: false,
         dataIndex: 0,
-        dataSize: 10,
+        dataSize: 5,
         hasMore: true,
         shopcartCount: 0
     },
@@ -173,7 +173,7 @@ Page({
                 ps: tm.data.dataSize
             },
             success: function(jd) {
-                if (jd.data.length <= 10 && jd.data.length > 0) {
+                if (jd.data.length <= 5 && jd.data.length > 0) {
                     let goodsList = [];
                     jd.data.forEach(o => {
                         goodsList.push(o)
@@ -182,7 +182,7 @@ Page({
                     tm.setData({
                         rushGoodsList: newList
                     })
-                    if (jd.data.length < 10) {
+                    if (jd.data.length < 5) {
                         tm.setData({
                             hasMore: false
                         })
@@ -459,7 +459,7 @@ Page({
                         tm.setData({
                             rushGoodsList: newList
                         })
-                    } else if (jd.data.length < 10) {
+                    } else if (jd.data.length < 5) {
                         tm.setData({
                             hasMore: false
                         })
