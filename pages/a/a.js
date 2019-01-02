@@ -9,11 +9,11 @@ Page({
   data: {
     canvasUrl: "",
     postUrl: [
-      { url: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/haibao1.jpg", postId: 0 },
-      { url: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/haibao2.jpg", postId: 1 },
-      { url: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/haibao3.jpg", postId: 2 },
-      { url: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/haibao4.jpg", postId: 3 },
-      { url: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/haibao5.jpg", postId: 4 }],
+      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao1.jpg", postId: 0 },
+      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao2.jpg", postId: 1 },
+      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao3.jpg", postId: 2 },
+      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao4.jpg", postId: 3 },
+      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao5.jpg", postId: 4 }],
     isShow: false,
     isHidden: true,
     showUrl: ""

@@ -1,6 +1,6 @@
 <view class='page_container'>
   <view class="uselogos">
-    <image class="logobg" src="http://img.qkmai.com/qkmbb/myytal/wdbjs.png" style='width:100%;' lazy-load></image>
+    <image class="logobg" src="http://cos.qkmai.com/qkmbb/myytal/wdbjs.png" style='width:100%;' lazy-load></image>
     <view class="usetitle">
       <image class="uselogo" src="{{userInfo.picture}}" lazy-load></image>
       <view class="userinfo">
@@ -15,10 +15,10 @@
         </view>
       </view>
     </view>
-    <image bindtap='goToVip' class='header-tips' style='position:absolute;bottom:0;left:0;width:750rpx;height:119rpx;' src='{{userInfo.IsReferral ? "http://img.qkmai.com/qkmbb/myytal/wdfc2.png" : "http://img.qkmai.com/qkmbb/myytal/wdfc1.png"}}' lazy-load></image>
+    <image bindtap='goToVip' class='header-tips' style='position:absolute;bottom:0;left:0;width:750rpx;height:119rpx;' src='{{userInfo.IsReferral ? "http://cos.qkmai.com/qkmbb/myytal/wdfc2.png" : "http://cos.qkmai.com/qkmbb/myytal/wdfc1.png"}}' lazy-load></image>
 
     <view style='position:absolute;right:20rpx;top:60rpx;' bindtap='goToCode'>
-      <image style='width:60rpx;margin-bottom:20rpx;' src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/erweima.png' mode='widthFix'></image>
+      <image style='width:60rpx;margin-bottom:20rpx;' src='http://cos.qkmai.com/qkmbb/ytal/erweima.png' mode='widthFix'></image>
       <view style='font-size:20rpx;color:#fff;'>分销码</view>
     </view>
   </view>
@@ -51,49 +51,49 @@
         <text>{{userInfo.afterSalesCount}}</text>
       </view>
     </view>
-    <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/dakuohaotb.png" class='line'></image>
+    <image src="http://cos.qkmai.com/qkmbb/ytal/dakuohaotb.png" class='line'></image>
     <view bindtap="bindStatue" class="usecdlist">
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/dingdantb.png" class='order_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/dingdantb.png" class='order_icon'></image>
       <text>我的订单</text>
     </view>
   </view>
   <view class='usecdsecond'>
     <view bindtap="bindMyAddressTap" class="usecdlist">
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb1.png" class='small_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/wodetb1.png" class='small_icon'></image>
       <text>地址库</text>
     </view>
     <view bindtap="bindMyCouponsTap" class="usecdlist">
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb2.png" class='small_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/wodetb2.png" class='small_icon'></image>
       <text>优惠券</text>
     </view>
     <view bindtap="" class="usecdlist" style='position:;relative'>
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb3.png" class='small_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/wodetb3.png" class='small_icon'></image>
       <text>咨询服务</text>
       <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
     </view>
     <!-- <view bindtap="customerService" class="usecdlist">
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb3.png" class='small_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/wodetb3.png" class='small_icon'></image>
       <text>咨询服务</text>
     </view> -->
     <!-- <navigator   url='/pages/webPage/webPage'> -->
     <view class="usecdlist" bindtap='bindHelp'>
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb4.png" class='small_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/wodetb4.png" class='small_icon'></image>
       <text>帮助中心</text>
     </view>
     <!-- </navigator> -->
     <!-- <navigator   url='../../pages/myAtention/myAtention'> -->
     <view bindtap="bindAtention" class="usecdlist">
-      <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodetb5.png" class='small_icon'></image>
+      <image src="http://cos.qkmai.com/qkmbb/ytal/wodetb5.png" class='small_icon'></image>
       <text>我的关注</text>
     </view>
     <!-- </navigator> -->
   </view>
   <!-- <view style='height:170rpx;display:flex;flex-flow:row nowrap;align-items:center;justify-content:space-between;padding:0 48rpx;background-color:#fff;'>
     <view style='width:48%;height:142rpx;' bindtap="bindMyAddressTap">
-      <image src='http://img.qkmai.com/qkmbb/myytal/shdz.png' style='width:100%;height:142rpx;;' lazy-load></image>
+      <image src='http://cos.qkmai.com/qkmbb/myytal/shdz.png' style='width:100%;height:142rpx;;' lazy-load></image>
     </view>
     <view style='width:48%;height:142rpx;' bindtap="bindMyCouponsTap">
-      <image src='http://img.qkmai.com/qkmbb/myytal/wdyhq.png' style='width:100%;height:142rpx;;' lazy-load></image>
+      <image src='http://cos.qkmai.com/qkmbb/myytal/wdyhq.png' style='width:100%;height:142rpx;;' lazy-load></image>
     </view>
   </view> -->
   
@@ -104,7 +104,7 @@
         <text style='font-size:12px;color:#515151;'>完善我的分享信息</text>
       </view>
       <view style='padding-right:20rpx'>
-        <image src="{{userInfo.picture ? userInfo.picture : 'http://img.qkmai.com/qkmbb/myytal/txzw.png'}}" style='width:100rpx;height:100rpx;;' lazy-load></image>
+        <image src="{{userInfo.picture ? userInfo.picture : 'http://cos.qkmai.com/qkmbb/myytal/txzw.png'}}" style='width:100rpx;height:100rpx;;' lazy-load></image>
       </view>
     </view>
     <view class='list-item'>
@@ -116,7 +116,7 @@
         </view>
       </view>
       <view style='padding-right:20rpx'>
-        <image src='http://img.qkmai.com/qkmbb/myytal/wdyj.png' style='width:100rpx;height:100rpx;' lazy-load></image>
+        <image src='http://cos.qkmai.com/qkmbb/myytal/wdyj.png' style='width:100rpx;height:100rpx;' lazy-load></image>
       </view>
     </view>
     <view class='list-item'>
@@ -127,7 +127,7 @@
         </view>
       </view>
       <view style='padding-right:20rpx'>
-        <image src='http://img.qkmai.com/qkmbb/myytal/wdtd.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
+        <image src='http://cos.qkmai.com/qkmbb/myytal/wdtd.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
       </view>
     </view>
   </view>
@@ -138,7 +138,7 @@
         <text style='font-size:12px;color:#515151;'>了解亚太奥莱，能省会赚</text>
       </view>
       <view style='padding-right:20rpx;'>
-        <image src="http://img.qkmai.com/qkmbb/myytal/xsdd.png" style='width:100rpx;height:100rpx;;' lazy-load></image>
+        <image src="http://cos.qkmai.com/qkmbb/myytal/xsdd.png" style='width:100rpx;height:100rpx;;' lazy-load></image>
       </view>
     </view>
   </view>
@@ -150,7 +150,7 @@
         <text style='font-size:12px;color:#515151;'>021-55697790</text>
       </view>
       <view style=''>
-        <image src='http://img.qkmai.com/qkmbb/myytal/lxkf.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
+        <image src='http://cos.qkmai.com/qkmbb/myytal/lxkf.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
       </view>
       <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
     </view>
@@ -160,7 +160,7 @@
         <text style='font-size:12px;color:#515151;'>点击查看平台须知</text>
       </view>
       <view style=''>
-        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/yhxz.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/yhxz.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
       </view>
     </navigator>
   </view> -->

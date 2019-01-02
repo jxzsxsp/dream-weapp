@@ -96,7 +96,7 @@ Page({
         return {
             title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
             path: i,
-            imageUrl: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/yqfx.png"
+            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
         }
     },
     changeTitle: function(e) {

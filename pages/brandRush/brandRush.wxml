@@ -39,7 +39,7 @@
             </block>
         </view>
         <view wx:else class='emptyShow'>
-          <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/huobaotb.png"></image>
+          <image src="http://cos.qkmai.com/qkmbb/ytal/huobaotb.png"></image>
           <text>清仓太火爆</text>
           <text>一会再来吧O.o</text>
         </view>

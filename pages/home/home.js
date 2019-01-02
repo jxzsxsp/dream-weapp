@@ -35,6 +35,7 @@ Page({
     },
     onShow: function() {
         this.GetShopCart();
+        this.getCate();
     },
     GetShopCart: function() {
         var t = this,

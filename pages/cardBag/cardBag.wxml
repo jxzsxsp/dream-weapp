@@ -3,15 +3,15 @@
 </view>
 <view style='padding:0 35rpx;font-size:30rpx'>
     <view wx:for='{{cardBag}}' style='margin-bottom:30rpx'>
-        <view style='background:url(http://img.qkmai.com/qkmbb/cardbalance{{item.balance}}.png);background-size:contain;height:300rpx;color:#fff;background-postion:center center;background-repeat:no-repeat'>
+        <view style='background:url(http://cos.qkmai.com/qkmbb/cardbalance{{item.balance}}.png);background-size:contain;height:300rpx;color:#fff;background-postion:center center;background-repeat:no-repeat'>
             <view style="padding:80rpx 0 0 40rpx">
                 <text style='padding-right:10rpx'>卡号:</text>
                 <text>{{item.cardNumber}}</text>
                 <view class="fr" style='padding-right:35rpx'>
-                    <button style="background:url(http://img.qkmai.com/qkmbb/zengsong.png);background-size:contain;width:158rpx;height:62rpx;margin:20rpx 0;background-postion:center center;background-repeat:no-repeat;border:0" data-cardid='{{item.id}}' data-cardnumber='{{item.cardNumber}}'
+                    <button style="background:url(http://cos.qkmai.com/qkmbb/zengsong.png);background-size:contain;width:158rpx;height:62rpx;margin:20rpx 0;background-postion:center center;background-repeat:no-repeat;border:0" data-cardid='{{item.id}}' data-cardnumber='{{item.cardNumber}}'
                         data-balance='{{item.balance}}' plain='true' openType="share"></button>
 
-                    <image src="http://img.qkmai.com/qkmbb/jihuo.png" mode='widthFix' class="btnimg" data-cardnumber='{{item.cardNumber}}' data-cardid='{{item.id}}' data-balance='{{item.balance}}' data-cardpassword='{{item.cardPassword}}' bindtap="activeCard"></image>
+                    <image src="http://cos.qkmai.com/qkmbb/jihuo.png" mode='widthFix' class="btnimg" data-cardnumber='{{item.cardNumber}}' data-cardid='{{item.id}}' data-balance='{{item.balance}}' data-cardpassword='{{item.cardPassword}}' bindtap="activeCard"></image>
                 </view>
             </view>
             <view style="padding:0 0 0 40rpx;">

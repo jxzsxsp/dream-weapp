@@ -19,7 +19,7 @@ Page({
         userInfo: {},
         brandId: "",
         brandSource: "",
-        imgUrl: 'http://img.qkmai.com/qkmbb/myytal/wdbjs.png',
+        imgUrl: 'http://cos.qkmai.com/qkmbb/myytal/wdbjs.png',
         tagId: 0,
         dataIndex: 0,
         dataSize: 10,
@@ -191,7 +191,7 @@ Page({
         return {
             title: title,
             path: i,
-            imageUrl: "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/yqfx.png"
+            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
         }
     },
     timeFormat(param) { //小于10的格式化函数

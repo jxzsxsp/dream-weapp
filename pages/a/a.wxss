@@ -42,7 +42,7 @@
 .post_title{
 width: 750rpx;
 height: 60rpx;
-background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wordbg.png") no-repeat center top;
+background: url("http://cos.qkmai.com/qkmbb/ytal/wordbg.png") no-repeat center top;
 background-size: 100%;
 text-align: center;
 line-height: 80rpx;

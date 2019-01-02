@@ -1,11 +1,11 @@
-<view wx:if="{{DistributionInfo.ReferralGradeName != '永久会员'}}" style='height:100%;'>
+<view wx:if="{{DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName}}" style='height:100%;'>
     <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;left:0;top:0;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;'>
         <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">试用VIP</view>
         <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{false}}">终生VIP</view>
     </view>
     <view class='show-box' wx:if='{{isForever}}' style='margin-top:80rpx;background-color: #fff;'>
         <view class='show-box-1' style='' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
 
             <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;' lazy-load>申请免费试用</view>
         </view>
@@ -14,7 +14,7 @@
                 <text style='z-index:2;font-size:16px;margin-bottom:25rpx;'>VIP体验期还有<text style='font-size:24px;padding:0 60rpx;'>{{vipInfo.expireDays}}</text>天</text>
                 <text style='z-index:2;font-size:14px;'>每消费一笔/每邀请5人即奖励延长5天会员期</text>
                 <text style='z-index:2;font-size:12px;color:#666;'>奖励可累计，上不封顶</text>
-                <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vipdjs.png' style='width:750rpx;position:absolute;left:0;top:30rpx;z-index:1;' mode='widthFix' lazy-load></image>
+                <image src='http://cos.qkmai.com/qkmbb/ytal/vipdjs.png' style='width:750rpx;position:absolute;left:0;top:30rpx;z-index:1;' mode='widthFix' lazy-load></image>
             </view>
             <view style='position:relative;'>
                 <button style='width:88%;height:132rpx;line-heigh:100rpx;margin-left:6%;background:linear-gradient(to right, rgb(253,71,0) , red);border-radius:80rpx;color:#fff;margin-bottom:60rpx;border:none;padding-top:40rpx;' plain='true' openType='share'>立即分享,得免费VIP</button>
