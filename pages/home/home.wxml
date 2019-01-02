@@ -86,8 +86,7 @@
             </view>
             <view style='float:right:623rpx;position:relative;'>
                 <view style='position:absolute;top:-14rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
-                    <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
-                        <text style='font-size:10px;'>折起</text>
+                    <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}<text style='font-size:10px;'>折起</text>
                     </view>
                 </view>
                 <view style='height:85rpx;padding:37rpx 0 16rpx 0' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>

@@ -1,12 +1,64 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;'>
+
+
+    <!-- <view class="container"> -->
+        <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{imgUrls}}" wx:key="keys">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image" />
+                </swiper-item>
+            </block>
+        </swiper> -->
+
+        <!-- <myToast></myToast>
+        <scroll-view>
+            <view bindtap="touchOnGoods" wx:key="keys" class="goods" hover-class="goods_hover" wx:for="{{goods_list}}">
+                <image src="../../images/product_x8.png" mode="widthFix"></image>
+            </view>
+        </scroll-view>
+
+        <view class="{{needAni ? 'bus scale': 'bus'}}">
+            <image src="../../images/bus.png"></image>
+            <view class="count" hidden="{{hideCount}}">{{count}}</view>
+        </view>
+
+        <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+            <image src="../../images/product_x8.png"></image>
+        </view> -->
+    <!-- </view> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
         <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
 
 
 
             <view style='position:absolute;top:0rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
-                <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}<text style='font-size:10px;'>折起</text>
+                <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                    <text style='font-size:10px;'>折起</text>
                 </view>
             </view>
 
