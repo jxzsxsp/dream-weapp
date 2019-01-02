@@ -1,7 +1,17 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;'>
     <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
-        <view wx:for='{{brandRushInfo}}' style='padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;'>
+        <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
+
+
+
+            <view style='position:absolute;top:0rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
+                <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}<text style='font-size:10px;'>折起</text>
+                </view>
+            </view>
+
+
+
             <view style='overflow:hidden;'>
                 <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                     <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
@@ -13,7 +23,7 @@
                     <view>
                         <view style='overflow:hidden;'>
                             <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{item.subTitle}}</view>
-                            <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.lowerDiscount / 10),1)}}折起</view>
+                            <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.lowerDiscount / 10),1)}}折起</view> -->
 
                             <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if="{{userInfo.IsReferral}}">最高分佣
                                 <text style='padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}%</text>
@@ -128,7 +138,24 @@
         <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
     </view>
 
-    <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;'>
+    <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
+
+
+
+
+        <view style='position:absolute;top:0rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
+            <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
+                <text style='font-size:10px;'>折起</text>
+            </view>
+        </view>
+
+
+
+
+
+
+
+
         <view style='padding-right:27rpx;'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                 <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
@@ -141,7 +168,7 @@
                     <view>
                         <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{brandRushInfo[0].subTitle}}</view>
 
-                        <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view>
+                        <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view> -->
                     </view>
                 </view>
             </view>

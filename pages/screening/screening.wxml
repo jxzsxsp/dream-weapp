@@ -11,7 +11,7 @@
 
             <view style='padding-top:50rpx'>
                 <view style='padding-left:129rpx;position:relative;'>
-                    <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                    <view style='font-size:26rpx;line-height:40rpx;color:#515151;padding-right:10rpx;'>
                         <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
                     </view>
                     <!-- <image wx:if='{{item.isSoldOut}}' src='http://cos.qkmai.com/qkmbb/ytal/soldout.png' style="width:500rpx;height:350rpx;position:absolute;right:70rpx;top:50rpx;"></image> -->

@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <import src="../common/templeates.wxml"></import>
-<view class="homecont" style="z-index:998;width:750rpx;overflow:hidden;">
+<view class="homecont" style="z-index:998;width:750rpx;max-width:750rpx;overflow:hidden;">
     <view style='height:70rpx;background-color: #fff;z-index:1000;'>
         <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
             <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
@@ -8,7 +8,7 @@
             </view>
         </scroll-view>
     </view>
-    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;">
+    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
     </template>
     <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;' mode='widthFix' lazy-load></image>
@@ -16,7 +16,7 @@
 
 
 
-    <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:50rpx;' wx:if='{{selectedCate=="全场直播"}}'>
+    <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:50rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image>
         <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;z-idnex:3;' wx:for='{{topLogoList}}'>
             <view style='box-sizing:border-box;width:110rpx;height:110rpx;margin-bottom:10rpx;border-radius:50%;display:flex;justify-content:center;align-items:center;background-color:#fff;z-index:10;'>

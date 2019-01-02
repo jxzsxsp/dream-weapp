@@ -1,1 +1,6 @@
-{}
+{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#db3c40",
+    "navigationBarTitleText": "VIP专区",
+    "navigationBarTextStyle": "white"
+}

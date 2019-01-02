@@ -205,19 +205,19 @@ Page({
         var i = '/pages/home/home?from=menu';
         var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
         if (event.from == 'menu') {} else {
+            var lower = (parseFloat(event.target.dataset['lower']) / 10).toFixed(1);
             var barndId = event.target.dataset['brandid'];
             var brandSoruce = event.target.dataset['brandsource'];
             var brandName = event.target.dataset['maintitle'];
             var brandBg = event.target.dataset['bg'];
-            var lower = (parseFloat(event.target.dataset['lower']) / 10).toFixed(1);
             // console.log(event.target.dataset['lower'] / 10)
             // console.log(lower)
             i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
-            title = '【品牌特卖】' + brandName;
+            title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
         return {
-            title: title + ' ' + lower + '折起',
+            title: title,
             path: i,
             imageUrl: brandBg
         }

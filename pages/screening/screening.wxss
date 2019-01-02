@@ -131,3 +131,23 @@ page {
 .fourPic:nth-child(2) {
     width:279rpx;
 }
+
+
+
+
+.ellipsis {
+    display: -webkit-box;
+    font-size:28rpx;
+    color:#000000;
+    line-height: 40rpx;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:10;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.ellipsis.nowrap {
+    -webkit-line-clamp:20;
+    overflow: visible
+}
