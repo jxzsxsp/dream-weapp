@@ -8,7 +8,7 @@ const props = {
 
 const data = {
   maxLabelNum: 5,
-  maxLabelTextNum: 8,
+  maxLabelTextNum: 14,
   colorDetail: {},
   labels: [],
   latestLabels: [],
