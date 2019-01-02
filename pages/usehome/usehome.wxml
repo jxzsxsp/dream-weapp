@@ -164,9 +164,9 @@
       </view>
     </navigator>
   </view> -->
-  <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
+  <!-- <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
     退出登录
-  </view>
+  </view> -->
 </view>
 
 <!-- <view bindtap="bindOrderList" class="hdonglist" style="margin-top:0">我的订单
