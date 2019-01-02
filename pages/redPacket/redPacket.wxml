@@ -1,0 +1,107 @@
+<!--pages/redPacket/redPacket.wxml-->
+<view class='redpacket_container'>
+  <view class='first_bg'>
+    <view class='coupon_container'>
+      <view class='coupon'>
+        <view class='opacity_bg'></view>
+        <view class='coupon_content'>
+          <view>
+            <text class='coupon_title'>无门槛优惠券</text>
+            <text class='coupon_title2'>活动商品可用</text>
+          </view>
+          <view class='bottom_container'>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300yhqtb.png' class='red_image'></image>
+            <text class="coupon_price">￥</text>
+            <text class='coupon_num'>300.0</text>
+            <view class='coupon_btn'>领取</view>
+          </view>
+        </view>
+      </view>
+      <view class='share_btn'></view>
+    </view>
+    <view class='task2_container'>
+      <view class='group'>
+        <text class='task2_title'></text>
+        <view class='sharepeo_container'>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='task3_container'>
+    <view class='product product_one'>
+      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin1.png' class='product_imgage'></image>
+      <text class='tit'>活动商品1</text>
+      <view class='text_container'>
+        <view>
+          <text class='product_title'>猫人 男士/女士 内衣套装 薄款纯棉</text>
+          <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo1.png" class='logo_image'></image>
+        </view>
+        <view class='bottom_con'>
+          <text class='product_price'>￥399.0</text>
+          <view class='product_btn'>立即抢购</view>
+        </view>
+      </view>
+    </view>
+    <view class='product product_two'>
+      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
+      <text class='tit'>商品1回礼</text>
+      <view class='text_container'>
+        <view>
+          <text class='product_title'>瘦脸仪 滚轮式V脸部按摩仪</text>
+          <text class='product_title2'>抢购活动商品1,并分享好友助力得</text>
+        </view>
+        <view class='bottom_con'>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image>
+          <view class='ma_des'>
+            <text>满足条件后</text>
+            <text>扫码申领回礼</text>
+          </view>
+          <view class='product_btn product_btn2'>咨询客服</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='task4_container'>
+    <view class='product product_one'>
+      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin2.png' class='product_imgage'></image>
+      <text class='tit'>活动商品2</text>
+      <view class='text_container'>
+        <view>
+          <text class='product_title'>恒源祥 高领毛衣 堆堆领打针织衫</text>
+          <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo2.png" class='logo_image2'></image>
+        </view>
+        <view class='bottom_con'>
+          <text class='product_price'>￥499.0</text>
+          <view class='product_btn'>立即抢购</view>
+        </view>
+      </view>
+    </view>
+    <view class='product product_two'>
+      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin2.png' class='product_imgage'></image>
+      <text class='tit'>商品2回礼</text>
+      <view class='text_container'>
+        <view>
+          <text class='product_title'>英国Vanow 高档316不锈钢保温杯</text>
+          <text class='product_title2'>抢购活动商品2,并分享好友助力得</text>
+        </view>
+        <view class='bottom_con'>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image>
+          <view class='ma_des'>
+            <text>满足条件后</text>
+            <text>扫码申领回礼</text>
+          </view>
+          <view class='product_btn product_btn2'>咨询客服</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='end_des'>
+    <text>平台具有最终解释权</text>
+  </view>
+
+</view>
