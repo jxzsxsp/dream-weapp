@@ -35,7 +35,10 @@ Page({
     },
     onShow: function() {
         this.GetShopCart();
-        // this.getCate();
+        this.getLogo();
+        this.getCate();
+        wx.hideNavigationBarLoading();
+        this.countDown();
     },
     GetShopCart: function() {
         var t = this,
@@ -132,10 +135,10 @@ Page({
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
-        this.getLogo();
-        this.getCate();
-        wx.hideNavigationBarLoading();
-        this.countDown();
+        // this.getLogo();
+        // this.getCate();
+        // wx.hideNavigationBarLoading();
+        // this.countDown();
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
