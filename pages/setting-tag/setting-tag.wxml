@@ -30,7 +30,7 @@
     <view wx:if="{{index > 0}}" class='line'></view>
     <view class='think-item' data-label='{{item}}' bind:tap="selectThink">
       <view class='think-text'>
-        {{label}}<text>{{tools.subItem(item, label)}}</text>
+        {{tools.seperateStr(item, label).first}}<text>{{tools.seperateStr(item, label).second}}</text>{{tools.seperateStr(item, label).third}}
       </view>
       <view class='iconfont icon-xuanze xuanze'></view>
     </view>

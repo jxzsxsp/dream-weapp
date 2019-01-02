@@ -1,6 +1,10 @@
-var subItem = function (item, label) {
-  return item.substring(label.length);
+var seperateStr = function (item, label) {
+  var index = item.indexOf(label)
+  var first = item.substring(0, index)
+  var second = item.substring(index, index + label.length)
+  var third = item.substring(index + label.length, item.length)
+  return {first, second ,third};
 }
 module.exports = {
-  subItem: subItem,
+  seperateStr: seperateStr,
 };
