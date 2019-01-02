@@ -418,9 +418,8 @@ Page({
                 tm.setData({
                     brandRushInfo: infoList,
                     brandLogo: brandRush.brandLogo,
-                    mainTitle: brandRush.mainTitle,
+                    mainTitle: brandRush.mainTitle.replace(/&#039;/g, "\'"),
                     subTitle: brandRush.subTitle,
-
                     // brandSource: brandSource
                 });
                 tm.goodsListNew();

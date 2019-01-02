@@ -19,7 +19,7 @@
                     </view>
                 </view>
                 <view style='height:85rpx;padding:27rpx 0 16rpx 0'>
-                    <view style='font-size:30rpx;'>{{item.mainTitle}}</view>
+                    <view style='font-size:30rpx;'>{{mainTitle}}</view>
                     <view>
                         <view style='overflow:hidden;'>
                             <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{item.subTitle}}</view>
