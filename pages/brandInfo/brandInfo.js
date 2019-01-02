@@ -204,7 +204,7 @@ Page({
      */
     onShareAppMessage: function() {
         var tm = this;
-        var title = tm.data.brandRushInfo[0].mainTitle;
+        var title = tm.data.mainTitle;
         var url = tm.data.brandRushInfo[0].goodsImages[0];
         var brandId = tm.data.brandRushInfo[0].brandId;
         var brandSource = tm.data.brandRushInfo[0].brandSource;
