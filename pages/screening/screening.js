@@ -22,7 +22,7 @@ Page({
         imgUrl: 'http://cos.qkmai.com/qkmbb/myytal/wdbjs.png',
         tagId: 0,
         dataIndex: 0,
-        dataSize: 10,
+        dataSize: 5,
         hasMore: true,
         shopcartCount: 0
     },
