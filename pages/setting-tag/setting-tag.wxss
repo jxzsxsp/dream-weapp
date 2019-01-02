@@ -114,14 +114,14 @@
 .think-text {
   font-family: PingFangSC-Semibold;
   font-size: 28rpx;
-  color: #0156FE;
+  color: #000000;
   letter-spacing: 0.93rpx;
 }
 
 .think-text text {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
-  color: #000000;
+  color: #0156FE;
   letter-spacing: 0.93rpx;
   line-height: 40rpx;
 }
