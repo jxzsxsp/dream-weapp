@@ -5,7 +5,7 @@ Page({
     data: {
         userInfo: {},
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 5,
         isDataEnd: !1,
         choiceProducts: [],
         brandRush: [],
@@ -22,7 +22,7 @@ Page({
         selectedCate: "全场直播",
         TotalNum: 0,
         dataIndex: 0,
-        dataSize: 10,
+        dataSize: 5,
         cateId: 0,
         totalCount: 0,
         barndRushCate: [],
@@ -35,7 +35,7 @@ Page({
     },
     onShow: function() {
         this.GetShopCart();
-        this.getCate();
+        // this.getCate();
     },
     GetShopCart: function() {
         var t = this,
@@ -672,10 +672,10 @@ Page({
                     url: e.getUrl("YTALGetPageBrandRush"),
                     data: {
                         pi: ++tm.data.dataIndex,
-                        ps: 10
+                        ps:5
                     },
                     success: function(res) {
-                        if (res.data.length == 10) {
+                        if (res.data.length == 5) {
                             let bottomArrList = [];
                             res.data.forEach(o => {
                                 var obj = {
