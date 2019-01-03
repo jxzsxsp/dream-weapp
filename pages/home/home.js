@@ -627,14 +627,14 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-        
+
         this.setData({
             brandRush: [],
             pageIndex: 0,
             dataIndex: 0,
             hasMore: true
         });
-        this.defaultList();
+        this.loadTop();
     },
     /**
      * 页面上拉触底事件的处理函数
@@ -696,7 +696,7 @@ Page({
                     url: e.getUrl("YTALGetPageBrandRush"),
                     data: {
                         pi: ++tm.data.dataIndex,
-                        ps:5
+                        ps: 5
                     },
                     success: function(res) {
                         if (res.data.length == 5) {
@@ -731,7 +731,7 @@ Page({
                     }
                 })
             },
-            complete: function () {
+            complete: function() {
                 wx.stopPullDownRefresh();
             }
         });
@@ -776,10 +776,53 @@ Page({
                     brandRush: brandRushList
                 })
                 tm.loadMore();
+            },
+            complete: function() {
+                wx.stopPullDownRefresh();
             }
         });
     },
-
+    refreshData: function() {
+        var tm = this;
+        wx.request({
+            url: e.getUrl("YTALGetPageBrandRush"),
+            data: {
+                pi: ++tm.data.dataIndex,
+                ps: 5
+            },
+            success: function(res) {
+                if (res.data.length == 5) {
+                    let bottomArrList = [];
+                    res.data.forEach(o => {
+                        var obj = {
+                            day: '00',
+                            hou: '00',
+                            min: '00',
+                            sec: '00'
+                        }
+                        o.countDownTime = obj;
+                        if (o.rushEndTime != null) {
+                            var month = o.rushEndTime.split('-')[1];
+                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        }
+                        bottomArrList.push(o)
+                    });
+                    var newList = tm.data.topArr.concat(bottomArrList)
+                    tm.setData({
+                        bottomArr: bottomArrList,
+                        brandRush: newList
+                    })
+                } else {
+                    tm.setData({
+                        hasMore: false
+                    })
+                }
+            }
+        })
+    },
     changeCate: function(event) {
         this.setData({
             brandRush: [],
@@ -837,10 +880,10 @@ Page({
                     })
                 }
             },
-            complete: function () {
+            complete: function() {
                 wx.hideNavigationBarLoading();
             }
-            
+
         });
     },
     copy: function(e) {
@@ -885,7 +928,7 @@ Page({
             }
         });
     },
-    goView: function (e) {
+    goView: function(e) {
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + e.currentTarget.dataset.id
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
@@ -900,11 +943,11 @@ Page({
             data: {
                 openId: tm.data.userInfo.OpenId
             },
-            success: function (jd) {
+            success: function(jd) {
                 if (jd.data.length > 0) {
                     console.log(jd.data)
                     let logoList = [];
-                
+
                     tm.setData({
                         focusList: jd.data
                     })
@@ -912,23 +955,23 @@ Page({
             }
         });
     },
-    changeFocus: function() {
+    changeFocus: function(event) {
         var tm = this;
+        var s = event.currentTarget.dataset.index;
+        var o = tm.data.userInfo.OpenId
         wx.request({
-            url: e.getUrl("YTALGetTopListBrandRushIsHead"),
+            url: e.getUrl("FollowBrand"),
             data: {
-                OpenId: tm.data.userInfo.OpenId
+                openId: o,
+                mainTitle: event.currentTarget.dataset.title
             },
-            success: function (jd) {
-                if (jd.data.length > 0) {
-                    let logoList = [];
-                    jd.data.forEach(o => {
-                        logoList.push(o)
-                    });
-                    tm.setData({
-                        topLogoList: logoList
-                    })
-                }
+            success: function(jd) {
+                event._relatedInfo.anchorTargetText = "取消关注"
+                var br = tm.data.brandRush;
+                br[s].isFocus = !br[s].isFocus;
+                tm.setData({
+                    brandRush:br
+                })
             }
         });
     }

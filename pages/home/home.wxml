@@ -72,7 +72,7 @@
 
 
     <view style='padding:0 0 27rpx 0;width:730rpx;margin-left:10rpx;'>
-        <view wx:key="{{item}}" wx:for='{{brandRush}}' style='padding-top:15rpx;margin-bottom:20rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
+        <view wx:key="{{item}}" wx:for='{{brandRush}}' wx:for-index="bindex" style='padding-top:15rpx;margin-bottom:20rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                 <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
                     <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix' lazy-load></image>
@@ -124,13 +124,13 @@
 
 
                 <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
-                    <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;border:1px solid blue;display:flex;flex-flow:row nowrap;;'>
-                        <view style='font-size:22rpx;color:#515151;border:1px solid red;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                    <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;display:flex;flex-flow:row nowrap;;'>
+                        <view style='font-size:22rpx;color:#515151;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                             {{item.endTimeInfo}}
                             <text style=''>结束</text>
                         </view>
 
-                        <view style='font-size:14px;width:50%;text-align:right;color:#515151;line-height:40rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:center;' bindtap='changeFocus'>
+                        <view style='font-size:14px;width:50%;text-align:right;color:#515151;line-height:40rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:center;' bindtap='changeFocus' data-index="{{bindex}}" data-title="{{item.mainTitle}}">
                             <image src='{{item.isFocus && item.isFocus == true? "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanzhutb1.png" : "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanzhutb.png"}}' style='width:40rpx;margin-right:10rpx;' mode='widthFix'></image>
                             {{item.isFocus && item.isFocus == true? "取消关注" : "关注"}}
                         </view>

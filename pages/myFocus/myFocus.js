@@ -62,5 +62,25 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    cancleFocus: function () {
+        var tm = this;
+        // var s = event.currentTarget.dataset.index;
+        // var o = tm.data.userInfo.OpenId
+        // wx.request({
+        //     url: e.getUrl("FollowBrand"),
+        //     data: {
+        //         openId: o,
+        //         mainTitle: event.currentTarget.dataset.title
+        //     },
+        //     success: function (jd) {
+        //         event._relatedInfo.anchorTargetText = "取消关注"
+        //         var br = tm.data.brandRush;
+        //         br[s].isFocus = !br[s].isFocus;
+        //         tm.setData({
+        //             brandRush: br
+        //         })
+        //     }
+        // });
     }
 })
