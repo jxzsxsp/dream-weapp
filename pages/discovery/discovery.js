@@ -43,6 +43,7 @@ Page({
         this.setData({
             DistributionInfo: app.globalData.ReferralInfo
         });
+      
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -151,8 +152,10 @@ Page({
                 tm.setData({
                     vipInfo: res.data
                 })
+              console.log(tm.data.vipInfo)
             }
         })
+
     },
   onShowProduct: function () {
 
@@ -211,4 +214,14 @@ Page({
     })
 
   },
+  gobrandRush: function () {
+    wx.switchTab({
+      url: '/pages/brandRush/brandRush',
+    })
+  },
+  goHome: function () {
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
+  }
 })
