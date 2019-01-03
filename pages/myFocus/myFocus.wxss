@@ -1,1 +1,4 @@
 /* pages/myFocus/myFocus.wxss */
+page {
+    background-color: #dcdcdc;
+}

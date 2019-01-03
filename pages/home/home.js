@@ -13,7 +13,7 @@ Page({
         keyword: "",
         TopicUrl: "",
         VersionNumber: "",
-        TopicData: null,
+        TopicData: [],
         RequestUrl: e.getRequestUrl,
         CurrentProduct: null,
         CurrentSku: null,
@@ -31,14 +31,15 @@ Page({
         bottomArr: [],
         toggleText: false,
         currentId: 0,
-        topLogoList: []
+        topLogoList: [],
+        focusList: []
     },
     onShow: function() {
         this.GetShopCart();
-        this.getLogo();
-        this.getCate();
-        wx.hideNavigationBarLoading();
-        this.countDown();
+        // this.getLogo();
+        // this.getCate();
+        // wx.hideNavigationBarLoading();
+        // this.countDown();
     },
     GetShopCart: function() {
         var t = this,
@@ -152,12 +153,12 @@ Page({
             }
         })
 
-
+        this.focusList()
         // console.log(1)
-        // this.getLogo();
-        // this.getCate();
-        // wx.hideNavigationBarLoading();
-        // this.countDown();
+        this.getLogo();
+        this.getCate();
+        wx.hideNavigationBarLoading();
+        this.countDown();
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -307,10 +308,10 @@ Page({
         });
     },
     HomeTopicData: function(t) {
+        var tm = this;
         wx.getStorage({
             key: "topiclist",
             success: function(e) {
-                
                 t.setData({
                     TopicData: e.data
                 });
@@ -629,7 +630,7 @@ Page({
         
         this.setData({
             brandRush: [],
-            pageIndex: 1,
+            pageIndex: 0,
             dataIndex: 0,
             hasMore: true
         });
@@ -891,5 +892,44 @@ Page({
         wx.navigateTo({
             url: s
         })
+    },
+    focusList: function() {
+        var tm = this;
+        wx.request({
+            url: e.getUrl("GetListBrandByFollow"),
+            data: {
+                openId: tm.data.userInfo.OpenId
+            },
+            success: function (jd) {
+                if (jd.data.length > 0) {
+                    console.log(jd.data)
+                    let logoList = [];
+                
+                    tm.setData({
+                        focusList: jd.data
+                    })
+                }
+            }
+        });
+    },
+    changeFocus: function() {
+        var tm = this;
+        wx.request({
+            url: e.getUrl("YTALGetTopListBrandRushIsHead"),
+            data: {
+                OpenId: tm.data.userInfo.OpenId
+            },
+            success: function (jd) {
+                if (jd.data.length > 0) {
+                    let logoList = [];
+                    jd.data.forEach(o => {
+                        logoList.push(o)
+                    });
+                    tm.setData({
+                        topLogoList: logoList
+                    })
+                }
+            }
+        });
     }
 });

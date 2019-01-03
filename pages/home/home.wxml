@@ -86,7 +86,7 @@
             </view>
             <view style='float:right:623rpx;position:relative;'>
                 <view style='position:absolute;top:-14rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
-                    <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}<text style='font-size:10px;'>折起</text>
+                    <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}<text style='font-size:9px;'>折起</text>
                     </view>
                 </view>
                 <view style='height:85rpx;padding:37rpx 0 16rpx 0' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
@@ -123,11 +123,16 @@
 
 
 
-                <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
-                    <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;'>
-                        <view style='height:25rpx;font-size:22rpx;color:#515151'>
+                <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
+                    <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;border:1px solid blue;display:flex;flex-flow:row nowrap;;'>
+                        <view style='font-size:22rpx;color:#515151;border:1px solid red;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                             {{item.endTimeInfo}}
                             <text style=''>结束</text>
+                        </view>
+
+                        <view style='font-size:14px;width:50%;text-align:right;color:#515151;line-height:40rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:center;' bindtap='changeFocus'>
+                            <image src='{{item.isFocus && item.isFocus == true? "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanzhutb1.png" : "https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanzhutb.png"}}' style='width:40rpx;margin-right:10rpx;' mode='widthFix'></image>
+                            {{item.isFocus && item.isFocus == true? "取消关注" : "关注"}}
                         </view>
                     </view>
 
