@@ -386,6 +386,20 @@ Page({
             }
         }
 
+        // if (!this.data.hide_good_box) return;
+        // this.finger = {};
+        // var topPoint = {};
+        // this.finger['x'] = e.touches["0"].clientX;
+        // this.finger['y'] = e.touches["0"].clientY;
+        // if (this.finger['y'] < this.busPos['y']) {
+        //     topPoint['y'] = this.finger['y'] - 150;
+        // } else {
+        //     topPoint['y'] = this.busPos['y'] - 150;
+        // }
+        // topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.finger['x'];
+        // this.linePos = app.bezier([this.finger, topPoint, this.busPos], 30);
+        // this.startAnimation();
+
     },
     previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
