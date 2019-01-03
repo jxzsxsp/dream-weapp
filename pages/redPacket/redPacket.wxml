@@ -13,7 +13,10 @@
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300yhqtb.png' class='red_image'></image>
             <text class="coupon_price">￥</text>
             <text class='coupon_num'>300.0</text>
-            <view class='coupon_btn'>领取</view>
+            <navigator url='http://ytal.qkmai.com/wapshop/CouponDetails.aspx?couponId=11'>
+              <view class='coupon_btn' wx:if="{{getCouponStatus}}" bindtap='onGetCoupon'>领取</view>
+              <view class='coupon_btn' wx:else>已领取</view>
+            </navigator>
           </view>
         </view>
       </view>
@@ -43,7 +46,7 @@
         </view>
         <view class='bottom_con'>
           <text class='product_price'>￥399.0</text>
-          <view class='product_btn'>立即抢购</view>
+           <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover"><view class='product_btn'>立即抢购</view></navigator>
         </view>
       </view>
     </view>
@@ -72,12 +75,12 @@
       <text class='tit'>活动商品2</text>
       <view class='text_container'>
         <view>
-          <text class='product_title'>恒源祥 高领毛衣 堆堆领打针织衫</text>
+          <text class='product_title'>奥克斯 家用多功能电炒锅 电热火锅</text>
           <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo2.png" class='logo_image2'></image>
         </view>
         <view class='bottom_con'>
           <text class='product_price'>￥499.0</text>
-          <view class='product_btn'>立即抢购</view>
+          <navigator url="/pages/productdetail/productdetail?id=1043" hover-class="other-navigator-hover"><view class='product_btn'>立即抢购</view></navigator>
         </view>
       </view>
     </view>
