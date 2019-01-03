@@ -107,27 +107,27 @@ Page({
             })
         });
         var r, o, n = this;
-        if (e.globalData.userInfo && e.globalData.userInfo.IsReferral) {
-            var u = e.globalData.ReferralInfo.ShopName;
-            wx.setNavigationBarTitle({
-                title: u
-            });
-        } else a.ReferralUserId ? (r = a.ReferralUserId, e.getOpenId(function(t) {
-            wx.request({
-                url: e.getUrl("GetReferralInfo"),
-                data: {
-                    openId: t,
-                    ReferralUserId: r
-                },
-                success: function(t) {
-                    o = t.data.referral_get_response.ShopName, wx.setNavigationBarTitle({
-                        title: o
-                    });
-                }
-            });
-        })) : wx.setNavigationBarTitle({
-            title: "亚太奥莱"
-        });
+        // if (e.globalData.userInfo && e.globalData.userInfo.IsReferral) {
+        //     var u = e.globalData.ReferralInfo.ShopName;
+        //     wx.setNavigationBarTitle({
+        //         title: u
+        //     });
+        // } else a.ReferralUserId ? (r = a.ReferralUserId, e.getOpenId(function(t) {
+        //     wx.request({
+        //         url: e.getUrl("GetReferralInfo"),
+        //         data: {
+        //             openId: t,
+        //             ReferralUserId: r
+        //         },
+        //         success: function(t) {
+        //             o = t.data.referral_get_response.ShopName, wx.setNavigationBarTitle({
+        //                 title: o
+        //             });
+        //         }
+        //     });
+        // })) : wx.setNavigationBarTitle({
+        //     title: "亚太奥莱"
+        // });
         n = this;
         e.getOpenId(function(a) {
             var r = {
@@ -135,6 +135,25 @@ Page({
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
+
+        tm.setData({
+            TopicData: {
+                id: 201811161906894,
+                type: 9,
+                content: {
+                    showType: 1,
+                    space: 0,
+                    dataset: [{
+                        linkType: 10,
+                        link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
+                        pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
+                    }]
+                }
+            }
+        })
+
+
+        console.log(1)
         // this.getLogo();
         // this.getCate();
         // wx.hideNavigationBarLoading();
@@ -291,6 +310,7 @@ Page({
         wx.getStorage({
             key: "topiclist",
             success: function(e) {
+                
                 t.setData({
                     TopicData: e.data
                 });

@@ -9,7 +9,7 @@ Page({
         brandRush: [],
         brandCate: [],
         // selectedCate: "本期特卖",
-        // barndRushCate: [],
+        // barndRushCate: [], 
         brandCateCode: "0",
         userInfo: {},
         tagList: [],
@@ -284,7 +284,7 @@ Page({
                 tag: tm.data.selectedTag
             },
             success: function(jd) {
-                console.log(jd.data)
+                // console.log(jd.data)
                 if (jd.data.length <= 0) return;
                 let brandRushList = [];
                 jd.data.forEach(o => {

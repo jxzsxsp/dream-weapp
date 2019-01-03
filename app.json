@@ -60,7 +60,8 @@
         "pages/bugsm/bugsm",
         "pages/myCode/myCode",
         "pages/a/a",
-        "pages/webPage/webPage"
+        "pages/webPage/webPage",
+        "pages/myFocus/myFocus"
     ],
     "window": {
         "backgroundTextStyle": "light",

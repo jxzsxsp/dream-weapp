@@ -415,6 +415,11 @@ Page({
         wx.switchTab({
             url: '/pages/home/home'
         })
+
+
+        // wx.navigateTo({
+        //     url: '/pages/home/home'
+        // })
     },
     getTitle: function() {
         var tm = this;

@@ -1,0 +1,11 @@
+<!--pages/myFocus/myFocus.wxml-->
+<image src='https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg' mode='widthFix' style='width:750rpx;'></image>
+
+<view class='focus-container' style='display:flex;flex-flow:column nowrap;padding:20rpx;'>
+    <view class='focus-item' style='display:flex;flex-flow:row nowrap;align-items:center;margin-bottom:20rpx;'>
+        <image src='http://img5.dwstatic.com/lol/1809/401385892592/1537430699694.png' style='width:140rpx;' mode='widthFix'></image>
+        <view style='width:430rpx;font-size:14px;padding-left:20rpx;max-height:140rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;align-self:flex-start;padding-top:10rpx;'>你见到过我的小熊吗你见到过我的小熊吗你见到过我的小熊吗你见到过我的小熊吗你见到过我的小熊吗</view>
+        <view style='font-size:14px;width:140rpx;line-height:100rpx;text-align:center;border-radius:20rpx;'>取消关注</view>
+    </view>
+
+</view>

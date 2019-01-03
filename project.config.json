@@ -37,74 +37,21 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 1,
 			"list": [
 				{
-					"id": 0,
-					"name": "price",
-					"pathName": "pages/addprice/addprice",
-					"query": ""
-				},
-				{
 					"id": -1,
-					"name": "brandrush",
-					"pathName": "pages/brandRush/brandRush",
+					"name": "myFocus",
+					"pathName": "pages/myFocus/myFocus",
 					"query": "",
 					"scene": "1011"
 				},
 				{
 					"id": -1,
-					"name": "brandrush",
-					"pathName": "pages/webPage/webPage",
-					"query": "",
+					"name": "brandInfo",
+					"pathName": "pages/brandInfo/brandInfo",
+					"query": "brandId=2c9089c267ee854f01680855b7b00d4b&brandSource=dadacang",
 					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "213123",
-					"pathName": "/pages/aboutqsh/aboutqsh",
-					"query": ""
-				},
-				{
-					"id": 4,
-					"name": "213123",
-					"pathName": "pages/aboutytal/aboutytal",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "213123",
-					"pathName": "pages/myCode/myCode",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "优惠券",
-					"pathName": "pages/coupondetail/coupondetail",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "123",
-					"pathName": "pages/webPage/webPage",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "132",
-					"pathName": "pages/relationlogin/relationlogin",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "我的佣金",
-					"pathName": "pages/Splittin/Splittin",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "1",
-					"pathName": "pages/brandInfo/brandInfo"
 				}
 			]
 		}
