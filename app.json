@@ -1,5 +1,6 @@
 {
     "pages": [
+        
         "pages/home/home",
         "pages/login/login",
         "pages/usehome/usehome",
@@ -61,7 +62,11 @@
         "pages/myCode/myCode",
         "pages/a/a",
         "pages/webPage/webPage",
-        "pages/myFocus/myFocus"
+        "pages/redPacket/redPacket",
+        "pages/myAtention/myAtention",
+        "pages/longvip/longvip"
+
+        
     ],
     "window": {
         "backgroundTextStyle": "light",
