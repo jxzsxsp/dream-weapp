@@ -153,7 +153,7 @@ Page({
         })
 
 
-        console.log(1)
+        // console.log(1)
         // this.getLogo();
         // this.getCate();
         // wx.hideNavigationBarLoading();
