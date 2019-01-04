@@ -14,14 +14,18 @@
         <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;' mode='widthFix' lazy-load></image>
     </view>
 
-    <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:50rpx;' wx:if='{{selectedCate=="全场直播"}}'>
+    <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:5rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image>
         <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;z-idnex:3;' wx:for='{{topLogoList}}'>
             <view style='box-sizing:border-box;width:110rpx;height:110rpx;margin-bottom:10rpx;border-radius:50%;display:flex;justify-content:center;align-items:center;background-color:#fff;z-index:10;'>
                 <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
+        <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:999;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
+            <image style='width:735rpx;padding:0;' mode='widthFix' lazy-load src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300yhq.png' ></image>
+        </view>
     </view>
+
     <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
