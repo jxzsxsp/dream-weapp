@@ -9,8 +9,11 @@ Page({
         DistributionInfo: "",
         isForever: true,
         vipInfo: {},
-        CategoryId:22,
-        dataList:{}
+        CategoryId: 22,
+        dataList: {},
+        LowerUserSaleTotal:"",
+        ExpandMemberAll: ""
+        
     },
 
     /**
@@ -37,13 +40,14 @@ Page({
         });
         tm.getVipInfo();
         tm.onShowProduct();
+        tm.getVipData();
     },
-    
+
     GetCheckData: function() {
         this.setData({
             DistributionInfo: app.globalData.ReferralInfo
         });
-      
+
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -152,76 +156,124 @@ Page({
                 tm.setData({
                     vipInfo: res.data
                 })
-              console.log(tm.data.vipInfo)
+                console.log(tm.data.vipInfo)
             }
         })
 
     },
-  onShowProduct: function () {
+    onShowProduct: function() {
 
-    console.log('onShowProduct')
-    var tm = this;
-    wx.request({
-      url: app.getUrl("GetProducts"),
-      data: {
-        // openId: r,
-        // keyword: tm.data.KeyWord,
-        // cId: tm.data.CategoryId,
-        // pageIndex: a.data.PageIndex,
-        // pageSize: a.data.PageSize,
-        // sortBy: a.data.SortBy,
-        // sortOrder: a.data.SortOrder
-        // openId:"o_rWK5ULNm46IJqvZOEFWIj_xWVc",
-        openId: tm.data.userInfo.OpenId,
-        cId:22
-        // pageIndex:1,
-        // pageSize:10,
-        // keyword: "",
-        // sortBy: "",
-        // sortOrder:"asc"
-      },
-      success: function (t) {
-        
-        tm.setData({
-          dataList: t.data.Data
+        console.log('onShowProduct')
+        var tm = this;
+        wx.request({
+            url: app.getUrl("GetProducts"),
+            data: {
+                // openId: r,
+                // keyword: tm.data.KeyWord,
+                // cId: tm.data.CategoryId,
+                // pageIndex:a.data.PageIndex,
+                // pageSize:a.data.PageSize,
+                // sortBy: a.data.SortBy,
+                // sortOrder: a.data.SortOrder
+                // openId:"o_rWK5ULNm46IJqvZOEFWIj_xWVc",
+                openId: tm.data.userInfo.OpenId,
+                cId: 22
+                // pageIndex:1,
+                // pageSize:10,
+                // keyword: "",
+                // sortBy: "",
+                // sortOrder:"asc"
+            },
+            success: function(t) {
+
+                tm.setData({
+                    dataList: t.data.Data
+                })
+                //console.log(t.data.Data)
+                //console.log(tm.data.dataList)
+                // if ("OK" == t.data.Status) {
+                //   var r = t.data.Data;
+                //   if (e) {
+                //     var u = a.data.ProductList;
+                //     u.push.apply(u, r), a.setData({
+                //       ProductList: u
+                //     });
+                //   } else a.setData({
+                //     ProductList: r
+                //   });
+                // } else "NOUser" == t.data.Message || wx.showModal({
+                //   title: "提示",
+                //   content: t.data.Message,
+                //   showCancel: !1,
+                //   success: function (t) {
+                //     t.confirm && wx.navigateBack({
+                //       delta: 1
+                //     });
+                //   }
+                // });
+            },
+            complete: function() {
+                wx.hideNavigationBarLoading();
+            }
         })
-        console.log(t.data.Data)
-        console.log(tm.data.dataList)
-        // if ("OK" == t.data.Status) {
-        //   var r = t.data.Data;
-        //   if (e) {
-        //     var u = a.data.ProductList;
-        //     u.push.apply(u, r), a.setData({
-        //       ProductList: u
-        //     });
-        //   } else a.setData({
-        //     ProductList: r
-        //   });
-        // } else "NOUser" == t.data.Message || wx.showModal({
-        //   title: "提示",
-        //   content: t.data.Message,
-        //   showCancel: !1,
-        //   success: function (t) {
-        //     t.confirm && wx.navigateBack({
-        //       delta: 1
-        //     });
-        //   }
-        // });
-      },
-      complete: function () {
-        wx.hideNavigationBarLoading();
-      }
-    })
 
-  },
-  gobrandRush: function () {
-    wx.switchTab({
-      url: '/pages/brandRush/brandRush',
-    })
-  },
-  goHome: function () {
-    wx.switchTab({
-      url: '/pages/home/home',
-    })
-  }
+    },
+    gobrandRush: function() {
+        wx.switchTab({
+            url: '/pages/brandRush/brandRush',
+        })
+    },
+    goHome: function() {
+        wx.switchTab({
+            url: '/pages/home/home',
+        })
+    },
+    getVipData: function() {
+        //var tm = this;
+        var t = this;
+        app.getOpenId(function(o) {
+            wx.request({
+                url: app.getUrl("SubMembers"),
+                data: {
+                    openId: t.data.userInfo.OpenId,
+                    // openId: 'o_rWK5YTqOJ2ruCGdsjZn4YJ8ovI',
+                    pageIndex: t.data.PageIndex,
+                    pageSize: t.data.PageSize
+                },
+                success: function(a) {
+                    console.log(a)
+                    t.setData({
+                        ExpandMemberAll: a.data.SubMember_get_response.ExpandMemberAll,
+                        LowerUserSaleTotal: a.data.SubMember_get_response.LowerUserSaleTotal
+                    });
+
+                }
+            });
+        });
+        // app.getOpenId(function (r) {
+        //     wx.request({
+        //         url: app.getUrl("LoginByOpenId"),
+        //         data: {
+        //             openId: t.data.userInfo.OpenId,
+        //             //status: e,
+                  
+        //         },
+        //         success: function (a) {
+        //             console.log(a)
+        //             console.log(a.data)
+        //             console.log(a.data.Data)
+        //             console.log(a.data.Data.WaitSendActive)
+        //             t.setData({
+        //                 WaitSendActive: a.data.Data.WaitSendActive,
+        //                 WaitReceiveActive: a.data.Data.WaitReceiveActive
+        //             });
+        //             console.log(a.data.Data.WaitSendActive )
+        //             console.log(a.data.Data.WaitReceiveActive)
+        //         },
+        //         complete: function () {
+        //             wx.hideLoading();
+        //         }
+        //     });
+        // })
+    }
 })
