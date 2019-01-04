@@ -12,7 +12,7 @@
     </view>
     <view class="mt120">
         <view class="couponlist" wx:if="{{couponType==1}}" wx:for="{{couponsList}}" wx:for-index="idx" wx:key="coupons-box">
-            <navigator class="coupon-info bg-white" url='{{"/pages/searchresult/searchresult?couponId="+ item.couponsId}}'>
+            <navigator class="coupon-info bg-white" url='{{"/pages/searchresult/searchresult?cid="+ item.couponsId}}'>
                 <!-- <navigator></navigator> -->
                 <view class="coupon-pic">
                     <view class="counpimg padding24" style="background:url({{counpimg}}) center center no-repeat; background-size:100% 100%">
