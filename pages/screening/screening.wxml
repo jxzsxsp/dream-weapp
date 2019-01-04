@@ -51,7 +51,7 @@
 
 
                             <!-- 测试数据 如果没有返回item.count 默认为1  可以点击加购 -->
-                            <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' bindtap='selectSkuId'>
+                            <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
                                 <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
                             </view>
                         </view>
@@ -60,7 +60,7 @@
                     <view style='padding:15rpx 15rpx 15rpx 0'>
                         <!-- <view class="addCart {{goodsSkuId==sku.skuId?' active ':' '}}" style='height:50rpx;width:162rpx;background:#ff0000;border-radius:30rpx;text-align:center;float:right;line-height:50rpx;font-size:26rpx;color:#fff' bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
                     </view> -->
-                        <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-source='{{item.goodsSource}}'>加入购物车
+                        <view class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-source='{{item.goodsSource}}' data-img='{{item.goodsImages[0]}}'>加入购物车
                         </view>
                         <view style='clear:both'></view>
                     </view>
@@ -80,6 +80,9 @@
 
                 <view style='height:26rpx'></view>
             </view>
+        </view>
+        <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+            <image src="{{goodsImg}}"></image>
         </view>
     </view>
 

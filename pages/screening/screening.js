@@ -24,7 +24,12 @@ Page({
         dataIndex: 0,
         dataSize: 5,
         hasMore: true,
-        shopcartCount: 0
+        shopcartCount: 0,
+        goodsImg: '',
+        hideCount: true,
+        count: 0,
+        needAni: false,
+        hide_good_box: true
     },
 
     /**
@@ -46,6 +51,11 @@ Page({
         // 执行倒计时函数
         this.getListGoodsData();
         this.countDown();
+
+        var that = this;
+        this.busPos = {};
+        this.busPos['x'] = 39;
+        this.busPos['y'] = app.globalData.hh - 120;
     },
 
     /**
@@ -248,11 +258,13 @@ Page({
         var skuId = event.currentTarget.dataset["skuid"];
         var skuName = event.currentTarget.dataset["skuname"];
         var goodsId = event.currentTarget.dataset["goodsid"];
+        var goodsImage = event.currentTarget.dataset["img"]
         var tm = this;
         tm.setData({
             goodsSkuId: skuId,
             goodsSkuName: skuName,
-            goodsId: goodsId
+            goodsId: goodsId,
+            goodsImg: goodsImage
         });
     },
     addGoodsToCart: function(event) {
@@ -297,7 +309,8 @@ Page({
                             })
                             break;
                             case 'success':
-                                    wx.showModal({
+                                    tm.touchOnGoods(event)
+                                wx.showModal({
                                     title: '',
                                     content: '成功加入购物车',
                                     cancelText: "去结算",
@@ -456,4 +469,52 @@ Page({
         });
 
     },
+    busAnimation: function() {
+        var that = this;
+        that.setData({
+            needAni: true
+        });
+        setTimeout(function() {
+            that.setData({
+                needAni: false
+            });
+        }, 500);
+    },
+    touchOnGoods: function(e) {
+        if (!this.data.hide_good_box) return;
+        this.finger = {};
+        var topPoint = {};
+        this.finger['x'] = e.touches["0"].clientX;
+        this.finger['y'] = e.touches["0"].clientY;
+        topPoint['y'] = (this.finger['y'] < this.busPos['y'] ? this.finger['y'] - 150 : topPoint['y'] = this.busPos['y'] - 150)
+        topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.busPos['x'];
+        this.linePos = app.bezier([this.busPos, topPoint, this.finger], 30);
+        this.startAnimation(e);
+    },
+    startAnimation: function(e) {
+        var index = 0,
+            that = this,
+            bezier_points = that.linePos['bezier_points'];
+        this.setData({
+            hide_good_box: false,
+            bus_x: that.finger['x'],
+            bus_y: that.finger['y']
+        })
+        var len = bezier_points.length;
+        index = len
+        this.timer = setInterval(function() {
+            for (let i = index - 1; i > -1; i--) {
+                that.setData({
+                    bus_x: bezier_points[i]['x'],
+                    bus_y: bezier_points[i]['y']
+                })
+                if (i < 1) {
+                    clearInterval(that.timer);
+                    that.setData({
+                        hide_good_box: true
+                    })
+                }
+            }
+        }, 25);
+    }
 })

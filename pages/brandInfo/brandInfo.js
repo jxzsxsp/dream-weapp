@@ -21,25 +21,25 @@ Page({
         dataSize: 5,
         hasMore: true,
         shopcartCount: 0,
+        goodsImg: '',
 
 
-
-        imgUrls: [
-            '../../images/banner1.jpg',
-            '../../images/banner2.jpg',
-            '../../images/banner3.jpg'
-        ],
-        indicatorDots: false,
-        autoplay: false,
-        interval: 5000,
-        duration: 500,
-        goods_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        hideCount: false,
-        indicatorDots: false,
-        autoplay: false,
-        interval: 5000,
-        duration: 500,
-        goods_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        // imgUrls: [
+        //     '../../images/banner1.jpg',
+        //     '../../images/banner2.jpg',
+        //     '../../images/banner3.jpg'
+        // ],
+        // indicatorDots: false,
+        // autoplay: false,
+        // interval: 5000,
+        // duration: 500,
+        // goods_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        // hideCount: false,
+        // indicatorDots: false,
+        // autoplay: false,
+        // interval: 5000,
+        // duration: 500,
+        // goods_list: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         hideCount: true,
         count: 0,
         needAni: false,
@@ -79,8 +79,8 @@ Page({
 
         var that = this;
         this.busPos = {};
-        this.busPos['x'] = app.globalData.ww * 0.8;
-        this.busPos['y'] = app.globalData.hh * 0.8;
+        this.busPos['x'] = 39;
+        this.busPos['y'] = app.globalData.hh - 120;
     },
 
     timeFormat(param) { //小于10的格式化函数
@@ -293,11 +293,13 @@ Page({
         var skuId = event.currentTarget.dataset["skuid"];
         var skuName = event.currentTarget.dataset["skuname"];
         var goodsId = event.currentTarget.dataset["goodsid"];
+        var goodsImage = event.currentTarget.dataset["img"]
         var tm = this;
         tm.setData({
             goodsSkuId: skuId,
             goodsSkuName: skuName,
-            goodsId: goodsId
+            goodsId: goodsId,
+            goodsImg: goodsImage
         });
     },
     addGoodsToCart: function(event) {
@@ -316,9 +318,7 @@ Page({
                     content: '',
                 })
             } else {
-                wx.showLoading({
-                    // title: '加载中~~~',
-                })
+                wx.showLoading({})
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {
@@ -357,7 +357,8 @@ Page({
 
                                     //     }
                                     // }
-                                    wx.hideLoading();
+                                wx.hideLoading();
+                                tm.touchOnGoods(event)
                                 wx.showModal({
                                     title: '',
                                     content: '成功加入购物车',
@@ -385,26 +386,10 @@ Page({
                 })
             }
         }
-
-        // if (!this.data.hide_good_box) return;
-        // this.finger = {};
-        // var topPoint = {};
-        // this.finger['x'] = e.touches["0"].clientX;
-        // this.finger['y'] = e.touches["0"].clientY;
-        // if (this.finger['y'] < this.busPos['y']) {
-        //     topPoint['y'] = this.finger['y'] - 150;
-        // } else {
-        //     topPoint['y'] = this.busPos['y'] - 150;
-        // }
-        // topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.finger['x'];
-        // this.linePos = app.bezier([this.finger, topPoint, this.busPos], 30);
-        // this.startAnimation();
-
     },
     previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
-
         wx.previewImage({
             current: imgSrc,
             urls: imgs
@@ -420,7 +405,7 @@ Page({
             }
         });
     },
-    fixedGoToCart: function() {
+    fixedGoToCart: function(event) {
         wx.switchTab({
             url: '/pages/shopcart/shopcart'
         })
@@ -429,17 +414,11 @@ Page({
         wx.switchTab({
             url: '/pages/home/home'
         })
-
-
-        // wx.navigateTo({
-        //     url: '/pages/home/home'
-        // })
     },
     getTitle: function() {
         var tm = this;
         //获取品牌特卖列表        
         wx.request({
-
             url: app.getUrl("YTALGetInfoBrandRush"),
             data: {
                 brandId: tm.data.brandId,
@@ -454,15 +433,12 @@ Page({
                     min: '00',
                     sec: '00'
                 }
-
                 brandRush.countDownTime = obj;
-
                 if (brandRush.rushEndTime != null) {
                     var month = brandRush.rushEndTime.split('-')[1];
                     var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
                     var hour = brandRush.rushEndTime.split(' ')[1].split(':')[0];
                     var min = brandRush.rushEndTime.split(' ')[1].split(':')[1];
-
                     brandRush.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                 }
                 infoList.push(brandRush);
@@ -498,9 +474,7 @@ Page({
                         hasMore: false
                     })
                 } else {
-                    // console.log(jd.data.length)
                     if (jd.data.length != 0) {
-
                         let goodsList = [];
                         jd.data.forEach(o => {
                             goodsList.push(o)
@@ -521,23 +495,6 @@ Page({
             }
         });
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     busAnimation: function() {
         var that = this;
         that.setData({
@@ -550,22 +507,17 @@ Page({
         }, 500);
     },
     touchOnGoods: function(e) {
-        // 如果good_box正在运动
         if (!this.data.hide_good_box) return;
         this.finger = {};
         var topPoint = {};
         this.finger['x'] = e.touches["0"].clientX;
         this.finger['y'] = e.touches["0"].clientY;
-        if (this.finger['y'] < this.busPos['y']) {
-            topPoint['y'] = this.finger['y'] - 150;
-        } else {
-            topPoint['y'] = this.busPos['y'] - 150;
-        }
-        topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.finger['x'];
-        this.linePos = app.bezier([this.finger, topPoint, this.busPos], 30);
-        this.startAnimation();
+        topPoint['y'] = (this.finger['y'] < this.busPos['y'] ? this.finger['y'] - 150 : topPoint['y'] = this.busPos['y'] - 150)
+        topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2 + this.busPos['x'];
+        this.linePos = app.bezier([this.busPos, topPoint, this.finger], 30);
+        this.startAnimation(e);
     },
-    startAnimation: function() {
+    startAnimation: function (e) {
         var index = 0,
             that = this,
             bezier_points = that.linePos['bezier_points'];
@@ -574,20 +526,21 @@ Page({
             bus_x: that.finger['x'],
             bus_y: that.finger['y']
         })
-        this.timer = setInterval(function() {
-            index++;
-            that.setData({
-                bus_x: bezier_points[index]['x'],
-                bus_y: bezier_points[index]['y']
-            })
-            if (index >= 28) {
-                clearInterval(that.timer);
+        var len = bezier_points.length;
+        index = len
+        this.timer = setInterval(function () {
+            for (let i = index - 1; i > -1; i--) {
                 that.setData({
-                    hide_good_box: true,
-                    hideCount: false,
-                    count: that.data.count += 1
+                    bus_x: bezier_points[i]['x'],
+                    bus_y: bezier_points[i]['y']
                 })
+                if (i < 1) {
+                    clearInterval(that.timer);
+                    that.setData({
+                        hide_good_box: true
+                    })
+                }
             }
-        }, 33);
+        }, 25);
     }
 })

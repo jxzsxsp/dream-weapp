@@ -1,56 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;'>
 
-
-    <!-- <view class="container">
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-            <block wx:for="{{imgUrls}}" wx:key="keys">
-                <swiper-item>
-                    <image src="{{item}}" class="slide-image" />
-                </swiper-item>
-            </block>
-        </swiper>
-
-        <myToast></myToast>
-        <scroll-view>
-            <view bindtap="touchOnGoods" wx:key="keys" class="goods" hover-class="goods_hover" wx:for="{{goods_list}}">
-                <image src="../../images/product_x8.png" mode="widthFix"></image>
-            </view>
-        </scroll-view>
-
-        <view class="{{needAni ? 'bus scale': 'bus'}}">
-            <image src="../../images/bus.png"></image>
-            <view class="count" hidden="{{hideCount}}">{{count}}</view>
-        </view>
-
-        <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
-            <image src="../../images/product_x8.png"></image>
-        </view>
-    </view> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
         <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
 
@@ -164,27 +114,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
         <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
         <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
@@ -200,12 +129,6 @@
                 <text style='font-size:9px;'>折</text>
             </view>
         </view>
-
-
-
-
-
-
 
 
         <view style='padding-right:27rpx;'>
@@ -255,45 +178,20 @@
                     <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
                 </view>
 
-
-
                 <view style='padding:0 16rpx'>
                     <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
-
-
-                        <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' bindtap='selectSkuId'>
+                        <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
                             <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
                         </view>
                     </view>
                     <view style='clear:both'></view>
                 </view>
                 <view style='padding:15rpx 20rpx 15rpx 0'>
-
-
-
-
-
-                    <view style='' class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}'>加入购物车
+                    <view style='' class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-img='{{item.goodsImages[0]}}'>加入购物车
                     </view>
-
-                    <!-- <view class="{{needAni ? 'bus scale': 'bus'}}">
-                        <image src="../../images/bus.png"></image>
-                        <view class="count" hidden="{{hideCount}}">{{count}}</view>
-                    </view>
-
-                    <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
-                        <image src="../../images/product_x8.png"></image>
-                    </view> -->
-
 
                     <view style='clear:both'></view>
                 </view>
-
-
-
-
-
-
 
                 <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(256,256,256,0.5);'>
 
@@ -301,6 +199,10 @@
             </view>
 
             <view style='height:26rpx'></view>
+        </view>
+
+        <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+            <image src="{{goodsImg}}"></image>
         </view>
     </view>
 
