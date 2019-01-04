@@ -36,7 +36,6 @@ Page({
                 imgUrl: q.picUrl
             })
         }
-
         // this.setData({
         //     imgUrl: q.picUrl
         // })
@@ -52,6 +51,11 @@ Page({
             CategoryId: e
         }), r.loadData(r, !1);
 
+        // if(q.couponId){
+        //     r.setData({
+        //         CategoryId: q.couponId
+        //     })
+        // }
 
         
         console.log(tm.data.imgUrl != '' && tm.data.imgUrl != null)

@@ -1,8 +1,10 @@
 <view class="container-box" style='max-width:750rpx;' wx:if="{{isHidden}}">
     <view class="logoQRCode" style='position:relative;width:750rpx;'>
-        <canvas style="width: 554rpx;height: 554rpx;background:#fff;absolute;left:50%;margin-left: -277rpx;top:-50rpx;z-index:9999999;" canvas-id="logoQRCode" bindlongtap='saveCode' />
+        <canvas style="width: 554rpx;height: 554rpx;background:#fff;absolute;left:50%;margin-left: -277rpx;top:-50rpx;z-index:9999999;" canvas-id="logoQRCode" />
+        <!-- <canvas style="width: 554rpx;height: 554rpx;background:#fff;absolute;left:50%;margin-left: -277rpx;top:-50rpx;z-index:9999999;" canvas-id="logoQRCode" bindlongtap='saveCode' /> -->
         <view class='code_container'>
-            <image src='{{canvasUrl}}' style='z-index:9999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image>
+            <!-- <image src='{{canvasUrl}}' style='z-index:9999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image> -->
+            <image src='{{canvasUrl}}' style='z-index:9999;' mode='widthFix' data-src='{{canvasUrl}}'></image>
             <text style='z-index:99999999999999999;'>点击查看分享码,保存到相册</text>
         </view>
     </view>
