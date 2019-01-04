@@ -14,23 +14,27 @@
             <text class="coupon_price">￥</text>
             <text class='coupon_num'>300.0</text>
             <navigator url='http://ytal.qkmai.com/wapshop/CouponDetails.aspx?couponId=11'>
-              <view class='coupon_btn' wx:if="{{getCouponStatus}}" bindtap='onGetCoupon'>领取</view>
-              <view class='coupon_btn' wx:else>已领取</view>
+              <view class='coupon_btn' wx:if="{{getCouponStatus}}" >已领取</view>
+              <view class='coupon_btn' wx:else bindtap='onGetCoupon'>领取</view>
             </navigator>
           </view>
         </view>
       </view>
-      <view class='share_btn'></view>
+      <!-- <view class='share_btn' bindtap=''></view> -->
+      <button openType="share" class='share_btn' plain='true' style="border:0"></button>
     </view>
     <view class='task2_container'>
       <view class='group'>
         <text class='task2_title'></text>
         <view class='sharepeo_container'>
+            <block wx:for="{{memberList}}">
+                <image src='{{item.titlePic}}' class='share_peo'></image>
+            </block>
+          
+          <!-- <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
           <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
           <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image> -->
         </view>
       </view>
     </view>

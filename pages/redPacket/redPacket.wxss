@@ -111,6 +111,8 @@
   margin: 400rpx auto 0 auto;
   border-radius: 45rpx;
   line-height: 110rpx;
+  border: 0;
+  background: none;
 }
 
 .task2_container {

@@ -7,16 +7,25 @@ Page({
      * 页面的初始数据 
      */
     data: {
-        getCouponStatus: true,
-
-        CouponId: 11
+        getCouponStatus: false,
+        memberList:[],
+        CouponId: 11,
+        
     },
 
     /** 
      * 生命周期函数--监听页面加载 
      */
     onLoad: function(options) {
-
+        options.ReferralUserId && app.setRefferUserId(options.ReferralUserId);
+        var tm = this;
+        t.getUserInfo(function (a) {
+            tm.setData({
+                userInfo: a
+            })
+            console.log(a)
+        });
+        tm.onFive();
     },
 
     /** 
@@ -65,7 +74,14 @@ Page({
      * 用户点击右上角分享 
      */
     onShareAppMessage: function() {
-
+        var i = '/pages/redPacket/redPacket?from=menu';
+        t.globalData.userInfo && t.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + t.globalData.userInfo.UserId)
+        // console.log(i);
+        return {
+            title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
+            path: i,
+            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
+        }
     },
     onGetCoupon: function() {
         var tm = this;
@@ -108,5 +124,26 @@ Page({
             });
         });
 
+    },
+    onFive: function(){
+        var tm = this;
+        t.getOpenId(function (o) {
+            wx.request({
+                url: t.getUrl("YTALGetListMemberByCouponId"),
+                data: {
+                    openId: tm.data.userInfo.OpenId,
+                    couponId: 11
+                },
+                success: function (a) {
+                    console.log(a)
+                    tm.setData({
+                        memberList: a.data.memberList,
+                        getCouponStatus: a.data.hasCoupon
+                    })
+                    console.log(tm.data.memberList)
+                    // app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+                }
+            });
+        })
     }
 })
