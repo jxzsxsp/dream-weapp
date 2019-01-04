@@ -17,7 +17,7 @@ Page({
      * 生命周期函数--监听页面加载 
      */
     onLoad: function(options) {
-        options.ReferralUserId && app.setRefferUserId(options.ReferralUserId);
+        options.ReferralUserId && t.setRefferUserId(options.ReferralUserId);
         var tm = this;
         t.getUserInfo(function (a) {
             tm.setData({
@@ -109,7 +109,7 @@ Page({
                         content: e.data.Message,
                         showCancel: !1
                     }), that.setData({
-                        getCouponStatus: false
+                        getCouponStatus: true
                     })) : "NO" == e.data.Status && ("NOUser" == e.data.Message ? wx.navigateTo({
                         url: "../login/login"
                     }) : (that.setData({
@@ -127,11 +127,12 @@ Page({
     },
     onFive: function(){
         var tm = this;
+        console.log(t.globalData)
         t.getOpenId(function (o) {
             wx.request({
                 url: t.getUrl("YTALGetListMemberByCouponId"),
                 data: {
-                    openId: tm.data.userInfo.OpenId,
+                    openId: t.globalData.userInfo.OpenId,
                     couponId: 11
                 },
                 success: function (a) {

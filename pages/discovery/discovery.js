@@ -116,7 +116,7 @@ Page({
         wx.request({
             url: app.getUrl("YTALSignupDistribution"),
             data: {
-                openId: tm.data.userInfo.OpenId
+                openId:  app.globalData.userInfo.OpenId,
             },
             success: function(res) {
                 app.getOpenId(function() {
@@ -149,7 +149,7 @@ Page({
         wx.request({
             url: app.getUrl("YTALGetInfoDistribution"),
             data: {
-                openId: tm.data.userInfo.OpenId
+                openId: app.globalData.userInfo.OpenId,
             },
             success: function(res) {
                 //console.log(res);

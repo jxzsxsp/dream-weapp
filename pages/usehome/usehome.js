@@ -52,10 +52,10 @@ Page({
         o.globalData.isReloadUser = "1", o.getUserInfo(function(t) {
             n.setData({
                 userInfo: t
-            }), t.IsTrustLogon ? o.globalData.siteInfo.QuickLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
-                url: "../phonevefcode/phonevefcode"
-            }) : o.globalData.siteInfo.UserLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
-                url: "../phonevefcode/phonevefcode"
+            // }), t.IsTrustLogon ? o.globalData.siteInfo.QuickLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
+            //     url: "../phonevefcode/phonevefcode"
+            // }) : o.globalData.siteInfo.UserLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
+            //     url: "../phonevefcode/phonevefcode"
             });
         });
     },

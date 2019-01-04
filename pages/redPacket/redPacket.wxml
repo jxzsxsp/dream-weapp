@@ -1,107 +1,111 @@
 <!--pages/redPacket/redPacket.wxml-->
 <view class='redpacket_container'>
-  <view class='first_bg'>
-    <view class='coupon_container'>
-      <view class='coupon'>
-        <view class='opacity_bg'></view>
-        <view class='coupon_content'>
-          <view>
-            <text class='coupon_title'>无门槛优惠券</text>
-            <text class='coupon_title2'>活动商品可用</text>
-          </view>
-          <view class='bottom_container'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300yhqtb.png' class='red_image'></image>
-            <text class="coupon_price">￥</text>
-            <text class='coupon_num'>300.0</text>
-            <navigator url='http://ytal.qkmai.com/wapshop/CouponDetails.aspx?couponId=11'>
-              <view class='coupon_btn' wx:if="{{getCouponStatus}}" >已领取</view>
-              <view class='coupon_btn' wx:else bindtap='onGetCoupon'>领取</view>
-            </navigator>
-          </view>
+    <view class='first_bg'>
+        <view class='coupon_container'>
+            <view class='coupon'>
+                <view class='opacity_bg'></view>
+                <view class='coupon_content'>
+                    <view>
+                        <text class='coupon_title'>无门槛优惠券</text>
+                        <text class='coupon_title2'>活动商品可用</text>
+                    </view>
+                    <view class='bottom_container'>
+                        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300yhqtb.png' class='red_image'></image>
+                        <text class="coupon_price">￥</text>
+                        <text class='coupon_num'>300.0</text>
+                        <navigator url='http://ytal.qkmai.com/wapshop/CouponDetails.aspx?couponId=11'>
+                            <view class='coupon_btn' wx:if="{{getCouponStatus}}" bindtap='onGetCoupon'>已领取</view>
+                            <view class='coupon_btn' wx:else bindtap='onGetCoupon'>领取</view>
+                            <!-- <view class='coupon_btn' wx:if="{{getCouponStatus}}">已领取</view> -->
+                            <!-- <view class='coupon_btn' bindtap='onGetCoupon'>领取</view> -->
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+            <!-- <view class='share_btn' bindtap=''></view> -->
+            <button openType="share" class='share_btn' plain='true' style="border:0"></button>
         </view>
-      </view>
-      <!-- <view class='share_btn' bindtap=''></view> -->
-      <button openType="share" class='share_btn' plain='true' style="border:0"></button>
-    </view>
-    <view class='task2_container'>
-      <view class='group'>
-        <text class='task2_title'></text>
-        <view class='sharepeo_container'>
-            <block wx:for="{{memberList}}">
-                <image src='{{item.titlePic}}' class='share_peo'></image>
-            </block>
-          
-          <!-- <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+        <view class='task2_container'>
+            <view class='group'>
+                <text class='task2_title'></text>
+                <view class='sharepeo_container'>
+                    <block wx:for="{{memberList}}">
+                        <image src='{{item.titlePic}}' class='share_peo'></image>
+                    </block>
+
+                    <!-- <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
           <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
           <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
           <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image> -->
+                </view>
+            </view>
         </view>
-      </view>
     </view>
-  </view>
-  <view class='task3_container'>
-    <view class='product product_one'>
-      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin1.png' class='product_imgage'></image>
-      <text class='tit'>活动商品1</text>
-      <view class='text_container'>
-        <view>
-          <text class='product_title'>猫人 男士/女士 内衣套装 薄款纯棉</text>
-          <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo1.png" class='logo_image'></image>
+    <view class='task3_container'>
+        <view class='product product_one'>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin1.png' class='product_imgage'></image>
+            <text class='tit'>活动商品1</text>
+            <view class='text_container'>
+                <view>
+                    <text class='product_title'>猫人 男士/女士 内衣套装 薄款纯棉</text>
+                    <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo1.png" class='logo_image'></image>
+                </view>
+                <view class='bottom_con'>
+                    <text class='product_price'>￥399.0</text>
+                    <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover">
+                        <view class='product_btn'>立即抢购</view>
+                    </navigator>
+                </view>
+            </view>
         </view>
-        <view class='bottom_con'>
-          <text class='product_price'>￥399.0</text>
-          <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover">
-            <view class='product_btn'>立即抢购</view>
-          </navigator>
+        <view class='product product_connect'>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin3.png' class='product_imgage_connect'></image>
+            <text class='tit'>活动商品2</text>
+            <view class='text_container'>
+                <view class='pro1'>
+                    <text class='product_title'>奥克斯 家用多功能电炒锅 电热火锅</text>
+                    <view class='text_connect'>
+                        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo3.png" class='logo_image2'></image>
+                        <text>￥329.0</text>
+                    </view>
+                </view>
+                <view class='pro2'>
+                    <text class='product_title'>英国Vanow 高档316不锈钢保温杯</text>
+                    <view class='text_connect'>
+                        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo4.png" class='logo_image2'></image>
+                        <text>￥198.0</text>
+                    </view>
+                </view>
+                <view class='bottom_con'>
+                    <text class='product_price'>￥499.0</text>
+                    <navigator url="/pages/productdetail/productdetail?id=1043" hover-class="other-navigator-hover">
+                        <view class='product_btn'>立即抢购</view>
+                    </navigator>
+                </view>
+            </view>
         </view>
-      </view>
+        <view class='product product_two'>
+            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
+            <text class='tit'>分享回礼</text>
+            <view class='text_container'>
+                <view>
+                    <text class='product_title'>瘦脸仪 滚轮式V脸部按摩仪</text>
+                    <text class='product_title2'>抢购活动商品1,并分享好友助力得</text>
+                </view>
+                <view class='bottom_con'>
+                    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image>
+                    <view class='ma_des'>
+                        <text>满足条件后</text>
+                        <text>扫码申领回礼</text>
+                    </view>
+                    <view class='product_btn product_btn2' style='position:relative;'>咨询客服
+                        <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
+                    </view>
+                </view>
+            </view>
+        </view>
     </view>
-    <view class='product product_connect'>
-      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin3.png' class='product_imgage_connect'></image>
-      <text class='tit'>活动商品2</text>
-      <view class='text_container'>
-        <view class='pro1'>
-          <text class='product_title'>奥克斯 家用多功能电炒锅 电热火锅</text>
-          <view class='text_connect'>
-            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo3.png" class='logo_image2'></image>
-            <text>￥329.0</text>
-          </view>
-        </view>
-        <view class='pro2'>
-          <text class='product_title'>英国Vanow 高档316不锈钢保温杯</text>
-          <view class='text_connect'>
-            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo4.png" class='logo_image2'></image>
-            <text>￥198.0</text>
-          </view>
-        </view>
-        <view class='bottom_con'>
-          <text class='product_price'>￥499.0</text>
-          <navigator url="/pages/productdetail/productdetail?id=1043" hover-class="other-navigator-hover">
-            <view class='product_btn'>立即抢购</view>
-          </navigator>
-        </view>
-      </view>
-    </view>
-    <view class='product product_two'>
-      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
-      <text class='tit'>分享回礼</text>
-      <view class='text_container'>
-        <view>
-          <text class='product_title'>瘦脸仪 滚轮式V脸部按摩仪</text>
-          <text class='product_title2'>抢购活动商品1,并分享好友助力得</text>
-        </view>
-        <view class='bottom_con'>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image>
-          <view class='ma_des'>
-            <text>满足条件后</text>
-            <text>扫码申领回礼</text>
-          </view>
-          <view class='product_btn product_btn2'>咨询客服</view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!-- <view class='task4_container'>
+    <!-- <view class='task4_container'>
     <view class='product product_one'>
       <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin2.png' class='product_imgage'></image>
       <text class='tit'>活动商品2</text>
@@ -135,8 +139,8 @@
       </view>
     </view>
   </view> -->
-  <view class='end_des'>
-    <text>平台具有最终解释权</text>
-  </view>
+    <view class='end_des'>
+        <text>平台具有最终解释权</text>
+    </view>
 
 </view>
