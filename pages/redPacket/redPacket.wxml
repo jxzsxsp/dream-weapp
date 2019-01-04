@@ -46,13 +46,41 @@
         </view>
         <view class='bottom_con'>
           <text class='product_price'>￥399.0</text>
-           <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover"><view class='product_btn'>立即抢购</view></navigator>
+          <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover">
+            <view class='product_btn'>立即抢购</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class='product product_connect'>
+      <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin3.png' class='product_imgage_connect'></image>
+      <text class='tit'>活动商品2</text>
+      <view class='text_container'>
+        <view class='pro1'>
+          <text class='product_title'>奥克斯 家用多功能电炒锅 电热火锅</text>
+          <view class='text_connect'>
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo3.png" class='logo_image2'></image>
+            <text>￥329.0</text>
+          </view>
+        </view>
+        <view class='pro2'>
+          <text class='product_title'>英国Vanow 高档316不锈钢保温杯</text>
+          <view class='text_connect'>
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo4.png" class='logo_image2'></image>
+            <text>￥198.0</text>
+          </view>
+        </view>
+        <view class='bottom_con'>
+          <text class='product_price'>￥499.0</text>
+          <navigator url="/pages/productdetail/productdetail?id=1043" hover-class="other-navigator-hover">
+            <view class='product_btn'>立即抢购</view>
+          </navigator>
         </view>
       </view>
     </view>
     <view class='product product_two'>
       <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
-      <text class='tit'>商品1回礼</text>
+      <text class='tit'>分享回礼</text>
       <view class='text_container'>
         <view>
           <text class='product_title'>瘦脸仪 滚轮式V脸部按摩仪</text>
@@ -69,7 +97,7 @@
       </view>
     </view>
   </view>
-  <view class='task4_container'>
+  <!-- <view class='task4_container'>
     <view class='product product_one'>
       <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin2.png' class='product_imgage'></image>
       <text class='tit'>活动商品2</text>
@@ -102,7 +130,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
   <view class='end_des'>
     <text>平台具有最终解释权</text>
   </view>

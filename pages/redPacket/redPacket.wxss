@@ -168,6 +168,9 @@
   position: relative;
   padding: 15rpx;
 }
+.product_connect{
+  height: 440rpx;
+}
 .tit{
   position: absolute;
   top: 15rpx;
@@ -184,7 +187,21 @@
   height:180rpx;
 
 }
-
+.product_imgage_connect{
+  width: 205rpx;
+  height:385rpx;
+}
+.text_connect{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.text_connect text{
+  color: #888;
+  text-decoration: line-through;
+  font-size: 22rpx;
+  padding-right: 20rpx;
+}
 
 .product_btn {
   width: 165rpx;
@@ -214,12 +231,18 @@
 .product_two .bottom_con{
 margin-top: 5rpx
 }
+.pro1{
+  margin-bottom: 70rpx;
+}
+.pro2{
+  margin-bottom: 20rpx;
+}
 .logo_image{
   width: 165rpx;
   height: 29rpx;
 }
 .logo_image2{
-  width: 102rpx;
+  width: 152rpx;
   height: 30rpx;
 }
 .ma_images{
