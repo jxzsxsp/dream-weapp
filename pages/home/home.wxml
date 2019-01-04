@@ -14,8 +14,6 @@
         <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;' mode='widthFix' lazy-load></image>
     </view>
 
-
-
     <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:50rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image>
         <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;z-idnex:3;' wx:for='{{topLogoList}}'>
@@ -23,17 +21,7 @@
                 <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
-
-
-
-
     </view>
-
-
-
-
-
-
     <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
@@ -67,10 +55,6 @@
         <image style='width:730rpx;padding:0;margin:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/remai.png'></image>
     </view>
 
-
-
-
-
     <view style='padding:0 0 27rpx 0;width:730rpx;margin-left:10rpx;'>
         <view wx:key="{{item}}" wx:for='{{brandRush}}' wx:for-index="bindex" style='padding-top:15rpx;margin-bottom:20rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
             <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
@@ -86,7 +70,8 @@
             </view>
             <view style='float:right:623rpx;position:relative;'>
                 <view style='position:absolute;top:-14rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
-                    <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}<text style='font-size:9px;'>折起</text>
+                    <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                        <text style='font-size:9px;'>折起</text>
                     </view>
                 </view>
                 <view style='height:85rpx;padding:37rpx 0 16rpx 0' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
@@ -94,11 +79,7 @@
                     <view>
                         <view>
                             <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:34rpx;margin-top:10rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{item.subTitle}}</view>
-
                             <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:10rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.lowerDiscount / 10),1)}}折起</view> -->
-
-
-
 
                             <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if="{{userInfo.IsReferral}}">最高分佣
                                 <text style='cursor:pointer;padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}%</text>
@@ -120,9 +101,6 @@
                     <view style='clear:both'></view>
                 </view>
 
-
-
-
                 <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
                     <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;display:flex;flex-flow:row nowrap;;'>
                         <view style='font-size:22rpx;color:#515151;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
@@ -135,18 +113,7 @@
                             {{item.isFocus && item.isFocus == true? "取消关注" : "关注"}}
                         </view> -->
                     </view>
-
                 </view>
-
-
-
-
-
-
-
-
-
-
 
                 <view style='height:90rpx;line-height:90rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:flex-start;width:730rpx;margin-top:35rpx;'>
 
@@ -173,18 +140,6 @@
                     </view>
                     <!-- <view style='clear:both'></view> -->
                 </view>
-
-
-
-
-
-
-
-
-
-
-
-
                 <!-- <view style='padding-left:115rpx'>
                     <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
                         <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">分享专场</button>
@@ -202,4 +157,11 @@
     <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:9999;' wx:if="{{userInfo.IsReferral}}">
         <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;' mode='widthFix' lazy-load></image>
     </navigator>
+</view>
+<view class='homepop' wx:if="{{isShow}}">
+    <view class='popOpacity'></view>
+    <view class='popcontainer'>
+        <view class='close' bindtap='onCloseBtn'></view>
+        <view class='getBtn' bindtap='onGetLink'></view>
+    </view>
 </view>
