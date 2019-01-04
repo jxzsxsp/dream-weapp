@@ -4,7 +4,7 @@
   <view class='commission_top'>
     <text class='tit'>粉丝累计消费（元）</text>
     <view class='show_num'>
-      <text class='money_num'>1876.09</text>
+      <text class='money_num' style="font-size:60rpx">1876.09</text>
 
     </view>
     <view class='line'></view>
