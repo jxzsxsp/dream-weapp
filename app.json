@@ -1,6 +1,5 @@
 {
     "pages": [
-        
         "pages/home/home",
         "pages/login/login",
         "pages/usehome/usehome",
@@ -64,7 +63,10 @@
         "pages/webPage/webPage",
         "pages/redPacket/redPacket",
         "pages/myAtention/myAtention",
-        "pages/longvip/longvip"
+        "pages/longvip/longvip",
+        "pages/myteam/myteam",
+        "pages/Commission/Commission"
+        
 
         
     ],
