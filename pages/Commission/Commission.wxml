@@ -1,0 +1,70 @@
+<!--pages/Commission/Commission.wxml-->
+<view class='commission_container'>
+  <view class='commission_top'>
+    <text class='tit'>可提现（元）</text>
+    <view class='show_num'>
+      <text class='money_num'>876.09</text>
+      <view class='getMoney_btn'>申请提现</view>
+    </view>
+    <view class='line'></view>
+    <view class='showlist'>
+      <view>
+        <text>总收入</text>
+        <text>2235.09</text>
+      </view>
+      <view>
+        <text>已提现</text>
+        <text>0.00</text>
+      </view>
+      <view>
+        <text>未结算</text>
+        <text>1359.00</text>
+      </view>
+    </view>
+  </view>
+  <view class='commission_middle'>
+    <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redenvelopetb.png"></image>
+    <view>
+      <text class='font_a'>佣金赚取/提现攻略</text>
+      <text class='font_b'>平台佣金规则说明</text>
+    </view>
+    <navigator url='http://ytalman.qkmai.com/ArticleDetails?ArticleId=16'>
+      <view class='go_btn'>GO</view>
+    </navigator>
+  </view>
+  <view class='commission_bottom'>
+    <view class='list'>
+      <view class='list_top'>
+        <text class='font_big'>201812209070315</text>
+        <text class='font_big jl'> 拉新VIP奖励</text>
+      </view>
+      <view class='list_bottom'>
+        <text class='font_small'>2019-01-02 18:56:13</text>
+        <text class='font_small jl2'>未结算</text>
+        <text class='font_big jl3'>￥120</text>
+      </view>
+    </view>
+    <view class='list'>
+      <view class='list_top'>
+        <text class='font_big'>201812209070315</text>
+        <text class='font_big jl'> 自购订单返佣</text>
+      </view>
+      <view class='list_bottom'>
+        <text class='font_small'>2019-01-02 18:56:13</text>
+        <text class='font_small jl2'>未结算</text>
+        <text class='font_big jl3'>￥120</text>
+      </view>
+    </view>
+    <view class='list'>
+      <view class='list_top'>
+        <text class='font_big'>201812209070315</text>
+        <text class='font_big jl'> 粉丝购物返佣</text>
+      </view>
+      <view class='list_bottom'>
+        <text class='font_small'>2019-01-02 18:56:13</text>
+        <text class='font_small jl2'>未结算</text>
+        <text class='font_big jl3'>￥120</text>
+      </view>
+    </view>
+  </view>
+</view>

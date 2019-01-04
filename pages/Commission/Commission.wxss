@@ -1,0 +1,134 @@
+/* pages/Commission/Commission.wxss */
+page{
+  background-color: #f7f7f7;
+}
+.commission_top{
+  width: 590rpx;
+  height: 240rpx;
+  background: linear-gradient(90deg,#ff7181, #8279dc);
+  margin: 20rpx auto 30rpx;
+  border-radius: 20rpx;
+  padding: 60rpx 60rpx 30rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.commission_top .tit{
+  font-size: 26rpx;
+}
+.show_num{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35rpx;
+}
+.getMoney_btn{
+  width: 160rpx;
+  height: 70rpx;
+  background: #fff;
+  color: #8279dc;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 35rpx;
+  font-size: 26rpx;
+}
+.line{
+  width: 590rpx;
+  height: 1rpx;
+  background: #f5f5f5;
+}
+.showlist{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.showlist text{
+  font-size: 26rpx;
+  display: block
+}
+.commission_middle{
+  width: 700rpx;
+  height: 115rpx;
+  background: #e4f2ff;
+  border-radius: 60rpx;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center
+}
+.commission_middle image{
+  width:181rpx;
+  height: 115rpx;
+  position: absolute;
+  top: -16rpx;
+  left: 40rpx;
+}
+.font_a{
+  color: #4190e0;
+  font-size: 28rpx;
+}
+.font_b{
+  color: #959595;
+  font-size: 22rpx;
+  display: block
+}
+.go_btn{
+  color: #fff;
+  border-radius: 50%;
+  background: #4190e0;
+  font-size: 36RPX;
+  width: 86rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: center;
+  margin-right: 15rpx;
+  margin-left: 80rpx;
+}
+.commission_bottom{
+  width: 670rpx;
+  height: 410rpx;
+  margin: 30rpx auto;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+.list{
+  height: 135rpx;
+  border-top: 1px solid #dadada;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+.font_big{
+  color: #000;
+  font-size: 26rpx;
+}
+.font_small{
+  color: #959595;
+  font-size: 22rpx;
+}
+.list_top{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 40rpx;
+}
+.list_bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40rpx;
+}
+.jl{
+  margin-left: 75rpx;
+}
+.jl2{
+  width: 160rpx
+}
+.jl3{
+  width: 115rpx
+}
