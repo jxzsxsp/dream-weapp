@@ -743,3 +743,94 @@ image {
 .fourPic:nth-child(2) {
     width:279rpx;
 }
+.homepop{
+ 
+  width:100%;
+ 
+  height:100%;
+ 
+  position: fixed;
+ 
+   top:0;
+ 
+  left:0;
+ 
+  z-index:999
+ 
+}
+ 
+.popOpacity{
+ 
+  width:100%;
+ 
+  height:100%;
+ 
+  position:absolute;
+ 
+  top:0;
+ 
+  left:0;
+ 
+  background:#000;
+ 
+  opacity:0.8;
+ 
+}
+ 
+.popcontainer{
+ 
+  width: 641rpx;
+ 
+  height: 579rpx;
+ 
+  position: absolute;
+ 
+  top: 325rpx;
+ 
+  left: 50%;
+ 
+  margin-left: -320rpx;
+ 
+  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
+ 
+  background-size: cover;
+ 
+}
+ 
+.close{
+ 
+  position: absolute;
+ 
+  width: 68rpx;
+ 
+  height: 68rpx;
+ 
+  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanbitb.png");
+ 
+  background-size: cover;
+ 
+  top: -135rpx;
+ 
+  right: 90rpx;
+ 
+}
+ 
+.getBtn{
+ 
+  position: absolute;
+ 
+  width: 330rpx;
+ 
+  height: 110rpx;
+ 
+  border-radius: 15rpx;
+ 
+  text-align: center;
+ 
+  left: 135rpx;
+ 
+  bottom: 0rpx;
+ 
+  line-height: 80rpx;
+ 
+}
