@@ -13,16 +13,17 @@ image {
 .catetitle {
     height: 49rpx;
     text-align: center;
-    display: inline-block;  
-    font-size:30rpx;
+    display: inline-block;
+    font-size: 30rpx;
     color: #fff;
-    margin-left:25rpx;
-    
+    margin-left: 25rpx;
 }
+
 .catetitle:nth-last-child(1) {
-    margin-right:30rpx;
+    margin-right: 30rpx;
 }
-.catetitle view.active {    
+
+.catetitle view.active {
     font-size: 30rpx;
     line-height: 40rpx;
     background: #fff;
@@ -220,7 +221,7 @@ image {
     height: 40rpx;
 }
 
-.goodjx .qglistpic,.goodjx .qglistright {
+.goodjx .qglistpic, .goodjx .qglistright {
     float: none;
 }
 
@@ -347,7 +348,8 @@ image {
     width: 60%;
 }
 
-.page-section .bd-pic .bd-r-pic .bd-r-t-pic,.page-section .bd-pic .bd-r-pic .bd-r-b-pic,.bd-l-t-pic,.bd-l-b-pic {
+.page-section .bd-pic .bd-r-pic .bd-r-t-pic,
+.page-section .bd-pic .bd-r-pic .bd-r-b-pic, .bd-l-t-pic, .bd-l-b-pic {
     display: flex;
     height: 180rpx;
     overflow: hidden;
@@ -415,12 +417,12 @@ image {
 
 .menu-icon-3 {
     width: 33.3%;
-    float:left;    
+    float: left;
     text-align: center;
 }
 
 .menu-icon-3 image {
-    width: 100%;    
+    width: 100%;
     display: inline-block;
 }
 
@@ -439,12 +441,12 @@ image {
 
 .menu-icon-4 {
     width: 25%;
-    float:left;    
+    float: left;
     text-align: center;
 }
 
 .menu-icon-4 image {
-    width: 100%;    
+    width: 100%;
     display: inline-block;
 }
 
@@ -460,7 +462,6 @@ image {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
-
 
 .page-section .bd-list-pic {
     width: 100%;
@@ -667,27 +668,29 @@ image {
     border: none;
 }
 
-.tui-countdown-content{
-  height: 26rpx;
-  line-height: 26rpx;
-  text-align: center;  
-  margin: 5rpx 0 5rpx 0;
-  padding: 0;
-  font-size: 26rpx;
+.tui-countdown-content {
+    height: 26rpx;
+    line-height: 26rpx;
+    text-align: center;
+    margin: 5rpx 0 5rpx 0;
+    padding: 0;
+    font-size: 26rpx;
 }
-.tui-conutdown-box{
-  display: inline-block;
-  height: 26rpx;
-  width: 30rpx;
-  line-height: 26rpx;
-  text-align: center;
-  background-color: #515151;
-  color: #fff;
-  margin: 0 5rpx;
-  padding: 5rpx;
+
+.tui-conutdown-box {
+    display: inline-block;
+    height: 26rpx;
+    width: 30rpx;
+    line-height: 26rpx;
+    text-align: center;
+    background-color: #515151;
+    color: #fff;
+    margin: 0 5rpx;
+    padding: 5rpx;
 }
-.tui-countdown-bg{
-  background-color: #DF0101;
+
+.tui-countdown-bg {
+    background-color: #df0101;
 }
 
 /* 
@@ -695,7 +698,8 @@ image {
  * @auth：潘金龙
  * @data：12-07
  */
- .run-time-box {
+
+.run-time-box {
     display: inline-block;
     height: 26rpx;
     width: 30rpx;
@@ -705,132 +709,141 @@ image {
     color: #fff;
     margin: 0 5rpx;
     padding: 5rpx;
- }
- .run-time-bg {
-     background-color: #db3c40;
- }
+}
 
-
+.run-time-bg {
+    background-color: #db3c40;
+}
 
 .ellipsis {
     display: -webkit-box;
-    font-size:28rpx;
-    color:#000000;
+    font-size: 28rpx;
+    color: #000;
     line-height: 40rpx;
     word-break: break-all;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp:3;
+    -webkit-line-clamp: 3;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
 }
 
 .ellipsis.nowrap {
-    -webkit-line-clamp:20;
-    overflow: visible
+    -webkit-line-clamp: 20;
+    overflow: visible;
 }
-
-
 
 .ninePic {
     width: 186rpx;
     height: 186rpx;
 }
+
 /* .fourPic:nth-child(2):after {
     content: "占位符";
     color: transparent;
 } */
 
 .fourPic:nth-child(2) {
-    width:279rpx;
+    width: 279rpx;
 }
-.homepop{
- 
-  width:100%;
- 
-  height:100%;
- 
-  position: fixed;
- 
-   top:0;
- 
-  left:0;
- 
-  z-index:999
- 
+
+.homepop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }
- 
-.popOpacity{
- 
-  width:100%;
- 
-  height:100%;
- 
-  position:absolute;
- 
-  top:0;
- 
-  left:0;
- 
-  background:#000;
- 
-  opacity:0.8;
- 
+
+.popOpacity {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.8;
 }
- 
-.popcontainer{
- 
-  width: 641rpx;
- 
-  height: 579rpx;
- 
-  position: absolute;
- 
-  top: 325rpx;
- 
-  left: 50%;
- 
-  margin-left: -320rpx;
- 
-  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
- 
-  background-size: cover;
- 
+
+.popcontainer {
+    width: 641rpx;
+    height: 579rpx;
+    position: absolute;
+    top: 325rpx;
+    left: 50%;
+    margin-left: -320rpx;
+    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
+    background-size: cover;
 }
- 
-.close{
- 
-  position: absolute;
- 
-  width: 68rpx;
- 
-  height: 68rpx;
- 
-  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanbitb.png");
- 
-  background-size: cover;
- 
-  top: -135rpx;
- 
-  right: 90rpx;
- 
+
+.close {
+    position: absolute;
+    width: 68rpx;
+    height: 68rpx;
+    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanbitb.png");
+    background-size: cover;
+    top: -135rpx;
+    right: 90rpx;
 }
- 
-.getBtn{
- 
-  position: absolute;
- 
-  width: 330rpx;
- 
-  height: 110rpx;
- 
-  border-radius: 15rpx;
- 
-  text-align: center;
- 
-  left: 135rpx;
- 
-  bottom: 0rpx;
- 
-  line-height: 80rpx;
- 
+
+.getBtn {
+    position: absolute;
+    width: 330rpx;
+    height: 110rpx;
+    border-radius: 15rpx;
+    text-align: center;
+    left: 135rpx;
+    bottom: 0rpx;
+    line-height: 80rpx;
+}
+
+.homepop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.popOpacity {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.8;
+}
+
+.popcontainer {
+    width: 641rpx;
+    height: 579rpx;
+    position: absolute;
+    top: 325rpx;
+    left: 50%;
+    margin-left: -320rpx;
+    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
+    background-size: cover;
+}
+
+.close {
+    position: absolute;
+    width: 68rpx;
+    height: 68rpx;
+    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanbitb.png");
+    background-size: cover;
+    top: -135rpx;
+    right: 90rpx;
+}
+
+.getBtn {
+    position: absolute;
+    width: 330rpx;
+    height: 110rpx;
+    border-radius: 15rpx;
+    text-align: center;
+    left: 135rpx;
+    bottom: 0rpx;
+    line-height: 80rpx;
 }

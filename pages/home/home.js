@@ -3,6 +3,7 @@ var t = require("../../utils/config.js"),
 
 Page({
     data: {
+        isShow: true,
         userInfo: {},
         pageIndex: 1,
         pageSize: 5,
@@ -974,5 +975,15 @@ Page({
                 })
             }
         });
+    },
+    onCloseBtn: function () {
+        this.setData({
+            isShow: false
+        })
+    },
+    onGetLink: function () {
+        wx.navigateTo({
+            url: '../redPacket/redPacket',
+        })
     }
 });
