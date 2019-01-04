@@ -37,6 +37,7 @@ page{
   width: 590rpx;
   height: 1rpx;
   background: #f5f5f5;
+  opacity: 0.5
 }
 .showlist{
   display: flex;
@@ -98,10 +99,13 @@ page{
 }
 .list{
   height: 135rpx;
-  border-top: 1px solid #dadada;
+  border-top: 1px solid #d6d6d6af;
   display: flex;
   flex-direction: column;
   justify-content: center
+}
+.list1{
+    border-top:none
 }
 .font_big{
   color: #000;
