@@ -1,6 +1,6 @@
 {
   "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#db3c40",
+  "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "品牌列表",
-  "navigationBarTextStyle": "white"
+  "navigationBarTextStyle": "black"
 }
