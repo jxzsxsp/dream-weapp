@@ -899,10 +899,29 @@ Page({
     },
     toggleHide: function(e) {
         var tm = this;
-        tm.setData({
-            currentId: e.currentTarget.dataset.id,
-            toggleText: !tm.data.toggleText
-        });
+        console.log(tm.data.currentId,e.currentTarget.dataset.id)
+        if (tm.data.currentId == 0) {
+            tm.setData({
+                currentId: e.currentTarget.dataset.id,
+                toggleText: !tm.data.toggleText
+            })
+        } else {
+            if (tm.data.currentId != e.currentTarget.dataset.id) {
+                    tm.setData({
+                        currentId: e.currentTarget.dataset.id,
+                    });
+                if (!tm.data.toggleText) {
+                    
+                    tm.setData({
+                        toggleText: !tm.data.toggleText
+                    });
+                }
+            } else {
+                tm.setData({
+                    toggleText: !tm.data.toggleText
+                });
+            }
+        }
     },
     happyEarn: function() {
         wx.navigateTo({
