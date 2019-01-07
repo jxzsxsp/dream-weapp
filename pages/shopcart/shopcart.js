@@ -29,6 +29,7 @@ Page({
                     openId: n
                 },
                 success: function(t) {
+                    console.log(t.data)
                     if ("OK" == t.data.Status) {
                         var n = t.data.Data,
                             s = t.data.Data.Suppliers;
@@ -43,16 +44,17 @@ Page({
                             TotalPrice: a.toFixed(2)
                         });
 
-
-
                         if (n.RecordCount > 0) {
                             wx.setTabBarBadge({
                                 index: 3,
                                 text: n.RecordCount.toString()
                             })
 
+                        } else{
+                            wx.removeTabBarBadge({
+                                index: 3,
+                            })
                         }
-
                     } else "NOUser" == t.data.Message || wx.showModal({
                         title: "提示",
                         content: t.data.Message,
