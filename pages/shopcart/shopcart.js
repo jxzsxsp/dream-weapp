@@ -19,7 +19,7 @@ Page({
     loadData: function(e) {
         var tm = this;
         wx.showLoading({
-            title: "正在加载"
+            // title: "正在加载"
         });
         var a = parseFloat(0);
         t.getOpenId(function(n) {
@@ -49,7 +49,6 @@ Page({
                                 index: 3,
                                 text: n.RecordCount.toString()
                             })
-
                         } else{
                             wx.removeTabBarBadge({
                                 index: 3,
