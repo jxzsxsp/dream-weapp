@@ -3,7 +3,7 @@
 <view class="container-box">
     <!--左侧栏-->
     <view class="nav_left">
-        <scroll-view scroll-y style="width: 25%;min-height:100%;white-space: nowrap; display: flex;background:#f5f5f5;position:fixed;top:0;z-index:1000;align-items:flex-start;">
+        <scroll-view scroll-y style="width: 120rpx;min-height:100%;white-space: nowrap; display: flex;background: #4d4c4c;position:fixed;top:0;z-index:1000;align-items:flex-start;">
             <block wx:for='{{tagList}}'>
                 <view class="nav_left_items {{selectedTag==item.tagName?'active':''}}" catchtap="switchRightTab" data-name="{{item.tagName}}" data-img="{{item.titlePic}}">
                     <view class='brcontainer' catchtap="switchRightTab" data-name="{{item.tagName}}" data-img="{{item.titlePic}}">{{item.tagName}}</view>
@@ -12,36 +12,36 @@
         </scroll-view>
     </view>
     <!--右侧栏-->
-    <view class="nav_right">
-        <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image>
-        <view wx:if="{{brandRush}}" style='display:flex;flex-flow:row wrap;'>
+    <view class="nav_right" style='padding-top:30rpx'>
+        <!-- <image style='width:100%;margin-bottom:30rpx;' src='{{selectedImg}}' mode='widthFix'></image> -->
+        <text class='nav_title' style='color:#fff;font-weight:900;font-size:38rpx;padding:10rpx 20rpx 30rpx 20rpx;'>{{selectedTag}}</text>
+        <view wx:if="{{brandRush}}" style='display:flex;flex-flow:row wrap;margin-top:30rpx; background: linear-gradient(180deg,#151515 , #4a4a4a);'>
             <block wx:for="{{brandRush}}">
-                <view class="nav_right_items" style='display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;width:33.33%;height:180rpx;margin-bottom:15rpx;'>
-                    <navigator url="/pages/brandInfo/brandInfo?brandId={{item.brandId}}&brandSource={{item.brandSource}}" style='display:flex;flex-flow:column nowrap;align-items:center;justify-content:space-between;width:100%;height:182rpx;'>
-
-                        <view wx:if="{{item.brandLogo}}" style='position:relative;width:140rpx;height:140rpx;display:flex;align-items:center;justify-content:center;'>
-                            <image src="{{item.brandLogo}}" style='width:112rpx;' mode='widthFix'></image>
+                <view class="nav_right_items" style='display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;width:31%;height:200rpx;margin-bottom:15rpx;margin-left:10rpx;background:#fff;border-radius: 15rpx;overflow:hidden'>
+                    <navigator url="/pages/brandInfo/brandInfo?brandId={{item.brandId}}&brandSource={{item.brandSource}}" style='display:flex;flex-flow:column nowrap;align-items:center;justify-content:space-between;width:100%;height:100%;'>
+                        <view wx:if="{{item.brandLogo}}" style='position:relative;width:110rpx;height:110rpx;display:flex;align-items:center;justify-content:center;margin:15rpx auto 10rpx auto;overflow:hidden'>
+                            <image src="{{item.brandLogo}}" style='width:110rpx;' mode='widthFix'></image>
                         </view>
                         <block wx:else>
                             <image src="http://temp.im/50x30"></image>
                         </block>
-                        <!-- <view wx:if="{{item.mainTitle}}" class='' style='position:relative;text-align:center;font-size:12px;width:140rpx;-webkit-line-clamp:2;display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;color:#515151;height:60rpx;'>
-                            <text style='line-height:26rpx;'>{{item.mainTitle}}</text>
+                        <view wx:if="{{item.mainTitle}}" class='' style='position:relative;text-align:center;font-size:20rpx;width:100%;-webkit-line-clamp:2;display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;color:#515151;padding-bottom:10rpx'>
+                            <text style='line-height:20rpx;white-space:pre-wrap;padding:0 20rpx'>{{item.mainTitle}}</text>
                         </view>
                         <view wx:else>
                             <text style='color:red;font-size:10px;'>{{item.tree.desc2}}</text>
-                        </view> -->
-                        <view style='position:relative;width:140rpx;height:30rpx;'>
-                            <view style='position:absolute;right:14rpx;bottom:0;color:#000;font-size:24rpx;background-color:#fff;border-radius:4rpx;padding:0 4rpx;width:104rpx;text-align:center;'>{{filter.toFix(item.lowerDiscount/10,1)}}折起</view>
+                        </view>
+                        <view style='position:relative;width:100%;height:40rpx;margin-top:10rpx'>
+                            <view style='position:absolute;right:0rpx;bottom:0;color:#000;font-size:24rpx;background-color:#fff;border-radius:4rpx;width:100%;text-align:center;background:#daac7c;color:#fff;line-height:40rpx;'>{{filter.toFix(item.lowerDiscount/10,1)}}折起</view>
                         </view>
                     </navigator>
                 </view>
             </block>
         </view>
         <view wx:else class='emptyShow'>
-          <image src="http://cos.qkmai.com/qkmbb/ytal/huobaotb.png"></image>
-          <text>清仓太火爆</text>
-          <text>一会再来吧O.o</text>
+            <image src="http://cos.qkmai.com/qkmbb/ytal/huobaotb.png"></image>
+            <text>清仓太火爆</text>
+            <text>一会再来吧O.o</text>
         </view>
     </view>
 </view>

@@ -86,17 +86,18 @@
         </view>
         <view class='product product_two'>
             <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
-            <text class='tit'>分享回礼</text>
+            <text class='tit'>立即兑换</text>
             <view class='text_container'>
                 <view>
                     <text class='product_title'>瘦脸仪 滚轮式V脸部按摩仪</text>
-                    <text class='product_title2'>抢购活动商品1,并分享好友助力得</text>
+                    <text class='product_title2'>抢购活动商品,并分享好友助力得</text>
                 </view>
                 <view class='bottom_con'>
-                    <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image>
+                    <!-- <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image> -->
+                    <text>￥0.0</text>
                     <view class='ma_des'>
-                        <text>满足条件后</text>
-                        <text>扫码申领回礼</text>
+                        <text>拍下订单联系微信</text>
+                        <text>号zhihui159改价</text>
                     </view>
                     <view class='product_btn product_btn2' style='position:relative;'>咨询客服
                         <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
@@ -142,5 +143,8 @@
     <view class='end_des'>
         <text>平台具有最终解释权</text>
     </view>
-
+    <view class="fixedBtn" bindtap='fixedGoToHome'>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
+        <text>首页</text>
+    </view>
 </view>

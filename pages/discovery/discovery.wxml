@@ -83,7 +83,7 @@
         </view>
         <view class='tasks_block tasks_two'>
           <view class='tasks_left'>
-            <text class='tit1'>自助商品</text>
+            <text class='tit1'>自助购物</text>
             <text class='tit2'>每满1单并发货，加5天VIP</text>
           </view>
           <view class='tasks_btn' bindtap='goHome'>
@@ -92,8 +92,8 @@
         </view>
         <view class='tasks_block tasks_three'>
           <view class='tasks_left'>
-            <text class='tit1'>分享品牌成交</text>
-            <text class='tit2'>每成交满500元，加10天VIP</text>
+            <text class='tit1'>好友购物</text>
+            <text class='tit2'>分享给别人购物每满500元，加10天VIP</text>
           </view>
           <view class='tasks_btn' bindtap='gobrandRush'>
             去分享
