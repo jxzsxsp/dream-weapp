@@ -94,8 +94,8 @@
                 <view style='clear:both'></view>
                 <view style='padding-left:129rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                     <view style='font-size:28rpx;color:#515151;padding-bottom:16rpx;'>
-                        <text bindlongpress='copy' data-length='item.brandDesc.length' class='{{toggleText? "nowrap" : ""}} {{item.brandDesc.length >65 ? "ellipsis" : ""}}' data-val="{{item.brandDesc}}">{{item.brandDesc}}</text>
-                        <text catchtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 65}}'>{{toggleText? "收起" : "全文"}}</text>
+                        <text bindlongpress='copy' data-length='item.brandDesc.length' class='{{toggleText && currentId == item.brandId ? "nowrap" : ""}} {{item.brandDesc.length >65 ? "ellipsis" : ""}}' data-val="{{item.brandDesc}}">{{item.brandDesc}}</text>
+                        <text catchtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 65}}'>{{toggleText  && currentId == item.brandId ? "收起" : "全文"}}</text>
                     </view>
                 </view>
                 <view style='padding-left:109rpx'>

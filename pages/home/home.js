@@ -138,21 +138,21 @@ Page({
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
 
-        tm.setData({
-            TopicData: {
-                id: 201811161906894,
-                type: 9,
-                content: {
-                    showType: 1,
-                    space: 0,
-                    dataset: [{
-                        linkType: 10,
-                        link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
-                        pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
-                    }]
-                }
-            }
-        })
+        // tm.setData({
+        //     TopicData: {
+        //         id: 201811161906894,
+        //         type: 9,
+        //         content: {
+        //             showType: 1,
+        //             space: 0,
+        //             dataset: [{
+        //                 linkType: 10,
+        //                 link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
+        //                 pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
+        //             }]
+        //         }
+        //     }
+        // })
 
         this.focusList()
         // console.log(1)
@@ -899,10 +899,29 @@ Page({
     },
     toggleHide: function(e) {
         var tm = this;
-        tm.setData({
-            currentId: e.currentTarget.dataset.id,
-            toggleText: !tm.data.toggleText
-        });
+        // console.log(tm.data.currentId,e.currentTarget.dataset.id)
+        if (tm.data.currentId == 0) {
+            tm.setData({
+                currentId: e.currentTarget.dataset.id,
+                toggleText: !tm.data.toggleText
+            })
+        } else {
+            if (tm.data.currentId != e.currentTarget.dataset.id) {
+                    tm.setData({
+                        currentId: e.currentTarget.dataset.id,
+                    });
+                if (!tm.data.toggleText) {
+                    
+                    tm.setData({
+                        toggleText: !tm.data.toggleText
+                    });
+                }
+            } else {
+                tm.setData({
+                    toggleText: !tm.data.toggleText
+                });
+            }
+        }
     },
     happyEarn: function() {
         wx.navigateTo({
@@ -939,10 +958,11 @@ Page({
     },
     focusList: function() {
         var tm = this;
+        // console.log(e.globalData.openId)
         wx.request({
             url: e.getUrl("GetListBrandByFollow"),
             data: {
-                openId: tm.data.userInfo.OpenId
+                openId: e.globalData.openId
             },
             success: function(jd) {
                 if (jd.data.length > 0) {
