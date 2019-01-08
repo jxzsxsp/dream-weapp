@@ -191,7 +191,7 @@ Page({
                     tm.getLogo();
                     tm.getCate();
                     wx.hideNavigationBarLoading();
-                    tm.countDown();
+                    // tm.countDown();
                 }
             },
             fail: function(res) {},
@@ -865,7 +865,9 @@ Page({
         })
     },
     changeCate: function(event) {
-        wx.showLoading({});
+        wx.showLoading({
+            mask:true
+        });
         this.setData({
             brandRush: [],
             dataIndex: 0,

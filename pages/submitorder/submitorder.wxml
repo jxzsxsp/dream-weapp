@@ -26,6 +26,7 @@
                 <image src="/images/order_06.jpg"></image>
             </view>
         </view>
+        <view style='width:100%;color:#515151;padding-left:24rpx;padding-top:10rpx;font-size:13px;'>提示：所有商品不支持七天无理由退换货</view>
         <view class="orderlist">
             <view class="orderlisttile">
                 <view class="orderhao">订单清单</view>

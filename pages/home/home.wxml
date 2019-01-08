@@ -99,7 +99,7 @@
 
 
                 <view style='position:absolute;top:-14rpx;right:0rpx;width:138rpx;height:86rpx;font-size:18px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:138rpx 86rpx;'>
-                    <view style='font-size:18px;text-align:center;line-height:70rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                    <view style='font-size:18px;text-align:center;line-height:70rpx;color:#fff;font-weight:700;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
                         <text style='font-size:11px;'>折起</text>
                     </view>
                 </view>
