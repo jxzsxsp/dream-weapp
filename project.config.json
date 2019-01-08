@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
+	"libVersion": "1.9.9",
 	"appid": "wx779e355e765faaf5",
 	"projectname": "ytalwxsp",
 	"debugOptions": {
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -52,6 +52,11 @@
 					"pathName": "pages/brandInfo/brandInfo",
 					"query": "brandId=2c9089c267ee854f01680855b7b00d4b&brandSource=dadacang",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "123",
+					"pathName": "pages/ApplyRefund/ApplyRefund"
 				}
 			]
 		}
