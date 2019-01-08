@@ -8,7 +8,7 @@
     <view class='tipsbg'>
       <view class='tips'>
         <view class='tips_left'>
-          <text class='font_a'>您的VIP试用期还剩</text>
+          <text class='font_a'>VIP试用期还剩</text>
           <view>
             <text class='font_b'>{{vipInfo.expireDays && vipInfo.expireDays != 0 ? vipInfo.expireDays : 0}}</text>
             <text class='font_c'>天</text>

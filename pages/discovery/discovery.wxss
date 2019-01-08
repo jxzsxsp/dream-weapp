@@ -25,7 +25,7 @@ page {
 
 
 .tips_left .font_a {
-  font-size: 30rpx;
+  font-size: 32rpx;
   color: rgb(81, 81, 81);
 }
 
@@ -69,7 +69,7 @@ page {
 }
 
 .tasktit .font_a {
-  font-size: 30rpx;
+  font-size: 32rpx;
   color: rgb(81, 81, 81);
 }
 
@@ -141,8 +141,7 @@ background-size: cover
 }
 
 .taskstit {
-
-  font-size: 30rpx;
+  font-size: 32rpx;
   color: rgb(81, 81, 81);
 }
 .tasks_block{
@@ -153,6 +152,7 @@ background-size: cover
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
     border-bottom: 1px solid rgb(247, 247, 247);
 }
 .tasks_three{
@@ -162,7 +162,7 @@ background-size: cover
   display: block
 }
 .tit1{
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: rgb(81, 81, 81);
 }
 .tit2{
@@ -170,7 +170,7 @@ background-size: cover
   color: rgb(255, 107, 42);
 }
 .tasks_btn{
-  font-size: 26rpx;
+  font-size: 28rpx;
   color: #fff;
   width: 175rpx;
   height: 75rpx;
