@@ -7,7 +7,7 @@ Page({
         ShipTo: "",
         CellPhone: "",
         Address: "",
-        LogisticsData: null
+        LogisticsData: []
     },
     onLoad: function(a) {
         var o = this, s = a.orderid;
@@ -21,13 +21,14 @@ Page({
                 success: function(e) {
                     if (console.log(JSON.stringify(e)), "OK" == e.data.Status) {
                         var a = e.data.Data, s = JSON.parse(a.LogisticsData);
+                        console.log(s)
                         o.setData({
                             ExpressCompanyName: a.ExpressCompanyName,
                             ShipOrderNumber: a.ShipOrderNumber,
                             ShipTo: a.ShipTo,
                             CellPhone: a.CellPhone,
                             Address: a.Address,
-                            LogisticsData: s.traces
+                            LogisticsData: s.data
                         });
                     } else "NOUser" == e.data.Message ? wx.navigateTo({
                         url: "../login/login"
