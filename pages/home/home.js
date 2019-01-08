@@ -33,7 +33,8 @@ Page({
         toggleText: false,
         currentId: 0,
         topLogoList: [],
-        focusList: []
+        focusList: [],
+        isTooLow: false
     },
     onShow: function() {
         this.GetShopCart();
@@ -95,6 +96,7 @@ Page({
         });
     },
     onLoad: function(a) {
+        var tm = this;
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");
@@ -102,7 +104,6 @@ Page({
             e.setRefferUserId(str[1]);
         }
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
-        var tm = this;
         e.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t
@@ -137,29 +138,65 @@ Page({
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
+        // this.getCate();
+        wx.getSystemInfo({
+            success: function(res) {
+                var x = res.version
+                var reg = new RegExp("/.", "g");
+                var s = x.replace(".", "").replace(".", "");
+                tm.compareVersion(x,'6.6.1')
+                console.log(tm.compareVersion(x, '6.6.1'))
+                if (tm.compareVersion(x, '6.6.1') == -1) {
+                    wx.hideTabBar({})
+                    // tm.setData({
+                    //     isTooLow: true
+                    // })
 
-        // tm.setData({
-        //     TopicData: {
-        //         id: 201811161906894,
-        //         type: 9,
-        //         content: {
-        //             showType: 1,
-        //             space: 0,
-        //             dataset: [{
-        //                 linkType: 10,
-        //                 link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
-        //                 pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
-        //             }]
-        //         }
-        //     }
-        // })
+                    wx.showModal({
+                        title: '提示',
+                        content: '您的微信版本过低请先升级您的微信版本',
+                        showCancel: false,
+                        success(res) {
+                            if (res.confirm) {
+                                // wx.hideTabBar({})
+                                tm.setData({
+                                    isTooLow: true
+                                })
+                            } else if (res.cancel) {
+                                console.log('用户点击取消')
+                            }
+                        }
+                    })
+                } else {
 
-        this.focusList()
-        // console.log(1)
-        this.getLogo();
-        this.getCate();
-        wx.hideNavigationBarLoading();
-        this.countDown();
+
+                    // tm.setData({
+                    //     TopicData: {
+                    //         id: 201811161906894,
+                    //         type: 9,
+                    //         content: {
+                    //             showType: 1,
+                    //             space: 0,
+                    //             dataset: [{
+                    //                 linkType: 10,
+                    //                 link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
+                    //                 pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
+                    //             }]
+                    //         }
+                    //     }
+                    // })
+
+                    tm.focusList()
+                    // console.log(1)
+                    tm.getLogo();
+                    tm.getCate();
+                    wx.hideNavigationBarLoading();
+                    tm.countDown();
+                }
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+        })
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -572,7 +609,9 @@ Page({
         let brandRushList = this.data.brandRush;
         brandRushList.forEach(o => {
             if (o.rushEndTime != null) {
+                // console.log(o.rushEndTime)
                 var rushEndTime = o.rushEndTime.replace('\-', '/').replace('\-', '/');
+                // console.log(rushEndTime)
                 let endTime = new Date(rushEndTime).getTime();
                 //endTime = endTime + 8 * 60 * 60 * 1000;    
                 let obj = null;
@@ -754,6 +793,7 @@ Page({
             url: currentUrl,
             data: currentData,
             success: function(jd) {
+                wx.hideLoading();
                 let brandRushList = [];
                 jd.data.forEach(o => {
                     var obj = {
@@ -825,6 +865,7 @@ Page({
         })
     },
     changeCate: function(event) {
+        wx.showLoading({});
         this.setData({
             brandRush: [],
             dataIndex: 0,
@@ -907,11 +948,11 @@ Page({
             })
         } else {
             if (tm.data.currentId != e.currentTarget.dataset.id) {
-                    tm.setData({
-                        currentId: e.currentTarget.dataset.id,
-                    });
+                tm.setData({
+                    currentId: e.currentTarget.dataset.id,
+                });
                 if (!tm.data.toggleText) {
-                    
+
                     tm.setData({
                         toggleText: !tm.data.toggleText
                     });
@@ -979,7 +1020,7 @@ Page({
     changeFocus: function(event) {
         var tm = this;
         var s = event.currentTarget.dataset.index;
-        var o = tm.data.userInfo.OpenId
+        var o = e.globalData.openId
         wx.request({
             url: e.getUrl("FollowBrand"),
             data: {
@@ -991,19 +1032,45 @@ Page({
                 var br = tm.data.brandRush;
                 br[s].isFocus = !br[s].isFocus;
                 tm.setData({
-                    brandRush:br
+                    brandRush: br
                 })
             }
         });
     },
-    onCloseBtn: function () {
+    onCloseBtn: function() {
         this.setData({
             isShow: false
         })
     },
-    onGetLink: function () {
+    onGetLink: function() {
         wx.navigateTo({
             url: '../redPacket/redPacket',
         })
+    },
+
+    compareVersion: function(v1, v2) {
+        v1 = v1.split('.')
+        v2 = v2.split('.')
+        var len = Math.max(v1.length, v2.length)
+
+        while (v1.length < len) {
+            v1.push('0')
+        }
+        while (v2.length < len) {
+            v2.push('0')
+        }
+
+        for (var i = 0; i < len; i++) {
+            var num1 = parseInt(v1[i])
+            var num2 = parseInt(v2[i])
+
+            if (num1 > num2) {
+                return 1
+            } else if (num1 < num2) {
+                return -1
+            }
+        }
+        return 0
     }
+
 });

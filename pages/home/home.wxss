@@ -1,9 +1,11 @@
 page {
-    background-color: #0a023a;
+    /* background-color: #0a023a; */
+    background:linear-gradient(rgba(21,21,21,1), rgba(74,74,74,1));
 }
 
 .homecont {
-    background-color: #0a023a;
+    /* background-color: #0a023a; */
+    background:linear-gradient(rgba(21,21,21,1), rgba(74,74,74,1));
 }
 
 image {
