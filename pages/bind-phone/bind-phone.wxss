@@ -62,6 +62,7 @@
 
 .phone-area-text {
   font-family: PingFangSC-Regular;
+  line-height: 60rpx;
   font-size: 28rpx;
   color: #4A4A4A;
   letter-spacing: 0;

@@ -1,0 +1,179 @@
+
+
+<view class="container">
+  <view class="none-container flex-column-center " wx:if="{{isDeleted}}">
+    <text class="none-title">颜色库已删除</text>
+    <text class="none-subtitle">主人删掉了颜色库，什么也没留下</text>
+  </view>
+  <view wx:else>
+    <!-- 内容主体 -->
+    <view class="body-padding flex-column">
+      <!-- 标题与备注 -->
+      <view wx:if="{{!isMultiSelect}}" class="flex-column">
+        <view class="flex-between-center">
+          <text class="main-title">{{libraryDetail.name}}</text>
+          <view wx:if="{{fromLibrary}}" class="flex">
+            <view wx:if="{{isCustom}}" class="iconfont icon-bianji edit-icon" bind:tap="editLibrary"/>
+            <button class="button" open-type="share" style="background: white;padding: 0 0 0 0;">
+              <view class="iconfont icon-fenxiang edit-icon"/>
+            </button>
+          </view>
+        </view>
+        <text wx:if="{{isCustom && !!libraryDetail.description}}" class="main-subtitle">{{libraryDetail.description}}</text>
+      </view>
+      <!-- 开始选择-占位 -->
+      <view wx:if="{{!isMultiSelect}}" id="select" class="flex-between-center header-container">
+        <text class="detail-text">{{totalCount}}个颜色</text>
+        <view wx:if="{{fromLibrary && colorList.length !== 0}}" class="select-color" bind:tap="beginSelect">选择</view>
+      </view>
+      <!-- 取消多选-占位 -->
+      <view 
+        class="header-placeholder"
+        wx:if="{{isMultiSelect}}"
+        style="animation-name: {{canEdit ? 'short-to-long' : 'long-to-short'}}"
+      />
+
+      <view class="none-container flex-column-center" wx:if="{{!isFirstShow && colorList.length === 0}}">
+        <text class="none-subtitle">里面空空如也...</text>
+      </view>
+
+      <!-- cell 的布局 -->
+      <view 
+        wx:for="{{colorList}}" 
+        wx:key="id" 
+        class="flex color-container"
+        data-index="{{index}}"
+        bind:tap="selectCell"
+      >
+        <view 
+          class="iconfont {{item.isSelected ? 'icon-quangouxuan selected-icon' : 'icon-quan'}} select-icon-base" 
+          catch:tap="selectColor"
+          data-index="{{index}}"
+          data-type="select"
+          style="animation-name:{{isMultiSelect ? 'fade-in' : ''}}"
+        />
+        <view 
+          class="color-detail-container flex" 
+          style="animation-name: {{isMultiSelect ? 'left-to-right' : ''}}"
+        >
+          <view 
+            class="color-color" 
+            style="background: {{item.hexColor}}"
+          />
+          <view class="flex-column color-name-container">
+            <text class="color-title">{{item.name}}</text>
+            <text class="color-subtitle">{{item.fullLabel}}</text>
+          </view>
+        </view>
+        <view 
+          wx:if="{{fromLibrary}}"
+          class="iconfont icon-gengduo more-icon" 
+          catch:tap="showAction"
+          data-index="{{index}}"
+          style="animation-name:{{isMultiSelect ? 'fade-out' : ''}}"
+        />
+      </view>
+      <!-- 底部占位 -->
+      <view wx:if="{{!fromLibrary}}" style="height:174rpx"/>
+      <view wx:if="{{isMultiSelect}}" style="height:120rpx"/>
+    </view>
+
+    <!-- 开始选择-顶部悬停 -->
+    <view wx:if="{{!isMultiSelect}}" class="flex-between-center fixed-header" style="display: {{hideBeginSelect ? 'none' : 'flex'}}">
+      <text class="detail-text">{{totalCount}}个颜色</text>
+      <view wx:if="{{fromLibrary}}" class="select-color" bind:tap="beginSelect">选择</view>
+    </view>
+
+    <!-- 取消多选-顶部悬停  -->
+    <view wx:if="{{isMultiSelect}}"  class="fixed-header">
+      <view class="flex-between-center header-container">
+        <view class="select-color" bind:tap="resetSelect">重置</view> 
+        <view class="select-color" bind:tap="cancelSelect">取消</view> 
+      </view>
+      <scroll-view 
+        wx:if="{{canEdit}}" 
+        class="flex header-scroll" 
+        style="animation-name: {{canEdit ? 'scroll-short-to-long' : 'scroll-long-to-short'}}"
+        scroll-x
+      >
+        <block wx:for="{{selectedColorList}}" wx:key="id">
+          <view
+            class="scroll-color"
+            style="background: {{item.hexColor}};"
+          >
+            <view
+              class="iconfont icon-guanbi close-icon" 
+              bind:tap="selectColor" 
+              data-index="{{index}}" 
+              data-type="unselect"
+            /> 
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+
+    <!-- 底部操作 -->
+    <view wx:if="{{!fromLibrary}}" class="flex-column-center shared-container">
+      <login-button button-class="save-button button" bind:loginsuccess="saveLibrary">收藏颜色库</login-button>
+    </view>
+    <view wx:if="{{isMultiSelect}}" class="multi-select-container flex-between-center">
+      <button class="multi-add button" disabled="{{!canEdit}}" bind:tap="addColors">添加到</button>
+      <button class="multi-add button" disabled="{{!canEdit}}" bind:tap="moveColors">移动到</button>
+      <button class="multi-delete button" disabled="{{!canEdit}}" bind:tap="deleteColors">删除</button>
+    </view>
+  </view>
+</view>
+
+<van-popup
+  show="{{showAction}}"
+  position="bottom"
+  bind:close="closeAction">
+  <view class="action-container flex-column">
+    <text class="action-title">{{selectedColor.name}}</text>
+    <view wx:for="{{actions}}" wx:key="type" data-type="{{item.type}}" class="action-row-container flex-start-center" bind:tap="doAction">
+      <view class="iconfont {{item.icon}} action-icon"/>
+      <text class="action-row-title">{{item.title}}</text>
+    </view>
+    <button class="action-cancel button" bind:tap="closeAction">取消</button>
+  </view>
+</van-popup>
+
+<van-popup
+  show="{{showAction}}"
+  position="bottom"
+  bind:close="closeAction">
+  <view class="action-container flex-column">
+    <text class="action-title">{{selectedColor.name}}</text>
+    <view wx:for="{{actions}}" wx:key="type" data-type="{{item.type}}" class="action-row-container flex-start-center" bind:tap="doAction">
+      <view class="iconfont {{item.icon}} action-icon"/>
+      <text class="action-row-title">{{item.title}}</text>
+    </view>
+    <button class="action-cancel button" bind:tap="closeAction">取消</button>
+  </view>
+</van-popup>
+
+<van-popup
+  show="{{showDeleteConfirm}}"
+  position="bottom"
+  bind:close="closeDeleteConfirm">
+  <view class="confirm-container flex-column">
+    <view class="confirm-delete-container flex-column">
+      <view class="confirm-color-container flex-column-center">
+        <color-block color-list="{{isMultiSelect ? selectedColorList : selectedColor}}"/>
+        <text class="confirm-title">{{isMultiSelect ? (selectedColorList.length > 1 ? ('已选中' + selectedColorList.length + '项') : selectedColorList[0].name) : selectedColor.name}}</text>
+        <text class="confirm-subtitle">
+        {{isMultiSelect && selectedColorList.length > 1 ? '是否确认从收藏夹中删除？' : '确认将该颜色从收藏夹中删除吗?'}}
+        </text>
+      </view>
+      <button class="confirm-button button" bind:tap="confirmDelete">确认删除</button>
+    </view>
+    <button class="confirm-cancel button" bind:tap="closeDeleteConfirm">取消</button>
+  </view>
+</van-popup>
+
+<suspend-button wx:if="{{!fromLibrary}}">
+  <view class="go-home-container">
+    <view class="iconfont icon-tab_index_a go-home-view"/>
+    <text class="go-home-text">回首页</text>
+  </view>
+</suspend-button>

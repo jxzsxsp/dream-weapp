@@ -1,0 +1,18 @@
+@import '../common/iconfont.wxss';
+
+.go-home-container {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.go-home-view {
+  color: #252525;
+  font-size: 50rpx;
+}

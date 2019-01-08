@@ -9,7 +9,7 @@
   </view>
 
   <view class="share-button-container">
-    <button class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
+    <button wx:if="{{!fromLibrary}}" class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
       <text class="share-button-text">打开小蜥取色</text>
     </button>
   </view>
@@ -35,3 +35,23 @@
     </view>
   </suspend-button>
 </view>
+
+<login-button button-class='favorite-container' bind:loginsuccess="favoriteColor">
+  <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite'></view>
+  <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite favorite-active'></view>
+</login-button>
+
+<van-transition name="fade" show="{{showHint}}" duration="1500" custom-class="hint-container">
+  <view class="hint-button-container flex-center" bind:tap="gotoColorLibrary">
+    <text class="hint-style1">已收藏!继续</text>
+    <text class="hint-style2">添加到颜色库</text>
+    <view class="iconfont icon-jiantou hint-style3"/>
+  </view>
+</van-transition>
+
+<van-transition name="fade" show="{{showToast}}" duration="1500" custom-class="toast-container">
+  <view class="hint-button-container flex-center">
+    <text class="hint-style2">已加入到</text>
+    <text class="hint-style4">{{libraryDetail.name}}</text>
+  </view>
+</van-transition>

@@ -1,258 +1,386 @@
 import urls from './urls/index'
-let colorCategory = {
-  [urls.pantone.colorCategories]: {
-    "list":[
+let colorLibraryDetail = {
+  [urls.colorLibraryDetail]: {
+    "library": {
+      "id": 1,
+      "name": "春季流行色",
+      "type":0, //颜色库类型 1-自定义库 0-默认库
+      "description": "这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注"
+    },
+    "list": [{
+      "id": 1,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "187,40,48",
+      "hexColor": "#837475",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 2,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "187,40,48",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 3,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "187,40,48",
+      "hexColor": "#ab3491",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 4,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "187,40,48",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 5,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "25,25,55",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 16,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "255,255,255",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 33,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "255,255,255",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 123,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "255,255,255",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 1124,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "255,255,255",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    },{
+      "id": 1234,
+      "colorId": 11,
+      "originType": 1, //颜色来源的类型 0 自取色 1 潘通色
+      "name": "PANTONG 3514CP",
+      "rgb": "255,255,255",
+      "hexColor": "#F777AB",
+      "labelList": [{
+          "id": 1,
+          "name": "LV色"
+        },
+        {
+          "id": 2,
+          "name": "网红色"
+        }
+      ]
+    }],
+    "totalCount": 12,
+    "hasMore": true
+  },
+  [urls.deleteColor]: {
+
+  },
+  [urls.isInFavorite]: {
+    "status": true // true 已经收藏 false 未收藏
+  },
+  [urls.addFavorite]: 1,
+  [urls.cancelFavorite]: {},
+  [urls.colorLibraryList]: {
+    "list": [
       {
         "id": 1,
-        "code":"pu",
-        "name":"铜板基础色卡",
-        "description": "这是一个描述",
-        "imgUrl": "12E4RWEF"
+        "name": "默认收藏",
+        "description": "默认收藏",
+        "colorCount": "0",
+        "lastColorUpdateTime": "",
+        "timeLabel": "",
+        "colorIcon": "",
+        "type": 0 // 1-自定义库 0-默认库
       },
       {
         "id": 2,
-        "code":"pu",
-        "name":"铜板基础色卡",
-        "description": "这是一个描述",
-        "imgUrl": "12E4RWEF"
+        "name": "春季流行色",
+        "description": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
       },
       {
         "id": 3,
-        "code":"pu",
-        "name":"铜板基础色卡",
-        "description": "这是一个描述",
-        "imgUrl": "12E4RWEF"
-        }
-    ]
-  }
-}
-let searchCategory = {
-  [urls.pantone.colorSearch]: {
-    "list":[
-      {
-      "colorId": 121145997, //颜色id
-      "rgb":"255,255,255", 
-      "srgb":"255,255,255",
-      "hexColor":"#9B9B9B",
-      "labs":"2.0,2.0,2.0", 
-      "cmyk":"24,0,25,51",
-      "categoryId":1,//分类id
-      "categoryName":"1343", //分类名称
-      "name":"3514 CP" //颜色名称
+        "name": "冬季流行色",
+        "description": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
       },
       {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-      }, {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-      }, {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
+        "id": 4,
+        "name": "2017畅销色",
+        "description": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
       },
       {
-        "colorId": 121145997, //颜色id
-        "rgb":"255,255,255", 
-        "srgb":"255,255,255",
-        "hexColor":"#9B9B9B",
-        "labs":"2.0,2.0,2.0", 
-        "cmyk":"24,0,25,51",
-        "categoryId":1,//分类id
-        "categoryName":"1343", //分类名称
-        "name":"3514 CP" //颜色名称
-        },
-        {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-        }, {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-        }, {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-        },
-        {
-          "colorId": 121145997, //颜色id
-          "rgb":"255,255,255", 
-          "srgb":"255,255,255",
-          "hexColor":"#9B9B9B",
-          "labs":"2.0,2.0,2.0", 
-          "cmyk":"24,0,25,51",
-          "categoryId":1,//分类id
-          "categoryName":"1343", //分类名称
-          "name":"3514 CP" //颜色名称
-          },
-          {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-          }, {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-          }, {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-          },
-          {
-            "colorId": 121145997, //颜色id
-            "rgb":"255,255,255", 
-            "srgb":"255,255,255",
-            "hexColor":"#9B9B9B",
-            "labs":"2.0,2.0,2.0", 
-            "cmyk":"24,0,25,51",
-            "categoryId":1,//分类id
-            "categoryName":"1343", //分类名称
-            "name":"3514 CP" //颜色名称
-            },
-            {
-              "colorId": 121145997, //颜色id
-              "rgb":"255,255,255", 
-              "srgb":"255,255,255",
-              "hexColor":"#9B9B9B",
-              "labs":"2.0,2.0,2.0", 
-              "cmyk":"24,0,25,51",
-              "categoryId":1,//分类id
-              "categoryName":"1343", //分类名称
-              "name":"3514 CP" //颜色名称
-            }, {
-              "colorId": 121145997, //颜色id
-              "rgb":"255,255,255", 
-              "srgb":"255,255,255",
-              "hexColor":"#9B9B9B",
-              "labs":"2.0,2.0,2.0", 
-              "cmyk":"24,0,25,51",
-              "categoryId":1,//分类id
-              "categoryName":"1343", //分类名称
-              "name":"3514 CP" //颜色名称
-            }, {
-              "colorId": 121145997, //颜色id
-              "rgb":"255,255,255", 
-              "srgb":"255,255,255",
-              "hexColor":"#9B9B9B",
-              "labs":"2.0,2.0,2.0", 
-              "cmyk":"24,0,25,51",
-              "categoryId":1,//分类id
-              "categoryName":"1343", //分类名称
-              "name":"3514 CP" //颜色名称
-            },
+        "id": 2,
+        "name": "春季流行色",
+        "description": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 3,
+        "name": "冬季流行色",
+        "description": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 4,
+        "name": "2017畅销色",
+        "description": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 2,
+        "name": "春季流行色",
+        "description": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 3,
+        "name": "冬季流行色",
+        "description": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 4,
+        "name": "2017畅销色",
+        "description": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 2,
+        "name": "春季流行色",
+        "description": "春季流行色",
+        "colorCount": "52",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1小时前",
+        "colorIcon": "#8B572A",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 3,
+        "name": "冬季流行色",
+        "description": "冬季流行色",
+        "colorCount": "16",
+        "lastColorUpdateTime": "",
+        "timeLabel": "12天前",
+        "colorIcon": "#0156FE",
+        "type": 1 // 1-自定义库 0-默认库
+      },
+      {
+        "id": 4,
+        "name": "2017畅销色",
+        "description": "2017畅销色",
+        "colorCount": "32",
+        "lastColorUpdateTime": "",
+        "timeLabel": "1个月前",
+        "colorIcon": "#F5A623",
+        "type": 1 // 1-自定义库 0-默认库
+      },
     ],
-    "totalCount":100,
-    "hasMore":true
-  }
-}
-
-let colorDetail = {
-  [urls.pantone.colorDetail]: {
-    "id": 2323,
-    "name": "Bright Red C",
-    "categoryId": 1,
-    "categoryName": "PANTONE+ Solid Coated-V3",
-    "cmyk": "0,52,75,36",
-    "srgb": "210,190,162",
-    "hexColor": "#9B9B9B",
-    "lab": "03744,-0.665785",
-    "xyz": "226.000000,223.000000,121.000000",
-    "colorRecipe": [
-        {
-            "name": "PANTONE Yellow",
-            "value": "0.004"
-        },
-        {
-            "name": "PANTONE Warm Red",
-            "value": "0.004"
-        }]
-  }
-}
-
-let fetchColorDetail = {
-  [urls.pantone.fetchColorDetail]: {
-    "id": 1, 
-    "deviceId":"1323", 
-    "rgb":"255,255,255",
-    "hexColor":"#456789",
-    "lab":"2.0,2.0,2.0"
-  }
-}
-
-let compareColorDetail = {
+    "totalCount": 100,
+    "hasMore": true
+  },
+  [urls.colorLibrarySave]: 1,
+  [urls.pantone.fetchResultV2]: {
+    "cie1976ColorFastnessLevel": "1-2",
+    "cie1976ColorCompareResult": "2.22",
+    "cie2000ColorFastnessLevel": "1-2",
+    "cie2000ColorCompareResult": "1.2",
+    "cmcColorFastnessLevel": "1-2",
+    "cmcColorCompareResult": "1.2",
+    "cmcChromaticAberrationLevel": "细微色差", // cmc标准色差描述
+    "colorCompareDetailList": [
+      {
+        "colorCompareType": "L", // L, A, B
+        "colorCompareValue": "12.0",
+        "colorCompareLabelType": 0, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝,0-无偏差
+        "colorCompareLabel": "无偏差",
+        "maxValue": 1 //1-最大色差
+      },
+      {
+        "colorCompareType": "a", // L, A, B
+        "colorCompareValue": "22.0",
+        "colorCompareLabelType": 4, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
+        "colorCompareLabel": "偏绿",
+        "maxValue": 0 //1-最大色差
+      },
+      {
+        "colorCompareType": "b", // L, A, B
+        "colorCompareValue": "32.0",
+        "colorCompareLabelType": 6, // 1-偏白,2-偏暗,3-偏红,4-偏绿,5-偏黄,6-偏蓝
+        "colorCompareLabel": "偏蓝",
+        "maxValue": 0 //1-最大色差
+      }
+    ]
+  },
   [urls.pantone.compareColorDetail]: {
-    "id": 1, 
-    "deviceId":"1323", 
-    "originType":1,
-    "rgb":"255,255,255",
-    "hexColor":"#678901",
-    "lab":"2.0,2.0,2.0",
-    "cmyk": ""
+    "sourceColor": {
+      "id": 1,
+      "deviceId": "1323",
+      "colorId": 12,
+      "originType": 1,
+      "rgb": "0,64,128",
+      "hexColor": "#1673DF",
+      "lab": "23.79,116.79,-227.87",
+      "cmyk": ""
+    },
+    "targetColor": {
+      "id": 1,
+      "deviceId": "1323",
+      "colorId": 12,
+      "originType": 1,
+      "rgb": "128,172,255",
+      "hexColor": "#1673DF",
+      "lab": "23.79,116.79,-227.87",
+      "cmyk": "",
+      "comparisonScore": 12.21
+    }
   }
 }
 
+let colorLabel = {
+  [urls.labelList]: {
+    "labels": ['注意前后间隙', '标签1', '标签2', '标签3', '标签4', '标签5', '标签6', '标签5', '标签6']
+  },
+  [urls.setLabel]: {}
+}
 
 export default {
-  ...colorCategory,
-  ...searchCategory,
-  ...colorDetail,
-  ...fetchColorDetail,
-  ...compareColorDetail,
+  ...colorLibraryDetail,
+  ...colorLabel,
 }

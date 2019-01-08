@@ -74,6 +74,12 @@ class Http {
       loadingState.param.pageId += 1
       loadingState.hasMore = res.hasMore
       loadingState.totalCount = res.totalCount
+      loadingState.others = {}
+      for (const key in res) {
+        if (key !== 'hasMore' && key !== 'totalCount && key !== list') {
+          loadingState.others[key] = res[key]
+        }
+      }
       return res.list
     })
   }
@@ -167,7 +173,7 @@ class Http {
     let realData = data
     for (const key in data) {
       const element = data[key];
-      if (!!element && typeof(element) === 'object') {
+      if (!!element && typeof (element) === 'object' && !Array.isArray(element)) {
         if (!element.hasOwnProperty('value')) {
           console.error('zachary 抛出: 表单校验需要参数 value')
         }
@@ -229,6 +235,8 @@ class Http {
             let resData = {}
             if (res.data.data instanceof Array) {
               resData = {list: res.data.data, requestParam: data}
+            } else if (typeof(res.data.data) !== 'object') {
+              resData = {data: res.data.data, requestParam: data}
             } else {
               resData = {...res.data.data, requestParam: data}
             }

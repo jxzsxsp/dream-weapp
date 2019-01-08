@@ -19,3 +19,23 @@
   </view>
   <text class="color-source-text">颜色来源于 {{colorDetail.categoryName}}</text>
 </view>
+
+<login-button button-class='favorite-container' bind:loginsuccess="favoriteColor">
+  <view wx:if="{{!favorite}}" class='iconfont icon-xing favorite' style="color: {{colorDetail.textColor}}"/>
+  <view wx:if="{{favorite}}" class='iconfont icon-xingxuanzhong favorite' style="color: {{colorDetail.textColor}}"/>
+</login-button>
+
+<van-transition name="fade" show="{{showHint}}" duration="1500" custom-class="hint-container">
+  <view class="hint-button-container flex-center" bind:tap="gotoColorLibrary">
+    <text class="hint-style1">已收藏!继续</text>
+    <text class="hint-style2">添加到颜色库</text>
+    <view class="iconfont icon-jiantou hint-style3"/>
+  </view>
+</van-transition>
+
+<van-transition name="fade" show="{{showToast}}" duration="1500" custom-class="toast-container">
+  <view class="hint-button-container flex-center">
+    <text class="hint-style2">已加入到</text>
+    <text class="hint-style4">{{libraryDetail.name}}</text>
+  </view>
+</van-transition>

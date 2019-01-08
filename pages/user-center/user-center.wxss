@@ -89,9 +89,8 @@
 }
 
 .setting-icon {
-  height: 28rpx;
-  width: 28rpx;
-  margin-left: 66rpx;
+  font-size: 40rpx;
+  margin-left: 40rpx;
 }
 
 .setting-text {
@@ -101,10 +100,11 @@
   color: #252525;
   letter-spacing: 0;
   flex: 1;
+  text-align: left;
 }
 
 .setting-detail {
   transform: rotate(180deg);
-  margin-right: 40rpx;
   color: #979797;
+  margin-right: 20rpx;
 }

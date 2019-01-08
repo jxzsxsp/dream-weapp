@@ -1,0 +1,213 @@
+.content {
+  width: 750rpx;
+  height: 172rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.color-img {
+  width: 124rpx;
+  height: 124rpx;
+  margin-top: 16rpx;
+  margin-left: 32rpx;
+  border-radius: 26rpx;
+}
+
+.shadow {
+  width: 112rpx;
+  height: 112rpx;
+  margin: auto;
+  margin-top: 22rpx;
+  opacity: 0.5;
+  border-radius: 23.4rpx;
+  filter: blur(10rpx);
+}
+
+.color-name {
+  margin-top: 93rpx;
+  margin-left: 24rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 34rpx;
+  color: #000000;
+  letter-spacing: 1.13rpx;
+}
+
+.tag-input {
+  padding: 15rpx 40rpx 30rpx 40rpx;
+  border-bottom: 1rpx solid #F0F0F5;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.input-item {
+  margin-top: 15rpx;
+  margin-right: 16rpx;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  background: #E5EEFE;
+  border-radius: 29rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.item-text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #0156FE;
+  letter-spacing: -0.17rpx;
+}
+
+.close-icon {
+  margin-left: 28rpx;
+  opacity: 0.3;
+  color: #000000;
+  font-size: 28rpx;
+}
+
+.input-item input {
+  min-width: 200rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  letter-spacing: 0.93rpx;
+  color: #000000;
+}
+
+.num-limit {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #CBCBCB;
+  letter-spacing: 0.8rpx;
+  text-align: right;
+  position: absolute;
+  bottom: 40rpx;
+  right: 40rpx;
+}
+
+.think-list {
+  width: 750rpx;
+  height: 600rpx;
+  position: absolute;
+  left: 0rpx;
+  bottom: -601rpx;
+  background: #FFFFFF;
+}
+
+.think-item {
+  width: 678rpx;
+  height: 88rpx;
+  padding-left: 32rpx;
+  padding-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.think-text {
+  font-family: PingFangSC-Semibold;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0.93rpx;
+}
+
+.think-text text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #0156FE;
+  letter-spacing: 0.93rpx;
+  line-height: 40rpx;
+}
+
+.line {
+  width: 718rpx;
+  height: 1px;
+  margin-left: 32rpx;
+  background: #F0F0F5;
+}
+
+.xuanze {
+  color: #CBCBCB;
+  font-size: 21.4rpx;
+}
+
+.latest-tag {
+  width: 750rpx;
+  min-height: 237rpx;
+}
+
+.tag-title {
+  margin-top: 44rpx;
+  margin-left: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #000000;
+  letter-spacing: 0.8rpx;
+}
+
+.tag-content {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tag-item {
+  height: 60rpx;
+  background: #F0F0F5;
+  border-radius: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: -0.17rpx;
+  text-align: center;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18rpx;
+  margin-right: 18rpx;
+}
+
+.tag-item-active {
+  background: #E5EEFE;
+  color: #0156FE;
+}
+
+.bottom-btn {
+  width: 750rpx;
+  height: 174rpx;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 670rpx;
+  height: 94rpx;
+  background: #0156FE;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 1.35rpx;
+  text-align: center;
+}

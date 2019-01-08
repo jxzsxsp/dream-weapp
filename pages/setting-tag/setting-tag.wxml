@@ -1,0 +1,53 @@
+<view class='content'>
+  <view class='color-img' style='background: {{colorDetail.hexColor}};'>
+    <view class='shadow' style='background: {{colorDetail.hexColor}};'></view>
+  </view>
+  <view class='color-name'>{{colorDetail.name}}</view>
+</view>
+
+<view class='tag-input'>
+  <block wx:for="{{labels}}" wx:key="index">
+  <view class='input-item item'>
+    <text class='item-text'>{{item}}</text>
+    <view class='iconfont icon-xiaochacha close-icon' data-index='{{index}}' bind:tap='removeLabel'>
+    </view>
+  </view>
+  </block>
+  <view wx:if="{{labels.length < maxLabelNum}}" class='input-item'>
+    <input 
+    value='{{label}}' 
+    maxlength='{{maxLabelTextNum}}'
+    placeholder='输入标签名…'
+    bindinput='inputEvent'
+    bindconfirm='confirmEvent'
+    />
+  </view>
+  <view class='num-limit'>{{labels.length}}/{{maxLabelNum}}</view>
+
+  <scroll-view wx:if="{{!!thinkLabels && thinkLabels.length > 0}}" scroll-y class='think-list'>
+    <wxs src="./setting-tag.wxs" module="tools" />
+    <block wx:for="{{thinkLabels}}" wx:key="index">
+    <view wx:if="{{index > 0}}" class='line'></view>
+    <view class='think-item' data-label='{{item}}' bind:tap="selectThink">
+      <view class='think-text'>
+        {{tools.seperateStr(item, label).first}}<text>{{tools.seperateStr(item, label).second}}</text>{{tools.seperateStr(item, label).third}}
+      </view>
+      <view class='iconfont icon-xuanze xuanze'></view>
+    </view>
+    </block>
+  </scroll-view>
+</view>
+
+<view class='latest-tag'>
+  <view class='tag-title'>最近标签</view>
+  <view class='tag-content'>
+    <block wx:for="{{latestLabels}}" wx:key="index">
+    <view class="tag-item {{selected[index]?'tag-item-active':''}}" 
+    data-label='{{item}}' bind:tap='selectLabel'>{{item}}</view>
+    </block>
+  </view>
+</view>
+
+<view class='bottom-btn'>
+  <view class='btn' bind:tap='complete'>完成</view>
+</view>

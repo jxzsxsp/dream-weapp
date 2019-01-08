@@ -1,0 +1,418 @@
+.none-container {
+  flex: 1;
+  height: 600rpx;
+}
+
+.none-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 48rpx;
+  color: #A5A5A5;
+  letter-spacing: 1.6rpx;
+  text-align: center;
+}
+
+.none-subtitle {
+  margin-top: 15rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #A5A5A5;
+  letter-spacing: 0.93rpx;
+  text-align: center;
+}
+
+.shared-container {
+  height: 174rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+.save-button {
+  width: 670rpx;
+  height: 94rpx;
+  background: #0156FE;
+  border-radius: 16rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 1.35rpx;
+  text-align: center;
+  
+}
+
+.header-container {
+  height: 88rpx;
+}
+
+.multi-select-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  padding: 0 -32rpx 0 32rpx;
+  background-color: #FFFFFF;
+}
+
+.multi-add {
+  width: 218rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #F0F0F5;
+  border-radius: 13rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #4B4B4B;
+  letter-spacing: -0.21rpx;
+}
+
+.multi-delete {
+  width: 218rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #BD061C;
+  border-radius: 13rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: -0.21rpx; 
+}
+
+.body-padding {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+
+.main-title {
+  font-family: PingFangSC-Medium;
+  font-size: 64rpx;
+  color: #000000;
+  letter-spacing: 0.77rpx;
+  line-height: 82rpx;
+}
+
+.edit-icon {
+  line-height: 50rpx;
+  width: 50rpx;
+  margin-left: 20rpx;
+  font-size: 24px;
+}
+
+.main-subtitle {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  line-height: 36rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  height: 107rpx;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  margin-top: 21rpx;
+  margin-right: 100rpx;
+}
+
+.select-color {
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #0156FE;
+  letter-spacing: 0.41rpx;
+  text-align: right;
+}
+
+.detail-text {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #616161;
+  letter-spacing: -0.15rpx;
+}
+
+.fixed-header {
+  position: fixed;
+  width: 687rpx;
+  left: 0;
+  top: 0;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  background-color: #FFFFFF;
+  height: 88rpx;
+}
+
+.color-container {
+  height: 156rpx;
+  align-items: center;
+}
+
+.select-icon-base {
+  font-size: 20px;
+  opacity: 0;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 50rpx;
+  text-align: center;
+}
+
+.header-placeholder {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; 
+}
+
+.selected-icon {
+  color: #0156FE;
+}
+
+.color-detail-container {
+  flex: 1;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  margin-left: -32rpx;
+}
+
+.color-color {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 26rpx;
+}
+
+.color-name-container {
+  margin-left: 20rpx;
+  flex: 1;
+  justify-content: center;
+}
+
+.color-title {
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #000000;
+  letter-spacing: 1.13rpx;
+}
+
+.color-subtitle {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #616161;
+  letter-spacing: 0.8rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 500rpx;
+}
+
+.more-icon {
+  font-size: 20px;
+  opacity: 1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; 
+}
+
+.header-scroll {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;  
+  height: 172rpx;
+  background: #FFFFFF;
+  white-space: nowrap;
+  border-bottom: 1px solid #DBDBDB;
+}
+
+.scroll-color {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 26rpx; 
+  margin-right: 20rpx;
+  opacity: 0;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-name: fade-in;  
+  display: inline-block;
+  position: relative;
+}
+.close-icon {
+  position: absolute;
+  font-size: 12px;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #FFFFFF;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.50);
+}
+
+.action-container {
+  border-radius: 34rpx 34rpx 0 0;
+  height: 700rpx;
+  background: #FFFFFF;
+  padding: 34rpx 34rpx 0 34rpx; 
+}
+
+.van-popup--bottom {
+  background: transparent!important;
+}
+
+.van-popup--safe {
+  padding-bottom: 0rpx!important;
+}
+
+.action-title {
+  font-family: PingFangSC-Semibold;
+  font-size: 24rpx;
+  color: #616161;
+  letter-spacing: 0.46rpx;
+}
+
+.action-row-container {
+  height: 120rpx;
+}
+
+.van-overlay {
+  background-color: #8F8F8F!important
+}
+
+.action-icon {
+  color: #0156FE;
+  font-size: 24px;
+}
+
+.action-row-title {
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  color: #000000;
+  letter-spacing: -0.22rpx;
+  margin-left: 42rpx;
+}
+
+.action-cancel {
+  width: 686rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  background: #EFEFF4;
+  border-radius: 16px;
+  align-items: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 36rpx;
+  color: #4B4B4B;
+  letter-spacing: -0.22px;
+  margin-top: 40rpx;
+}
+
+.confirm-container {
+  height: 580rpx;
+  padding: 0 16rpx 21rpx 16rpx;
+}
+
+.confirm-delete-container {
+  border-radius: 28rpx;
+  height: 434rpx;
+  overflow: hidden;
+}
+
+.confirm-color-container {
+  border-bottom: 1rpx solid rgba(0,0,80,0.05);
+  flex: 1;
+  background: #FFFFFF;
+}
+
+.confirm-button {
+  height: 112rpx;
+  line-height: 112rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 40rpx;
+  color: #FF001F;
+  letter-spacing: 0.76rpx;
+  text-align: center;
+  width: 100%;
+  border-radius: 0rpx;
+  background: #FFFFFF;
+}
+
+.confirm-cancel {
+  height: 112rpx;
+  line-height: 112rpx;
+  width: 100%;
+  margin-top: 16rpx;
+  background: #FFFFFF;
+  border-radius: 34rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #0156FE;
+  letter-spacing: 1.5rpx;
+  text-align: center;
+}
+
+.confirm-title {
+  margin-top: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0.93rpx;
+  text-align: center;
+}
+
+.confirm-subtitle {
+  font-family: PingFangSC-Medium;
+  font-size: 26rpx;
+  color: #8F8F8F;
+  letter-spacing: -0.16rpx;
+  text-align: center;
+  line-height: 36rpx;
+  margin-top: 20rpx;
+}
+
+.go-home-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.go-home-view {
+  color: #252525;
+  border-radius: 2rpx 4rpx 2rpx 2rpx 2rpx;
+  margin-right: 16rpx;
+}
+
+.go-home-text {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #252525;
+  letter-spacing: 0;
+  text-align: center;
+  margin-right: 22rpx;
+}
+
+@keyframes left-to-right {
+  to {transform: translateX(60rpx)}
+}
+
+@keyframes fade-in {
+  to {opacity: 1;}
+}
+
+@keyframes fade-out {
+  to {opacity: 0;}
+}
+
+/* 占位的视图的高度，高度88是重置取消视图的高度，260是选中后，scrollview 弹出的时候占位视图应有的高度 */
+@keyframes short-to-long {
+  from {height: 88rpx; }
+  to {height: 260rpx}
+}
+
+@keyframes long-to-short {
+  from {height: 260rpx}
+  to {height: 88rpx}
+}
+
+@keyframes scroll-short-to-long {
+  from {height: 0rpx;}
+  to {height: 172rpx;}
+}
+
+@keyframes scroll-long-to-short {
+  from {height: 172rpx;}
+  to {height: 0rpx;}
+}

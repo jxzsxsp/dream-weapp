@@ -1,0 +1,5 @@
+<float-area>
+    <view class="go-home-container" bind:tap='goHome'>
+      <view class="iconfont icon-tab_index_a go-home-view"/>
+    </view>
+</float-area>

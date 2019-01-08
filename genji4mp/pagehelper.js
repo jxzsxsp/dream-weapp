@@ -35,7 +35,7 @@ class BasePage {
           hasMethod = true
           lifeCycleObject[key] = function (...param) {
             if (param[0].param) {
-              param[0] = JSON.parse(param[0].param)
+              param[0] = JSON.parse(decodeURIComponent(param[0].param))
             }
             element.apply(this, param)
             lifeCycle[key].apply(this, param)
@@ -55,13 +55,17 @@ class BasePage {
     let actionsObject = {}
     !!actionsObject && Object.keys(viewAction).forEach(function (key) {
       let action = viewAction[key]
-      actionsObject[key] = function (e) {
-  
-        let detail = {}
-        if (e.detail) {
-          detail = e.detail.hasOwnProperty('value') ? e.detail.value : e.detail
+      actionsObject[key] = function (...args) {
+        if (!!args[0] && args[0].detail) {
+          // 小程序调用
+          let e = args[0]
+          let detail = {}
+          detail = e.detail.hasOwnProperty('value') ? e.detail.value : e.detail 
+          action.call(this, e.currentTarget.dataset || {}, detail)
+        } else {
+          // 自己调用
+          action.call(this, args)
         }
-        action.call(this, e.currentTarget.dataset || {}, detail)
       }
     })
   
@@ -69,7 +73,6 @@ class BasePage {
   
     Page(pageObject)
   }
-
 }
 
 export default new BasePage()

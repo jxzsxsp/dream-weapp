@@ -12,7 +12,7 @@
 		"nodeModules": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.2",
+	"libVersion": "2.4.2",
 	"appid": "wx2309232891372732",
 	"projectname": "mp-chame",
 	"debugOptions": {
@@ -53,7 +53,7 @@
 					"id": 1,
 					"name": "compare-color",
 					"pathName": "pages/compare-color/compare-color",
-					"query": "localId=1",
+					"query": "localId=443&remoteId=241",
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "12345"
@@ -104,6 +104,64 @@
 					"name": "申请页",
 					"pathName": "pages/apply-result/apply-result",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "颜色库详情",
+					"pathName": "pages/color-library-detail/color-library-detail",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": -1,
+					"name": "设置标签",
+					"pathName": "pages/setting-tag/setting-tag",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "加入颜色库",
+					"pathName": "pages/join-library/join-library",
+					"query": "colorId=1"
+				},
+				{
+					"id": -1,
+					"name": "新增颜色库",
+					"pathName": "pages/add-library/add-library",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "收藏夹",
+					"pathName": "pages/favorite-library/favorite-library",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": -1,
+					"name": "颜色详情",
+					"pathName": "pages/color-detail/color-detail",
+					"query": "colorId=1",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
+					}
+				},
+				{
+					"id": -1,
+					"name": "分享的取色详情",
+					"pathName": "pages/fetch-color-detail/fetch-color-detail",
+					"query": "colorId=1",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": "12345"
+					}
 				}
 			]
 		}

@@ -1,0 +1,16 @@
+<!-- 快捷导航工具 -->
+<view class="filter-menu {{nav_select?'active':''}}">
+  <view class="filter-menu-list ts-5">
+    <custom-ul>
+      <custom-li bindtap="goHome">
+        <view class="iconfont icon-tab_index_a icon-view"/>
+      </custom-li>
+      <custom-li bindtap="goApp">
+        <button class="iconfont icon-tab_equipment_a icon-view" open-type="launchApp" app-parameter="{\" router\":1,\"data\":{{sourceId}}}"
+        bind:error="launchAppError" />
+      </custom-li>
+      <custom-li class="w"></custom-li>
+    </custom-ul>
+  </view>
+  <view bind:tap="commonNav" class="filter-menu-title"></view>
+</view>

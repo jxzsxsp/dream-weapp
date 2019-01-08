@@ -1,0 +1,90 @@
+<view class='container add' bind:tap='addColorLibrary'>
+  <view class='iconfont icon-chuangjian chuangjian'></view>
+  <text>创建新颜色库</text>
+</view>
+
+<view wx:if='{{defaultColorLibrary && defaultColorLibrary.name}}' class='container default'>
+  <block wx:if="{{!!defaultColorLibrary.colorIcon}}">
+  <view class='color-icon' style='background:{{defaultColorLibrary.colorIcon}};'></view>
+  </block>
+  <block wx:else>
+  <view class='color-icon' style='opacity: 0.5;'>空</view>
+  </block>
+  <view class='color-content' data-detail='{{defaultColorLibrary}}' bind:tap='viewColorLibrary'>
+    <text class='color-title'>{{defaultColorLibrary.name}}</text>
+    <view class='color-desc'>
+      <text class='color-num'>{{defaultColorLibrary.colorCount}}个颜色</text>
+      <block wx:if='{{defaultColorLibrary.timeLabel && defaultColorLibrary.timeLabel !== null}}'>
+      <view class='point'></view>
+      <text class='color-time'>{{defaultColorLibrary.timeLabel}}</text>
+      </block>
+    </view>
+  </view>
+  <view class='iconfont icon-gengduo more-icon' data-detail='{{defaultColorLibrary}}' bind:tap='showAction'></view>
+</view>
+
+<block wx:for='{{colorLibraryList}}' wx:key='index'>
+<view wx:if="{{item.type === 1}}" class='container'>
+  <block wx:if="{{!!item.colorIcon}}">
+  <view class='color-icon' style='background:{{item.colorIcon}};'></view>
+  </block>
+  <block wx:else>
+  <view class='color-icon' style='opacity: 0.5;'>空</view>
+  </block>
+  <view class='color-content' data-detail='{{item}}' bind:tap='viewColorLibrary'>
+    <text class='color-title'>{{item.name}}</text>
+    <view class='color-desc'>
+      <text class='color-num'>{{item.colorCount}}个颜色</text>
+      <block wx:if='{{item.timeLabel && item.timeLabel !== null}}'>
+      <view class='point'></view>
+      <text class='color-time'>{{item.timeLabel}}</text>
+      </block>
+    </view>
+  </view>
+  <view class='iconfont icon-gengduo more-icon' data-detail='{{item}}' bind:tap='showAction'></view>
+</view>
+</block>
+
+
+<van-popup
+  show="{{showAction}}"
+  position="bottom"
+  bind:close="closeAction"
+>
+  <view class="action-container flex-column">
+    <text class="action-title">{{selectedLibrary.name}}</text>
+    <block wx:for="{{actions}}" wx:key="type">
+    <block wx:if="{{item.type === 'SHARE'}}">
+    <button open-type="share" class="action-row-container flex-start-center button share-btn" bind:tap="doAction">
+      <view class="iconfont {{item.icon}} action-icon"/>
+      <text class="action-row-title">{{item.title}}</text>
+    </button>
+    </block>
+    <block wx:elif="{{selectedLibrary.type === 1}}">
+    <view data-type="{{item.type}}" class="action-row-container flex-start-center" bind:tap="doAction">
+      <view class="iconfont {{item.icon}} action-icon"/>
+      <text class="action-row-title">{{item.title}}</text>
+    </view>
+    </block>
+    </block>
+    <button class="action-cancel button" bind:tap="closeAction">取消</button>
+  </view>
+</van-popup>
+
+<van-popup
+  show="{{showDeleteConfirm}}"
+  position="bottom"
+  bind:close="closeDeleteConfirm"
+>
+  <view class="confirm-container flex-column">
+    <view class="confirm-delete-container flex-column">
+      <view class="confirm-color-container flex-column-center">
+        <!-- <text class="confirm-title">{{selectedLibrary.name}}</text> -->
+        <text class="confirm-subtitle">确定删除这个颜色库吗？里面的所有颜色都会被清除</text>
+        <!-- <text class="confirm-subtitle">里面的所有颜色都会被删除</text> -->
+      </view>
+      <button class="confirm-button button" bind:tap="confirmDelete">确认删除</button>
+    </view>
+    <button class="confirm-cancel button" bind:tap="closeDeleteConfirm">取消</button>
+  </view>
+</van-popup>

@@ -4,6 +4,8 @@ import constant from '../../constant/index'
 
 const props = {
   bindId: '',
+  // 注册成功后，会调用之前页面的 onNavigateBack，传入这个 type
+  type: null,
   url: 'https://m.lianshang.com/activity/springboard?ls_activity_id=174475123&ls_source_id=1010&ls_content=123'
 }
 
@@ -14,6 +16,7 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     this.props.bindId = query.bindId
+    this.props.type = query.type
   }
 }
 
@@ -66,7 +69,8 @@ const viewaction = {
         const data = {
           phoneNumber: phoneNumber, 
           bindId: this.props.bindId, 
-          uuid: res.uuid
+          uuid: res.uuid,
+          type: this.props.type
         }
         $wx.navigateTo($wx.router.inputCode, data)
       })

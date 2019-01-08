@@ -80,3 +80,61 @@
   margin-left: 30rpx;
   margin-top: 50rpx;
 }
+
+.favorite-container {
+  background: transparent;
+  position: absolute;
+  top: 32rpx;
+  right: 32rpx;
+}
+
+.favorite {
+  font-size: 50rpx;
+}
+
+.hint-container {
+  position: fixed;
+  right: 20rpx;
+  top: 130rpx;
+  display: flex;
+}
+
+.toast-container {
+  position: fixed;
+  right: 205rpx;
+  top: 600rpx;
+  display: flex;
+}
+
+.hint-button-container {
+  width: 340rpx;
+  height: 88rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 10rpx 0 rgba(0,0,0,0.15);
+  border-radius: 28rpx;
+
+  font-family: PingFangSC-Medium;
+  font-size: 20rpx;
+  letter-spacing: 0.24rpx;
+}
+
+.hint-style1 {
+  color: #000000;
+}
+
+.hint-style2 {
+  margin-left: 5rpx;
+  color: rgb(34, 124, 249);
+}
+
+.hint-style3 {
+  font-size: 12px;
+  text-align: center;
+  color: rgb(34, 124, 249);
+}
+
+.hint-style4 {
+  margin-left: 5rpx;
+  color: rgb(34, 124, 249);
+  font-family: PingFangSC-Semibold;
+}

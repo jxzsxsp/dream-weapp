@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "收藏夹",
+  "usingComponents": {
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
+  }
+}

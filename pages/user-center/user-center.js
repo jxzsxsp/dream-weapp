@@ -2,9 +2,7 @@ import {$Page, $wx} from '../../genji4mp/index'
 
 const data = {
   settingList: [
-    // {
-    // name: '设备管理', icon: 'icon-ic_equipment'
-    // }
+    { name: '我的收藏', icon: 'icon-xing' },
   ],
   userInfo: {},
 }
@@ -26,19 +24,20 @@ const lifecycle = {
 }
 
 const viewAction = {
-  itemClicked (data) {
-    if (data.index === 0) {
+  itemClicked (d, v) {
+    if (d.index === 0) {
+      // 我的收藏
+      $wx.navigateTo($wx.router.favoriteLibrary)
+    } else if (d.index === 1) {
       // 设备管理 
       $wx.navigateTo($wx.router.deviceManager)
     }
   },
   getUserInfo () {
     $wx.app.bindPhone().then(res => {
-      if (res.code === 1) {
-        this.setData({
-          userInfo: $wx.app.globalData.userInfo
-        })
-      }
+      this.setData({
+        userInfo: $wx.app.globalData.userInfo
+      })
     })
   },
 }

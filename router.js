@@ -12,4 +12,9 @@ export default {
   deviceManager: 'device-manager',
   connectDevice: 'connect-device',
   applyResult: 'apply-result',
+  colorLibraryDetail: 'color-library-detail',
+  settingTag: 'setting-tag',
+  joinLibrary: 'join-library',
+  addLibrary: 'add-library',
+  favoriteLibrary: 'favorite-library',
 }
