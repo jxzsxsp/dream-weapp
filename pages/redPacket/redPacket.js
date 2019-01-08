@@ -10,6 +10,7 @@ Page({
         getCouponStatus: false,
         memberList:[],
         CouponId: 11,
+        showUrl: ""
         
     },
 
@@ -78,9 +79,9 @@ Page({
         t.globalData.userInfo && t.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + t.globalData.userInfo.UserId)
         // console.log(i);
         return {
-            title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
+            title: '恭喜您获得350元红包',
             path: i,
-            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
+            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/300fengmian.png  "
         }
     },
     onGetCoupon: function() {
@@ -145,6 +146,11 @@ Page({
                     // app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
+        })
+    },
+    fixedGoToHome: function () {
+        wx.switchTab({
+            url: '/pages/home/home'
         })
     }
 })
