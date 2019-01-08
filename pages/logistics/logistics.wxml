@@ -20,8 +20,8 @@
 </view>
 <view class="xuanzhed1 mt24">
     <view class="ddgzcont">
-        <view class="wllist {{index==0?'active':''}}" wx:for="{{LogisticsData}}" wx:key="acceptTime">{{item.acceptStation}}
-          <view class="acceptTime">{{item.acceptTime}}</view>
+        <view class="wllist {{index==0?'active':''}}" wx:for="{{LogisticsData}}" wx:key="ftime">{{item.context}}
+            <view class="acceptTime">{{item.ftime}}</view>
         </view>
     </view>
 </view>

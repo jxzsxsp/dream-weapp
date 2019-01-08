@@ -36,7 +36,7 @@
             </view>
             <view style='padding-left:129rpx'>
                 <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
-                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.brandDesc}}">{{item.brandDesc}}</text>
+                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.brandDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.brandDesc}}</text>
                 </view>
             </view>
             <view style='padding-left:129rpx;padding-bottom:15rpx;display:flex;justify-content:flex-start;align-items:center;'>
@@ -45,7 +45,7 @@
                 </view>
                 <view style='overflow:hidden;'>
                     <view class='videoLed'>
-                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!</text>
+                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!本商品的实际销售方为货源提供方，品牌方或品牌授权经销商，非本平台和本平台的VIP用户。</text>
                     </view>
 
                 </view>
@@ -151,7 +151,7 @@
         <view>
             <view style='padding-left:129rpx;position:relative;'>
                 <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
-                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
+                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.infoDesc}}</text>
                 </view>
             </view>
             <view style='padding:12rpx 27rpx 18rpx 129rpx'>

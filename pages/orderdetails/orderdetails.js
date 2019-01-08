@@ -6,7 +6,8 @@ Page({
         LogisticsData: null,
         SendGifts: null,
         OrderId: 0,
-        Suppliers: null
+        Suppliers: null,
+        isTimeOut: false
     },
     onLoad: function(t) {
         this.setData({
@@ -76,6 +77,17 @@ Page({
                     if ("OK" == t.data.Status) {
                         var e = t.data.Data,
                             n = "";
+
+
+                        console.log(new Date(new Date(e.OrderDate).getTime() + 24 * 60 * 60 * 1000), new Date())
+                        console.log(new Date(new Date(e.OrderDate).getTime() + 24 * 60 * 60 * 1000).getTime(), new Date().getTime())
+
+                        if (new Date().getTime() > new Date(new Date(e.OrderDate).getTime() + 24 * 60 * 60 * 1000).getTime()) {
+                            console.log(1)
+                            a.setData({
+                                isTimeOut: true
+                            })
+                        }
                         "" != e.LogisticsData && (n = e.LogisticsData);
                         var r = "";
                         for (var o in e.Gifts) r.length > 0 && (r += ","), r += e.Gifts[o].GiftName + "×" + e.Gifts[o].Quantity;
