@@ -201,6 +201,7 @@ Page({
             },
             complete:function(){
             //   wx.hideLoading()
+            wx.hideNavigationBarLoading()
             }
         })
     },
