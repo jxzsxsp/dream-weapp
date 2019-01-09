@@ -1,6 +1,6 @@
 <view class="page-section">
     <view hidden="{{isEmpty}}">
-        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:80rpx;text-align:center;background-color:#db3c40;z-index:100000;color:#fff;'>
+        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:14px;width:750rpx;line-height:80rpx;text-align:center;background-color:#db3c40;z-index:100000;color:#fff;'>
             <view>购物车商品有效期15分钟，请在15分钟内支付，超时取消</view>
             <!-- <view>商品在，谢谢理解！</view> -->
         </view>
