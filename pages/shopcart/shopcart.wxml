@@ -1,7 +1,7 @@
 <view class="page-section">
     <view hidden="{{isEmpty}}">
-        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:12px;width:750rpx;line-height:80rpx;text-align:center;background-color:#db3c40;z-index:100000;color:#fff;'>
-            <view>① 15分钟未支付将关闭订单 ② 活动结束后按付款顺序发货</view>
+        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:80rpx;text-align:center;background-color:#db3c40;z-index:100000;color:#fff;'>
+            <view>购物车商品有效期15分钟，请在15分钟内支付，超时取消</view>
             <!-- <view>商品在，谢谢理解！</view> -->
         </view>
         <view class="shopcart-t bg-wihte">

@@ -14,13 +14,15 @@ Page({
         Suppliers: null
     },
     onLoad: function(a) {
+        // var tm = this;
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
+        // console.log("执行selectAll")
+        // tm.selectAll();
     },
-    loadData: function(e) {
+    loadData: function (e, Boolean) {
+        console.log("loadData执行")
         var tm = this;
-        wx.showLoading({
-            // title: "正在加载"
-        });
+        wx.showLoading({});
         var a = parseFloat(0);
         t.getOpenId(function(n) {
             wx.request({
@@ -29,7 +31,6 @@ Page({
                     openId: n
                 },
                 success: function(t) {
-                    console.log(t.data)
                     if ("OK" == t.data.Status) {
                         var n = t.data.Data,
                             s = t.data.Data.Suppliers;
@@ -37,6 +38,12 @@ Page({
                             e.data.SelectskuId.indexOf(t.SkuID) >= 0 && (t.selected = !0, a = parseFloat(a) + parseFloat(t.SubTotal));
                         });
                         var o = null == n || n.length <= 0 || n.RecordCount <= 0;
+                    // console.log(s.length)
+                        if(s.length > 0) {
+                            s[0].CartItemInfo.forEach(function (a, b) {
+                                a.selected = true
+                            });
+                        }
                         e.setData({
                             isEmpty: o,
                             ShopCarts: n,
@@ -71,7 +78,11 @@ Page({
 
                     // }
                     // 默认购物车全选
-                    tm.selectAll();
+                    if (Boolean) {
+                        console.log("执行selectAll")
+                        tm.selectAll();
+
+                    }
                 }
             });
         });
@@ -84,7 +95,7 @@ Page({
         }), a;
     },
     selectList: function(t) {
-
+        console.log("执行selectList")
         var e = this,
             a = t.currentTarget.dataset.skuid,
             n = e.data.Suppliers,
@@ -105,6 +116,7 @@ Page({
         }), e.GetTotal();
     },
     GetTotal: function() {
+        console.log("执行GetTotal")
         var t = parseFloat(0),
             e = this,
             a = e.data.ShopCarts,
@@ -118,6 +130,7 @@ Page({
         });
     },
     selectAll: function() {
+        console.log("selectAll")
         var t = this,
             e = [],
             a = !t.data.selectAllStatus,
@@ -131,9 +144,10 @@ Page({
             Suppliers: s,
             selectAllStatus: a,
             SelectskuId: e
-        }), t.GetTotal();
+            }), console.log(t.data.Suppliers),t.GetTotal();
     },
     SwitchEdite: function() {
+        console.log("switchEdite")
         var t = this;
         "编辑" == t.data.EditeText ? t.setData({
             isEdite: !0,
@@ -196,6 +210,7 @@ Page({
 
     },
     DelCarts: function(e) {
+        console.log("执行DelCarts")
         var a = this,
             n = e.currentTarget.dataset.skuid,
             s = a.data.SelectskuId;
@@ -238,6 +253,7 @@ Page({
         });
     },
     SettlementShopCart: function() {
+        console.log("执行SettlementShopCart")
         var e = this,
             a = e.data.SelectskuId.join(",");
         e.data.ShopCarts, e.data.SelectskuId;
@@ -304,6 +320,7 @@ Page({
         }
     },
     ChangeQuantiy: function(e, a, n) {
+        console.log("执行ChangeQuantiy")
         var tm = this;
         t.getOpenId(function(s) {
             wx.request({
@@ -332,7 +349,7 @@ Page({
 
 
 
-                    tm.selectAll();
+                    // tm.selectAll();
 
                 }
             });
@@ -356,7 +373,7 @@ Page({
             SelectskuId: [],
             SettlementText: "结算",
             isEmpty: !0
-        }), this.loadData(this);
+        }), this.loadData(this, true);
     },
     onHide: function() {},
     onUnload: function() {},
