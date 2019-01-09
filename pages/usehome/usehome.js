@@ -188,5 +188,10 @@ Page({
         wx.navigateTo({
             url: "../a/a?id=" + tm.data.userInfo.UserId + "&src=" + tm.data.userInfo.picture
         });
+    },
+    bindwallet:function(){
+        wx.navigateTo({
+            url: "../wallet/wallet"
+        });
     }
 });
