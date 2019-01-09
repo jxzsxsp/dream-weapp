@@ -145,7 +145,7 @@ Page({
                 var reg = new RegExp("/.", "g");
                 var s = x.replace(".", "").replace(".", "");
                 tm.compareVersion(x,'6.6.1')
-                console.log(tm.compareVersion(x, '6.6.1'))
+                // console.log(tm.compareVersion(x, '6.6.1'))
                 if (tm.compareVersion(x, '6.6.1') == -1) {
                     wx.hideTabBar({})
                     // tm.setData({
