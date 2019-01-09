@@ -1,2 +1,6 @@
-<!--pages/follow-shop/follow-shop.wxml-->
-<text>pages/follow-shop/follow-shop.wxml</text>
+<shop-list
+  list="{{shopList}}"
+  bind:follow="followShop"
+  bind:cancel="cancelFollow"
+  bind:detail="showDetail"
+/>

@@ -1,2 +1,6 @@
-<!--pages/recommend-supplier/recommend-supplier.wxml-->
-<text>pages/recommend-supplier/recommend-supplier.wxml</text>
+<shop-list
+  list="{{shopList}}"
+  bind:follow="followShop"
+  bind:cancel="cancelFollow"
+  bind:detail="showDetail"
+/>

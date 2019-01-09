@@ -1,0 +1,23 @@
+.item-container {
+  width: 750rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.shop-img {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.shop-content {
+  width: 510rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.operate-btn {
+  width: 120rpx;
+  height: 120rpx;
+}

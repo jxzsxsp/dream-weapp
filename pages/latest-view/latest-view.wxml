@@ -1,2 +1,6 @@
-<!--pages/latest-view/latest-view.wxml-->
-<text>pages/latest-view/latest-view.wxml</text>
+<shop-list
+  list="{{shopList}}"
+  bind:follow="followShop"
+  bind:cancel="cancelFollow"
+  bind:detail="showDetail"
+/>

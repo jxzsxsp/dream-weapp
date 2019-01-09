@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "推荐供应商",
-  "usingComponents": {}
+  "usingComponents": {
+    "shop-list": "/components/shop-list/shop-list"
+  }
 }

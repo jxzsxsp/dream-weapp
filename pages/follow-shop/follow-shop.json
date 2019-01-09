@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "关注店铺",
-  "usingComponents": {}
+  "usingComponents": {
+    "shop-list": "/components/shop-list/shop-list"
+  }
 }

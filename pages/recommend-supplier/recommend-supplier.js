@@ -5,6 +5,20 @@ const props = {
 }
 
 const data = {
+  shopList: [
+    {
+      shopName: '胖虎布行1',
+      follow: true,
+    },
+    {
+      shopName: '胖虎布行2',
+      follow: false,
+    },
+    {
+      shopName: '胖虎布行3',
+      follow: true,
+    }
+  ]
 }
 
 const lifecycle = {
@@ -18,6 +32,17 @@ const privateMethods = {
 }
 
 const viewAction = {
+  followShop: function (d, v) {
+    console.log(d, v)
+  },
+
+  cancelFollow: function (d, v) {
+    console.log(d, v)
+  },
+
+  showDetail: function (d, v) {
+    console.log(d, v)
+  },
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

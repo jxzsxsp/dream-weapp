@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "最近浏览",
-  "usingComponents": {}
+  "usingComponents": {
+    "shop-list": "/components/shop-list/shop-list"
+  }
 }
