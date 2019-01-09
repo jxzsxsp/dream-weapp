@@ -14,7 +14,7 @@ Page({
         BankName: "",
         BankAccountName: "",
         BankAccountNo: "",
-        UserCredentials: [ "../../images/return-img_03.jpg", "../../images/return-img_03.jpg", "../../images/return-img_03.jpg" ],
+        UserCredentials: ["../../images/return-img_03.jpg", "../../images/return-img_03.jpg", "../../images/return-img_03.jpg"],
         ReturnNum: 1,
         MostMoney: 0,
         ShowReason: !0,
@@ -26,16 +26,23 @@ Page({
         FormId: "",
         ReturnMoney: 0,
         ImageIndex: 0,
-        ShowReasonList: [ "拍错/多拍/不想要", "缺货", "未按约定时间发货" ],
+        ShowReasonList: ["质量问题退货", "发错货"],
         ShowReasonIndex: -1,
-        RefundTextList: [ "退到预付款", "退到银行卡", "原路返回", "到店退款" ],
+        // RefundTextList: [ "
+        // ShowReasonIndex: -1,
+        // RefundTextList: [ "退到预付款", "退到银行卡", "原路返回", "到店退款" ],
         ShowRefundIndex: -1,
-        AfterSaleTypeList: [ "退货退款", "仅退款" ],
+        AfterSaleTypeList: ["退货退款", "仅退款"],
         AfterSaleTypeId: -1,
         OneReundAmount: 0
     },
     onLoad: function(t) {
-        var a = this, n = t.orderid, o = t.skuId, s = t.pro, r = t.num, u = t.m;
+        var a = this,
+            n = t.orderid,
+            o = t.skuId,
+            s = t.pro,
+            r = t.num,
+            u = t.m;
         a.setData({
             OrderId: n,
             SkuId: o,
@@ -62,12 +69,15 @@ Page({
         var t = e.data;
         if ("NOUser" == t.Message) wx.navigateTo({
             url: "../login/login"
-        }); else if ("OK" == t.Status) {
+        });
+        else if ("OK" == t.Status) {
             var a = [];
-            t.CanBackReturn && a.push("原路返回"), t.CanToBalance && a.push("退到预付款"), t.CanReturnOnStore && a.push("到店退款"), 
-            a.push("退到银行卡");
-            var n = [ "退货退款", "仅退款" ];
-            t.MaxRefundAmount <= 0 && (n = [ "退货退款" ]), this.setData({
+            t.CanBackReturn && a.push("原路返回"), t.CanToBalance && a.push("退到预付款"), t.CanReturnOnStore && a.push("到店退款")
+            // a.push("退到银行卡");
+            // t.CanBackReturn && a.push("原路返回"), t.CanToBalance && a.push("退到预付款"), t.CanReturnOnStore && a.push("到店退款"), 
+            // a.push("退到银行卡");
+            var n = ["退货退款", "仅退款"];
+            t.MaxRefundAmount <= 0 && (n = ["退货退款"]), this.setData({
                 MostMoney: t.MaxRefundAmount,
                 RefundTextList: a,
                 TotalMoney: t.MaxRefundAmount,
@@ -88,9 +98,12 @@ Page({
         });
     },
     uploadImg: function(e) {
-        var t = this, a = t.data.UserCredentials, n = e.currentTarget.dataset.index;
+        var t = this,
+            a = t.data.UserCredentials,
+            n = e.currentTarget.dataset.index;
         wx.chooseImage({
             success: function(e) {
+                console.log(e)
                 a[n] = e.tempFilePaths[0];
                 var o = parseInt(t.data.ImageIndex);
                 o = o >= 2 ? 2 : o++, t.setData({
@@ -134,7 +147,8 @@ Page({
             itemList: t.data.RefundTextList,
             success: function(e) {
                 if (!e.cancel) {
-                    var a = t.data.RefundTextList[e.tapIndex], n = t.GetRefundTypeId(a);
+                    var a = t.data.RefundTextList[e.tapIndex],
+                        n = t.GetRefundTypeId(a);
                     t.setData({
                         ShowRefundIndex: e.tapIndex,
                         RefundTypeText: a,
@@ -148,7 +162,8 @@ Page({
         });
     },
     ChooseReason: function(e) {
-        var t = this, a = e.currentTarget.dataset.name;
+        var t = this,
+            a = e.currentTarget.dataset.name;
         t.setData({
             RefundReasonText: a,
             ShowType: !0,
@@ -163,7 +178,9 @@ Page({
         return "退货退款" == e ? 1 : "仅退款" == e ? 3 : 1;
     },
     ChooseAfterType: function(e) {
-        var t = e.currentTarget.dataset.id, a = this, n = a.ShowAfterTypeName[t];
+        var t = e.currentTarget.dataset.id,
+            a = this,
+            n = a.ShowAfterTypeName[t];
         a.setData({
             AfterSaleType: t,
             AfterSaleTypeText: n,
@@ -173,13 +190,15 @@ Page({
         });
     },
     MuseNum: function(e) {
-        var t = this, a = t.data.ApplyReturnNum;
+        var t = this,
+            a = t.data.ApplyReturnNum;
         if (a <= 1) wx.showModal({
             title: "提示",
             content: "最少退1件商品",
             showCancel: !1,
             confirmColor: "#db3c40"
-        }); else {
+        });
+        else {
             a -= 1;
             var n = parseFloat(a * t.data.OneReundAmount).toFixed(2);
             t.setData({
@@ -189,13 +208,16 @@ Page({
         }
     },
     AddNum: function(e) {
-        var t = this, a = parseInt(t.data.ApplyReturnNum), n = parseInt(t.data.ReturnNum);
+        var t = this,
+            a = parseInt(t.data.ApplyReturnNum),
+            n = parseInt(t.data.ReturnNum);
         if (a >= n) wx.showModal({
             title: "提示",
             content: "最多退" + n + "件商品",
             showCancel: !1,
             confirmColor: "#db3c40"
-        }); else {
+        });
+        else {
             a += 1;
             var o = parseFloat(a * t.data.OneReundAmount).toFixed(2);
             t.setData({
@@ -205,45 +227,63 @@ Page({
         }
     },
     formSubmit: function(e) {
-        var t = this, a = parseInt(t.data.ShowReasonIndex), n = t.data.AfterSaleTypeList[t.data.AfterSaleTypeId], o = t.GetAfterSaleTypeId(n), s = e.detail.formId, r = t.ToTrim(e.detail.value.txtBankName), u = t.ToTrim(e.detail.value.txtBankAccountName), d = t.ToTrim(e.detail.value.txtBankAccountNo), l = parseFloat(e.detail.value.txtmoney.replace("￥", "")), i = parseInt(t.data.ApplyReturnNum);
+        console.log(e.detail)
+        var t = this,
+            a = parseInt(t.data.ShowReasonIndex),
+            n = t.data.AfterSaleTypeList[t.data.AfterSaleTypeId],
+            o = t.GetAfterSaleTypeId(n),
+            s = e.detail.formId,
+            r = t.ToTrim(e.detail.value.txtBankName),
+            u = t.ToTrim(e.detail.value.txtBankAccountName),
+            d = t.ToTrim(e.detail.value.txtBankAccountNo),
+            l = parseFloat(e.detail.value.txtmoney.replace("￥", "")),
+            i = parseInt(t.data.ApplyReturnNum);
         if (i <= 0 || i > t.data.ReturnNum) wx.showModal({
             title: "提示",
             content: "请输入正确的退货数量",
             showCancel: !1,
             confirmColor: "#db3c40"
-        }); else if (l > t.data.OneReundAmount * i) wx.showModal({
+        });
+        else if (l > t.data.OneReundAmount * i) wx.showModal({
             title: "提示",
             content: "请输入正确的退款金额,金额必须小于等于" + t.data.OneReundAmount * i + "元",
             showCancel: !1,
             confirmColor: "#db3c40"
-        }); else {
-            var f = e.detail.value.txtarea, c = t.data.RefundType;
+        });
+        else {
+            var f = e.detail.value.txtarea,
+                c = t.data.RefundType;
             if (2 == c && (r.length <= 0 || u.length <= 0 || d.length <= 0)) wx.showModal({
                 title: "提示",
                 content: "银行卡信息不允许为空！",
                 showCancel: !1,
                 confirmColor: "#db3c40"
-            }); else if (c <= 0) wx.showModal({
+            });
+            else if (c <= 0) wx.showModal({
                 title: "提示",
                 content: "请选择要退款的方式",
                 showCancel: !1,
                 confirmColor: "#db3c40"
-            }); else if (a < 0) wx.showModal({
+            });
+            else if (a < 0) wx.showModal({
                 title: "提示",
                 content: "请选择要退款的原因",
                 showCancel: !1,
                 confirmColor: "#db3c40"
-            }); else if (o < 0) wx.showModal({
+            });
+            else if (o < 0) wx.showModal({
                 title: "提示",
                 content: "请选择售后类型",
                 showCancel: !1,
                 confirmColor: "#db3c40"
-            }); else if (t.data.OrderId.length <= 0) wx.showModal({
+            });
+            else if (t.data.OrderId.length <= 0) wx.showModal({
                 title: "提示",
                 content: "请选择要退款的订单",
                 showCancel: !1,
                 confirmColor: "#db3c40"
-            }); else {
+            });
+            else {
                 t.setData({
                     formId: s,
                     AfterSaleTypeId: o,
@@ -265,6 +305,7 @@ Page({
     UploadBatchImages: function(t, a) {
         var n = a.shift();
         void 0 != n ? e.getOpenId(function(o) {
+            console.log(n)
             wx.uploadFile({
                 url: e.getUrl("UploadAppletImage"),
                 filePath: n,
@@ -273,6 +314,7 @@ Page({
                     openId: o
                 },
                 success: function(e) {
+                    console.log(e)
                     var a = JSON.parse(e.data);
                     if ("OK" == a.Status) {
                         var n = t.data.UploadGredentials;

@@ -15,7 +15,7 @@ Page({
         BankAccountNo: "",
         ShowReason: !0,
         ShowType: !0,
-        ShowReasonList: [ "拍错/多拍/不想要", "缺货", "未按约定时间发货","质量问题退货","发错货" ],
+        ShowReasonList: ["质量问题退货","发错货" ],
         ShowReasonIndex: -1,
         RefundTextList: [ "退到预付款", "退到银行卡", "原路返回", "到店退款" ],
         ShowRefundIndex: -1
