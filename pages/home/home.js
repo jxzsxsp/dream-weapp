@@ -97,6 +97,7 @@ Page({
     },
     onLoad: function(a) {
         var tm = this;
+        wx.hideTabBar({})
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");
@@ -1043,6 +1044,7 @@ Page({
         this.setData({
             isShow: false
         })
+        wx.showTabBar({})
     },
     onGetLink: function() {
         wx.navigateTo({

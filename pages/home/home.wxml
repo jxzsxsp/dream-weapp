@@ -2,7 +2,7 @@
 <import src="../common/templeates.wxml"></import>
 <view class="homecont" style="z-index:998;width:750rpx;max-width:750rpx;overflow:hidden;">
     <view style='height:70rpx;background-color: #fff;z-index:1000;'>
-        <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:1000;align-items:flex-start;">
+        <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:998;align-items:flex-start;">
             <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
                 <view class="{{selectedCate==item.cateName?'active':''}}">{{item.cateName}}[{{item.brandCount}}]</view>
             </view>
@@ -21,9 +21,9 @@
                 <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
-        <!-- <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:999;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
+        <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:999;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
             <image style='width:735rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/300yhq.png'></image>
-        </view> -->
+        </view>
     </view>
 
     <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;' wx:if='{{selectedCate=="全场直播"}}'>
@@ -199,27 +199,31 @@
         <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;' mode='widthFix' lazy-load></image>
     </navigator>
 </view>
-<!-- <view class='homepop' wx:if="{{isShow}}">
+<view class='homepop' wx:if="{{isShow}}">
     <view class='popOpacity'></view>
     <view class='popcontainer'>
         <view class='close' bindtap='onCloseBtn'></view>
         <view class='getBtn' bindtap='onGetLink'></view>
     </view>
-</view> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<view style='position:fixed;left:0;top:0;width:100%;height:100%;background-color:rgba(64,64,64,0.7);z-index:99999999999999;color:#fff;' wx:if='{{isTooLow}}'>
 </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <view style='position:fixed;left:0;top:0;width:100%;height:100%;background-color:rgba(64,64,64,0.7);z-index:99999999999999;color:#fff;' wx:if='{{isTooLow}}'>
+    </view>

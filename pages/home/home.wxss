@@ -819,10 +819,10 @@ image {
 }
 
 .popcontainer {
-    width: 641rpx;
-    height: 579rpx;
+    width: 675rpx;
+    height: 730rpx;
     position: absolute;
-    top: 325rpx;
+    top: 255rpx;
     left: 50%;
     margin-left: -320rpx;
     background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
@@ -841,11 +841,11 @@ image {
 
 .getBtn {
     position: absolute;
-    width: 330rpx;
-    height: 110rpx;
+    width: 480rpx;
+    height: 730rpx;
     border-radius: 15rpx;
     text-align: center;
-    left: 135rpx;
-    bottom: 0rpx;
+    left: 85rpx;
+    bottom:0rpx;
     line-height: 80rpx;
 }
