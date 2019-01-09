@@ -17,7 +17,12 @@
     "pages/setting-tag/setting-tag",
     "pages/join-library/join-library",
     "pages/add-library/add-library",
-    "pages/favorite-library/favorite-library"
+    "pages/favorite-library/favorite-library",
+    "pages/login/login",
+    "pages/recommend-supplier/recommend-supplier",
+    "pages/business-card/business-card",
+    "pages/follow-shop/follow-shop",
+    "pages/latest-view/latest-view"
   ],
   "window": {
     "backgroundTextStyle": "light",

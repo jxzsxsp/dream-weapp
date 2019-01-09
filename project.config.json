@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 16,
 			"list": [
 				{
 					"id": 0,
@@ -161,6 +161,56 @@
 					"scene": "1036",
 					"referrerInfo": {
 						"appId": "12345"
+					}
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": -1,
+					"name": "推荐供应商",
+					"pathName": "pages/recommend-supplier/recommend-supplier",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": 16,
+					"name": "名片",
+					"pathName": "pages/business-card/business-card",
+					"query": "shopId=0&userId=1",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": -1,
+					"name": "关注店铺",
+					"pathName": "pages/follow-shop/follow-shop",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
+					}
+				},
+				{
+					"id": -1,
+					"name": "最近浏览",
+					"pathName": "pages/latest-view/latest-view",
+					"query": "",
+					"scene": "1036",
+					"referrerInfo": {
+						"appId": ""
 					}
 				}
 			]

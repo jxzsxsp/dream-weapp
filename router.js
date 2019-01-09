@@ -17,4 +17,9 @@ export default {
   joinLibrary: 'join-library',
   addLibrary: 'add-library',
   favoriteLibrary: 'favorite-library',
+  login: 'login',
+  recommendSupplier: 'recommend-supplier',
+  businessCard: 'business-card',
+  followShop: 'follow-shop',
+  latestView: 'latest-view',
 }
