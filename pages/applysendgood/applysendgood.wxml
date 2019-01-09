@@ -1,3 +1,6 @@
+    <view style='color:#db3c40;font-size:13px;width:750rpx;line-height:36rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;'>
+        <view>提示：质量问题退货，平台提供物流费8元，退货成功后，运费计入账号，在“我的-我的红包”中查看</view>
+    </view>
 <view class="applysendgood">
     <form bindsubmit="formSubmit" reportSubmit="true">
         <view class="applysendgood-con">
@@ -13,7 +16,8 @@
                 <view class="title">退货地址</view>
                 <view class="con">
                     <view class="address">{{ApplySendGood.ShipAddress}}</view>
-                    <view class="contact">{{ApplySendGood.ShipTo}}，<text class="font-arial">{{ApplySendGood.Cellphone}}</text>
+                    <view class="contact">{{ApplySendGood.ShipTo}}，
+                        <text class="font-arial">{{ApplySendGood.Cellphone}}</text>
                     </view>
                 </view>
             </view>
@@ -21,7 +25,8 @@
                 <view class="title">物流公司</view>
                 <view class="con">
                     <picker bindchange="bindPickerChange" range="{{ExpressList}}" value="{{index}}">
-                        <view class="picker">{{express}}<text class="iconfont arrow_right font24"></text>
+                        <view class="picker">{{express}}
+                            <text class="iconfont arrow_right font24"></text>
                         </view>
                     </picker>
                     <view class="iconfont icon-right come-icon"></view>
