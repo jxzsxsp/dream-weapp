@@ -1,5 +1,5 @@
 <view class="page-section">
-    <form bindsubmit="formSubmit" reportSubmit="true">
+    <form bindsubmit="formSubmit" report-submit="true">
         <view class="form-group bg-white">
             <view class="form-group-name">退货订单</view>
             <view class="form-group-input">{{OrderId}}</view>
