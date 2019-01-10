@@ -7,6 +7,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        isHotState:true,
+        nothing:0,
+        isSoldOut:0,
         brandRushInfo: [],
         rushGoodsList: [],
         brandLogo: '',
@@ -159,6 +162,7 @@ Page({
         var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
             tagId: tm.data.tagId,
+            isSoldOut: tm.data.nothing,
             pi: ++this.data.dataIndex,
             ps: this.data.dataSize
         };
@@ -440,6 +444,7 @@ Page({
             url: app.getUrl("YTALGetPageRushGoodsByTagId"),
             data: {
                 tagId: tm.data.tagId,
+                isSoldOut:tm.data.isSoldOut,
                 pi: ++tm.data.dataIndex,
                 ps: tm.data.dataSize
             },
@@ -516,5 +521,58 @@ Page({
                 }
             }
         }, 25);
+    },
+    onShowHotSell:function(event){
+        var tm = this;
+        console.log(event)
+        var isFlagNum=event.currentTarget.dataset.state;
+        console.log(isFlagNum)
+        
+        if (isFlagNum == tm.data.nothing){
+            return 
+        }else{
+            tm.setData({
+                nothing: (tm.data.nothing == 0 ? 1 : 0),
+                dataIndex:1
+            })
+
+
+            wx.request({
+                url: app.getUrl("YTALGetPageRushGoodsByTagId"),
+                data: {
+                    tagId: tm.data.tagId,
+                    isSoldOut:isFlagNum,
+                    pi: 1,
+                    ps: tm.data.dataSize
+                },
+                success: function (jd) {
+                    if (jd.data.length == 0) {
+                        return;
+                    } else {
+                        if (jd.data.length != 0) {
+                            let goodsList = [];
+                            jd.data.forEach(o => {
+                                goodsList.push(o)
+                            });
+                           // var newList = tm.data.rushGoodsList.concat(goodsList)
+                            tm.setData({
+                                rushGoodsList: goodsList
+                            })
+                        }
+                        if (jd.data.length == tm.data.dataSize) {
+                            wx.stopPullDownRefresh();
+                        } else {
+                            tm.setData({
+                                hasMore: false
+                            })
+                        }
+                    }
+                }
+            });
+            console.log(tm.data.nothing)
+        }
+        // if(){
+
+        // }
     }
 })

@@ -3,12 +3,19 @@
     <view>
         <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
     </view>
-
-
-
-    <view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx;'>
+    <view class='brandInfoTabBar'style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
+        <view class="brandInfoTab hotSell {{isSelectState==1?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
+            <text style='margin-left:5rpx;margin-right:3rpx;color:#db3c40'>热卖中</text>
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
+        </view>
+        <view style='width:2%'>
+            <view class='line' style='width: 1px;height: 40rpx;background: #959595'></view>
+        </view>
+        <view class="brandInfoTab sellOut {{isSelectState==2?'active':''}}" bindtap='onShowHotSell' data-state="1" style='line-height: 80rpx;font-size:32rpx;width:49%;text-align:center'>已抢光</view>
+    </view>
+    <view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx;' >
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
-
             <view style='padding-top:50rpx'>
                 <view style='padding-left:129rpx;position:relative;'>
                     <view style='font-size:26rpx;line-height:40rpx;color:#515151;padding-right:10rpx;'>
@@ -28,28 +35,17 @@
                     <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
                         <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
                     </view>
-
                     <view style='clear:both'></view>
-
-
                     <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
-
                         <image src='http://cos.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
                     </view>
-
-
-
                 </view>
-
-
                 <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;width:590rpx;'>
                     <view style='padding:0 16rpx'>
                         <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
                     </view>
                     <view style='padding:0 16rpx'>
                         <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
-
-
                             <!-- 测试数据 如果没有返回item.count 默认为1  可以点击加购 -->
                             <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
                                 <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
@@ -64,20 +60,10 @@
                         </view>
                         <view style='clear:both'></view>
                     </view>
-
-
                     <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(256,256,256,0.5);'>
-
                     </view>
                 </view>
-
                 <view style='height:26rpx'></view>
-
-
-
-
-
-
                 <view style='height:26rpx'></view>
             </view>
         </view>
@@ -85,9 +71,6 @@
             <image src="{{goodsImg}}"></image>
         </view>
     </view>
-
-
-
     <!-- <view class="fixedBtn active"  wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;' bindtap='fixedShare'> -->
     <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
@@ -98,7 +81,6 @@
     <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:136rpx;' bindtap='fixedGoToCart'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
         <text>购物车</text>
-
         <view wx:if='{{shopcartCount > 0}}' style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
             <!-- <text style='color:#db3c40;'></text> -->
         </view>
@@ -108,6 +90,5 @@
         <text>首页</text>
     </view>
 </view>
-
 <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
 <view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>
