@@ -8,14 +8,31 @@
         </view>
     </view>
     <view class="mt120" wx:if="{{TabType==1}}">
-        <form bindsubmit="formSubmit" reportSubmit="true">
+        <view class="points-list pl24">
+            <view class="point-li pd24-vertical pr24" wx:for="{{DrawList}}" wx:key="{{DrawList}}">
+                <view bindtap="goDrawDetail" data-requestId="{{item.JournalNumber}}">
+                    <view class="point-left">
+                        <view>{{item.RequestStateText}}</view>
+                        <view class="Drawtime">{{item.AccountDate}}</view>
+                    </view>
+                    <view class="point-count">
+                        <text>¥</text>{{item.Amount}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="kong" hidden="{{isEmpty}}">
+            <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx"></view>
+            暂无提现
+        </view>
+        <!-- <form bindsubmit="formSubmit" reportSubmit="true">
             <view class="Draw_total">
                 <text class="form-group-name">提现金额</text>
                 <view class="form-group-input">
                     <input bindinput="bindMoneyTap" name="money" placeholder="填写您的提现金额" placeholderStyle="color:#bdbdbd" type="text" value="{{DrawMoney}}"></input>
                 </view>
             </view>
-            <view class="notice">最多可提现{{CanDrawSplittin}}元，<text wx:if="{{DeductMinDraw>0}}">最少提现{{DeductMinDraw}}元，</text>微信支付最少提现金额为1元</view>
+            <view class="notice">最多可提现{{CanDrawSplittin}}元，
+                <text wx:if="{{DeductMinDraw>0}}">最少提现{{DeductMinDraw}}元，</text>微信支付最少提现金额为1元</view>
             <view bindtap="ShowType" class="form-group bg-white">
                 <view class="form-group-name">提现方式</view>
                 <view class="form-group-input deposit {{DrawIndex==-1?'selecttxt':''}}">{{DrawIndex==-1?'请选择提现方式':DrawTypeList[DrawIndex]}}</view>
@@ -42,7 +59,7 @@
                 <button class="submit" formType="submit">申请提现</button>
             </view>
             <view class="time" hidden="{{!LastDrawTime}}">上次提现日期:{{LastDrawTime}}</view>
-        </form>
+        </form> -->
     </view>
     <view class="mt120" wx:if="{{TabType==2}}">
         <view class="points-list pl24">
@@ -59,7 +76,7 @@
         </view>
         <view class="kong" hidden="{{isEmpty}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx"></view>
-      暂无提现
-    </view>
+            暂无提现
+        </view>
     </view>
 </view>
