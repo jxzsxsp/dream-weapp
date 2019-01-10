@@ -1,83 +1,101 @@
 <!--pages/myteam/myteam.wxml-->
 
 <view class='commission_container'>
-  <view class='commission_top'>
-    <text class='tit'>粉丝累计消费（元）</text>
-    <view class='show_num'>
-      <text class='money_num' style="font-size:60rpx">1876.09</text>
+    <view class='commission_top'>
+        <text class='tit'>粉丝累计消费（元）</text>
+        <view class='show_num'>
+            <text class='money_num' style="font-size:60rpx">{{LowerUserSaleTotal}}</text>
 
-    </view>
-    <view class='line'></view>
-    <view class='showlist'>
-      <view>
-        <text>已邀请粉丝</text>
-        <text>235</text>
-      </view>
-      <view>
-        <text>已发展经理</text>
-        <text>12</text>
-      </view>
-      <view>
-        <text>已发展总监</text>
-        <text>6</text>
-      </view>
-    </view>
-  </view>
-  <view class='commission_middle'>
-    <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/friendtb.png"></image>
-    <view>
-      <text class='font_a'>带着团队一起赚指南</text>
-      <text class='font_b'>团队分佣规则说明</text>
-    </view>
-    <navigator url='http://ytalman.qkmai.com/ArticleDetails?ArticleId=17'>
-      <view class='go_btn'>GO</view>
-    </navigator>
-  </view>
-  <view class='commission_bottom'>
-    <view class='list lista'>
-      <view class='list_top'>
-        <view class='list1'>
-          <text class='font_big '>赵琳Ramsey</text>
-          <text class='custom'>普通用户</text>
         </view>
-        <text class='font_big list2'>￥0</text>
-        <text class='font_big list3'>￥0</text>
-      </view>
-      <view class='list_bottom'>
-        <text class='font_small list1'>2019-01-02 18:56:13</text>
-        <text class='font_small font_small2 list2'>累计消费</text>
-        <text class='font_small font_small2 list3'>购物返佣</text>
-      </view>
-    </view>
-    <view class='list'>
-      <view class='list_top'>
-        <view class='list1'>
-          <text class='font_big '>~不忘初心~</text>
-          <text class='custom'>普通用户</text>
+        <view class='line'></view>
+        <view class='showlist'>
+            <view>
+                <text>已邀请粉丝</text>
+                <text>{{ExpandMemberAll}}</text>
+            </view>
+            <view>
+                <text>已发展经理</text>
+                <text>0</text>
+            </view>
+            <view>
+                <text>已发展总监</text>
+                <text>0</text>
+            </view>
         </view>
-        <text class='font_big list2'>￥0</text>
-        <text class='font_big list3'>￥0</text>
-      </view>
-      <view class='list_bottom'>
-        <text class='font_small list1'>2019-01-02 18:56:13</text>
-        <text class='font_small font_small2 list2'>累计消费</text>
-        <text class='font_small font_small2 list3'>购物返佣</text>
-      </view>
     </view>
-    <view class='list'>
-      <view class='list_top'>
-        <view class='list1'>
-          <text class='font_big '>aGnaij</text>
-          <text class='VIP'>试用VIP</text>
+    <view class='commission_middle'>
+        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/friendtb.png"></image>
+        <view>
+            <text class='font_a'>带着团队一起赚指南</text>
+            <text class='font_b'>团队分佣规则说明</text>
         </view>
-        <text class='font_big list2'>￥0</text>
-        <text class='font_big list3'>￥0</text>
-      </view>
-      <view class='list_bottom'>
-        <text class='font_small list1'>2019-01-02 18:56:13</text>
-        <text class='font_small font_small2 list2'>累计消费</text>
-        <text class='font_small font_small2 list3'>购物返佣</text>
-      </view>
+        <!-- <navigator url='http://ytalman.qkmai.com/ArticleDetails?ArticleId=17'> -->
+        <view class='go_btn' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=17" data-id='17'>GO</view>
+          
+        <!-- </navigator> -->
     </view>
-  </view>
+    <view class='commission_bottom' style="width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;" wx:if="{{subMemberList.length!=0}}">
+        <block wx:for="{{subMemberList}}" wx:key="{{subMemberList}}">
+            <view class='list lista'>
+                <view class='list_top'>
+                    <view class='list1'>
+                        <text class='font_big '>{{item.UserName}}</text>
+                        <text class='custom'>普通用户</text>
+                    </view>
+                    <text class='font_big list2'>￥{{item.SubSumOrderTotal}}</text>
+                    <text class='font_big list3'>￥{{item.SubMemberAllSplittin}}</text>
+                </view>
+                <view class='list_bottom'>
+                    <text class='font_small list1'>{{item.CreateDate}}</text>
+                    <text class='font_small font_small2 list2'>累计消费</text>
+                    <text class='font_small font_small2 list3'>购物返佣</text>
+                </view>
+            </view>
+        </block>
+        <!-- <view class='list lista'>
+            <view class='list_top'>
+                <view class='list1'>
+                    <text class='font_big '>赵琳Ramsey</text>
+                    <text class='custom'>普通用户</text>
+                </view>
+                <text class='font_big list2'>￥0</text>
+                <text class='font_big list3'>￥0</text>
+            </view>
+            <view class='list_bottom'>
+                <text class='font_small list1'>2019-01-02 18:56:13</text>
+                <text class='font_small font_small2 list2'>累计消费</text>
+                <text class='font_small font_small2 list3'>购物返佣</text>
+            </view>
+        </view>
+        <view class='list'>
+            <view class='list_top'>
+                <view class='list1'>
+                    <text class='font_big '>~不忘初心~</text>
+                    <text class='custom'>普通用户</text>
+                </view>
+                <text class='font_big list2'>￥0</text>
+                <text class='font_big list3'>￥0</text>
+            </view>
+            <view class='list_bottom'>
+                <text class='font_small list1'>2019-01-02 18:56:13</text>
+                <text class='font_small font_small2 list2'>累计消费</text>
+                <text class='font_small font_small2 list3'>购物返佣</text>
+            </view>
+        </view>
+        <view class='list'>
+            <view class='list_top'>
+                <view class='list1'>
+                    <text class='font_big '>aGnaij</text>
+                    <text class='VIP'>试用VIP</text>
+                </view>
+                <text class='font_big list2'>￥0</text>
+                <text class='font_big list3'>￥0</text>
+            </view>
+            <view class='list_bottom'>
+                <text class='font_small list1'>2019-01-02 18:56:13</text>
+                <text class='font_small font_small2 list2'>累计消费</text>
+                <text class='font_small font_small2 list3'>购物返佣</text>
+            </view>
+        </view> -->
+    </view>
 </view>
