@@ -20,7 +20,7 @@
                 <view class="nav_right_items" style='display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;width:31%;height:200rpx;margin-bottom:15rpx;margin-left:10rpx;background:#fff;border-radius: 15rpx;overflow:hidden'>
                     <navigator url="/pages/brandInfo/brandInfo?brandId={{item.brandId}}&brandSource={{item.brandSource}}" style='display:flex;flex-flow:column nowrap;align-items:center;justify-content:space-between;width:100%;height:100%;'>
                         <view wx:if="{{item.brandLogo}}" style='position:relative;width:110rpx;height:110rpx;display:flex;align-items:center;justify-content:center;margin:15rpx auto 10rpx auto;overflow:hidden'>
-                            <image src="{{item.brandLogo}}" style='width:110rpx;' mode='widthFix'></image>
+                            <image src="{{item.brandLogo}}" style='width:110rpx;height:auto;' mode='widthFix'></image>
                         </view>
                         <block wx:else>
                             <image src="http://temp.im/50x30"></image>
