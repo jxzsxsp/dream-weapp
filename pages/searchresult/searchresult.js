@@ -144,19 +144,29 @@ Page({
     loadData: function(a, e) {
         wx.showNavigationBarLoading(), t.getOpenId(function(r) {
             wx.request({
-                url: t.getUrl("GetProducts"),
+                // url: t.getUrl("GetProducts"),
+                url: t.getUrl("YTALGetListProductByCouponId"),
                 data: {
                     openId: r,
-                    keyword: a.data.KeyWord,
-                    cId: a.data.CategoryId,
+                    couponId: a.data.CategoryId,
                     pageIndex: a.data.PageIndex,
-                    pageSize: a.data.PageSize,
-                    sortBy: a.data.SortBy,
-                    sortOrder: a.data.SortOrder
+                    pageSize:a.data.PageSize,
+                    sortBy:a.data.SortBy,
+                    sortOrder:a.data.SortOrder
+                    // openId: r,
+                    // keyword: a.data.KeyWord,
+                    // cId: a.data.CategoryId,
+                    // pageIndex: a.data.PageIndex,
+                    // pageSize: a.data.PageSize,
+                    // sortBy: a.data.SortBy,
+                    // sortOrder: a.data.SortOrder
                 },
                 success: function(t) {
-                    if ("OK" == t.data.Status) {
-                        var r = t.data.Data;
+                    console.log(t)
+                    
+                    if (t.statusCode==200) {
+                        var r = t.data;
+                        console.log(r)
                         if (e) {
                             var u = a.data.ProductList;
                             u.push.apply(u, r), a.setData({
@@ -187,6 +197,7 @@ Page({
             e = 0;
         t.getOpenId(function(r) {
             wx.request({
+                // url: t.getUrl("getShoppingCartList"),
                 url: t.getUrl("getShoppingCartList"),
                 data: {
                     openId: r
