@@ -69,14 +69,13 @@ Page({
         var tm = this;
         // console.log(e.globalData.openId)
         wx.request({
-            url: e.getUrl("GetListBrandByFollow"),
+            url: e.getUrl("YTALGetListBrandByFollow"),
             data: {
-                // openId: e.globalData.openId
-                openId: "o_rWK5ULNm46IJqvZOEFWIj_xWVc"
+                openId: e.globalData.userInfo.OpenId
+                // openId: "o_rWK5ULNm46IJqvZOEFWIj_xWVc"
             },
             success: function (jd) {
                 if (jd.data.length > 0) {
-                    // console.log(jd.data)
                     let logoList = [];
 
                     tm.setData({
@@ -86,24 +85,21 @@ Page({
             }
         });
     },
-    cancleFocus: function () {
+    cancleFocus: function (event) {
         var tm = this;
-        // var s = event.currentTarget.dataset.index;
-        // var o = tm.data.userInfo.OpenId
-        // wx.request({
-        //     url: e.getUrl("FollowBrand"),
-        //     data: {
-        //         openId: o,
-        //         mainTitle: event.currentTarget.dataset.title
-        //     },
-        //     success: function (jd) {
-        //         event._relatedInfo.anchorTargetText = "取消关注"
-        //         var br = tm.data.brandRush;
-        //         br[s].isFocus = !br[s].isFocus;
-        //         tm.setData({
-        //             brandRush: br
-        //         })
-        //     }
-        // });
+        var s = event.currentTarget.dataset.index;
+        wx.request({
+            url: e.getUrl("YTALFollowBrand"),
+            data: {
+                openId: e.globalData.userInfo.OpenId,
+                mainTitle: event.currentTarget.dataset.title
+            },
+            success: function (jd) {
+                var br = tm.data.focusList.splice(s,1);
+                tm.setData({
+                    focusList: tm.data.focusList
+                })
+            }
+        });
     }
 })
