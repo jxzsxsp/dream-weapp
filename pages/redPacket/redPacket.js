@@ -9,7 +9,7 @@ Page({
     data: {
         getCouponStatus: false,
         memberList:[],
-        CouponId: 11,
+        CouponId: "",
         showUrl: ""
         
     },
@@ -84,9 +84,10 @@ Page({
             imageUrl: "http://cos.qkmai.com/qkmbb/ytal/300fengmian.png  "
         }
     },
-    onGetCoupon: function() {
+    onGetCoupon: function(event) {
+        console.log(event)
         var tm = this;
-        var e = this.data.CouponId;
+        var e = event.currentTarget.dataset.couponid;
         var that = this;
         "" == e || parseInt(e) <= 0 ? wx.showModal({
             title: "提示",
@@ -99,7 +100,7 @@ Page({
             }
         }) : t.getOpenId(function(o) {
             wx.request({
-                url: t.getUrl("UserGetCoupon"),
+                url: t.getUrl("YTALGetListProductByCouponId"),
                 data: {
                     openId: o,
                     couponId: e
@@ -133,8 +134,8 @@ Page({
             wx.request({
                 url: t.getUrl("YTALGetListMemberByCouponId"),
                 data: {
-                    openId: t.globalData.userInfo.OpenId,
-                    couponId: 11
+                    openId: t.globalData.userInfo.OpenId
+                    
                 },
                 success: function (a) {
                     console.log(a)

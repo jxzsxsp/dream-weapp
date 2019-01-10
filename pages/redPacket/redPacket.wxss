@@ -6,7 +6,7 @@
   background: #fafafa;
 }
 .first_bg{
-  background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbaobg.png") no-repeat center top;
+  /* background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbaobg.png") no-repeat center top; */
   width: 750rpx;
   height: 1100rpx;
   background-size: cover;
@@ -108,23 +108,21 @@
   height: 110rpx;
   /* background: #ffd123; */
   text-align: center;
-  margin: 400rpx auto 0 auto;
-  border-radius: 45rpx;
+  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350fxan.png");
+  background-size:100% 100%;
   line-height: 110rpx;
   border: 0;
-  background: none;
-}
 
+}
 .task2_container {
-  /* background: #ea3253; */
-  padding-top: 40rpx;
+  padding-top: 20rpx;
 }
-
 .group {
-  width: 90%;
-  height: 280rpx;
+  width: 700rpx;
+  height: 260rpx;
   margin: 0 auto;
-  
+  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350rentoubg.png");
+  background-size:100% 100%;
   border-radius: 25rpx;
   display: flex;
   flex-direction: column;
@@ -138,21 +136,19 @@
 .sharepeo_container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   padding-top: 90rpx;
+  padding:90rpx 20rpx 0 20rpx;
 }
 
 .share_peo {
-  width: 100rpx;
-  height: 100rpx;
+  width: 110rpx;
+  height: 110rpx;
   border-radius: 50%;
-  margin-left: 20rpx;
+  
 }
 
-.task3_container {
-  margin-top: 50rpx;
-  background: #f8f8f8;
-}
+
 
 .product {
   width: 90%;
@@ -169,6 +165,7 @@
   align-items: center;
   position: relative;
   padding: 15rpx;
+  overflow: hidden
 }
 .product_connect{
   height: 440rpx;
@@ -252,14 +249,13 @@
   height: 110rpx;
 }
 .product_title{
-  font-size: 26rpx;
+  font-size: 30rpx;
   font-weight: 900;
   color: #515151
 }
 .product_title2{
   display: block;
-  font-size: 26rpx;
-  font-weight: 900;
+  font-size: 22rpx;
   color: #ff9e6b
 }
 .product_price{
@@ -297,7 +293,7 @@
 }
 .end_des{
   text-align: center;
-  color: #888;
+  color: #ffcd5a;
   font-size: 20rpx;
-  margin: 50rpx auto;
+ 
 }
