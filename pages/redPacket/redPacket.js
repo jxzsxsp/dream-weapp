@@ -100,7 +100,7 @@ Page({
             }
         }) : t.getOpenId(function(o) {
             wx.request({
-                url: t.getUrl("YTALGetListProductByCouponId"),
+                url: t.getUrl("UserGetCoupon"),
                 data: {
                     openId: o,
                     couponId: e
