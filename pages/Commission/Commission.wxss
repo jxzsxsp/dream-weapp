@@ -89,14 +89,14 @@ page{
   margin-right: 15rpx;
   margin-left: 80rpx;
 }
-.commission_bottom{
+/* .commission_bottom{
   width: 670rpx;
   height: 410rpx;
   margin: 30rpx auto;
   background: #fff;
   border-radius: 20rpx;
   padding: 20rpx;
-}
+} */
 .list{
   height: 135rpx;
   border-top: 1px solid #d6d6d6af;
