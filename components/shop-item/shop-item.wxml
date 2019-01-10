@@ -1,15 +1,27 @@
 <view class='item-container'>
-  <view class='shop-img'>
-  
-  </view>
+  <view class='head-container'>
+    <view class='shop-img'>
+      <image src="{{shop.logo}}"></image>
+    </view>
 
-  <view class='shop-content' bind:tap="onDetail">
-    <text class='shop-name'>{{shop.shopName}}</text>
-    <view class='main-business'>主营：<text>针织布 丝光棉 牛仔 纯棉</text></view>
-  </view>
+    <view class='shop-content' bind:tap="onDetail">
+      <text class='shop-name'>{{shop.name}}</text>
+      <view class='main-business'>
+        <text class='business-title'>主营</text>
+        <block wx:for="{{shop.businesses}}" wx:key="index">
+          <block wx:if="{{index < 3}}">
+            <text class='business-name'>{{item.businessName}}</text>
+          </block>
+          <block wx:if="{{index === 3}}">
+            <text class='business-name'>...</text>
+          </block>
+        </block>
+      </view>
+    </view>
 
-  <view class='operate-btn'>
-    <view wx:if="{{!shop.follow}}" class='btn' bind:tap="onFollow">+关注</view>
-    <view wx:if="{{shop.follow}}" class='btn' bind:tap="onFollow">已关注</view>
+    <view class='operate-btn'>
+      <view wx:if="{{shop.isFollow === 0}}" class='btn' bind:tap="onFollow">关注</view>
+      <view wx:if="{{shop.isFollow === 1}}" class='btn-active' bind:tap="onCancel">已关注</view>
+    </view>
   </view>
 </view>

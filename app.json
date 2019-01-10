@@ -44,6 +44,12 @@
         "selectedIconPath": "/assets/tab_index_a.png"
       },
       {
+        "pagePath": "pages/recommend-supplier/recommend-supplier",
+        "text": "推荐供应商",
+        "iconPath": "/assets/tab_data_b.png",
+        "selectedIconPath": "/assets/tab_data_a.png"
+      },
+      {
         "pagePath": "pages/user-center/user-center",
         "text": "我的",
         "iconPath": "/assets/tab_I_b.png",

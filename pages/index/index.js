@@ -24,6 +24,9 @@ const lifeCycle = {
         })
       })
   },
+  onShareAppMessage: function() {
+
+  },
 }
 
 const viewAction = {

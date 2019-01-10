@@ -14,6 +14,13 @@ const lifecycle = {
   onLoad: function (query) {
     console.log(query)
 
+    if(query && query.bindId) {
+      this.setData({
+        authLogin: false,
+        authMobile: true,
+        bindId: query.bindId
+      })
+    }
   },
 }
 
@@ -55,18 +62,16 @@ const viewAction = {
       return http.getLogin(urls.login.quietLogin, data, true)
     }).then(res => {
       if (res.token) {
-        return { code: 1, message: '获取token成功' }
+        $wx.app.saveAuthInfo();
+        this.navigateBack();
       } else if (res.bindId) {
-        return { code: -2, message: '需要绑定手机号', bindId: res.bindId }
+        this.setData({
+          authLogin: false,
+          authMobile: true,
+          bindId: res.bindId
+        })
       }
 
-      this.setData({
-        authLogin: false,
-        authMobile: true
-      })
-
-      // $wx.app.saveAuthInfo();
-      // this.navigateBack();
     }).catch((res) => {
       console.log(res)
     })
@@ -74,6 +79,21 @@ const viewAction = {
   },
   getPhoneNumber: function (d, v) {
     console.log(d, v)
+
+    const data = {
+      appId: constant.APP_GLOBAL.appId,
+      domainName: constant.APP_GLOBAL.domainName,
+      bindId: this.data.bindId,
+      rawData: '',
+      signature: '',
+      encryptedData: v.encryptedData,
+      iv: v.iv,
+    }
+    
+    http.postLogin(urls.login.bindWechatMobile, data).then(res => {
+      $wx.app.saveAuthInfo();
+      this.navigateBack();
+    })
 
   },
 }
