@@ -115,8 +115,8 @@
 
 
     <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
-        <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
-        <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
+        <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/bianpaotb.png'></image>
+        <text style='font-size:14px;color:#000;'>活动太火爆啦~</text>
     </view>
 
     <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>

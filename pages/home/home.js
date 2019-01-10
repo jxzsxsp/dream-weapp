@@ -261,6 +261,7 @@ Page({
             title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        console.log(i)
         return {
             title: title,
             path: i,

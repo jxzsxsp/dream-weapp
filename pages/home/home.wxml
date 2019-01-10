@@ -11,14 +11,14 @@
     <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
     </template>
     <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;' mode='widthFix' lazy-load></image>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;height:auto;' mode='widthFix' lazy-load></image>
     </view>
 
     <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:5rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image>
         <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;z-idnex:3;' wx:for='{{topLogoList}}'>
             <view style='box-sizing:border-box;width:110rpx;height:110rpx;margin-bottom:10rpx;border-radius:50%;display:flex;justify-content:center;align-items:center;background-color:#fff;z-index:10;'>
-                <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
+                <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;height:auto;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
         <!-- <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:999;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
@@ -28,17 +28,17 @@
 
     <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
-            <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
+            <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
         </navigator>
         <navigator style='margin-bottom:10rpx;' url='/pages/searchresult/searchresult?cid=24&picUrl=http://cos.qkmai.com/qkmbb/ytal/99_.png'>
-            <image src='http://cos.qkmai.com/qkmbb/ytal/99.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;' mode='widthFix' lazy-load></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/99.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;height:auto;' mode='widthFix' lazy-load></image>
         </navigator>
         <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=5" data-id='5'>
-            <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/alzm.png'></image>
+            <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/alzm.png'></image>
         </view>
 
         <navigator url='/pages/webPage/webPage'>
-            <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;' mode='widthFix' lazy-load></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;height:auto;' mode='widthFix' lazy-load></image>
         </navigator>
         <!-- <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=3" data-id='3'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
@@ -56,14 +56,14 @@
 
 
     <view style='width:730rpx;margin-left:10rpx;padding:0;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image style='width:730rpx;padding:0;margin:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/remai.png'></image>
+        <image style='width:730rpx;padding:0;margin:0;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/remai.png'></image>
     </view>
 
     <view style='padding:0 0 0 0;width:730rpx;margin-left:10rpx;'>
         <view wx:key="{{item}}" wx:for='{{brandRush}}' wx:for-index="bindex" style='padding-top:15rpx;margin-top:20rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
             <view style='padding:60rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                 <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
-                    <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix' lazy-load></image>
+                    <image src='{{item.brandLogo}}' style='width:98%;height:auto;' mode='widthFix' lazy-load></image>
                 </view>
                 <view wx:if='{{item.goodsCount}}' style='width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>{{item.goodsCount? item.goodsCount : 0}}
                     <text style="font-size:22rpx;color:#959595;">款</text>
@@ -170,14 +170,14 @@
                             data-lower='{{item.lowerDiscount}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">
                             <view style='position:relative;left:25rpx;'>分享专场</view>
                         </button>
-                        <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;left:35rpx;top:25rpx;' mode='widthFix'></image>
+                        <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;left:35rpx;top:25rpx;height:auto;' mode='widthFix'></image>
                         <!-- <view style='clear:both'></view> -->
                     </view>
 
                     <view style='position:relative;width:30%;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-bottom-right-radius:20rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}'
                         data-brandsource='{{item.brandSource}}'>
                         <view style='position:relative;left:20rpx;'>去抢购</view>
-                        <image src='http://cos.qkmai.com/qkmbb/ytal/qianggoutb.png' style='width:40rpx;position:absolute;left:40rpx;top:25rpx;' mode='widthFix'></image>
+                        <image src='http://cos.qkmai.com/qkmbb/ytal/qianggoutb.png' style='width:40rpx;position:absolute;left:40rpx;top:25rpx;height:auto;' mode='widthFix'></image>
                     </view>
                     <!-- <view style='clear:both'></view> -->
                 </view>
@@ -196,7 +196,7 @@
     <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>
     <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:9999;' wx:if="{{userInfo.IsReferral}}">
-        <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;max-height:154rpx;' mode='widthFix' lazy-load></image>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;height:auto;' mode='widthFix' lazy-load></image>
     </navigator>
 </view>
 <!-- <view class='homepop' wx:if="{{isShow}}">

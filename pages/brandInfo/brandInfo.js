@@ -241,9 +241,13 @@ Page({
         var brandId = tm.data.brandRushInfo[0].brandId;
         var brandSource = tm.data.brandRushInfo[0].brandSource;
         var lower = (tm.data.brandRushInfo[0].lowerDiscount / 10).toFixed(1)
+        var i = '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource
+        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        // e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        console.log(i)
         return {
             title: '【品牌特卖】' + title + ' ' + lower + '折起',
-            path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
+            path: i,
             imageUrl: url
         }
     },

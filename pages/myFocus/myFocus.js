@@ -1,18 +1,20 @@
 // pages/myFocus/myFocus.js
+var t = require("../../utils/config.js"),
+    e = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        focusList: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.focusList();
     },
 
     /**
@@ -62,6 +64,27 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    focusList: function () {
+        var tm = this;
+        // console.log(e.globalData.openId)
+        wx.request({
+            url: e.getUrl("GetListBrandByFollow"),
+            data: {
+                // openId: e.globalData.openId
+                openId: "o_rWK5ULNm46IJqvZOEFWIj_xWVc"
+            },
+            success: function (jd) {
+                if (jd.data.length > 0) {
+                    // console.log(jd.data)
+                    let logoList = [];
+
+                    tm.setData({
+                        focusList: jd.data
+                    })
+                }
+            }
+        });
     },
     cancleFocus: function () {
         var tm = this;
