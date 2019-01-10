@@ -1,4 +1,4 @@
-var fundebug = require('./libs/fundebug.0.9.0.min.js');
+var fundebug = require('./libs/fundebug.1.0.0.min.js');
 fundebug.init(
   {
     apikey: '96c8207c7697b9dec9dc6fdab0a5949e72163e1ef856f5f987d0c15a31b8be67'
