@@ -92,6 +92,7 @@ Page({
         });
     },
     onLoad: function(a) {
+        // console.log(a)
         var tm = this;
         if (a.q) {
             var q = decodeURIComponent(a.q);
@@ -693,26 +694,26 @@ Page({
             data: {},
             success: function(res) {
                 if (res.data.length > 0) {
-                    let topArrList = res.data;
-                    console.log(res.data)
-                    // res.data.forEach(o => {
-                    //     var obj = {
-                    //         day: '00',
-                    //         hou: '00',
-                    //         min: '00',
-                    //         sec: '00'
-                    //     }
-                    //     o.countDownTime = obj;
-                    //     if (o.rushEndTime != null) {
-                    //         var month = o.rushEndTime.split('-')[1];
-                    //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                    //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                    //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                    let topArrList = [];
+                    // console.log(res.data)
+                    res.data.forEach(o => {
+                        var obj = {
+                            day: '00',
+                            hou: '00',
+                            min: '00',
+                            sec: '00'
+                        }
+                        o.countDownTime = obj;
+                        if (o.rushEndTime != null) {
+                            var month = o.rushEndTime.split('-')[1];
+                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                    //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                    //     }
-                    //     topArrList.push(o)
-                    // });
+                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        }
+                        topArrList.push(o)
+                    });
                     tm.setData({
                         topArr: topArrList,
                         brandRush: topArrList
@@ -726,24 +727,24 @@ Page({
                     },
                     success: function(res) {
                         if (res.data.length == 5) {
-                            let bottomArrList = res.data;
-                            // res.data.forEach(o => {
-                            //     var obj = {
-                            //         day: '00',
-                            //         hou: '00',
-                            //         min: '00',
-                            //         sec: '00'
-                            //     }
-                            //     o.countDownTime = obj;
-                            //     if (o.rushEndTime != null) {
-                            //         var month = o.rushEndTime.split('-')[1];
-                            //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                            //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                            //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
-                            //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                            //     }
-                            //     bottomArrList.push(o)
-                            // });
+                            let bottomArrList = [];
+                            res.data.forEach(o => {
+                                var obj = {
+                                    day: '00',
+                                    hou: '00',
+                                    min: '00',
+                                    sec: '00'
+                                }
+                                o.countDownTime = obj;
+                                if (o.rushEndTime != null) {
+                                    var month = o.rushEndTime.split('-')[1];
+                                    var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                                    var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                                    var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                                    o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                                }
+                                bottomArrList.push(o)
+                            });
                             var newList = tm.data.topArr.concat(bottomArrList)
                             tm.setData({
                                 bottomArr: bottomArrList,
@@ -780,25 +781,25 @@ Page({
             data: currentData,
             success: function(jd) {
                 wx.hideLoading();
-                let brandRushList = jd.data;
-                // jd.data.forEach(o => {
-                //     var obj = {
-                //         day: '00',
-                //         hou: '00',
-                //         min: '00',
-                //         sec: '00'
-                //     }
-                //     o.countDownTime = obj;
-                //     if (o.rushEndTime != null) {
-                //         var month = o.rushEndTime.split('-')[1];
-                //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                let brandRushList = [];
+                jd.data.forEach(o => {
+                    var obj = {
+                        day: '00',
+                        hou: '00',
+                        min: '00',
+                        sec: '00'
+                    }
+                    o.countDownTime = obj;
+                    if (o.rushEndTime != null) {
+                        var month = o.rushEndTime.split('-')[1];
+                        var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                        var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                        var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                //     }
-                //     brandRushList.push(o)
-                // });
+                        o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                    }
+                    brandRushList.push(o)
+                });
                 tm.setData({
                     brandRush: brandRushList
                 })
@@ -819,24 +820,24 @@ Page({
             },
             success: function(res) {
                 if (res.data.length == 5) {
-                    let bottomArrList = res.data;
-                    // res.data.forEach(o => {
-                    //     var obj = {
-                    //         day: '00',
-                    //         hou: '00',
-                    //         min: '00',
-                    //         sec: '00'
-                    //     }
-                    //     o.countDownTime = obj;
-                    //     if (o.rushEndTime != null) {
-                    //         var month = o.rushEndTime.split('-')[1];
-                    //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                    //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                    //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
-                    //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                    //     }
-                    //     bottomArrList.push(o)
-                    // });
+                    let bottomArrList = [];
+                    res.data.forEach(o => {
+                        var obj = {
+                            day: '00',
+                            hou: '00',
+                            min: '00',
+                            sec: '00'
+                        }
+                        o.countDownTime = obj;
+                        if (o.rushEndTime != null) {
+                            var month = o.rushEndTime.split('-')[1];
+                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        }
+                        bottomArrList.push(o)
+                    });
                     var newList = tm.data.topArr.concat(bottomArrList)
                     tm.setData({
                         bottomArr: bottomArrList,
@@ -893,25 +894,25 @@ Page({
             data: currentData,
             success: function(jd) {
                 if (jd.data.length != 0) {
-                    let brandRushList = jd.data;
-                    // jd.data.forEach(o => {
-                    //     var obj = {
-                    //         day: '00',
-                    //         hou: '00',
-                    //         min: '00',
-                    //         sec: '00'
-                    //     }
-                    //     o.countDownTime = obj;
-                    //     if (o.rushEndTime != null) {
-                    //         var month = o.rushEndTime.split('-')[1];
-                    //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                    //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                    //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                    let brandRushList = [];
+                    jd.data.forEach(o => {
+                        var obj = {
+                            day: '00',
+                            hou: '00',
+                            min: '00',
+                            sec: '00'
+                        }
+                        o.countDownTime = obj;
+                        if (o.rushEndTime != null) {
+                            var month = o.rushEndTime.split('-')[1];
+                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                    //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                    //     }
-                    //     brandRushList.push(o)
-                    // });
+                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                        }
+                        brandRushList.push(o)
+                    });
                     tm.setData({
                         brandRush: tm.data.brandRush.concat(brandRushList)
                     })
@@ -1006,7 +1007,7 @@ Page({
             },
             success: function(jd) {
                 if (jd.data.length > 0) {
-                    console.log(jd.data)
+                    // console.log(jd.data)
                     let logoList = [];
 
                     tm.setData({
