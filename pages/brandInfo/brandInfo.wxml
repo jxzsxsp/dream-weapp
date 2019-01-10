@@ -1,20 +1,19 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;'>
-
     <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
         <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
-
-
-
-            <view style='position:absolute;top:0rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
-                <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
-                    <text style='font-size:9px;'>折起</text>
+            <view style='position:absolute;top:0rpx;right:170rpx;width:138rpx;height:87rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/graybqtb.png ) no-repeat top left;background-size:100% 100%;' wx:if="{{userInfo.IsReferral}}">
+                <view style='float:right;font-size:22rpx;text-align:center;color:#fff;padding-top:5rpx'>
+                    <text style='font-size:22rpx;'>最高分佣</text>
+                    <text style='padding-left:5rpx;font-size:24rpx;'>{{item.topCommissionRate}}%</text>
                 </view>
             </view>
-
-
-
-            <view style='overflow:hidden;'>
+            <view style='position:absolute;top:0rpx;right:25rpx;width:138rpx;height:87rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redbqtb.png ) no-repeat top left;background-size:100% 100%;'>
+                <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                    <text style='font-size:22rpx;line-height:70rpx;'>折起</text>
+                </view>
+            </view>
+            <view style='overflow:hidden;padding-top:35rpx'>
                 <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                     <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
                         <image src='{{item.brandLogo}}' style='width:98%' mode='widthFix'></image>
@@ -27,9 +26,9 @@
                             <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{item.subTitle}}</view>
                             <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.lowerDiscount / 10),1)}}折起</view> -->
 
-                            <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if="{{userInfo.IsReferral}}">最高分佣
+                            <!-- <view style='float:right;font-size:26rpx;padding-right:15rpx' wx:if="{{userInfo.IsReferral}}">最高分佣
                                 <text style='padding-left:5rpx;color:#ff0000;'>{{item.topCommissionRate}}%</text>
-                            </view>
+                            </view> -->
                         </view>
                     </view>
                 </view>
@@ -45,9 +44,10 @@
                 </view>
                 <view style='overflow:hidden;'>
                     <view class='videoLed'>
-                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!本商品的实际销售方为货源提供方，品牌方或品牌授权经销商，非本平台和本平台的VIP用户。</text>
-                    </view>
 
+                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!本商品的实际销售方为货源提供方，品牌方或品牌授权经销商，非本平台和本平台的VIP用户。</text>
+
+                    </view>
                 </view>
             </view>
             <!-- <view style='padding-left:125rpx;padding-right:15rpx'>
@@ -68,27 +68,17 @@
                     <view style='clear:both'></view>
                 </view>
             </view> -->
-
-
-
-
-
-
-
-
-
             <view style='padding-left:125rpx;padding-right:15rpx'>
-                <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;overflow:hidden;'>
+                <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;overflow:hidden;display:flex;flex-direction:row'>
                     <text style=''>结束时间{{item.endTimeInfo}}</text>
+                    <view style='font-size:14px;width:50%;text-align:right;color:#515151;line-height:40rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:center;' bindtap='changeFocus' data-index="{{bindex}}" data-title="{{item.mainTitle}}">
+                        <image src='{{isFocus && isFocus == true? "http://cos.qkmai.com/qkmbb/ytal/guanzhutb1.png" : "http://cos.qkmai.com/qkmbb/ytal/guanzhutb.png"}}' style='width:40rpx;margin-right:10rpx;' mode='widthFix'></image>
+                        {{isFocus && isFocus == true? "取消关注" : "关注"}}
+                    </view>
                 </view>
+
             </view>
-
-
-
-
             <view style='position:relative;width:730rpx;height:90rpx;line-height:90rpx;border-top:1px solid #f7f7f7;margin-top:35rpx;display:flex;justify-content:flex-end;background-color:#eee;border-botton-left-radius:20rpx;border-botton-right-radius:20rpx;'>
-
-
                 <view style='width:70%;text-align:center;height:90rpx;line-height:90rpx;background-color:#eee;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
                     距结束
                     <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.day}}</text>天
@@ -96,136 +86,208 @@
                     <text class='tui-conutdown-box'>{{item.countDownTime.min}}</text>分
                     <text class='tui-conutdown-box'>{{item.countDownTime.sec}}</text>秒
                 </view>
-
-
-
                 <button style='width:30%;height:90rpx;line-height:90rpx;background-color:#fff;margin:0;padding:0;border:0;font-size:28rpx;color:#fff;position:relative;padding-right:30rpx;text-align:right;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-radius:0;border-bottom-right-radius:20rpx;'
                     data-brandId='{{item.brandId}}' data-lower='{{item.lowerDiscount}}' plain='true' openType="share">分享专场</button>
-
                 <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:25rpx;' mode='widthFix'></image>
-
                 <!-- <button style='float:right;width:123rpx;height:50rpx;background-color:#db3c40;margin:25rpx 0;padding:0;border:0;font-size:26rpx;color:#fefefe;line-height:50rpx;border-radius:0;border: solid 1px #db3c40;' bindtap='linkToBrandRushShare' data-brandId='{{item.brandId}}'
                     plain='true' openType="share">分享专场</button>
                 <view style='clear:both'></view> -->
             </view>
-
         </view>
     </view>
-
-
-
-    <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
-        <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
-        <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
-    </view>
-
-    <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
-
-
-
-
-        <view style='position:absolute;top:0rpx;right:20rpx;width:86rpx;height:65rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/biaoqiantb.png) no-repeat top left;background-size:86rpx 65rpx;'>
-            <view style='font-size:14px;text-align:center;line-height:50rpx;color:#fff;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
-                <text style='font-size:9px;'>折</text>
-            </view>
+    <view class='brandInfoTabBar'style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
+        <view class="brandInfoTab hotSell {{isSelectState==1?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
+            <text style='margin-left:5rpx;margin-right:3rpx;color:#db3c40'>热卖中</text>
+            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
         </view>
-
-
-        <view style='padding-right:27rpx;'>
-            <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
-                <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
-                    <image src='{{brandLogo}}' style='width:98%' mode='widthFix'></image>
+        <view style='width:2%'>
+            <view class='line' style='width: 1px;height: 40rpx;background: #959595'></view>
+        </view>
+        <view class="brandInfoTab sellOut {{isSelectState==2?'active':''}}" bindtap='onShowHotSell' data-state="1" style='line-height: 80rpx;font-size:32rpx;width:49%;text-align:center'>已抢光</view>
+    </view>
+    <view class='brandInfoContainer' wx:if="{{isSelectState==1}}">
+        <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
+            <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
+            <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
+        </view>
+        <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
+            <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
+                <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
+                    <text style='font-size:22rpx;line-height:70rpx;'>折</text>
                 </view>
             </view>
-            <view style='height:85rpx;padding:27rpx 0 16rpx 0'>
-                <view style='font-size:30rpx;'>{{mainTitle}}</view>
-                <view>
-                    <view>
-                        <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{brandRushInfo[0].subTitle}}</view>
-
-                        <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view> -->
+            <view style='padding-right:27rpx;'>
+                <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
+                    <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
+                        <image src='{{brandLogo}}' style='width:98%' mode='widthFix'></image>
                     </view>
                 </view>
-            </view>
-        </view>
-        <view>
-            <view style='padding-left:129rpx;position:relative;'>
-                <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
-                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.infoDesc}}</text>
-                </view>
-            </view>
-            <view style='padding:12rpx 27rpx 18rpx 129rpx'>
-                <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
-                <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
-                <view style='float:right' wx:if="{{userInfo.IsReferral}}">
-                    <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
-                    <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
-                </view>
-            </view>
-            <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
-                <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
-                    <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
-                </view>
-                <view style='clear:both'></view>
 
-                <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
+                <view style='height:85rpx;padding:27rpx 0 16rpx 0'>
+                    <view style='font-size:30rpx;'>{{mainTitle}}</view>
+                    <view>
+                        <view>
+                            <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{brandRushInfo[0].subTitle}}</view>
 
-                    <image src='http://cos.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
-                </view>
-            </view>
-            <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;width:590rpx;'>
-                <view style='padding:0 16rpx'>
-                    <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
-                </view>
 
-                <view style='padding:0 16rpx'>
-                    <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
-                        <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
-                            <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
+                            <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view> -->
                         </view>
                     </view>
-                    <view style='clear:both'></view>
-                </view>
-                <view style='padding:15rpx 20rpx 15rpx 0'>
-                    <view style='' class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-img='{{item.goodsImages[0]}}'>加入购物车
-                    </view>
-
-                    <view style='clear:both'></view>
-                </view>
-
-                <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(256,256,256,0.5);'>
-
                 </view>
             </view>
+            <view>
+                <view style='padding-left:129rpx;position:relative;'>
+                    <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                        <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
+                    </view>
+                </view>
+                <view style='padding:12rpx 27rpx 18rpx 129rpx'>
+                    <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
+                    <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
+                    <view style='float:right' wx:if="{{userInfo.IsReferral}}">
+                        <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
+                        <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
+                    </view>
+                </view>
+                <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
+                    <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
+                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                    </view>
+                    <view style='clear:both'></view>
+                    <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
+                        <image src='http://cos.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
+                    </view>
+                </view>
+                <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;width:590rpx;'>
+                    <view style='padding:0 16rpx'>
+                        <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
+                    </view>
+                    <view style='padding:0 16rpx'>
+                        <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
+                            <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
+                                <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
+                            </view>
+                        </view>
+                        <view style='clear:both'></view>
+                    </view>
+                    <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
+                        <view style='text-align:right；font-size: 26rpx;  color: #b0b0b0; line-height: 40rpx;display:flex;flex-flow:row-reverse;'>
+                            <!-- <view style='font-size:22rpx;color:#515151;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                                {{item.endTimeInfo}}
+                                <text style=''>结束</text>
+                            </view> -->
 
-            <view style='height:26rpx'></view>
-        </view>
 
-        <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
-            <image src="{{goodsImg}}"></image>
+                            <view style='padding:15rpx 20rpx 15rpx 0'>
+                                <view style='' class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-img='{{item.goodsImages[0]}}'>加入购物车
+                                </view>
+                                <view style='clear:both'></view>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(256,256,256,0.5);'>
+                    </view>
+                </view>
+                <view style='height:26rpx'></view>
+            </view>
+            <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+                <image src="{{goodsImg}}"></image>
+            </view>
         </view>
     </view>
+    <view class='brandInfoContainer' wx:if="{{isSelectState==2}}">
+        <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
+            <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
+            <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
+        </view>
+        <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
+            <view style='position:absolute;top:0rpx;right:20rpx;width:138rpx;height:87rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
+                <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
+                    <text style='font-size:22rpx;line-height:70rpx;'>折</text>
+                </view>
+            </view>
+            <view style='padding-right:27rpx;'>
+                <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
+                    <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
+                        <image src='{{brandLogo}}' style='width:98%' mode='widthFix'></image>
+                    </view>
+                </view>
+
+                <view style='height:85rpx;padding:27rpx 0 16rpx 0'>
+                    <view style='font-size:30rpx;'>{{mainTitle}}</view>
+                    <view>
+                        <view>
+                            <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{brandRushInfo[0].subTitle}}</view>
 
 
+                            <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view> -->
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view style='padding-left:129rpx;position:relative;'>
+                    <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                        <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
+                    </view>
+                </view>
+                <view style='padding:12rpx 27rpx 18rpx 129rpx'>
+                    <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
+                    <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
+                    <view style='float:right' wx:if="{{userInfo.IsReferral}}">
+                        <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
+                        <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
+                    </view>
+                </view>
+                <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
+                    <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
+                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                    </view>
+                    <view style='clear:both'></view>
+                    <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
+                        <image src='http://cos.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
+                    </view>
+                </view>
+                <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;width:590rpx;'>
+                    <view style='padding:0 16rpx'>
+                        <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
+                    </view>
+                    <view style='padding:0 16rpx'>
+                        <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
+                            <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
+                                <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
+                            </view>
+                        </view>
+                        <view style='clear:both'></view>
+                    </view>
+                    <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
+                        <view style='text-align:right；font-size: 26rpx;  color: #b0b0b0; line-height: 40rpx;display:flex;flex-flow:row-reverse;'>
+                            <!-- <view style='font-size:22rpx;color:#515151;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                                {{item.endTimeInfo}}
+                                <text style=''>结束</text>
+                            </view> -->
 
 
+                            <view style='padding:15rpx 20rpx 15rpx 0'>
+                                <view style='' class="addCart {{item.goodsId == goodsId?' active ':' '}}" bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-img='{{item.goodsImages[0]}}'>加入购物车
+                                </view>
+                                <view style='clear:both'></view>
+                            </view>
+                        </view>
+                    </view>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(256,256,256,0.5);'>
+                    </view>
+                </view>
+                <view style='height:26rpx'></view>
+            </view>
+            <view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+                <image src="{{goodsImg}}"></image>
+            </view>
+        </view>
+    </view>
 
     <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
@@ -238,12 +300,10 @@
         <view wx:if="{{shopcartCount != 0 && shopcartCount}}" style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
         </view>
     </view>
-
     <view class="fixedBtn" bindtap='fixedGoToHome'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
         <text>首页</text>
     </view>
-
     <view class='loadmore loading' wx:if="{{ hasMore && rushGoodsList.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && rushGoodsList.length > 0 }}">—— 我也是有底线的 ——</view>
 </view>

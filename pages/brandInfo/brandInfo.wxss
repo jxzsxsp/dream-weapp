@@ -167,3 +167,27 @@ page {
   width: 100%;
   height: 100%;
 }
+.brandInfoTabBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #515151;
+    height: 80rpx;
+    /* border: 1px solid #515151; */
+    /* background: #fff; */
+    border-radius: 15rpx;
+    margin:20rpx;
+    /* box-shadow:0px 0px 10px #bdbdbd; */
+}
+.line{
+    width: 1px;
+    height: 40rpx;
+    background: #959595
+}
+.brandInfoTab{
+    line-height: 80rpx;
+}
+.brandInfoTab.active{
+    color: #db3c40
+}
