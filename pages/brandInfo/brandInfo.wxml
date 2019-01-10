@@ -95,6 +95,7 @@
             </view>
         </view>
     </view>
+
     <view class='brandInfoTabBar'style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
         <view class="brandInfoTab hotSell {{isSelectState==1?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
             <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
@@ -105,11 +106,12 @@
             <view class='line' style='width: 1px;height: 40rpx;background: #959595'></view>
         </view>
         <view class="brandInfoTab sellOut {{isSelectState==2?'active':''}}" bindtap='onShowHotSell' data-state="1" style='line-height: 80rpx;font-size:32rpx;width:49%;text-align:center'>已抢光</view>
+
     </view>
     <view class='brandInfoContainer' wx:if="{{isSelectState==1}}">
         <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
-            <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
-            <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
+            <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/bianpaotb.png'></image>
+        <text style='font-size:14px;color:#000;'>活动太火爆啦~</text>
         </view>
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
             <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
