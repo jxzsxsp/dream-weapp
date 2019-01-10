@@ -38,10 +38,6 @@ Page({
     },
     onShow: function() {
         this.GetShopCart();
-        // this.getLogo();
-        // this.getCate();
-        // wx.hideNavigationBarLoading();
-        // this.countDown();
     },
     GetShopCart: function() {
         var t = this,
@@ -100,7 +96,6 @@ Page({
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");
-            // console.log(str[1])
             e.setRefferUserId(str[1]);
         }
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
@@ -138,20 +133,14 @@ Page({
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
-        // this.getCate();
         wx.getSystemInfo({
             success: function(res) {
                 var x = res.version
                 var reg = new RegExp("/.", "g");
                 var s = x.replace(".", "").replace(".", "");
                 tm.compareVersion(x,'6.6.1')
-                // console.log(tm.compareVersion(x, '6.6.1'))
                 if (tm.compareVersion(x, '6.6.1') == -1) {
                     wx.hideTabBar({})
-                    // tm.setData({
-                    //     isTooLow: true
-                    // })
-
                     wx.showModal({
                         title: '提示',
                         content: '您的微信版本过低请先升级您的微信版本',
@@ -169,7 +158,6 @@ Page({
                     })
                 } else {
 
-
                     // tm.setData({
                     //     TopicData: {
                     //         id: 201811161906894,
@@ -186,7 +174,7 @@ Page({
                     //     }
                     // })
 
-                    tm.focusList()
+                    // tm.focusList()
                     // console.log(1)
                     tm.getLogo();
                     tm.getCate();
@@ -268,8 +256,6 @@ Page({
             var brandSoruce = event.target.dataset['brandsource'];
             var brandName = event.target.dataset['maintitle'];
             var brandBg = event.target.dataset['bg'];
-            // console.log(event.target.dataset['lower'] / 10)
-            // console.log(lower)
             i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
             title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
@@ -279,7 +265,6 @@ Page({
             path: i,
             imageUrl: brandBg
         }
-
     },
     getHomeData: function(t) {
         var a = this;
@@ -708,25 +693,26 @@ Page({
             data: {},
             success: function(res) {
                 if (res.data.length > 0) {
-                    let topArrList = [];
-                    res.data.forEach(o => {
-                        var obj = {
-                            day: '00',
-                            hou: '00',
-                            min: '00',
-                            sec: '00'
-                        }
-                        o.countDownTime = obj;
-                        if (o.rushEndTime != null) {
-                            var month = o.rushEndTime.split('-')[1];
-                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                    let topArrList = res.data;
+                    console.log(res.data)
+                    // res.data.forEach(o => {
+                    //     var obj = {
+                    //         day: '00',
+                    //         hou: '00',
+                    //         min: '00',
+                    //         sec: '00'
+                    //     }
+                    //     o.countDownTime = obj;
+                    //     if (o.rushEndTime != null) {
+                    //         var month = o.rushEndTime.split('-')[1];
+                    //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                    //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                    //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                        }
-                        topArrList.push(o)
-                    });
+                    //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                    //     }
+                    //     topArrList.push(o)
+                    // });
                     tm.setData({
                         topArr: topArrList,
                         brandRush: topArrList
@@ -740,24 +726,24 @@ Page({
                     },
                     success: function(res) {
                         if (res.data.length == 5) {
-                            let bottomArrList = [];
-                            res.data.forEach(o => {
-                                var obj = {
-                                    day: '00',
-                                    hou: '00',
-                                    min: '00',
-                                    sec: '00'
-                                }
-                                o.countDownTime = obj;
-                                if (o.rushEndTime != null) {
-                                    var month = o.rushEndTime.split('-')[1];
-                                    var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                                    var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                                    var min = o.rushEndTime.split(' ')[1].split(':')[1];
-                                    o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                                }
-                                bottomArrList.push(o)
-                            });
+                            let bottomArrList = res.data;
+                            // res.data.forEach(o => {
+                            //     var obj = {
+                            //         day: '00',
+                            //         hou: '00',
+                            //         min: '00',
+                            //         sec: '00'
+                            //     }
+                            //     o.countDownTime = obj;
+                            //     if (o.rushEndTime != null) {
+                            //         var month = o.rushEndTime.split('-')[1];
+                            //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                            //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                            //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                            //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                            //     }
+                            //     bottomArrList.push(o)
+                            // });
                             var newList = tm.data.topArr.concat(bottomArrList)
                             tm.setData({
                                 bottomArr: bottomArrList,
@@ -794,25 +780,25 @@ Page({
             data: currentData,
             success: function(jd) {
                 wx.hideLoading();
-                let brandRushList = [];
-                jd.data.forEach(o => {
-                    var obj = {
-                        day: '00',
-                        hou: '00',
-                        min: '00',
-                        sec: '00'
-                    }
-                    o.countDownTime = obj;
-                    if (o.rushEndTime != null) {
-                        var month = o.rushEndTime.split('-')[1];
-                        var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                        var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                        var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                let brandRushList = jd.data;
+                // jd.data.forEach(o => {
+                //     var obj = {
+                //         day: '00',
+                //         hou: '00',
+                //         min: '00',
+                //         sec: '00'
+                //     }
+                //     o.countDownTime = obj;
+                //     if (o.rushEndTime != null) {
+                //         var month = o.rushEndTime.split('-')[1];
+                //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                        o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                    }
-                    brandRushList.push(o)
-                });
+                //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                //     }
+                //     brandRushList.push(o)
+                // });
                 tm.setData({
                     brandRush: brandRushList
                 })
@@ -833,24 +819,24 @@ Page({
             },
             success: function(res) {
                 if (res.data.length == 5) {
-                    let bottomArrList = [];
-                    res.data.forEach(o => {
-                        var obj = {
-                            day: '00',
-                            hou: '00',
-                            min: '00',
-                            sec: '00'
-                        }
-                        o.countDownTime = obj;
-                        if (o.rushEndTime != null) {
-                            var month = o.rushEndTime.split('-')[1];
-                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
-                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                        }
-                        bottomArrList.push(o)
-                    });
+                    let bottomArrList = res.data;
+                    // res.data.forEach(o => {
+                    //     var obj = {
+                    //         day: '00',
+                    //         hou: '00',
+                    //         min: '00',
+                    //         sec: '00'
+                    //     }
+                    //     o.countDownTime = obj;
+                    //     if (o.rushEndTime != null) {
+                    //         var month = o.rushEndTime.split('-')[1];
+                    //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                    //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                    //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                    //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                    //     }
+                    //     bottomArrList.push(o)
+                    // });
                     var newList = tm.data.topArr.concat(bottomArrList)
                     tm.setData({
                         bottomArr: bottomArrList,
@@ -881,40 +867,51 @@ Page({
         if (!this.data.hasMore) return;
         var tm = this;
         var currentUrl = '';
-        var currentData = {
-            pi: ++this.data.dataIndex,
-            ps: this.data.pageSize,
-            cate: this.data.selectedCate
-        };
+        var currentData = {}
+        // var currentData = {
+        //     pi: ++this.data.dataIndex,
+        //     ps: this.data.pageSize,
+        //     cate: this.data.selectedCate
+        // };
         if (tm.data.selectedCate == "全场直播") {
             currentUrl = e.getUrl("YTALGetPageBrandRush");
+            currentData = {
+                pi: ++this.data.dataIndex,
+                ps: this.data.pageSize,
+                cate: this.data.selectedCate
+            };
         } else {
             currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
+            currentData = {
+                pi: ++this.data.dataIndex,
+                ps: this.data.pageSize,
+                cate: this.data.selectedCate
+            };
         }
         wx.request({
             url: currentUrl,
             data: currentData,
             success: function(jd) {
                 if (jd.data.length != 0) {
-                    let brandRushList = [];
-                    jd.data.forEach(o => {
-                        var obj = {
-                            day: '00',
-                            hou: '00',
-                            min: '00',
-                            sec: '00'
-                        }
-                        o.countDownTime = obj;
-                        if (o.rushEndTime != null) {
-                            var month = o.rushEndTime.split('-')[1];
-                            var day = o.rushEndTime.split('-')[2].split(' ')[0];
-                            var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-                            var min = o.rushEndTime.split(' ')[1].split(':')[1];
+                    let brandRushList = jd.data;
+                    // jd.data.forEach(o => {
+                    //     var obj = {
+                    //         day: '00',
+                    //         hou: '00',
+                    //         min: '00',
+                    //         sec: '00'
+                    //     }
+                    //     o.countDownTime = obj;
+                    //     if (o.rushEndTime != null) {
+                    //         var month = o.rushEndTime.split('-')[1];
+                    //         var day = o.rushEndTime.split('-')[2].split(' ')[0];
+                    //         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
+                    //         var min = o.rushEndTime.split(' ')[1].split(':')[1];
 
-                            o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-                        }
-                        brandRushList.push(o)
-                    });
+                    //         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
+                    //     }
+                    //     brandRushList.push(o)
+                    // });
                     tm.setData({
                         brandRush: tm.data.brandRush.concat(brandRushList)
                     })
