@@ -5,13 +5,13 @@ page{
 }
 .wallet_top{
   width: 590rpx;
-  height: 240rpx;
-  background: linear-gradient(90deg,#ff7181, #8279dc);
+  /* height: 120rpx; */
+  /* background: linear-gradient(90deg,#ff7181, #8279dc); */
   margin: 20rpx auto 30rpx;
   border-radius: 20rpx;
-  padding: 60rpx 60rpx 30rpx 60rpx;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   color: #fff;
 }
 .wallet_top .tit{
@@ -92,7 +92,7 @@ page{
 }
 .wallet_bottom{
   width: 670rpx;
-  height: 410rpx;
+  
   margin: 30rpx auto;
   background: #fff;
   border-radius: 20rpx;
@@ -102,8 +102,9 @@ page{
   height: 135rpx;
   border-top: 1px solid #d6d6d6af;
   display: flex;
-  flex-direction: column;
-  justify-content: center
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center
 }
 .list1{
     border-top:none
@@ -111,6 +112,14 @@ page{
 .font_big{
   color: #000;
   font-size: 26rpx;
+}
+.red{
+    font-size: 36rpx;
+    color: red
+}
+.green{
+    font-size: 36rpx;
+    color: green;
 }
 .font_small{
   color: #959595;
@@ -133,7 +142,4 @@ page{
 }
 .jl2{
   width: 160rpx
-}
-.jl3{
-  width: 115rpx
 }
