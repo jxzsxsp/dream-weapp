@@ -15,7 +15,12 @@ App({
     $wx.registerRouter(router)
 
     // 校验授权情况
-    this.saveAuthInfo()
+    this.saveAuthInfo().then((res) => {
+      console.log(res)
+      if (res.code < 0) {
+        $wx.redirectTo($wx.router.login)
+      }
+    })
   },
 
   // 绑定手机号,主动调用前必须先授权
