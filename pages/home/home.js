@@ -34,7 +34,8 @@ Page({
         currentId: 0,
         topLogoList: [],
         focusList: [],
-        isTooLow: false
+        isTooLow: false,
+        isShowState:true
     },
     onShow: function() {
         this.GetShopCart();
@@ -1047,6 +1048,10 @@ Page({
         wx.showTabBar({})
     },
     onGetLink: function() {
+        this.setData({
+            isShow: false
+        })
+        wx.showTabBar({})
         wx.navigateTo({
             url: '../redPacket/redPacket',
         })
