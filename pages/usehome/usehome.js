@@ -166,12 +166,14 @@ Page({
     },
     bindyongjin: function(e) {
         wx.navigateTo({
-            url: "../Splittin/Splittin"
+            //url: "../Splittin/Splittin"
+            url: "../Commission/Commission"
         });
     },
     bindxiaji: function(e) {
         wx.navigateTo({
-            url: "../SubMembers/SubMembers"
+            //url: "../SubMembers/SubMembers"
+            url:"../myteam/myteam"
         });
     },
     goToVip: function() {
