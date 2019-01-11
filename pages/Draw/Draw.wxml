@@ -22,7 +22,7 @@
         </view>
         <view class="kong" hidden="{{isEmpty}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx"></view>
-            暂无提现
+            敬请期待
         </view>
         <!-- <form bindsubmit="formSubmit" reportSubmit="true">
             <view class="Draw_total">
