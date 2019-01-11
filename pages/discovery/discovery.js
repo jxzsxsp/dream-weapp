@@ -11,10 +11,10 @@ Page({
         vipInfo: {},
         CategoryId: 22,
         dataList: {},
-        LowerUserSaleTotal:"",
+        LowerUserSaleTotal: "",
         ExpandMemberAll: "",
         isLoadEnd: false
-        
+
     },
 
     /**
@@ -65,7 +65,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        var tm=this;
+        var tm = this;
         tm.setData({
             isForever: true
         })
@@ -124,7 +124,7 @@ Page({
         wx.request({
             url: app.getUrl("YTALSignupDistribution"),
             data: {
-                openId:  app.globalData.userInfo.OpenId,
+                openId: app.globalData.userInfo.OpenId,
             },
             success: function(res) {
                 app.getOpenId(function() {
@@ -264,7 +264,7 @@ Page({
         //         data: {
         //             openId: t.data.userInfo.OpenId,
         //             //status: e,
-                  
+
         //         },
         //         success: function (a) {
         //             console.log(a)
