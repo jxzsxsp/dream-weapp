@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        nullDraw: app.getRequestUrl + "/Templates/xcxshop/images/null.png",
         isHotState: true,
         nothing: 0,
         isSoldOut: 0,
@@ -256,8 +257,6 @@ Page({
         var lower = (tm.data.brandRushInfo[0].lowerDiscount / 10).toFixed(1)
         var i = '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-
-
         var shareInfo = {
             title: '【品牌特卖】' + title + ' ' + lower + '折起',
             path: i,
@@ -586,9 +585,9 @@ Page({
     // },
     onShowHotSell: function (event) {
         var tm = this;
-        console.log(event)
+        //console.log(event)
         var isFlagNum = event.currentTarget.dataset.state;
-        console.log(isFlagNum)
+        //console.log(isFlagNum)
 
         if (isFlagNum == tm.data.nothing) {
             return
@@ -598,8 +597,6 @@ Page({
                 dataIndex: 1,
                 hasMore: true
             })
-
-
             wx.request({
                 url: app.getUrl("YTALGetListRushGoods"),
                 data: {
@@ -610,7 +607,11 @@ Page({
                     ps: tm.data.dataSize
                 },
                 success: function (jd) {
+                    console.log(jd)
                     if (jd.data.length == 0) {
+                        tm.setData({
+                            rushGoodsList: []
+                        })
                         return;
                     } else {
                         if (jd.data.length != 0) {
@@ -619,6 +620,7 @@ Page({
                                 goodsList.push(o)
                             });
                             // var newList = tm.data.rushGoodsList.concat(goodsList)
+                            console.log("goodsList" + goodsList)
                             tm.setData({
                                 rushGoodsList: goodsList
                             })
