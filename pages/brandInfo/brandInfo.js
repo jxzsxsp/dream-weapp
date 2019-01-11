@@ -72,6 +72,7 @@ Page({
         });
         var tm = this;
         app.getUserInfo(function (t) {
+            
             tm.setData({
                 userInfo: t,
                 brandId: options.brandId,

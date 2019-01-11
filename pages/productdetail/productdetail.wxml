@@ -22,7 +22,7 @@
             <text class="share_text">分享</text>
         </view>
         <view class="jjname">{{ShortDescription}}</view>
-        <view class="mt16 line_height32 mb32" style="display:flex;overflow:hidden; color:#757575">
+        <view class="mt16 line_height32 mb32" style="display:flex;overflow:hidden; color:#757575;display:none;">
             <view class="yunfei">
           运费：
           <text>￥{{Freight}}</text>
@@ -97,7 +97,7 @@
         <view class="icon">
             <view class="iconfont home font48"></view>
         </view>
-      主页
+      首页
     </navigator>
     <navigator hoverClass="navigator-hover" openType="switchTab" url="../shopcart/shopcart">
         <view class="icon">

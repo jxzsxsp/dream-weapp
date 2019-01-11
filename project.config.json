@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -56,7 +56,13 @@
 				{
 					"id": -1,
 					"name": "123",
-					"pathName": "pages/ApplyRefund/ApplyRefund"
+					"pathName": "pages/ApplyRefund/ApplyRefund",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Draw",
+					"pathName": "pages/Draw/Draw"
 				}
 			]
 		}

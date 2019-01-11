@@ -16,7 +16,7 @@ page {
 .shopcart-t {
     position: fixed;
     /* top: 0; */
-    top: 80rpx;
+    top: 120rpx;
     left: 0;
     right: 0;
     z-index: 2;
@@ -66,7 +66,7 @@ page {
 .shopcart-m-item {
     overflow: hidden;
     width: 702rpx;
-    padding: 50rpx 24rpx 32rpx 24rpx;
+    padding: 100rpx 24rpx 32rpx 24rpx;
     /* padding: 32rpx 24rpx; */
     position: relative;
     display: flex;

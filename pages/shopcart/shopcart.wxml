@@ -1,7 +1,7 @@
 <view class="page-section">
     <view hidden="{{isEmpty}}">
-        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:80rpx;text-align:center;background-color:#db3c40;z-index:100000;color:#fff;'>
-            <view>购物车商品有效期15分钟，请在15分钟内支付，超时取消</view>
+        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:40rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;'>
+            <view>提示：购物车里面商品有效期15分钟，请在15分钟内支付，超时回收；回收详情敬请关注后续版本</view>
             <!-- <view>商品在，谢谢理解！</view> -->
         </view>
         <view class="shopcart-t bg-wihte">
