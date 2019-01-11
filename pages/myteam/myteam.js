@@ -9,7 +9,9 @@ Page({
         isempty: !0,
         ExpandMemberInMonth: "",
         ExpandMemberAll: "",
-        LowerUserSaleTotal: ""
+        LowerUserSaleTotal: "",
+        ManagerNum:"",
+        DirectorNum:""
     },
     onLoad: function (e) { },
     onReady: function () { },
@@ -73,7 +75,9 @@ Page({
                                 isEmpty: t.data.isempty,
                                 ExpandMemberInMonth: o.ExpandMemberInMonth,
                                 ExpandMemberAll: o.ExpandMemberAll,
-                                LowerUserSaleTotal: o.LowerUserSaleTotal
+                                LowerUserSaleTotal: o.LowerUserSaleTotal,
+                                ManagerNum: o.ReferralGradeTotal[1].SubNum,
+                                DirectorNum: o.ReferralGradeTotal[2].SubNum
                             });
                         }
                     } else e.showTip(a.data.error_response.errMsg);

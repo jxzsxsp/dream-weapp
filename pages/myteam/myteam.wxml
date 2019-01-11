@@ -15,11 +15,11 @@
             </view>
             <view>
                 <text>已发展经理</text>
-                <text>0</text>
+                <text>{{ManagerNum}}</text>
             </view>
             <view>
                 <text>已发展总监</text>
-                <text>0</text>
+                <text>{{DirectorNum}}</text>
             </view>
         </view>
     </view>
@@ -31,16 +31,18 @@
         </view>
         <!-- <navigator url='http://ytalman.qkmai.com/ArticleDetails?ArticleId=17'> -->
         <view class='go_btn' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=17" data-id='17'>GO</view>
-          
+
         <!-- </navigator> -->
     </view>
     <view class='commission_bottom' style="width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;" wx:if="{{subMemberList.length!=0}}">
-        <block wx:for="{{subMemberList}}" wx:key="{{subMemberList}}">
-            <view class='list lista'>
+        <block wx:for="{{subMemberList}}" wx:key="{{subMemberList}}" wx:if="{{subMemberList.length > 0}}">
+            <view class='list '>
                 <view class='list_top'>
                     <view class='list1'>
-                        <text class='font_big '>{{item.UserName}}</text>
+                        <text class='font_big'>{{item.UserName}}</text>
                         <text class='custom'>普通用户</text>
+                        <!-- <text class='custom'>{{ReferralGradeName==null?'普通用户':(ReferralGradeName=='试用'? '试用VIP' ：(ReferralGradeName == '经理'? '经理VIP': '总监'))}}</text> -->
+                        <!-- <text class='custom'>{{item.ReferralGradeName==null?'普通用户':(item.ReferralGradeName=='试用'? '试用VIP' ：(item.ReferralGradeName == '经理'? '经理VIP': (item.ReferralGradeName == '总监'? '总监': '总经理VIP')))}}</text> -->
                     </view>
                     <text class='font_big list2'>￥{{item.SubSumOrderTotal}}</text>
                     <text class='font_big list3'>￥{{item.SubMemberAllSplittin}}</text>
