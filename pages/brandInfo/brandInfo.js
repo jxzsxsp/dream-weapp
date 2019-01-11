@@ -54,11 +54,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        e.globalData.fundebug.notifyError(new Error("onload"), {
-            name: "首页onload",
+        app.globalData.fundebug.notifyError(new Error("列表onload"), {
+            name: "brandInfo-onload",
             metaData: options
         });
-
+        options.ReferralUserId && app.setRefferUserId(options.ReferralUserId);
 
         if (options.brandId && options.brandSource) {
             this.setData({
@@ -254,11 +254,28 @@ Page({
         var brandId = tm.data.brandRushInfo[0].brandId;
         var brandSource = tm.data.brandRushInfo[0].brandSource;
         var lower = (tm.data.brandRushInfo[0].lowerDiscount / 10).toFixed(1)
-        return {
+        var i = '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource
+        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+
+        var shareInfo = {
             title: '【品牌特卖】' + title + ' ' + lower + '折起',
-            path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
+            path: i,
             imageUrl: url
-        }
+        };
+
+        app.globalData.fundebug.notifyError(new Error("首页分享"), {
+            name: "首页分享",
+            metaData: shareInfo
+        });
+
+        return shareInfo;
+
+
+        // return {
+        //     title: '【品牌特卖】' + title + ' ' + lower + '折起',
+        //     path: '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource,
+        //     imageUrl: url
+        // }
     },
     countDown: function () { //倒计时函数
         // 获取当前时间，同时得到活动结束时间数组

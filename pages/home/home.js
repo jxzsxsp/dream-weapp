@@ -97,10 +97,6 @@ Page({
         });
     },
     onLoad: function(a) {
-        e.globalData.fundebug.notifyError(new Error("onload"), {
-            name: "首页onload",
-            metaData: a
-        });
 
 
 
@@ -119,6 +115,15 @@ Page({
             tm.setData({
                 userInfo: t
             })
+        });
+        // e.getUserInfo(function (t) {
+            // tm.setData({
+            //     userInfo: e.globalData.userInfo
+            // })
+        // });
+        e.globalData.fundebug.notifyError(new Error("onload"), {
+            name: "首页onload",
+            metaData: a
         });
         var r, o, n = this;
         // if (e.globalData.userInfo && e.globalData.userInfo.IsReferral) {
@@ -279,8 +284,6 @@ Page({
             var brandSoruce = event.target.dataset['brandsource'];
             var brandName = event.target.dataset['maintitle'];
             var brandBg = event.target.dataset['bg'];
-            // console.log(event.target.dataset['lower'] / 10)
-            // console.log(lower)
             i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
             title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
