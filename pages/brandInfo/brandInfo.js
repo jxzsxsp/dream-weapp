@@ -54,6 +54,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        e.globalData.fundebug.notifyError(new Error("onload"), {
+            name: "首页onload",
+            metaData: options
+        });
+
+
         if (options.brandId && options.brandSource) {
             this.setData({
                 brandId: options.brandId,
