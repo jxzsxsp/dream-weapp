@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        nullDraw: app.getRequestUrl + "/Templates/xcxshop/images/null.png",
         isHotState:true,
         nothing:0,
         isSoldOut:0,
