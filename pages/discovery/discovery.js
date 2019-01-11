@@ -12,7 +12,8 @@ Page({
         CategoryId: 22,
         dataList: {},
         LowerUserSaleTotal:"",
-        ExpandMemberAll: ""
+        ExpandMemberAll: "",
+        isLoadEnd: false
         
     },
 
@@ -34,6 +35,7 @@ Page({
                     openId: t
                 },
                 success: function(t) {
+                    console.log(t.data)
                     app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
@@ -44,8 +46,11 @@ Page({
     },
 
     GetCheckData: function() {
+        console.log()
+        console.log(1)
         this.setData({
-            DistributionInfo: app.globalData.ReferralInfo
+            DistributionInfo: app.globalData.ReferralInfo,
+            isLoadEnd: true
         });
 
     },

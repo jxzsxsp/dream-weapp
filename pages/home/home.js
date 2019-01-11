@@ -202,7 +202,7 @@ Page({
                     //     }
                     // })
 
-                    tm.focusList()
+                    // tm.focusList()
                     // console.log(1)
                     tm.getLogo();
                     tm.getCate();
