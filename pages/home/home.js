@@ -276,11 +276,19 @@ Page({
             title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-        return {
+
+        var shareInfo = {
             title: title,
             path: i,
             imageUrl: brandBg
-        }
+        };
+
+        e.globalData.fundebug.notifyError(new Error("首页分享"), {
+            name: "首页分享",
+            metaData:shareInfo
+        });
+
+        return shareInfo;
 
     },
     getHomeData: function(t) {

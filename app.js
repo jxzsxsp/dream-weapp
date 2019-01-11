@@ -123,10 +123,7 @@ Number.prototype.toFixed = function (t) {
   return t(this, arguments, "divide");
 }, App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs);
+    //调用API从本地缓存中获取数据 
     this.screenSize();
   },
   getUserInfo: function (t) {
@@ -338,7 +335,8 @@ Number.prototype.toFixed = function (t) {
     loadReview: "LoadReview",
     loadCouponDetails: "GetCouponDetail",
     getAfterSalePreCheck: "AfterSalePreCheck",
-    getTopListBrandRush: "GetTopListBrandRush"
+    getTopListBrandRush: "GetTopListBrandRush",
+    fundebug: fundebug
   },
   screenSize: function () {
     var that = this;
