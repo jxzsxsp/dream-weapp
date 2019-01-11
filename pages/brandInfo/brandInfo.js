@@ -257,6 +257,7 @@ Page({
         var i = '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
 
+
         var shareInfo = {
             title: '【品牌特卖】' + title + ' ' + lower + '折起',
             path: i,
