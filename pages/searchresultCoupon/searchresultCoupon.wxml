@@ -38,7 +38,8 @@
                     <view atchtap="goToProductDetail" class="product-name" data-activeid="{{item.ActiveId}}" data-activetype="{{item.ActiveType}}" data-productid="{{item.ProductId}}">{{item.ProductName}}</view>
                     <view class="product-into">
                         <view class="product-price">￥
-                            <text>{{item.MarketPrice}}</text>
+                            <!-- <text>{{item.MarketPrice}}</text> -->
+                            <text>{{item.SalePrice}}</text> 
                         </view>
                         <!-- <view class="product-shop">
                             <view catchtap="catchAddCart" class="product-add" data-activeId="{{item.ActiveId}}" data-activetype="{{item.ActiveType}}" data-opensku="{{item.HasSKU}}" data-operator="+" data-productid="{{item.ProductId}}" data-sku="{{item.SkuId}}" wx:if="{{item.HasSKU||!item.HasSKU&&item.CartQuantity==0}}">
