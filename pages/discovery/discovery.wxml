@@ -1,13 +1,13 @@
 <view wx:if="{{(DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName) && isLoadEnd}}">
-
     <view class='' wx:if="{{isForever}}">
+        <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;top:0;left:0;;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;height:80rpx;'>
+            <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">加入试用会员</view>
+            <!-- <navigator url="/pages/longvip/longvip" style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'> -->
+            <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' data-flag="{{false}}" style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>成为永久会员</view>
+            <!-- </navigator> -->
+        </view>
         <view class='show-box-1' style='margin-top:80rpx;' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
-            <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;top:0;left:0;;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;height:80rpx;'>
-                <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">加入试用会员</view>
-                <!-- <navigator url="/pages/longvip/longvip" style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'> -->
-                <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' data-flag="{{false}}" style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>成为永久会员</view>
-                <!-- </navigator> -->
-            </view>
+
             <image src='http://cos.qkmai.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
             <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;' lazy-load>申请免费试用</view>
         </view>
@@ -115,6 +115,12 @@
         </view>
     </view>
     <view wx:else style='margin-top:80rpx;'>
+        <view class='chooseTabTitleBox' style='background-color:#fff;position:fixed;top:0;left:0;;width:750rpx;display:flex;flex-flow:row nowrap;font-size:14px;z-index:30;height:80rpx;'>
+            <view class='{{isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;' data-flag="{{true}}">加入试用会员</view>
+            <!-- <navigator url="/pages/longvip/longvip" style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'> -->
+            <view class='{{!isForever? "active": ""}} changeTabTitle' bindtap='changeTitle' data-flag="{{false}}" style='width:50%;box-sizing:border-box;text-align:center;line-height:2.9;'>成为永久会员</view>
+            <!-- </navigator> -->
+        </view>
         <view class='package_container'>
             <view>
                 <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
