@@ -14,6 +14,7 @@
         "pages/choiceaddress/choiceaddress",
         "pages/orderlist/orderlist",
         "pages/searchresult/searchresult",
+        "pages/searchresultCoupon/searchresultCoupon",
         "pages/logistics/logistics",
         "pages/orderdetails/orderdetails",
         "pages/search/search",
