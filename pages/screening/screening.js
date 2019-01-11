@@ -548,6 +548,9 @@ Page({
                 },
                 success: function (jd) {
                     if (jd.data.length == 0) {
+                        tm.setData({
+                            rushGoodsList: []
+                        })
                         return;
                     } else {
                         if (jd.data.length != 0) {
