@@ -4,12 +4,24 @@
         <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodehbtb.png  ' style="width:100rpx;height:100rpx;margin:50rpx auto 30rpx auto;" class='h_icon'></image>
         <text class='tit' style='text-align:cente;margin:0 auto;color:#000;font-size:30rpx;'>我的红包</text>
         <view class='show_num' style='text-align:cente;margin:0 auto;margin-top:-10rpx'>
-            <text style="font-size:30rpx;color:#000;line-height: 90rpx;">￥</text><text class='money_num' style="font-size:60rpx;text-align:center;color:#000;line-height: 90rpx;">876.09</text>
+            <text style="font-size:30rpx;color:#000;line-height: 90rpx;">￥</text>
+            <text class='money_num' style="font-size:60rpx;text-align:center;color:#000;line-height: 90rpx;">{{balance}}</text>
         </view>
     </view>
-    <view class='wallet_bottom'>
+    <view class='wallet_bottom' wx:if="{{BalanceList.length!=0}}">
+        <block wx:for="{{BalanceList}}">
+            <view class='list'>
+                <view>
+                    <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block'>{{item.InpourId}}</text>
+                    <text class='font_small' style='padding-left:10rpx;display:block'>{{item.TradeDate}}</text>
+                </view>
+                <view>
+                    <text class='font_big jl3 {{item.Amount<0?"green":"red"}}' style='font-size:36rpx'>{{item.Amount<0?"-":"+"}}￥{{item.Amount}}</text>
+                </view>
+            </view>
+        </block>
         <!-- <text style='font-size: 32rpx;padding:15rpx'>红包明细</text> -->
-        <view class='list list1'>
+        <!-- <view class='list'>
             <view>
                 <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block'>201812209070315</text>
                 <text class='font_small' style='padding-left:10rpx;display:block'>2019-01-02 18:56:13</text>
@@ -35,6 +47,6 @@
             <view>
                 <text class='font_big jl3 green'>-￥120.00</text>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>

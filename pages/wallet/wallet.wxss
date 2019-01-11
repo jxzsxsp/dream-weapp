@@ -106,7 +106,7 @@ page{
   justify-content: space-between;
   align-items: center
 }
-.list1{
+.list:first-child {
     border-top:none
 }
 .font_big{
