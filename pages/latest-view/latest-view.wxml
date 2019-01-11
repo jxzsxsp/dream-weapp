@@ -1,5 +1,6 @@
 <shop-list
   list="{{shopList}}"
+  title="您还没有浏览任何店铺哦"
   bind:follow="followShop"
   bind:cancel="cancelFollow"
   bind:detail="showDetail"

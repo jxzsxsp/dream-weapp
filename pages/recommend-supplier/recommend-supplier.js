@@ -40,8 +40,6 @@ const privateMethods = {
   refresh: function () {
     this.props.loadingState = http.defaultLoadingState();
     this.getShopList().then(res => {
-      console.log(res)
-
       this.setData({
         shopList: res
       })
@@ -49,12 +47,12 @@ const privateMethods = {
     })
   },
   flushShopList: function(item) {
-    console.log(item)
-    let shopList = this.data.shopList;
+    let shopList = this.data.shopList
 
     for (let i = 0; i < shopList.length; i++) {
       if (shopList[i].id === item.id) {
         shopList[i] = item
+        break
       }
     }
 
@@ -66,18 +64,28 @@ const privateMethods = {
 
 const viewAction = {
   followShop: function (d, v) {
-    v.isFollow = 1
-    this.flushShopList(v)
+    http.get(urls.followSupplier, {
+      mock: true,
+      shopId: v.id
+    }).then((res) => {
+      v.isFollow = 1
+      this.flushShopList(v)
+    })
   },
 
   cancelFollow: function (d, v) {
-    console.log(v)
-    v.isFollow = 0
-    this.flushShopList(v)
+    http.get(urls.unfollowSupplier, {
+      mock: true,
+      shopId: v.id
+    }).then((res) => {
+      v.isFollow = 0
+      this.flushShopList(v)
+    })
   },
 
   showDetail: function (d, v) {
-    console.log(d, v)
+    v.showDetail = !v.showDetail
+    this.flushShopList(v)
   },
 }
 

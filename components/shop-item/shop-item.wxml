@@ -24,4 +24,16 @@
       <view wx:if="{{shop.isFollow === 1}}" class='btn-active' bind:tap="onCancel">已关注</view>
     </view>
   </view>
+
+  <view wx:if="{{shop.showDetail}}" class='detail-container'>
+    <view class='line'></view>
+    <view class='detail-item'>
+      <text class='detail-title'>电话</text>
+      <text class='detail-desc'>{{shop.mobile}}</text>
+    </view>
+    <view class='detail-item'>
+      <text class='detail-title'>地址</text>
+      <text class='detail-desc'>{{shop.address}}</text>
+    </view>
+  </view>
 </view>

@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "最近浏览",
   "usingComponents": {
     "shop-list": "/components/shop-list/shop-list"

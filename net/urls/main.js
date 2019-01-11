@@ -16,4 +16,9 @@ export default {
   deleteColorLibrary: '/color-library/delete', // 颜色库删除接口
   addColorFromLibrary: '/library-color/add-favorite-color-library', // 添加一个库的颜色到另一个库
   recommendSupplier: '/shop/recommend', // 获取推荐的供应商列表
+  followSupplier: '/shop/follow', // 关注供应商接口
+  unfollowSupplier: '/shop/unfollow', // 取消关注供应商接口
+  followList: '/shop/followList', // 关注供应商店铺列表接口
+  browseHistory: '/shop/browseHistory', // 最近浏览店铺列表接口
+  shopDetail: '/shop/detail', // 店铺详情接口
 }

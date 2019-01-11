@@ -500,7 +500,277 @@ let shop = {
       ],
     "hasMore": true,
     "total": 100
-  }
+  },
+  [urls.followSupplier]: {
+    "code": 200,
+    "message": "成功"
+  },
+  [urls.unfollowSupplier]: {
+    "code": 200,
+    "message": "成功"
+  },
+  [urls.followList]: {
+    "list":
+      [
+        {
+          "id": 1,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 0 //1.关注 0. 未关注
+        },
+        {
+          "id": 2,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 1 //1.关注 0. 未关注
+        },
+        {
+          "id": 3,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 0 //1.关注 0. 未关注
+        },
+        {
+          "id": 4,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 1 //1.关注 0. 未关注
+        },
+        {
+          "id": 5,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 1 //1.关注 0. 未关注
+        }
+      ],
+    "hasMore": true,
+    "total": 100
+  },
+  [urls.browseHistory]: {
+    "list":
+      [
+        {
+          "id": 1,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 0 //1.关注 0. 未关注
+        },
+        {
+          "id": 2,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 1 //1.关注 0. 未关注
+        },
+        {
+          "id": 3,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 0 //1.关注 0. 未关注
+        },
+        {
+          "id": 4,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 1 //1.关注 0. 未关注
+        },
+        {
+          "id": 5,
+          "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+          "name": "胖虎纺织",
+          "businesses": [
+            {
+              "businessName": "针织布"
+            },
+            {
+              "businessName": "丝光棉"
+            },
+            {
+              "businessName": "牛仔"
+            },
+            {
+              "businessName": "纯棉"
+            }
+          ],
+          "mobile": "13311111111",
+          "address": "绍兴市柯桥区某某龙东大道178号201室",
+          "isFollow": 1 //1.关注 0. 未关注
+        }
+      ],
+    "hasMore": true,
+    "total": 100
+  },
+  [urls.shopDetail]: {
+    "id": 5,
+    "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+    "name": "胖虎纺织",
+    "businesses": [
+      {
+        "businessName": "针织布"
+      },
+      {
+        "businessName": "丝光棉"
+      },
+      {
+        "businessName": "牛仔"
+      },
+      {
+        "businessName": "纯棉"
+      }
+    ],
+    "mobile": "13311111111",
+    "address": "绍兴市柯桥区某某龙东大道178号201室",
+    "isFollow": 1 //1.关注 0. 未关注
+  },
 }
 
 export default {

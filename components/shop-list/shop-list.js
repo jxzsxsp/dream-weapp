@@ -4,7 +4,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    list: Array
+    list: Array,
+    title: String
   },
 
   /**
@@ -18,6 +19,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    goRecommendSupplier: function() {
+      wx.switchTab({ url: '/pages/recommend-supplier/recommend-supplier' })
+    }
   }
 })

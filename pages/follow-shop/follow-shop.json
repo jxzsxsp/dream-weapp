@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "关注店铺",
   "usingComponents": {
     "shop-list": "/components/shop-list/shop-list"

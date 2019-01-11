@@ -1,3 +1,41 @@
 .bottom-line {
   height: 22rpx;
 }
+
+.no-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 440rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: #F9CC5E;
+}
+
+.title {
+  margin-top: 25rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #C9C8D0;
+  letter-spacing: 1rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.btn {
+  margin-top: 20rpx;
+  width: 214rpx;
+  height: 68rpx;
+  border: 1rpx solid #616161;
+  border-radius: 8rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #616161;
+}

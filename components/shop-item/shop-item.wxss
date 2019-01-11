@@ -101,3 +101,45 @@
   text-align: center;
   padding: 8rpx 20rpx 8rpx 20rpx;
 }
+
+.detail-container {
+  width: 690rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  background: #E6EAEF;
+  width: 635rpx;
+  height: 1rpx;
+}
+
+.detail-item {
+  width: 604rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.detail-title {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #8E8E93;
+  letter-spacing: 0;
+  line-height: 40rpx;
+}
+
+.detail-desc {
+  width: 420rpx;
+  line-height: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 0;
+  text-align: right;
+}
