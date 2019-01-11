@@ -21,7 +21,7 @@
                 <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;height:auto;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
-        <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:999;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
+        <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:99;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
             <image style='width:735rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/300yhq.png'></image>
         </view>
     </view>

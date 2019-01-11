@@ -31,7 +31,7 @@
         <view class="prodcut {{index==ProductList.length-1&&ProductList.length%2>0?'noborder':''}}" wx:for="{{ProductList}}" wx:key="ProductId">
             <view class="product-info">
                 <view catchtap="goToProductDetail" class="product-pic" data-activeid="{{item.ActiveId}}" data-activetype="{{item.ActiveType}}" data-productid="{{item.ProductId}}">
-                    <image class="image" src="{{'http://cos.qkmai.com'+item.ThumbnailUrl}}" style="width:320rpx;height:320rpx"></image>
+                    <image class="image" src="{{item.Pic}}" style="width:320rpx;height:320rpx"></image>
                 </view>
                 <view class="product-des">
                     <view atchtap="goToProductDetail" class="product-name" data-activeid="{{item.ActiveId}}" data-activetype="{{item.ActiveType}}" data-productid="{{item.ProductId}}">{{item.ProductName}}</view>
