@@ -11,7 +11,7 @@ Page({
         userInfo: {},
         openId: "",
         PageIndex: 1,
-        PageSize: 1,
+        PageSize: 10,
         BalanceList: null,
         isempty: !0,
         SplittinTotal: "",
@@ -126,7 +126,7 @@ Page({
                             l.Total;
                             i.setData({
                                 BalanceList: l,
-                                
+                                balance: e.balance
                             });
                         }
                     } else t.showTip(a.data.error_response.errMsg);
