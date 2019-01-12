@@ -12,8 +12,7 @@ Page({
       { url: "http://cos.qkmai.com/qkmbb/ytal/haibao1.jpg", postId: 0 },
       { url: "http://cos.qkmai.com/qkmbb/ytal/haibao2.jpg", postId: 1 },
       { url: "http://cos.qkmai.com/qkmbb/ytal/haibao3.jpg", postId: 2 },
-      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao4.jpg", postId: 3 },
-      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao5.jpg", postId: 4 }],
+      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao4.jpg", postId: 3 }],
     isShow: false,
     isHidden: true,
     showUrl: ""
@@ -26,7 +25,7 @@ Page({
     var tm = this;
     var str = "http://ytal.qkmai.com/wxsp?ReferralUserId=" + options.id
     var src = options.src
-    var bg = 'https://m.360buyimg.com/babel/jfs/t1/26738/28/2202/95400/5c1a164fEeab2bf20/763811495f123f69.jpg'
+    var bg = ''
 
     // QRCodeJS.qrApi.draw('https://m.360buyimg.com/babel/jfs/t1/26738/28/2202/95400/5c1a164fEeab2bf20/763811495f123f69.jpg', "logoQRCode", 375, 375);
 
