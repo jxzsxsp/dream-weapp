@@ -34,7 +34,7 @@
                             <text class='font_b'>任务奖励可累计，上不封顶</text>
                         </view>
                         <view class='tasklist_des'>
-                            <navigator url='/pages/SubMembers/SubMembers'>
+                            <navigator url='/pages/myteam/myteam'>
                                 <view class='tasklists tasklist_one'>
                                     <text class='small'>邀请好友</text>
                                     <view>
@@ -48,7 +48,7 @@
                             </navigator>
                             <navigator url='/pages/orderlist/orderlist'>
                                 <view class='tasklists tasklist_two'>
-                                    <text class='small'>自助购单</text>
+                                    <text class='small'>自助购物</text>
                                     <view>
                                         <text class='fontbig'>{{userInfo.waitReviewCount + userInfo.waitFinishCount}}</text>
                                         <text class='small'>单</text>
@@ -58,7 +58,7 @@
                                     </view>
                                 </view>
                             </navigator>
-                            <navigator url='/pages/Splittin/Splittin'>
+                            <navigator url='/pages/Commission/Commission'>
                                 <view class='tasklists tasklist_three'>
                                     <text class='small'>分享成交</text>
                                     <view>
@@ -97,15 +97,15 @@
                                 去购买
                             </view>
                         </view>
-                        <view class='tasks_block tasks_three'>
+                        <!-- <view class='tasks_block tasks_three'>
                             <view class='tasks_left'>
                                 <text class='tit1'>好友购物</text>
                                 <text class='tit2'>分享给别人购物每满500元，加10天VIP</text>
                             </view>
                             <view class='tasks_btn' bindtap='gobrandRush'>
-                                去分享
+                                去选品
                             </view>
-                        </view>
+                        </view> -->
                     </view>
                 </view>
 
@@ -147,140 +147,6 @@
             </view>
         </view>
     </view>
-    <!-- <view class='show-box-1' style='margin-top:80rpx;' wx:if='{{DistributionInfo.ReferralGradeName == "" || DistributionInfo.ReferralGradeName == null}}'>
-        <image src='http://cos.qkmai.com/qkmbb/ytal/sqsyvip.png' mode='widthFix' style='width:100%' lazy-load bindtap='toTrial' lazy-load></image>
-        <view class='' bindtap='toTrial' style='display:none;position:absolute;bottom:60rpx;width:80%;height:84rpx;line-height:84rpx;margin-left:10%;text-align:center;color:transparent;' lazy-load>申请免费试用</view>
-    </view>
-    <view class='vip_content' wx:else style='margin-top:80rpx;'>
-        <view class='vip_container' wx:if="{{isForever}}">
-            <view class='tipsbg'>
-                <view class='tips'>
-                    <view class='tips_left'>
-                        <text class='font_a'>VIP试用期还剩</text>
-                        <view>
-                            <text class='font_b'>{{vipInfo.expireDays && vipInfo.expireDays != 0 ? vipInfo.expireDays : 0}}</text>
-                            <text class='font_c'>天</text>
-                        </view>
-                        <text class='font_d'>完成指定任务延长试用时间</text>
-                    </view>
-                    <navigator url="/pages/longvip/longvip">
-                        <view class='longvip_btn'>成为永久VIP</view>
-                    </navigator>
-                </view>
-            </view>
-            <view class='taskListbg'>
-                <view class='taskList'>
-                    <view class='tasktit'>
-                        <text class='font_a'>任务进度榜</text>
-                        <text class='font_b'>任务奖励可累计，上不封顶</text>
-                    </view>
-                    <view class='tasklist_des'>
-                        <navigator url='/pages/SubMembers/SubMembers'>
-                            <view class='tasklists tasklist_one'>
-                                <text class='small'>邀请好友</text>
-                                <view>
-                                    <text class='fontbig'>{{ExpandMemberAll}}</text>
-                                    <text class='small'>人</text>
-                                </view>
-                                <view class='more'>
-                                    <text class='small2'>查看详情></text>
-                                </view>
-                            </view>
-                        </navigator>
-                        <navigator url='/pages/orderlist/orderlist'>
-                            <view class='tasklists tasklist_two'>
-                                <text class='small'>自助购单</text>
-                                <view>
-                                    <text class='fontbig'>{{userInfo.waitReviewCount + userInfo.waitFinishCount}}</text>
-                                    <text class='small'>单</text>
-                                </view>
-                                <view class='more'>
-                                    <text class='small2'>查看详情></text>
-                                </view>
-                            </view>
-                        </navigator>
-                        <navigator url='/pages/Splittin/Splittin'>
-                            <view class='tasklists tasklist_three'>
-                                <text class='small'>分享成交</text>
-                                <view>
-                                    <text class='fontbig'>{{LowerUserSaleTotal}}</text>
-                                    <text class='small'>元</text>
-                                </view>
-                                <view class='more'>
-                                    <text class='small2'>查看详情></text>
-                                </view>
-                            </view>
-                        </navigator>
-                    </view>
-                </view>
-            </view>
-
-            <view class='linebg'></view>
-            <view class='tasksbg'>
-                <view class='tasks'>
-                    <text class='taskstit'>做任务，得试用</text>
-                    <view class='tasks_block tasks_one'>
-                        <view class='tasks_left'>
-                            <text class='tit1'>邀请好友</text>
-                            <text class='tit2'>每满5人点击分享链接，加5天VIP</text>
-                        </view>
-
-                        <button class='tasks_btn' open-type='share' style='margin:0'>
-                            去邀请
-                        </button>
-                    </view>
-                    <view class='tasks_block tasks_two'>
-                        <view class='tasks_left'>
-                            <text class='tit1'>自助购物</text>
-                            <text class='tit2'>每满1单并发货，加5天VIP</text>
-                        </view>
-                        <view class='tasks_btn' bindtap='goHome'>
-                            去购买
-                        </view>
-                    </view>
-                    <view class='tasks_block tasks_three'>
-                        <view class='tasks_left'>
-                            <text class='tit1'>好友购物</text>
-                            <text class='tit2'>分享给别人购物每满500元，加10天VIP</text>
-                        </view>
-                        <view class='tasks_btn' bindtap='gobrandRush'>
-                            去分享
-                        </view>
-                    </view>
-                </view>
-            </view>
-
-        </view>
-        <view wx:else style='margin-top:80rpx;'>
-            <view class='package_container'>
-                <view>
-                    <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP1.png' mode='widthFix' style='width:100%' lazy-load></image>
-                </view>
-                <view>
-                    <block wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item">
-                        <navigator url="/pages/productdetail/productdetail?id={{item.ProductId}}" hover-class="other-navigator-hover">
-                            <view class='package'>
-                                <image src="{{item.Pic}}" class='pro_img'></image>
-                                <view class='right_container'>
-                                    <text class='package_tit'>{{item.ProductName}}</text>
-                                    <view class='bottom_container'>
-                                        <text class='prize'>￥{{item.SalePrice}}</text>
-                                        <text class='buy_btn'>购买得VIP</text>
-                                    </view>
-                                </view>
-                            </view>
-                        </navigator>
-                    </block>
-                </view>
-                <view>
-                    <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP6.png' mode='widthFix' style='width:100%' lazy-load></image>
-                    <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP7.png' mode='widthFix' style='width:100%' lazy-load></image>
-                    <image src='http://img.qkmai.com/qkmbb/NVIP/NVIP8.png' mode='widthFix' style='width:100%' lazy-load></image>
-                </view>
-            </view>
-        </view>
-    </view> -->
-
 </view>
 <view wx:else style='background-color: #fff;'>
     <view wx:if='{{isLoadEnd}}'>
