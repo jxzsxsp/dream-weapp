@@ -104,6 +104,9 @@ page{
   flex-direction: column;
   justify-content: center
 }
+.list:first-child{
+ border-top:none
+}
 .list1{
     border-top:none
 }
