@@ -679,7 +679,8 @@ Page({
             url: app.getUrl("YTALFollowBrand"),
             data: {
                 openId: o,
-                mainTitle: event.currentTarget.dataset.title
+                mainTitle: event.currentTarget.dataset.title,
+                brandLogo: tm.data.brandLogo,
             },
             success: function(jd) {
                 tm.setData({
