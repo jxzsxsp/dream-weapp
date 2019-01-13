@@ -36,7 +36,7 @@
     <view class='focus-item' style='display:flex;flex-flow:row nowrap;align-items:center;width:730rpx;max-width:730rpx;padding:20rpx;box-sizing:border-box;border-bottom:1px solid #E0E0E0;' wx:for='{{focusList}}' wx:for-index="bindex">
         <image src='{{item.brandLogo}}' style='width:140rpx;' mode='widthFix'></image>
         <view style='width:410rpx;font-size:14px;padding-left:20rpx;max-height:140rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;padding-top:10rpx;'>{{item.mainTitle}}</view>
-        <view style='font-size:14px;width:180rpx;line-height:70rpx;text-align:center;border-radius:60rpx;border:1px solid #959595;' bindtap='cancleFocus' data-title="{{item.mainTitle}}" data-index="{{bindex}}">取消关注</view>
+        <view style='font-size:14px;width:180rpx;line-height:70rpx;text-align:center;border-radius:60rpx;border:1px solid #959595;' bindtap='cancleFocus' data-title="{{item.mainTitle}}" data-logo="{{item.brandLogo}}" data-index="{{bindex}}">取消关注</view>
     </view>
     
 </view>

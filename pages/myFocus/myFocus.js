@@ -78,7 +78,8 @@ Page({
             url: e.getUrl("YTALFollowBrand"),
             data: {
                 openId: e.globalData.userInfo.OpenId,
-                mainTitle: event.currentTarget.dataset.title
+                mainTitle: event.currentTarget.dataset.title,
+                brandLogo: event.currentTarget.dataset.logo
             },
             success: function (jd) {
                 var br = tm.data.focusList.splice(s, 1);
