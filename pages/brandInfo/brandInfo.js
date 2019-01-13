@@ -680,7 +680,7 @@ Page({
             data: {
                 openId: o,
                 mainTitle: event.currentTarget.dataset.title,
-                brandLogo: tm.data.brandLogo,
+                brandLogo: tm.data.brandLogo
             },
             success: function(jd) {
                 tm.setData({
