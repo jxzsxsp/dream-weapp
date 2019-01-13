@@ -22,14 +22,14 @@
             </view>
         </view>
     </view>
-    <view class='commission_middle'>
+    <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16"  data-id='16'>
         <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redenvelopetb.png"></image>
         <view>
             <text class='font_a'>佣金赚取/提现攻略</text>
             <text class='font_b'>平台佣金规则说明</text>
         </view>
 
-        <view class='go_btn' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16" data-id='16'>GO</view>
+        <view class='go_btn' >GO</view>
 
     </view>
     <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length!=0}}">
@@ -46,31 +46,22 @@
                 <view>
                     <text class='font_big jl3' style='padding-right:20rpx'>{{item.Income}}</text>
                 </view>
-                <!-- <view class='list_top'>
-                    <text class='font_big' style='padding-left:10rpx'>{{item.OrderId}}</text>
-                    <text class='font_big jl'> {{item.TradeTypeText}}</text>
-                </view>
-                <view class='list_bottom'>
-                    <text class='font_small' style='padding-left:10rpx'>{{item.TradeDate}}</text>
-                    <text class='font_small jl2'>{{item.IsUse?'已结算':'未结算'}}</text>
-                    <text class='font_big jl3'>{{item.Income}}</text>
-                </view> -->
             </view>
         </block>
-        <!-- <view class='list list1' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
+        <!-- <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
             <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
                 <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
                 <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
             </view>
             <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'> 拉新VIP奖励</text>
+                <text class='font_big'>注册分销奖励</text>
                 <text class='font_small'>未结算</text>
             </view>
             <view>
                 <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
             </view>
-        </view>
-        <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
+        </view> -->
+        <!-- <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
             <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
                 <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
                 <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>

@@ -1,6 +1,6 @@
+// pages/Commission/Commission.js
 var t = require("../../utils/config.js"),
     a = getApp();
-// pages/Commission/Commission.js
 Page({
 
     /**
