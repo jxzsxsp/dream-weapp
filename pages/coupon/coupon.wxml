@@ -60,7 +60,9 @@
         </view>
     </view>
 </view>
-<view class="kong" hidden="{{isEmpty}}">
+
+<view class="kong" wx:if="{{!isEmpty && couponsList.length == 0}}">
+<!-- <view class="kong" hidden="{{isEmpty}}"> -->
     <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullCounp}}) center center no-repeat; background-size:auto 192rpx"></view>
     暂无优惠券
 </view>

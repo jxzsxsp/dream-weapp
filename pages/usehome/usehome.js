@@ -72,8 +72,8 @@ Page({
     },
     bindAtention: function () {
       wx.navigateTo({
-        url: "/pages/myAtention/myAtention"
-        //   url: "/pages/myFocus/myFocus"
+        // url: "/pages/myAtention/myAtention"
+          url: "/pages/myFocus/myFocus"
       });
     },
     bindApply: function(o) {

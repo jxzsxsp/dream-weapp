@@ -1,5 +1,5 @@
 <!--pages/myFocus/myFocus.wxml-->
-<image src='https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg' mode='widthFix' style='width:750rpx;margin-bottom:20rpx;'></image>
+<!-- <image src='https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg' mode='widthFix' style='width:750rpx;margin-bottom:20rpx;'></image>
 
 <view class='focus-container' style='display:flex;flex-flow:column nowrap;width:730rpx;max-width:730rpx;margin-left:10rpx;padding-top:10rpx;background-color:#fff;border-radius:20rpx;'>
     <view class='focus-item' style='display:flex;flex-flow:row nowrap;align-items:center;margin-bottom:10rpx;width:730rpx;max-width:730rpx;padding:20rpx;box-sizing:border-box;border-bottom:1px solid #E0E0E0;'>
@@ -17,4 +17,26 @@
         <view style='width:410rpx;font-size:14px;padding-left:20rpx;max-height:140rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;align-self:flex-start;padding-top:10rpx;'>1234566</view>
         <view style='font-size:14px;width:140rpx;line-height:100rpx;text-align:center;border-radius:20rpx;' bindtap='cancleFocus'>取消关注</view>
     </view>
+</view> -->
+
+
+
+
+
+
+
+
+
+<!-- <image src='https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg' mode='widthFix' style='width:750rpx;margin-bottom:20rpx;'></image> -->
+<view style='width:750rpx;height:100%;display:flex;justify-content:center;align-items:center;flex-flow:column nowrap;margin-top:300rpx;' wx:if='{{focusList.length == 0}}'>
+    <image src='http://cos.qkmai.com/qkmbb/ytal/wodegztb.png' mode='widthFix' style='width:239rpx;margin-bottom:20rpx;'></image>
+    <view style='font-size:15px;'>您还没有关注品牌哦~</view>
+</view>
+<view class='focus-container' style='display:flex;flex-flow:column nowrap;width:730rpx;max-width:730rpx;margin-left:10rpx;padding-top:10rpx;background-color:#fff;border-radius:20rpx;margin-top:20rpx;' wx:else>
+    <view class='focus-item' style='display:flex;flex-flow:row nowrap;align-items:center;width:730rpx;max-width:730rpx;padding:20rpx;box-sizing:border-box;border-bottom:1px solid #E0E0E0;' wx:for='{{focusList}}' wx:for-index="bindex">
+        <image src='{{item.brandLogo}}' style='width:140rpx;' mode='widthFix'></image>
+        <view style='width:410rpx;font-size:14px;padding-left:20rpx;max-height:140rpx;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;padding-top:10rpx;'>{{item.mainTitle}}</view>
+        <view style='font-size:14px;width:180rpx;line-height:70rpx;text-align:center;border-radius:60rpx;border:1px solid #959595;' bindtap='cancleFocus' data-title="{{item.mainTitle}}" data-index="{{bindex}}">取消关注</view>
+    </view>
+    
 </view>
