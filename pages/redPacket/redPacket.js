@@ -134,8 +134,8 @@ Page({
             wx.request({
                 url: t.getUrl("YTALGetListMemberByCouponId"),
                 data: {
-                    openId: t.globalData.userInfo.OpenId
-                    
+                    openId: t.globalData.userInfo.OpenId,
+                    couponId:28
                 },
                 success: function (a) {
                     console.log(a)
