@@ -8,11 +8,17 @@ Page({
    */
   data: {
     canvasUrl: "",
-    postUrl: [
-      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao1.jpg", postId: 0 },
-      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao2.jpg", postId: 1 },
-      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao3.jpg", postId: 2 },
-      { url: "http://cos.qkmai.com/qkmbb/ytal/haibao4.jpg", postId: 3 }],
+    // postUrl: [
+    //   { url: "http://cos.qkmai.com/qkmbb/ytal/haibao1.jpg", postId: 0 },
+    //   { url: "http://cos.qkmai.com/qkmbb/ytal/haibao2.jpg", postId: 1 },
+    //   { url: "http://cos.qkmai.com/qkmbb/ytal/haibao3.jpg", postId: 2 },
+    //   { url: "http://cos.qkmai.com/qkmbb/ytal/haibao4.jpg", postId: 3 },
+    //   { url: "http://cos.qkmai.com/qkmbb/ytal/haibao5.jpg", postId: 4 }],
+      postUrl: [
+          { url: "http://cos.qkmai.com/qkmbb/ytal/haibao1.jpg", postId: 0 },
+          { url: "http://cos.qkmai.com/qkmbb/ytal/haibao2.jpg", postId: 1 },
+          { url: "http://cos.qkmai.com/qkmbb/ytal/haibao3.jpg", postId: 2 },
+          { url: "http://cos.qkmai.com/qkmbb/ytal/haibao4.jpg", postId: 3 }],
     isShow: false,
     isHidden: true,
     showUrl: ""
