@@ -37,34 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
-			"list": [
-				{
-					"id": -1,
-					"name": "myFocus",
-					"pathName": "pages/myFocus/myFocus",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "brandInfo",
-					"pathName": "pages/brandInfo/brandInfo",
-					"query": "brandId=2c9089c267ee854f01680855b7b00d4b&brandSource=dadacang",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "123",
-					"pathName": "pages/ApplyRefund/ApplyRefund",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "Draw",
-					"pathName": "pages/Draw/Draw"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
