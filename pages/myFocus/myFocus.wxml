@@ -28,7 +28,7 @@
 
 
 <!-- <image src='https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg' mode='widthFix' style='width:750rpx;margin-bottom:20rpx;'></image> -->
-<view style='width:750rpx;height:100%;display:flex;justify-content:center;align-items:center;flex-flow:column nowrap;margin-top:300rpx;' wx:if='{{focusList.length == 0}}'>
+<view style='width:750rpx;height:100%;display:flex;justify-content:center;align-items:center;flex-flow:column nowrap;margin-top:300rpx;background-color:#f5f5f5;' wx:if='{{focusList.length == 0}}'>
     <image src='http://cos.qkmai.com/qkmbb/ytal/wodegztb.png' mode='widthFix' style='width:239rpx;margin-bottom:20rpx;'></image>
     <view style='font-size:15px;'>您还没有关注品牌哦~</view>
 </view>

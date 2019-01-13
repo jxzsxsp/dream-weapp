@@ -195,7 +195,7 @@
     </view>
     <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>
-    <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:9999;' wx:if="{{userInfo.IsReferral}}">
+    <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:994;' wx:if="{{userInfo.IsReferral}}">
         <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;height:auto;' mode='widthFix' lazy-load></image>
     </navigator>
 </view>
