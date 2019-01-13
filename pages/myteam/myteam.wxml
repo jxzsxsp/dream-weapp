@@ -40,9 +40,8 @@
                 <view class='list_top'>
                     <view class='list1'>
                         <text class='font_big'>{{item.RealName}}</text>
-                        <text class='{{item.ReferralGradeName==null?"custom":"VIP"}}'>{{item.ReferralGradeName==null?'普通用户':item.ReferralGradeName+'VIP'}}</text>
-                        <!-- <text class='custom'>{{ReferralGradeName==null?'普通用户':(ReferralGradeName=='试用'? '试用VIP' ：(ReferralGradeName == '经理'? '经理VIP': '总监'))}}</text> -->
-                        <!-- <text class='custom'>{{item.ReferralGradeName==null?'普通用户':(item.ReferralGradeName=='试用'? '试用VIP' ：(item.ReferralGradeName == '经理'? '经理VIP': (item.ReferralGradeName == '总监'? '总监': '总经理VIP')))}}</text> -->
+                        <text class='{{item.ReferralGradeName==null?"custom":"VIP"}}'>{{item.ReferralGradeName==null?'普通用户':(item.ReferralGradeName=="试用"?"试用VIP":item.ReferralGradeName)}}</text>
+                        
                     </view>
                     <text class='font_big list2'>￥{{item.SubSumOrderTotal}}</text>
                     <text class='font_big list3'>￥{{item.SubMemberAllSplittin}}</text>
