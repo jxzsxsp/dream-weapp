@@ -54,7 +54,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         app.globalData.fundebug.notifyError(new Error("列表onload"), {
             name: "brandInfo-onload",
             metaData: options
@@ -71,8 +71,8 @@ Page({
             title: "正在加载"
         });
         var tm = this;
-        app.getUserInfo(function (t) {
-            
+        app.getUserInfo(function(t) {
+
             tm.setData({
                 userInfo: t,
                 brandId: options.brandId,
@@ -99,7 +99,7 @@ Page({
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
     },
-    linkProductDetail: function (event) {
+    linkProductDetail: function(event) {
         wx.navigateTo({
             url: "../productdetail/productdetail?id=" + event.currentTarget.dataset.productid
         });
@@ -107,28 +107,29 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
+    onShow: function() {
         this.GetShopCart();
+
     },
-    GetShopCart: function () {
+    GetShopCart: function() {
         var tm = this;
         var t = this,
             a = 0,
             r = t.data.choiceProducts;
-        app.getOpenId(function (o) {
+        app.getOpenId(function(o) {
             wx.request({
                 url: app.getUrl("getShoppingCartList"),
                 data: {
                     openId: o
                 },
-                success: function (t) {
+                success: function(t) {
                     if ("OK" == t.data.Status) {
                         // console.log(t.data)
                         tm.setData({
@@ -152,14 +153,14 @@ Page({
                         title: "提示",
                         content: t.data.Message,
                         showCancel: !1,
-                        success: function (t) {
+                        success: function(t) {
                             t.confirm && wx.navigateBack({
                                 delta: 1
                             });
                         }
                     });
                 },
-                complete: function (f) {
+                complete: function(f) {
                     // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
@@ -172,21 +173,21 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
         this.setData({
             brandRush: [],
             dataIndex: 0,
@@ -198,14 +199,14 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
         if (this.data.hasMore) {
             wx.showNavigationBarLoading();
             this.loadMore();
             wx.hideNavigationBarLoading();
         }
     },
-    loadMore: function () {
+    loadMore: function() {
         if (!this.data.hasMore) return;
 
         var tm = this;
@@ -218,7 +219,7 @@ Page({
                 pi: ++tm.data.dataIndex,
                 ps: tm.data.dataSize
             },
-            success: function (jd) {
+            success: function(jd) {
                 if (jd.data.length <= 5 && jd.data.length > 0) {
                     let goodsList = [];
                     jd.data.forEach(o => {
@@ -241,7 +242,7 @@ Page({
                     })
                 }
             },
-            complete: function () {
+            complete: function() {
                 wx.hideLoading();
             }
         });
@@ -249,7 +250,7 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
         var tm = this;
         var title = tm.data.mainTitle;
         var url = tm.data.brandRushInfo[0].goodsImages[0];
@@ -278,7 +279,7 @@ Page({
         //     imageUrl: url
         // }
     },
-    countDown: function () { //倒计时函数
+    countDown: function() { //倒计时函数
         // 获取当前时间，同时得到活动结束时间数组
         let newTime = new Date().getTime();
         var rushInfo = this.data.brandRushInfo;
@@ -319,7 +320,7 @@ Page({
         })
         setTimeout(this.countDown, 1000);
     },
-    selectSkuId: function (event) {
+    selectSkuId: function(event) {
         // if(event.currentTarget.dataset("count") == 0) return;
         var skuId = event.currentTarget.dataset["skuid"];
         var skuName = event.currentTarget.dataset["skuname"];
@@ -333,7 +334,7 @@ Page({
             goodsImg: goodsImage
         });
     },
-    addGoodsToCart: function (event) {
+    addGoodsToCart: function(event) {
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -360,7 +361,7 @@ Page({
                         brandSource: tm.data.brandSource,
                         salePrice: salePrice
                     },
-                    success: function (res) {
+                    success: function(res) {
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({
@@ -368,27 +369,27 @@ Page({
                                 content: jd.message,
                                 showCancel: false
                             })
-                                break;
+                            break;
                             case 'success':
-                                // wx.setTabBarBadge({
-                                //     index: 3,
-                                //     text: t.data.TotalNum.toString()
-                                // })
-                                // wx.showModal({
-                                // title: '',
-                                // content: '成功加入购物车',
-                                // cancelText: "再逛逛",
-                                // confirmText: "去结算",
-                                // success(res) {
-                                //     if (res.confirm) {
-                                //         wx.switchTab({
-                                //             url: '/pages/shopcart/shopcart'
-                                //         })
-                                //     } else if (res.cancel) {
+                                    // wx.setTabBarBadge({
+                                    //     index: 3,
+                                    //     text: t.data.TotalNum.toString()
+                                    // })
+                                    // wx.showModal({
+                                    // title: '',
+                                    // content: '成功加入购物车',
+                                    // cancelText: "再逛逛",
+                                    // confirmText: "去结算",
+                                    // success(res) {
+                                    //     if (res.confirm) {
+                                    //         wx.switchTab({
+                                    //             url: '/pages/shopcart/shopcart'
+                                    //         })
+                                    //     } else if (res.cancel) {
 
-                                //     }
-                                // }
-                                wx.hideLoading();
+                                    //     }
+                                    // }
+                                    wx.hideLoading();
                                 tm.touchOnGoods(event)
                                 wx.showModal({
                                     title: '',
@@ -418,7 +419,7 @@ Page({
             }
         }
     },
-    previewImg: function (event) {
+    previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
         wx.previewImage({
@@ -426,27 +427,27 @@ Page({
             urls: imgs
         })
     },
-    copy: function (e) {
+    copy: function(e) {
         wx.setClipboardData({
             data: e.target.dataset.val,
-            success: function (res) {
+            success: function(res) {
                 wx.showToast({
                     title: '复制成功',
                 });
             }
         });
     },
-    fixedGoToCart: function (event) {
+    fixedGoToCart: function(event) {
         wx.switchTab({
             url: '/pages/shopcart/shopcart'
         })
     },
-    fixedGoToHome: function () {
+    fixedGoToHome: function() {
         wx.switchTab({
             url: '/pages/home/home'
         })
     },
-    getTitle: function () {
+    getTitle: function() {
         var tm = this;
         //获取品牌特卖列表        
         wx.request({
@@ -455,7 +456,7 @@ Page({
                 brandId: tm.data.brandId,
                 brandSource: tm.data.brandSource
             },
-            success: function (jd) {
+            success: function(jd) {
                 var infoList = [];
                 let brandRush = jd.data;
                 var obj = {
@@ -482,15 +483,17 @@ Page({
                 });
                 tm.goodsListNew();
                 wx.stopPullDownRefresh();
-                tm.focusList()
+                tm.focusList();
+                tm.brandIsFocus();
             },
-            complete: function () {
+            complete: function() {
                 wx.stopPullDownRefresh();
             }
         });
+
     },
-    
-    goodsListNew: function () {
+
+    goodsListNew: function() {
         var tm = this;
         wx.request({
             url: app.getUrl("YTALGetListRushGoods"),
@@ -501,7 +504,7 @@ Page({
                 pi: ++tm.data.dataIndex,
                 ps: tm.data.dataSize
             },
-            success: function (jd) {
+            success: function(jd) {
                 if (jd.data.length == 0 && tm.data.rushGoodsList.length == 0) {
                     tm.setData({
                         showNoList: true,
@@ -524,23 +527,23 @@ Page({
                     }
                 }
             },
-            complete: function () {
+            complete: function() {
                 wx.hideLoading();
             }
         });
     },
-    busAnimation: function () {
+    busAnimation: function() {
         var that = this;
         that.setData({
             needAni: true
         });
-        setTimeout(function () {
+        setTimeout(function() {
             that.setData({
                 needAni: false
             });
         }, 500);
     },
-    touchOnGoods: function (e) {
+    touchOnGoods: function(e) {
         if (!this.data.hide_good_box) return;
         this.finger = {};
         var topPoint = {};
@@ -551,7 +554,7 @@ Page({
         this.linePos = app.bezier([this.busPos, topPoint, this.finger], 30);
         this.startAnimation(e);
     },
-    startAnimation: function (e) {
+    startAnimation: function(e) {
         var index = 0,
             that = this,
             bezier_points = that.linePos['bezier_points'];
@@ -562,7 +565,7 @@ Page({
         })
         var len = bezier_points.length;
         index = len
-        this.timer = setInterval(function () {
+        this.timer = setInterval(function() {
             for (let i = index - 1; i > -1; i--) {
                 that.setData({
                     bus_x: bezier_points[i]['x'],
@@ -584,7 +587,7 @@ Page({
     //     })
     //     tm.goodsListNew();
     // },
-    onShowHotSell: function (event) {
+    onShowHotSell: function(event) {
         var tm = this;
         //console.log(event)
         var isFlagNum = event.currentTarget.dataset.state;
@@ -607,7 +610,7 @@ Page({
                     pi: 1,
                     ps: tm.data.dataSize
                 },
-                success: function (jd) {
+                success: function(jd) {
                     console.log(jd)
                     if (jd.data.length == 0) {
                         tm.setData({
@@ -644,25 +647,48 @@ Page({
 
         // }
     },
-    changeFocus: function (event) {
+    brandIsFocus: function() {
+        var tm = this;
+        //var s = event.currentTarget.dataset.index;
+        var o = app.globalData.openId;
+        console.log('brandIsFocus');
+        wx.request({
+            url: app.getUrl("YTALBrandIsFollow"),
+            data: {
+                openId: o,
+                mainTitle: tm.data.mainTitle
+            },
+            success: function(jd) {
+                if (jd.data.status == "success") {
+                    tm.setData({
+                        isFocus: true
+                    })
+                }else{
+                    tm.setData({
+                        isFocus: false
+                    })
+                }
+            }
+        });
+    },
+    changeFocus: function(event) {
         var tm = this;
         var s = event.currentTarget.dataset.index;
         var o = app.globalData.openId
         wx.request({
-            url: app.getUrl("FollowBrand"),
+            url: app.getUrl("YTALFollowBrand"),
             data: {
                 openId: o,
                 mainTitle: event.currentTarget.dataset.title
             },
-            success: function (jd) {
-
+            success: function(jd) {
                 tm.setData({
                     isFocus: !tm.data.isFocus
                 })
             }
         });
     },
-    focusList: function () {
+    focusList: function() {
         var tm = this;
         // console.log(e.globalData.openId)
         wx.request({
@@ -670,7 +696,7 @@ Page({
             data: {
                 openId: app.globalData.openId
             },
-            success: function (jd) {
+            success: function(jd) {
                 console.log(jd)
                 console.log(jd.data)
                 if (jd.data.length > 0) {
