@@ -32,7 +32,7 @@
         <view class='go_btn' >GO</view>
 
     </view>
-    <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length==0}}">
+    <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length!=0}}">
         <block wx:for="{{SplittinList}}" wx:key="{{SplittinList}}">
             <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
                 <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
