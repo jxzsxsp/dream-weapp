@@ -1,10 +1,11 @@
 @font-face {
   font-family: 'iconfont';  /* project id 914158 */
-  src: url('//at.alicdn.com/t/font_914158_iqnmyjn084.eot');
-  src: url('//at.alicdn.com/t/font_914158_iqnmyjn084.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_914158_iqnmyjn084.woff') format('woff'),
-  url('//at.alicdn.com/t/font_914158_iqnmyjn084.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_914158_iqnmyjn084.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_914158_b5s2cndotct.eot');
+  src: url('//at.alicdn.com/t/font_914158_b5s2cndotct.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_914158_b5s2cndotct.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_914158_b5s2cndotct.woff') format('woff'),
+  url('//at.alicdn.com/t/font_914158_b5s2cndotct.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_914158_b5s2cndotct.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -110,4 +111,6 @@
 .icon-xingxi:before { content: "\e91e"; }
 
 .icon-zuidasecha:before { content: "\e91f"; }
+
+.icon-shoucang:before { content: "\e920"; }
 

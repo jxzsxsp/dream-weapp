@@ -1,6 +1,7 @@
 {
     "navigationBarTitleText": "我的",
     "usingComponents": {
-        "login-button": "/components/login-button/login-button"
+        "login-button": "/components/login-button/login-button",
+        "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
     }
 }
