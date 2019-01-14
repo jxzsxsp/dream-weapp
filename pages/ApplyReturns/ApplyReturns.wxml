@@ -1,6 +1,10 @@
 <view class="page-section">
+    <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:40rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;'>
+        <view>提示：本平台不接受订单物流签收7天后的售后申请，如有疑问，请签收后第一时间联系客服</view>
+        <!-- <view>商品在，谢谢理解！</view> -->
+    </view>
     <form bindsubmit="formSubmit" reportSubmit="true">
-        <view class="form-group bg-white">
+        <view class="form-group bg-white" style='padding-top:110rpx;'>
             <view class="form-group-name">退货订单</view>
             <view class="form-group-input">{{OrderId}}</view>
         </view>
