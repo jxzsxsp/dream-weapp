@@ -1013,10 +1013,19 @@ Page({
             }
         });
     },
-    goView: function(e) {
-        var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + e.currentTarget.dataset.id
+    goView: function(event) {
+        var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
+
+
+        e.globalData.fundebug.notifyError(new Error("首页跳转文章"), {
+            name: "文章链接",
+            metaData: s
+        });
+
+
+
         wx.navigateTo({
             url: s
         })

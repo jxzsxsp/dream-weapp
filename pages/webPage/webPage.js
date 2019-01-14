@@ -1,4 +1,6 @@
 // pages/webPage/webPage.js
+var t = require("../../utils/config.js"),
+    app = getApp();
 Page({
 
     /**
@@ -63,7 +65,21 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function (s) {
+        console.log(s)
+        // var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
+        var deurl = encodeURIComponent("https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=5")
+        var x = '/pages/webPage/webPage?artUrl=' + deurl
 
+
+        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (x += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        console.log(x)
+        return {
+            path:x
+        }
+        app.globalData.fundebug.notifyError(new Error("webview文章"), {
+            name: "webview",
+            metaData: x
+        });
     }
 })
