@@ -5,10 +5,10 @@
         <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350wzbt.png" style='width:678rpx;height:125rpx;position:absolute;top:290rpx;left:35rpx'></image>
         <view style='top:420rpx;display:flex;flex-direction:row;justify-content: space-around;;z-index:99;position:absolute;left:25rpx;width:700rpx;height:310rpx;'>
             <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/35020yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
-                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{11}}'>立即领取</view>
+                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{26}}'>立即领取</view>
             </view>
             <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/35030yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
-                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{26}}'>立即领取</view>
+                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{27}}'>立即领取</view>
             </view>
             <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350300yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
                     <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{28}}'>立即领取</view>
@@ -19,16 +19,16 @@
     <view class='task3_container' >
         <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350zdbt.png" style='width:494rpx;height:44rpx;margin:0 auto 35rpx auto'></image>
         <view class='product product_one'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin1.png' class='product_imgage'></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/350shangpin1.png' class='product_imgage'></image>
             <text class='tit'>活动商品1</text>
             <view class='text_container' >
                 <view>
-                    <text class='product_title'>猫人 男/女士薄款纯棉内衣套装</text>
-                    <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo1.png" class='logo_image'></image>
+                    <text class='product_title'>皇家船长海鲜大礼包3688型</text>
+                    <image src="http://cos.qkmai.com/qkmbb/ytal/350splogo1.png" class='logo_image'></image>
                 </view>
                 <view class='bottom_con'>
-                    <text class='product_price'>￥399.0</text>
-                    <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover">
+                    <text class='product_price'>￥599.0</text>
+                    <navigator url="/pages/productdetail/productdetail?id=1901" hover-class="other-navigator-hover">
                         <view class='product_btn'>立即抢购</view>
                     </navigator>
                 </view>
