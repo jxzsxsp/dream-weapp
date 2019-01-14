@@ -6,7 +6,7 @@
   background: #fafafa;
 }
 .first_bg{
-  /* background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbaobg.png") no-repeat center top; */
+  /* background: url("http://cos.qkmai.com/qkmbb/ytal/300hongbaobg.png") no-repeat center top; */
   width: 750rpx;
   height: 1100rpx;
   background-size: cover;
@@ -108,7 +108,7 @@
   height: 110rpx;
   /* background: #ffd123; */
   text-align: center;
-  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350fxan.png");
+  background:url("http://cos.qkmai.com/qkmbb/ytal/350fxan.png");
   background-size:100% 100%;
   line-height: 110rpx;
   border: 0;
@@ -121,7 +121,7 @@
   width: 700rpx;
   height: 260rpx;
   margin: 0 auto;
-  background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350rentoubg.png");
+  background:url("http://cos.qkmai.com/qkmbb/ytal/350rentoubg.png");
   background-size:100% 100%;
   border-radius: 25rpx;
   display: flex;

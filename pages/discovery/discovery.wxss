@@ -6,7 +6,7 @@ page {
 }
 .tipsbg{
   width: 100%;
-  background: url(" https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/viptoubg.png") no-repeat center top;
+  background: url(" http://cos.qkmai.com/qkmbb/ytal/viptoubg.png") no-repeat center top;
   background-size: 100%;
 }
 .tips {
@@ -95,15 +95,15 @@ page {
   border-radius: 20rpx;
 }
 .tasklist_one{
-background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vipbluebg.png") no-repeat center top;
+background: url("http://cos.qkmai.com/qkmbb/ytal/vipbluebg.png") no-repeat center top;
 background-size: cover
 }
 .tasklist_two{
-background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vippurplebg.png") no-repeat center top;
+background: url("http://cos.qkmai.com/qkmbb/ytal/vippurplebg.png") no-repeat center top;
 background-size: cover
 }
 .tasklist_three{
-background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/vippinkbg.png") no-repeat center top;
+background: url("http://cos.qkmai.com/qkmbb/ytal/vippinkbg.png") no-repeat center top;
 background-size: cover
 }
 .tasklist_des .tasklists text {

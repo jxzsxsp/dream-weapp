@@ -774,7 +774,7 @@ image {
     top: 325rpx;
     left: 50%;
     margin-left: -320rpx;
-    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
+    background: url("http://cos.qkmai.com/qkmbb/ytal/300hongbao.png");
     background-size: cover;
 }
 
@@ -782,7 +782,7 @@ image {
     position: absolute;
     width: 68rpx;
     height: 68rpx;
-    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanbitb.png");
+    background: url("http://cos.qkmai.com/qkmbb/ytal/guanbitb.png");
     background-size: cover;
     top: -135rpx;
     right: 90rpx;
@@ -825,7 +825,7 @@ image {
     top: 255rpx;
     left: 50%;
     margin-left: -320rpx;
-    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300hongbao.png");
+    background: url("http://cos.qkmai.com/qkmbb/ytal/300hongbao.png");
     background-size: cover;
 }
 
@@ -833,7 +833,7 @@ image {
     position: absolute;
     width: 68rpx;
     height: 68rpx;
-    background: url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/guanbitb.png");
+    background: url("http://cos.qkmai.com/qkmbb/ytal/guanbitb.png");
     background-size: cover;
     top: -135rpx;
     right: 90rpx;

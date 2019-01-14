@@ -1,23 +1,23 @@
 <!--pages/redPacket/redPacket.wxml-->
-<view class='redpacket_container' style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350bg.jpg");background-size:100% 100%;height:2525rpx'>
+<view class='redpacket_container' style='background:url("http://cos.qkmai.com/qkmbb/ytal/350bg.jpg");background-size:100% 100%;height:2525rpx'>
     <view class='first_bg' style='height:770rpx;position:relative'>
-        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350pigtb.png" style='width:482rpx;height:509rpx;position:absolute;top:6rpx;left:135rpx'></image>
-        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350wzbt.png" style='width:678rpx;height:125rpx;position:absolute;top:290rpx;left:35rpx'></image>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/350pigtb.png" style='width:482rpx;height:509rpx;position:absolute;top:6rpx;left:135rpx'></image>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/350wzbt.png" style='width:678rpx;height:125rpx;position:absolute;top:290rpx;left:35rpx'></image>
         <view style='top:420rpx;display:flex;flex-direction:row;justify-content: space-around;;z-index:99;position:absolute;left:25rpx;width:700rpx;height:310rpx;'>
-            <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/35020yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
+            <view style='background:url("http://cos.qkmai.com/qkmbb/ytal/35020yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
                     <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='26'>立即领取</view>
             </view>
-            <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/35030yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
+            <view style='background:url("http://cos.qkmai.com/qkmbb/ytal/35030yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
                     <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='27'>立即领取</view>
             </view>
-            <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350300yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
+            <view style='background:url("http://cos.qkmai.com/qkmbb/ytal/350300yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
                     <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='28'>立即领取</view>
             </view>
         </view>
 
     </view>
     <view class='task3_container' >
-        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350zdbt.png" style='width:494rpx;height:44rpx;margin:0 auto 35rpx auto'></image>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/350zdbt.png" style='width:494rpx;height:44rpx;margin:0 auto 35rpx auto'></image>
         <view class='product product_one'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/350shangpin1.png' class='product_imgage'></image>
             <text class='tit'>活动商品1</text>
@@ -35,20 +35,20 @@
             </view>
         </view>
         <view class='product product_connect'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300shangpin3.png' class='product_imgage_connect'></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/300shangpin3.png' class='product_imgage_connect'></image>
             <text class='tit'>活动商品2</text>
             <view class='text_container'>
                 <view class='pro1'>
                     <text class='product_title'>万利达大功率韩式电热锅</text>
                     <view class='text_connect'>
-                        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo3.png" class='logo_image2'></image>
+                        <image src="http://cos.qkmai.com/qkmbb/ytal/300splogo3.png" class='logo_image2'></image>
                         <text>￥329.0</text>
                     </view>
                 </view>
                 <view class='pro2'>
                     <text class='product_title'>宜阁自动恒温发酵酸奶机</text>
                     <view class='text_connect'>
-                        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300splogo4.png" class='logo_image2'></image>
+                        <image src="http://cos.qkmai.com/qkmbb/ytal/300splogo4.png" class='logo_image2'></image>
                         <text>￥198.0</text>
                     </view>
                 </view>
@@ -63,7 +63,7 @@
 
     </view>
     <view>
-        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350fxbt.png" style='width:487rpx;height:76rpx;margin:0 auto 15rpx auto'></image>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/350fxbt.png" style='width:487rpx;height:76rpx;margin:0 auto 15rpx auto'></image>
         <button openType="share" class='share_btn' plain='true' style="border:0"></button>
         <view class='task2_container'>
             <view class='group'>
@@ -73,17 +73,17 @@
                         <image src='{{item.titlePic}}' class='share_peo'></image>
                     </block>
 
-                    <!-- <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
-          <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image> -->
+                    <!-- <image src='http://cos.qkmai.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='http://cos.qkmai.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='http://cos.qkmai.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image>
+          <image src='http://cos.qkmai.com/qkmbb/ytal/300wenhaotb.png' class='share_peo'></image> -->
                 </view>
             </view>
         </view>
     </view>
     <view>
         <view class='product product_two' style='margin-top:20rpx;overflow:hidden;margin-bottom:20rpx'>
-            <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/300zengpin1.png' class='product_imgage'></image>
             <text class='tit'>分享回礼</text>
             <view class='text_container' style='positon:relative;margin-top:-30rpx'>
                 <view>
@@ -92,7 +92,7 @@
                     <text class='product_title2' style='color:#db3c40'>咨询客服或联系微信ytal2019改价0.01元购</text>
                 </view>
                 <view class='bottom_con'>
-                    <!-- <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/300erweima.png' class='ma_images'></image> -->
+                    <!-- <image src='http://cos.qkmai.com/qkmbb/ytal/300erweima.png' class='ma_images'></image> -->
                     <!-- <text>￥0.0</text>
                     <view class='ma_des'>
                         <text>拍下订单联系微信</text>

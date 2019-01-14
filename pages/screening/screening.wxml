@@ -5,9 +5,9 @@
     </view>
     <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
         <view class="brandInfoTab hotSell {{isSelectState==1?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
-            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
+            <image src="http://cos.qkmai.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
             <text style='margin-left:5rpx;margin-right:3rpx;color:#db3c40'>热卖中</text>
-            <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
+            <image src="http://cos.qkmai.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;'></image>
         </view>
         <view style='width:2%'>
             <view class='line' style='width: 1px;height: 40rpx;background: #959595'></view>
@@ -21,7 +21,7 @@
             <text>没有已抢光商品哦~</text>
         </view>
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;position:relative'>
-            <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
+            <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
                 <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
                     <text style='font-size:22rpx;line-height:70rpx;'>折</text>
                 </view>

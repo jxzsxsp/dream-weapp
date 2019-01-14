@@ -24,7 +24,7 @@
         </view>
     </view>
     <view class='commission_middle'  bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=17" data-id='17'>
-        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/friendtb.png"></image>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/friendtb.png"></image>
         <view>
             <text class='font_a'>带着团队一起赚指南</text>
             <text class='font_b'>团队分佣规则说明</text>

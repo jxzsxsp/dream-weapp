@@ -23,7 +23,7 @@
         </view>
     </view>
     <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16"  data-id='16'>
-        <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/redenvelopetb.png"></image>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/redenvelopetb.png"></image>
         <view>
             <text class='font_a'>佣金赚取/提现攻略</text>
             <text class='font_b'>平台佣金规则说明</text>

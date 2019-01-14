@@ -1,7 +1,7 @@
 <!--pages/wallet/wallet.wxml-->
 <view class='wallet_container'>
     <view class='wallet_top'>
-        <image src='https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/wodehbtb.png  ' style="width:100rpx;height:100rpx;margin:50rpx auto 30rpx auto;" class='h_icon'></image>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/wodehbtb.png  ' style="width:100rpx;height:100rpx;margin:50rpx auto 30rpx auto;" class='h_icon'></image>
         <text class='tit' style='text-align:cente;margin:0 auto;color:#000;font-size:30rpx;'>我的红包</text>
         <view class='show_num' style='text-align:cente;margin:0 auto;margin-top:-10rpx'>
             <text style="font-size:30rpx;color:#000;line-height: 90rpx;">￥</text>
