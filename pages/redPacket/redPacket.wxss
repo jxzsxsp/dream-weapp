@@ -121,7 +121,7 @@
   width: 700rpx;
   height: 260rpx;
   margin: 0 auto;
-  background:url("http://cos.qkmai.com/qkmbb/ytal/350rentoubg.png");
+  background:url("http://cos.qkmai.com/qkmbb/ytal/350rentoubg.png?v=1");
   background-size:100% 100%;
   border-radius: 25rpx;
   display: flex;
