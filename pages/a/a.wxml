@@ -5,7 +5,7 @@
         <view class='code_container'>
             <!-- <image src='{{canvasUrl}}' style='z-index:9999;' mode='widthFix' bindtap='saveImage' data-src='{{canvasUrl}}'></image> -->
             <image src='{{canvasUrl}}' style='z-index:9999;' mode='widthFix' data-src='{{canvasUrl}}'></image>
-            <text style='z-index:99999999999999999;'>点击查看分享码,保存到相册</text>
+            <text style='z-index:99999999999999999;'>截屏保存分享码</text>
         </view>
     </view>
     <view class='postlist_container'>
