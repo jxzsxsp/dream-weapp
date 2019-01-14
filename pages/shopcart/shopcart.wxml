@@ -21,7 +21,7 @@
                         <text>{{item.SupplierName}}</text>
                     </view>
                 </view>
-                <view class="shopcart-m bg-wihte" class="supplier {{index==0?'mt100':''}}">
+                <view class="shopcart-m bg-wihte" class="supplier {{index==0?'mt100':''}}" style='margin-top:200rpx;'>
                     <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}">
                         <view class="shopcart-ck {{items.IsValid&&items.HasEnoughStock?'':'ck-txt'}}">
                             <view wx:if="{{items.IsValid&&items.HasEnoughStock}}">
