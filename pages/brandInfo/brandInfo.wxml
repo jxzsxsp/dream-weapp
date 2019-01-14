@@ -115,7 +115,7 @@
         </view>
         <view class="kong" style='display:flex;flex-direction:column;align-items:center;padding:144rpx 0 285rpx 0;min-height:680rpx;overflow:hidden;font-size:28rpx;color:#212121;' wx:if="{{nothing==1 && rushGoodsList.length==0}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx;width:192rpx;height:192rpx;padding:32rpx;"></view>
-            <text>功能升级中，敬请期待~</text>
+            <!-- <text>功能升级中，敬请期待~</text> -->
             <text>没有已抢光商品哦~</text>
         </view>
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
