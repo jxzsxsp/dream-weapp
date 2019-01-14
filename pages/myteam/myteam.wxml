@@ -23,7 +23,7 @@
             </view>
         </view>
     </view>
-    <view class='commission_middle'  bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=17" data-id='17'>
+    <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=17" data-id='17'>
         <image src="http://cos.qkmai.com/qkmbb/ytal/friendtb.png"></image>
         <view>
             <text class='font_a'>带着团队一起赚指南</text>
@@ -40,14 +40,17 @@
                 <view class='list_top'>
                     <view class='list1'>
                         <text class='font_big'>{{item.RealName}}</text>
-                        <text class='{{item.ReferralGradeName==null?"custom":"VIP"}}'>{{item.ReferralGradeName==null?'普通用户':(item.ReferralGradeName=="试用"?"试用VIP":item.ReferralGradeName)}}</text>
-                        
+
+
                     </view>
                     <text class='font_big list2'>￥{{item.SubSumOrderTotal}}</text>
                     <text class='font_big list3'>￥{{item.SubMemberAllSplittin}}</text>
                 </view>
                 <view class='list_bottom'>
-                    <text class='font_small list1'>{{item.CreateDate}}</text>
+                    <!-- <text class='font_small list1'>{{item.CreateDate}}</text> -->
+                    <view class='list1 '>
+                        <text class='{{item.ReferralGradeName==null?"custom":"VIP"}}' style=''>{{item.ReferralGradeName==null?'普通用户':(item.ReferralGradeName=="试用"?"试用VIP":item.ReferralGradeName)}}</text>
+                    </view>
                     <text class='font_small font_small2 list2'>累计消费</text>
                     <text class='font_small font_small2 list3'>购物返佣</text>
                 </view>
