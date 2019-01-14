@@ -5,13 +5,13 @@
         <image src="https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350wzbt.png" style='width:678rpx;height:125rpx;position:absolute;top:290rpx;left:35rpx'></image>
         <view style='top:420rpx;display:flex;flex-direction:row;justify-content: space-around;;z-index:99;position:absolute;left:25rpx;width:700rpx;height:310rpx;'>
             <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/35020yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
-                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{26}}'>立即领取</view>
+                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='26'>立即领取</view>
             </view>
             <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/35030yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
-                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{27}}'>立即领取</view>
+                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='27'>立即领取</view>
             </view>
             <view style='background:url("https://qkmai-1257905846.cos.ap-shanghai.myqcloud.com/qkmbb/ytal/350300yhq.png");background-size:100% 100%;width:230rpx;height:310rpx'>
-                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='{{28}}'>立即领取</view>
+                    <view style='color:#ecc472;font-size:26rpx;padding:5rpx 25rpx;background:#09096b;border-radius:18rpx;margin:250rpx auto 0 auto;width:120rpx;line-height:36rpx;text-align:center'  bindtap='onGetCoupon' data-couponId='28'>立即领取</view>
             </view>
         </view>
 
