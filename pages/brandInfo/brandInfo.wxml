@@ -146,7 +146,7 @@
             <view>
                 <view style='padding-left:129rpx;position:relative;'>
                     <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
-                        <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}">{{item.infoDesc}}</text>
+                        <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.infoDesc}}</text>
                     </view>
                 </view>
                 <view style='padding:12rpx 27rpx 18rpx 129rpx'>

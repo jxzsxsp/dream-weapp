@@ -1,5 +1,6 @@
 page {
     background: #f5f5f5;
+    height:100%;
 }
 
 .page-section {
@@ -257,7 +258,9 @@ page {
 }
 
 .shopcart-no {
-    min-height: 1110rpx;
+    height:100%;
+    /* min-height: 1110rpx; */
+    min-height: 100%;
     width: 100%;
     display: flex;
     background: #fff;

@@ -18,9 +18,11 @@ Page({
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
         // console.log("执行selectAll")
         // tm.selectAll();
+        console.log(t)
+        console.log(a)
     },
     loadData: function (e, Boolean) {
-        console.log("loadData执行")
+        // console.log("loadData执行")
         var tm = this;
         wx.showLoading({});
         var a = parseFloat(0);
@@ -79,7 +81,7 @@ Page({
                     // }
                     // 默认购物车全选
                     if (Boolean) {
-                        console.log("执行selectAll")
+                        // console.log("执行selectAll")
                         tm.selectAll();
 
                     }
@@ -95,7 +97,7 @@ Page({
         }), a;
     },
     selectList: function(t) {
-        console.log("执行selectList")
+        // console.log("执行selectList")
         var e = this,
             a = t.currentTarget.dataset.skuid,
             n = e.data.Suppliers,
@@ -116,7 +118,7 @@ Page({
         }), e.GetTotal();
     },
     GetTotal: function() {
-        console.log("执行GetTotal")
+        // console.log("执行GetTotal")
         var t = parseFloat(0),
             e = this,
             a = e.data.ShopCarts,
@@ -147,7 +149,7 @@ Page({
             }), console.log(t.data.Suppliers),t.GetTotal();
     },
     SwitchEdite: function() {
-        console.log("switchEdite")
+        // console.log("switchEdite")
         var t = this;
         "编辑" == t.data.EditeText ? t.setData({
             isEdite: !0,
