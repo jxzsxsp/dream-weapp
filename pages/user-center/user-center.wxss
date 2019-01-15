@@ -285,3 +285,9 @@
   letter-spacing: 1rpx;
   text-align: center;
 }
+
+.canvas-img {
+  width: 540rpx;
+  height: 720rpx;
+  align-items: center;
+}

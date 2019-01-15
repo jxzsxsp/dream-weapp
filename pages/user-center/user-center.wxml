@@ -67,8 +67,8 @@
   custom-style="abc"
 >
   <view class='share-img-container flex-column'>
-    <canvas canvas-id='shareImg' style='width:540px;height:720px' hidden='{{true}}'></canvas>
-    <view class='share-img flex-column'>
+    <canvas canvas-id='shareImg' class='canvas-img'></canvas>
+    <!-- <view class='share-img flex-column'>
       <view class='share-head flex'>
         <image class="share-avatar" src="{{userInfo.avatarUrl}}"/>
         <view class="share-name-container flex-column">
@@ -80,7 +80,7 @@
         <image src='/assets/xiaoxi_qrcode.jpg'></image>
       </view>
       <view class='share-tips'>长按识别二维码，获取您的专属色彩管家</view>
-    </view>
+    </view> -->
 
     <view class='save-img flex' bind:tap="saveImg">保存图片</view>
   </view>
