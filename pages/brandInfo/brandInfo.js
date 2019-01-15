@@ -246,7 +246,7 @@ Page({
                     tm.setData({
                         rushGoodsList: newList
                     })
-                    console.log(jd.data.length)
+                    // console.log(jd.data.length)
                     if (jd.data.length < 5) {
                         tm.setData({
                             hasMore: false
@@ -716,7 +716,7 @@ Page({
                     ps: tm.data.dataSize
                 },
                 success: function(jd) {
-                    console.log(jd)
+                    // console.log(jd)
                     if (jd.data.length == 0) {
                         tm.setData({
                             rushGoodsList: []
@@ -729,12 +729,12 @@ Page({
                                 goodsList.push(o)
                             });
                             // var newList = tm.data.rushGoodsList.concat(goodsList)
-                            console.log("goodsList" + goodsList)
+                            // console.log("goodsList" + goodsList)
                             tm.setData({
                                 rushGoodsList: goodsList
                             })
                         }
-                        console.log(jd.data.length == tm.data.dataSize, jd.data.length, tm.data.dataSize)
+                        // console.log(jd.data.length == tm.data.dataSize, jd.data.length, tm.data.dataSize)
                         if (jd.data.length == tm.data.dataSize) {
 
                             wx.stopPullDownRefresh();
@@ -746,7 +746,7 @@ Page({
                     }
                 }
             });
-            console.log(tm.data.nothing)
+            // console.log(tm.data.nothing)
         }
         // if(){
 
@@ -756,7 +756,7 @@ Page({
         var tm = this;
         //var s = event.currentTarget.dataset.index;
         var o = app.globalData.openId;
-        console.log('brandIsFocus');
+        // console.log('brandIsFocus');
         wx.request({
             url: app.getUrl("YTALBrandIsFollow"),
             data: {
@@ -803,8 +803,8 @@ Page({
                 openId: app.globalData.openId
             },
             success: function(jd) {
-                console.log(jd)
-                console.log(jd.data)
+                // console.log(jd)
+                // console.log(jd.data)
                 if (jd.data.length > 0) {
 
                     let logoList = [];
