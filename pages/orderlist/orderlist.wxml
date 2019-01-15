@@ -1,27 +1,27 @@
 <view class="coupontitle">
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{AllActive}}" data-status="0">全部</view>
-        <view class="order_num" hidden="{{userInfo.waitPayCount + userInfo.waitSendCount + userInfo.waitFinishCount==0}}">
+        <!-- <view class="order_num" hidden="{{userInfo.waitPayCount + userInfo.waitSendCount + userInfo.waitFinishCount==0}}">
             <text>{{userInfo.waitPayCount + userInfo.waitSendCount + userInfo.waitFinishCount}}</text>
-        </view>
+        </view> -->
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitPayActive}}" data-status="1">待付款</view>
-        <view class="order_num" hidden="{{userInfo.waitPayCount==0}}">
+        <!-- <view class="order_num" hidden="{{userInfo.waitPayCount==0}}">
             <text>{{userInfo.waitPayCount}}</text>
-        </view>
+        </view> -->
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitSendActive}}" data-status="2">拣货中</view>
-        <view class="order_num" hidden="{{userInfo.waitSendCount==0}}">
+        <!-- <view class="order_num" hidden="{{userInfo.waitSendCount==0}}">
             <text>{{userInfo.waitSendCount}}</text>
-        </view>
+        </view> -->
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitReceiveActive}}" data-status="3">待收货</view>
-        <view class="order_num" hidden="{{userInfo.waitFinishCount==0}}">
+        <!-- <view class="order_num" hidden="{{userInfo.waitFinishCount==0}}">
             <text>{{userInfo.waitFinishCount}}</text>
-        </view>
+        </view> -->
     </view>
     <!-- <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitReviewActive}}" data-status="21">待评价</view>
@@ -88,4 +88,9 @@
 </view>
 <view class="kong" hidden="{{isEmpty}}">
     <view bindtap="toproduct" class="bg_nullOrder" style="background:url({{nullOrder}}) center center no-repeat; background-size:auto 254rpx"></view>
+</view>
+<view class="fixedBtn" >
+    <image src='http://cos.qkmai.com/qkmbb/ytal/kefu_1.png '></image>
+    <text>联系客服</text>
+    <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
 </view>
