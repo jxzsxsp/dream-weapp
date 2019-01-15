@@ -35,7 +35,8 @@ Page({
         topLogoList: [],
         focusList: [],
         isTooLow: false,
-        isShowState:true
+        isShowState:true,
+        current:0
     },
     onShow: function() {
         this.GetShopCart();
@@ -1109,6 +1110,17 @@ Page({
             }
         }
         return 0
+    },
+    durationChange(event) {
+        if (event.detail.source == "touch") {
+            if (event.detail.current == 0 && this.data.preIndex > 1) {
+                this.setData({ current: this.data.preIndex });
+            }
+            else {
+                this.setData({ preIndex: event.detail.current });
+            }
+        }
     }
+
 
 });
