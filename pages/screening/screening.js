@@ -33,7 +33,8 @@ Page({
         hideCount: true,
         count: 0,
         needAni: false,
-        hide_good_box: true
+        hide_good_box: true,
+        goTopStatus:false
     },
 
     /**
@@ -578,5 +579,20 @@ Page({
         // if(){
 
         // }
+    },
+    onPageScroll: function (obj) {
+        if (obj.scrollTop > 363) {
+            this.setData({
+                goTopStatus: true
+            })
+        }
+    },
+    goToTop: function () {
+        wx.pageScrollTo({
+            scrollTop: 0,
+        })
+        this.setData({
+            goTopStatus: false
+        })
     }
 })
