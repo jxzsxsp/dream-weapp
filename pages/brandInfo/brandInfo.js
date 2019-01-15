@@ -48,7 +48,8 @@ Page({
         hideCount: true,
         count: 0,
         needAni: false,
-        hide_good_box: true
+        hide_good_box: true,
+        goTopStatus: false
     },
 
     /**
@@ -194,6 +195,7 @@ Page({
             hasMore: true
         })
         this.getTitle();
+
     },
 
     /**
@@ -205,6 +207,21 @@ Page({
             this.loadMore();
             wx.hideNavigationBarLoading();
         }
+    },
+    onPageScroll: function(obj) {
+        if (obj.scrollTop > 363) {
+            this.setData({
+                goTopStatus: true
+            })
+        }
+    },
+    goToTop: function() {
+        wx.pageScrollTo({
+            scrollTop: 0,
+        })
+        this.setData({
+            goTopStatus: false
+        })
     },
     loadMore: function() {
         if (!this.data.hasMore) return;
@@ -391,28 +408,116 @@ Page({
                                     // }
                                     wx.hideLoading();
                                 tm.touchOnGoods(event)
-                                wx.showModal({
-                                    title: '',
-                                    content: '成功加入购物车',
-                                    cancelText: "去结算",
-                                    confirmText: "再逛逛",
-                                    success(res) {
-                                        if (res.confirm) {
+                                // wx.showModal({
+                                //     title: '',
+                                //     content: '成功加入购物车',
+                                //     cancelText: "去结算",
+                                //     confirmText: "再逛逛",
+                                //     success(res) {
+                                //         if (res.confirm) {
 
-                                        } else if (res.cancel) {
-                                            wx.switchTab({
-                                                url: '/pages/shopcart/shopcart'
-                                            })
+                                //         } else if (res.cancel) {
+                                //             wx.switchTab({
+                                //                 url: '/pages/shopcart/shopcart'
+                                //             })
 
-                                        }
-                                    }
-                                })
+                                //         }
+                                //     }
+                                // })
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
                                     goodsSkuName: '',
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
+                        }
+                    }
+                })
+            }
+        }
+    },
+    goToBuyGoods: function(event) {
+        var tm = this;
+        var goodsId = event.currentTarget.dataset["goodsid"];
+        var salePrice = event.currentTarget.dataset["saleprice"];
+        if (goodsId != tm.data.goodsId) {
+            wx.showModal({
+                title: '请选择商品规格',
+                content: '',
+            })
+        } else {
+            if (tm.data.skuId == "") {
+                wx.showModal({
+                    title: '请选择商品规格',
+                    content: '',
+                })
+            } else {
+                wx.showLoading({})
+                wx.request({
+                    url: app.getUrl("YTALPostAddGoodsToCart"),
+                    data: {
+                        skuId: tm.data.goodsSkuId,
+                        skuName: tm.data.goodsSkuName,
+                        goodsId: tm.data.goodsId,
+                        openId: app.globalData.openId,
+                        brandSource: tm.data.brandSource,
+                        salePrice: salePrice
+                    },
+                    success: function(res) {
+                        var jd = res.data;
+                        switch (jd.status) {
+                            default: wx.showModal({
+                                title: '提示',
+                                content: jd.message,
+                                showCancel: false
+                            })
+                            break;
+                            case 'success':
+                                    // wx.setTabBarBadge({
+                                    //     index: 3,
+                                    //     text: t.data.TotalNum.toString()
+                                    // })
+                                    // wx.showModal({
+                                    // title: '',
+                                    // content: '成功加入购物车',
+                                    // cancelText: "再逛逛",
+                                    // confirmText: "去结算",
+                                    // success(res) {
+                                    //     if (res.confirm) {
+                                    //         wx.switchTab({
+                                    //             url: '/pages/shopcart/shopcart'
+                                    //         })
+                                    //     } else if (res.cancel) {
+
+                                    //     }
+                                    // }
+                                    wx.hideLoading();
+                                tm.touchOnGoods(event)
+                                // wx.showModal({
+                                //     title: '',
+                                //     content: '成功加入购物车',
+                                //     cancelText: "去结算",
+                                //     confirmText: "再逛逛",
+                                //     success(res) {
+                                //         if (res.confirm) {
+
+                                //         } else if (res.cancel) {
+                                //             wx.switchTab({
+                                //                 url: '/pages/shopcart/shopcart'
+                                //             })
+
+                                //         }
+                                //     }
+                                // })
+                                tm.setData({
+                                    goodsId: '',
+                                    goodsSkuId: '',
+                                    goodsSkuName: '',
+                                    shopcartCount: tm.data.shopcartCount + 1
+                                });
+                                wx.switchTab({
+                                    url: '/pages/shopcart/shopcart'
+                                })
                         }
                     }
                 })
@@ -663,7 +768,7 @@ Page({
                     tm.setData({
                         isFocus: true
                     })
-                }else{
+                } else {
                     tm.setData({
                         isFocus: false
                     })
