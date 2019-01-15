@@ -1,2 +1,36 @@
-<!--pages/business-card/business-card.wxml-->
-<text>pages/business-card/business-card.wxml</text>
+<view class='container'>
+  <view class='content-container flex-column'>
+    <view class='head-container'>
+      <view wx:if="{{showShop}}" class='shop-container flex'>
+        <text class='shop-name'>{{shopInfo.name}}</text>
+        <image src='{{shopInfo.logo}}'></image>
+      </view>
+      <view wx:if="{{!showShop}}" class='person-container flex'>
+        <view class='person-info flex-column'>
+          <text class='shop-name'>{{userInfo.shopName}}</text>
+          <text class='person-name'>{{userInfo.name}}</text>
+          <text class='person-position'>{{userInfo.post}}</text>
+        </view>
+        <image src='{{userInfo.avatar}}'></image>
+      </view>
+    </view>
+    <text wx:if="{{shopInfo.mobile}}" class='info-text'>{{shopInfo.mobile}}</text>
+    <text wx:if="{{shopInfo.address}}" class='info-text'>{{shopInfo.address}}</text>
+    <text wx:if="{{userInfo.mobile}}" class='info-text'>{{userInfo.mobile}}</text>
+    <text wx:if="{{userInfo.address}}" class='info-text'>{{userInfo.address}}</text>
+  </view>
+  <view class='business-container flex-column'>
+    <view class='business-title'>主营</view>
+    <view class='business-content flex'>
+      <block wx:if="{{shopInfo.businesses}}" wx:for="{{shopInfo.businesses}}" wx:key="index">
+        <text class='business-name'>{{item.businessName}}</text>
+      </block>
+      <block wx:if="{{userInfo.businessNameList}}" wx:for="{{userInfo.businessNameList}}" wx:key="index">
+        <text class='business-name'>{{item.name}}</text>
+      </block>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{!isFollow}}" class='bottom-btn flex' bind:tap="followShop">关注店铺</view>
+<view wx:if="{{isFollow}}" class='bottom-btn flex'>已关注店铺</view>

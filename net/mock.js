@@ -768,8 +768,27 @@ let shop = {
       }
     ],
     "mobile": "13311111111",
-    "address": "绍兴市柯桥区某某龙东大道178号201室",
+    "address": "绍兴市柯桥区某某龙东大道178号201室绍兴市柯桥区某某龙东大道178号201室",
     "isFollow": 1 //1.关注 0. 未关注
+  },
+  [urls.personDetail]: {
+    "userId": 1,
+    "name": "张三", //备注
+    "avatar": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",  //头像
+    "post": "店长", //职位
+    "shopId": 2, //店铺id
+    "shopName": "玩仍无法", //店铺名称
+    "mobile": "3456789987", //店铺手机
+    "qrCodeImageUrl": "https://wx.qlogo.cn/mmopen/vi_32/EmicNAg/132",  //小程序码
+    "address": "绍兴市柯桥区某某龙东大道178号201室",  //店铺地址  
+    "businessNameList": [{
+      "id": 1,
+      "name": "妞仔"
+    }, {
+      "id": 2,
+      "name": "无纺布"
+    }
+    ]
   },
 }
 

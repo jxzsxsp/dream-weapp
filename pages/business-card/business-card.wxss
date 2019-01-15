@@ -1,1 +1,133 @@
-/* pages/business-card/business-card.wxss */
+page {
+  background: #f9f9f9;
+}
+
+.container {
+  width: 670rpx;
+  min-height: 575rpx;
+  margin: auto;
+  background: #FFFFFF;
+  box-shadow: 0 4rpx 2r0px 0 rgba(0,0,0,0.15);
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.content-container {
+  width: 670rpx;
+  height: 408rpx;
+  background: #2D2D2D;
+}
+
+.head-container {
+  width: 670rpx;
+  height: 260rpx;
+}
+
+.shop-container {
+  justify-content: space-between;
+  padding: 0 40rpx;
+}
+
+.shop-container .shop-name {
+  font-family: PingFangSC-Semibold;
+  font-size: 48rpx;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+  margin-top: 117rpx;
+}
+
+.shop-container image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+  margin-top: 50rpx;
+}
+
+.person-container {
+  justify-content: space-between;
+  padding: 0 40rpx;
+}
+
+.person-info .shop-name {
+  opacity: 0.5;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  margin-top: 39rpx;
+}
+
+.person-info .person-name {
+  font-family: PingFangSC-Semibold;
+  font-size: 48rpx;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+  margin-top: 38rpx;
+}
+
+.person-info .person-position {
+  opacity: 0.5;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+.person-container image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-right: 10rpx;
+  margin-top: 50rpx;
+}
+
+.info-text {
+  padding: 0 40rpx;
+  margin-top: 13rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+}
+
+.business-container {
+  width: 670rpx;
+  min-height: 167rpx;
+}
+
+.business-title {
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 22rpx;
+  color: #C9C8D0;
+  letter-spacing: 1rpx;
+}
+
+.business-content {
+  padding: 0 40rpx;
+  flex-wrap: wrap;
+}
+
+.business-name {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #616161;
+  line-height: 33rpx;
+  margin-right: 20rpx;
+}
+
+.bottom-btn {
+  position: fixed;
+  left: 35rpx;
+  bottom: 100rpx;
+  width: 680rpx;
+  height: 94rpx;
+  background: #0156FE;
+  border-radius: 14rpx;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 34rpx;
+  color: #FFFFFF;
+  letter-spacing: 1rpx;
+}
