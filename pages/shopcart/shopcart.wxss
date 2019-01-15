@@ -302,6 +302,10 @@ page {
     border-top: 10rpx #eee solid;
 }
 
+.cartlist .supplier:nth-child(1) {
+    margin-top:200rpx;
+} 
+
 .supplier:first-child {
     border-top: none;
 }
@@ -324,6 +328,6 @@ page {
     white-space: nowrap;
 }
 
-.mt100 {
+/* .mt100 {
     margin-top: 120rpx;
-}
+} */

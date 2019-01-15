@@ -1,6 +1,6 @@
 <view class="page-section">
     <view hidden="{{isEmpty}}">
-        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:40rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;'>
+        <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:40rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;height:120rpx;'>
             <view>提示：购物车里面商品有效期15分钟，请在15分钟内支付，超时回收；回收详情敬请关注后续版本</view>
             <!-- <view>商品在，谢谢理解！</view> -->
         </view>
@@ -14,14 +14,16 @@
         </view>
         <view class="cartlist">
             <block wx:for="{{Suppliers}}" wx:key="item.SupplierId">
-                <view class="supplier {{index==0?'mt100':''}}" style='display:none;'>
+                <!-- <view class="supplier {{index==0?'mt100':''}}" style='display:none;'> -->
+                <!-- <view class="supplier" style='display:none;'>
                     <view class="supplier-icon">
                         <image class="mt8" hidden="{{item.SupplierId!=0}}" mode="widthFix" src="/images/icon_platform_v.png" style="width:45rpx;"></image>
                         <image class="mt8" hidden="{{item.SupplierId==0}}" mode="widthFix" src="/images/gongyingshang.png" style="width:45rpx;"></image>
                         <text>{{item.SupplierName}}</text>
                     </view>
-                </view>
-                <view class="shopcart-m bg-wihte" class="supplier {{index==0?'mt100':''}}" style='margin-top:200rpx;'>
+                </view> -->
+                <!-- <view class="shopcart-m bg-wihte" class="supplier" style='margin-top:200rpx;'> -->
+                <view class="shopcart-m bg-wihte" class="supplier">
                     <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}">
                         <view class="shopcart-ck {{items.IsValid&&items.HasEnoughStock?'':'ck-txt'}}">
                             <view wx:if="{{items.IsValid&&items.HasEnoughStock}}">
