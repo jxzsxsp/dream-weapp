@@ -147,7 +147,7 @@
                     <text style='font-size:12px;color:#515151;'>亚太奥莱用户服务协议</text>
                 </view>
                 <view style='padding-right:20rpx'>
-                    <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+                    <!-- <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image> -->
                 </view>
             <!-- </navigator> -->
         </view>
@@ -157,7 +157,7 @@
                 <text style='font-size:12px;color:#515151;'>3.1.9</text>
             </view>
             <view style='padding-right:20rpx'>
-                <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+                <!-- <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image> -->
             </view>
         </view>
     </view>
@@ -187,7 +187,7 @@
                     <text style='font-size:12px;color:#515151;'>亚太奥莱用户服务协议</text>
                 </view>
                 <view style='padding-right:20rpx'>
-                    <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+                    <!-- <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image> -->
                 </view>
             <!-- </navigator> -->
         </view>
@@ -197,7 +197,7 @@
                 <text style='font-size:12px;color:#515151;'>3.1.9</text>
             </view>
             <view style='padding-right:20rpx'>
-                <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+                <!-- <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image> -->
             </view>
         </view>
     </view>

@@ -16,6 +16,7 @@ page {
     margin: 8rpx 8rpx 0 0;    
     background-color: #ebebeb;
     color:#515151;
+
 }
 
 .skuBtn.active {

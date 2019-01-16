@@ -187,7 +187,7 @@
                 </view>
 
                 <view style='margin-left:129rpx;background-color: #f6f6f6;margin-top:6rpx;position:relative;width:590rpx;'>
-                   
+
                     <view style='padding:0 16rpx'>
                         <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
                     </view>
@@ -205,7 +205,7 @@
                     <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:-100rpx;top:0;width:750rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
                     </view>
                     <view style='width:100%;height:35rpx;background-color:#fff;;'></view>
-                    <!-- 从这开始加入购物车这行 -->
+
                     <view style='height:90rpx;line-height:90rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:flex-start;width:600rpx;'>
                         <view style='position:relative;width:200rpx;height:90rpx;background-color:#fff;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));'>
                             <view style='width:100%;font-size:30rpx;line-height:90rpx;border:none;color:#fff;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));' bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-img='{{item.goodsImages[0]}}'>
@@ -220,7 +220,7 @@
                         </view>
                         <!-- <view style='clear:both'></view> -->
                     </view>
-                    <!-- 从这开始加入购物车这行end -->
+
 
                 </view>
 
@@ -257,15 +257,18 @@
 
             <view style='position:absolute;bottom:0px;left:0;width:330rpx;background-color:#f5f5f5;'>
                 <view style='display:flex;flex-direction:row;'>
-                    <view style='display:flex;flex-direction:column;justify-content:center;height90rpx;align-items:center;width:164rpx;position:relative' >
+                    <view style='display:flex;flex-direction:column;justify-content:center;height:90rpx;align-items:center;width:164rpx;position:relative'>
                         <image src="http://cos.qkmai.com/qkmbb/ytal/zixuntb_1.png" style='width:40rpx;height:40rpx'></image>
-                        <text style='font-size:22rpx;color:#5151515;line-height:26rpx'>联系客服</text>
+                        <text style='font-size:22rpx;color:#777676;line-height:26rpx'>联系客服</text>
                         <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
                     </view>
-                    <view style='width:1px;background:#959595;height:84rpx;padding-top:3rpx;'></view>
-                    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;width:164rpx;'>
+                    <view style='height:90rpx;line-height:90rpx;display:flex;align-items:center;'>
+                        <view style='width:1px;background:#cacaca;height:35rpx;padding-top:12rpx;opacity:0.6'></view>
+                    </view>
+
+                    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;width:164rpx;' bindtap='sharePro'>
                         <image src="http://cos.qkmai.com/qkmbb/ytal/fenxiangtb_1.png" style='width:40rpx;height:40rpx'></image>
-                        <text style='font-size:22rpx;color:#5151515;line-height:26rpx'>分享单品</text>
+                        <text style='font-size:22rpx;color:#777676;line-height:26rpx'>分享单品</text>
                     </view>
                 </view>
             </view>
@@ -291,7 +294,7 @@
             <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;' mode='widthFix'></image>
             <text style='font-size:24rpx;color:#95959'>顶部</text>
         </view>
-        <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
+        <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;overflow:hidden'>
             <view style='position:absolute;top:0rpx;right:20rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
                 <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
                     <text style='font-size:22rpx;line-height:70rpx;'>折</text>

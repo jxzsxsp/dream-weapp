@@ -839,4 +839,10 @@ Page({
             urls: imgs
         })
     },
+    sharePro:function(){
+        wx.showModal({
+            title: '',
+            content: '敬请期待',
+        })
+    }
 })
