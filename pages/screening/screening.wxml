@@ -34,11 +34,11 @@
                     <!-- <image wx:if='{{item.isSoldOut}}' src='http://cos.qkmai.com/qkmbb/ytal/soldout.png' style="width:500rpx;height:350rpx;position:absolute;right:70rpx;top:50rpx;"></image> -->
                 </view>
                 <view style='padding:12rpx 27rpx 18rpx 129rpx'>
-                    <text class="salePrice">¥{{filter.toFix(item.salePrice,2)}}</text>
+                    <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
                     <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
                     <view style='float:right' wx:if="{{userInfo.IsReferral}}">
                         <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
-                        <text class='commissionMoney'>¥{{item.commissionMoney}}</text>
+                        <text class='commissionMoney' style='font-weight:900;font-size:40rpx'><text style='font-size:24rpx'>¥</text>{{item.commissionMoney}}</text>
                     </view>
                 </view>
                 <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
