@@ -101,7 +101,6 @@ Page({
 
 
 
-
         
         var tm = this;
         wx.hideTabBar({})

@@ -84,7 +84,7 @@
         </view>
         <view class="xqcont" wx:if="{{DetailStatus=='active'}}">
             <view class="wxParse">
-                <template is="wxParse" data="{{wxParseData:metaDescription.nodes}}"></template>
+<rich-text nodes='{{TempMetaDescription}}'></rich-text>
             </view>
         </view>
         <view class="xqattr" wx:if="{{AttributeStatus=='active'}}">
