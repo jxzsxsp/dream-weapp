@@ -100,7 +100,7 @@
             },
             {
                 "pagePath": "pages/discovery/discovery",
-                "text": "VIP专区",
+                "text": "赚赚",
                 "selectedColor": "#db3c40",
                 "iconPath": "images/vip.png",
                 "selectedIconPath": "images/vip.png"
