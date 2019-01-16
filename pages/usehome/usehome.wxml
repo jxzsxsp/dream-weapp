@@ -140,6 +140,26 @@
                 <image src='http://cos.qkmai.com/qkmbb/myytal/wdtd.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
             </view>
         </view>
+       <view class='list-item'>
+            <!-- <navigator src="http://ytalman.qkmai.com/ArticleDetails?ArticleId=23"> -->
+                <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindXieyi" data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=23" data-id='23'>
+                    <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>用户协议</text>
+                    <text style='font-size:12px;color:#515151;'>亚太奥莱用户服务协议</text>
+                </view>
+                <view style='padding-right:20rpx'>
+                    <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+                </view>
+            <!-- </navigator> -->
+        </view>
+        <view class='list-item'>
+            <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;'>
+                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>版本号 </text>
+                <text style='font-size:12px;color:#515151;'>3.1.9</text>
+            </view>
+            <view style='padding-right:20rpx'>
+                <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+            </view>
+        </view>
     </view>
     <view class='row-list' style='background-color:#fff;' wx:else>
         <view class='list-item'>
@@ -158,6 +178,26 @@
             </view>
             <view style='padding-right:20rpx;'>
                 <image src="http://cos.qkmai.com/qkmbb/myytal/xsdd.png" style='width:100rpx;height:100rpx;;' lazy-load></image>
+            </view>
+        </view>
+        <view class='list-item'>
+            <!-- <navigator src="http://ytalman.qkmai.com/ArticleDetails?ArticleId=23"> -->
+                <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindXieyi" data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=23" data-id='23'>
+                    <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>用户协议</text>
+                    <text style='font-size:12px;color:#515151;'>亚太奥莱用户服务协议</text>
+                </view>
+                <view style='padding-right:20rpx'>
+                    <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
+                </view>
+            <!-- </navigator> -->
+        </view>
+        <view class='list-item'>
+            <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;'>
+                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>版本号 </text>
+                <text style='font-size:12px;color:#515151;'>3.1.9</text>
+            </view>
+            <view style='padding-right:20rpx'>
+                <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image>
             </view>
         </view>
     </view>

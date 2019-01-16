@@ -196,5 +196,23 @@ Page({
         wx.navigateTo({
             url: "../wallet/wallet"
         });
+    },
+    bindXieyi:function(e){
+        var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + e.currentTarget.dataset.id
+        console.log(e.currentTarget.dataset)
+        var deurl = encodeURIComponent(url)
+        var s = '/pages/webPage/webPage?artUrl=' + deurl
+
+
+        o.globalData.fundebug.notifyError(new Error("跳转用户协议"), {
+            name: "用户协议",
+            metaData: s
+        });
+
+
+
+        wx.navigateTo({
+            url: s
+        })
     }
 });
