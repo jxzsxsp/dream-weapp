@@ -709,3 +709,8 @@ page {
 button::after {
     border: none;
 }
+
+.wxParse img{
+    width: 750rpx;
+    height: auto;
+}
