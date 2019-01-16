@@ -11,12 +11,21 @@
   color: #333333;
   letter-spacing: 0;
   align-items: center;
+  display: flex;
+}
+.content-text text{
+  flex: 1;
+}
+.text-center {
+  flex: 1;
+  text-align: center;
 }
 
 .right-text {
-  float: right;
-  display: flex;
-  flex-direction: row;
+  /* float: right; */
+  /* display: flex; */
+  /* flex-direction: row; */
+  text-align: right;
 }
 
 .content-head {
@@ -25,6 +34,11 @@
   color: #999999;
   letter-spacing: -0.63rpx;
   line-height: 40rpx;
+}
+
+.content-footer {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #eeeeee;
 }
 
 .outbound-btn {
