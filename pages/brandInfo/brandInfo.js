@@ -70,7 +70,7 @@ Page({
             })
         }
         wx.showLoading({
-            title: "正在加载"
+            title: "加载中"
         });
         var tm = this;
         app.getUserInfo(function(t) {
@@ -368,7 +368,9 @@ Page({
                     content: '',
                 })
             } else {
-                wx.showLoading({})
+                wx.showLoading({
+                    title: "加载中"
+                });
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {
@@ -453,7 +455,9 @@ Page({
                     content: '',
                 })
             } else {
-                wx.showLoading({})
+                wx.showLoading({
+                    title: "加载中"
+                });
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {

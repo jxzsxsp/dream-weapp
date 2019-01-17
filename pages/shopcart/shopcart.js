@@ -24,7 +24,9 @@ Page({
     loadData: function (e, Boolean) {
         // console.log("loadData执行")
         var tm = this;
-        wx.showLoading({});
+        wx.showLoading({
+            title: "加载中"
+        });
         var a = parseFloat(0);
         t.getOpenId(function(n) {
             wx.request({
