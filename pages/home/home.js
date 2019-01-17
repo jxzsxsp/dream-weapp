@@ -35,15 +35,11 @@ Page({
         topLogoList: [],
         focusList: [],
         isTooLow: false,
-        isShowState:true,
-        current:0
+        isShowState: true,
+        current: 0
     },
     onShow: function() {
         this.GetShopCart();
-        // this.getLogo();
-        // this.getCate();
-        // wx.hideNavigationBarLoading();
-        // this.countDown();
     },
     GetShopCart: function() {
         var t = this,
@@ -98,16 +94,11 @@ Page({
         });
     },
     onLoad: function(a) {
-
-
-
-        
         var tm = this;
         wx.hideTabBar({})
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");
-            // console.log(str[1])
             e.setRefferUserId(str[1]);
         }
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
@@ -116,11 +107,7 @@ Page({
                 userInfo: t
             })
         });
-        // e.getUserInfo(function (t) {
-            // tm.setData({
-            //     userInfo: e.globalData.userInfo
-            // })
-        // });
+
         e.globalData.fundebug.notifyError(new Error("onload"), {
             name: "首页onload",
             metaData: a
@@ -154,13 +141,12 @@ Page({
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
-        // this.getCate();
         wx.getSystemInfo({
             success: function(res) {
                 var x = res.version
                 var reg = new RegExp("/.", "g");
                 var s = x.replace(".", "").replace(".", "");
-                tm.compareVersion(x,'6.6.1')
+                tm.compareVersion(x, '6.6.1')
                 // console.log(tm.compareVersion(x, '6.6.1'))
                 if (tm.compareVersion(x, '6.6.1') == -1) {
                     wx.hideTabBar({})
@@ -185,7 +171,6 @@ Page({
                     })
                 } else {
 
-
                     // tm.setData({
                     //     TopicData: {
                     //         id: 201811161906894,
@@ -202,8 +187,6 @@ Page({
                     //     }
                     // })
 
-                    // tm.focusList()
-                    // console.log(1)
                     tm.getLogo();
                     tm.getCate();
                     wx.hideNavigationBarLoading();
@@ -297,7 +280,7 @@ Page({
 
         e.globalData.fundebug.notifyError(new Error("首页分享"), {
             name: "首页分享",
-            metaData:shareInfo
+            metaData: shareInfo
         });
 
         return shareInfo;
@@ -635,7 +618,7 @@ Page({
                 var rushEndTime = o.rushEndTime.replace('\-', '/').replace('\-', '/');
                 // console.log(rushEndTime)
                 let endTime = new Date(rushEndTime).getTime();
-                //endTime = endTime + 8 * 60 * 60 * 1000;    
+                //endTime = endTime + 8 * 60 * 60 * 1000;   
                 let obj = null;
                 // 如果活动未结束，对时间进行处理
                 if (endTime - newTime > 0) {
@@ -887,8 +870,26 @@ Page({
         })
     },
     changeCate: function(event) {
+
+
+        // 获取jscode  获取accessToken 前提
+        // wx.login({
+        //     success(res) {
+        //         if (res.code) {
+        //             console.log(res.code)
+        //             // wx.request({
+        //             //     url: 'https://test.com/onLogin',
+        //             //     data: {
+        //             //         code: res.code
+        //             //     }
+        //             // })
+        //         } else {
+        //             console.log('登录失败！' + res.errMsg)
+        //         }
+        //     }
+        // })
         wx.showLoading({
-            mask:true
+            mask: true
         });
         this.setData({
             brandRush: [],
@@ -976,7 +977,6 @@ Page({
                     currentId: e.currentTarget.dataset.id,
                 });
                 if (!tm.data.toggleText) {
-
                     tm.setData({
                         toggleText: !tm.data.toggleText
                     });
@@ -1018,13 +1018,10 @@ Page({
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
 
-
         e.globalData.fundebug.notifyError(new Error("首页跳转文章"), {
             name: "文章链接",
             metaData: s
         });
-
-
 
         wx.navigateTo({
             url: s
@@ -1113,13 +1110,14 @@ Page({
     durationChange(event) {
         if (event.detail.source == "touch") {
             if (event.detail.current == 0 && this.data.preIndex > 1) {
-                this.setData({ current: this.data.preIndex });
-            }
-            else {
-                this.setData({ preIndex: event.detail.current });
+                this.setData({
+                    current: this.data.preIndex
+                });
+            } else {
+                this.setData({
+                    preIndex: event.detail.current
+                });
             }
         }
     }
-
-
 });
