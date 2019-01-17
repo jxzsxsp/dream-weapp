@@ -41,4 +41,6 @@ export default {
   addressDetail: '/customer-address/detail',
   // 客户详情
   customerDetail: '/customer/detail',
+  // 客户扫码
+  customerQR: '/customer-qr/tie'
 }
