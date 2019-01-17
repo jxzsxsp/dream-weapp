@@ -90,7 +90,7 @@ Page({
                 success: function(a) {
                     void 0 == a.data.error_response ? a.data.Data.IsBindUser ? (app.setUserInfo(a.data.Data),
                         wx.switchTab({
-                            url: "../usehome/usehome"
+                            url: "../home/home"
                         })) : wx.redirectTo({
                         url: "../relationlogin/relationlogin"
                     }) : hishop.showTip(a.data.error_response.sub_msg);
