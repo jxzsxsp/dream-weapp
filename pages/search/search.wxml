@@ -5,7 +5,7 @@
             <view class="iconfont icon__search font40 search_btn"></view>
             <input bindconfirm="onConfirmSearch" bindinput="onInputKeyword" class="ptb16" confirmType="search" focus="true" placeholder="请输入商品名称" value='{{KeyWord}}'></input>
         </view>
-        <view bindtap="goToResult" class="searchr pt24 pl24" style='color:#959595;'>搜索</view>
+        <view bindtap="goToResult" class="searchr pt24 pl24" style='color:#ba050f;'>搜索</view>
     </view>
     <view>
         <view class="searls " style='margin:0 24rpx;margin-top:-20rpx;padding:20rpx'>

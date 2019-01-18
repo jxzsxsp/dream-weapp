@@ -413,15 +413,15 @@ Page({
         var salePrice = event.currentTarget.dataset["saleprice"];
         if (goodsId != tm.data.goodsId) {
             wx.showModal({
-                title: '请选择商品规格',
-                content: '',
+                title: '',
+                content: '请选择商品规格',
                 showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
-                    title: '请选择商品规格',
-                    content: '',
+                    title: '',
+                    content: '请选择商品规格',
                     showCancel: false
                 })
             } else {
@@ -506,15 +506,15 @@ Page({
         var salePrice = event.currentTarget.dataset["saleprice"];
         if (goodsId != tm.data.goodsId) {
             wx.showModal({
-                title: '请选择商品规格',
-                content: '',
+                title: '',
+                content: '请选择商品规格',
                 showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
-                    title: '请选择商品规格',
-                    content: '',
+                    title: '',
+                    content: '请选择商品规格',
                     showCancel: false
                 })
             } else {

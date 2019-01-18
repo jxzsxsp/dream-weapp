@@ -104,26 +104,62 @@ Page({
         this.gotoSearch(this.data.KeyWord);
     },
     gotoSearch: function(e) {
-        var t = this;
-        if (e.length > 0) {
-            wx.setStorage({
-                key: "keyword",
-                data: e
-            });
-            var o = [],
-                r = wx.getStorageSync("keyWordList");
-            r && (o = r), -1 == o.join(",").indexOf(e) && o.push(e);
-            var a = t.data.GoToUrl + "?keyword=" + e;
-            t.data.GoToUrl.indexOf("searchresult") > -1 ? (wx.setStorageSync("keyWordList", o),
-                wx.redirectTo({
-                    url: a
-                })) : wx.switchTab({
-                url: a,
-                success: function(e) {
-                    wx.hideKeyboard();
+        var tm = this;
+
+        var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
+        var currentData = {
+            q: tm.data.KeyWord,
+            tagId: tm.data.tagId,
+            isSoldOut: tm.data.nothing,
+            pi: this.data.dataIndex,
+            ps: this.data.dataSize
+        };
+        // 加载页面数据
+        wx.request({
+            url: currentUrl,
+            data: currentData,
+            success: function (jd) {
+
+                if (jd.data.length != 0) {
+                    let goodsList = [];
+                    jd.data.forEach(o => {
+                        goodsList.push(o)
+                    });
+                    // var newList = tm.data.rushGoodsList.concat(goodsList)
+                    var newList = goodsList
+                    tm.setData({
+                        rushGoodsList: newList,
+                        hasMore: true
+                    })
+
+                } else {
+                    tm.setData({
+                        hasMore: false,
+                        rushGoodsList: []
+                    })
                 }
-            });
-        }
+            }
+        });
+        // var t = this;
+        // if (e.length > 0) {
+        //     wx.setStorage({
+        //         key: "keyword",
+        //         data: e
+        //     });
+        //     var o = [],
+        //         r = wx.getStorageSync("keyWordList");
+        //     r && (o = r), -1 == o.join(",").indexOf(e) && o.push(e);
+        //     var a = t.data.GoToUrl + "?keyword=" + e;
+        //     t.data.GoToUrl.indexOf("searchresult") > -1 ? (wx.setStorageSync("keyWordList", o),
+        //         wx.redirectTo({
+        //             url: a
+        //         })) : wx.switchTab({
+        //         url: a,
+        //         success: function(e) {
+        //             wx.hideKeyboard();
+        //         }
+        //     });
+        // }
     },
     onReady: function() {},
     onShow: function () {
@@ -328,15 +364,15 @@ Page({
         var brandSource = event.currentTarget.dataset["source"];
         if (goodsId != tm.data.goodsId) {
             wx.showModal({
-                title: '请选择商品规格',
-                content: '',
+                title: '',
+                content: '请选择商品规格',
                 showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
-                    title: '请选择商品规格',
-                    content: '',
+                    title: '',
+                    content: '请选择商品规格',
                     showCancel: false
                 })
             } else {
@@ -425,15 +461,15 @@ Page({
         var cartSource = event.currentTarget.dataset["source"];
         if (goodsId != tm.data.goodsId) {
             wx.showModal({
-                title: '请选择商品规格',
-                content: '',
+                title: '',
+                content: '请选择商品规格',
                 showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
-                    title: '请选择商品规格',
-                    content: '',
+                    title: '',
+                    content: '请选择商品规格',
                     showCancel: false
                 })
             } else {
