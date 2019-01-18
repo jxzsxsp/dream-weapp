@@ -37,12 +37,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
-					"name": "1",
-					"pathName": "pages/ApplyReturns/ApplyReturns"
+					"name": "submitorder",
+					"pathName": "pages/submitorder/submitorder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "longvip",
+					"pathName": "pages/longvip/longvip"
 				}
 			]
 		}
