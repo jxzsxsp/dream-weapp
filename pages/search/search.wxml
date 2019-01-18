@@ -129,7 +129,7 @@
     </view>
     <!-- <navigator url='/pages/search/search'>
         <view class="fixedBtn" style='bottom:136rpx;'>
-            <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png'></image>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb_1.png'></image>
             <text>搜索</text>
         </view>
     </navigator> -->
