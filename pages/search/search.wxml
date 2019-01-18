@@ -28,7 +28,12 @@
     </view>
     <view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx;' wx:if="{{rushGoodsList.length!=0}}">
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;position:relative'>
-            <view style='padding-top:50rpx'>
+            <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
+                <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
+                    <text style='font-size:22rpx;line-height:70rpx;'>折</text>
+                </view>
+            </view>
+            <view style='padding-top:80rpx'>
                 <view style='padding-left:129rpx;position:relative;'>
                     <view style='font-size:26rpx;line-height:40rpx;color:#515151;padding-right:10rpx;'>
                         <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}" style='word-break:break-all;'>{{item.infoDesc}}</text>
