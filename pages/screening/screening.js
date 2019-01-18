@@ -282,12 +282,14 @@ Page({
             wx.showModal({
                 title: '请选择商品规格',
                 content: '',
+                showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
                     title: '请选择商品规格',
                     content: '',
+                    showCancel: false
                 })
             } else {
                 wx.showLoading({
@@ -374,12 +376,14 @@ Page({
             wx.showModal({
                 title: '请选择商品规格',
                 content: '',
+                showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
                     title: '请选择商品规格',
                     content: '',
+                    showCancel: false
                 })
             } else {
                 wx.showLoading({
@@ -699,6 +703,7 @@ Page({
         wx.showModal({
             title: '',
             content: '敬请期待',
+            showCancel: false
         })
     }
 })

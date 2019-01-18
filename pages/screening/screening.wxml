@@ -72,12 +72,14 @@
                     <view style='width:100%;height:35rpx;background-color:#fff;;'></view>
                     <view style='height:90rpx;line-height:90rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:flex-start;width:600rpx;'>
                         <view style='position:relative;width:200rpx;height:90rpx;background-color:#fff;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));'>
-                            <view style='width:100%;font-size:30rpx;line-height:90rpx;border:none;color:#fff;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-source='{{item.goodsSource}}' data-img='{{item.goodsImages[0]}}' bindtap='addGoodsToCart'>
+                            <view style='width:100%;font-size:30rpx;line-height:90rpx;border:none;color:#fff;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-source='{{item.goodsSource}}'
+                                data-img='{{item.goodsImages[0]}}' bindtap='addGoodsToCart'>
                                 <view style='position:relative;'>加入购物车</view>
                             </view>
                             <!-- <view style='clear:both'></view> -->
                         </view>
-                        <view style='position:relative;width:200rpx;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-bottom-right-radius:20rpx;' bindtap='goToBuyGoods' data-goodsid='{{item.goodsId}}' data-source='{{item.goodsSource}}' data-salePrice='{{item.salePrice}}'>
+                        <view style='position:relative;width:200rpx;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-bottom-right-radius:20rpx;' bindtap='goToBuyGoods' data-goodsid='{{item.goodsId}}'
+                            data-source='{{item.goodsSource}}' data-salePrice='{{item.salePrice}}'>
                             <view style='position:relative;'>立即购买</view>
                         </view>
                     </view>
@@ -105,27 +107,33 @@
             </view>
         </view>
         <!-- <view class="fixedBtn active"  wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;' bindtap='fixedShare'> -->
-        <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;'>
+        <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
             <text>分享</text>
             <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' data-brandId='{{brandId}}' plain='true' openType="share">分享</button>
             <!-- <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' bindtap='linkToBrandRushShare' data-brandId='{{brandId}}' plain='true' openType="share">分享</button> -->
         </view>
-        <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:136rpx;' bindtap='fixedGoToCart'>
+        <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:246rpx;' bindtap='fixedGoToCart'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
             <text>购物车</text>
             <view wx:if='{{shopcartCount > 0}}' style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
                 <!-- <text style='color:#db3c40;'></text> -->
             </view>
         </view>
+        <navigator url='/pages/search/search'>
+            <view class="fixedBtn" style='bottom:136rpx;'>
+                <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png'></image>
+                <text>搜索</text>
+            </view>
+        </navigator>
         <view class="fixedBtn" bindtap='fixedGoToHome'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
             <text>首页</text>
         </view>
-        <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:100rpx;height:100rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #959595;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
+        <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
             bindtap='goToTop'>
-            <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;' mode='widthFix'></image>
-            <text style='font-size:24rpx;color:#95959'>顶部</text>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
+            <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
         </view>
     </view>
     <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
