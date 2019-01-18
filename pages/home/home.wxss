@@ -1,11 +1,11 @@
 page {
     /* background-color: #0a023a; */
-    background:linear-gradient(rgba(21,21,21,1), rgba(74,74,74,1));
+    background: #d43d36
 }
 
 .homecont {
     /* background-color: #0a023a; */
-    background:linear-gradient(rgba(21,21,21,1), rgba(74,74,74,1));
+    background: #d43d36
 }
 
 image {
@@ -17,21 +17,42 @@ image {
     text-align: center;
     display: inline-block;
     font-size: 30rpx;
-    color: #fff;
+    color: #cacaca;
     margin-left: 25rpx;
 }
+
+.brandCount {
+    font-size: 26rpx;
+    border: 1px solid #cacaca;
+    border-radius: 40%;
+    padding: 0 5rpx;
+}
+
+.tabline{
+    width: 60rpx;
+    height: 2px;
+    background: #fff;
+    margin-top: 6rpx;
+    margin-left: 40rpx;
+    opacity: 0;
+}
+
 
 .catetitle:nth-last-child(1) {
     margin-right: 30rpx;
 }
 
 .catetitle view.active {
-    font-size: 30rpx;
+    font-size: 34rpx;
     line-height: 40rpx;
-    background: #fff;
-    color: #db3c40;
-    border-radius: 20rpx;
-    padding: 8rpx 18rpx;
+    color: #fff;
+}
+
+.catetitle view.active .brandCount{
+    border: 1px solid #fff;
+}
+.catetitle view.active{
+   opacity: 1;
 }
 
 .bg-wihte {
@@ -846,6 +867,6 @@ image {
     border-radius: 15rpx;
     text-align: center;
     left: 85rpx;
-    bottom:0rpx;
+    bottom: 0rpx;
     line-height: 80rpx;
 }

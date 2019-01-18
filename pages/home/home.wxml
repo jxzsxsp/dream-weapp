@@ -1,31 +1,65 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <import src="../common/templeates.wxml"></import>
 <view class="homecont" style="z-index:998;width:750rpx;max-width:750rpx;overflow:hidden;">
-    <view style='height:70rpx;background-color: #fff;z-index:1000;'>
-        <scroll-view scroll-x style="width: 100%;height:70rpx;white-space: nowrap; display: flex;background:#db3c40;position:fixed;top:0;z-index:998;align-items:flex-start;">
-            <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}'>
-                <view class="{{selectedCate==item.cateName?'active':''}}">{{item.cateName}}[{{item.brandCount}}]</view>
+    <view style='height:180rpx;background-color: #ba050f;z-index:1000;'>
+        <scroll-view scroll-x style="width: 100%;height:160rpx;white-space: nowrap; display: flex;background:#ba050f;position:fixed;top:0rpx;z-index:998;align-items:flex-start;">
+            <view style='position:fixed;z-index:998;width:750rpx;background:#ba050f'>
+                <view style='display:flex;flex-direction:row;justify-content:space-around;align-items: center;width:100%;background: url("http://cos.qkmai.com/qkmbb/ytal/searchbg.png") no-repeat center top;background-size:cover;width:750rpx;height:105rpx'>
+                    <view style='display:inline-block;' bindtap='onGetLink'>
+                        <image src="http://cos.qkmai.com/qkmbb/ytal/hongbaotb.png" style='display:inline-block;width:118rpx;height:76rpx'></image>
+                    </view>
+                    <view style='color:#959595;font-size:24rpx;display:inline-block;background:#f5f5f5;width:470rpx;border-radius:30rpx;height:55rpx;display:flex;flex-direction:row;align-items: center;padding:0 20rpx' bindtap='GoToSearch'>
+                        <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png' style='width:30rpx;height:30rpx;'></image>
+                        <text style='color:#959595;font-size:24rpx;display:inline-block;line-height:64rpx;padding-left:20rpx'>搜商品关键字/VIP自购最高返40%</text>
+                    </view>
+                    <view style='display:inline-block;position:relative'>
+                        <image src="http://cos.qkmai.com/qkmbb/ytal/zixuntb.png" style='display:inline-block;width:65rpx;height:57rpx'></image>
+                        <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}' style='margin-top:105rpx'>
+
+                <view class="{{selectedCate==item.cateName?'active':''}}">{{item.cateName}}
+                    <text class='brandCount'>{{item.brandCount}}</text>
+                </view>
+                <view class="tabline {{selectedCate==item.cateName?'active':''}}"></view>
             </view>
         </scroll-view>
     </view>
-    <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
-    </template>
-    <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:750rpx;height:auto;' mode='widthFix' lazy-load></image>
-    </view>
+    <!-- <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
+    </template> -->
+    <view style='background-color: #ba050f;' wx:if='{{selectedCate=="全场直播"}}'>
+        <view wx:if="{{(DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName) && isLoadEnd}}" style='display:flex;flex-direction:column;background-color: #ba050f;justify-content:space-around;align-items: center;background: url("http://cos.qkmai.com/qkmbb/ytal/yindaobg.png") no-repeat center top;background-size:cover;width:750rpx;height:210rpx;'>
+            <text style='color:#fff;font-size:28rpx;padding-bottom:20rpx；color:#edbec1;font-style:italic'>亚泰奥莱，VIP自购省钱，分享赚钱，最高返40%！</text>
+            <view style='display:flex;flex-direction:row;justify-content:space-around;align-items: center;padding-bottom:20rpx'>
+                <view style='color:#ba050f;border:1px solid #ba050f;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-right:20rpx;' bindtap='goToZZ'>我要试用</view>
+                <navigator url='/pages/longvip/longvip'>
+                    <view style='color:#ba050f;border:1px solid #ba050f;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-left:20rpx;'>正式VIP</view>
+                </navigator>
+            </view>
+        </view>
+        <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
+            <view style='width:750rpx;margin:0rpx auto;padding:0;font-size:0;z-index:99;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
+                <image style='width:750rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/350yhq_2.png'></image>
+            </view>
 
-    <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:5rpx;' wx:if='{{selectedCate=="全场直播"}}'>
-        <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image>
+        </view>
+    </view>
+    <view style='margin-left:10rpx;width:730rpx;max-width:730rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:5rpx;;background: url("http://cos.qkmai.com/qkmbb/ytal/pinpaibg_2.png") no-repeat center top;background-size:cover;width:750rpx;height:390rpx;'
+        wx:if='{{selectedCate=="全场直播"}}'>
+
+        <!-- <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg_1.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image> -->
+        <view style='z-idnex:3;'>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/ptfw_1.png' style='width:613rpx;height:auto;' mode='widthFix' lazy-load></image>
+        </view>
         <view style='font-size:0;width:128rpx;height:128rpx;margin-bottom:10rpx;display:flex;justify-content:center;align-items:center;z-idnex:3;' wx:for='{{topLogoList}}'>
             <view style='box-sizing:border-box;width:110rpx;height:110rpx;margin-bottom:10rpx;border-radius:50%;display:flex;justify-content:center;align-items:center;background-color:#fff;z-index:10;'>
                 <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;height:auto;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
-        <view style='width:735rpx;margin:0 auto;padding:0;font-size:0;z-index:99;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
-            <image style='width:735rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/300yhq.png'></image>
-        </view>
-    </view>
 
+    </view>
     <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
@@ -53,8 +87,6 @@
         </navigator>
     </view> -->
     <!-- <image src='http://cos.qkmai.com/qkmbb/ytal/wnzx.png' style='width:730rpx;vertical-align:top;margin-bottom:10rpx;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image> -->
-
-
     <view style='width:730rpx;margin-left:10rpx;padding:0;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <image style='width:730rpx;padding:0;margin:0;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/remai.png'></image>
     </view>
@@ -73,41 +105,17 @@
                 </view>
             </view>
             <view style='float:right:623rpx;position:relative;'>
-
-
-
-
-
-
-
-
-
-
-
                 <view style='position:absolute;top:-14rpx;right:148rpx;width:138rpx;height:86rpx;font-size:12px;background:url(http://cos.qkmai.com/qkmbb/ytal/graybqtb.png) no-repeat top left;background-size:138rpx 86rpx;color:#fff;' wx:if="{{userInfo.IsReferral}}">
                     <view style='width:100%;text-align:center;padding-top:5rpx;'>最高分佣</view>
                     <view style='font-size:12px;text-align:center;line-height:30rpx;color:#fff;'>{{item.topCommissionRate}}%
                         <!-- <text style='font-size:9px;'>折起</text> -->
                     </view>
                 </view>
-
-
-
-
-
-
-
-
                 <view style='position:absolute;top:-14rpx;right:0rpx;width:138rpx;height:86rpx;font-size:18px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:138rpx 86rpx;'>
                     <view style='font-size:18px;text-align:center;line-height:70rpx;color:#fff;font-weight:700;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
                         <text style='font-size:11px;'>折起</text>
                     </view>
                 </view>
-
-
-
-
-
                 <view style='height:85rpx;padding:70rpx 0 16rpx 0' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                     <view style='font-size:30rpx;'>{{item.mainTitle}}</view>
                     <view>
@@ -181,6 +189,11 @@
                     </view>
                     <!-- <view style='clear:both'></view> -->
                 </view>
+                <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
+                    bindtap='goToTop'>
+                    <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
+                    <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
+                </view>
                 <!-- <view style='padding-left:115rpx'>
                     <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
                         <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">分享专场</button>
@@ -195,9 +208,12 @@
     </view>
     <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>
-    <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:994;' wx:if="{{userInfo.IsReferral}}">
+    <!-- <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:994;' wx:if="{{userInfo.IsReferral}}">
         <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;height:auto;' mode='widthFix' lazy-load></image>
-    </navigator>
+    </navigator> -->
+
+
+
 </view>
 <view class='homepop' wx:if="{{isShow}}">
     <view class='popOpacity'></view>
@@ -206,23 +222,3 @@
         <view class='getBtn' bindtap='onGetLink'></view>
     </view>
 </view>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -36,7 +36,17 @@ Page({
         focusList: [],
         isTooLow: false,
         isShowState: true,
-        current: 0
+        current: 0,
+        DistributionInfo:""
+    },
+    GetCheckData: function () {
+        console.log()
+        console.log(1)
+        this.setData({
+            DistributionInfo: e.globalData.ReferralInfo,
+            isLoadEnd: true
+        });
+
     },
     onShow: function() {
         this.GetShopCart();
@@ -113,6 +123,18 @@ Page({
             metaData: a
         });
         var r, o, n = this;
+        e.getOpenId(function (t) {
+            wx.request({
+                url: e.getUrl("GetReferralInfo"),
+                data: {
+                    openId: t
+                },
+                success: function (t) {
+                    console.log(t.data)
+                    e.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+                }
+            });
+        });
         // if (e.globalData.userInfo && e.globalData.userInfo.IsReferral) {
         //     var u = e.globalData.ReferralInfo.ShopName;
         //     wx.setNavigationBarTitle({
@@ -148,12 +170,9 @@ Page({
                 var s = x.replace(".", "").replace(".", "");
                 tm.compareVersion(x, '6.6.1')
                 // console.log(tm.compareVersion(x, '6.6.1'))
+
                 if (tm.compareVersion(x, '6.6.1') == -1) {
                     wx.hideTabBar({})
-                    // tm.setData({
-                    //     isTooLow: true
-                    // })
-
                     wx.showModal({
                         title: '提示',
                         content: '您的微信版本过低请先升级您的微信版本',
@@ -714,6 +733,7 @@ Page({
             success: function(res) {
                 if (res.data.length > 0) {
                     let topArrList = [];
+                    // console.log(res.data)
                     res.data.forEach(o => {
                         var obj = {
                             day: '00',
@@ -904,15 +924,26 @@ Page({
         if (!this.data.hasMore) return;
         var tm = this;
         var currentUrl = '';
-        var currentData = {
-            pi: ++this.data.dataIndex,
-            ps: this.data.pageSize,
-            cate: this.data.selectedCate
-        };
+        var currentData = {}
+        // var currentData = {
+        //     pi: ++this.data.dataIndex,
+        //     ps: this.data.pageSize,
+        //     cate: this.data.selectedCate
+        // };
         if (tm.data.selectedCate == "全场直播") {
             currentUrl = e.getUrl("YTALGetPageBrandRush");
+            currentData = {
+                pi: ++this.data.dataIndex,
+                ps: this.data.pageSize,
+                cate: this.data.selectedCate
+            };
         } else {
             currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
+            currentData = {
+                pi: ++this.data.dataIndex,
+                ps: this.data.pageSize,
+                cate: this.data.selectedCate
+            };
         }
         wx.request({
             url: currentUrl,
@@ -1037,7 +1068,7 @@ Page({
             },
             success: function(jd) {
                 if (jd.data.length > 0) {
-                    console.log(jd.data)
+                    // console.log(jd.data)
                     let logoList = [];
 
                     tm.setData({
@@ -1107,6 +1138,7 @@ Page({
         }
         return 0
     },
+
     durationChange(event) {
         if (event.detail.source == "touch") {
             if (event.detail.current == 0 && this.data.preIndex > 1) {
@@ -1119,5 +1151,30 @@ Page({
                 });
             }
         }
+    },
+    GoToSearch:function(){
+        wx.navigateTo({
+            url: '../search/search'
+        })
+    },
+    onPageScroll: function (obj) {
+        if (obj.scrollTop > 363) {
+            this.setData({
+                goTopStatus: true
+            })
+        }
+    },
+    goToTop: function () {
+        wx.pageScrollTo({
+            scrollTop: 0,
+        })
+        this.setData({
+            goTopStatus: false
+        })
+    },
+    goToZZ:function(){
+        wx.switchTab({
+            url: '../discovery/discovery',
+        })
     }
 });
