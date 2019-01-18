@@ -52,7 +52,7 @@
             </view>
         </view>
         <image src="http://cos.qkmai.com/qkmbb/ytal/dakuohaotb.png" class='line'></image>
-        <view bindtap="bindStatue" class="usecdlist">
+        <view bindtap="bindStatue" class="usecdlist" data-key="0">
             <image src="http://cos.qkmai.com/qkmbb/ytal/dingdantb.png" class='order_icon'></image>
             <text>我的订单</text>
         </view>
