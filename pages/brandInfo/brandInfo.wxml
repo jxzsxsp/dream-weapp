@@ -133,10 +133,10 @@
             <text>没有已抢光商品哦~</text>
         </view>
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
-            <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:100rpx;height:100rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #959595;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
+            <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
                 bindtap='goToTop'>
-                <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;' mode='widthFix'></image>
-                <text style='font-size:24rpx;color:#95959'>顶部</text>
+                <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
+                <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
             </view>
             <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
                 <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
@@ -255,10 +255,10 @@
             <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
             <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
         </view>
-        <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:100rpx;height:100rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #959595;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
+        <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
             bindtap='goToTop'>
-            <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;' mode='widthFix'></image>
-            <text style='font-size:24rpx;color:#95959'>顶部</text>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
+            <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
         </view>
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;overflow:hidden'>
             <view style='position:absolute;top:0rpx;right:20rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
@@ -347,17 +347,25 @@
         </view>
     </view>
 
-    <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;'>
+   <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
         <text>分享</text>
         <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' data-brandId='{{brandId}}' plain='true' openType="share">分享</button>
+        <!-- <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' bindtap='linkToBrandRushShare' data-brandId='{{brandId}}' plain='true' openType="share">分享</button> -->
     </view>
-    <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:136rpx;' bindtap='fixedGoToCart'>
+    <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:246rpx;' bindtap='fixedGoToCart'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
         <text>购物车</text>
-        <view wx:if="{{shopcartCount != 0 && shopcartCount}}" style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
+        <view wx:if='{{shopcartCount > 0}}' style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
+            <!-- <text style='color:#db3c40;'></text> -->
         </view>
     </view>
+    <navigator url='/pages/search/search'>
+        <view class="fixedBtn" style='bottom:136rpx;'>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png'></image>
+            <text>搜索</text>
+        </view>
+    </navigator>
     <view class="fixedBtn" bindtap='fixedGoToHome'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
         <text>首页</text>

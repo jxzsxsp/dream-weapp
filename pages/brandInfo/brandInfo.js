@@ -50,7 +50,8 @@ Page({
         needAni: false,
         hide_good_box: true,
         goTopStatus: false,
-        goodsImages:[]
+        goodsImages:[],
+        SelectskuId:[]
     },
 
     /**
@@ -360,12 +361,14 @@ Page({
             wx.showModal({
                 title: '请选择商品规格',
                 content: '',
+                showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
                     title: '请选择商品规格',
                     content: '',
+                    showCancel: false
                 })
             } else {
                 wx.showLoading({
@@ -439,25 +442,48 @@ Page({
             }
         }
     },
+    loadData:function(e){
+
+    },
     goToBuyGoods: function(event) {
         var tm = this;
+        // var a = event.data.SelectskuId.join(",");
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
         if (goodsId != tm.data.goodsId) {
             wx.showModal({
                 title: '请选择商品规格',
                 content: '',
+                showCancel: false
             })
         } else {
             if (tm.data.skuId == "") {
                 wx.showModal({
                     title: '请选择商品规格',
                     content: '',
+                    showCancel: false
                 })
             } else {
                 wx.showLoading({
                     title: "加载中"
                 });
+                // wx.request({
+                //     url: app.getUrl("CanSubmitOrder"),
+                //     data: {
+                //         openId: app.globalData.openId,
+                //         skus: '2383_0'
+                //     },
+                //     success: function (t) {
+                //         "OK" == t.data.Status ? wx.navigateTo({
+                //             url: "../submitorder/submitorder?productsku=" + '2383_0'
+                //         }) : "NOUser" == t.data.Message ? wx.navigateTo({
+                //             url: "../login/login"
+                //         }) : (tm.setData({
+                //             SelectskuId: [],
+                //         }), tm.loadData(event));
+                //     }
+                // });
+                
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {
@@ -847,6 +873,7 @@ Page({
         wx.showModal({
             title: '',
             content: '敬请期待',
+            showCancel: false
         })
     }
 })
