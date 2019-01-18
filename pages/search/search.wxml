@@ -3,7 +3,7 @@
     <view class="searchk padding24" style='border-bottom:none;'>
         <view class="searchl">
             <view class="iconfont icon__search font40 search_btn"></view>
-            <input bindconfirm="onConfirmSearch" bindinput="onInputKeyword" class="ptb16" confirmType="search" focus="true" placeholder="请输入商品名称"  value='{{KeyWord}}'></input>
+            <input bindconfirm="onConfirmSearch" bindinput="onInputKeyword" class="ptb16" confirmType="search" focus="true" placeholder="请输入商品名称" value='{{KeyWord}}'></input>
         </view>
         <view bindtap="goToResult" class="searchr pt24 pl24" style='color:#959595;'>搜索</view>
     </view>
@@ -110,26 +110,29 @@
             <image src="{{goodsImg}}"></image>
         </view>
     </view>
+    <view class='loadmore loading' wx:if="{{ hasMore && rushGoodsList.length > 0 }}">正在加载中…</view>
+    <view class='loadmore' wx:if="{{ !hasMore && rushGoodsList.length > 0 }}">—— 我也是有底线的 ——</view>
+    <view class='loadmore' wx:if="{{ !hasMore && rushGoodsList.length == 0 }}">—— 暂时没有相关数据 ——</view>
     <!-- <view class="fixedBtn active"  wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;' bindtap='fixedShare'> -->
-    <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
+    <!-- <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
         <text>分享</text>
         <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' data-brandId='{{brandId}}' plain='true' openType="share">分享</button>
         <!-- <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' bindtap='linkToBrandRushShare' data-brandId='{{brandId}}' plain='true' openType="share">分享</button> -->
-    </view>
-    <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:246rpx;' bindtap='fixedGoToCart'>
+    <!-- </view> -->
+    <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:136rpx;' bindtap='fixedGoToCart'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
         <text>购物车</text>
         <view wx:if='{{shopcartCount > 0}}' style='position:absolute;width:30rpx;height:30rpx;line-height:30rpx;border-radius:50%;right:6rpx;top:6rpx;color:red;background-color:#fff;font-size:12px;'>{{shopcartCount}}
             <!-- <text style='color:#db3c40;'></text> -->
         </view>
     </view>
-    <navigator url='/pages/search/search'>
+    <!-- <navigator url='/pages/search/search'>
         <view class="fixedBtn" style='bottom:136rpx;'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png'></image>
             <text>搜索</text>
         </view>
-    </navigator>
+    </navigator> -->
     <view class="fixedBtn" bindtap='fixedGoToHome'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
         <text>首页</text>
@@ -140,6 +143,3 @@
     <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
     <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
 </view>
-
-<view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
-<view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>

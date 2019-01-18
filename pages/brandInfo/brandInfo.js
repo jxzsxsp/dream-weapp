@@ -51,7 +51,8 @@ Page({
         hide_good_box: true,
         goTopStatus: false,
         goodsImages:[],
-        SelectskuId:[]
+        SelectskuId: [],
+        SkuID: ""
     },
 
     /**
@@ -152,6 +153,7 @@ Page({
                                 text: t.data.TotalNum.toString()
                             })
                         }
+
                     } else "NOUser" == t.data.Message || wx.showModal({
                         title: "提示",
                         content: t.data.Message,
@@ -165,6 +167,58 @@ Page({
                 },
                 complete: function(f) {
                     // console.log(f)
+                    wx.hideLoading(), null != r && t.setData({
+                        choiceProducts: r,
+                        TotalNum: a
+                    });
+                }
+            });
+        });
+    },
+    GetShopCartAgain: function () {
+        var tm = this;
+        var t = this,
+            a = 0,
+            r = t.data.choiceProducts;
+        app.getOpenId(function (o) {
+            wx.request({
+                url: app.getUrl("getShoppingCartList"),
+                data: {
+                    openId: o
+                },
+                success: function (t) {
+                    if ("OK" == t.data.Status) {
+                        tm.setData({
+                            SkuID: t.data.Data.CartItemInfo[0].SkuID
+                        })
+                        wx.request({
+                            url: app.getUrl("CanSubmitOrder"),
+                            data: {
+                                openId: app.globalData.openId,
+                                skus: tm.data.SkuID
+                            },
+                            success: function (t) {
+                                "OK" == t.data.Status ? wx.navigateTo({
+                                    url: "../submitorder/submitorder?productsku=" + tm.data.SkuID
+                                }) : "NOUser" == t.data.Message ? wx.navigateTo({
+                                    url: "../login/login"
+                                }) : (tm.setData({
+                                    SelectskuId: [],
+                                }), tm.loadData(event));
+                            }
+                        });
+                    } else "NOUser" == t.data.Message || wx.showModal({
+                        title: "提示",
+                        content: t.data.Message,
+                        showCancel: !1,
+                        success: function (t) {
+                            t.confirm && wx.navigateBack({
+                                delta: 1
+                            });
+                        }
+                    });
+                },
+                complete: function () {
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -523,7 +577,7 @@ Page({
                                     //     }
                                     // }
                                     wx.hideLoading();
-                                tm.touchOnGoods(event)
+                                //tm.touchOnGoods(event)
                                 // wx.showModal({
                                 //     title: '',
                                 //     content: '成功加入购物车',
@@ -546,9 +600,10 @@ Page({
                                     goodsSkuName: '',
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
-                                wx.switchTab({
-                                    url: '/pages/shopcart/shopcart'
-                                })
+                                tm.GetShopCartAgain();
+                                // wx.switchTab({
+                                //     url: '/pages/shopcart/shopcart'
+                                // })
                         }
                     }
                 })

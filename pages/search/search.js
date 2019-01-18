@@ -3,24 +3,27 @@ var conf = require("../../utils/config.js"),
 Page({
     data: {
         KeyWord: "",
-        KeyWordList: ["大衣","羽绒服","裤","保暖内衣","袜子","羊毛衫","皮靴","女靴","运动鞋","打底裤"],
+        KeyWordList: ["大衣", "羽绒服", "裤", "保暖内衣", "袜子", "羊毛衫", "皮靴", "女靴", "运动鞋", "打底裤"],
         GoToUrl: "../searchresult/searchresult",
-        rushGoodsList:[],
+        rushGoodsList: [],
         userInfo: {},
         DistributionInfo: "",
         shopcartCount: 0,
-        inputValue:"",
-        dataIndex:1,
-        dataSize:10,
-        isSoldOut:1,
+        inputValue: "",
+        dataIndex: 1,
+        dataSize: 10,
+        isSoldOut: 1,
         hide_good_box: true,
         goTopStatus: false,
         needAni: false,
-        tagId:2,
-        nothing:0,
-        hasMore:true
+        tagId: 3,
+        nothing: 0,
+        hasMore: true,
+        goTopStatus: false,
+        SelectskuId: [],
+        SkuID: ""
     },
-    onLoad: function (options) {
+    onLoad: function(options) {
         // var t = this, o = "../searchresult/searchresult", r = wx.getStorageSync("keyWordList");
         // r ? (r.reverse(), t.setData({
         //     KeyWordList: r,
@@ -34,7 +37,7 @@ Page({
         //     imgUrl: options.picUrl,
         //     tagId: options.tagId
         // })
-        app.getUserInfo(function (t) {
+        app.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t,
             })
@@ -42,6 +45,13 @@ Page({
         this.busPos = {};
         this.busPos['x'] = 39;
         this.busPos['y'] = app.globalData.hh - 120;
+    },
+    onPageScroll: function (obj) {
+        if (obj.scrollTop > 363) {
+            this.setData({
+                goTopStatus: true
+            })
+        }
     },
     gotoHome: function(e) {
         wx.navigateBack({
@@ -65,11 +75,12 @@ Page({
         this.gotoSearch(t);
     },
     removeKeyWord: function(e) {
-        var t = e.currentTarget.dataset.keyword, o = wx.getStorageSync("keyWordList");
-        o && (o.reverse(), this.removeByValue(o, t), wx.setStorageSync("keyWordList", o), 
-        this.setData({
-            KeyWordList: o
-        }));
+        var t = e.currentTarget.dataset.keyword,
+            o = wx.getStorageSync("keyWordList");
+        o && (o.reverse(), this.removeByValue(o, t), wx.setStorageSync("keyWordList", o),
+            this.setData({
+                KeyWordList: o
+            }));
     },
     ClearKeyWord: function(e) {
         wx.showModal({
@@ -83,10 +94,11 @@ Page({
         });
     },
     removeByValue: function(e, t) {
-        for (var o = 0; o < e.length; o++) if (e[o] == t) {
-            e.splice(o, 1);
-            break;
-        }
+        for (var o = 0; o < e.length; o++)
+            if (e[o] == t) {
+                e.splice(o, 1);
+                break;
+            }
     },
     btngotoSearch: function() {
         this.gotoSearch(this.data.KeyWord);
@@ -98,13 +110,14 @@ Page({
                 key: "keyword",
                 data: e
             });
-            var o = [], r = wx.getStorageSync("keyWordList");
+            var o = [],
+                r = wx.getStorageSync("keyWordList");
             r && (o = r), -1 == o.join(",").indexOf(e) && o.push(e);
             var a = t.data.GoToUrl + "?keyword=" + e;
-            t.data.GoToUrl.indexOf("searchresult") > -1 ? (wx.setStorageSync("keyWordList", o), 
-            wx.redirectTo({
-                url: a
-            })) : wx.switchTab({
+            t.data.GoToUrl.indexOf("searchresult") > -1 ? (wx.setStorageSync("keyWordList", o),
+                wx.redirectTo({
+                    url: a
+                })) : wx.switchTab({
                 url: a,
                 success: function(e) {
                     wx.hideKeyboard();
@@ -113,18 +126,24 @@ Page({
         }
     },
     onReady: function() {},
-    onShow: function() {
-        this.GetShopCart()
+    onShow: function () {
+        this.GetShopCart();
     },
-    onHide: function() {},
-    onUnload: function() {},
-    onReachBottom: function () {
-        if (this.data.hasMore) {
-            wx.showNavigationBarLoading();
-            this.loadMore();
-            wx.hideNavigationBarLoading();
-        }
-    },
+    // onShareAppMessage: function () {
+    //     var tm = this;
+    //     var picUrl = tm.data.imgUrl;
+    //     var tagId = tm.data.tagId;
+
+    //     var i = '/pages/search/search?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
+    //     var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+    //     app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+    //     //console.log(i)
+    //     return {
+    //         title: title,
+    //         path: i,
+    //         imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
+    //     }
+    // },
     GetShopCart: function () {
         var tm = this;
         var t = this,
@@ -138,6 +157,7 @@ Page({
                 },
                 success: function (t) {
                     if ("OK" == t.data.Status) {
+                        // console.log(t.data)
                         tm.setData({
                             shopcartCount: t.data.Data.RecordCount
                         })
@@ -155,6 +175,7 @@ Page({
                                 text: t.data.TotalNum.toString()
                             })
                         }
+
                     } else "NOUser" == t.data.Message || wx.showModal({
                         title: "提示",
                         content: t.data.Message,
@@ -166,7 +187,8 @@ Page({
                         }
                     });
                 },
-                complete: function () {
+                complete: function (f) {
+                    // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -175,18 +197,80 @@ Page({
             });
         });
     },
-    busAnimation: function () {
+    onHide: function() {},
+    onUnload: function() {},
+    onReachBottom: function() {
+        console.log("onReachBottom")
+        if (this.data.hasMore) {
+            wx.showNavigationBarLoading();
+            this.loadMore();
+            wx.hideNavigationBarLoading();
+        }
+    },
+    GetShopCartAgain: function() {
+        var tm = this;
+        var t = this,
+            a = 0,
+            r = t.data.choiceProducts;
+        app.getOpenId(function(o) {
+            wx.request({
+                url: app.getUrl("getShoppingCartList"),
+                data: {
+                    openId: o
+                },
+                success: function(t) {
+                    if ("OK" == t.data.Status) {
+                        tm.setData({
+                            SkuID: t.data.Data.CartItemInfo[0].SkuID
+                        })
+                        wx.request({
+                            url: app.getUrl("CanSubmitOrder"),
+                            data: {
+                                openId: app.globalData.openId,
+                                skus: tm.data.SkuID
+                            },
+                            success: function (t) {
+                                "OK" == t.data.Status ? wx.navigateTo({
+                                    url: "../submitorder/submitorder?productsku=" + tm.data.SkuID
+                                }) : "NOUser" == t.data.Message ? wx.navigateTo({
+                                    url: "../login/login"
+                                }) : (tm.setData({
+                                    SelectskuId: [],
+                                }), tm.loadData(event));
+                            }
+                        });
+                    } else "NOUser" == t.data.Message || wx.showModal({
+                        title: "提示",
+                        content: t.data.Message,
+                        showCancel: !1,
+                        success: function(t) {
+                            t.confirm && wx.navigateBack({
+                                delta: 1
+                            });
+                        }
+                    });
+                },
+                complete: function() {
+                    wx.hideLoading(), null != r && t.setData({
+                        choiceProducts: r,
+                        TotalNum: a
+                    });
+                }
+            });
+        });
+    },
+    busAnimation: function() {
         var that = this;
         that.setData({
             needAni: true
         });
-        setTimeout(function () {
+        setTimeout(function() {
             that.setData({
                 needAni: false
             });
         }, 500);
     },
-    touchOnGoods: function (e) {
+    touchOnGoods: function(e) {
         if (!this.data.hide_good_box) return;
         this.finger = {};
         var topPoint = {};
@@ -197,7 +281,7 @@ Page({
         this.linePos = app.bezier([this.busPos, topPoint, this.finger], 30);
         this.startAnimation(e);
     },
-    startAnimation: function (e) {
+    startAnimation: function(e) {
         var index = 0,
             that = this,
             bezier_points = that.linePos['bezier_points'];
@@ -208,7 +292,7 @@ Page({
         })
         var len = bezier_points.length;
         index = len
-        this.timer = setInterval(function () {
+        this.timer = setInterval(function() {
             for (let i = index - 1; i > -1; i--) {
                 that.setData({
                     bus_x: bezier_points[i]['x'],
@@ -223,7 +307,7 @@ Page({
             }
         }, 25);
     },
-    selectSkuId: function (event) {
+    selectSkuId: function(event) {
         // if(event.currentTarget.dataset("count") == 0) return;
         var skuId = event.currentTarget.dataset["skuid"];
         var skuName = event.currentTarget.dataset["skuname"];
@@ -237,7 +321,7 @@ Page({
             goodsImg: goodsImage
         });
     },
-    goToBuyGoods: function (event) {
+    goToBuyGoods: function(event) {
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -259,6 +343,7 @@ Page({
                 wx.showLoading({
                     title: "加载中"
                 });
+
                 wx.request({
                     url: app.getUrl("YTALPostAddGoodsToCart"),
                     data: {
@@ -269,7 +354,7 @@ Page({
                         brandSource: brandSource,
                         salePrice: salePrice
                     },
-                    success: function (res) {
+                    success: function(res) {
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({
@@ -277,28 +362,28 @@ Page({
                                 content: jd.message,
                                 showCancel: false
                             })
-                                break;
+                            break;
                             case 'success':
-                                // wx.setTabBarBadge({
-                                //     index: 3,
-                                //     text: t.data.TotalNum.toString()
-                                // })
-                                // wx.showModal({
-                                // title: '',
-                                // content: '成功加入购物车',
-                                // cancelText: "再逛逛",
-                                // confirmText: "去结算",
-                                // success(res) {
-                                //     if (res.confirm) {
-                                //         wx.switchTab({
-                                //             url: '/pages/shopcart/shopcart'
-                                //         })
-                                //     } else if (res.cancel) {
+                                    // wx.setTabBarBadge({
+                                    //     index: 3,
+                                    //     text: t.data.TotalNum.toString()
+                                    // })
+                                    // wx.showModal({
+                                    // title: '',
+                                    // content: '成功加入购物车',
+                                    // cancelText: "再逛逛",
+                                    // confirmText: "去结算",
+                                    // success(res) {
+                                    //     if (res.confirm) {
+                                    //         wx.switchTab({
+                                    //             url: '/pages/shopcart/shopcart'
+                                    //         })
+                                    //     } else if (res.cancel) {
 
-                                //     }
-                                // }
-                                wx.hideLoading();
-                                tm.touchOnGoods(event)
+                                    //     }
+                                    // }
+                                    wx.hideLoading();
+                                // tm.touchOnGoods(event)
                                 // wx.showModal({
                                 //     title: '',
                                 //     content: '成功加入购物车',
@@ -321,16 +406,18 @@ Page({
                                     goodsSkuName: '',
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
-                                wx.switchTab({
-                                    url: '/pages/shopcart/shopcart'
-                                })
+                                tm.GetShopCartAgain();
+                               
+                                // wx.switchTab({
+                                //     url: '/pages/shopcart/shopcart'
+                                // })
                         }
                     }
                 })
             }
         }
     },
-    addGoodsToCart: function (event) {
+    addGoodsToCart: function(event) {
 
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
@@ -363,7 +450,7 @@ Page({
                         brandSource: cartSource,
                         salePrice: salePrice
                     },
-                    success: function (res) {
+                    success: function(res) {
                         wx.hideLoading();
                         var jd = res.data;
                         switch (jd.status) {
@@ -372,9 +459,9 @@ Page({
                                 content: jd.message,
                                 showCancel: false
                             })
-                                break;
+                            break;
                             case 'success':
-                                tm.touchOnGoods(event)
+                                    tm.touchOnGoods(event)
                                 // wx.showModal({
                                 //     title: '',
                                 //     content: '成功加入购物车',
@@ -398,13 +485,13 @@ Page({
                                 });
                         }
                     },
-                    complete: function (res) { }
+                    complete: function(res) {}
                 })
             }
         }
 
     },
-    previewImg: function (event) {
+    previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
 
@@ -413,26 +500,26 @@ Page({
             urls: imgs
         })
     },
-    filterNum: function (value, count) {
+    filterNum: function(value, count) {
         var num = Number(value)
         return num.toFixed(count)
     },
-    copy: function (e) {
+    copy: function(e) {
         wx.setClipboardData({
             data: e.target.dataset.val,
-            success: function (res) {
+            success: function(res) {
                 wx.showToast({
                     title: '复制成功',
                 });
             }
         });
     },
-    fixedGoToCart: function () {
+    fixedGoToCart: function() {
         wx.switchTab({
             url: '/pages/shopcart/shopcart'
         })
     },
-    fixedGoToHome: function () {
+    fixedGoToHome: function() {
         wx.switchTab({
             url: '/pages/home/home'
         })
@@ -442,12 +529,12 @@ Page({
     //         inputValue: e.detail.value
     //     })
     // },
-    goToResult:function(){
+    goToResult: function() {
         var tm = this;
 
         var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
-            // q: tm.data.KeyWord,
+            q: tm.data.KeyWord,
             tagId: tm.data.tagId,
             isSoldOut: tm.data.nothing,
             pi: this.data.dataIndex,
@@ -457,31 +544,35 @@ Page({
         wx.request({
             url: currentUrl,
             data: currentData,
-            success: function (jd) {
+            success: function(jd) {
 
                 if (jd.data.length != 0) {
                     let goodsList = [];
                     jd.data.forEach(o => {
                         goodsList.push(o)
                     });
-                    var newList = tm.data.rushGoodsList.concat(goodsList)
+                    // var newList = tm.data.rushGoodsList.concat(goodsList)
+                    var newList = goodsList
                     tm.setData({
-                        rushGoodsList: newList
+                        rushGoodsList: newList,
+                        hasMore: true
                     })
 
                 } else {
                     tm.setData({
-                        hasMore: false
+                        hasMore: false,
+                        rushGoodsList:[]
                     })
                 }
             }
         });
     },
-    loadMore: function () {
+    loadMore: function() {
         if (!this.data.hasMore) return;
         var tm = this;
         var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
+            q: tm.data.KeyWord,
             tagId: tm.data.tagId,
             isSoldOut: tm.data.nothing,
             pi: ++this.data.dataIndex,
@@ -491,7 +582,7 @@ Page({
         wx.request({
             url: currentUrl,
             data: currentData,
-            success: function (jd) {
+            success: function(jd) {
 
                 if (jd.data.length != 0) {
                     let goodsList = [];
@@ -511,18 +602,26 @@ Page({
             }
         });
     },
-    sharePro: function () {
+    sharePro: function() {
         wx.showModal({
             title: '',
             content: '敬请期待',
             showCancel: false
         })
     },
-    onKeyWordClick:function(e){
-        var tm= this;
+    onKeyWordClick: function(e) {
+        var tm = this;
         var KeyWord = e.target.dataset.keyword;
         tm.setData({
             KeyWord: KeyWord
         })
-    }
+    },
+    goToTop: function () {
+        wx.pageScrollTo({
+            scrollTop: 0,
+        })
+        this.setData({
+            goTopStatus: false
+        })
+    },
 });
