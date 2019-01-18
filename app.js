@@ -130,9 +130,7 @@ Number.prototype.toFixed = function (t) {
 
       fundebug.notifyError(new Error("app-getUserInfo"), {
           name: "app用户授权",
-          metaData: {
-              name: "张三"
-          }
+          metaData: t
       });
 
 
