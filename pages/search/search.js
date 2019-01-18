@@ -105,7 +105,7 @@ Page({
     },
     gotoSearch: function(e) {
         var tm = this;
-
+        tm.goToTop();
         var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
             q: tm.data.KeyWord,
@@ -567,7 +567,7 @@ Page({
     // },
     goToResult: function() {
         var tm = this;
-
+        tm.goToTop();
         var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
             q: tm.data.KeyWord,

@@ -7,6 +7,14 @@
         </view>
         <view bindtap="goToResult" class="searchr pt24 pl24" style='color:#ba050f;'>搜索</view>
     </view>
+
+</view>
+
+<!-- 
+<view class="searchlslistq pt24">
+    <button bindtap="ClearKeyWord" class="qkls pt16 pb16">清空历史记录</button>
+</view> -->
+<view style='margin-top:130rpx;'>
     <view>
         <view class="searls " style='margin:0 24rpx;margin-top:-20rpx;padding:20rpx'>
             <view class="searlsl" style='font-size:30rpx'>热门搜索</view>
@@ -18,13 +26,6 @@
             </view>
         </view>
     </view>
-</view>
-
-<!-- 
-<view class="searchlslistq pt24">
-    <button bindtap="ClearKeyWord" class="qkls pt16 pb16">清空历史记录</button>
-</view> -->
-<view style='margin-top:390rpx;'>
     <view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx;' wx:if="{{rushGoodsList.length!=0}}">
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:10rpx;background:#fff;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;position:relative'>
             <view style='padding-top:50rpx'>
