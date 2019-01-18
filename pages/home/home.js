@@ -116,12 +116,16 @@ Page({
             tm.setData({
                 userInfo: t
             })
+            e.globalData.fundebug.notifyError(new Error("onload"), {
+                name: "首页onload",
+                metaData: a
+            });
         });
 
-        e.globalData.fundebug.notifyError(new Error("onload"), {
-            name: "首页onload",
-            metaData: a
-        });
+        // e.globalData.fundebug.notifyError(new Error("onload"), {
+        //     name: "首页onload",
+        //     metaData: a
+        // });
         var r, o, n = this;
         e.getOpenId(function (t) {
             wx.request({
