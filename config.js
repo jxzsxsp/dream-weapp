@@ -1,9 +1,9 @@
 const config = {
-  environment: 'PRODUCT',
+  environment: 'PRELEASE',
   app_id: 6,
-  domain_name: 'somersault-cloud-api.lianshang.com',
-  sso_url: 'https://sso2.lianshang.com',
-  base_url: 'https://somersault-cloud-api.lianshang.com',
+  domain_name: 'somersault-cloud-api.lian-shang.cn',
+  sso_url: 'https://sso2.lian-shang.cn',
+  base_url: 'https://somersault-cloud-api.lian-shang.cn',
   pay_url: ''
 }
 
