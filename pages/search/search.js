@@ -46,7 +46,7 @@ Page({
         this.busPos['x'] = 39;
         this.busPos['y'] = app.globalData.hh - 120;
     },
-    onPageScroll: function (obj) {
+    onPageScroll: function(obj) {
         if (obj.scrollTop > 363) {
             this.setData({
                 goTopStatus: true
@@ -118,7 +118,7 @@ Page({
         wx.request({
             url: currentUrl,
             data: currentData,
-            success: function (jd) {
+            success: function(jd) {
 
                 if (jd.data.length != 0) {
                     let goodsList = [];
@@ -162,7 +162,7 @@ Page({
         // }
     },
     onReady: function() {},
-    onShow: function () {
+    onShow: function() {
         this.GetShopCart();
     },
     // onShareAppMessage: function () {
@@ -180,18 +180,18 @@ Page({
     //         imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
     //     }
     // },
-    GetShopCart: function () {
+    GetShopCart: function() {
         var tm = this;
         var t = this,
             a = 0,
             r = t.data.choiceProducts;
-        app.getOpenId(function (o) {
+        app.getOpenId(function(o) {
             wx.request({
                 url: app.getUrl("getShoppingCartList"),
                 data: {
                     openId: o
                 },
-                success: function (t) {
+                success: function(t) {
                     if ("OK" == t.data.Status) {
                         // console.log(t.data)
                         tm.setData({
@@ -216,14 +216,14 @@ Page({
                         title: "提示",
                         content: t.data.Message,
                         showCancel: !1,
-                        success: function (t) {
+                        success: function(t) {
                             t.confirm && wx.navigateBack({
                                 delta: 1
                             });
                         }
                     });
                 },
-                complete: function (f) {
+                complete: function(f) {
                     // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
@@ -238,9 +238,15 @@ Page({
     onReachBottom: function() {
         console.log("onReachBottom")
         if (this.data.hasMore) {
+            // wx.showLoading({
+            //     title: '加载中',
+            // })
             wx.showNavigationBarLoading();
             this.loadMore();
             wx.hideNavigationBarLoading();
+            // setTimeout(function () {
+            //     wx.hideLoading()
+            // }, 2000)
         }
     },
     GetShopCartAgain: function() {
@@ -265,7 +271,7 @@ Page({
                                 openId: app.globalData.openId,
                                 skus: tm.data.SkuID
                             },
-                            success: function (t) {
+                            success: function(t) {
                                 "OK" == t.data.Status ? wx.navigateTo({
                                     url: "../submitorder/submitorder?productsku=" + tm.data.SkuID
                                 }) : "NOUser" == t.data.Message ? wx.navigateTo({
@@ -350,12 +356,23 @@ Page({
         var goodsId = event.currentTarget.dataset["goodsid"];
         var goodsImage = event.currentTarget.dataset["img"]
         var tm = this;
+        if (tm.data.goodsSkuId != skuId) {
+            wx.showLoading({
+                title: '加载中',
+            })
+        }
         tm.setData({
             goodsSkuId: skuId,
             goodsSkuName: skuName,
             goodsId: goodsId,
             goodsImg: goodsImage
         });
+        if (tm.data.goodsSkuId == skuId) {
+
+            setTimeout(function() {
+                wx.hideLoading()
+            }, 1000)
+        }
     },
     goToBuyGoods: function(event) {
         var tm = this;
@@ -443,7 +460,7 @@ Page({
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
                                 tm.GetShopCartAgain();
-                               
+
                                 // wx.switchTab({
                                 //     url: '/pages/shopcart/shopcart'
                                 // })
@@ -597,7 +614,7 @@ Page({
                 } else {
                     tm.setData({
                         hasMore: false,
-                        rushGoodsList:[]
+                        rushGoodsList: []
                     })
                 }
             }
@@ -605,6 +622,9 @@ Page({
     },
     loadMore: function() {
         if (!this.data.hasMore) return;
+        // wx.showLoading({
+        //     title: "加载中"
+        // });
         var tm = this;
         var currentUrl = app.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
@@ -616,48 +636,48 @@ Page({
         };
         // 加载页面数据
         wx.request({
-            url: currentUrl,
-            data: currentData,
-            success: function(jd) {
+                url: currentUrl,
+                data: currentData,
+                success: function(jd) {
 
-                if (jd.data.length != 0) {
-                    let goodsList = [];
-                    jd.data.forEach(o => {
-                        goodsList.push(o)
-                    });
-                    var newList = tm.data.rushGoodsList.concat(goodsList)
-                    tm.setData({
-                        rushGoodsList: newList
-                    })
-
+                    if (jd.data.length != 0) {
+                        let goodsList = [];
+                        jd.data.forEach(o => {
+                            goodsList.push(o)
+                        });
+                        var newList = tm.data.rushGoodsList.concat(goodsList)
+                        tm.setData({
+                            rushGoodsList: newList
+                        })
                 } else {
                     tm.setData({
                         hasMore: false
                     })
                 }
+
             }
         });
-    },
-    sharePro: function() {
-        wx.showModal({
-            title: '',
-            content: '敬请期待',
-            showCancel: false
-        })
-    },
-    onKeyWordClick: function(e) {
-        var tm = this;
-        var KeyWord = e.target.dataset.keyword;
-        tm.setData({
-            KeyWord: KeyWord
-        })
-    },
-    goToTop: function () {
-        wx.pageScrollTo({
-            scrollTop: 0,
-        })
-        this.setData({
-            goTopStatus: false
-        })
-    },
+},
+sharePro: function() {
+    wx.showModal({
+        title: '',
+        content: '敬请期待',
+        showCancel: false
+    })
+},
+onKeyWordClick: function(e) {
+    var tm = this;
+    var KeyWord = e.target.dataset.keyword;
+    tm.setData({
+        KeyWord: KeyWord
+    })
+},
+goToTop: function() {
+    wx.pageScrollTo({
+        scrollTop: 0,
+    })
+    this.setData({
+        goTopStatus: false
+    })
+},
 });
