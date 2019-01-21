@@ -18,8 +18,6 @@ Page({
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
         // console.log("执行selectAll")
         // tm.selectAll();
-        console.log(t)
-        console.log(a)
     },
     loadData: function (e, Boolean) {
         // console.log("loadData执行")
@@ -134,7 +132,7 @@ Page({
         });
     },
     selectAll: function() {
-        console.log("selectAll")
+        // console.log("selectAll")
         var t = this,
             e = [],
             a = !t.data.selectAllStatus,
@@ -214,7 +212,7 @@ Page({
 
     },
     DelCarts: function(e) {
-        console.log("执行DelCarts")
+        // console.log("执行DelCarts")
         var a = this,
             n = e.currentTarget.dataset.skuid,
             s = a.data.SelectskuId;
@@ -257,7 +255,7 @@ Page({
         });
     },
     SettlementShopCart: function() {
-        console.log("执行SettlementShopCart")
+        // console.log("执行SettlementShopCart")
         var e = this,
             a = e.data.SelectskuId.join(",");
         e.data.ShopCarts, e.data.SelectskuId;
@@ -292,7 +290,7 @@ Page({
                     },
                     complete: function() {
                         e.loadData(e);
-                        console.log("complete")
+                        // console.log("complete")
                     }
                 });
             });
@@ -324,7 +322,7 @@ Page({
         }
     },
     ChangeQuantiy: function(e, a, n) {
-        console.log("执行ChangeQuantiy")
+        // console.log("执行ChangeQuantiy")
         var tm = this;
         t.getOpenId(function(s) {
             wx.request({
@@ -382,5 +380,32 @@ Page({
     onHide: function() {},
     onUnload: function() {},
     onPullDownRefresh: function() {},
-    onReachBottom: function() {}
+    onReachBottom: function() {},
+    backInfo: function (event) {
+        var tm = this,
+            a = event.currentTarget.dataset.sku;
+            // console.log(a)
+        var hx = encodeURIComponent(a)
+        // hx = "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=YTALGetGoodsBrand&sku=" + hx
+        // console.log(hx)
+
+        wx.request({
+            url: t.getUrl("YTALGetGoodsBrand"),
+            data: {
+                sku: a
+            },
+            success: function (t) {
+                console.log(t.data)
+                wx.navigateTo({
+                    // brandId=2c9089c2685cc4020168656b9ea73b66& brandSource=dadacang
+                    url: "../brandInfo/brandInfo?brandId=" + t.data.brandId + "&brandSource=" + t.data.brandSource
+                });
+            },
+            complete: function () {
+
+            }
+        });
+
+
+    }
 });

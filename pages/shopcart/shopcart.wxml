@@ -24,7 +24,14 @@
                 </view> -->
                 <!-- <view class="shopcart-m bg-wihte" class="supplier" style='margin-top:200rpx;'> -->
                 <view class="shopcart-m bg-wihte" class="supplier">
-                    <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}">
+                    <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}" style='position:relative;padding-top:80rpx;'>
+
+
+                    <view style='position:absolute;right:20rpx;top:10rpx;' bindtap='backInfo' data-sku='{{items.SKU}}'>返回专场</view>
+
+
+
+
                         <view class="shopcart-ck {{items.IsValid&&items.HasEnoughStock?'':'ck-txt'}}">
                             <view wx:if="{{items.IsValid&&items.HasEnoughStock}}">
                                 <icon bindtap="selectList" color="#db3c40" data-skuid="{{items.SkuID}}" type="success" wx:if="{{items.selected}}"></icon>
