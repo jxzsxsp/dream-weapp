@@ -161,8 +161,8 @@ page {
     left: 50%;
     top: 50%;
     z-index: +99;
-    border: 1px solid rgba(0, 116, 255, 0.61);
-    background: rgba(120, 188, 255, 0.2);
+    border: 1px solid rgba(202, 202, 202, 1);
+    background: rgba(202, 202, 202, 0.2);
 }
 
 .good_box image {

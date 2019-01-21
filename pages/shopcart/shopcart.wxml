@@ -27,7 +27,7 @@
                     <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}" style='position:relative;padding-top:80rpx;'>
 
 
-                    <view style='position:absolute;right:20rpx;top:10rpx;' bindtap='backInfo' data-sku='{{items.SKU}}'>返回专场</view>
+                    <view style='position:absolute;right:10rpx;top:10rpx;color:#ba050f;font-size:13px;' bindtap='backInfo' data-sku='{{items.SKU}}'>返回专场</view>
 
 
 
