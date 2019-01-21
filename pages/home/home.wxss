@@ -843,7 +843,7 @@ image {
     width: 528rpx;
     height: 634rpx;
     position: absolute;
-    top: 400rpx;
+    top: 300rpx;
     left: 50%;
     margin-left: -265rpx;
     background: url("http://cos.qkmai.com/qkmbb/ytal/wuliutz.png");
@@ -856,10 +856,8 @@ image {
     height: 68rpx;
     background: url("http://cos.qkmai.com/qkmbb/ytal/guanbitb.png");
     background-size: cover;
-
-
     top: -135rpx;
-    right: 90rpx;
+    right: 0rpx;
 }
 
 .getBtn {

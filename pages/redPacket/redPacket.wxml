@@ -20,7 +20,7 @@
         <image src="http://cos.qkmai.com/qkmbb/ytal/350zdbt.png" style='width:494rpx;height:44rpx;margin:0 auto 35rpx auto'></image>
         <navigator url="/pages/productdetail/productdetail?id=1052" hover-class="other-navigator-hover">
             <view class='product product_one'>
-                <image src='http://cos.qkmai.com/qkmbb/ytal/298haixian.png' class='product_imgage'></image>
+                <image src='http://cos.qkmai.com/qkmbb/ytal/299haixian.png' class='product_imgage'></image>
                 <text class='tit'>活动商品1</text>
                 <view class='text_container'>
                     <view>
