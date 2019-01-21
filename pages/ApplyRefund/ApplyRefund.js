@@ -15,9 +15,9 @@ Page({
         BankAccountNo: "",
         ShowReason: !0,
         ShowType: !0,
-        ShowReasonList: [ "拍错/多拍/不想要", "缺货", "未按约定时间发货","质量问题退货","发错货" ],
+        ShowReasonList: [ "大小/款式与描述不符", "漏发/未收到货/发错货", "有瑕疵/质量问题","有污渍/发霉变质","到的商品有破损" ],
         ShowReasonIndex: -1,
-        RefundTextList: [ "退到预付款", "退到银行卡", "原路返回", "到店退款" ],
+        RefundTextList: [ "退到预付款", "原路返回", "到店退款" ],
         ShowRefundIndex: -1
     },
     onLoad: function(t) {
@@ -46,11 +46,11 @@ Page({
             url: "../login/login"
         }); else if ("OK" == t.Status) {
             var n = [];
-            t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款"), t.CanReturnOnStore && n.push("到店退款"), 
-            n.push("退到银行卡"), this.setData({
-                RefundMoney: t.MaxRefundAmount,
-                RefundTextList: n
-            });
+            t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款"), t.CanReturnOnStore && n.push("到店退款")
+            // n.push("退到银行卡"), this.setData({
+            //     RefundMoney: t.MaxRefundAmount,
+            //     RefundTextList: n
+            // });
         } else wx.showModal({
             title: "提示",
             content: t.Message,

@@ -26,9 +26,9 @@ Page({
         FormId: "",
         ReturnMoney: 0,
         ImageIndex: 0,
-        ShowReasonList: [ "拍错/多拍/不想要", "缺货", "未按约定时间发货" ],
+        ShowReasonList: [ "大小/款式与描述不符", "漏发/未收到货/发错货", "有瑕疵/质量问题","有污渍/发霉变质","到的商品有破损" ],
         ShowReasonIndex: -1,
-        RefundTextList: [ "退到预付款", "退到银行卡", "原路返回", "到店退款" ],
+        RefundTextList: [ "退到预付款", "原路返回", "到店退款" ],
         ShowRefundIndex: -1,
         AfterSaleTypeList: [ "退货退款", "仅退款" ],
         AfterSaleTypeId: -1,
@@ -64,8 +64,8 @@ Page({
             url: "../login/login"
         }); else if ("OK" == t.Status) {
             var a = [];
-            t.CanBackReturn && a.push("原路返回"), t.CanToBalance && a.push("退到预付款"), t.CanReturnOnStore && a.push("到店退款"), 
-            a.push("退到银行卡");
+            t.CanBackReturn && a.push("原路返回"), t.CanToBalance && a.push("退到预付款"), t.CanReturnOnStore && a.push("到店退款")
+            // a.push("退到银行卡");
             var n = [ "退货退款", "仅退款" ];
             t.MaxRefundAmount <= 0 && (n = [ "退货退款" ]), this.setData({
                 MostMoney: t.MaxRefundAmount,
