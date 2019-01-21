@@ -2,7 +2,10 @@
 <import src="../common/templeates.wxml"></import>
 <view class="homecont" style="z-index:998;width:750rpx;max-width:750rpx;overflow:hidden;">
     <view style='width:750rpx;height:70rpx;background:#8e0009;font-size:24rpx;color:#edbec1;z-index:1000;position:fixed;top:0rpx;left:0;display:flex;flex-direction:row;justify-content:center;align-items: center;'>
-    <text style='margin-left:120rpx'>点击</text><image src="http://cos.qkmai.com/qkmbb/ytal/dianddtb.png" style='display:inline-block;width:34rpx;height:12rpx;margin:0 20rpx'></image><text>添加到我的小程序</text><image src="http://cos.qkmai.com/qkmbb/ytal/shouzhitb.png" style='；display:inline-block;width:29rpx;height:38rpx;margin-left:30rpx'></image>
+        <text style='margin-left:120rpx'>点击</text>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/dianddtb.png" style='display:inline-block;width:34rpx;height:12rpx;margin:0 20rpx'></image>
+        <text>添加到我的小程序</text>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/shouzhitb.png" style='；display:inline-block;width:29rpx;height:38rpx;margin-left:30rpx'></image>
     </view>
     <view style='height:250rpx;background-color: #ba050f;z-index:1000;'>
         <scroll-view scroll-x style="width: 100%;height:160rpx;white-space: nowrap; display: flex;background:#ba050f;position:fixed;top:70rpx;left:0;z-index:998;align-items:flex-start;">
@@ -32,7 +35,7 @@
     </view>
     <!-- <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
     </template> -->
-    <view style='background-color: #ba050f;' wx:if='{{selectedCate=="全场直播"}}' >
+    <view style='background-color: #ba050f;' wx:if='{{selectedCate=="全场直播"}}'>
         <view wx:if="{{(DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName) && isLoadEnd}}" style='display:flex;flex-direction:column;background-color: #ba050f;justify-content:space-around;align-items: center;background: url("http://cos.qkmai.com/qkmbb/ytal/yindaobg.png") no-repeat center top;background-size:cover;width:750rpx;height:210rpx;'>
             <text style='color:#fff;font-size:28rpx;padding-top:30rpx;margin-bottom:-30rpx；color:#edbec1;font-style:italic'>VIP自购省钱，分享赚钱，最高返40%！</text>
             <view style='display:flex;flex-direction:row;justify-content:space-around;align-items: center;padding-bottom:20rpx;margin-top:-30rpx'>
@@ -44,7 +47,7 @@
         </view>
         <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
             <view style='width:750rpx;margin:0rpx auto;padding:0;font-size:0;z-index:99;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
-                <image style='width:750rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/350yhq_2.png'></image>
+                <image style='width:750rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/350yhq_3.png'></image>
             </view>
 
         </view>
@@ -67,8 +70,8 @@
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
         </navigator>
-        <navigator style='margin-bottom:10rpx;' url='/pages/searchresult/searchresult?cid=24&picUrl=http://cos.qkmai.com/qkmbb/ytal/99_.png'>
-            <image src='http://cos.qkmai.com/qkmbb/ytal/99.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;height:auto;' mode='widthFix' lazy-load></image>
+        <navigator style='margin-bottom:10rpx;' url='/pages/productdetail/productdetail?id=2386'>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/haixian.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;height:auto;' mode='widthFix' lazy-load></image>
         </navigator>
         <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=5" data-id='5'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/alzm.png'></image>
@@ -222,6 +225,6 @@
     <view class='popOpacity'></view>
     <view class='popcontainer'>
         <view class='close' bindtap='onCloseBtn'></view>
-        <view class='getBtn' bindtap='onGetLink'></view>
-    </view>
+        <view class='getBtn' bindtap='goView' data-url="/pages/webPage/webPage?artUrl=http://ytal.qkmai.com/ArticleDetails?ArticleId=24" data-id='24'></view>
+</view>
 </view>
