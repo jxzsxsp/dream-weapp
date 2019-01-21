@@ -125,7 +125,7 @@
     <view class='brandInfoContainer' wx:if="{{isSelectState==1}}" style='position:relative;'>
         <view wx:if='{{showNoList && rushGoodsList.length == 0 && nothing==0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;box-sizing:border-box;'>
             <image style='width:168rpx;height:168rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/bianpaotb.png'></image>
-            <text style='font-size:14px;color:#000;'>活动太火爆啦~</text>
+            <text style='font-size:14px;color:#000;'>活动太火爆，已经抢光了</text>
         </view>
         <view class="kong" style='display:flex;flex-direction:column;align-items:center;padding:144rpx 0 285rpx 0;min-height:680rpx;overflow:hidden;font-size:28rpx;color:#212121;' wx:if="{{nothing==1 && rushGoodsList.length==0}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx;width:192rpx;height:192rpx;padding:32rpx;"></view>
