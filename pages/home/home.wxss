@@ -809,7 +809,7 @@ image {
     right: 90rpx;
 }
 
-.getBtn {
+/* .getBtn {
     position: absolute;
     width: 330rpx;
     height: 110rpx;
@@ -818,7 +818,7 @@ image {
     left: 135rpx;
     bottom: 0rpx;
     line-height: 80rpx;
-}
+} */
 
 .homepop {
     width: 100%;
@@ -840,13 +840,13 @@ image {
 }
 
 .popcontainer {
-    width: 675rpx;
-    height: 730rpx;
+    width: 528rpx;
+    height: 634rpx;
     position: absolute;
-    top: 255rpx;
+    top: 400rpx;
     left: 50%;
-    margin-left: -320rpx;
-    background: url("http://cos.qkmai.com/qkmbb/ytal/300hongbao.png");
+    margin-left: -265rpx;
+    background: url("http://cos.qkmai.com/qkmbb/ytal/wuliutz.png");
     background-size: cover;
 }
 
@@ -856,6 +856,8 @@ image {
     height: 68rpx;
     background: url("http://cos.qkmai.com/qkmbb/ytal/guanbitb.png");
     background-size: cover;
+
+
     top: -135rpx;
     right: 90rpx;
 }
@@ -863,10 +865,49 @@ image {
 .getBtn {
     position: absolute;
     width: 480rpx;
-    height: 730rpx;
+    height: 630rpx;
     border-radius: 15rpx;
     text-align: center;
-    left: 85rpx;
+    left: 55rpx;
     bottom: 0rpx;
     line-height: 80rpx;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
