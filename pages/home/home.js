@@ -40,8 +40,6 @@ Page({
         DistributionInfo:""
     },
     GetCheckData: function () {
-        console.log()
-        console.log(1)
         this.setData({
             DistributionInfo: e.globalData.ReferralInfo,
             isLoadEnd: true
@@ -134,7 +132,6 @@ Page({
                     openId: t
                 },
                 success: function (t) {
-                    console.log(t.data)
                     e.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
