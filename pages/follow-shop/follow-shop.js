@@ -10,8 +10,7 @@ const data = {
 }
 
 const lifecycle = {
-  onLoad: function (query) {
-    console.log(query)
+  onShow: function (query) {
     this.refresh()
   },
   onPullDownRefresh: function () {
@@ -34,7 +33,7 @@ const lifecycle = {
 const privateMethods = {
   getShopList: function () {
     return http.getList(urls.followList, this.props.loadingState, {
-      mock: true,
+      // mock: true,
     })
   },
   refresh: function () {
@@ -65,7 +64,7 @@ const privateMethods = {
 const viewAction = {
   followShop: function (d, v) {
     http.get(urls.followSupplier, {
-      mock: true,
+      // mock: true,
       shopId: v.id
     }).then((res) => {
       v.isFollow = 1
@@ -75,7 +74,7 @@ const viewAction = {
 
   cancelFollow: function (d, v) {
     http.get(urls.unfollowSupplier, {
-      mock: true,
+      // mock: true,
       shopId: v.id
     }).then((res) => {
       v.isFollow = 0

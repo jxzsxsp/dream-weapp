@@ -45,10 +45,28 @@ const ColorCompareLabelType = {
   6: '#0156FE',
 }
 
+// 1-店铺码,2-到店码,3-个人码
+const QrCodeType = {
+  SHOP: 1,
+  TO_SHOP: 2,
+  PERSONAL_BUSINESS_CARD: 3,
+}
+
+// 来源 1 到店码 2 个人名片 3 小程序推荐浏览 4 app 推荐浏览 5 店铺名片
+const BindCustomerSource = {
+  TO_SHOP: 1,
+  PERSONAL_BUSINESS_CARD: 2,
+  WEAPP_VIEW: 3,
+  APP_VIEW: 4,
+  SHOP: 5,
+}
+
 export default {
   APP_GLOBAL,
   ColorSource,
   ColorSense,
   ColorLibraryActionType,
   ColorCompareLabelType,
+  QrCodeType,
+  BindCustomerSource,
 }

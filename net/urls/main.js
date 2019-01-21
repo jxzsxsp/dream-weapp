@@ -21,5 +21,6 @@ export default {
   followList: '/shop/followList', // 关注供应商店铺列表接口
   browseHistory: '/shop/browseHistory', // 最近浏览店铺列表接口
   shopDetail: '/shop/detail', // 店铺详情接口
-  personDetail: '/user/businessCard', // 个人名片接口
+  personDetail: '/shop/business-card', // 个人名片接口
+  bindCustomer: '/shop/bind-customer', // 添加客户关系记录（到店码，浏览）
 }

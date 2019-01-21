@@ -22,7 +22,7 @@
   <view class='business-container flex-column'>
     <view class='business-title'>主营</view>
     <view class='business-content flex'>
-      <block wx:if="{{shopInfo.businesses}}" wx:for="{{shopInfo.businesses}}" wx:key="index">
+      <block wx:if="{{shopInfo.businessNameList}}" wx:for="{{shopInfo.businessNameList}}" wx:key="index">
         <text class='business-name'>{{item.businessName}}</text>
       </block>
       <block wx:if="{{userInfo.businessNameList}}" wx:for="{{userInfo.businessNameList}}" wx:key="index">

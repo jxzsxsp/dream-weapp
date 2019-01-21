@@ -8,7 +8,7 @@
       <text class='shop-name'>{{shop.name}}</text>
       <view class='main-business'>
         <text class='business-title'>主营</text>
-        <block wx:for="{{shop.businesses}}" wx:key="index">
+        <block wx:for="{{shop.shopBusinessDtos}}" wx:key="index">
           <block wx:if="{{index < 3}}">
             <text class='business-name'>{{item.businessName}}</text>
           </block>

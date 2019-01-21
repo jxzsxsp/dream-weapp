@@ -1,5 +1,6 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
   loadingState: http.defaultLoadingState(),
@@ -10,8 +11,7 @@ const data = {
 }
 
 const lifecycle = {
-  onLoad: function (query) {
-    console.log(query)
+  onShow: function (query) {
     this.refresh()
   },
   onPullDownRefresh: function () {
@@ -34,7 +34,7 @@ const lifecycle = {
 const privateMethods = {
   getShopList: function () {
     return http.getList(urls.recommendSupplier, this.props.loadingState, {
-      mock: true,
+      // mock: true,
     })
   },
   refresh: function () {
@@ -43,7 +43,6 @@ const privateMethods = {
       this.setData({
         shopList: res
       })
-
     })
   },
   flushShopList: function(item) {
@@ -59,13 +58,20 @@ const privateMethods = {
     this.setData({
       shopList: shopList
     })
-  }
+  },
+  bindCustomer: function (shopId) {
+    return http.post(urls.bindCustomer, {
+      // mock: true,
+      shopId: shopId,
+      source: constant.BindCustomerSource.WEAPP_VIEW,
+    })
+  },
 }
 
 const viewAction = {
   followShop: function (d, v) {
     http.get(urls.followSupplier, {
-      mock: true,
+      // mock: true,
       shopId: v.id
     }).then((res) => {
       v.isFollow = 1
@@ -75,7 +81,7 @@ const viewAction = {
 
   cancelFollow: function (d, v) {
     http.get(urls.unfollowSupplier, {
-      mock: true,
+      // mock: true,
       shopId: v.id
     }).then((res) => {
       v.isFollow = 0
@@ -86,6 +92,9 @@ const viewAction = {
   showDetail: function (d, v) {
     v.showDetail = !v.showDetail
     this.flushShopList(v)
+    if (v.showDetail) {
+      this.bindCustomer(v.id)
+    }
   },
 }
 

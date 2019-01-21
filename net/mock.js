@@ -388,7 +388,7 @@ let shop = {
           "id": 1,
           "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
           "name": "胖虎纺织",
-          "businesses": [
+          "shopBusinessDtos": [
             {
               "businessName": "针织布"
             },
@@ -413,7 +413,7 @@ let shop = {
           "id": 2,
           "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
           "name": "胖虎纺织",
-          "businesses": [
+          "shopBusinessDtos": [
             {
               "businessName": "针织布"
             },
@@ -435,7 +435,7 @@ let shop = {
           "id": 3,
           "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
           "name": "胖虎纺织",
-          "businesses": [
+          "shopBusinessDtos": [
             {
               "businessName": "针织布"
             },
@@ -457,7 +457,7 @@ let shop = {
           "id": 4,
           "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
           "name": "胖虎纺织",
-          "businesses": [
+          "shopBusinessDtos": [
             {
               "businessName": "针织布"
             },
@@ -479,7 +479,7 @@ let shop = {
           "id": 5,
           "logo": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
           "name": "胖虎纺织",
-          "businesses": [
+          "shopBusinessDtos": [
             {
               "businessName": "针织布"
             },
