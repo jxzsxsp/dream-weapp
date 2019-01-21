@@ -1,5 +1,5 @@
-var e = getApp();
-
+var t = require("../../utils/config.js");
+var app = getApp();
 Page({
     data: {
         ExpressCompanyName: "",
@@ -10,10 +10,14 @@ Page({
         LogisticsData: []
     },
     onLoad: function(a) {
+        app.globalData.fundebug.notifyError(new Error("物流"), {
+            name: "物流状态",
+            metaData: a
+        });
         var o = this, s = a.orderid;
-        e.getOpenId(function(a) {
+        app.getOpenId(function(a) {
             wx.request({
-                url: e.getUrl("GetLogistic"),
+                url: app.getUrl("GetLogistic"),
                 data: {
                     openId: a,
                     orderId: s
@@ -41,6 +45,12 @@ Page({
                                 delta: 1
                             });
                         }
+                    });
+                },complete: function(e) {
+                    console.log(app.globalData)
+                    app.globalData.fundebug.notifyError(new Error("物流"), {
+                        name: "物流状态",
+                        metaData: e
                     });
                 }
             });
