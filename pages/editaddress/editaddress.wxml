@@ -6,7 +6,8 @@
         </view>
         <view class="loginpassword borderbott0m padding24">
             <text class="line_height40">联系电话</text>
-            <input bindinput="bindCellPhoneTap" maxlength="-1" placeholder="请填写联系方式" type="text" value="{{CellPhone}}"></input>
+            <input bindinput="bindCellPhoneTap" bindblur="checkPhone" maxlength="-1" placeholder="请填写联系方式" type="text" value="{{CellPhone}}"></input>
+            <!-- <input bindinput="bindCellPhoneTap" bindblur="checkPhone" maxlength="-1" placeholder="请填写联系方式" type="text" value="{{CellPhone}}" focus="{{phoneFocus}}"></input> -->
         </view>
         <view catchtap="bindFullAddressTap" class="loginpassword borderbott0m padding24">
             <text class="line_height40">所在地区</text>

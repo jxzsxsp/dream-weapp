@@ -1,4 +1,18 @@
-var t, e = require("../../utils/config.js"), a = require("../../utils/qqmap-wx-jssdk.min.js"), i = null, s = new Array(), d = new Array(), n = new Array(), r = new Array(), o = 0, l = 0, u = 0, h = 0, g = getApp(), c = [], p = [], v = [];
+var t, e = require("../../utils/config.js"),
+    a = require("../../utils/qqmap-wx-jssdk.min.js"),
+    i = null,
+    s = new Array(),
+    d = new Array(),
+    n = new Array(),
+    r = new Array(),
+    o = 0,
+    l = 0,
+    u = 0,
+    h = 0,
+    g = getApp(),
+    c = [],
+    p = [],
+    v = [];
 
 Page({
     data: {
@@ -30,9 +44,10 @@ Page({
         FullRegionName: "请填写所在地区",
         isCss: !0,
         isHidePage1: !1,
-        ProductSku: ""
+        ProductSku: "",
+        phoneFocus: false
     },
-    onLoad: function (i) {
+    onLoad: function(i) {
         this.setData({
             ProductSku: i.productsku
         })
@@ -51,7 +66,7 @@ Page({
                 var r = JSON.parse(i.extra);
                 d = r.ShippingId;
             }
-            g.getOpenId(function (t) {
+            g.getOpenId(function(t) {
                 var a = {
                     openId: t,
                     shippingId: d
@@ -68,12 +83,15 @@ Page({
             BuildingNumber: i.BuildingNumber
         });
     },
-    GetShippingAddressByIdData: function (t) {
+    GetShippingAddressByIdData: function(t) {
         var e = this;
         if (t.error_response) wx.showToast({
             title: t.error_response.sub_msg
-        }); else {
-            var a = t.Data.ShippingAddressInfo, i = "", s = "";
+        });
+        else {
+            var a = t.Data.ShippingAddressInfo,
+                i = "",
+                s = "";
             a.LatLng && (i = a.LatLng.split(",")[0], s = a.LatLng.split(",")[1]), t.Status ? (e.setData({
                 ShipTo: a.ShipTo,
                 CellPhone: a.CellPhone,
@@ -89,30 +107,46 @@ Page({
             }), wx.hideNavigationBarLoading()) : wx.hideNavigationBarLoading();
         }
     },
-    bindShipToTap: function (t) {
+    bindShipToTap: function(t) {
         var e = t.detail.value;
         this.data.ShipTo = e;
     },
-    bindCellPhoneTap: function (t) {
+    bindCellPhoneTap: function(t) {
         var e = t.detail.value;
         this.data.CellPhone = e;
     },
-    bindFullAddressTap: function (t) {
+    bindFullAddressTap: function(t) {
         o = 0, l = 0, u = 0, this.setAreaData(), this.setData({
             showDistpicker: !0
         });
     },
-    bindAddressTap: function (t) {
+    bindAddressTap: function(t) {
         var e = t.detail.value;
         this.data.Address = e;
     },
-    bindNumberTap: function (t) {
+    bindNumberTap: function(t) {
         var e = t.detail.value;
         this.data.BuildingNumber = e;
     },
-    bindSaveTapTap: function (t) {
+    bindSaveTapTap: function(t) {
         var a = this;
-        a.data.ShipTo ? a.data.CellPhone ? a.data.FullRegionPath ? a.data.Address ? g.getOpenId(function (t) {
+        console.log(t)
+        
+        if (!(/^1[34578]\d{9}$/.test(a.data.CellPhone))) {
+            // tm.setData({
+            //     phoneFocus: true
+            // })
+            wx.showModal({
+                title: '提示',
+                content: '请输入正确的手机号',
+            })
+
+            return false;
+
+        }
+
+
+        a.data.ShipTo ? a.data.CellPhone ? a.data.FullRegionPath ? a.data.Address ? g.getOpenId(function(t) {
             if (wx.showNavigationBarLoading(), "新增收货地址" == a.data.navigateTitle) {
                 i = {
                     openId: t,
@@ -158,14 +192,18 @@ Page({
             duration: 2e3
         });
     },
-    getEditAddressData: function (t) {
+    getEditAddressData: function(t) {
         var tm = this;
         if (wx.hideNavigationBarLoading(), "NOUser" == t.Message) wx.navigateTo({
             url: "../login/login?ProductSku=" + tm.data.ProductSku
-        }); else if ("OK" == t.Status) {
-            var e = getCurrentPages(), a = e[e.length - 2], i = this.data.Source, s = "";
+        });
+        else if ("OK" == t.Status) {
+            var e = getCurrentPages(),
+                a = e[e.length - 2],
+                i = this.data.Source,
+                s = "";
             void 0 == i || "" == i ? (s = "../address/address", a.initData(), wx.navigateBack()) : "chooseaddr" == i ? (a.refreshData(),
-                wx.navigateBack()) : (i = "choiceaddress") ? s = "../choiceaddress/choiceaddress?productsku=" + this.data.ProductSku + "&buyamount=" + this.data.BuyAmount + "&frompage=" + this.data.FromPage + "&countdownid=" + this.data.CountdownId : (i = "submmitorder") && (s = "../submitorder/submitorder?productsku=" + this.data.ProductSku + "&buyamount=" + this.data.BuyAmount + "&frompage=" + this.data.FromPage + "&countdownid=" + this.data.CountdownId + "&shipaddressid=" + t.Message),
+                    wx.navigateBack()) : (i = "choiceaddress") ? s = "../choiceaddress/choiceaddress?productsku=" + this.data.ProductSku + "&buyamount=" + this.data.BuyAmount + "&frompage=" + this.data.FromPage + "&countdownid=" + this.data.CountdownId : (i = "submmitorder") && (s = "../submitorder/submitorder?productsku=" + this.data.ProductSku + "&buyamount=" + this.data.BuyAmount + "&frompage=" + this.data.FromPage + "&countdownid=" + this.data.CountdownId + "&shipaddressid=" + t.Message),
                 void 0 != s && "" != s && wx.redirectTo({
                     url: s
                 });
@@ -173,32 +211,32 @@ Page({
             title: t.Message,
             icon: "loading",
             duration: 1e4
-        }), setTimeout(function () {
+        }), setTimeout(function() {
             wx.hideToast();
         }, 2e3);
     },
-    changeArea: function (t) {
+    changeArea: function(t) {
         var e = this;
         o = t.detail.value[0], l = t.detail.value[1], u = t.detail.value.length > 2 ? t.detail.value[2] : 0,
             h = t.detail.value.length > 3 ? t.detail.value[3] : 0, console.log("省:" + o + "市:" + l + "区:" + u),
             e.setAreaData(o, l, u, h);
     },
-    showDistpicker: function () {
+    showDistpicker: function() {
         this.setData({
             showDistpicker: !0
         });
     },
-    distpickerCancel: function () {
+    distpickerCancel: function() {
         this.setData({
             showDistpicker: !1
         });
     },
-    distpickerSure: function () {
+    distpickerSure: function() {
         var t, e, a = this.data.provinceName[o] + " " + this.data.cityName[l] + " " + this.data.districtName[u];
         this.data.streetCode.length > 0 && 0 != this.data.streetCode[h] ? (t = this.data.streetCode[h],
             e = this.data.districtName[u]) : this.data.districtCode.length > 0 ? (t = this.data.districtCode[u],
-                e = this.data.districtName[u]) : this.data.cityCode.length > 0 ? (t = this.data.cityCode[l],
-                    e = this.data.cityName[l]) : e = this.data.provinceName[o];
+            e = this.data.districtName[u]) : this.data.cityCode.length > 0 ? (t = this.data.cityCode[l],
+            e = this.data.cityName[l]) : e = this.data.provinceName[o];
         var i = this.data.isCss;
         "请填写所在地区" == this.data.FullRegionName && (i = !1), this.setData({
             fullAddress: a,
@@ -211,12 +249,14 @@ Page({
             building: ""
         }), this.distpickerCancel();
     },
-    ArrayContains: function (t, e) {
-        for (var a = t.length; a--;) if (t[a] === e) return !0;
+    ArrayContains: function(t, e) {
+        for (var a = t.length; a--;)
+            if (t[a] === e) return !0;
         return !1;
     },
-    getRegions: function (t, e, a, i) {
-        var d = this, r = !0;
+    getRegions: function(t, e, a, i) {
+        var d = this,
+            r = !0;
         3 == e ? d.ArrayContains(s, t) || (r = !1) : 4 == r && (d.ArrayContains(n, t) || (r = !1)),
             wx.request({
                 url: g.getUrl("GetRegions"),
@@ -224,47 +264,59 @@ Page({
                 data: {
                     parentId: t
                 },
-                success: function (e) {
+                success: function(e) {
                     console.log(e), "OK" == e.data.Status && (3 == e.data.Depth ? d.setAreaDataShow(e.data.Regions, t, a, i) : 4 == e.Depth && d.setStreetData(e.data.Regions, t, a, i));
                 }
             });
     },
-    setProvinceCityData: function (t, e, a, s, d) {
+    setProvinceCityData: function(t, e, a, s, d) {
         var n = this;
         null != t && (i = t);
-        var r = i, o = [], l = [];
+        var r = i,
+            o = [],
+            l = [];
         for (var h in r) {
-            var g = r[h].name, c = r[h].id;
+            var g = r[h].name,
+                c = r[h].id;
             o.push(g), l.push(c), v.length > 0 && c == v[0] && (e = h);
         }
         n.setData({
             provinceName: o,
             provinceCode: l
         });
-        var p = i[e].city, f = [], D = [];
+        var p = i[e].city,
+            f = [],
+            D = [];
         for (var h in p) {
-            var g = p[h].name, c = p[h].id;
+            var g = p[h].name,
+                c = p[h].id;
             f.push(g), D.push(c), v.length > 1 && c == v[1] && (a = h);
         }
         n.setData({
             cityName: f,
             cityCode: D
         });
-        var m = p.length > a ? p[a].area : p[0].area, w = [], A = [];
+        var m = p.length > a ? p[a].area : p[0].area,
+            w = [],
+            A = [];
         if (null != m && m.length > 0) {
             for (var h in m) {
-                var g = m[h].name, c = m[h].id;
+                var g = m[h].name,
+                    c = m[h].id;
                 w.push(g), A.push(c), v.length > 2 && c == v[2] && (u = h);
             }
             n.setData({
                 districtName: w,
                 districtCode: A
             });
-            var C = m.length > u ? m[u].country : m[0].country, N = [], S = [];
+            var C = m.length > u ? m[u].country : m[0].country,
+                N = [],
+                S = [];
             if (null != C && C.length > 0) {
                 N.push("其它"), S.push(0);
                 for (var h in C) {
-                    var g = C[h].name, c = C[h].id;
+                    var g = C[h].name,
+                        c = C[h].id;
                     N.push(g), S.push(c), v.length > 3 && c == v[3] && (d = h);
                 }
                 n.setData({
@@ -286,20 +338,24 @@ Page({
             value: I
         }), v = [];
     },
-    getItemIndex: function (t, e) {
-        for (var a = t.length; a--;) if (t[a] === e) return a;
+    getItemIndex: function(t, e) {
+        for (var a = t.length; a--;)
+            if (t[a] === e) return a;
         return -1;
     },
-    setAreaDataShow: function (t, e, a, i) {
+    setAreaDataShow: function(t, e, a, i) {
         var r = this;
-        if (null != t) c = t, s.push(e), d.push(t); else {
+        if (null != t) c = t, s.push(e), d.push(t);
+        else {
             var o = r.getItemIndex(s, e);
             c = o >= 0 ? d[o] : [];
         }
-        var u = [], h = [];
+        var u = [],
+            h = [];
         if (c && c.length > 0) {
             for (var g in c) {
-                var p = g.id, v = g.name;
+                var p = g.id,
+                    v = g.name;
                 u.push(p), h.push(v);
             }
             r.setData({
@@ -312,25 +368,29 @@ Page({
         });
         this.ArrayContains(n, a) ? r.setStreetData(null, l, a, i) : r.getRegions(l, 4, a, i);
     },
-    setStreetData: function (t, e, a, i) {
+    setStreetData: function(t, e, a, i) {
         var s = this;
-        if (null != t) n.push(regionId), r.push(t), p = t; else {
+        if (null != t) n.push(regionId), r.push(t), p = t;
+        else {
             var d = s.getItemIndex(n, e);
             p = d >= 0 ? r[d] : [];
         }
     },
-    setAreaData: function (t, e, a, s) {
-        var d = this, t = t || 0, e = e || 0, s = (a = a || 0) || 0;
+    setAreaData: function(t, e, a, s) {
+        var d = this,
+            t = t || 0,
+            e = e || 0,
+            s = (a = a || 0) || 0;
         void 0 == i || null == i ? wx.request({
             url: g.getUrl("GetRegionsOfProvinceCity"),
             async: !1,
-            success: function (i) {
+            success: function(i) {
                 "OK" == i.data.Status && d.setProvinceCityData(i.data.province, t, e, a, s);
             },
-            error: function (t) { }
+            error: function(t) {}
         }) : d.setProvinceCityData(null, t, e, a, s);
     },
-    bindDetailAddressTap: function (t) {
+    bindDetailAddressTap: function(t) {
         // var t = this;
         // t.setData({
         //     currentPage: "page2"
@@ -345,9 +405,9 @@ Page({
         var e = t.detail.value;
         this.data.Address = e;
     },
-    bindHidePage2: function () {
+    bindHidePage2: function() {
         var t = this;
-        setTimeout(function () {
+        setTimeout(function() {
             t.data.isDelete || t.setData({
                 currentPage: "page1",
                 isDelete: !1,
@@ -355,17 +415,18 @@ Page({
             });
         }, 100);
     },
-    searchKeyword: function (e) {
-        var a = this, i = e.detail.value;
+    searchKeyword: function(e) {
+        var a = this,
+            i = e.detail.value;
         a.setData({
             detailAddress: i,
             isDelete: !1
-        }), "" != i && setTimeout(function () {
+        }), "" != i && setTimeout(function() {
             t.getSuggestion({
                 keyword: i,
                 region: a.data.selCityName,
                 region_fix: 1,
-                success: function (t) {
+                success: function(t) {
                     a.setData({
                         searchList: t.data
                     });
@@ -373,17 +434,19 @@ Page({
             }, 500);
         });
     },
-    setAddr: function (t) {
-        var a = t.currentTarget.dataset.fromlatlng, i = t.currentTarget.dataset.name, s = this;
+    setAddr: function(t) {
+        var a = t.currentTarget.dataset.fromlatlng,
+            i = t.currentTarget.dataset.name,
+            s = this;
         s.setData({
             lat: t.currentTarget.dataset.lat,
             lng: t.currentTarget.dataset.lng
-        }), g.getOpenId(function (t) {
+        }), g.getOpenId(function(t) {
             var d = {
                 openId: t,
                 fromLatLng: a
             };
-            e.httpGet(g.getUrl(g.globalData.GetRegionByLatLng), d, function (t) {
+            e.httpGet(g.getUrl(g.globalData.GetRegionByLatLng), d, function(t) {
                 t = t, s.setData({
                     isDelete: !1,
                     Address: i
@@ -394,10 +457,32 @@ Page({
             });
         });
     },
-    delDetailAddr: function () {
+    delDetailAddr: function() {
         this.setData({
             Address: "",
             isDelete: !0
         });
+    },
+    checkPhone: function(event) {
+        var tm = this;
+        console.log(event.detail.value)
+        var phone = event.detail.value;
+        if (!(/^1[34578]\d{9}$/.test(phone))) {
+            tm.setData({
+                phoneFocus: true
+            })
+            wx.showModal({
+                title: '提示',
+                content: '请输入正确的手机号',
+            })
+            // wx.showToast({
+            //     title: '请输入正确的手机号',
+            //     icon: 'fail',
+            //     duration: 1000,
+            //     mask: true
+            // })
+            return false;
+
+        }
     }
 });
