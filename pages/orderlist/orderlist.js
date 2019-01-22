@@ -13,7 +13,9 @@ Page({
         WaitReviewActive: "",
         PageIndex: 1,
         PageSize: 100,
-        nullOrder: t.getRequestUrl + "/Templates/xcxshop/images/nullOrder.png"
+        nullOrder: t.getRequestUrl + "/Templates/xcxshop/images/nullOrder.png",
+        waitpay: null,
+        orderCount:{}
     },
     onLoad: function(q) {
         var tm = this;
@@ -27,6 +29,9 @@ Page({
             tm.setData({
                 userInfo: t
             })
+
+            console.log(t)
+            tm.getOrderCount()
         });
     },
     onReady: function() {},
@@ -59,6 +64,13 @@ Page({
                             orderId: i
                         },
                         success: function(t) {
+                            // if (a.data.userInfo.waitPayCount == 1) {
+                            //     a.setData({
+                            //         waitpay: 0
+                            //     })
+                            // }
+                            // console.log(t)
+                            // console.log(a.data.userInfo.waitPayCount)
                             "OK" == t.data.Status ? wx.showModal({
                                 title: "提示",
                                 content: t.data.Message,
@@ -125,6 +137,7 @@ Page({
         e.setData({
             PageIndex: 1
         }), e.loadData(a, e, !1);
+        this.getOrderCount()
     },
     showLogistics: function(e) {
         var a = e.currentTarget.dataset.orderid;
@@ -238,5 +251,41 @@ Page({
             WaitReceiveActive: "",
             WaitReviewActive: "active"
         });
+    },
+    getOrderCount: function () {
+        var tm = this;
+
+        wx.request({
+            url: t.getUrl("YTALGetMenberOrderTotal"),
+            data: {
+                openId: t.globalData.userInfo.OpenId
+            },
+            success: function (res) {
+                tm.setData({
+                    orderCount: res.data
+                })
+            }
+        });
+
+        // console.log(t.globalData.userInfo.OpenId)
+
+
+
+
+
+
+        // t.getOpenId(function (n) {
+        //     wx.request({
+        //         url: t.getUrl("YTALGetMenberOrderTotal"),
+        //         data: {
+        //             openId: n
+        //         },
+        //         success: function (res) {
+        //             tm.setData({
+        //                 orderCount: res.data
+        //             })
+        //         }
+        //     });
+        // });
     }
 });
