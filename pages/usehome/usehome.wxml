@@ -26,29 +26,29 @@
         <view bindtap="bindStatue" class="usecdlist" data-key="1">
             <view class="iconfont icon__wallet"></view>
             <text>待付款</text>
-            <view class="order_num" hidden="{{userInfo.waitPayCount==0}}">
-                <text>{{userInfo.waitPayCount}}</text>
+            <view class="order_num" hidden="{{orderCount.WaitBuyerPay==0}}">
+                <text>{{orderCount.WaitBuyerPay}}</text>
             </view>
         </view>
         <view bindtap="bindStatue" class="usecdlist" data-key="2">
             <view class="iconfont icon__package"></view>
             <text>拣货中</text>
-            <view class="order_num" hidden="{{userInfo.waitSendCount==0}}">
-                <text>{{userInfo.waitSendCount}}</text>
+            <view class="order_num" hidden="{{orderCount.BuyerAlreadyPaid==0}}">
+                <text>{{orderCount.BuyerAlreadyPaid}}</text>
             </view>
         </view>
         <view bindtap="bindStatue" class="usecdlist" data-key="3">
             <view class="iconfont icon__shipping"></view>
             <text>待收货</text>
-            <view class="order_num" hidden="{{userInfo.waitFinishCount==0}}">
-                <text>{{userInfo.waitFinishCount}}</text>
+            <view class="order_num" hidden="{{orderCount.SellerAlreadySent==0}}">
+                <text>{{orderCount.SellerAlreadySent}}</text>
             </view>
         </view>
         <view bindtap="bindApply" class="usecdlist">
             <view class="iconfont icon__service-1 "></view>
             <text>已取消</text>
-            <view class="order_num" hidden="{{userInfo.afterSalesCount==0}}">
-                <text>{{userInfo.afterSalesCount}}</text>
+            <view class="order_num" hidden="{{orderCount.ApplyForRefund==0}}">
+                <text>{{orderCount.ApplyForRefund}}</text>
             </view>
         </view>
         <image src="http://cos.qkmai.com/qkmbb/ytal/dakuohaotb.png" class='line'></image>

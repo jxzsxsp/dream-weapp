@@ -7,20 +7,20 @@
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitPayActive}}" data-status="1">待付款</view>
-        <view class="order_num" hidden="{{userInfo.waitPayCount==0}}">
-            <text>{{userInfo.waitPayCount}}</text>
+        <view class="order_num" hidden="{{orderCount.WaitBuyerPay==0 || waitpay == 0}}">
+            <text>{{orderCount.WaitBuyerPay}}</text>
         </view>
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitSendActive}}" data-status="2">拣货中</view>
-        <view class="order_num" hidden="{{userInfo.waitSendCount==0}}">
-            <text>{{userInfo.waitSendCount}}</text>
+        <view class="order_num" hidden="{{orderCount.BuyerAlreadyPaid==0}}">
+            <text>{{orderCount.BuyerAlreadyPaid}}</text>
         </view>
     </view>
     <view class="coupontitlel">
         <view bindtap="onTabClick" class="{{WaitReceiveActive}}" data-status="3">待收货</view>
-        <view class="order_num" hidden="{{userInfo.waitFinishCount==0}}">
-            <text>{{userInfo.waitFinishCount}}</text>
+        <view class="order_num" hidden="{{orderCount.SellerAlreadySent==0}}">
+            <text>{{orderCount.SellerAlreadySent}}</text>
         </view>
     </view>
     <view class="coupontitlel">

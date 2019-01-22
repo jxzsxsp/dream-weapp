@@ -12,7 +12,8 @@ Page({
         isempty: !0,
         ExpandMemberInMonth: "",
         ExpandMemberAll: "",
-        LowerUserSaleTotal: ""
+        LowerUserSaleTotal: "",
+        orderCount: {}
     },
     onLoad: function(n) {
         n.ReferralUserId && o.setRefferUserId(n.ReferralUserId);
@@ -34,6 +35,7 @@ Page({
                 userInfo: t
             })
         });
+        this.getOrderCount()
         this.setData({
             OpenReferral: o.globalData.siteInfo.OpenReferral
         });
@@ -214,5 +216,21 @@ Page({
         wx.navigateTo({
             url: s
         })
+    },
+    getOrderCount: function () {
+        var tm = this;
+        o.getOpenId(function (n) {
+            wx.request({
+                url: o.getUrl("YTALGetMenberOrderTotal"),
+                data: {
+                    openId: n
+                },
+                success: function (res) {
+                    tm.setData({
+                        orderCount: res.data
+                    })
+                }
+            });
+        });
     }
 });
