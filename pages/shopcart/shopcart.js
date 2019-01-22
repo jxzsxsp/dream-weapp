@@ -25,6 +25,7 @@ Page({
         wx.showLoading({
             title: "加载中"
         });
+        
         var a = parseFloat(0);
         t.getOpenId(function(n) {
             wx.request({
@@ -76,6 +77,7 @@ Page({
                 },
                 complete: function() {
                     wx.hideLoading();
+                    
                     // if (tm.data.selectAllStatus == false) {
 
                     // }

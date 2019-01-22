@@ -26,8 +26,14 @@
                 <view class="shopcart-m bg-wihte" class="supplier">
                     <view class="shopcart-m-item {{items.IsValid&&items.HasEnoughStock?'':'shopcart-invalid'}}" wx:for="{{Suppliers[index].CartItemInfo}}" wx:for-item="items" wx:key="{{item.SkuID}}" style='position:relative;padding-top:80rpx;'>
 
-
-                    <view style='position:absolute;right:10rpx;top:10rpx;color:#ba050f;font-size:13px;' bindtap='backInfo' data-sku='{{items.SKU}}'>返回专场</view>
+                        <view style='position:absolute;top:0;left:0;width:750rpx;padding: 0 30rpx 0 80rpx;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;'>
+                            <view style='display:flex;justify-content:flex-start;max-width:400rpx;'>
+                                <image src='http://cos.qkmai.com/qkmbb/ytal/pintb.png' style='width:45rpx;margin-right:20rpx;' mode='widthFix'></image>
+                                <view style='overflow:hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;word-break: break-all;max-width:320rpx;align-self:center;height:26rpx;line-height:26rpx;'>属性花开你不是傻属性花开你不是傻属性花开你不是傻属性花开你不是傻</view>
+                                <view style='width:15rpx;height:15rpx;border-right:1px solid black;border-bottom:1px solid black;transform:rotate(-45deg);line-height:26rpx;position:relative;top:15rpx;'></view>
+                            </view>
+                            <view style='color:#ba050f;font-size:13px;' bindtap='backInfo' data-sku='{{items.SKU}}'>返回专场</view>
+                        </view>
 
 
 

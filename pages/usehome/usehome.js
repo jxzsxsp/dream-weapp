@@ -27,6 +27,9 @@ Page({
                 },
                 success: function(t) {
                     o.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
+                },
+                complete: function () {
+                    wx.stopPullDownRefresh()
                 }
             });
         });
@@ -60,6 +63,7 @@ Page({
             //     url: "../phonevefcode/phonevefcode"
             });
         });
+        this.getOrderCount()
     },
     bindStatue: function(o) {
         var n = o.currentTarget.dataset.key;
