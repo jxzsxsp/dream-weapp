@@ -2,9 +2,9 @@ import {$Page, $wx} from '../../genji4mp/index'
 
 const data = {
   settingList: [
-    { name: '关注店铺', icon: 'icon-shoucang', half: true },
-    { name: '最近浏览', icon: 'icon-ic_history', half: true },
-    { name: '我的收藏', icon: 'icon-shoucang', half: false },
+    { name: '关注店铺', icon: 'icon-shop', half: true },
+    { name: '最近浏览', icon: 'icon-history', half: true },
+    { name: '我的收藏', icon: 'icon-favorite', half: false },
   ],
   userInfo: {},
   showShareImg: false,
