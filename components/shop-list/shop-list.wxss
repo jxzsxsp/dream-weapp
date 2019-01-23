@@ -10,14 +10,17 @@
 
 .logo {
   margin-top: 440rpx;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50rpx;
-  background: #F9CC5E;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.logo image {
+  width: 100%;
+  height: 100%;
 }
 
 .title {
-  margin-top: 25rpx;
+  margin-top: 5rpx;
   font-family: PingFangSC-Medium;
   font-size: 28rpx;
   color: #C9C8D0;
