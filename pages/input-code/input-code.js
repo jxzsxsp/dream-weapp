@@ -14,8 +14,6 @@ const data = {
     {num: '', focus: false},
     {num: '', focus: false},
     {num: '', focus: false},
-    {num: '', focus: false},
-    {num: '', focus: false},
     {num: '', focus: false}
   ],
   countDownNum: 60,
@@ -121,7 +119,7 @@ const viewAction = {
     }
 
     // 输入的情况
-    if (data.index !== 5) {
+    if (data.index !== this.data.verifyCodeArr.length - 1) {
       this.data.verifyCodeArr.forEach((code, index) => {
         if (index === data.index + 1) {
           code.focus = true 

@@ -48,7 +48,7 @@
     <view class='divider-block'></view>
 
     <view class="setting-row-container">
-      <text class="setting-text">联系小蜥</text>
+      <text class="setting-text">联系蜥奇</text>
       <text class="setting-text tel-text" bind:tap="callContact">021-61161196 转 8623</text>
       <view class="iconfont icon-ic_back setting-detail"/>
     </view>
@@ -82,6 +82,7 @@
       <view class='share-tips'>长按识别二维码，获取您的专属色彩管家</view>
     </view> -->
 
-    <view class='save-img flex' bind:tap="saveImg">保存图片</view>
+    <button class='save-img flex' bind:tap="saveImg" hidden='{{saveImgBtnHidden}}'>保存图片</button>
+    <button class='save-img flex' open-type="openSetting" bindopensetting='handleSetting' hidden='{{openSettingBtnHidden}}'>去授权</button>
   </view>
 </van-popup>

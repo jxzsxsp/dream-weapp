@@ -8,6 +8,8 @@ const data = {
   ],
   userInfo: {},
   showShareImg: false,
+  saveImgBtnHidden: false,
+  openSettingBtnHidden: true,
 }
 
 const privateMethod = {
@@ -140,7 +142,7 @@ const lifecycle = {
   },
   onShareAppMessage: function () {
     return {
-      title: `小蜥取色`,
+      title: `推荐您进入蜥奇`,
       path: `/pages/index/index`,
       imageUrl: 'http://img50.lianshang.cn/data/share.jpg'
     }
@@ -177,8 +179,58 @@ const viewAction = {
     })
   },
   saveImg: function() {
-    this.saveShareImgToPhotosAlbum()
-    this.closeShareImg()
+    let _this = this
+
+    //获取相册授权
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success() {//这里是用户同意授权后的回调
+              _this.saveShareImgToPhotosAlbum()
+              _this.closeShareImg()
+            },
+            fail() {//这里是用户拒绝授权后的回调
+              _this.setData({
+                saveImgBtnHidden: true,
+                openSettingBtnHidden: false
+              })
+            }
+          })
+        } else {//用户已经授权过了
+          _this.saveShareImgToPhotosAlbum()
+          _this.closeShareImg()
+        }
+      }
+    })
+  },
+
+  handleSetting: function (d, v) {
+    let _this = this
+
+    // 对用户的设置进行判断，如果没有授权，即使用户返回到保存页面，显示的也是“去授权”按钮；同意授权之后才显示保存按钮
+    if (!v.authSetting['scope.writePhotosAlbum']) {
+      wx.showModal({
+        title: '警告',
+        content: '若不打开授权，则无法将图片保存在相册中！',
+        showCancel: false
+      })
+      _this.setData({
+        saveImgBtnHidden: true,
+        openSettingBtnHidden: false
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '您已授权，赶紧将图片保存在相册中吧！',
+        showCancel: false
+      })
+      _this.setData({
+        saveImgBtnHidden: false,
+        openSettingBtnHidden: true
+      })
+    }
   },
   getUserInfo () {
     $wx.app.bindPhone().then(res => {

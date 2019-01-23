@@ -60,8 +60,8 @@ const privateMethods = {
   },
   bindWechatMobile: function () {
     const data = {
-      appId: constant.APP_GLOBAL.appId,
-      domainName: constant.APP_GLOBAL.domainName,
+      appId: constants.APP_GLOBAL.appId,
+      domainName: constants.APP_GLOBAL.domainName,
       bindId: this.props.bindId,
       encryptedData: this.props.encryptedData,
       iv: this.props.iv,
@@ -94,19 +94,20 @@ const viewAction = {
   },
   getPhoneNumber: function (d, v) {
     console.log(d, v)
+    let _this = this
 
     this.props.encryptedData = v.encryptedData
     this.props.iv = v.iv
 
     wx.checkSession({
       success: function() {
-        this.bindWechatMobile()
+        _this.bindWechatMobile()
       },
       fail: function() {
-        this.login().then(res => {
+        _this.login().then(res => {
           if (res.bindId) {
-            this.props.bindId = res.bindId
-            this.bindWechatMobile()
+            _this.props.bindId = res.bindId
+            _this.bindWechatMobile()
           }
         }).catch((res) => {
           console.log(res)

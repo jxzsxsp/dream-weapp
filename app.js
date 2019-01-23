@@ -15,7 +15,13 @@ App({
     $wx.registerRouter(router)
 
     // 校验授权情况
-    this.saveAuthInfo()
+    this.saveAuthInfo().then((res) => {
+      if (res.code === -1) {
+        $wx.redirectTo($wx.router.login)
+      } else if (res.code === -2) {
+        $wx.redirectTo($wx.router.login, { bindId: res.bindId })
+      }
+    })
   },
 
   // 绑定手机号,主动调用前必须先授权
@@ -60,11 +66,9 @@ App({
         wx.setStorageSync('token', res.token)
         return {code: 1, message: '获取token成功'}
       } else if (res.bindId) {
-        $wx.redirectTo($wx.router.login, { bindId: res.bindId })
         return {code: -2, message: '需要绑定手机号', bindId: res.bindId}
       }
     }).catch((res) => {
-      $wx.redirectTo($wx.router.login)
       return {code: -1, message: '未授权'}
     })
   },

@@ -262,12 +262,12 @@ class Http {
 
               } else if (res.code === -1) {
                 $wx.showModal({title: '请先登录', content: '本功能需要登录才能体验', showCancel: false}).then(() => {
-                  $wx.switchTab($wx.router.mine)
+                  $wx.navigateTo($wx.router.login)
                 })
               } else if (res.code === -2) {
                 // 没有绑定手机号的情况
                 $wx.showModal({title: '请绑定手机', content: '本功能需要绑定手机才能体验', showCancel: false}).then(res => {
-                  $wx.navigateTo($wx.router.bindPhone, {bindId})
+                  $wx.navigateTo($wx.router.login, {bindId})
                 })
               }
             })

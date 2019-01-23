@@ -61,7 +61,7 @@
   flex: 1;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1rpx solid #D8D8D8;
+  border-bottom: 1rpx solid #ececec;
 }
 
 .avatar {
@@ -102,12 +102,12 @@
 }
 
 .border-top {
-  border-top: 1rpx solid #D8D8D8;
+  border-top: 1rpx solid #ececec;
 }
 
 .setting-icon {
-  font-size: 40rpx;
-  margin-left: 40rpx;
+  font-size: 50rpx;
+  margin-left: 50rpx;
 }
 
 .setting-text {
@@ -129,8 +129,8 @@
 .title-container {
   height: 88rpx;
   background: #F9F9F9;
-  border-top: 1rpx solid #D8D8D8;
-  border-bottom: 1rpx solid #D8D8D8;
+  border-top: 1rpx solid #ececec;
+  border-bottom: 1rpx solid #ececec;
   justify-content: flex-end;
 }
 
@@ -179,8 +179,8 @@
 .divider-block {
   height: 32rpx;
   background: #F9F9F9;
-  border-top: 1rpx solid #D8D8D8;
-  border-bottom: 1rpx solid #D8D8D8;
+  border-top: 1rpx solid #ececec;
+  border-bottom: 1rpx solid #ececec;
 }
 
 .tel-text {
@@ -192,13 +192,13 @@
 
 .line {
   height: 1rpx;
-  background: #D8D8D8;
+  background: #ececec;
 }
 
 .divider-line {
   width: 1rpx;
   height: 120rpx;
-  background: #D8D8D8;
+  background: #ececec;
 }
 
 .share-img-container {
