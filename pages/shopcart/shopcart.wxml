@@ -2,6 +2,7 @@
     <view hidden="{{isEmpty}}">
         <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:40rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;height:120rpx;'>
             <view>提示：购物车里面商品有效期15分钟，请在15分钟内支付，超时回收；回收详情敬请关注后续版本</view>
+            
             <!-- <view>商品在，谢谢理解！</view> -->
         </view>
         <view class="shopcart-t bg-wihte">
@@ -29,7 +30,8 @@
                         <view style='position:absolute;top:0;left:0;width:750rpx;padding: 0 30rpx 0 80rpx;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;'>
                             <view style='display:flex;justify-content:flex-start;max-width:400rpx;'>
                                 <image src='http://cos.qkmai.com/qkmbb/ytal/pintb.png' style='width:45rpx;margin-right:20rpx;' mode='widthFix'></image>
-                                <view style='overflow:hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;word-break: break-all;max-width:320rpx;align-self:center;height:26rpx;line-height:26rpx;'>属性花开你不是傻属性花开你不是傻属性花开你不是傻属性花开你不是傻</view>
+                                <brandName id='brandName'  style='overflow:hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;word-break: break-all;max-width:320rpx;align-self:center;height:26rpx;line-height:26rpx;' itemsku='{{items.SKU}}' data-sku='{{items.SKU}}'></brandName>
+                                <!-- <view style='overflow:hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;word-break: break-all;max-width:320rpx;align-self:center;height:26rpx;line-height:26rpx;'>{{}}属性花开你不是傻属性花开你不是傻属性花开你不是傻属性花开你不是傻</view> -->
                                 <view style='width:15rpx;height:15rpx;border-right:1px solid black;border-bottom:1px solid black;transform:rotate(-45deg);line-height:26rpx;position:relative;top:15rpx;'></view>
                             </view>
                             <view style='color:#ba050f;font-size:13px;' bindtap='backInfo' data-sku='{{items.SKU}}'>返回专场</view>

@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.9",
+	"libVersion": "2.5.1",
 	"appid": "wx779e355e765faaf5",
 	"projectname": "ytalwxsp",
 	"debugOptions": {

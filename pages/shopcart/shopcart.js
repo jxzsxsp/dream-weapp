@@ -16,16 +16,17 @@ Page({
     onLoad: function(a) {
         // var tm = this;
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
+        //this.brandName = this.selectComponent("#brandName");
         // console.log("执行selectAll")
         // tm.selectAll();
     },
-    loadData: function (e, Boolean) {
+    loadData: function(e, Boolean) {
         // console.log("loadData执行")
         var tm = this;
         wx.showLoading({
             title: "加载中"
         });
-        
+
         var a = parseFloat(0);
         t.getOpenId(function(n) {
             wx.request({
@@ -33,19 +34,51 @@ Page({
                 data: {
                     openId: n
                 },
-                success: function(t) {
-                    if ("OK" == t.data.Status) {
-                        var n = t.data.Data,
-                            s = t.data.Data.Suppliers;
+                success: function(res) {
+                    if ("OK" == res.data.Status) {
+                        var n = res.data.Data,
+                            s = res.data.Data.Suppliers;
                         n.CartItemInfo.forEach(function(t, n, s) {
                             e.data.SelectskuId.indexOf(t.SkuID) >= 0 && (t.selected = !0, a = parseFloat(a) + parseFloat(t.SubTotal));
                         });
                         var o = null == n || n.length <= 0 || n.RecordCount <= 0;
-                    // console.log(s.length)
-                        if(s.length > 0) {
-                            s[0].CartItemInfo.forEach(function (a, b) {
+                        if (s.length > 0) {
+                            s[0].CartItemInfo.forEach(function(a, b) {
                                 a.selected = true
                             });
+
+                            // for (var i = 0; i < s.length; i++) {
+                            //     var qnm = s[i].CartItemInfo
+                            //     for (var j = 0; j < s.length; j++) {
+                            //         wx.request({
+                            //             url: t.getUrl("YTALGetGoodsBrand"),
+                            //             data: {
+                            //                 sku: qnm[j].SKU
+                            //             },
+                            //             success: function(t) {
+                            //                 console.log(t.data.brandName,qnm[j])
+
+                            //                 //tm.brandName.getBrandName(t.data.brandName)
+
+
+                            //                 //qnm[j].PromotionName = t.data.brandName
+                            //                 // console.log(i-1)
+                            //                 // console.log(tm.data.Suppliers[i - 1].CartItemInfo[j], tm.data.Suppliers[i - 1].CartItemInfo[j - 1].PromotionName)
+                            //                 // // var xyz = tm.data.Suppliers[i].CartItemInfo[j].PromotionName
+                            //                 // tm.data.Suppliers[i - 1].CartItemInfo[j - 1].setData({
+                            //                 //     PromotionName: t.data.brandName
+                            //                 // });
+                            //                 // console.log(e)
+                            //                 tm.setData({
+                                                
+                            //                 })
+                            //             },
+                            //             complete: function() {
+
+                            //             }
+                            //         });
+                            //     }
+                            // }
                         }
                         e.setData({
                             isEmpty: o,
@@ -59,7 +92,7 @@ Page({
                                 index: 3,
                                 text: n.RecordCount.toString()
                             })
-                        } else{
+                        } else {
                             wx.removeTabBarBadge({
                                 index: 3,
                             })
@@ -77,7 +110,7 @@ Page({
                 },
                 complete: function() {
                     wx.hideLoading();
-                    
+
                     // if (tm.data.selectAllStatus == false) {
 
                     // }
@@ -148,7 +181,7 @@ Page({
             Suppliers: s,
             selectAllStatus: a,
             SelectskuId: e
-            }), console.log(t.data.Suppliers),t.GetTotal();
+        }), console.log(t.data.Suppliers), t.GetTotal();
     },
     SwitchEdite: function() {
         // console.log("switchEdite")
@@ -366,7 +399,9 @@ Page({
             url: "../productdetail/productdetail?id=" + a
         });
     },
-    onReady: function() {},
+    onReady: function() {
+        this.brandName = this.selectComponent("#brandName");
+    },
     onShow: function() {
         this.setData({
             ShopCarts: null,
@@ -383,10 +418,10 @@ Page({
     onUnload: function() {},
     onPullDownRefresh: function() {},
     onReachBottom: function() {},
-    backInfo: function (event) {
+    backInfo: function(event) {
         var tm = this,
             a = event.currentTarget.dataset.sku;
-            // console.log(a)
+        // console.log(a)
         var hx = encodeURIComponent(a)
         // hx = "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=YTALGetGoodsBrand&sku=" + hx
         // console.log(hx)
@@ -396,14 +431,14 @@ Page({
             data: {
                 sku: a
             },
-            success: function (t) {
+            success: function(t) {
                 console.log(t.data)
                 wx.navigateTo({
                     // brandId=2c9089c2685cc4020168656b9ea73b66& brandSource=dadacang
                     url: "../brandInfo/brandInfo?brandId=" + t.data.brandId + "&brandSource=" + t.data.brandSource
                 });
             },
-            complete: function () {
+            complete: function() {
 
             }
         });
