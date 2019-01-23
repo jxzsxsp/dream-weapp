@@ -78,13 +78,20 @@
 
 <cloth-block>
   <view class="content">
-    <view class="content-head">
+    <view class="content-head content-text">
       <text>唯一码</text>
+      <text class="text-center">客供(米/公斤)</text>
       <text class="right-text">数量(米/公斤)</text>
     </view>
     <view wx:for="{{ orderRoll }}" wx:key="index" class="content-text">
       <text>{{ item.rollCode }}</text>
+      <text class="text-center">{{ item.expectFabricMeters || 0 }}/{{ item.expectFabricWeight || 0 }}</text>
       <text class="right-text">{{ item.fabricMeters || 0 }}/{{ item.fabricWeight || 0 }}</text>
+    </view>
+    <view class="content-footer content-text">
+      <text>{{orderRollSummary.fabricMetersAndWeightDifference}}</text>
+      <text class="text-center">{{orderRollSummary.expectFabricMetersAndWeight}}</text>
+      <text class="right-text">{{orderRollSummary.fabricMetersAndWeight}}</text>
     </view>
   </view>
 </cloth-block>
