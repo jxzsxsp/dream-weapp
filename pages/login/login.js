@@ -94,6 +94,16 @@ const viewAction = {
   },
   getPhoneNumber: function (d, v) {
     console.log(d, v)
+
+    if (v.errMsg !== 'getPhoneNumber:ok') {
+      wx.showModal({
+        title: '警告',
+        content: '若不授权获取手机，则无法注册会员！',
+        showCancel: false
+      })
+      return
+    }
+
     let _this = this
 
     this.props.encryptedData = v.encryptedData
