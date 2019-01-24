@@ -3,7 +3,8 @@ var t = require("../../utils/config.js"),
 
 Page({
     data: {
-        isShow: true,
+        isNewShow:true,
+        isShow: false,
         userInfo: {},
         pageIndex: 1,
         pageSize: 5,
@@ -104,6 +105,18 @@ Page({
     onLoad: function(a) {
         var tm = this;
         wx.hideTabBar({})
+        wx.getStorage({
+            key: 'Already',
+            success(res) {
+                // console.log(res.data)
+                if (res.data=='read'){
+                    tm.setData({
+                        isNewShow:false,
+                        isShow:true
+                    })
+                }
+            }
+        })
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");
@@ -1091,6 +1104,17 @@ Page({
         })
         wx.showTabBar({})
     },
+    onCloseNewBtn: function () {
+        wx.setStorage({
+            key: 'Already',
+            data: 'read'
+        })
+        this.setData({
+            isNewShow: false,
+            isShow: true
+        })
+        
+    },
     onGetLink: function() {
         this.setData({
             isShow: false
@@ -1164,6 +1188,17 @@ Page({
             url: '../discovery/discovery',
         })
     },
+    goToZZZ: function () {
+        wx.setStorage({
+            key: 'Already',
+            data: 'read'
+        })
+        wx.showTabBar({})
+        wx.switchTab({
+            url: '../discovery/discovery',
+        })
+    },
+    
     getCode: function () {
         console.log(e.globalData)
         // 获取jscode  获取accessToken 前提

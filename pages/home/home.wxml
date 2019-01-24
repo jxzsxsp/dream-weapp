@@ -226,5 +226,12 @@
     <view class='popcontainer'>
         <view class='close' bindtap='onCloseBtn'></view>
         <view class='getBtn' bindtap='goView' data-url="/pages/webPage/webPage?artUrl=http://ytal.qkmai.com/ArticleDetails?ArticleId=24" data-id='24'></view>
+    </view>
 </view>
+<view class='homepop' wx:if="{{isNewShow}}">
+    <view class='popOpacity'></view>
+    <view class='popcontainer2'>
+        <view class='close2' bindtap='onCloseNewBtn'></view>
+        <view class='getBtn2' bindtap='goToZZZ' ></view>
+    </view>
 </view>
