@@ -20,8 +20,10 @@ Component({
                             pageSize: 1
                         },
                         success: function(res) {
+                            // var x = res.data.SubMember_get_response.ExpandMemberAll;
+                            // x = parseFloat(x).toFixed(2)
                             tm.setData({
-                                redPacketNum: (res.data.balance).toFixed(1)
+                                redPacketNum: (res.data.balance).toFixed(2)
                             })
 
                         }
@@ -60,7 +62,7 @@ Component({
                 success: function(res) {
                     console.log(res)
                     tm.setData({
-                        redPacketNum: (res.data.balance).toFixed(1)
+                        redPacketNum: (res.data.balance).toFixed(2)
                     })
 
                 }
