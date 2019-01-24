@@ -216,6 +216,8 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
         })
+
+        // tm.getCode()
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -893,22 +895,6 @@ Page({
     changeCate: function(event) {
 
 
-        // 获取jscode  获取accessToken 前提
-        // wx.login({
-        //     success(res) {
-        //         if (res.code) {
-        //             console.log(res.code)
-        //             // wx.request({
-        //             //     url: 'https://test.com/onLogin',
-        //             //     data: {
-        //             //         code: res.code
-        //             //     }
-        //             // })
-        //         } else {
-        //             console.log('登录失败！' + res.errMsg)
-        //         }
-        //     }
-        // })
         wx.showLoading({
             mask: true
         });
@@ -1176,6 +1162,31 @@ Page({
     goToZZ:function(){
         wx.switchTab({
             url: '../discovery/discovery',
+        })
+    },
+    getCode: function () {
+        console.log(e.globalData)
+        // 获取jscode  获取accessToken 前提
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    console.log(res.code)
+                    wx.request({
+                        url: 'https://api.weixin.qq.com/sns/jscode2session',
+                        data: {
+                            appid: e.globalData.appId,
+                            secret: e.globalData.secret,
+                            js_code: res.code,
+                            grant_type: "authorization_code"
+                        },
+                        success: function (jd) {
+                            console.log(jd)
+                        }
+                    })
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
         })
     }
 });
