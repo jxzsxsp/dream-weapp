@@ -96,21 +96,21 @@
       <image src='http://cos.qkmai.com/qkmbb/myytal/wdyhq.png' style='width:100%;height:142rpx;;' lazy-load></image>
     </view>
   </view> -->
-  <view class="usecd">
+  <view class="usecd" style='font-size:20px;'>
         <view bindtap="bindwallet" class="usecdlist" >
-            <redPacketNum redPacketNum="{{54}}"></redPacketNum>
+            <redPacketNum redPacketNum="{{0}}"></redPacketNum>
             <text>红包 </text>
         </view>
         <view bindtap="bindyongjin" class="usecdlist" >
-            <splittinNum splittinNum="{{54}}"></splittinNum>
+            <splittinNum splittinNum="{{0}}"></splittinNum>
             <text>佣金</text>
         </view>
         <view bindtap="bindxiaji" class="usecdlist" >
-            <teamNum splittinNum="{{54}}"></teamNum>
+            <teamNum splittinNum="{{0}}"></teamNum>
             <text>团队</text>
         </view>
         <view bindtap="bindfans" class="usecdlist">
-            <fansNum fansNum="{{54}}"></fansNum>
+            <fansNum fansNum="{{0}}"></fansNum>
             <text>粉丝</text>
         </view>
         
