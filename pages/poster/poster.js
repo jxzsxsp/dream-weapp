@@ -36,13 +36,15 @@ Page({
         goTopStatus: false,
         goodsImages: [],
         SelectskuId: [],
-        SkuID: ""
+        SkuID: "",
+        goodsSource:""
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        console.log(options)
         var path = '/pages/goodInfo/goodInfo?brandid=' + options.brandid + '&goodid=' + options.goodid + '&goodssource=' + options.goodssource
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (path += "&ReferralUserId=" + app.globalData.userInfo.UserId)
         var tm = this;
@@ -56,8 +58,9 @@ Page({
             this.setData({
                 // brandId: options.brandId,
                 // brandSource: options.brandSource
-                brandId: "2c9089c26870a9020168742c1e262fc9",
-                brandSource: "dadacang"
+                brandId: options.brandid,
+                goodsSource: options.goodssource,
+                goodsId: options.goodid
             })
         }
         wx.showLoading({
@@ -68,8 +71,9 @@ Page({
 
             tm.setData({
                 userInfo: t,
-                brandId: "2c9089c26870a9020168742c1e262fc9",
-                brandSource: "dadacang"
+                brandId: options.brandid,
+                goodsSource: options.goodssource,
+                goodsId: options.goodid
             })
             tm.loadMore()
         });
@@ -127,17 +131,16 @@ Page({
     loadMore: function() {
         var tm = this;
         wx.request({
-            url: app.getUrl("YTALGetListRushGoods"),
+            url: app.getUrl("YTALGetInfoGoodsInfo"),
             data: {
                 brandId: tm.data.brandId,
-                isSoldOut: tm.data.nothing,
-                goodsSource: tm.data.brandSource,
-                pi: 1,
-                ps: 1
+                // isSoldOut: tm.data.nothing,
+                goodsId: tm.data.goodsId,
+                goodsSource: tm.data.goodsSource
             },
             success: function(jd) {
                 console.log(jd)
-                var item = jd.data[0];
+                var item = jd.data;
                 
                 var proImg = item.goodsImages[0];
                 var arr = item.infoDesc.split(/\n/g);
