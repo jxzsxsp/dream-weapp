@@ -70,10 +70,8 @@
         "pages/Commission/Commission",
         "pages/myFocus/myFocus",
         "pages/wallet/wallet",
-        "pages/poster/poster"
-        
-
-        
+        "pages/poster/poster",
+        "pages/goodInfo/goodInfo"
     ],
     "window": {
         "backgroundTextStyle": "light",
