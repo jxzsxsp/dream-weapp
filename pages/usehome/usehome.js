@@ -183,6 +183,12 @@ Page({
             url:"../myteam/myteam"
         });
     },
+    bindfans: function (e) {
+        wx.navigateTo({
+            //url: "../SubMembers/SubMembers"
+            url: "../myfans/myfans"
+        });
+    },
     goToVip: function() {
         wx.switchTab({
             url: '/pages/discovery/discovery'
