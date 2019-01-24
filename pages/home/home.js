@@ -51,14 +51,25 @@ Page({
         var tm =this;
         this.GetShopCart();
         wx.getStorage({
-            key: 'Already',
+            key: 'tcOne',
             success(res) {
                 // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
-                        isNewShow: false,
-                        isShow: true
+                        isNewShow: false
                     })
+                }
+            }
+        })
+        wx.getStorage({
+            key: 'tcTwo',
+            success(res) {
+                // console.log(res.data)
+                if (res.data == 'read') {
+                    tm.setData({
+                        isShow: false
+                    })
+                    wx.showTabBar({})
                 }
             }
         })
@@ -119,14 +130,26 @@ Page({
         var tm = this;
         wx.hideTabBar({})
         wx.getStorage({
-            key: 'Already',
+            key: 'tcOne',
             success(res) {
                 // console.log(res.data)
                 if (res.data=='read'){
                     tm.setData({
-                        isNewShow:false,
-                        isShow:true
+                        isNewShow:false
+                       
                     })
+                }
+            }
+        })
+        wx.getStorage({
+            key: 'tcTwo',
+            success(res) {
+                // console.log(res.data)
+                if (res.data == 'read') {
+                    tm.setData({
+                        isShow: false
+                    })
+                    wx.showTabBar({})
                 }
             }
         })
@@ -1112,6 +1135,10 @@ Page({
         });
     },
     onCloseBtn: function() {
+        wx.setStorage({
+            key: 'tcTwo',
+            data: 'read'
+        })
         this.setData({
             isShow: false
         })
@@ -1119,15 +1146,13 @@ Page({
     },
     onCloseNewBtn: function () {
         wx.setStorage({
-            key: 'Already',
+            key: 'tcOne',
             data: 'read'
         })
         this.setData({
             isNewShow: false,
             isShow: true
         })
-        wx.showTabBar({})
-        
     },
     onGetLink: function() {
         this.setData({
@@ -1204,7 +1229,7 @@ Page({
     },
     goToZZZ: function () {
         wx.setStorage({
-            key: 'Already',
+            key: 'tcOne',
             data: 'read'
         })
         wx.showTabBar({})
@@ -1212,7 +1237,6 @@ Page({
             url: '../discovery/discovery',
         })
     },
-    
     getCode: function () {
         console.log(e.globalData)
         // 获取jscode  获取accessToken 前提
