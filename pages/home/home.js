@@ -48,7 +48,20 @@ Page({
 
     },
     onShow: function() {
+        var tm =this;
         this.GetShopCart();
+        wx.getStorage({
+            key: 'Already',
+            success(res) {
+                // console.log(res.data)
+                if (res.data == 'read') {
+                    tm.setData({
+                        isNewShow: false,
+                        isShow: true
+                    })
+                }
+            }
+        })
     },
     GetShopCart: function() {
         var t = this,
@@ -1113,6 +1126,7 @@ Page({
             isNewShow: false,
             isShow: true
         })
+        wx.showTabBar({})
         
     },
     onGetLink: function() {
