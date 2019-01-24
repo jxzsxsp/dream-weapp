@@ -178,7 +178,7 @@
                 </view>
                 <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
                     <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
-                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}' mode='aspectFit' style='border:1rpx solid #cacaca;padding:1rpx'></image>
                     </view>
                     <view style='clear:both'></view>
                     <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
@@ -301,7 +301,7 @@
                 </view>
                 <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
                     <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
-                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}' mode='aspectFit' style='border:1rpx solid #cacaca;padding:1rpx'></image>
                     </view>
                     <view style='clear:both'></view>
                     <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
