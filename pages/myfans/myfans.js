@@ -82,8 +82,8 @@ Page({
                             var st = t.data.SubMemberAllSplittin + splTotal;
                             t.setData({
                                 subMemberList: s,
-                                SubSumOrderTotal: ct,
-                                SubMemberAllSplittin: st,
+                                SubSumOrderTotal: ct.toFixed(2),
+                                SubMemberAllSplittin: st.toFixed(2),
                                 ExpandMemberInMonth: t.data.ExpandMemberInMonth,
                                 ExpandMemberAll: t.data.ExpandMemberAll,
                                 LowerUserSaleTotal: t.data.LowerUserSaleTotal
@@ -93,8 +93,8 @@ Page({
                             r.Total;
                             t.setData({
                                 subMemberList: fansArr,
-                                SubSumOrderTotal: cusTotal,
-                                SubMemberAllSplittin: splTotal,
+                                SubSumOrderTotal: cusTotal.toFixed(2),
+                                SubMemberAllSplittin: splTotal.toFixed(2),
                                 isEmpty: t.data.isempty,
                                 ExpandMemberInMonth: o.ExpandMemberInMonth,
                                 ExpandMemberAll: o.ExpandMemberAll,
