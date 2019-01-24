@@ -96,7 +96,7 @@
       <image src='http://cos.qkmai.com/qkmbb/myytal/wdyhq.png' style='width:100%;height:142rpx;;' lazy-load></image>
     </view>
   </view> -->
-  <view class="usecd" style='font-size:20px;'>
+  <view class="usecd" style='font-size:20px;font-weight:700;'>
         <view bindtap="bindwallet" class="usecdlist" >
             <redPacketNum redPacketNum="{{0}}"></redPacketNum>
             <text>红包 </text>
