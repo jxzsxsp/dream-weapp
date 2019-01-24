@@ -21,7 +21,7 @@ Component({
                         },
                         success: function (res) {
                             tm.setData({
-                                teamNum: (res.data.SubMember_get_response.LowerUserSaleTotal).toFixed(1)
+                                teamNum: (res.data.SubMember_get_response.LowerUserSaleTotal).toFixed(2)
                             })
 
                         }
@@ -60,7 +60,7 @@ Component({
                 success: function (res) {
                     console.log(res)
                     tm.setData({
-                        teamNum: (res.data.SubMember_get_response.LowerUserSaleTotal).toFixed(1)
+                        teamNum: (res.data.SubMember_get_response.LowerUserSaleTotal).toFixed(2)
                     })
 
                 }
