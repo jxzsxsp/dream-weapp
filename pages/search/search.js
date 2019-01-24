@@ -11,7 +11,7 @@ Page({
         shopcartCount: 0,
         inputValue: "",
         dataIndex: 1,
-        dataSize: 10,
+        dataSize: 5,
         isSoldOut: 1,
         hide_good_box: true,
         goTopStatus: false,

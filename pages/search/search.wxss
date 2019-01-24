@@ -209,7 +209,7 @@ page {
 
 .ninePic {
     width: 176rpx;
-    height: 186rpx;
+    height: 176rpx;
 }
 
 .fourPic:nth-child(2) {
