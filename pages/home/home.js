@@ -56,7 +56,8 @@ Page({
                 // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
-                        isNewShow: false
+                        isNewShow: false,
+                        isShow: true
                     })
                 }
             }
@@ -135,8 +136,8 @@ Page({
                 // console.log(res.data)
                 if (res.data=='read'){
                     tm.setData({
-                        isNewShow:false
-                       
+                        isNewShow:false,
+                        isShow: true
                     })
                 }
             }
