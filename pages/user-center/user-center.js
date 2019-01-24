@@ -15,11 +15,8 @@ const data = {
 const privateMethod = {
   // 绘制图片
   drawShareImg: function () {
-    const unit = this.data.unit
     const ctx = wx.createCanvasContext('shareImg');
-
     this.drawImg(ctx)
-
     ctx.draw()
   },
   // 绘制图片
@@ -52,11 +49,10 @@ const privateMethod = {
 
   //保存至相册
   saveShareImgToPhotosAlbum: function () {
-    console.log('saveShareImgToPhotosAlbum')
-    let that = this
+    let _this = this
     const ctx = wx.createCanvasContext('shareImg');
 
-    this.drawImg(ctx)
+    _this.drawImg(ctx)
 
     ctx.draw(false, function () {
       console.log('draw')
@@ -65,12 +61,9 @@ const privateMethod = {
         canvasId: 'shareImg',
         success: function (res) {
           console.log(res);
-          that.setData({
-            shareImgSrc: res.tempFilePath
-          })
           
           wx.saveImageToPhotosAlbum({
-            filePath: that.data.shareImgSrc,
+            filePath: res.tempFilePath,
             success(res) {
               console.log(res);
             }
@@ -88,13 +81,13 @@ const lifecycle = {
   onLoad: function () {
   },
   onReady: function() {
-    let that = this
+    let _this = this
 
     wx.downloadFile({
       url: $wx.app.globalData.userInfo.avatarUrl,
       success: function (res) {
         console.log(res.tempFilePath);
-        that.setData({
+        _this.setData({
           avatarUrl: res.tempFilePath,
         })
       }, 
@@ -106,7 +99,7 @@ const lifecycle = {
       src: '../../assets/xiaoxi_qrcode.jpg',
       success: function (res) {
         console.log(res)
-        that.setData({
+        _this.setData({
           qrcodeImgPath: '../../' + res.path
         });
       }
@@ -116,7 +109,7 @@ const lifecycle = {
       src: '../../assets/share_back.png',
       success: function (res) {
         console.log(res)
-        that.setData({
+        _this.setData({
           shareBackImgPath: '../../' + res.path
         });
       }
@@ -125,7 +118,7 @@ const lifecycle = {
     //获取用户设备信息，屏幕宽度
     wx.getSystemInfo({
       success: res => {
-        that.setData({
+        _this.setData({
           screenWidth: res.screenWidth,
           unit: res.screenWidth / 750,
         })
