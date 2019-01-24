@@ -924,11 +924,19 @@ Page({
             urls: imgs
         })
     },
-    sharePro:function(){
-        wx.showModal({
-            title: '',
-            content: '敬请期待',
-            showCancel: false
+    sharePro: function (event) {
+        // console.log(event.currentTarget.dataset)
+        var brandid = event.currentTarget.dataset.brandid;
+        var goodid = event.currentTarget.dataset.goodid;
+        var goodssource = event.currentTarget.dataset.goodssource;
+        // console.log('/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource)
+        wx.navigateTo({
+            url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
         })
+        // wx.showModal({
+        //     title: '',
+        //     content: '敬请期待',
+        //     showCancel: false
+        // })
     }
 })
