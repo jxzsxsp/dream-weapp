@@ -21,7 +21,7 @@ Component({
                         },
                         success: function (res) {
                             tm.setData({
-                                splittinNum: res.data.splittin_get_response.SplittinTotal
+                                splittinNum: (res.data.splittin_get_response.SplittinTotal).toFixed(2)
                             })
 
                         }
@@ -60,7 +60,8 @@ Component({
                 success: function (res) {
                     console.log(res)
                     tm.setData({
-                        splittinNum: res.data.splittin_get_response.SplittinTotal
+                        // splittinNum: res.data.splittin_get_response.SplittinTotal
+                        splittinNum: (res.data.splittin_get_response.SplittinTotal).toFixed(2)
                     })
 
                 }
