@@ -756,8 +756,8 @@ image {
 }
 
 .ninePic {
-    width: 186rpx;
-    height: 186rpx;
+    width: 184rpx;
+    height: 184rpx;
 }
 
 /* .fourPic:nth-child(2):after {
