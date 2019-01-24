@@ -46,14 +46,12 @@ page {
     background: #f5f5f5;
     opacity: 0.5;
 }
-
 .showlist {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20rpx;
 }
-
 .showlist text {
     font-size: 26rpx;
     display: block;

@@ -52,6 +52,12 @@ Page({
 
                     if (void 0 == a.data.error_response) {
                         var o = a.data.SubMember_get_response, r = o.SubMembers;
+                        var noFansArr = [];
+                        for (var i = 0; i < r.length; i++) {
+                            if (r[i].ReferralGradeName != null) {
+                                noFansArr.push(r[i])
+                            }
+                        }
                         if (n) {
                             // var s = t.data.subMemberData;
                             // s.push.apply(s, r), t.setData({
@@ -60,7 +66,7 @@ Page({
                             //     ExpandMemberAll: t.data.ExpandMemberAll,
                             //     LowerUserSaleTotal: t.data.LowerUserSaleTotal
                             // });
-                            var s = t.data.subMemberList.concat(r)
+                            var s = t.data.subMemberList.concat(noFansArr)
                             t.setData({
                                 subMemberList: s,
                                 ExpandMemberInMonth: t.data.ExpandMemberInMonth,
@@ -71,7 +77,7 @@ Page({
                         } else {
                             r.Total;
                             t.setData({
-                                subMemberList: r,
+                                subMemberList: noFansArr,
                                 isEmpty: t.data.isempty,
                                 ExpandMemberInMonth: o.ExpandMemberInMonth,
                                 ExpandMemberAll: o.ExpandMemberAll,
