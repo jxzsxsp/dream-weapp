@@ -1,0 +1,93 @@
+<!--pages/myteam/myfans.wxml-->
+
+<view class='commission_container'>
+    <view class='commission_top'>
+        <text class='tit'>已邀请粉丝（人）</text>
+        <view class='show_num'>
+            <text class='money_num' style="font-size:60rpx">{{ExpandMemberAll}}</text>
+
+        </view>
+        
+        <view class='line'></view>
+        <view class='showlist'>
+            <view style='margin-right:80rpx'>
+                <text>粉丝累计消费</text>
+                <text>{{SubSumOrderTotal}}</text>
+            </view>
+            <view>
+                <text>粉丝购物返佣</text>
+                <text>{{SubMemberAllSplittin}}</text>
+            </view>
+            
+        </view>
+    </view>
+    
+    <view class='commission_bottom' style="width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;" wx:if="{{subMemberList.length!=0}}">
+        <block wx:for="{{subMemberList}}" wx:key="{{subMemberList}}" wx:if="{{subMemberList.length > 0}}">
+            <view class='list '>
+                <view class='list_top'>
+                    <view class='list1'>
+                        <text class='font_big'>{{item.RealName}}</text>
+
+
+                    </view>
+                    <text class='font_big list2'>￥{{item.SubSumOrderTotal}}</text>
+                    <text class='font_big list3'>￥{{item.SubMemberAllSplittin}}</text>
+                </view>
+                <view class='list_bottom'>
+                    <!-- <text class='font_small list1'>{{item.CreateDate}}</text> -->
+                    <view class='list1 '>
+                        <text class='{{item.ReferralGradeName==null?"custom":"VIP"}}' style=''>{{item.ReferralGradeName==null?'普通用户':(item.ReferralGradeName=="试用"?"试用VIP":item.ReferralGradeName)}}</text>
+                    </view>
+                    <text class='font_small font_small2 list2'>累计消费</text>
+                    <text class='font_small font_small2 list3'>购物返佣</text>
+                </view>
+            </view>
+        </block>
+        <!-- <view class='list lista'>
+            <view class='list_top'>
+                <view class='list1'>
+                    <text class='font_big '>赵琳Ramsey</text>
+                    <text class='custom'>普通用户</text>
+                </view>
+                <text class='font_big list2'>￥0</text>
+                <text class='font_big list3'>￥0</text>
+            </view>
+            <view class='list_bottom'>
+                <text class='font_small list1'>2019-01-02 18:56:13</text>
+                <text class='font_small font_small2 list2'>累计消费</text>
+                <text class='font_small font_small2 list3'>购物返佣</text>
+            </view>
+        </view>
+        <view class='list'>
+            <view class='list_top'>
+                <view class='list1'>
+                    <text class='font_big '>~不忘初心~</text>
+                    <text class='custom'>普通用户</text>
+                </view>
+                <text class='font_big list2'>￥0</text>
+                <text class='font_big list3'>￥0</text>
+            </view>
+            <view class='list_bottom'>
+                <text class='font_small list1'>2019-01-02 18:56:13</text>
+                <text class='font_small font_small2 list2'>累计消费</text>
+                <text class='font_small font_small2 list3'>购物返佣</text>
+            </view>
+        </view>
+        <view class='list'>
+            <view class='list_top'>
+                <view class='list1'>
+                    <text class='font_big '>aGnaij</text>
+                    <text class='VIP'>试用VIP</text>
+                </view>
+                <text class='font_big list2'>￥0</text>
+                <text class='font_big list3'>￥0</text>
+            </view>
+            <view class='list_bottom'>
+                <text class='font_small list1'>2019-01-02 18:56:13</text>
+                <text class='font_small font_small2 list2'>累计消费</text>
+                <text class='font_small font_small2 list3'>购物返佣</text>
+            </view>
+        </view> -->
+    </view>
+</view>

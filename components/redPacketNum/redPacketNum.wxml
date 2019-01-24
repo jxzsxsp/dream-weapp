@@ -1,0 +1,2 @@
+<!--components/redPacketNum/redPacketNum.wxml-->
+<view>{{redPacketNum}}</view>

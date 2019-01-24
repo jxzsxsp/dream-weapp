@@ -1,0 +1,28 @@
+<!--pages/poster/poster.wxml-->
+<view id="poster" style="width: 750rpx;height:1334rpx;position: relative; background: url('http://cos.qkmai.com/qkmbb/ytal/erweima_1.png') no-repeat center top;background-size:cover;overflow: hidden; ">
+		<view style="width: 640rpx;height:920rpx;background: #fff;margin:0 auto;margin-top: 160rpx;">
+			<img src="" id="proImg" style="width: 595rpx;height: 595rpx;margin: 20rpx 20rpx 0rpx 20rpx"></img>
+			<view id="proContainer">
+				<view id="infoTit" style="font-size: 30rpx;color: #000;margin: 20rpx;margin-bottom: 0"></view>
+				<view id="infoSize" style="font-size: 20rpx;color: #000;margin:0  20rpx;margin-bottom:20rpx"></view>
+				<view id="infoDes" style="font-size: 20rpx;color: #acacac;margin:0  20rpx"></view>
+				<view id="infSku" style="font-size: 20rpx;color: #acacac;margin:0  20rpx;margin-bottom:30rpx"></view>
+				<view style="margin: 0 20rpx">
+					<span style="float: left;color:#acacac;font-size: 20rpx;line-height:40rpx">￥</span><span id="salePrice" style="line-height: 40rpx;float: left;color:#db222a;font-size: 40rpx;"></span>
+					<span id="marketPrice" style="float: left;color:#acacac;font-size: 20rpx;text-decoration:line-through;line-height: 40rpx;padding-left: 20rpx;"></span>
+					<span style="float: right;color:#acacac;font-size: 20rpx;line-height: 40rpx">折</span>
+					<span id="marketPriceDiscount" style="float: right;color:#db222a;font-size: 30rpx;line-height: 40rpx"></span>
+					
+				</view>
+				
+			</view>
+		</view>
+		<view id="userInfo" style="position: absolute;top:1093rpx;left: 50rpx ">
+			<img id="userPic" style="width: 155rpx;height: 155rpx;"></img>
+			<view id="userName" style="color: #fff;font-size: 20rpx;"></view>
+		</view>
+		<view id="maInfo" style="position: absolute;top:1093rpx;right: 50rpx;text-align: right;">
+			<img id="maPic" style="width: 155rpx;height: 155rpx;display: block;margin-left:50rpx"></img>
+			<view style="color: #fff;font-size: 20rpx;line-height: 40rpx">长按二维码去购买</view>
+		</view>
+	</view>

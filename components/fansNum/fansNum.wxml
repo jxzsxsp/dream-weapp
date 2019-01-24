@@ -1,0 +1,2 @@
+<!--components/fansNum/fansNum.wxml-->
+<view>{{fansNum}}</view>

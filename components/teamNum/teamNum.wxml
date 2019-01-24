@@ -1,0 +1,2 @@
+<!--components/teamNum/teamNum.wxml-->
+<view>{{teamNum}}</view>
