@@ -43,6 +43,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        var path = '/pages/goodInfo/goodInfo?brandid=' + options.brandid + '&goodid=' + options.goodid + '&goodssource=' + options.goodssource
+        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (path += "&ReferralUserId=" + app.globalData.userInfo.UserId)
         var tm = this;
         app.globalData.fundebug.notifyError(new Error("列表onload"), {
             name: "brandInfo-onload",
