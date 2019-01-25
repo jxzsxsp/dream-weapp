@@ -18,30 +18,31 @@ const lifecycle = {
     this.refresh()
     $wx.stopPullDownRefresh();
   },
-  onReachBottom: function () {
-    let shopList = this.data.shopList
+  // onReachBottom: function () {
+  //   let shopList = this.data.shopList
 
-    this.getShopList().then(res => {
-      console.log(res)
+  //   this.getShopList().then(res => {
+  //     console.log(res)
 
-      this.setData({
-        shopList: shopList.concat(res)
-      })
-    })
-  },
+  //     this.setData({
+  //       shopList: shopList.concat(res)
+  //     })
+  //   })
+  // },
 }
 
 const privateMethods = {
   getShopList: function () {
-    return http.getList(urls.browseHistory, this.props.loadingState, {
+    return http.get(urls.browseHistory, {
       // mock: true,
     })
   },
   refresh: function () {
     this.props.loadingState = http.defaultLoadingState();
     this.getShopList().then(res => {
+      console.log(res)
       this.setData({
-        shopList: res
+        shopList: res.list
       })
 
     })

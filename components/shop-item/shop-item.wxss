@@ -40,9 +40,10 @@
 }
 
 .shop-name {
+  width: 320rpx;
   margin-top: 68rpx;
   font-family: PingFangSC-Medium;
-  font-size: 34rpx;
+  font-size: 28rpx;
   color: #000000;
   letter-spacing: 1rpx;
 }
