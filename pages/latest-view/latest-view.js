@@ -1,5 +1,6 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
   loadingState: http.defaultLoadingState(),
@@ -65,7 +66,8 @@ const viewAction = {
   followShop: function (d, v) {
     http.get(urls.followSupplier, {
       // mock: true,
-      shopId: v.id
+      shopId: v.id,
+      source: constant.BindCustomerSource.WEAPP_VIEW,
     }).then((res) => {
       v.isFollow = 1
       this.flushShopList(v)

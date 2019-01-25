@@ -8,14 +8,7 @@
       <text class='shop-name'>{{shop.name}}</text>
       <view class='main-business'>
         <text class='business-title'>主营</text>
-        <block wx:for="{{shop.shopBusinessDtos}}" wx:key="index">
-          <block wx:if="{{index < 3}}">
-            <text class='business-name'>{{item.businessName}}</text>
-          </block>
-          <block wx:if="{{index === 3}}">
-            <text class='business-name'>...</text>
-          </block>
-        </block>
+        <text wx:if='{{businessNames}}' class='business-name'>{{businessNames}}</text>
       </view>
     </view>
 
@@ -33,7 +26,7 @@
     </view>
     <view class='detail-item'>
       <text class='detail-title'>地址</text>
-      <text class='detail-desc'>{{shop.provinceName}}{{shop.cityName}}{{shop.areaName}}{{shop.address}}</text>
+      <text class='detail-desc'>{{shop.fullAddress}}</text>
     </view>
   </view>
 </view>

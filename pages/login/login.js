@@ -3,6 +3,7 @@ import { http, urls } from '../../net/index'
 import constants from '../../constant/index'
 
 const props = {
+  isOverwrite: 0,
 }
 
 const data = {
@@ -65,9 +66,29 @@ const privateMethods = {
       bindId: this.props.bindId,
       encryptedData: this.props.encryptedData,
       iv: this.props.iv,
+      isOverwrite: this.props.isOverwrite,
     }
 
     http.postLogin(urls.login.bindWechatMobile, data).then(res => {
+      console.log(res)
+      
+      if (res.code === '111') {
+        let _this = this
+        wx.showModal({
+          title: '确认绑定',
+          content: res.tips,
+          showCancel: true,
+          confirmText: '继续绑定',
+          success: function (e) {
+            if (e.confirm) {
+              _this.props.isOverwrite = 1
+              _this.bindWechatMobile()
+            }
+          }
+        })
+        return
+      }
+
       $wx.app.saveAuthInfo();
       this.navigateBack();
     })

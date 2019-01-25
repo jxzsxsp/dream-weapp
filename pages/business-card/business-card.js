@@ -41,6 +41,7 @@ const lifecycle = {
       this.getShopDetail(shopId).then((res) => {
         this.setData({
           shopInfo: res,
+          isFollow: res.isFollow === 1,
         })
       })
     }
@@ -56,6 +57,7 @@ const lifecycle = {
       this.getPersonDetail(shopId, userId).then((res) => {
         this.setData({
           userInfo: res,
+          isFollow: res.shopDetail.isFollow === 1,
         })
       })
     }
@@ -105,7 +107,8 @@ const viewAction = {
   followShop: function () {
     http.get(urls.followSupplier, {
       // mock: true,
-      shopId: this.data.shopId
+      shopId: this.data.shopId,
+      source: constant.BindCustomerSource.WEAPP_VIEW,
     }).then((res) => {
       this.setData({
         isFollow: true,

@@ -92,6 +92,7 @@ page {
 .business-container {
   width: 670rpx;
   min-height: 167rpx;
+  padding-bottom: 10rpx;
 }
 
 .business-title {
@@ -122,7 +123,7 @@ page {
   bottom: 100rpx;
   width: 680rpx;
   height: 94rpx;
-  background: #0156FE;
+  background: #CBCBCB;
   border-radius: 14rpx;
   justify-content: center;
   align-items: center;
@@ -130,4 +131,8 @@ page {
   font-size: 34rpx;
   color: #FFFFFF;
   letter-spacing: 1rpx;
+}
+
+.active {
+  background: #0156FE;
 }

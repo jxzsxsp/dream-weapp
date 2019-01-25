@@ -7,7 +7,7 @@
       </view>
       <view wx:if="{{!showShop}}" class='person-container flex'>
         <view class='person-info flex-column'>
-          <text class='shop-name'>{{userInfo.shopName}}</text>
+          <text class='shop-name'>{{userInfo.shopDetail.name}}</text>
           <text class='person-name'>{{userInfo.name}}</text>
           <text class='person-position'>{{userInfo.post}}</text>
         </view>
@@ -15,9 +15,9 @@
       </view>
     </view>
     <text wx:if="{{shopInfo.mobile}}" class='info-text'>{{shopInfo.mobile}}</text>
-    <text wx:if="{{shopInfo.address}}" class='info-text'>{{shopInfo.address}}</text>
+    <text wx:if="{{shopInfo.fullAddress}}" class='info-text'>{{shopInfo.fullAddress}}</text>
     <text wx:if="{{userInfo.mobile}}" class='info-text'>{{userInfo.mobile}}</text>
-    <text wx:if="{{userInfo.address}}" class='info-text'>{{userInfo.address}}</text>
+    <text wx:if="{{userInfo.shopDetail.fullAddress}}" class='info-text'>{{userInfo.shopDetail.fullAddress}}</text>
   </view>
   <view class='business-container flex-column'>
     <view class='business-title'>主营</view>
@@ -25,12 +25,12 @@
       <block wx:if="{{shopInfo.businessNameList}}" wx:for="{{shopInfo.businessNameList}}" wx:key="index">
         <text class='business-name'>{{item.businessName}}</text>
       </block>
-      <block wx:if="{{userInfo.businessNameList}}" wx:for="{{userInfo.businessNameList}}" wx:key="index">
-        <text class='business-name'>{{item.name}}</text>
+      <block wx:if="{{userInfo.shopDetail.businessNameList}}" wx:for="{{userInfo.shopDetail.businessNameList}}" wx:key="index">
+        <text class='business-name'>{{item.businessName}}</text>
       </block>
     </view>
   </view>
 </view>
 
-<view wx:if="{{!isFollow}}" class='bottom-btn flex' bind:tap="followShop">关注店铺</view>
+<view wx:if="{{!isFollow}}" class='bottom-btn active flex' bind:tap="followShop">关注店铺</view>
 <view wx:if="{{isFollow}}" class='bottom-btn flex'>已关注店铺</view>

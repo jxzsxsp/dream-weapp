@@ -52,12 +52,12 @@ const QrCodeType = {
   PERSONAL_BUSINESS_CARD: 3,
 }
 
-// 来源 1 到店码 2 个人名片 3 小程序推荐浏览 4 app 推荐浏览 5 店铺名片
+// 来源 1 到店码 2 小程序推荐浏览 3 app 推荐浏览 4 个人名片 5 店铺名片
 const BindCustomerSource = {
   TO_SHOP: 1,
-  PERSONAL_BUSINESS_CARD: 2,
-  WEAPP_VIEW: 3,
-  APP_VIEW: 4,
+  WEAPP_VIEW: 2,
+  APP_VIEW: 3,
+  PERSONAL_BUSINESS_CARD: 4,
   SHOP: 5,
 }
 

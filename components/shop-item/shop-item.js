@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    businessNames: '',
   },
 
   /**
@@ -36,5 +36,18 @@ Component({
         { bubbles: true, composed: true });
     },
 
+  },
+  ready: function() {
+    let businesses = this.data.shop.businesses
+
+    if(businesses && businesses.length > 0) {
+      let businessNames = businesses.join(' ')
+      if(businessNames.length > 18) {
+        businessNames = businessNames.substring(0, 16) + '...'
+      }
+      this.setData({
+        businessNames
+      })
+    }
   }
 })
