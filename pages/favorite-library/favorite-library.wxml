@@ -13,7 +13,7 @@
   <view class='color-content' data-detail='{{defaultColorLibrary}}' bind:tap='viewColorLibrary'>
     <text class='color-title'>{{defaultColorLibrary.name}}</text>
     <view class='color-desc'>
-      <text class='color-num'>{{defaultColorLibrary.colorCount}}个颜色</text>
+      <text class='color-num'>{{defaultColorLibrary.colorCount === null ? 0 : defaultColorLibrary.colorCount}}个颜色</text>
       <block wx:if='{{defaultColorLibrary.timeLabel && defaultColorLibrary.timeLabel !== null}}'>
       <view class='point'></view>
       <text class='color-time'>{{defaultColorLibrary.timeLabel}}</text>
@@ -34,7 +34,7 @@
   <view class='color-content' data-detail='{{item}}' bind:tap='viewColorLibrary'>
     <text class='color-title'>{{item.name}}</text>
     <view class='color-desc'>
-      <text class='color-num'>{{item.colorCount}}个颜色</text>
+      <text class='color-num'>{{item.colorCount === null ? 0 : item.colorCount}}个颜色</text>
       <block wx:if='{{item.timeLabel && item.timeLabel !== null}}'>
       <view class='point'></view>
       <text class='color-time'>{{item.timeLabel}}</text>
