@@ -104,24 +104,98 @@
             </view>
         </view>
     </view>
-    <view class='brandInfoContainer' wx:if="{{isSelectState==1}}" style='position:relative;'>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <view class='brandInfoContainer' style='position:relative;'>
         <view wx:if='{{showNoList && rushGoodsList.length == 0 && nothing==0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;box-sizing:border-box;'>
             <image style='width:168rpx;height:168rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/bianpaotb.png'></image>
             <text style='font-size:14px;color:#000;'>活动太火爆，已经抢光了</text>
         </view>
         <view class="kong" style='display:flex;flex-direction:column;align-items:center;padding:144rpx 0 285rpx 0;min-height:680rpx;overflow:hidden;font-size:28rpx;color:#212121;' wx:if="{{nothing==1 && rushGoodsList.length==0}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx;width:192rpx;height:192rpx;padding:32rpx;"></view>
-            <!-- <text>功能升级中，敬请期待~</text> -->
             <text>没有已抢光商品哦~</text>
         </view>
-        <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
-            <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
+
+
+
+
+        <view style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;'>
+            <!-- <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
                 bindtap='goToTop'>
                 <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
-                <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
-            </view>
+            </view> -->
             <view style='position:absolute;top:0rpx;right:25rpx;width:120rpx;height:75rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
-                <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
+                <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((goodInfo.marketPriceDiscount / 10),1)}}
                     <text style='font-size:22rpx;line-height:70rpx;'>折</text>
                 </view>
             </view>
@@ -145,23 +219,23 @@
             <view>
                 <view style='padding-left:129rpx;position:relative;'>
                     <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
-                        <text bindlongpress='copy' class='ellipsis' data-val="{{item.infoDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.infoDesc}}</text>
+                        <text bindlongpress='copy' class='ellipsis' data-val="{{goodInfo.infoDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{goodInfo.infoDesc}}</text>
                     </view>
                 </view>
                 <view style='padding:12rpx 27rpx 18rpx 129rpx'>
-                    <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
-                    <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
+                    <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>{{filter.toFix(goodInfo.salePrice,2)}}</text>
+                    <text class='marketPrice'>¥{{filter.toFix(goodInfo.marketPrice,2)}}</text>
                     <view style='float:right' wx:if="{{userInfo.IsReferral}}">
                         <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
-                        <text class='commissionMoney' style='font-weight:900;font-size:40rpx'><text style='font-size:24rpx'>¥</text>{{item.commissionMoney}}</text>
+                        <text class='commissionMoney' style='font-weight:900;font-size:40rpx'><text style='font-size:24rpx'>¥</text>{{goodInfo.commissionMoney}}</text>
                     </view>
                 </view>
                 <view style='padding-left:129rpx;display:flex;flex-flow:row wrap;position:relative;overflow:hidden;'>
-                    <view class='{{item.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{item.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
-                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{item.goodsImages}}'></image>
+                    <view class='{{goodInfo.goodsImages.length == 4 ? "fourPic" : ""}}' wx:key="{{item}}" wx:for='{{goodInfo.goodsImages}}' wx:for-item='goodsImg' style='margin-right:10rpx;margin-bottom:10rpx;'>
+                        <image class='ninePic' src='{{goodsImg}}' bindtap='previewImg' data-imgsrc='{{goodsImg}}' data-imgs='{{goodInfo.goodsImages}}'></image>
                     </view>
                     <view style='clear:both'></view>
-                    <view wx:if='{{item.isSoldOut}}' class='{{item.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
+                    <view wx:if='{{goodInfo.isSoldOut}}' class='{{goodInfo.isSoldOut ? "disabled" : "disabled"}}' style='position:absolute;left:0;top:0;;width:730rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
                         <image src='http://cos.qkmai.com/qkmbb/ytal/guang.png' style="width:200rpx;position:absolute;left:208rpx;top:80rpx;" mode='widthFix'></image>
                     </view>
                 </view>
@@ -172,25 +246,25 @@
                         <text style='color:#3040d7;font-size:26rpx'>请选择商品规格下单</text>
                     </view>
                     <view style='padding:0 16rpx'>
-                        <view wx:for='{{item.skuList}}' style='float:left' wx:for-item='sku'>
-                            <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{item.goodsId}}' data-img='{{item.goodsImages[0]}}' bindtap='selectSkuId'>
+                        <view wx:for='{{goodInfo.skuList}}' style='float:left' wx:for-item='sku'>
+                            <view class="skuBtn {{goodsSkuId==sku.skuId?' active ':' '}}" data-skuid='{{sku.skuId}}' data-skuname='{{sku.skuName}}' data-goodsid='{{goodInfo.goodsId}}' data-img='{{goodInfo.goodsImages[0]}}' bindtap='selectSkuId'>
                                 <text style='font-size:26rpx;padding:0 15rpx;line-height:60rpx'>{{sku.skuName}}</text>
                             </view>
                         </view>
                         <view style='clear:both'></view>
                     </view>
-                    <view wx:if='{{item.isSoldOut}}' class='mask' style='position:absolute;left:-100rpx;top:0;width:750rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
+                    <view wx:if='{{goodInfo.isSoldOut}}' class='mask' style='position:absolute;left:-100rpx;top:0;width:750rpx;height:100%;background-color:rgba(256,256,256,0.5);'>
                     </view>
                     <view style='width:100%;height:35rpx;background-color:#fff;;'></view>
                     <view style='height:90rpx;line-height:90rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:flex-start;width:600rpx;'>
                         <view style='position:relative;width:200rpx;height:90rpx;background-color:#fff;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));'>
-                            <view style='width:100%;font-size:30rpx;line-height:90rpx;border:none;color:#fff;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));' bindtap='addGoodsToCart' data-goodsid='{{item.goodsId}}' data-salePrice='{{item.salePrice}}' data-img='{{item.goodsImages[0]}}'>
+                            <view style='width:100%;font-size:30rpx;line-height:90rpx;border:none;color:#fff;background:linear-gradient(rgba(255,176,128,1), rgba(255,131,64,1));' bindtap='addGoodsToCart' data-goodsid='{{goodInfo.goodsId}}' data-salePrice='{{goodInfo.salePrice}}' data-img='{{goodInfo.goodsImages[0]}}'>
                                 <view style='position:relative;'>加入购物车</view>
                             </view>
                             <!-- <view style='clear:both'></view> -->
                         </view>
-                        <view style='position:relative;width:200rpx;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-bottom-right-radius:20rpx;' bindtap='goToBuyGoods' data-goodsid='{{item.goodsId}}'
-                            data-salePrice='{{item.salePrice}}'>
+                        <view style='position:relative;width:200rpx;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-bottom-right-radius:20rpx;' bindtap='goToBuyGoods' data-goodsid='{{goodInfo.goodsId}}'
+                            data-salePrice='{{goodInfo.salePrice}}'>
                             <view style='position:relative;'>立即购买</view>
 
                         </view>

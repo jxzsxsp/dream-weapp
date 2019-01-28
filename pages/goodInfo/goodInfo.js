@@ -36,13 +36,19 @@ Page({
         goTopStatus: false,
         goodsImages: [],
         SelectskuId: [],
-        SkuID: ""
+        SkuID: "",
+        goodInfo: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        // const scene = decodeURIComponent(query.scene)
+        // var scene = decodeURIComponent(options.scene)
+
+
+
         app.globalData.fundebug.notifyError(new Error("goodInfo onload"), {
             name: "goodInfo-onload",
             metaData: options
@@ -69,6 +75,7 @@ Page({
 
         // 执行倒计时函数    
         this.getTitle();
+        this.getGoodInfo()
         this.countDown();
         //this.goodsListNew();
         var that = this;
@@ -233,11 +240,11 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        if (this.data.hasMore) {
-            wx.showNavigationBarLoading();
-            this.loadMore();
-            wx.hideNavigationBarLoading();
-        }
+        // if (this.data.hasMore) {
+        //     wx.showNavigationBarLoading();
+        //     this.loadMore();
+        //     wx.hideNavigationBarLoading();
+        // }
     },
     onPageScroll: function (obj) {
         if (obj.scrollTop > 363) {
@@ -254,47 +261,47 @@ Page({
             goTopStatus: false
         })
     },
-    loadMore: function () {
-        if (!this.data.hasMore) return;
+    // loadMore: function () {
+    //     if (!this.data.hasMore) return;
 
-        var tm = this;
-        wx.request({
-            url: app.getUrl("YTALGetListRushGoods"),
-            data: {
-                brandId: tm.data.brandId,
-                isSoldOut: tm.data.nothing,
-                goodsSource: tm.data.brandSource,
-                pi: ++tm.data.dataIndex,
-                ps: tm.data.dataSize
-            },
-            success: function (jd) {
-                if (jd.data.length <= 5 && jd.data.length > 0) {
-                    let goodsList = [];
-                    jd.data.forEach(o => {
-                        goodsList.push(o)
-                    });
-                    var newList = tm.data.rushGoodsList.concat(goodsList)
-                    tm.setData({
-                        rushGoodsList: newList
-                    })
-                    // console.log(jd.data.length)
-                    if (jd.data.length < 5) {
-                        tm.setData({
-                            hasMore: false
-                        })
-                    }
-                } else {
+    //     var tm = this;
+    //     wx.request({
+    //         url: app.getUrl("YTALGetListRushGoods"),
+    //         data: {
+    //             brandId: tm.data.brandId,
+    //             isSoldOut: tm.data.nothing,
+    //             goodsSource: tm.data.brandSource,
+    //             pi: ++tm.data.dataIndex,
+    //             ps: tm.data.dataSize
+    //         },
+    //         success: function (jd) {
+    //             if (jd.data.length <= 5 && jd.data.length > 0) {
+    //                 let goodsList = [];
+    //                 jd.data.forEach(o => {
+    //                     goodsList.push(o)
+    //                 });
+    //                 var newList = tm.data.rushGoodsList.concat(goodsList)
+    //                 tm.setData({
+    //                     rushGoodsList: newList
+    //                 })
+    //                 // console.log(jd.data.length)
+    //                 if (jd.data.length < 5) {
+    //                     tm.setData({
+    //                         hasMore: false
+    //                     })
+    //                 }
+    //             } else {
 
-                    tm.setData({
-                        hasMore: false
-                    })
-                }
-            },
-            complete: function () {
-                wx.hideLoading();
-            }
-        });
-    },
+    //                 tm.setData({
+    //                     hasMore: false
+    //                 })
+    //             }
+    //         },
+    //         complete: function () {
+    //             wx.hideLoading();
+    //         }
+    //     });
+    // },
     /**
      * 用户点击右上角分享
      */
@@ -330,6 +337,7 @@ Page({
         // 获取当前时间，同时得到活动结束时间数组
         let newTime = new Date().getTime();
         var rushInfo = this.data.brandRushInfo;
+        // if (rushInfo.length == 0) return;
         rushInfo.forEach(o => {
             var rushEndTime = o.rushEndTime.replace('\-', '/').replace('\-', '/');
             let endTime = new Date(rushEndTime).getTime();
@@ -618,10 +626,15 @@ Page({
         wx.request({
             url: app.getUrl("YTALGetInfoBrandRush"),
             data: {
-                brandId: tm.data.brandId,
-                brandSource: tm.data.brandSource
+                // brandId: tm.data.brandId,
+                // brandSource: tm.data.brandSource
+                brandId: "2c9089c268833f0801688eb033497016",
+                brandSource: "dadacang"
             },
             success: function (jd) {
+                if (jd.data == "") return;
+                console.log(jd.data == "")
+                if(jd)
                 var infoList = [];
                 let brandRush = jd.data;
                 var obj = {
@@ -631,6 +644,9 @@ Page({
                     sec: '00'
                 }
                 brandRush.countDownTime = obj;
+                // if (brandRush && brandRush != null) {
+                //     console.log(1)
+                // };
                 if (brandRush.rushEndTime != null) {
                     var month = brandRush.rushEndTime.split('-')[1];
                     var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
@@ -656,10 +672,10 @@ Page({
 
                     // brandSource: brandSource
                 });
-                tm.goodsListNew();
-                wx.stopPullDownRefresh();
-                tm.focusList();
-                tm.brandIsFocus();
+                // tm.goodsListNew();
+                // wx.stopPullDownRefresh();
+                // tm.focusList();
+                // tm.brandIsFocus();
             },
             complete: function () {
                 wx.stopPullDownRefresh();
@@ -824,7 +840,8 @@ Page({
         wx.request({
             url: app.getUrl("YTALBrandIsFollow"),
             data: {
-                openId: o,
+                // openId: o,
+                openId: "o_rWK5ULNm46IJqvZOEFWIj_xWVc",
                 mainTitle: tm.data.mainTitle
             },
             success: function (jd) {
@@ -897,5 +914,28 @@ Page({
             content: '敬请期待',
             showCancel: false
         })
+    },
+    getGoodInfo: function () {
+        var tm =this;
+        wx.request({
+            url: app.getUrl("YTALGetInfoGoodsInfo"),
+            data: {
+                // goodsId: tm.data.goodsId,
+                // goodsSource: tm.data.goodsSource,
+                // brandId: tm.data.brandId
+                goodsId: "2c9089c268833f0801689018197b065d",
+                goodsSource: "dadacang",
+                brandId: "2c9089c268833f0801688eb033497016"
+            },
+            success: function (jd) {
+                // console.log(jd)
+
+                    tm.setData({
+                        goodInfo: jd.data
+                    })
+                
+            }
+        });
+        // https://ytal.qkmai.com/API/WeChatApplet.ashx?action=YTALGetInfoGoodsInfo&goodsId=2c9089c26870a902016875afe13171d3&goodsSource=dadacang&brandId=2c9089c26870a90201687399c24b6304
     }
 })
