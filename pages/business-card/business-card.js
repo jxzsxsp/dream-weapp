@@ -37,13 +37,6 @@ const lifecycle = {
       this.setData({
         showShop: true,
       })
-
-      this.getShopDetail(shopId).then((res) => {
-        this.setData({
-          shopInfo: res,
-          isFollow: res.isFollow === 1,
-        })
-      })
     }
 
     if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
@@ -53,7 +46,24 @@ const lifecycle = {
       this.setData({
         showShop: false,
       })
+    }
 
+  },
+  onShow: function () {
+    let type = this.data.type
+    let shopId = this.data.shopId
+    let userId = this.data.userId
+
+    if (constant.QrCodeType.SHOP === type || constant.QrCodeType.TO_SHOP === type) {
+      this.getShopDetail(shopId).then((res) => {
+        this.setData({
+          shopInfo: res,
+          isFollow: res.isFollow === 1,
+        })
+      })
+    }
+
+    if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
       this.getPersonDetail(shopId, userId).then((res) => {
         this.setData({
           userInfo: res,
@@ -62,8 +72,6 @@ const lifecycle = {
       })
     }
 
-  },
-  onShow: function() {
     this.bindCustomer()
   }
 }

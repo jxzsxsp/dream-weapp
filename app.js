@@ -17,9 +17,9 @@ App({
     // 校验授权情况
     this.saveAuthInfo().then((res) => {
       if (res.code === -1) {
-        $wx.redirectTo($wx.router.login)
+        $wx.navigateTo($wx.router.login)
       } else if (res.code === -2) {
-        $wx.redirectTo($wx.router.login, { bindId: res.bindId })
+        $wx.navigateTo($wx.router.login, { bindId: res.bindId })
       }
     })
   },

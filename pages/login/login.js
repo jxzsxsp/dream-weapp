@@ -32,6 +32,7 @@ const privateMethods = {
    */
   navigateBack: function () {
     let pages = getCurrentPages();
+    console.log(pages)
     
     if (pages.length > 1) {
       $wx.navigateBack()
@@ -89,8 +90,9 @@ const privateMethods = {
         return
       }
 
-      $wx.app.saveAuthInfo();
-      this.navigateBack();
+      $wx.app.saveAuthInfo().then((res) => {
+        this.navigateBack()
+      })
     })
   },
 
@@ -100,8 +102,9 @@ const viewAction = {
   authorLogin: function () {
     this.login().then(res => {
       if (res.token) {
-        $wx.app.saveAuthInfo();
-        this.navigateBack();
+        $wx.app.saveAuthInfo().then((res) => {
+          this.navigateBack()
+        })
       } else if (res.bindId) {
         this.props.bindId = res.bindId
         this.setData({
