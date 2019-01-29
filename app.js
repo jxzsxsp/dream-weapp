@@ -15,13 +15,14 @@ App({
     $wx.registerRouter(router)
 
     // 校验授权情况
-    this.saveAuthInfo().then((res) => {
-      if (res.code === -1) {
-        $wx.navigateTo($wx.router.login)
-      } else if (res.code === -2) {
-        $wx.navigateTo($wx.router.login, { bindId: res.bindId })
-      }
-    })
+    this.saveAuthInfo()
+    // this.saveAuthInfo().then((res) => {
+    //   if (res.code === -1) {
+    //     $wx.navigateTo($wx.router.login)
+    //   } else if (res.code === -2) {
+    //     $wx.navigateTo($wx.router.login, { bindId: res.bindId })
+    //   }
+    // })
   },
 
   // 绑定手机号,主动调用前必须先授权
