@@ -50,29 +50,31 @@ const lifecycle = {
 
   },
   onShow: function () {
-    let type = this.data.type
-    let shopId = this.data.shopId
-    let userId = this.data.userId
+    
+    this.bindCustomer().then((res) => {
+      let type = this.data.type
+      let shopId = this.data.shopId
+      let userId = this.data.userId
 
-    if (constant.QrCodeType.SHOP === type || constant.QrCodeType.TO_SHOP === type) {
-      this.getShopDetail(shopId).then((res) => {
-        this.setData({
-          shopInfo: res,
-          isFollow: res.isFollow === 1,
+      if (constant.QrCodeType.SHOP === type || constant.QrCodeType.TO_SHOP === type) {
+        this.getShopDetail(shopId).then((res) => {
+          this.setData({
+            shopInfo: res,
+            isFollow: res.isFollow === 1,
+          })
         })
-      })
-    }
+      }
 
-    if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
-      this.getPersonDetail(shopId, userId).then((res) => {
-        this.setData({
-          userInfo: res,
-          isFollow: res.shopDetail.isFollow === 1,
+      if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
+        this.getPersonDetail(shopId, userId).then((res) => {
+          this.setData({
+            userInfo: res,
+            isFollow: res.shopDetail.isFollow === 1,
+          })
         })
-      })
-    }
+      }
+    })
 
-    this.bindCustomer()
   }
 }
 
