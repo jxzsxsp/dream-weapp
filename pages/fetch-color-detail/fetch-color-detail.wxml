@@ -10,7 +10,7 @@
 
   <view class="share-button-container">
     <button wx:if="{{!fromLibrary}}" class="share-button" open-type="launchApp" app-parameter="{\"router\":0,\"data\":{{colorId}}}" bind:error="launchAppError">
-      <text class="share-button-text">打开小蜥取色</text>
+      <text class="share-button-text">打开蜥奇取色</text>
     </button>
   </view>
 

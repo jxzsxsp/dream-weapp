@@ -24,7 +24,7 @@ const viewaction = {
   goAgreement: function () {
     $wx.navigateTo($wx.router.webview, {
       url: encodeURIComponent(this.props.url),
-      title: '小蜥用户协议'
+      title: '蜥奇用户协议'
     })
   },
   phoneInput: function (data, value) {

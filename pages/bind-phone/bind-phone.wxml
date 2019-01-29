@@ -3,7 +3,7 @@
     <text class="maintitle">绑定手机号</text>
     <rich-text class="subtitle">
       若您的手机号未被注册，将为您直接注册，注册即视为同意
-      <a class="user-agreement" bind:tap="goAgreement">《小蜥用户协议》</a>
+      <a class="user-agreement" bind:tap="goAgreement">《蜥奇用户协议》</a>
     </rich-text>
   </view>
   <view class="phone-container">

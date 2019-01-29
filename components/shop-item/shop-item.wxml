@@ -1,7 +1,7 @@
 <view class='item-container'>
   <view class='head-container'>
     <view class='shop-img'>
-      <image src="{{shop.logo}}"></image>
+      <image src="{{shop.logo ? shop.logo : '/assets/default_shop_logo.png'}}"></image>
     </view>
 
     <view class='shop-content' bind:tap="onDetail">
