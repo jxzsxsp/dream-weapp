@@ -37,20 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
-			"list": [
-				{
-					"id": -1,
-					"name": "submitorder",
-					"pathName": "pages/submitorder/submitorder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "longvip",
-					"pathName": "pages/longvip/longvip"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
