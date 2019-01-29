@@ -128,6 +128,22 @@ Page({
         });
     },
     onLoad: function(a) {
+        if(a.scene) {
+            wx.request({
+                url: e.getUrl("YTALDecodeScene"),
+                data: {
+                    scene: a.scene
+                },
+                success: function (t) {
+                    var x = '/pages/goodInfo/goodInfo?brandId=' + t.data.brandId + '&goodsId=' + t.data.goodsId + '&goodsSource=' + t.data.goodsSource
+                    console.log(x)
+                    wx.navigateTo({
+                        url: x,
+                    })
+                }
+            });
+        }
+        // debugger
         var tm = this;
         wx.hideTabBar({})
         wx.getStorage({
@@ -1238,7 +1254,7 @@ Page({
             url: '../discovery/discovery',
         })
     },
-    getCode: function () {
+    getCode: function () {                               
         console.log(e.globalData)
         // 获取jscode  获取accessToken 前提
         wx.login({
