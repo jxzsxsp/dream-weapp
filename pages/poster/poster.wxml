@@ -1,8 +1,8 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <!--pages/poster/poster.wxml-->
-<view id="poster" style="width: 750rpx;height:1334rpx;position: relative; background: url('http://cos.qkmai.com/qkmbb/ytal/erweima_1.png') no-repeat center top;background-size:cover;overflow:hidden">
-    <view style="width: 640rpx;height:920rpx;background: #fff;margin:0 auto;margin-top: 160rpx;">
-        <image src="{{proImg}}" id="proImg" style="width: 595rpx;height: 595rpx;margin: 20rpx 20rpx 0rpx 20rpx"></image>
+<view id="poster" style="width: 750rpx;height:1200rpx;position: relative; background: url('http://cos.qkmai.com/qkmbb/ytal/erweimabg.png') no-repeat center top;background-size:cover;overflow:hidden">
+    <view style="width: 640rpx;height:800rpx;background: #fff;margin:0 auto;margin-top: 160rpx;overflow:hidden">
+        <image src="{{proImg}}" id="proImg" style="width: 495rpx;height: 495rpx;margin: 20rpx 70rpx 0rpx 70rpx"></image>
         <view id="proContainer">
             <view id="infoTit" style="font-size: 30rpx;color: #000;margin: 20rpx;margin-bottom: 0">{{infoTit}}
             </view>
@@ -20,15 +20,17 @@
 
         </view>
     </view>
-    <view id="userInfo" style="position: absolute;top:1093rpx;left: 50rpx ">
+    <view id="userInfo" style="position: absolute;top:973rpx;left: 50rpx ">
         <image src="{{userInfo.picture}}" id="userPic" style="width: 155rpx;height: 155rpx;"></image>
         <view id="userName" style="color: #fff;font-size: 20rpx;">{{userInfo.realName}}</view>
     </view>
-    <view id="maInfo" style="position: absolute;top:1093rpx;right: 50rpx;text-align: right;">
-        <img id="maPic" style="width: 155rpx;height: 155rpx;display: block;margin-left:50rpx"></img>
+    <view id="maInfo" style="position: absolute;top:973rpx;right: 50rpx;text-align: right;">
+        <image id="maPic" style="width: 155rpx;height: 155rpx;display: block;margin-left:50rpx" src="{{codeimg}}"></image>
         <view style="color: #fff;font-size: 20rpx;line-height: 40rpx">长按二维码去购买</view>
     </view>
-</view>
-<view style='display:flex;flex-direction:row;justify-content:center;align-items: center;' bindtap='onCreatPic'>
-    <text style='color:#ba050f;border:1px solid #ba050f;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-right:20rpx;'>点击生成图片保存到本地相册</text>
+    <view style='position:absolute;bottom:0;width:100%;'>
+        <view style='display:flex;flex-direction:row;justify-content:center;align-items: center;' bindtap='showPoster'>
+            <text style='color:#ba050f;border:1px solid #ba050f;padding:15rpx 20rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-right:20rpx;'>生成图片保存到相册</text>
+        </view>
+    </view>
 </view>

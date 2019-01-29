@@ -930,13 +930,13 @@ Page({
         var goodid = event.currentTarget.dataset.goodid;
         var goodssource = event.currentTarget.dataset.goodssource;
         // console.log('/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource)
-        // wx.navigateTo({
-        //     url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
-        // })
-        wx.showModal({
-            title: '',
-            content: '敬请期待',
-            showCancel: false
+        wx.navigateTo({
+            url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
         })
+        // wx.showModal({
+        //     title: '',
+        //     content: '敬请期待',
+        //     showCancel: false
+        // })
     }
 })
