@@ -40,7 +40,7 @@ Page({
             title: "加载中"
         }), a.getOpenId(function (o) {
             wx.request({
-                url: a.getUrl("YTALSubMembers"),
+                url: a.getUrl("YTALSubMembersV2"),
                 data: {
                     openId: o,
                     // openId: 'o_rWK5YTqOJ2ruCGdsjZn4YJ8ovI',

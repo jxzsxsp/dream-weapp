@@ -4,7 +4,7 @@
     <view class='commission_top'>
         <text class='tit'>已邀请粉丝（人）</text>
         <view class='show_num'>
-            <text class='money_num' style="font-size:60rpx">{{ExpandMemberAll}}</text>
+            <text class='money_num' style="font-size:60rpx">{{RecordCount}}</text>
 
         </view>
         
@@ -12,11 +12,11 @@
         <view class='showlist'>
             <view style='margin-right:80rpx'>
                 <text>粉丝累计消费</text>
-                <text>{{SubSumOrderTotal}}</text>
+                <text>{{LowerUserSaleTotal}}</text>
             </view>
             <view>
                 <text>粉丝购物返佣</text>
-                <text>{{SubMemberAllSplittin}}</text>
+                <text>{{LowerUserOrderSplittin}}</text>
             </view>
             
         </view>

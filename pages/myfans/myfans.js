@@ -11,10 +11,12 @@ Page({
         ExpandMemberInMonth: "",
         ExpandMemberAll: "",
         LowerUserSaleTotal: "",
+        LowerUserOrderSplittin:0.00,
         ManagerNum: "",
         DirectorNum: "",
         SubSumOrderTotal: "",
-        SubMemberAllSplittin: ""
+        SubMemberAllSplittin: "",
+        peoNum:0
     },
     onLoad: function(e) {},
     onReady: function() {},
@@ -44,7 +46,7 @@ Page({
             title: "加载中"
         }), a.getOpenId(function(o) {
             wx.request({
-                url: a.getUrl("YTALSubMembers"),
+                url: a.getUrl("YTALSubFuns"),
                 data: {
                     openId: o,
                     // openId: 'o_rWK5YTqOJ2ruCGdsjZn4YJ8ovI',
@@ -57,18 +59,6 @@ Page({
                     if (void 0 == a.data.error_response) {
                         var o = a.data.SubMember_get_response,
                             r = o.SubMembers;
-                        var fansArr = [];
-                        var cusTotal = 0;
-                        var splTotal = 0;
-                        for (var i = 0; i < r.length; i++) {
-                            if (r[i].ReferralGradeName === null) {
-                                fansArr.push(r[i]);
-                                cusTotal = cusTotal + r[i].SubSumOrderTotal;
-                                splTotal = splTotal + r[i].SubMemberAllSplittin
-                            }
-                        }
-
-                        console.log(fansArr)
                         if (n) {
                             // var s = t.data.subMemberData;
                             // s.push.apply(s, r), t.setData({
@@ -77,30 +67,30 @@ Page({
                             //     ExpandMemberAll: t.data.ExpandMemberAll,
                             //     LowerUserSaleTotal: t.data.LowerUserSaleTotal
                             // });
-                            var s = t.data.subMemberList.concat(fansArr);
-                            var ct = t.data.SubSumOrderTotal + cusTotal;
-                            var st = t.data.SubMemberAllSplittin + splTotal;
+                            var s = t.data.subMemberList.concat(r);
                             t.setData({
                                 subMemberList: s,
-                                SubSumOrderTotal: ct.toFixed(2),
-                                SubMemberAllSplittin: st.toFixed(2),
+                                // SubSumOrderTotal: LowerUserSaleTotal.toFixed(2),
+                                // SubMemberAllSplittin: LowerUserOrderSplittin.toFixed(2),
                                 ExpandMemberInMonth: t.data.ExpandMemberInMonth,
                                 ExpandMemberAll: t.data.ExpandMemberAll,
-                                LowerUserSaleTotal: t.data.LowerUserSaleTotal
+                                LowerUserSaleTotal: t.data.LowerUserSaleTotal,
+                                //LowerUserOrderSplittin: o.LowerUserOrderSplittin,
+                                RecordCount: tm.data.RecordCount
                             });
 
                         } else {
                             r.Total;
                             t.setData({
-                                subMemberList: fansArr,
-                                SubSumOrderTotal: cusTotal.toFixed(2),
-                                SubMemberAllSplittin: splTotal.toFixed(2),
+                                subMemberList: r,
+                                // SubSumOrderTotal: cusTotal.toFixed(2),
+                                // SubMemberAllSplittin: splTotal.toFixed(2),
                                 isEmpty: t.data.isempty,
                                 ExpandMemberInMonth: o.ExpandMemberInMonth,
                                 ExpandMemberAll: o.ExpandMemberAll,
                                 LowerUserSaleTotal: o.LowerUserSaleTotal,
-                                ManagerNum: o.ReferralGradeTotal[1].SubNum,
-                                DirectorNum: o.ReferralGradeTotal[2].SubNum
+                                //LowerUserOrderSplittin: o.LowerUserOrderSplittin,
+                                RecordCount: o.RecordCount
                             });
                         }
                     } else e.showTip(a.data.error_response.errMsg);
