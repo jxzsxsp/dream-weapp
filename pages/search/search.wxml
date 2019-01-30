@@ -104,7 +104,7 @@
                         <view style='width:1px;background:#cacaca;height:35rpx;padding-top:12rpx;opacity:0.6'></view>
                     </view>
 
-                    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;width:164rpx;' bindtap='sharePro'>
+                    <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;width:164rpx;' bindtap='sharePro' data-goodId='{{item.goodsId}}' data-brandId='{{item.brandId}}' data-goodsSource='{{item.goodsSource}}'>
                         <image src="http://cos.qkmai.com/qkmbb/ytal/fenxiangtb_1.png" style='width:40rpx;height:40rpx'></image>
                         <text style='font-size:22rpx;color:#777676;line-height:26rpx'>分享单品</text>
                     </view>

@@ -627,12 +627,17 @@ Page({
         });
     },
     sharePro: function(event) {
-        console.log(event)
-        wx.showModal({
-            title: '',
-            content: '敬请期待',
-            showCancel: false
+        var brandid = event.currentTarget.dataset.brandid;
+        var goodid = event.currentTarget.dataset.goodid;
+        var goodssource = event.currentTarget.dataset.goodssource;
+        wx.navigateTo({
+            url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
         })
+        // wx.showModal({
+        //     title: '',
+        //     content: '敬请期待',
+        //     showCancel: false
+        // })
     },
     getGoodInfo: function() {
         var tm = this;
