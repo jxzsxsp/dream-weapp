@@ -79,7 +79,7 @@
             <view class="orderlistright">
                 <text>￥{{items.Price}}</text>
                 <view>x {{items.Amount}}{{items.SendCount>0?' 赠 '+items.SendCount:''}}</view>
-                <view class="orderzt" hidden="{{item.Status==0}}">{{items.StatusText}}</view>
+                <view class="orderzt" hidden="{{item.Status==0}}" catchtap='goTod'>{{items.StatusText}}</view>
                 <view hidden="{{OrderInfo.Status!=3&&OrderInfo.Status!=5||items.Status!=0&&items.Status!=12&&items.Status!=25}}">
                     <navigator url="../ApplyReturns/ApplyReturns?orderid={{OrderInfo.OrderId}}&skuId={{items.Id}}&pro={{items.Name}}&num={{items.Amount}}&m={{items.Price}}">退货</navigator>
                 </view>

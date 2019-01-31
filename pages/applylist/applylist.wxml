@@ -1,11 +1,12 @@
 <view class="applylist">
     <view class="item" wx:for="{{AfterList}}">
         <view class="hd">
-            <view class="num">订单号：<text class="font-arial">{{item.OrderId}}</text>
+            <view class="num">订单号：
+                <text class="font-arial">{{item.OrderId}}</text>
             </view>
             <!-- <view class="state">{{item.StatusText}}</view> -->
             <view class="state">{{item.StatusText == "申请退款" ? "申请退款中" : (item.StatusText == "退款中" ? "拼团失败,退款中" : item.StatusText)}}</view>
-            
+
         </view>
         <view bindtap="applydetail" class="bd" data-id="{{item.AfterSaleId}}" data-type="{{item.AfterSaleType}}">
             <view class="comm" wx:for="{{item.LineItems}}" wx:for-item="lineitem">
@@ -17,7 +18,8 @@
                     <view class="para">{{lineitem.SkuText}}</view>
                 </view>
                 <view class="price">
-                    <view class="sell pb16">¥ <text class="font-arial">{{lineitem.Price}}</text>
+                    <view class="sell pb16">¥
+                        <text class="font-arial">{{lineitem.Price}}</text>
                     </view>
                     <view class="num">
                         <view class="iconfont icon__close font28 mr8"></view>
@@ -46,6 +48,6 @@
 
 
 <view class="fixedBtn" bindtap='fixedGoToHome'>
-        <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
-        <text>首页</text>
-    </view>
+    <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
+    <text>首页</text>
+</view>

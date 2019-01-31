@@ -114,5 +114,8 @@ Page({
         });
     },
     onHide: function() {},
-    onUnload: function() {}
+    onUnload: function() {},
+    goTod: function () {
+        
+    }
 });
