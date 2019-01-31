@@ -13,7 +13,7 @@ Component({
                 var tm = this;
                 app.getOpenId(function (t) {
                     wx.request({
-                        url: app.getUrl("YTALSubMembers"),
+                        url: app.getUrl("YTALSubFuns"),
                         data: {
                             openId: t,
                             pageIndex: 1,
@@ -21,7 +21,7 @@ Component({
                         },
                         success: function (res) {
                             tm.setData({
-                                fansNum: res.data.SubMember_get_response.ExpandMemberAll
+                                fansNum: res.data.SubMember_get_response.RecordCount
                             })
 
                         }
@@ -51,7 +51,7 @@ Component({
         console.log(redPacket)
         app.getOpenId(function (t) {
             wx.request({
-                url: app.getUrl("YTALSubMembers"),
+                url: app.getUrl("YTALSubFuns"),
                 data: {
                     openId: t,
                     pageIndex: 1,
@@ -60,7 +60,7 @@ Component({
                 success: function (res) {
                     console.log(res)
                     tm.setData({
-                        fansNum: res.data.SubMember_get_response.ExpandMemberAll
+                        fansNum: res.data.SubMember_get_response.RecordCount
                     })
 
                 }
