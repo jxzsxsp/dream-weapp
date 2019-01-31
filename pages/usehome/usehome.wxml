@@ -196,7 +196,7 @@
         <view class='list-item'>
             <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindwallet">
                 <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的红包</text>
-                <text style='font-size:12px;color:#515151;'>购物返现</text>
+                <text style='font-size:12px;color:#515151;'>账号预存款与VIP购物返现</text>
             </view>
             <view style='padding-right:20rpx'>
                 <image src='http://cos.qkmai.com/qkmbb/myytal/wdyj.png' style='width:100rpx;height:100rpx;' lazy-load></image>
