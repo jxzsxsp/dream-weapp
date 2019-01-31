@@ -187,7 +187,7 @@ Page({
                         confirmColor: "#db3c40",
                         success: function(e) {
                             wx.redirectTo({
-                                url: "../applylist/applylist"
+                                url: "../orderlist/orderlist"
                             });
                         }
                     }) : "NOUser" == e.data.Message ? wx.navigateTo({

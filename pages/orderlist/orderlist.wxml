@@ -29,7 +29,7 @@
 </view>
 <view class="mt96">
     <view class="orderlist mt24" wx:if="{{OrderList.length>0}}" wx:for="{{OrderList}}" wx:key="OrderId">
-        <view bindtap="goToOrderDetail" class="orderlisttile padding24" data-orderid="{{item.OrderId}}">
+        <view bindtap="goToOrderDetail" class="orderlisttile padding24" data-orderid="{{item.OrderId}}" style='display:flex;justify-content:space-between;'>
             <!-- <view class="orderhao" wx:if="{{item.StoreName.length>0}}">
                 <view class="supplier-icon">
                     <image class="mt8" mode="widthFix" src="/images/store-16.png" style="width:48rpx;"></image>
@@ -41,15 +41,17 @@
                     <image class="mt8" mode="widthFix" src="/images/gongyingshang.png" style="width:48rpx;"></image>
                 </view>
                 <text>{{item.ShipperName}}</text>
-            </view>
-            <view class="orderhao" wx:elif="{{item.SupplierId==0&&item.ShipperName.length<=0}}">订单号：{{item.OrderId}}-55</view>
-            <view class="orderhao" wx:else>
+            </view> -->
+            <view class="num">订单号：<text class="font-arial">{{item.OrderId}}</text></view>
+            <!-- <view class="orderhao">订单号：{{item.OrderId}}</view> -->
+            <!-- <view class="orderhao" wx:else>
                 <view class="supplier-icon">
                     <image class="mt8" mode="widthFix" src="/images/icon_platform_v.png" style="width:48rpx;"></image>
                 </view>
                 <text>{{item.ShipperName}}</text>
             </view> -->
-            <view class="orderzt">{{item.StatusText == "待发货" ? "拣货中" : item.StatusText}}</view>
+            <!-- <view class="orderzt">{{item.StatusText == "待发货" ? "拣货中" : item.StatusText}}</view> -->
+            <view class="orderzt">{{item.StatusText == "待发货" ? "拣货中" : (item.StatusText == "申请退款" ? "申请退款中" : (item.StatusText == "退款中" ? "拼团失败,退款中" : item.StatusText))}}</view>
         </view>
         <view bindtap="goToOrderDetail" class="orderlistcont {{i+1==item.LineItems.length?'lastitem':''}}" data-orderid="{{item.OrderId}}" wx:for="{{item.LineItems}}" wx:for-index="i" wx:for-item="pro" wx:key="Id">
             <image class="mr16" src="{{pro.Image}}"></image>
@@ -89,8 +91,14 @@
 <view class="kong" hidden="{{isEmpty}}">
     <view bindtap="toproduct" class="bg_nullOrder" style="background:url({{nullOrder}}) center center no-repeat; background-size:auto 254rpx"></view>
 </view>
-<view class="fixedBtn" >
+<!-- <view class="fixedBtn" >
     <image src='http://cos.qkmai.com/qkmbb/ytal/kefu_1.png '></image>
     <text>联系客服</text>
     <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
-</view>
+</view> -->
+
+
+<view class="fixedBtn" bindtap='fixedGoToHome'>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/shouye_1.png'></image>
+        <text>首页</text>
+    </view>

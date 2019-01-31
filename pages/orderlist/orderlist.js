@@ -287,5 +287,10 @@ Page({
         //         }
         //     });
         // });
+    },
+    fixedGoToHome: function () {
+        wx.switchTab({
+            url: '/pages/home/home'
+        })
     }
 });
