@@ -3,7 +3,7 @@ var t = require("../../utils/config.js"),
 
 Page({
     data: {
-        isShow: true,
+        isShow: false,
         userInfo: {},
         pageIndex: 1,
         pageSize: 5,
@@ -103,7 +103,7 @@ Page({
     },
     onLoad: function(a) {
         var tm = this;
-        wx.hideTabBar({})
+        //wx.hideTabBar({})
         if (a.q) {
             var q = decodeURIComponent(a.q);
             var str = q.split("=");

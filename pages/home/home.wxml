@@ -221,10 +221,10 @@
 
 
 </view>
-<view class='homepop' wx:if="{{isShow}}">
+<!-- <view class='homepop' wx:if="{{isShow}}">
     <view class='popOpacity'></view>
     <view class='popcontainer'>
         <view class='close' bindtap='onCloseBtn'></view>
         <view class='getBtn' bindtap='goView' data-url="/pages/webPage/webPage?artUrl=http://ytal.qkmai.com/ArticleDetails?ArticleId=24" data-id='24'></view>
 </view>
-</view>
+</view> -->
