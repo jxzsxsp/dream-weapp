@@ -257,7 +257,6 @@ Page({
         var i = '/pages/screening/screening?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
         var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        //console.log(i)
         return {
             title: title,
             path: i,
@@ -677,8 +676,6 @@ Page({
     onShowHotSell:function(event){
         var tm = this;
         var isFlagNum=event.currentTarget.dataset.state;
-        console.log(isFlagNum)
-        
         if (isFlagNum == tm.data.nothing){
             return 
         }else{
@@ -686,8 +683,6 @@ Page({
                 nothing: (tm.data.nothing == 0 ? 1 : 0),
                 dataIndex:1
             })
-
-
             wx.request({
                 url: app.getUrl("YTALGetPageRushGoodsByTagId"),
                 data: {
@@ -697,7 +692,6 @@ Page({
                     ps: tm.data.dataSize
                 },
                 success: function (jd) {
-                    console.log("jd"+jd.data)
                     if (jd.data.length == 0) {
                         tm.setData({
                             rushGoodsList: []
@@ -709,7 +703,6 @@ Page({
                             jd.data.forEach(o => {
                                 goodsList.push(o)
                             });
-                           // var newList = tm.data.rushGoodsList.concat(goodsList)
                             tm.setData({
                                 rushGoodsList: goodsList,
                                 brandSoruce: jd.data.goodsSource
@@ -725,11 +718,7 @@ Page({
                     }
                 }
             });
-            console.log(tm.data.nothing)
         }
-        // if(){
-
-        // }
     },
     onPageScroll: function (obj) {
         if (obj.scrollTop > 363) {
@@ -761,10 +750,5 @@ Page({
         wx.navigateTo({
             url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
         })
-        // wx.showModal({
-        //     title: '',
-        //     content: '敬请期待',
-        //     showCancel: false
-        // })
     }
 })

@@ -45,7 +45,6 @@ Page({
              * 生命周期函数--监听页面加载
              */
             onLoad: function(options) {
-                console.log(options)
                 var path = '/pages/goodInfo/goodInfo?brandid=' + options.brandid + '&goodid=' + options.goodid + '&goodssource=' + options.goodssource
                 app.globalData.userInfo && app.globalData.userInfo.IsReferral && (path += "&ReferralUserId=" + app.globalData.userInfo.UserId)
                 var tm = this;
@@ -88,8 +87,6 @@ Page({
                         goodsSource: tm.data.goodsSource
                     },
                     success: function(jd) {
-                        console.log("YTALGetWxAppletQrCode")
-                        console.log(jd.data.url)
                         var imgUrl = jd.data.url;
                         tm.setData({
                             codeimg: imgUrl
@@ -164,9 +161,7 @@ Page({
                         goodsSource: tm.data.goodsSource
                     },
                     success: function(jd) {
-                        console.log(jd)
                         var item = jd.data;
-
                         var proImg = item.goodsImages[0];
                         var arr = item.infoDesc.split(/\n/g);
                         var infoTit = arr[0]
@@ -218,25 +213,15 @@ Page({
                             wx.downloadFile({
                                 url: imgSrc,
                                 success: function(res) {
-                                    console.log(res);
                                     //图片保存到本地
                                     wx.saveImageToPhotosAlbum({
                                         filePath: res.tempFilePath,
-                                        success: function(data) {
-                                            console.log(data);
-                                        },
+                                        success: function(data) {},
                                         fail: function(err) {
-                                            console.log(err);
                                             if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
-                                                console.log("用户一开始拒绝了，我们想再次发起授权")
-                                                console.log('打开设置窗口')
                                                 wx.openSetting({
                                                     success(settingdata) {
-                                                        console.log(settingdata)
-                                                        if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                                                            console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
-                                                        } else {
-                                                            console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+                                                        if (settingdata.authSetting['scope.writePhotosAlbum']) {} else {
                                                         }
                                                     }
                                                 })
@@ -255,11 +240,9 @@ Page({
                             //         // wx.saveImageToPhotosAlbum({
                             //         //     filePath: jd.data.url,
                             //         //     success: function(res) {
-                            //         //         console.log("YTALApplyPoster");
                             //         //         wx.hideLoading();
                             //         //     }
                             //         // })
-                            //         console.log(jd.data.url)
                             //     },
                             //     complete: function() {
 

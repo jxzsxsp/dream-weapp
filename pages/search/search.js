@@ -173,7 +173,6 @@ Page({
     //     var i = '/pages/search/search?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
     //     var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
     //     app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-    //     //console.log(i)
     //     return {
     //         title: title,
     //         path: i,
@@ -193,7 +192,6 @@ Page({
                 },
                 success: function(t) {
                     if ("OK" == t.data.Status) {
-                        // console.log(t.data)
                         tm.setData({
                             shopcartCount: t.data.Data.RecordCount
                         })
@@ -224,7 +222,6 @@ Page({
                     });
                 },
                 complete: function(f) {
-                    // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -236,17 +233,10 @@ Page({
     onHide: function() {},
     onUnload: function() {},
     onReachBottom: function() {
-        console.log("onReachBottom")
         if (this.data.hasMore) {
-            // wx.showLoading({
-            //     title: '加载中',
-            // })
             wx.showNavigationBarLoading();
             this.loadMore();
             wx.hideNavigationBarLoading();
-            // setTimeout(function () {
-            //     wx.hideLoading()
-            // }, 2000)
         }
     },
     GetShopCartAgain: function() {

@@ -3,7 +3,7 @@ var t = require("../../utils/config.js"),
 
 Page({
     data: {
-        isNewShow:true,
+        isNewShow: true,
         isShow: false,
         userInfo: {},
         pageIndex: 1,
@@ -38,9 +38,9 @@ Page({
         isTooLow: false,
         isShowState: true,
         current: 0,
-        DistributionInfo:""
+        DistributionInfo: ""
     },
-    GetCheckData: function () {
+    GetCheckData: function() {
         this.setData({
             DistributionInfo: e.globalData.ReferralInfo,
             isLoadEnd: true
@@ -48,12 +48,11 @@ Page({
 
     },
     onShow: function() {
-        var tm =this;
+        var tm = this;
         this.GetShopCart();
         // wx.getStorage({
         //     key: 'tcOne',
         //     success(res) {
-        //         // console.log(res.data)
         //         if (res.data == 'read') {
         //             tm.setData({
         //                 isNewShow: false,
@@ -65,7 +64,6 @@ Page({
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
-                // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
                         isNewShow: false
@@ -128,28 +126,25 @@ Page({
         });
     },
     onLoad: function(a) {
-        if(a.scene) {
+        if (a.scene) {
             wx.request({
                 url: e.getUrl("YTALDecodeScene"),
                 data: {
                     scene: a.scene
                 },
-                success: function (t) {
+                success: function(t) {
                     var x = '/pages/goodInfo/goodInfo?brandId=' + t.data.brandId + '&goodsId=' + t.data.goodsId + '&goodsSource=' + t.data.goodsSource
-                    console.log(x)
                     wx.navigateTo({
                         url: x,
                     })
                 }
             });
         }
-        // debugger
         var tm = this;
         wx.hideTabBar({})
         // wx.getStorage({
         //     key: 'tcOne',
         //     success(res) {
-        //         // console.log(res.data)
         //         if (res.data=='read'){
         //             tm.setData({
         //                 isNewShow:false,
@@ -161,7 +156,6 @@ Page({
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
-                // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
                         isShow: false
@@ -185,19 +179,14 @@ Page({
                 metaData: a
             });
         });
-
-        // e.globalData.fundebug.notifyError(new Error("onload"), {
-        //     name: "首页onload",
-        //     metaData: a
-        // });
         var r, o, n = this;
-        e.getOpenId(function (t) {
+        e.getOpenId(function(t) {
             wx.request({
                 url: e.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
                 },
-                success: function (t) {
+                success: function(t) {
                     e.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
@@ -236,8 +225,6 @@ Page({
                 var reg = new RegExp("/.", "g");
                 var s = x.replace(".", "").replace(".", "");
                 tm.compareVersion(x, '6.6.1')
-                // console.log(tm.compareVersion(x, '6.6.1'))
-
                 if (tm.compareVersion(x, '6.6.1') == -1) {
                     wx.hideTabBar({})
                     wx.showModal({
@@ -246,7 +233,6 @@ Page({
                         showCancel: false,
                         success(res) {
                             if (res.confirm) {
-                                // wx.hideTabBar({})
                                 tm.setData({
                                     isTooLow: true
                                 })
@@ -256,23 +242,6 @@ Page({
                         }
                     })
                 } else {
-
-                    // tm.setData({
-                    //     TopicData: {
-                    //         id: 201811161906894,
-                    //         type: 9,
-                    //         content: {
-                    //             showType: 1,
-                    //             space: 0,
-                    //             dataset: [{
-                    //                 linkType: 10,
-                    //                 link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
-                    //                 pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
-                    //             }]
-                    //         }
-                    //     }
-                    // })
-
                     tm.getLogo();
                     tm.getCate();
                     wx.hideNavigationBarLoading();
@@ -282,8 +251,6 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
         })
-
-        // tm.getCode()
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -318,28 +285,23 @@ Page({
                     appId: a,
                     extarData: {},
                     envVersion: "develop",
-                    success: function(t) {
-                        console.log(t);
-                    }
+                    success: function(t) {}
                 }) : (-1 == a.indexOf("http://") && -1 == a.indexOf("https://") && (a = e.getRequestUrl + a),
                     console.log(a), wx.navigateTo({
                         url: "../outurl/outurl?url=" + encodeURIComponent(a)
                     }));
                 break;
-
             case 23:
                 wx.makePhoneCall({
                     phoneNumber: a
                 });
                 break;
-
             case 7:
             case 8:
                 wx.switchTab({
                     url: a
                 });
                 break;
-
             default:
                 wx.navigateTo({
                     url: a
@@ -359,20 +321,16 @@ Page({
             title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-
         var shareInfo = {
             title: title,
             path: i,
             imageUrl: brandBg
         };
-
         e.globalData.fundebug.notifyError(new Error("首页分享"), {
             name: "首页分享",
             metaData: shareInfo
         });
-
         return shareInfo;
-
     },
     getHomeData: function(t) {
         var a = this;
@@ -653,7 +611,6 @@ Page({
                     o.setData({
                         TotalNum: t + parseInt(r)
                     });
-
                     if (o.data.TotalNum > 0) {
                         wx.setTabBarBadge({
                             index: 3,
@@ -702,9 +659,7 @@ Page({
         let brandRushList = this.data.brandRush;
         brandRushList.forEach(o => {
             if (o.rushEndTime != null) {
-                // console.log(o.rushEndTime)
                 var rushEndTime = o.rushEndTime.replace('\-', '/').replace('\-', '/');
-                // console.log(rushEndTime)
                 let endTime = new Date(rushEndTime).getTime();
                 //endTime = endTime + 8 * 60 * 60 * 1000;   
                 let obj = null;
@@ -716,7 +671,6 @@ Page({
                     let hou = parseInt(time % (60 * 60 * 24) / 3600);
                     let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
                     let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
-
                     obj = {
                         day: this.timeFormat(day),
                         hou: this.timeFormat(hou),
@@ -760,7 +714,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-
         this.setData({
             brandRush: [],
             pageIndex: 0,
@@ -802,7 +755,6 @@ Page({
             success: function(res) {
                 if (res.data.length > 0) {
                     let topArrList = [];
-                    // console.log(res.data)
                     res.data.forEach(o => {
                         var obj = {
                             day: '00',
@@ -816,7 +768,6 @@ Page({
                             var day = o.rushEndTime.split('-')[2].split(' ')[0];
                             var hour = o.rushEndTime.split(' ')[1].split(':')[0];
                             var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
                             o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                         }
                         topArrList.push(o)
@@ -902,7 +853,6 @@ Page({
                         var day = o.rushEndTime.split('-')[2].split(' ')[0];
                         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
                         var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
                         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                     }
                     brandRushList.push(o)
@@ -959,8 +909,6 @@ Page({
         })
     },
     changeCate: function(event) {
-
-
         wx.showLoading({
             mask: true
         });
@@ -1034,7 +982,6 @@ Page({
             complete: function() {
                 wx.hideNavigationBarLoading();
             }
-
         });
     },
     copy: function(e) {
@@ -1049,7 +996,6 @@ Page({
     },
     toggleHide: function(e) {
         var tm = this;
-        // console.log(tm.data.currentId,e.currentTarget.dataset.id)
         if (tm.data.currentId == 0) {
             tm.setData({
                 currentId: e.currentTarget.dataset.id,
@@ -1081,9 +1027,7 @@ Page({
         var tm = this;
         wx.request({
             url: e.getUrl("YTALGetTopListBrandRushIsHead"),
-            data: {
-
-            },
+            data: {},
             success: function(jd) {
                 if (jd.data.length != 0) {
                     let logoList = [];
@@ -1101,19 +1045,16 @@ Page({
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
-
         e.globalData.fundebug.notifyError(new Error("首页跳转文章"), {
             name: "文章链接",
             metaData: s
         });
-
         wx.navigateTo({
             url: s
         })
     },
     focusList: function() {
         var tm = this;
-        // console.log(e.globalData.openId)
         wx.request({
             url: e.getUrl("GetListBrandByFollow"),
             data: {
@@ -1121,9 +1062,7 @@ Page({
             },
             success: function(jd) {
                 if (jd.data.length > 0) {
-                    // console.log(jd.data)
                     let logoList = [];
-
                     tm.setData({
                         focusList: jd.data
                     })
@@ -1161,7 +1100,7 @@ Page({
         })
         wx.showTabBar({})
     },
-    onCloseNewBtn: function () {
+    onCloseNewBtn: function() {
         wx.setStorage({
             key: 'tcTwo',
             data: 'read'
@@ -1220,19 +1159,19 @@ Page({
             }
         }
     },
-    GoToSearch:function(){
+    GoToSearch: function() {
         wx.navigateTo({
             url: '../search/search'
         })
     },
-    onPageScroll: function (obj) {
+    onPageScroll: function(obj) {
         if (obj.scrollTop > 363) {
             this.setData({
                 goTopStatus: true
             })
         }
     },
-    goToTop: function () {
+    goToTop: function() {
         wx.pageScrollTo({
             scrollTop: 0,
         })
@@ -1240,12 +1179,12 @@ Page({
             goTopStatus: false
         })
     },
-    goToZZ:function(){
+    goToZZ: function() {
         wx.switchTab({
             url: '../discovery/discovery',
         })
     },
-    goToZZZ: function () {
+    goToZZZ: function() {
         wx.setStorage({
             key: 'tcTwo',
             data: 'read'
@@ -1255,13 +1194,10 @@ Page({
             url: '../discovery/discovery',
         })
     },
-    getCode: function () {                               
-        console.log(e.globalData)
-        // 获取jscode  获取accessToken 前提
+    getCode: function() {
         wx.login({
             success(res) {
                 if (res.code) {
-                    console.log(res.code)
                     wx.request({
                         url: 'https://api.weixin.qq.com/sns/jscode2session',
                         data: {
@@ -1270,9 +1206,7 @@ Page({
                             js_code: res.code,
                             grant_type: "authorization_code"
                         },
-                        success: function (jd) {
-                            console.log(jd)
-                        }
+                        success: function(jd) {}
                     })
                 } else {
                     console.log('登录失败！' + res.errMsg)

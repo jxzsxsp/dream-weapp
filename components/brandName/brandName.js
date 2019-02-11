@@ -44,7 +44,6 @@ Component({
     ready() {
         var tm = this;
         var skucode = this.properties.itemsku;
-        console.log(skucode)
         wx.request({
             url: app.getUrl("YTALGetGoodsBrand"),
             data: {

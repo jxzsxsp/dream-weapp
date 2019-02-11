@@ -16,14 +16,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options)
         this.setData({
             userId: options.id
         })
-
         this.size = this.setCanvasSize();
         var str = "http://ytal.qkmai.com/wxsp?ReferralUserId=" + this.data.userId
-        console.log(str)
         this.createQrCode(str, this.canvasId, this.size.w, this.size.h);
     },
 

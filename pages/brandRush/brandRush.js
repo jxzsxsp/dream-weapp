@@ -58,8 +58,6 @@ Page({
     getListGoods: function(event) {
         var tm = this;
         var cateCode = event.currentTarget.dataset.catecode;
-
-        // console.log(cateCode);
         tm.setData({
             brandCateCode: cateCode
         });
@@ -285,7 +283,6 @@ Page({
                 tag: tm.data.selectedTag
             },
             success: function(jd) {
-                // console.log(jd.data)
                 if (jd.data.length <= 0) return;
                 let brandRushList = [];
                 jd.data.forEach(o => {

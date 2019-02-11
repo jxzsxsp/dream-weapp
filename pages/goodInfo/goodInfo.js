@@ -110,7 +110,6 @@ Page({
                 },
                 success: function(t) {
                     if ("OK" == t.data.Status) {
-                        // console.log(t.data)
                         tm.setData({
                             shopcartCount: t.data.Data.RecordCount
                         })
@@ -141,7 +140,6 @@ Page({
                     });
                 },
                 complete: function(f) {
-                    // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -472,7 +470,6 @@ Page({
             },
             success: function(jd) {
                 if (jd.data == "") return;
-                console.log(jd.data == "")
                 if (jd)
                     var infoList = [];
                 let brandRush = jd.data;
@@ -491,10 +488,8 @@ Page({
                     brandRush.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                 }
                 infoList.push(brandRush);
-
                 if (brandRush.goodsImages.length > 2) {
                     var goodsImagesThree = brandRush.goodsImages.slice(-3);
-                    console.log(goodsImagesThree)
                     tm.setData({
                         goodsImages: goodsImagesThree
                     })
@@ -567,7 +562,6 @@ Page({
         var tm = this;
         //var s = event.currentTarget.dataset.index;
         var o = app.globalData.openId;
-        console.log(o);
         wx.request({
             url: app.getUrl("YTALBrandIsFollow"),
             data: {
@@ -608,7 +602,6 @@ Page({
     },
     focusList: function() {
         var tm = this;
-        // console.log(e.globalData.openId)
         wx.request({
             url: app.getUrl("GetListBrandByFollow"),
             data: {

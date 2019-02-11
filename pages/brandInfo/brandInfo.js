@@ -135,7 +135,6 @@ Page({
                 },
                 success: function(t) {
                     if ("OK" == t.data.Status) {
-                        // console.log(t.data)
                         tm.setData({
                             shopcartCount: t.data.Data.RecordCount
                         })
@@ -166,7 +165,6 @@ Page({
                     });
                 },
                 complete: function(f) {
-                    // console.log(f)
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -302,7 +300,6 @@ Page({
                     tm.setData({
                         rushGoodsList: newList
                     })
-                    // console.log(jd.data.length)
                     if (jd.data.length < 5) {
                         tm.setData({
                             hasMore: false
@@ -665,11 +662,8 @@ Page({
                     brandRush.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                 }
                 infoList.push(brandRush);
-                
                 if (brandRush.goodsImages.length>2){
-                    
                     var goodsImagesThree = brandRush.goodsImages.slice(-3);
-                    console.log(goodsImagesThree)
                     tm.setData({
                         goodsImages: goodsImagesThree
                     })
@@ -679,7 +673,6 @@ Page({
                     brandLogo: brandRush.brandLogo,
                     mainTitle: brandRush.mainTitle.replace(/&#039;/g, "\'"),
                     subTitle: brandRush.subTitle,
-                    
                     // brandSource: brandSource
                 });
                 tm.goodsListNew();
@@ -790,10 +783,7 @@ Page({
     // },
     onShowHotSell: function(event) {
         var tm = this;
-        //console.log(event)
         var isFlagNum = event.currentTarget.dataset.state;
-        //console.log(isFlagNum)
-
         if (isFlagNum == tm.data.nothing) {
             return
         } else {
@@ -812,7 +802,6 @@ Page({
                     ps: tm.data.dataSize
                 },
                 success: function(jd) {
-                    // console.log(jd)
                     if (jd.data.length == 0) {
                         tm.setData({
                             rushGoodsList: []
@@ -824,15 +813,11 @@ Page({
                             jd.data.forEach(o => {
                                 goodsList.push(o)
                             });
-                            // var newList = tm.data.rushGoodsList.concat(goodsList)
-                            // console.log("goodsList" + goodsList)
                             tm.setData({
                                 rushGoodsList: goodsList
                             })
                         }
-                        // console.log(jd.data.length == tm.data.dataSize, jd.data.length, tm.data.dataSize)
                         if (jd.data.length == tm.data.dataSize) {
-
                             wx.stopPullDownRefresh();
                         } else {
                             tm.setData({
@@ -842,17 +827,11 @@ Page({
                     }
                 }
             });
-            // console.log(tm.data.nothing)
         }
-        // if(){
-
-        // }
     },
     brandIsFocus: function() {
         var tm = this;
-        //var s = event.currentTarget.dataset.index;
         var o = app.globalData.openId;
-        // console.log('brandIsFocus');
         wx.request({
             url: app.getUrl("YTALBrandIsFollow"),
             data: {
@@ -892,15 +871,12 @@ Page({
     },
     focusList: function() {
         var tm = this;
-        // console.log(e.globalData.openId)
         wx.request({
             url: app.getUrl("GetListBrandByFollow"),
             data: {
                 openId: app.globalData.openId
             },
             success: function(jd) {
-                // console.log(jd)
-                // console.log(jd.data)
                 if (jd.data.length > 0) {
 
                     let logoList = [];
@@ -908,10 +884,6 @@ Page({
                         focusList: jd.data
                     })
                     logoList = tm.data.focusList;
-                    // for(var i=0;i<logoList.length;i++){
-
-                    // }
-
                 }
             }
         });
@@ -931,10 +903,5 @@ Page({
         wx.navigateTo({
             url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
         })
-        // wx.showModal({
-        //     title: '',
-        //     content: '敬请期待',
-        //     showCancel: false
-        // })
     }
 })

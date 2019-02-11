@@ -54,7 +54,6 @@ Page({
     },
     focusList: function () {
         var tm = this;
-        // console.log(e.globalData.openId)
         wx.request({
             url: e.getUrl("YTALGetListBrandByFollow"),
             data: {

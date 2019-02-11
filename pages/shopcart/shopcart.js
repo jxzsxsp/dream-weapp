@@ -17,11 +17,9 @@ Page({
         // var tm = this;
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
         //this.brandName = this.selectComponent("#brandName");
-        // console.log("执行selectAll")
         // tm.selectAll();
     },
     loadData: function(e, Boolean) {
-        // console.log("loadData执行")
         var tm = this;
         wx.showLoading({
             title: "加载中"
@@ -46,39 +44,6 @@ Page({
                             s[0].CartItemInfo.forEach(function(a, b) {
                                 a.selected = true
                             });
-
-                            // for (var i = 0; i < s.length; i++) {
-                            //     var qnm = s[i].CartItemInfo
-                            //     for (var j = 0; j < s.length; j++) {
-                            //         wx.request({
-                            //             url: t.getUrl("YTALGetGoodsBrand"),
-                            //             data: {
-                            //                 sku: qnm[j].SKU
-                            //             },
-                            //             success: function(t) {
-                            //                 console.log(t.data.brandName,qnm[j])
-
-                            //                 //tm.brandName.getBrandName(t.data.brandName)
-
-
-                            //                 //qnm[j].PromotionName = t.data.brandName
-                            //                 // console.log(i-1)
-                            //                 // console.log(tm.data.Suppliers[i - 1].CartItemInfo[j], tm.data.Suppliers[i - 1].CartItemInfo[j - 1].PromotionName)
-                            //                 // // var xyz = tm.data.Suppliers[i].CartItemInfo[j].PromotionName
-                            //                 // tm.data.Suppliers[i - 1].CartItemInfo[j - 1].setData({
-                            //                 //     PromotionName: t.data.brandName
-                            //                 // });
-                            //                 // console.log(e)
-                            //                 tm.setData({
-                                                
-                            //                 })
-                            //             },
-                            //             complete: function() {
-
-                            //             }
-                            //         });
-                            //     }
-                            // }
                         }
                         e.setData({
                             isEmpty: o,
@@ -110,13 +75,8 @@ Page({
                 },
                 complete: function() {
                     wx.hideLoading();
-
-                    // if (tm.data.selectAllStatus == false) {
-
-                    // }
                     // 默认购物车全选
                     if (Boolean) {
-                        // console.log("执行selectAll")
                         tm.selectAll();
 
                     }
@@ -132,7 +92,6 @@ Page({
         }), a;
     },
     selectList: function(t) {
-        // console.log("执行selectList")
         var e = this,
             a = t.currentTarget.dataset.skuid,
             n = e.data.Suppliers,
@@ -153,7 +112,6 @@ Page({
         }), e.GetTotal();
     },
     GetTotal: function() {
-        // console.log("执行GetTotal")
         var t = parseFloat(0),
             e = this,
             a = e.data.ShopCarts,
@@ -167,7 +125,6 @@ Page({
         });
     },
     selectAll: function() {
-        // console.log("selectAll")
         var t = this,
             e = [],
             a = !t.data.selectAllStatus,
@@ -181,10 +138,9 @@ Page({
             Suppliers: s,
             selectAllStatus: a,
             SelectskuId: e
-        }), console.log(t.data.Suppliers), t.GetTotal();
+        }), t.GetTotal();
     },
     SwitchEdite: function() {
-        // console.log("switchEdite")
         var t = this;
         "编辑" == t.data.EditeText ? t.setData({
             isEdite: !0,
@@ -197,7 +153,6 @@ Page({
             DelskuId: "",
             SettlementText: "结算",
             selectAllStatus: !0
-            // }), t.selectAll());
         }));
     },
     MuseNum: function(t) {
@@ -247,7 +202,6 @@ Page({
 
     },
     DelCarts: function(e) {
-        // console.log("执行DelCarts")
         var a = this,
             n = e.currentTarget.dataset.skuid,
             s = a.data.SelectskuId;
@@ -290,7 +244,6 @@ Page({
         });
     },
     SettlementShopCart: function() {
-        // console.log("执行SettlementShopCart")
         var e = this,
             a = e.data.SelectskuId.join(",");
         e.data.ShopCarts, e.data.SelectskuId;
@@ -325,7 +278,6 @@ Page({
                     },
                     complete: function() {
                         e.loadData(e);
-                        // console.log("complete")
                     }
                 });
             });
@@ -357,7 +309,6 @@ Page({
         }
     },
     ChangeQuantiy: function(e, a, n) {
-        // console.log("执行ChangeQuantiy")
         var tm = this;
         t.getOpenId(function(s) {
             wx.request({
@@ -421,20 +372,14 @@ Page({
     backInfo: function(event) {
         var tm = this,
             a = event.currentTarget.dataset.sku;
-        // console.log(a)
         var hx = encodeURIComponent(a)
-        // hx = "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=YTALGetGoodsBrand&sku=" + hx
-        // console.log(hx)
-
         wx.request({
             url: t.getUrl("YTALGetGoodsBrand"),
             data: {
                 sku: a
             },
             success: function(t) {
-                console.log(t.data)
                 wx.navigateTo({
-                    // brandId=2c9089c2685cc4020168656b9ea73b66& brandSource=dadacang
                     url: "../brandInfo/brandInfo?brandId=" + t.data.brandId + "&brandSource=" + t.data.brandSource
                 });
             },

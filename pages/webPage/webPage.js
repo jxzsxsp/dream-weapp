@@ -66,14 +66,9 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function (s) {
-        // console.log(s)
-        // var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
         var deurl = encodeURIComponent("https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=5")
         var x = '/pages/webPage/webPage?artUrl=' + deurl
-
-
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (x += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        // console.log(x)
         return {
             path:x
         }
@@ -82,7 +77,5 @@ Page({
             metaData: x
         });
     },
-    goHome: function (e) {
-        console.log(e)
-    }
+    goHome: function (e) {}
 })

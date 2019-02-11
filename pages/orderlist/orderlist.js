@@ -29,8 +29,6 @@ Page({
             tm.setData({
                 userInfo: t
             })
-
-            console.log(t)
             tm.getOrderCount()
         });
     },
@@ -69,8 +67,6 @@ Page({
                             //         waitpay: 0
                             //     })
                             // }
-                            // console.log(t)
-                            // console.log(a.data.userInfo.waitPayCount)
                             "OK" == t.data.Status ? wx.showModal({
                                 title: "提示",
                                 content: t.data.Message,
@@ -184,7 +180,6 @@ Page({
                     pageSize: a.data.PageSize
                 },
                 success: function(t) {
-                    console.log(t.data)
                     if ("OK" == t.data.Status) {
                         var r = t.data.Data;
                         if (i) {
@@ -266,14 +261,6 @@ Page({
                 })
             }
         });
-
-        // console.log(t.globalData.userInfo.OpenId)
-
-
-
-
-
-
         // t.getOpenId(function (n) {
         //     wx.request({
         //         url: t.getUrl("YTALGetMenberOrderTotal"),
