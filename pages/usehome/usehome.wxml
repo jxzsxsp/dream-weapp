@@ -134,43 +134,7 @@
                 <image src="{{userInfo.picture ? userInfo.picture : 'http://cos.qkmai.com/qkmbb/myytal/txzw.png'}}" style='width:100rpx;height:100rpx;;' lazy-load></image>
             </view>
         </view>
-        <!-- <view class='list-item'>
-            <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindyongjin">
-                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的佣金</text>
-                <text style='font-size:12px;color:#515151;'>分享好友购物得佣金</text> -->
-        <!-- <view style='font-size:12px;color:#515151;'>可提现
-                    <text class='tip-text'>￥{{DistributionInfo.CanDrawSplittin}}</text> | 未结算
-                    <text class='tip-text'>￥{{DistributionInfo.NoSettlementSplttin}}</text>
-                </view> -->
-        <!-- </view>
-            <view style='padding-right:20rpx'>
-                <image src='http://cos.qkmai.com/qkmbb/myytal/wdyj.png' style='width:100rpx;height:100rpx;' lazy-load></image>
-            </view>
-        </view> -->
-        <!-- <view class='list-item'>
-            <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindxiaji">
-                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的团队</text>
-                <text style='font-size:12px;color:#515151;'>邀请好友一起来</text>
-                <!-- <view style='font-size:12px;color:#515151;'>
-                    <text class='tip-text'>{{DistributionInfo.teamPeopleCount?DistributionInfo.teamPeopleCount : 0}}人</text>
-                </view> -->
-        <!-- </view>
-            <view style='padding-right:20rpx'>
-                <image src='http://cos.qkmai.com/qkmbb/myytal/wdtd.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
-            </view>
-        </view> -->
-        <!-- <view class='list-item'>
-            <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindfans">
-                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的粉丝</text>
-                <text style='font-size:12px;color:#515151;'>邀请好友一起来</text>
-                <!-- <view style='font-size:12px;color:#515151;'>
-                    <text class='tip-text'>{{DistributionInfo.teamPeopleCount?DistributionInfo.teamPeopleCount : 0}}人</text>
-                </view> -->
-        <!-- </view>
-            <view style='padding-right:20rpx'>
-                <image src='http://cos.qkmai.com/qkmbb/myytal/wdtd.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
-            </view>
-        </view> -->
+        
         <view class='list-item'>
             <!-- <navigator src="http://ytalman.qkmai.com/ArticleDetails?ArticleId=23"> -->
             <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindXieyi" data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=23" data-id='23'>
@@ -233,32 +197,4 @@
         </view>
     </view>
 
-    <!-- <view class='row-list' style='width:750rpx;background-color:#fff;'>
-    <view class='list-item' style='position:relative;'>
-      <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap='customerService'>
-        <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>联系客服</text>
-        <text style='font-size:12px;color:#515151;'>021-55697790</text>
-      </view>
-      <view style=''>
-        <image src='http://cos.qkmai.com/qkmbb/myytal/lxkf.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
-      </view>
-      <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
-    </view>
-    <navigator class='list-item' style='position:relative;' url='/pages/webPage/webPage'>
-      <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;'>
-        <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>帮助中心</text>
-        <text style='font-size:12px;color:#515151;'>点击查看平台须知</text>
-      </view>
-      <view style=''>
-        <image src='http://cos.qkmai.com/qkmbb/ytal/yhxz.png' style='width:100rpx;height:100rpx;;' lazy-load></image>
-      </view>
-    </navigator>
-  </view> -->
-    <!-- <view bindtap="ExitLoginout" class="goout" style='margin-bottom:60rpx;'>
-    退出登录
-  </view> -->
 </view>
-
-<!-- <view bindtap="bindOrderList" class="hdonglist" style="margin-top:0">我的订单
-    <text bindtap="bindStatue" data-key="0">全部订单</text>
-</view> -->

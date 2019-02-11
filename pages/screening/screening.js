@@ -1,8 +1,6 @@
-// pages/screening/screening.js
 var conf = require("../../utils/config.js"),
     app = getApp();
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -63,13 +61,6 @@ Page({
         this.busPos = {};
         this.busPos['x'] = 39;
         this.busPos['y'] = app.globalData.hh - 120;
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
     },
 
     /**
@@ -179,27 +170,6 @@ Page({
                 }
             });
         });
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
     },
 
     /**
@@ -368,42 +338,7 @@ Page({
                             })
                                 break;
                             case 'success':
-                                // wx.setTabBarBadge({
-                                //     index: 3,
-                                //     text: t.data.TotalNum.toString()
-                                // })
-                                // wx.showModal({
-                                // title: '',
-                                // content: '成功加入购物车',
-                                // cancelText: "再逛逛",
-                                // confirmText: "去结算",
-                                // success(res) {
-                                //     if (res.confirm) {
-                                //         wx.switchTab({
-                                //             url: '/pages/shopcart/shopcart'
-                                //         })
-                                //     } else if (res.cancel) {
-
-                                //     }
-                                // }
                                 wx.hideLoading();
-                                // tm.touchOnGoods(event)
-                                // wx.showModal({
-                                //     title: '',
-                                //     content: '成功加入购物车',
-                                //     cancelText: "去结算",
-                                //     confirmText: "再逛逛",
-                                //     success(res) {
-                                //         if (res.confirm) {
-
-                                //         } else if (res.cancel) {
-                                //             wx.switchTab({
-                                //                 url: '/pages/shopcart/shopcart'
-                                //             })
-
-                                //         }
-                                //     }
-                                // })
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
@@ -411,9 +346,6 @@ Page({
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
                                 tm.GetShopCartAgain();
-                                // wx.switchTab({
-                                //     url: '/pages/shopcart/shopcart'
-                                // })
                         }
                     }
                 })
@@ -421,7 +353,6 @@ Page({
         }
     },
     addGoodsToCart: function(event) {
-
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -465,21 +396,6 @@ Page({
                             break;
                             case 'success':
                                     tm.touchOnGoods(event)
-                                // wx.showModal({
-                                //     title: '',
-                                //     content: '成功加入购物车',
-                                //     cancelText: "去结算",
-                                //     confirmText: "再逛逛",
-                                //     success(res) {
-                                //         if (res.cancel) {
-                                //             wx.switchTab({
-                                //                 url: '/pages/shopcart/shopcart'
-                                //             })
-                                //         } else if (res.confirm) {
-
-                                //         }
-                                //     }
-                                // })
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
@@ -497,7 +413,6 @@ Page({
     previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
-
         wx.previewImage({
             current: imgSrc,
             urls: imgs
@@ -527,68 +442,7 @@ Page({
             url: '/pages/home/home'
         })
     },
-    // getTitle: function() {
-    //     var tm = this;
-    //     //获取品牌特卖列表        
-    //     wx.request({
-
-    //         url: app.getUrl("YTALGetInfoBrandRush"),
-    //         data: {
-    //             brandId: tm.data.brandId,
-    //             brandSource: tm.data.brandSource
-    //         },
-    //         success: function(jd) {
-    //             var infoList = [];
-    //             let brandRush = jd.data;
-    //             var obj = {
-    //                 day: '00',
-    //                 hou: '00',
-    //                 min: '00',
-    //                 sec: '00'
-    //             }
-    //             brandRush.countDownTime = obj;
-    //             if (brandRush.rushEndTime != null) {
-    //                 var month = brandRush.rushEndTime.split('-')[1];
-    //                 var day = brandRush.rushEndTime.split('-')[2].split(' ')[0];
-    //                 var hour = brandRush.rushEndTime.split(' ')[1].split(':')[0];
-    //                 var min = brandRush.rushEndTime.split(' ')[1].split(':')[1];
-
-    //                 brandRush.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-    //             }
-    //             infoList.push(brandRush);
-    //             tm.setData({
-    //                 brandRushInfo: infoList,
-    //                 brandLogo: brandRush.brandLogo,
-    //                 mainTitle: brandRush.mainTitle,
-    //                 subTitle: brandRush.subTitle,
-    //                 // brandSource: brandSource
-    //             });
-    //             tm.goodsListNew();
-    //             wx.stopPullDownRefresh();
-    //         }
-    //     });
-    // },
-    // goodsListNew: function() {
-    //     var tm = this;
-    //     wx.request({
-    //         url: app.getUrl("YTALGetListRushGoods"),
-    //         data: {
-    //             brandId: tm.data.brandId,
-    //             goodsSource: tm.data.brandSource
-    //         },
-    //         success: function(jd) {
-    //             if (jd.data.length != 0) {
-    //                 let goodsList = [];
-    //                 jd.data.forEach(o => {
-    //                     goodsList.push(o)
-    //                 });
-    //                 tm.setData({
-    //                     rushGoodsList: goodsList
-    //                 })
-    //             }
-    //         }
-    //     });
-    // },
+   
     getListGoodsData: function() {
         var tm = this;
         wx.request({

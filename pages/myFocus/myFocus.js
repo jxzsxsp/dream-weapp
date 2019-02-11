@@ -1,7 +1,3 @@
-2e1611
-
-
-// pages/myFocus/myFocus.js
 var t = require("../../utils/config.js"),
     e = getApp();
 Page({
