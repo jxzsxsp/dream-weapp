@@ -50,25 +50,25 @@ Page({
     onShow: function() {
         var tm =this;
         this.GetShopCart();
-        wx.getStorage({
-            key: 'tcOne',
-            success(res) {
-                // console.log(res.data)
-                if (res.data == 'read') {
-                    tm.setData({
-                        isNewShow: false,
-                        isShow: true
-                    })
-                }
-            }
-        })
+        // wx.getStorage({
+        //     key: 'tcOne',
+        //     success(res) {
+        //         // console.log(res.data)
+        //         if (res.data == 'read') {
+        //             tm.setData({
+        //                 isNewShow: false,
+        //                 isShow: true
+        //             })
+        //         }
+        //     }
+        // })
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
                 // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
-                        isShow: false
+                        isNewShow: false
                     })
                     wx.showTabBar({})
                 }
@@ -146,18 +146,18 @@ Page({
         // debugger
         var tm = this;
         wx.hideTabBar({})
-        wx.getStorage({
-            key: 'tcOne',
-            success(res) {
-                // console.log(res.data)
-                if (res.data=='read'){
-                    tm.setData({
-                        isNewShow:false,
-                        isShow: true
-                    })
-                }
-            }
-        })
+        // wx.getStorage({
+        //     key: 'tcOne',
+        //     success(res) {
+        //         // console.log(res.data)
+        //         if (res.data=='read'){
+        //             tm.setData({
+        //                 isNewShow:false,
+        //                 isShow: true
+        //             })
+        //         }
+        //     }
+        // })
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
@@ -1163,13 +1163,14 @@ Page({
     },
     onCloseNewBtn: function () {
         wx.setStorage({
-            key: 'tcOne',
+            key: 'tcTwo',
             data: 'read'
         })
         this.setData({
             isNewShow: false,
-            isShow: true
+            //isShow: true
         })
+        wx.showTabBar({})
     },
     onGetLink: function() {
         this.setData({
@@ -1246,7 +1247,7 @@ Page({
     },
     goToZZZ: function () {
         wx.setStorage({
-            key: 'tcOne',
+            key: 'tcTwo',
             data: 'read'
         })
         wx.showTabBar({})
