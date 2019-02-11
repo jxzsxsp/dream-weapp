@@ -245,7 +245,6 @@ Page({
                     tm.getLogo();
                     tm.getCate();
                     wx.hideNavigationBarLoading();
-                    // tm.countDown();
                 }
             },
             fail: function(res) {},
@@ -505,147 +504,147 @@ Page({
             r.setData(s);
         }
     },
-    catchAddCart: function(t) {
-        var a = this,
-            r = t.currentTarget,
-            o = r.dataset.productid,
-            n = r.dataset.activeid;
-        if (1 != r.dataset.activetype) {
-            var u = r.dataset.operator,
-                i = parseInt(u + "1"),
-                s = r.dataset.opensku,
-                c = a.findProductById(o);
-            if (!c.HasSKU || c.HasSKU && "false" == s) {
-                var d = r.dataset.sku;
-                a.addToCart(o, d, i);
-            } else wx.showLoading && wx.showLoading({
-                title: "商品规格数据加载..."
-            }), e.getOpenId(function(t) {
-                wx.request({
-                    url: e.getUrl("GetProductSkus"),
-                    data: {
-                        ProductId: o,
-                        openId: t
-                    },
-                    success: function(t) {
-                        if (wx.hideLoading(), "OK" == t.data.Status) {
-                            var e = t.data.Data,
-                                r = e.DefaultSku,
-                                o = [];
-                            null != e && e.SkuItems.forEach(function(t, e, a) {
-                                t.AttributeValue.reverse(), t.AttributeValue[0].UseAttributeImage = "selected";
-                                var r = new Object();
-                                r.ValueId = t.AttributeValue[0].ValueId, r.Value = t.AttributeValue[0].Value, o.push(r);
-                            }), a.setData({
-                                CurrentProduct: e,
-                                CurrentSku: r,
-                                selectedskuList: o,
-                                selectedSku: r.SkuId
-                            }), a.showSkuDOM();
-                        }
-                    },
-                    complete: function() {}
-                });
-            });
-        } else wx.navigateTo({
-            url: "../countdowndetail/countdowndetail?id=" + n
-        });
-    },
-    onSkuClick: function(t) {
-        var e = this,
-            a = t.target.dataset.indexcount,
-            r = t.target.id,
-            o = t.target.dataset.skuvalue,
-            n = new Object();
-        n.ValueId = r, n.Value = o;
-        var u = this.data.selectedskuList;
-        u[a] = n;
-        var i = "",
-            s = this.data.CurrentProduct,
-            c = this.data.CurrentProduct.SkuItems;
-        s.SkuItems.length, u.length;
-        for (var d = s.ProductId, l = 0; l < u.length; l++) {
-            var h = u[l];
-            void 0 != h && (i += "" == i ? h.Value : "," + h.Value, d += "_" + h.ValueId);
-        }
-        for (var f = 0; f < s.SkuItems[a].AttributeValue.length; f++) s.SkuItems[a].AttributeValue[f].ValueId == r ? s.SkuItems[a].AttributeValue[f].UseAttributeImage = "selected" : s.SkuItems[a].AttributeValue[f].UseAttributeImage = "False";
-        var g = null;
-        this.data.CurrentProduct.Skus.forEach(function(t, a, r) {
-            for (var o = !0, n = 0; n < u.length; n++) void 0 != u[n] && -1 != t.SkuId.indexOf("_" + u[n].ValueId) || (o = !1);
-            if (o && c.length == u.length) return g = t, d = t.SkuId, void(e.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
-        }), this.setData({
-            selectedskuList: u,
-            selectedSku: d,
-            selectedSkuContent: i,
-            SkuItemList: c,
-            CurrentProduct: s,
-            CurrentSku: g
-        });
-    },
-    addToCart: function(t, a, r) {
-        var o = this;
-        !a || a.lenght < 1 ? wx.showModal({
-            title: "提示",
-            content: "请选择规格",
-            showCancel: !1
-        }) : e.getOpenId(function(n) {
-            wx.request({
-                url: e.getUrl("addToCart"),
-                data: {
-                    openId: n,
-                    SkuID: a,
-                    Quantity: r
-                },
-                success: function(e) {
-                    "OK" == e.data.Status ? (o.setProductCartQuantity(t, r, "+"), o.setSkuCartQuantity(a, r, "+")) : "NOUser" == e.data.Message ? wx.navigateTo({
-                        url: "../login/login"
-                    }) : wx.showModal({
-                        title: "提示",
-                        content: e.data.ErrorResponse.ErrorMsg,
-                        showCancel: !1,
-                        success: function(t) {}
-                    });
-                },
-                complete: function() {
-                    var t = parseInt(o.data.TotalNum);
-                    o.setData({
-                        TotalNum: t + parseInt(r)
-                    });
-                    if (o.data.TotalNum > 0) {
-                        wx.setTabBarBadge({
-                            index: 3,
-                            text: o.data.TotalNum.toString()
-                        })
-                    }
-                }
-            });
-        });
-    },
-    hideSkuDOM: function() {
-        this.setData({
-            isShowSkuSelectBox: !1
-        });
-    },
-    showSkuDOM: function() {
-        this.setData({
-            isShowSkuSelectBox: !0
-        });
-    },
-    bindCountDownTap: function(t) {
-        var e = t.currentTarget.dataset.countdownid;
-        wx.navigateTo({
-            url: "../countdowndetail/countdowndetail?id=" + e
-        });
-    },
-    bindGoodsTap: function(t) {
-        var e = t.currentTarget.dataset.productid,
-            a = t.currentTarget.dataset.activeid,
-            r = "../productdetail/productdetail?id=" + e;
-        1 == t.currentTarget.dataset.activetype && (r = "../countdowndetail/countdowndetail?id=" + a),
-            wx.navigateTo({
-                url: r
-            });
-    },
+    // catchAddCart: function(t) {
+    //     var a = this,
+    //         r = t.currentTarget,
+    //         o = r.dataset.productid,
+    //         n = r.dataset.activeid;
+    //     if (1 != r.dataset.activetype) {
+    //         var u = r.dataset.operator,
+    //             i = parseInt(u + "1"),
+    //             s = r.dataset.opensku,
+    //             c = a.findProductById(o);
+    //         if (!c.HasSKU || c.HasSKU && "false" == s) {
+    //             var d = r.dataset.sku;
+    //             a.addToCart(o, d, i);
+    //         } else wx.showLoading && wx.showLoading({
+    //             title: "商品规格数据加载..."
+    //         }), e.getOpenId(function(t) {
+    //             wx.request({
+    //                 url: e.getUrl("GetProductSkus"),
+    //                 data: {
+    //                     ProductId: o,
+    //                     openId: t
+    //                 },
+    //                 success: function(t) {
+    //                     if (wx.hideLoading(), "OK" == t.data.Status) {
+    //                         var e = t.data.Data,
+    //                             r = e.DefaultSku,
+    //                             o = [];
+    //                         null != e && e.SkuItems.forEach(function(t, e, a) {
+    //                             t.AttributeValue.reverse(), t.AttributeValue[0].UseAttributeImage = "selected";
+    //                             var r = new Object();
+    //                             r.ValueId = t.AttributeValue[0].ValueId, r.Value = t.AttributeValue[0].Value, o.push(r);
+    //                         }), a.setData({
+    //                             CurrentProduct: e,
+    //                             CurrentSku: r,
+    //                             selectedskuList: o,
+    //                             selectedSku: r.SkuId
+    //                         }), a.showSkuDOM();
+    //                     }
+    //                 },
+    //                 complete: function() {}
+    //             });
+    //         });
+    //     } else wx.navigateTo({
+    //         url: "../countdowndetail/countdowndetail?id=" + n
+    //     });
+    // },
+    // onSkuClick: function(t) {
+    //     var e = this,
+    //         a = t.target.dataset.indexcount,
+    //         r = t.target.id,
+    //         o = t.target.dataset.skuvalue,
+    //         n = new Object();
+    //     n.ValueId = r, n.Value = o;
+    //     var u = this.data.selectedskuList;
+    //     u[a] = n;
+    //     var i = "",
+    //         s = this.data.CurrentProduct,
+    //         c = this.data.CurrentProduct.SkuItems;
+    //     s.SkuItems.length, u.length;
+    //     for (var d = s.ProductId, l = 0; l < u.length; l++) {
+    //         var h = u[l];
+    //         void 0 != h && (i += "" == i ? h.Value : "," + h.Value, d += "_" + h.ValueId);
+    //     }
+    //     for (var f = 0; f < s.SkuItems[a].AttributeValue.length; f++) s.SkuItems[a].AttributeValue[f].ValueId == r ? s.SkuItems[a].AttributeValue[f].UseAttributeImage = "selected" : s.SkuItems[a].AttributeValue[f].UseAttributeImage = "False";
+    //     var g = null;
+    //     this.data.CurrentProduct.Skus.forEach(function(t, a, r) {
+    //         for (var o = !0, n = 0; n < u.length; n++) void 0 != u[n] && -1 != t.SkuId.indexOf("_" + u[n].ValueId) || (o = !1);
+    //         if (o && c.length == u.length) return g = t, d = t.SkuId, void(e.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
+    //     }), this.setData({
+    //         selectedskuList: u,
+    //         selectedSku: d,
+    //         selectedSkuContent: i,
+    //         SkuItemList: c,
+    //         CurrentProduct: s,
+    //         CurrentSku: g
+    //     });
+    // },
+    // addToCart: function(t, a, r) {
+    //     var o = this;
+    //     !a || a.lenght < 1 ? wx.showModal({
+    //         title: "提示",
+    //         content: "请选择规格",
+    //         showCancel: !1
+    //     }) : e.getOpenId(function(n) {
+    //         wx.request({
+    //             url: e.getUrl("addToCart"),
+    //             data: {
+    //                 openId: n,
+    //                 SkuID: a,
+    //                 Quantity: r
+    //             },
+    //             success: function(e) {
+    //                 "OK" == e.data.Status ? (o.setProductCartQuantity(t, r, "+"), o.setSkuCartQuantity(a, r, "+")) : "NOUser" == e.data.Message ? wx.navigateTo({
+    //                     url: "../login/login"
+    //                 }) : wx.showModal({
+    //                     title: "提示",
+    //                     content: e.data.ErrorResponse.ErrorMsg,
+    //                     showCancel: !1,
+    //                     success: function(t) {}
+    //                 });
+    //             },
+    //             complete: function() {
+    //                 var t = parseInt(o.data.TotalNum);
+    //                 o.setData({
+    //                     TotalNum: t + parseInt(r)
+    //                 });
+    //                 if (o.data.TotalNum > 0) {
+    //                     wx.setTabBarBadge({
+    //                         index: 3,
+    //                         text: o.data.TotalNum.toString()
+    //                     })
+    //                 }
+    //             }
+    //         });
+    //     });
+    // },
+    // hideSkuDOM: function() {
+    //     this.setData({
+    //         isShowSkuSelectBox: !1
+    //     });
+    // },
+    // showSkuDOM: function() {
+    //     this.setData({
+    //         isShowSkuSelectBox: !0
+    //     });
+    // },
+    // bindCountDownTap: function(t) {
+    //     var e = t.currentTarget.dataset.countdownid;
+    //     wx.navigateTo({
+    //         url: "../countdowndetail/countdowndetail?id=" + e
+    //     });
+    // },
+    // bindGoodsTap: function(t) {
+    //     var e = t.currentTarget.dataset.productid,
+    //         a = t.currentTarget.dataset.activeid,
+    //         r = "../productdetail/productdetail?id=" + e;
+    //     1 == t.currentTarget.dataset.activetype && (r = "../countdowndetail/countdowndetail?id=" + a),
+    //         wx.navigateTo({
+    //             url: r
+    //         });
+    // },
     onReachBottom: function() {
         var t = this;
         if (1 == t.data.refreshSuccess) {
