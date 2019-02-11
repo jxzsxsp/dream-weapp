@@ -185,10 +185,6 @@ Page({
             });
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
     getCoupon: function(t) {
         var a = t.currentTarget.id;
         e.getOpenId(function(t) {
