@@ -75,12 +75,7 @@ const privateMethod = {
       })
     });
   },
-}
-
-const lifecycle = {
-  onLoad: function () {
-  },
-  onReady: function() {
+  downloadAvatarImg: function() {
     let _this = this
 
     wx.downloadFile({
@@ -90,10 +85,20 @@ const lifecycle = {
         _this.setData({
           avatarUrl: res.tempFilePath,
         })
-      }, 
+      },
       fail: function (fres) {
       }
     })
+  },
+}
+
+const lifecycle = {
+  onLoad: function () {
+  },
+  onReady: function() {
+    let _this = this
+
+    this.downloadAvatarImg()
     
     wx.getImageInfo({
       src: '../../assets/xiaoxi_qrcode.jpg',
@@ -229,6 +234,8 @@ const viewAction = {
     $wx.app.bindPhone().then(res => {
       this.setData({
         userInfo: $wx.app.globalData.userInfo
+      }, function() {
+        this.downloadAvatarImg()
       })
     })
   },

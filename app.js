@@ -15,6 +15,7 @@ App({
     $wx.registerRouter(router)
 
     // 校验授权情况
+    this.saveAuthInfo()
     // this.saveAuthInfo().then((res) => {
     //   if (res.code === -1) {
     //     $wx.navigateTo($wx.router.login)

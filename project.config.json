@@ -187,8 +187,8 @@
 					"id": 16,
 					"name": "名片",
 					"pathName": "pages/business-card/business-card",
-					"query": "scene=1,2,23",
-					"scene": "1036",
+					"query": "scene=2,2,23",
+					"scene": 1036,
 					"referrerInfo": {
 						"appId": ""
 					}
