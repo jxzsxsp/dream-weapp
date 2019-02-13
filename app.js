@@ -36,7 +36,7 @@ App({
         })
       }
       if (res.code === -2) {
-        $wx.navigateTo($wx.router.bindPhone, {bindId: res.bindId, type: callbackType})
+        $wx.navigateTo($wx.router.login, {bindId: res.bindId, type: callbackType})
         return new Promise((res, rej) => {
           rej(authRes)
         })
@@ -65,12 +65,19 @@ App({
       if (res.token) {
         this.globalData.token = res.token
         wx.setStorageSync('token', res.token)
+        this.getAppUserInfo()
         return {code: 1, message: '获取token成功'}
       } else if (res.bindId) {
         return {code: -2, message: '需要绑定手机号', bindId: res.bindId}
       }
     }).catch((res) => {
       return {code: -1, message: '未授权'}
+    })
+  },
+
+  getAppUserInfo: function() {
+    http.getLogin(urls.login.getUserInfo, {}, true).then(res => {
+      this.globalData.appUserInfo = res
     })
   },
 
@@ -85,6 +92,7 @@ App({
     token: '',
     // 用户信息
     userInfo: {},
+    appUserInfo: {},
     deviceInfo: {
       connected: false,
       heartTimer: null,

@@ -7,10 +7,15 @@ const props = {
 }
 
 const data = {
-  shopList: []
+  shopList: [],
 }
 
 const lifecycle = {
+  onLoad: function(query) {
+    this.setData({
+      isAuthorizationPermit: $wx.app.globalData.appUserInfo.isAuthorizationPermit
+    })
+  },
   onShow: function (query) {
     this.refresh()
   },
@@ -66,10 +71,10 @@ const privateMethods = {
       source: constant.BindCustomerSource.WEAPP_VIEW,
     })
   },
-}
-
-const viewAction = {
-  followShop: function (d, v) {
+  sharingAuthorization: function() {
+    return http.getLogin(urls.login.sharingAuthorization, {})
+  },
+  follow: function(v) {
     http.get(urls.followSupplier, {
       // mock: true,
       shopId: v.id,
@@ -78,6 +83,42 @@ const viewAction = {
       v.isFollow = 1
       this.flushShopList(v)
     })
+  },
+  show: function(v) {
+    v.showDetail = !v.showDetail
+    this.flushShopList(v)
+    if (v.showDetail) {
+      this.bindCustomer(v.id)
+    }
+  }
+}
+
+const viewAction = {
+  followShop: function (d, v) {
+
+    if (this.isAuthorizationPermit && this.isAuthorizationPermit === 2) {
+      let _this = this
+
+      wx.showModal({
+        title: '蜥奇申请',
+        content: '与店铺运营方共享您的昵称、头像、手机号码',
+        showCancel: true,
+        confirmText: '允许',
+        confirmColor: '#0ea2ef',
+        cancelText: '拒绝',
+        success: function (e) {
+          console.log(e)
+          if (e.confirm) {
+            _this.sharingAuthorization()
+
+            _this.follow(v)
+          }
+        }
+      })
+    } else {
+      this.follow(v)
+    }
+
   },
 
   cancelFollow: function (d, v) {
@@ -91,11 +132,30 @@ const viewAction = {
   },
 
   showDetail: function (d, v) {
-    v.showDetail = !v.showDetail
-    this.flushShopList(v)
-    if (v.showDetail) {
-      this.bindCustomer(v.id)
+
+    if (this.isAuthorizationPermit && this.isAuthorizationPermit === 2) {
+      let _this = this
+      
+      wx.showModal({
+        title: '蜥奇申请',
+        content: '与店铺运营方共享您的昵称、头像、手机号码',
+        showCancel: true,
+        confirmText: '允许',
+        confirmColor: '#0ea2ef',
+        cancelText: '拒绝',
+        success: function (e) {
+          console.log(e)
+          if (e.confirm) {
+            _this.sharingAuthorization()
+
+            _this.show(v)
+          }
+        }
+      })
+    } else {
+      this.show(v)
     }
+
   },
 }
 

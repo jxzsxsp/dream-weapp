@@ -17,6 +17,10 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     console.log(query)
+    this.setData({
+      isAuthorizationPermit: $wx.app.globalData.appUserInfo.isAuthorizationPermit
+    })
+
     const scene = decodeURIComponent(query.scene)
     const scenes = scene.split(',')
     
@@ -49,31 +53,51 @@ const lifecycle = {
     }
 
   },
-  onShow: function () {
-    
-    this.bindCustomer().then((res) => {
-      let type = this.data.type
-      let shopId = this.data.shopId
-      let userId = this.data.userId
+  onReady: function () {
 
-      if (constant.QrCodeType.SHOP === type || constant.QrCodeType.TO_SHOP === type) {
-        this.getShopDetail(shopId).then((res) => {
-          this.setData({
-            shopInfo: res,
-            isFollow: res.isFollow === 1,
-          })
-        })
-      }
+    if (this.isAuthorizationPermit && this.isAuthorizationPermit === 2) {
+      let _this = this
 
-      if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
-        this.getPersonDetail(shopId, userId).then((res) => {
-          this.setData({
-            userInfo: res,
-            isFollow: res.shopDetail.isFollow === 1,
-          })
-        })
-      }
-    })
+      wx.showModal({
+        title: '蜥奇申请',
+        content: '与店铺运营方共享您的昵称、头像、手机号码',
+        showCancel: true,
+        confirmText: '允许',
+        confirmColor: '#0ea2ef',
+        cancelText: '拒绝',
+        success: function (e) {
+          if (e.confirm) {
+            _this.sharingAuthorization()
+
+            _this.show()
+          }
+
+          if (e.cancel) {
+            wx.showModal({
+              title: '提示',
+              content: '拒绝授权将不能正常浏览，确认拒绝为您返回首页',
+              showCancel: true,
+              confirmText: '允许',
+              confirmColor: '#0ea2ef',
+              cancelText: '拒绝',
+              success: function (e) {
+                if (e.confirm) {
+                  _this.sharingAuthorization()
+
+                  _this.show()
+                }
+
+                if (e.cancel) {
+                  $wx.switchTab($wx.router.mainPage)
+                }
+              }
+            })
+          }
+        }
+      })
+    } else {
+      this.show()
+    }
 
   }
 }
@@ -111,6 +135,36 @@ const privateMethods = {
       userId: userId,
     })
   },
+  sharingAuthorization: function () {
+    return http.getLogin(urls.login.sharingAuthorization, {})
+  },
+  show: function() {
+
+    this.bindCustomer().then((res) => {
+      let type = this.data.type
+      let shopId = this.data.shopId
+      let userId = this.data.userId
+
+      if (constant.QrCodeType.SHOP === type || constant.QrCodeType.TO_SHOP === type) {
+        this.getShopDetail(shopId).then((res) => {
+          this.setData({
+            shopInfo: res,
+            isFollow: res.isFollow === 1,
+          })
+        })
+      }
+
+      if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
+        this.getPersonDetail(shopId, userId).then((res) => {
+          this.setData({
+            userInfo: res,
+            isFollow: res.shopDetail.isFollow === 1,
+          })
+        })
+      }
+    })
+
+  }
 }
 
 const viewAction = {
