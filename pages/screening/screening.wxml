@@ -3,7 +3,7 @@
     <view>
         <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
     </view>
-    <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
+    <!-- <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
         <view class="brandInfoTab hotSell {{nothing==0?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
             <image src="http://cos.qkmai.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;' wx:if="{{nothing==0}}"></image>
             <image src="http://cos.qkmai.com/qkmbb/ytal/firetb_1.png" style='width:45rpx;height:45rpx;' wx:else></image>
@@ -17,7 +17,7 @@
         </view>
         <view class="brandInfoTab sellOut {{nothing==1?'active':''}}" bindtap='onShowHotSell' data-state="1" style='line-height: 80rpx;font-size:32rpx;width:49%;text-align:center'>已抢光</view>
 
-    </view>
+    </view> -->
     <view style='width:730rpx;margin-top:10rpx;margin-left:10rpx;border-radius:20rpx; position:relative'>
         <view class="kong" style='display:flex;flex-direction:column;align-items:center;padding:144rpx 0 285rpx 0;min-height:680rpx;overflow:hidden;font-size:28rpx;color:#212121;' wx:if="{{nothing==1&&rushGoodsList.length==0}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx;width:192rpx;height:192rpx;padding:32rpx;"></view>

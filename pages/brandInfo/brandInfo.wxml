@@ -107,7 +107,7 @@
         </view>
     </view>
 
-    <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
+    <!-- <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
         <view class="brandInfoTab hotSell {{nothing==0?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
             <image src="http://cos.qkmai.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;' wx:if="{{nothing==0}}"></image>
             <image src="http://cos.qkmai.com/qkmbb/ytal/firetb_1.png" style='width:45rpx;height:45rpx;' wx:else></image>
@@ -121,7 +121,7 @@
         </view>
         <view class="brandInfoTab sellOut {{nothing==1?'active':''}}" bindtap='onShowHotSell' data-state="1" style='line-height: 80rpx;font-size:32rpx;width:49%;text-align:center'>已抢光</view>
 
-    </view>
+    </view> -->
     <view class='brandInfoContainer' wx:if="{{isSelectState==1}}" style='position:relative;'>
         <view wx:if='{{showNoList && rushGoodsList.length == 0 && nothing==0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;box-sizing:border-box;'>
             <image style='width:168rpx;height:168rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/bianpaotb.png'></image>
@@ -250,7 +250,7 @@
 
 
     </view>
-    <view class='brandInfoContainer' wx:if="{{isSelectState==2}}">
+    <!-- <view class='brandInfoContainer' wx:if="{{isSelectState==2}}">
         <view wx:if='{{showNoList && rushGoodsList.length == 0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;'>
             <image style='width:240rpx;height:240rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/notstarted.png'></image>
             <text style='font-size:14px;color:#bdbdbd;'>该品牌尚未开始特卖,敬请期待！</text>
@@ -259,7 +259,7 @@
             bindtap='goToTop'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
             <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
-        </view>
+        <!-- </view>
         <view wx:for='{{rushGoodsList}}' style='margin-bottom:20rpx;background:#fff;width:730rpx;margin-left:10rpx;border-radius:20rpx;box-shadow:0px 0px 10px #bdbdbd;position:relative;padding-top:20rpx;overflow:hidden'>
             <view style='position:absolute;top:0rpx;right:20rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:100% 100%;'>
                 <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}
@@ -280,7 +280,7 @@
                             <view wx:if='{{brandRushInfo[0].subTitle != null}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{brandRushInfo[0].subTitle}}</view>
 
 
-                            <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view> -->
+                            <!-- <view style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;	border-radius: 15px;height:34rpx;margin-top:9rpx;height:35rpx;padding: 0 8rpx;float:left'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</view> 
                         </view>
                     </view>
                 </view>
@@ -325,7 +325,7 @@
                             <!-- <view style='font-size:22rpx;color:#515151;width:50%;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                                 {{item.endTimeInfo}}
                                 <text style=''>结束</text>
-                            </view> -->
+                            </view>
 
 
                             <view style='padding:15rpx 20rpx 15rpx 0'>
@@ -345,7 +345,7 @@
                 <image src="{{goodsImg}}"></image>
             </view>
         </view>
-    </view>
+    </view> -->
 
    <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
