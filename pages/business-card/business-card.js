@@ -135,7 +135,9 @@ const privateMethods = {
     })
   },
   sharingAuthorization: function () {
-    return http.postLogin(urls.login.sharingAuthorization, {})
+    return http.postLogin(urls.login.sharingAuthorization, {}).then(res => {
+      $wx.app.getAppUserInfo()
+    })
   },
   show: function() {
 

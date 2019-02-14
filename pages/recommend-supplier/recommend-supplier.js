@@ -12,9 +12,7 @@ const data = {
 
 const lifecycle = {
   onLoad: function(query) {
-    this.setData({
-      isAuthorizationPermit: $wx.app.globalData.appUserInfo.isAuthorizationPermit
-    })
+    $wx.app.getAppUserInfo()
   },
   onShow: function (query) {
     this.refresh()
@@ -71,8 +69,10 @@ const privateMethods = {
       source: constant.BindCustomerSource.WEAPP_VIEW,
     })
   },
-  sharingAuthorization: function() {
-    return http.postLogin(urls.login.sharingAuthorization, {})
+  sharingAuthorization: function () {
+    return http.postLogin(urls.login.sharingAuthorization, {}).then(res => {
+      $wx.app.getAppUserInfo()
+    })
   },
   follow: function(v) {
     http.get(urls.followSupplier, {
@@ -96,7 +96,7 @@ const privateMethods = {
 const viewAction = {
   followShop: function (d, v) {
 
-    if (this.data.isAuthorizationPermit === 0) {
+    if ($wx.app.globalData.appUserInfo.isAuthorizationPermit === 0) {
       let _this = this
 
       wx.showModal({
@@ -133,7 +133,7 @@ const viewAction = {
 
   showDetail: function (d, v) {
 
-    if (this.data.isAuthorizationPermit === 0) {
+    if ($wx.app.globalData.appUserInfo.isAuthorizationPermit === 0) {
       let _this = this
       
       wx.showModal({

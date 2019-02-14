@@ -11,6 +11,8 @@ const data = {
 
 const lifeCycle = {
   onLoad: function () {
+    $wx.app.getAppUserInfo()
+    
     http.getPantone(urls.pantone.colorCategories)
       .then(res => {
         this.setData({
