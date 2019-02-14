@@ -465,7 +465,6 @@ Page({
     },
     checkPhone: function(event) {
         var tm = this;
-        console.log(event.detail.value)
         var phone = event.detail.value;
         if (!(/^1[34578]\d{9}$/.test(phone))) {
             tm.setData({

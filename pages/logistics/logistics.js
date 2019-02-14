@@ -25,7 +25,6 @@ Page({
                 success: function(e) {
                     if (console.log(JSON.stringify(e)), "OK" == e.data.Status) {
                         var a = e.data.Data, s = JSON.parse(a.LogisticsData);
-                        console.log(s)
                         o.setData({
                             ExpressCompanyName: a.ExpressCompanyName,
                             ShipOrderNumber: a.ShipOrderNumber,
@@ -47,7 +46,6 @@ Page({
                         }
                     });
                 },complete: function(e) {
-                    console.log(app.globalData)
                     app.globalData.fundebug.notifyError(new Error("物流"), {
                         name: "物流状态",
                         metaData: e

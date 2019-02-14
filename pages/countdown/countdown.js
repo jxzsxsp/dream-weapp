@@ -18,7 +18,6 @@ Page({
             },
             success: function(a) {
                 if ("OK" == a.data.Status) {
-                    console.log(e);
                     var n = a.data.Data;
                     if (e) {
                         var o = t.data.CountDownList;

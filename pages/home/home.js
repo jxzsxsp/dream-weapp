@@ -3,7 +3,7 @@ var t = require("../../utils/config.js"),
 
 Page({
     data: {
-        isNewShow:true,
+        isNewShow: true,
         isShow: false,
         userInfo: {},
         pageIndex: 1,
@@ -38,9 +38,9 @@ Page({
         isTooLow: false,
         isShowState: true,
         current: 0,
-        DistributionInfo:""
+        DistributionInfo: ""
     },
-    GetCheckData: function () {
+    GetCheckData: function() {
         this.setData({
             DistributionInfo: e.globalData.ReferralInfo,
             isLoadEnd: true
@@ -48,27 +48,25 @@ Page({
 
     },
     onShow: function() {
-        var tm =this;
+        var tm = this;
         this.GetShopCart();
-        wx.getStorage({
-            key: 'tcOne',
-            success(res) {
-                // console.log(res.data)
-                if (res.data == 'read') {
-                    tm.setData({
-                        isNewShow: false,
-                        isShow: true
-                    })
-                }
-            }
-        })
+        // wx.getStorage({
+        //     key: 'tcOne',
+        //     success(res) {
+        //         if (res.data == 'read') {
+        //             tm.setData({
+        //                 isNewShow: false,
+        //                 isShow: true
+        //             })
+        //         }
+        //     }
+        // })
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
-                // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
-                        isShow: false
+                        isNewShow: false
                     })
                     wx.showTabBar({})
                 }
@@ -128,40 +126,36 @@ Page({
         });
     },
     onLoad: function(a) {
-        if(a.scene) {
+        if (a.scene) {
             wx.request({
                 url: e.getUrl("YTALDecodeScene"),
                 data: {
                     scene: a.scene
                 },
-                success: function (t) {
+                success: function(t) {
                     var x = '/pages/goodInfo/goodInfo?brandId=' + t.data.brandId + '&goodsId=' + t.data.goodsId + '&goodsSource=' + t.data.goodsSource
-                    console.log(x)
                     wx.navigateTo({
                         url: x,
                     })
                 }
             });
         }
-        // debugger
         var tm = this;
         wx.hideTabBar({})
-        wx.getStorage({
-            key: 'tcOne',
-            success(res) {
-                // console.log(res.data)
-                if (res.data=='read'){
-                    tm.setData({
-                        isNewShow:false,
-                        isShow: true
-                    })
-                }
-            }
-        })
+        // wx.getStorage({
+        //     key: 'tcOne',
+        //     success(res) {
+        //         if (res.data=='read'){
+        //             tm.setData({
+        //                 isNewShow:false,
+        //                 isShow: true
+        //             })
+        //         }
+        //     }
+        // })
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
-                // console.log(res.data)
                 if (res.data == 'read') {
                     tm.setData({
                         isShow: false
@@ -185,19 +179,14 @@ Page({
                 metaData: a
             });
         });
-
-        // e.globalData.fundebug.notifyError(new Error("onload"), {
-        //     name: "首页onload",
-        //     metaData: a
-        // });
         var r, o, n = this;
-        e.getOpenId(function (t) {
+        e.getOpenId(function(t) {
             wx.request({
                 url: e.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
                 },
-                success: function (t) {
+                success: function(t) {
                     e.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
@@ -236,8 +225,6 @@ Page({
                 var reg = new RegExp("/.", "g");
                 var s = x.replace(".", "").replace(".", "");
                 tm.compareVersion(x, '6.6.1')
-                // console.log(tm.compareVersion(x, '6.6.1'))
-
                 if (tm.compareVersion(x, '6.6.1') == -1) {
                     wx.hideTabBar({})
                     wx.showModal({
@@ -246,7 +233,6 @@ Page({
                         showCancel: false,
                         success(res) {
                             if (res.confirm) {
-                                // wx.hideTabBar({})
                                 tm.setData({
                                     isTooLow: true
                                 })
@@ -256,34 +242,14 @@ Page({
                         }
                     })
                 } else {
-
-                    // tm.setData({
-                    //     TopicData: {
-                    //         id: 201811161906894,
-                    //         type: 9,
-                    //         content: {
-                    //             showType: 1,
-                    //             space: 0,
-                    //             dataset: [{
-                    //                 linkType: 10,
-                    //                 link: '/pages/brandInfo/brandInfo?brandId=2c9089c267ee854f0168086b840d32ef&brandSource=dadacang',
-                    //                 pic: "https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/28564/12/3956/53695/5c2ca953E8f239d0b/094dd2f2b6538372.jpg!cr_1125x549_0_72!q70.jpg.dpg"
-                    //             }]
-                    //         }
-                    //     }
-                    // })
-
                     tm.getLogo();
                     tm.getCate();
                     wx.hideNavigationBarLoading();
-                    // tm.countDown();
                 }
             },
             fail: function(res) {},
             complete: function(res) {},
         })
-
-        // tm.getCode()
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -318,28 +284,23 @@ Page({
                     appId: a,
                     extarData: {},
                     envVersion: "develop",
-                    success: function(t) {
-                        console.log(t);
-                    }
+                    success: function(t) {}
                 }) : (-1 == a.indexOf("http://") && -1 == a.indexOf("https://") && (a = e.getRequestUrl + a),
                     console.log(a), wx.navigateTo({
                         url: "../outurl/outurl?url=" + encodeURIComponent(a)
                     }));
                 break;
-
             case 23:
                 wx.makePhoneCall({
                     phoneNumber: a
                 });
                 break;
-
             case 7:
             case 8:
                 wx.switchTab({
                     url: a
                 });
                 break;
-
             default:
                 wx.navigateTo({
                     url: a
@@ -359,20 +320,16 @@ Page({
             title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-
         var shareInfo = {
             title: title,
             path: i,
             imageUrl: brandBg
         };
-
         e.globalData.fundebug.notifyError(new Error("首页分享"), {
             name: "首页分享",
             metaData: shareInfo
         });
-
         return shareInfo;
-
     },
     getHomeData: function(t) {
         var a = this;
@@ -547,148 +504,147 @@ Page({
             r.setData(s);
         }
     },
-    catchAddCart: function(t) {
-        var a = this,
-            r = t.currentTarget,
-            o = r.dataset.productid,
-            n = r.dataset.activeid;
-        if (1 != r.dataset.activetype) {
-            var u = r.dataset.operator,
-                i = parseInt(u + "1"),
-                s = r.dataset.opensku,
-                c = a.findProductById(o);
-            if (!c.HasSKU || c.HasSKU && "false" == s) {
-                var d = r.dataset.sku;
-                a.addToCart(o, d, i);
-            } else wx.showLoading && wx.showLoading({
-                title: "商品规格数据加载..."
-            }), e.getOpenId(function(t) {
-                wx.request({
-                    url: e.getUrl("GetProductSkus"),
-                    data: {
-                        ProductId: o,
-                        openId: t
-                    },
-                    success: function(t) {
-                        if (wx.hideLoading(), "OK" == t.data.Status) {
-                            var e = t.data.Data,
-                                r = e.DefaultSku,
-                                o = [];
-                            null != e && e.SkuItems.forEach(function(t, e, a) {
-                                t.AttributeValue.reverse(), t.AttributeValue[0].UseAttributeImage = "selected";
-                                var r = new Object();
-                                r.ValueId = t.AttributeValue[0].ValueId, r.Value = t.AttributeValue[0].Value, o.push(r);
-                            }), a.setData({
-                                CurrentProduct: e,
-                                CurrentSku: r,
-                                selectedskuList: o,
-                                selectedSku: r.SkuId
-                            }), a.showSkuDOM();
-                        }
-                    },
-                    complete: function() {}
-                });
-            });
-        } else wx.navigateTo({
-            url: "../countdowndetail/countdowndetail?id=" + n
-        });
-    },
-    onSkuClick: function(t) {
-        var e = this,
-            a = t.target.dataset.indexcount,
-            r = t.target.id,
-            o = t.target.dataset.skuvalue,
-            n = new Object();
-        n.ValueId = r, n.Value = o;
-        var u = this.data.selectedskuList;
-        u[a] = n;
-        var i = "",
-            s = this.data.CurrentProduct,
-            c = this.data.CurrentProduct.SkuItems;
-        s.SkuItems.length, u.length;
-        for (var d = s.ProductId, l = 0; l < u.length; l++) {
-            var h = u[l];
-            void 0 != h && (i += "" == i ? h.Value : "," + h.Value, d += "_" + h.ValueId);
-        }
-        for (var f = 0; f < s.SkuItems[a].AttributeValue.length; f++) s.SkuItems[a].AttributeValue[f].ValueId == r ? s.SkuItems[a].AttributeValue[f].UseAttributeImage = "selected" : s.SkuItems[a].AttributeValue[f].UseAttributeImage = "False";
-        var g = null;
-        this.data.CurrentProduct.Skus.forEach(function(t, a, r) {
-            for (var o = !0, n = 0; n < u.length; n++) void 0 != u[n] && -1 != t.SkuId.indexOf("_" + u[n].ValueId) || (o = !1);
-            if (o && c.length == u.length) return g = t, d = t.SkuId, void(e.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
-        }), this.setData({
-            selectedskuList: u,
-            selectedSku: d,
-            selectedSkuContent: i,
-            SkuItemList: c,
-            CurrentProduct: s,
-            CurrentSku: g
-        });
-    },
-    addToCart: function(t, a, r) {
-        var o = this;
-        !a || a.lenght < 1 ? wx.showModal({
-            title: "提示",
-            content: "请选择规格",
-            showCancel: !1
-        }) : e.getOpenId(function(n) {
-            wx.request({
-                url: e.getUrl("addToCart"),
-                data: {
-                    openId: n,
-                    SkuID: a,
-                    Quantity: r
-                },
-                success: function(e) {
-                    "OK" == e.data.Status ? (o.setProductCartQuantity(t, r, "+"), o.setSkuCartQuantity(a, r, "+")) : "NOUser" == e.data.Message ? wx.navigateTo({
-                        url: "../login/login"
-                    }) : wx.showModal({
-                        title: "提示",
-                        content: e.data.ErrorResponse.ErrorMsg,
-                        showCancel: !1,
-                        success: function(t) {}
-                    });
-                },
-                complete: function() {
-                    var t = parseInt(o.data.TotalNum);
-                    o.setData({
-                        TotalNum: t + parseInt(r)
-                    });
-
-                    if (o.data.TotalNum > 0) {
-                        wx.setTabBarBadge({
-                            index: 3,
-                            text: o.data.TotalNum.toString()
-                        })
-                    }
-                }
-            });
-        });
-    },
-    hideSkuDOM: function() {
-        this.setData({
-            isShowSkuSelectBox: !1
-        });
-    },
-    showSkuDOM: function() {
-        this.setData({
-            isShowSkuSelectBox: !0
-        });
-    },
-    bindCountDownTap: function(t) {
-        var e = t.currentTarget.dataset.countdownid;
-        wx.navigateTo({
-            url: "../countdowndetail/countdowndetail?id=" + e
-        });
-    },
-    bindGoodsTap: function(t) {
-        var e = t.currentTarget.dataset.productid,
-            a = t.currentTarget.dataset.activeid,
-            r = "../productdetail/productdetail?id=" + e;
-        1 == t.currentTarget.dataset.activetype && (r = "../countdowndetail/countdowndetail?id=" + a),
-            wx.navigateTo({
-                url: r
-            });
-    },
+    // catchAddCart: function(t) {
+    //     var a = this,
+    //         r = t.currentTarget,
+    //         o = r.dataset.productid,
+    //         n = r.dataset.activeid;
+    //     if (1 != r.dataset.activetype) {
+    //         var u = r.dataset.operator,
+    //             i = parseInt(u + "1"),
+    //             s = r.dataset.opensku,
+    //             c = a.findProductById(o);
+    //         if (!c.HasSKU || c.HasSKU && "false" == s) {
+    //             var d = r.dataset.sku;
+    //             a.addToCart(o, d, i);
+    //         } else wx.showLoading && wx.showLoading({
+    //             title: "商品规格数据加载..."
+    //         }), e.getOpenId(function(t) {
+    //             wx.request({
+    //                 url: e.getUrl("GetProductSkus"),
+    //                 data: {
+    //                     ProductId: o,
+    //                     openId: t
+    //                 },
+    //                 success: function(t) {
+    //                     if (wx.hideLoading(), "OK" == t.data.Status) {
+    //                         var e = t.data.Data,
+    //                             r = e.DefaultSku,
+    //                             o = [];
+    //                         null != e && e.SkuItems.forEach(function(t, e, a) {
+    //                             t.AttributeValue.reverse(), t.AttributeValue[0].UseAttributeImage = "selected";
+    //                             var r = new Object();
+    //                             r.ValueId = t.AttributeValue[0].ValueId, r.Value = t.AttributeValue[0].Value, o.push(r);
+    //                         }), a.setData({
+    //                             CurrentProduct: e,
+    //                             CurrentSku: r,
+    //                             selectedskuList: o,
+    //                             selectedSku: r.SkuId
+    //                         }), a.showSkuDOM();
+    //                     }
+    //                 },
+    //                 complete: function() {}
+    //             });
+    //         });
+    //     } else wx.navigateTo({
+    //         url: "../countdowndetail/countdowndetail?id=" + n
+    //     });
+    // },
+    // onSkuClick: function(t) {
+    //     var e = this,
+    //         a = t.target.dataset.indexcount,
+    //         r = t.target.id,
+    //         o = t.target.dataset.skuvalue,
+    //         n = new Object();
+    //     n.ValueId = r, n.Value = o;
+    //     var u = this.data.selectedskuList;
+    //     u[a] = n;
+    //     var i = "",
+    //         s = this.data.CurrentProduct,
+    //         c = this.data.CurrentProduct.SkuItems;
+    //     s.SkuItems.length, u.length;
+    //     for (var d = s.ProductId, l = 0; l < u.length; l++) {
+    //         var h = u[l];
+    //         void 0 != h && (i += "" == i ? h.Value : "," + h.Value, d += "_" + h.ValueId);
+    //     }
+    //     for (var f = 0; f < s.SkuItems[a].AttributeValue.length; f++) s.SkuItems[a].AttributeValue[f].ValueId == r ? s.SkuItems[a].AttributeValue[f].UseAttributeImage = "selected" : s.SkuItems[a].AttributeValue[f].UseAttributeImage = "False";
+    //     var g = null;
+    //     this.data.CurrentProduct.Skus.forEach(function(t, a, r) {
+    //         for (var o = !0, n = 0; n < u.length; n++) void 0 != u[n] && -1 != t.SkuId.indexOf("_" + u[n].ValueId) || (o = !1);
+    //         if (o && c.length == u.length) return g = t, d = t.SkuId, void(e.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
+    //     }), this.setData({
+    //         selectedskuList: u,
+    //         selectedSku: d,
+    //         selectedSkuContent: i,
+    //         SkuItemList: c,
+    //         CurrentProduct: s,
+    //         CurrentSku: g
+    //     });
+    // },
+    // addToCart: function(t, a, r) {
+    //     var o = this;
+    //     !a || a.lenght < 1 ? wx.showModal({
+    //         title: "提示",
+    //         content: "请选择规格",
+    //         showCancel: !1
+    //     }) : e.getOpenId(function(n) {
+    //         wx.request({
+    //             url: e.getUrl("addToCart"),
+    //             data: {
+    //                 openId: n,
+    //                 SkuID: a,
+    //                 Quantity: r
+    //             },
+    //             success: function(e) {
+    //                 "OK" == e.data.Status ? (o.setProductCartQuantity(t, r, "+"), o.setSkuCartQuantity(a, r, "+")) : "NOUser" == e.data.Message ? wx.navigateTo({
+    //                     url: "../login/login"
+    //                 }) : wx.showModal({
+    //                     title: "提示",
+    //                     content: e.data.ErrorResponse.ErrorMsg,
+    //                     showCancel: !1,
+    //                     success: function(t) {}
+    //                 });
+    //             },
+    //             complete: function() {
+    //                 var t = parseInt(o.data.TotalNum);
+    //                 o.setData({
+    //                     TotalNum: t + parseInt(r)
+    //                 });
+    //                 if (o.data.TotalNum > 0) {
+    //                     wx.setTabBarBadge({
+    //                         index: 3,
+    //                         text: o.data.TotalNum.toString()
+    //                     })
+    //                 }
+    //             }
+    //         });
+    //     });
+    // },
+    // hideSkuDOM: function() {
+    //     this.setData({
+    //         isShowSkuSelectBox: !1
+    //     });
+    // },
+    // showSkuDOM: function() {
+    //     this.setData({
+    //         isShowSkuSelectBox: !0
+    //     });
+    // },
+    // bindCountDownTap: function(t) {
+    //     var e = t.currentTarget.dataset.countdownid;
+    //     wx.navigateTo({
+    //         url: "../countdowndetail/countdowndetail?id=" + e
+    //     });
+    // },
+    // bindGoodsTap: function(t) {
+    //     var e = t.currentTarget.dataset.productid,
+    //         a = t.currentTarget.dataset.activeid,
+    //         r = "../productdetail/productdetail?id=" + e;
+    //     1 == t.currentTarget.dataset.activetype && (r = "../countdowndetail/countdowndetail?id=" + a),
+    //         wx.navigateTo({
+    //             url: r
+    //         });
+    // },
     onReachBottom: function() {
         var t = this;
         if (1 == t.data.refreshSuccess) {
@@ -702,9 +658,7 @@ Page({
         let brandRushList = this.data.brandRush;
         brandRushList.forEach(o => {
             if (o.rushEndTime != null) {
-                // console.log(o.rushEndTime)
                 var rushEndTime = o.rushEndTime.replace('\-', '/').replace('\-', '/');
-                // console.log(rushEndTime)
                 let endTime = new Date(rushEndTime).getTime();
                 //endTime = endTime + 8 * 60 * 60 * 1000;   
                 let obj = null;
@@ -716,7 +670,6 @@ Page({
                     let hou = parseInt(time % (60 * 60 * 24) / 3600);
                     let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
                     let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
-
                     obj = {
                         day: this.timeFormat(day),
                         hou: this.timeFormat(hou),
@@ -760,7 +713,6 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-
         this.setData({
             brandRush: [],
             pageIndex: 0,
@@ -802,7 +754,6 @@ Page({
             success: function(res) {
                 if (res.data.length > 0) {
                     let topArrList = [];
-                    // console.log(res.data)
                     res.data.forEach(o => {
                         var obj = {
                             day: '00',
@@ -816,7 +767,6 @@ Page({
                             var day = o.rushEndTime.split('-')[2].split(' ')[0];
                             var hour = o.rushEndTime.split(' ')[1].split(':')[0];
                             var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
                             o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                         }
                         topArrList.push(o)
@@ -902,7 +852,6 @@ Page({
                         var day = o.rushEndTime.split('-')[2].split(' ')[0];
                         var hour = o.rushEndTime.split(' ')[1].split(':')[0];
                         var min = o.rushEndTime.split(' ')[1].split(':')[1];
-
                         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                     }
                     brandRushList.push(o)
@@ -959,8 +908,6 @@ Page({
         })
     },
     changeCate: function(event) {
-
-
         wx.showLoading({
             mask: true
         });
@@ -1034,7 +981,6 @@ Page({
             complete: function() {
                 wx.hideNavigationBarLoading();
             }
-
         });
     },
     copy: function(e) {
@@ -1049,7 +995,6 @@ Page({
     },
     toggleHide: function(e) {
         var tm = this;
-        // console.log(tm.data.currentId,e.currentTarget.dataset.id)
         if (tm.data.currentId == 0) {
             tm.setData({
                 currentId: e.currentTarget.dataset.id,
@@ -1081,9 +1026,7 @@ Page({
         var tm = this;
         wx.request({
             url: e.getUrl("YTALGetTopListBrandRushIsHead"),
-            data: {
-
-            },
+            data: {},
             success: function(jd) {
                 if (jd.data.length != 0) {
                     let logoList = [];
@@ -1101,19 +1044,16 @@ Page({
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
-
         e.globalData.fundebug.notifyError(new Error("首页跳转文章"), {
             name: "文章链接",
             metaData: s
         });
-
         wx.navigateTo({
             url: s
         })
     },
     focusList: function() {
         var tm = this;
-        // console.log(e.globalData.openId)
         wx.request({
             url: e.getUrl("GetListBrandByFollow"),
             data: {
@@ -1121,9 +1061,7 @@ Page({
             },
             success: function(jd) {
                 if (jd.data.length > 0) {
-                    // console.log(jd.data)
                     let logoList = [];
-
                     tm.setData({
                         focusList: jd.data
                     })
@@ -1161,15 +1099,16 @@ Page({
         })
         wx.showTabBar({})
     },
-    onCloseNewBtn: function () {
+    onCloseNewBtn: function() {
         wx.setStorage({
-            key: 'tcOne',
+            key: 'tcTwo',
             data: 'read'
         })
         this.setData({
             isNewShow: false,
-            isShow: true
+            //isShow: true
         })
+        wx.showTabBar({})
     },
     onGetLink: function() {
         this.setData({
@@ -1219,19 +1158,19 @@ Page({
             }
         }
     },
-    GoToSearch:function(){
+    GoToSearch: function() {
         wx.navigateTo({
             url: '../search/search'
         })
     },
-    onPageScroll: function (obj) {
+    onPageScroll: function(obj) {
         if (obj.scrollTop > 363) {
             this.setData({
                 goTopStatus: true
             })
         }
     },
-    goToTop: function () {
+    goToTop: function() {
         wx.pageScrollTo({
             scrollTop: 0,
         })
@@ -1239,14 +1178,14 @@ Page({
             goTopStatus: false
         })
     },
-    goToZZ:function(){
+    goToZZ: function() {
         wx.switchTab({
             url: '../discovery/discovery',
         })
     },
-    goToZZZ: function () {
+    goToZZZ: function() {
         wx.setStorage({
-            key: 'tcOne',
+            key: 'tcTwo',
             data: 'read'
         })
         wx.showTabBar({})
@@ -1254,13 +1193,10 @@ Page({
             url: '../discovery/discovery',
         })
     },
-    getCode: function () {                               
-        console.log(e.globalData)
-        // 获取jscode  获取accessToken 前提
+    getCode: function() {
         wx.login({
             success(res) {
                 if (res.code) {
-                    console.log(res.code)
                     wx.request({
                         url: 'https://api.weixin.qq.com/sns/jscode2session',
                         data: {
@@ -1269,9 +1205,7 @@ Page({
                             js_code: res.code,
                             grant_type: "authorization_code"
                         },
-                        success: function (jd) {
-                            console.log(jd)
-                        }
+                        success: function(jd) {}
                     })
                 } else {
                     console.log('登录失败！' + res.errMsg)

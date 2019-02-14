@@ -797,7 +797,6 @@ var QR = (function() {
             }
             var size = Math.min(cavW, cavH);
             str = this.utf16to8(str);
-            //console.log(str)
             var frame = this.getFrame(str),
                 ctx = wx.createCanvasContext(canvas),
                 px = Math.round(size / (width + 8));

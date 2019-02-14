@@ -8,8 +8,6 @@ Page({
     data: {
         brandRush: [],
         brandCate: [],
-        // selectedCate: "本期特卖",
-        // barndRushCate: [], 
         brandCateCode: "0",
         userInfo: {},
         tagList: [],
@@ -19,11 +17,6 @@ Page({
         hasMore: true,
         selectedTag: "",
         selectedImg: "",
-
-        // 重写
-        curNav: 1,
-        curIndex: 0
-
     },
 
     /**
@@ -58,38 +51,9 @@ Page({
     getListGoods: function(event) {
         var tm = this;
         var cateCode = event.currentTarget.dataset.catecode;
-
-        // console.log(cateCode);
         tm.setData({
             brandCateCode: cateCode
         });
-    },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
     },
 
     /**
@@ -102,7 +66,6 @@ Page({
             hasMore: true
         });
         this.getList();
-        // wx.stopPullDownRefresh();
     },
 
     /**
@@ -120,17 +83,13 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
-
         var i = '/pages/brandRush/brandRush?from=menu';
         var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
         app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        
         return {
             title: title,
             path: i
         }
-
-
     },
     linkToBrandRush: function(event) {
         var barndId = event.currentTarget.dataset['brandid'];
@@ -140,40 +99,24 @@ Page({
         });
     },
 
-    changeCate: function(event) {
-        this.setData({
-            brandRush: [],
-            dataIndex: 0,
-            selectedCate: event.currentTarget.dataset.catename,
-            hasMore: true,
-        })
+    // changeCate: function(event) {
+    //     this.setData({
+    //         brandRush: [],
+    //         dataIndex: 0,
+    //         selectedCate: event.currentTarget.dataset.catename,
+    //         hasMore: true,
+    //     })
 
-        this.getList();
-    },
-    changeTag: function(event) {
-        this.setData({
-            brandRush: [],
-            dataIndex: 0,
-            selectedTag: event.currentTarget.dataset.tagname,
-            hasMore: true
-        })
-        this.getList();
-    },
-    // getCate: function() {
-    //     var tm = this;
-    //     wx.request({
-    //         url: app.getUrl("YTALGetListBrandCate"),
-    //         data: {
-
-    //         },
-    //         success: function(res) {
-    //             tm.setData({
-    //                 barndRushCate: res.data,
-    //                 selectedCate: res.data[0]
-    //             });
-    //             tm.getTag();
-    //         }
-    //     });
+    //     this.getList();
+    // },
+    // changeTag: function(event) {
+    //     this.setData({
+    //         brandRush: [],
+    //         dataIndex: 0,
+    //         selectedTag: event.currentTarget.dataset.tagname,
+    //         hasMore: true
+    //     })
+    //     this.getList();
     // },
     getTag: function (event) {
         var tm = this;
@@ -183,7 +126,6 @@ Page({
 
             },
             success: function (jd) {
-                // wx.hideLoading()
                 if (jd.data.length > 0) {
                     let tagList = [];
                     jd.data.forEach(o => {
@@ -194,13 +136,11 @@ Page({
                         selectedTag: jd.data[0].tagName,
                         selectedImg: jd.data[0].titlePic
                     })
-                    // tm.getList();
                     tm.rewrite();
                 }
 
             },
             complete:function(){
-            //   wx.hideLoading()
             wx.hideNavigationBarLoading()
             }
         })
@@ -285,7 +225,6 @@ Page({
                 tag: tm.data.selectedTag
             },
             success: function(jd) {
-                // console.log(jd.data)
                 if (jd.data.length <= 0) return;
                 let brandRushList = [];
                 jd.data.forEach(o => {

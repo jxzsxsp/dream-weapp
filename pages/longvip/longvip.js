@@ -92,7 +92,6 @@ Page({
   onShareAppMessage: function () {
     var i = '/pages/discovery/discovery?from=menu';
     app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-    // console.log(i);
     return {
       title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
       path: i,
@@ -147,7 +146,6 @@ Page({
         openId: tm.data.userInfo.OpenId
       },
       success: function (res) {
-        //console.log(res);
         tm.setData({
           vipInfo: res.data
         })
@@ -155,8 +153,6 @@ Page({
     })
   },
   onShowProduct: function () {
-
-    console.log('onShowProduct')
     var tm = this;
     wx.request({
       url: app.getUrl("GetProducts"),
@@ -182,8 +178,6 @@ Page({
         tm.setData({
           dataList: t.data.Data
         })
-        console.log(t.data.Data)
-        console.log(tm.data.dataList)
         // if ("OK" == t.data.Status) {
         //   var r = t.data.Data;
         //   if (e) {

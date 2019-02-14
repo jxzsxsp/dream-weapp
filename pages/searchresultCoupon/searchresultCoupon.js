@@ -50,15 +50,6 @@ Page({
             KeyWord: a,
             CategoryId: e
         }), r.loadData(r, !1);
-
-        // if(q.couponId){
-        //     r.setData({
-        //         CategoryId: q.couponId
-        //     })
-        // }
-
-
-        console.log(tm.data.imgUrl != '' && tm.data.imgUrl != null)
     },
     onReady: function () { },
     onShow: function () {
@@ -134,7 +125,6 @@ Page({
             i = '/pages/searchresult/searchresult?CategoryId=' + tm.data.CategoryId;
         }
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-        console.log(i)
         return {
             title: title,
             path: i,
@@ -162,11 +152,8 @@ Page({
                     // sortOrder: a.data.SortOrder
                 },
                 success: function (t) {
-                    console.log(t)
-
                     if (t.statusCode == 200) {
                         var r = t.data;
-                        console.log(r)
                         if (e) {
                             var u = a.data.ProductList;
                             u.push.apply(u, r), a.setData({

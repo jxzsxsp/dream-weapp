@@ -9,7 +9,6 @@ Component({
             type: String,
             value: '',
             observer: function (newVal, oldVal) {
-
                 var tm = this;
                 app.getOpenId(function (t) {
                     wx.request({
@@ -23,7 +22,6 @@ Component({
                             tm.setData({
                                 teamNum: (res.data.SubMember_get_response.LowerUserSaleTotal).toFixed(2)
                             })
-
                         }
                     });
                 })
@@ -41,14 +39,10 @@ Component({
     /**
      * 组件的方法列表
      */
-    methods: {
-
-    },
+    methods: {},
     ready() {
         var tm = this;
-        console.log(this.properties)
         var redPacket = this.properties.teamNum;
-        console.log(redPacket)
         app.getOpenId(function (t) {
             wx.request({
                 url: app.getUrl("YTALSubMembers"),
@@ -58,11 +52,9 @@ Component({
                     pageSize: 1
                 },
                 success: function (res) {
-                    console.log(res)
                     tm.setData({
                         teamNum: (res.data.SubMember_get_response.LowerUserSaleTotal).toFixed(2)
                     })
-
                 }
             });
         })

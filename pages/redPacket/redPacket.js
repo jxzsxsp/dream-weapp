@@ -24,7 +24,6 @@ Page({
             tm.setData({
                 userInfo: a
             })
-            console.log(a)
         });
         tm.onFive();
     },
@@ -77,7 +76,6 @@ Page({
     onShareAppMessage: function() {
         var i = '/pages/redPacket/redPacket?from=menu';
         t.globalData.userInfo && t.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + t.globalData.userInfo.UserId)
-        // console.log(i);
         return {
             title: '恭喜您获得350元红包',
             path: i,
@@ -85,7 +83,6 @@ Page({
         }
     },
     onGetCoupon: function(event) {
-        console.log(event)
         var tm = this;
         var e = event.currentTarget.dataset.couponid;
         var that = this;
@@ -129,7 +126,6 @@ Page({
     },
     onFive: function(){
         var tm = this;
-        console.log(t.globalData)
         t.getOpenId(function (o) {
             wx.request({
                 url: t.getUrl("YTALGetListMemberByCouponId"),
@@ -138,12 +134,10 @@ Page({
                     couponId:28
                 },
                 success: function (a) {
-                    console.log(a)
                     tm.setData({
                         memberList: a.data.memberList,
                         getCouponStatus: a.data.hasCoupon
                     })
-                    console.log(tm.data.memberList)
                     // app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });

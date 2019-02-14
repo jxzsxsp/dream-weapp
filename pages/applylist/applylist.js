@@ -76,5 +76,10 @@ Page({
     onReachBottom: function() {
         var t = this;
         t.loadData(t, !0);
+    },
+    fixedGoToHome: function () {
+        wx.switchTab({
+            url: '/pages/home/home'
+        })
     }
 });

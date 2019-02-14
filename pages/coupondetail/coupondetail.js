@@ -102,7 +102,6 @@ Page({
         var tm = this;
         var i = '/pages/coupondetail/coupondetail?CouponId=' + tm.data.CouponId;
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-        console.log(i)
         return {
             title: '领取优惠券',
             path: i,

@@ -9,7 +9,6 @@ Component({
             type: String,
             value: '',
             observer: function (newVal, oldVal) {
-
                 var tm = this;
                 app.getOpenId(function (t) {
                     wx.request({
@@ -29,7 +28,6 @@ Component({
                             tm.setData({
                                 fansNum: res.data.SubMember_get_response.RecordCount
                             })
-
                         }
                     });
                 })
@@ -52,9 +50,7 @@ Component({
     },
     ready() {
         var tm = this;
-        console.log(this.properties)
         var redPacket = this.properties.fansNum;
-        console.log(redPacket)
         app.getOpenId(function (t) {
             wx.request({
                 url: app.getUrl("YTALSubFuns"),
@@ -64,7 +60,6 @@ Component({
                     pageSize: 1
                 },
                 success: function (res) {
-                    console.log(res)
                     tm.setData({
                         fansNum: res.data.SubMember_get_response.RecordCount
                     })

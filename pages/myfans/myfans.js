@@ -11,7 +11,7 @@ Page({
         ExpandMemberInMonth: "",
         ExpandMemberAll: "",
         LowerUserSaleTotal: "",
-        LowerUserOrderSplittin:0.00,
+        LowerUserOrderSplittin:"",
         ManagerNum: "",
         DirectorNum: "",
         SubSumOrderTotal: "",
@@ -75,7 +75,7 @@ Page({
                                 ExpandMemberInMonth: t.data.ExpandMemberInMonth,
                                 ExpandMemberAll: t.data.ExpandMemberAll,
                                 LowerUserSaleTotal: t.data.LowerUserSaleTotal,
-                                //LowerUserOrderSplittin: o.LowerUserOrderSplittin,
+                                LowerUserOrderSplittin: t.data.LowerUserOrderSplittin,
                                 RecordCount: tm.data.RecordCount
                             });
 
@@ -89,7 +89,7 @@ Page({
                                 ExpandMemberInMonth: o.ExpandMemberInMonth,
                                 ExpandMemberAll: o.ExpandMemberAll,
                                 LowerUserSaleTotal: o.LowerUserSaleTotal,
-                                //LowerUserOrderSplittin: o.LowerUserOrderSplittin,
+                                LowerUserOrderSplittin: o.LowerUserOrderSplittin,
                                 RecordCount: o.RecordCount
                             });
                         }

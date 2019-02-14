@@ -173,19 +173,16 @@ Page({
     },
     bindyongjin: function(e) {
         wx.navigateTo({
-            //url: "../Splittin/Splittin"
             url: "../Commission/Commission"
         });
     },
     bindxiaji: function(e) {
         wx.navigateTo({
-            //url: "../SubMembers/SubMembers"
             url:"../myteam/myteam"
         });
     },
     bindfans: function (e) {
         wx.navigateTo({
-            //url: "../SubMembers/SubMembers"
             url: "../myfans/myfans"
         });
     },
@@ -196,10 +193,6 @@ Page({
     },
     goToCode: function () {
         var tm = this;
-        console.log("../myCode/myCode?id=" + tm.data.userInfo.UserId)
-        // wx.navigateTo({
-        //     url: "../myCode/myCode?id=" + tm.data.userInfo.UserId
-        // });
         wx.navigateTo({
             url: "../a/a?id=" + tm.data.userInfo.UserId + "&src=" + tm.data.userInfo.picture
         });
@@ -211,18 +204,12 @@ Page({
     },
     bindXieyi:function(e){
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + e.currentTarget.dataset.id
-        console.log(e.currentTarget.dataset)
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
-
-
         o.globalData.fundebug.notifyError(new Error("跳转用户协议"), {
             name: "用户协议",
             metaData: s
         });
-
-
-
         wx.navigateTo({
             url: s
         })

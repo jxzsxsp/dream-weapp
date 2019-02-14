@@ -1,7 +1,3 @@
-2e1611
-
-
-// pages/myFocus/myFocus.js
 var t = require("../../utils/config.js"),
     e = getApp();
 Page({
@@ -54,7 +50,6 @@ Page({
     },
     focusList: function () {
         var tm = this;
-        // console.log(e.globalData.openId)
         wx.request({
             url: e.getUrl("YTALGetListBrandByFollow"),
             data: {

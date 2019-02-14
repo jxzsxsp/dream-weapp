@@ -34,7 +34,6 @@ Page({
           openId: t
         },
         success: function(t) {
-          console.log(t.data)
           app.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
         }
       });
@@ -45,8 +44,6 @@ Page({
   },
 
   GetCheckData: function() {
-    console.log()
-    console.log(1)
     this.setData({
       DistributionInfo: app.globalData.ReferralInfo,
       isLoadEnd: true
@@ -71,42 +68,11 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
     var i = '/pages/discovery/discovery?from=menu';
     app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-    // console.log(i);
-
-
     var shareInfo = {
       title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
       path: i,
@@ -168,18 +134,14 @@ Page({
         openId: app.globalData.userInfo.OpenId,
       },
       success: function(res) {
-        //console.log(res);
         tm.setData({
           vipInfo: res.data
         })
-        console.log(tm.data.vipInfo)
       }
     })
 
   },
   onShowProduct: function() {
-
-    console.log('onShowProduct')
     var tm = this;
     wx.request({
       url: app.getUrl("GetProducts"),
@@ -205,8 +167,6 @@ Page({
         tm.setData({
           dataList: t.data.Data
         })
-        //console.log(t.data.Data)
-        //console.log(tm.data.dataList)
         // if ("OK" == t.data.Status) {
         //   var r = t.data.Data;
         //   if (e) {
@@ -252,12 +212,10 @@ Page({
         url: app.getUrl("SubMembers"),
         data: {
           openId: t.data.userInfo.OpenId,
-          // openId: 'o_rWK5YTqOJ2ruCGdsjZn4YJ8ovI',
           pageIndex: t.data.PageIndex,
           pageSize: t.data.PageSize
         },
         success: function(a) {
-          console.log(a)
           t.setData({
             ExpandMemberAll: a.data.SubMember_get_response.ExpandMemberAll,
             LowerUserSaleTotal: a.data.SubMember_get_response.LowerUserSaleTotal
@@ -275,16 +233,10 @@ Page({
 
     //         },
     //         success: function (a) {
-    //             console.log(a)
-    //             console.log(a.data)
-    //             console.log(a.data.Data)
-    //             console.log(a.data.Data.WaitSendActive)
     //             t.setData({
     //                 WaitSendActive: a.data.Data.WaitSendActive,
     //                 WaitReceiveActive: a.data.Data.WaitReceiveActive
     //             });
-    //             console.log(a.data.Data.WaitSendActive )
-    //             console.log(a.data.Data.WaitReceiveActive)
     //         },
     //         complete: function () {
     //             wx.hideLoading();

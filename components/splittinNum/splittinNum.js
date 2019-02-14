@@ -46,9 +46,7 @@ Component({
     },
     ready() {
         var tm = this;
-        console.log(this.properties)
         var splittinNum = this.properties.splittinNum;
-        //console.log(redPacket)
         app.getOpenId(function (t) {
             wx.request({
                 url: app.getUrl("SplittinList"),
@@ -58,16 +56,13 @@ Component({
                     pageSize: 1
                 },
                 success: function (res) {
-                    console.log(res)
                     tm.setData({
                         // splittinNum: res.data.splittin_get_response.SplittinTotal
                         splittinNum: (res.data.splittin_get_response.SplittinTotal).toFixed(2)
                     })
-
                 }
             });
         })
-
         // 在组件实例进入页面节点树时执行
     }
 })
