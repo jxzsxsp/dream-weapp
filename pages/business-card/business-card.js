@@ -50,7 +50,7 @@ const lifecycle = {
     }
 
   },
-  onReady: function () {
+  onShow: function () {
 
     $wx.app.getAppUserInfo().then(res => {
       if ($wx.app.globalData.appUserInfo.isAuthorizationPermit === 0) {
