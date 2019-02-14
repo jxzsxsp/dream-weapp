@@ -17,9 +17,6 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     console.log(query)
-    this.setData({
-      isAuthorizationPermit: $wx.app.globalData.appUserInfo.isAuthorizationPermit
-    })
 
     const scene = decodeURIComponent(query.scene)
     const scenes = scene.split(',')
@@ -55,49 +52,51 @@ const lifecycle = {
   },
   onReady: function () {
 
-    if (this.isAuthorizationPermit && this.isAuthorizationPermit === 2) {
-      let _this = this
+    $wx.app.getAppUserInfo().then(res => {
+      if ($wx.app.globalData.appUserInfo.isAuthorizationPermit === 0) {
+        let _this = this
 
-      wx.showModal({
-        title: '蜥奇申请',
-        content: '与店铺运营方共享您的昵称、头像、手机号码',
-        showCancel: true,
-        confirmText: '允许',
-        confirmColor: '#0ea2ef',
-        cancelText: '拒绝',
-        success: function (e) {
-          if (e.confirm) {
-            _this.sharingAuthorization()
+        wx.showModal({
+          title: '蜥奇申请',
+          content: '与店铺运营方共享您的昵称、头像、手机号码',
+          showCancel: true,
+          confirmText: '允许',
+          confirmColor: '#0ea2ef',
+          cancelText: '拒绝',
+          success: function (e) {
+            if (e.confirm) {
+              _this.sharingAuthorization()
 
-            _this.show()
-          }
+              _this.show()
+            }
 
-          if (e.cancel) {
-            wx.showModal({
-              title: '提示',
-              content: '拒绝授权将不能正常浏览，确认拒绝为您返回首页',
-              showCancel: true,
-              confirmText: '允许',
-              confirmColor: '#0ea2ef',
-              cancelText: '拒绝',
-              success: function (e) {
-                if (e.confirm) {
-                  _this.sharingAuthorization()
+            if (e.cancel) {
+              wx.showModal({
+                title: '提示',
+                content: '拒绝授权将不能正常浏览，确认拒绝为您返回首页',
+                showCancel: true,
+                confirmText: '允许',
+                confirmColor: '#0ea2ef',
+                cancelText: '拒绝',
+                success: function (e) {
+                  if (e.confirm) {
+                    _this.sharingAuthorization()
 
-                  _this.show()
+                    _this.show()
+                  }
+
+                  if (e.cancel) {
+                    $wx.switchTab($wx.router.mainPage)
+                  }
                 }
-
-                if (e.cancel) {
-                  $wx.switchTab($wx.router.mainPage)
-                }
-              }
-            })
+              })
+            }
           }
-        }
-      })
-    } else {
-      this.show()
-    }
+        })
+      } else {
+        this.show()
+      }
+    })
 
   }
 }
@@ -136,7 +135,7 @@ const privateMethods = {
     })
   },
   sharingAuthorization: function () {
-    return http.getLogin(urls.login.sharingAuthorization, {})
+    return http.postLogin(urls.login.sharingAuthorization, {})
   },
   show: function() {
 

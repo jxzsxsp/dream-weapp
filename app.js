@@ -15,7 +15,9 @@ App({
     $wx.registerRouter(router)
 
     // 校验授权情况
-    this.saveAuthInfo()
+    this.saveAuthInfo().then(res => {
+      this.getAppUserInfo()
+    })
     // this.saveAuthInfo().then((res) => {
     //   if (res.code === -1) {
     //     $wx.navigateTo($wx.router.login)
@@ -65,7 +67,6 @@ App({
       if (res.token) {
         this.globalData.token = res.token
         wx.setStorageSync('token', res.token)
-        this.getAppUserInfo()
         return {code: 1, message: '获取token成功'}
       } else if (res.bindId) {
         return {code: -2, message: '需要绑定手机号', bindId: res.bindId}
@@ -76,7 +77,7 @@ App({
   },
 
   getAppUserInfo: function() {
-    http.getLogin(urls.login.getUserInfo, {}, true).then(res => {
+    return http.getLogin(urls.login.getUserInfo, {}, true).then(res => {
       this.globalData.appUserInfo = res
     })
   },

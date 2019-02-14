@@ -72,7 +72,7 @@ const privateMethods = {
     })
   },
   sharingAuthorization: function() {
-    return http.getLogin(urls.login.sharingAuthorization, {})
+    return http.postLogin(urls.login.sharingAuthorization, {})
   },
   follow: function(v) {
     http.get(urls.followSupplier, {
@@ -96,7 +96,7 @@ const privateMethods = {
 const viewAction = {
   followShop: function (d, v) {
 
-    if (this.isAuthorizationPermit && this.isAuthorizationPermit === 2) {
+    if (this.data.isAuthorizationPermit === 0) {
       let _this = this
 
       wx.showModal({
@@ -133,7 +133,7 @@ const viewAction = {
 
   showDetail: function (d, v) {
 
-    if (this.isAuthorizationPermit && this.isAuthorizationPermit === 2) {
+    if (this.data.isAuthorizationPermit === 0) {
       let _this = this
       
       wx.showModal({
