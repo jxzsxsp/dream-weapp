@@ -27,23 +27,10 @@ let lifeCycle = {
       colorId: query.colorId,
       fromLibrary: !!query.fromLibrary
     })
-
-    http.get(urls.pantone.fetchColorDetail, {colorId: parseInt(query.colorId)})
-      .then(colorDetail => {
-        colorDetail.lab = utils.fixLab(colorDetail.lab, true)
-        this.setData({
-          colorDetail,
-        })
-        return colorDetail.lab
-      }).then(labs => {
-        return http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {labs})
-      }).then(relativeColorList => {
-        this.setData({
-          relativeColorList
-        })
-      })
-
-    this.getFavorite(query.colorId)
+  },
+  onShow: function () {
+    this.fetchColorDetail(this.data.colorId)
+    this.getFavorite(this.data.colorId)
   },
   onReachBottom () {
     http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, {lab: this.data.colorDetail.lab})
@@ -98,6 +85,22 @@ let viewAction = {
 }
 
 let privateMethod = {
+  fetchColorDetail: function (colorId) {
+    http.get(urls.pantone.fetchColorDetail, { colorId: parseInt(colorId) })
+      .then(colorDetail => {
+        colorDetail.lab = utils.fixLab(colorDetail.lab, true)
+        this.setData({
+          colorDetail,
+        })
+        return colorDetail.lab
+      }).then(labs => {
+        return http.getPantoneList(urls.pantone.colorSearch, this.props.loadingState, { labs })
+      }).then(relativeColorList => {
+        this.setData({
+          relativeColorList
+        })
+      })
+  },
   getFavorite: function (colorId) {
     let token = wx.getStorageSync('token')
     if (!token) {
