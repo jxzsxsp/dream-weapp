@@ -56,7 +56,7 @@
 
   <view class="color-container {{isCompare ? 'no-color' : ''}}">
     <view class="color flex-column" style='background: {{colorDetail.targetColor.hexColor}}'>
-    
+
       <block wx:if='{{isCompare}}'>
         <view class='tips'>
           <image src='/assets/img_tips.png'></image>
@@ -132,7 +132,7 @@
     <view class="result flex {{resultDetail.cmcChromaticAberrationLevel ? 'result-active' : ''}}" bind:tap='showStandardInfo'>
       <block wx:if='{{resultDetail.cmcChromaticAberrationLevel}}'>
         <block wx:if='{{standardType.type === 1}}'>
-          <text>牢度级别：{{resultDetail.cie1976ColorFastnessLevel}}</text>
+          <text>色差级别：{{resultDetail.cie1976ColorFastnessLevel}}</text>
         </block>
         <block wx:if='{{standardType.type === 2}}'>
           <text>{{resultDetail.cmcChromaticAberrationLevel}}</text>
@@ -140,7 +140,7 @@
       </block>
       <block wx:else>
         <block wx:if='{{standardType.type === 1}}'>
-          <text>牢度级别：暂无</text>
+          <text>色差级别：暂无</text>
         </block>
         <block wx:if='{{standardType.type === 2}}'>
           <text>暂无</text>
@@ -269,10 +269,10 @@
   <view class='info-container flex-column'>
     <view class='info flex-column'>
       <text class='info-title'>{{standardType.title}}</text>
-      <text class='info-subtitle'>牢度级别：{{resultDetail.cie1976ColorFastnessLevel ?
+      <text class='info-subtitle'>色差级别：{{resultDetail.cie1976ColorFastnessLevel ?
         resultDetail.cie1976ColorFastnessLevel : '暂无'}}</text>
       <view wx:if='{{resultDetail.cie1976ColorCompareResult}}' class='info-desc flex'>
-        对应牢度级别的△<text class='xiabiao'>E1964</text>={{resultDetail.cie1976ColorCompareResult}}
+        对应色差级别的△<text class='xiabiao'>E1964</text>={{resultDetail.cie1976ColorCompareResult}}
       </view>
       <view class='guanbi-event flex' bind:tap='closeStandardInfo'>
         <view class='iconfont icon-guanbi guanbi'></view>
@@ -306,7 +306,7 @@
     </view>
   </view>
 </van-popup>
-<!-- 
+<!--
   <suspend-button>
     <view class="go-home-container">
       <view class="iconfont icon-tab_index_a go-home-view"/>
