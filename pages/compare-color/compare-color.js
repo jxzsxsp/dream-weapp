@@ -59,7 +59,7 @@ let lifecycle = {
 
 let privateMethod = {
   launchAppError (e) {
-    $wx.showModal({title: '提示', content: '请先下载App', showCancel: false})
+    $wx.showModal({title: '提示', content: '原小蜥APP已更名为蜥奇APP，请先下载App', showCancel: false})
       .then(res => {
         console.log(e.detail.errMsg)
       })
