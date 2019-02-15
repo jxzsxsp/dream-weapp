@@ -5,6 +5,7 @@ const data = {
     { name: '关注店铺', icon: 'icon-shop', half: true },
     { name: '最近浏览', icon: 'icon-history', half: true },
     { name: '我的收藏', icon: 'icon-favorite', half: false },
+    { name: '推荐供应商', icon: 'icon-recommendsupplier', half: false },
   ],
   userInfo: {},
   showShareImg: false,
@@ -158,6 +159,9 @@ const viewAction = {
     } else if (d.index === 2) {
       // 我的收藏
       $wx.navigateTo($wx.router.favoriteLibrary)
+    } else if (d.index === 3) {
+      // 推荐供应商
+      $wx.navigateTo($wx.router.recommendSupplier)
     }
   },
   callContact: function() {

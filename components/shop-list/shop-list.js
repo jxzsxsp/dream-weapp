@@ -20,7 +20,7 @@ Component({
    */
   methods: {
     goRecommendSupplier: function() {
-      wx.switchTab({ url: '/pages/recommend-supplier/recommend-supplier' })
+      wx.redirectTo({ url: '/pages/recommend-supplier/recommend-supplier' })
     }
   }
 })
