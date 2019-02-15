@@ -14,8 +14,20 @@ Page({
         Suppliers: null
     },
     onLoad: function(a) {
-        // var tm = this;
+        var tm = this;
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
+
+        if (wx.getStorageSync("ReferralUserId") != "") {
+            wx.request({
+                url: t.getUrl("YTALUpdateReferralUserId"),
+                data: {
+                    openId: t.globalData.userInfo.OpenId,
+                    ReferralUserId: wx.getStorageSync("ReferralUserId")
+                },
+                success: function(res) {},
+                complete: function() {}
+            });
+        }
         //this.brandName = this.selectComponent("#brandName");
         // tm.selectAll();
     },

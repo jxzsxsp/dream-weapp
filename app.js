@@ -126,6 +126,9 @@ Number.prototype.toFixed = function (t) {
     //调用API从本地缓存中获取数据 
     this.screenSize();
   },
+  onShow: function () {
+      
+  },
   getUserInfo: function (t) {
       fundebug.notifyError(new Error("app-getUserInfo"), {
           name: "app用户授权",

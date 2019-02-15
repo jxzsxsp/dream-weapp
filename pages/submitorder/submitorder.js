@@ -87,11 +87,23 @@ Page({
         isCss: !0,
         balance: 0,
         isUseRedPacket: true,
-        usebalance: 0
+        usebalance: 0,
+        lastMoney: 0.00
     },
     onLoad: function(e) {
         // this.getBalance()
         this.setAreaData(), this.setAreaData();
+        if (wx.getStorageSync("ReferralUserId") != "") {
+            wx.request({
+                url: a.getUrl("YTALUpdateReferralUserId"),
+                data: {
+                    openId: a.globalData.userInfo.OpenId,
+                    ReferralUserId: wx.getStorageSync("ReferralUserId")
+                },
+                success: function (res) { },
+                complete: function () { }
+            });
+        }
         var t = this, i = e.productsku, n = e.buyamount, o = e.frompage, s = e.countdownid, r = e.shipaddressid;
         a.getOpenId(function(e) {
             wx.request({
@@ -108,7 +120,9 @@ Page({
                     if ("OK" == e.data.Status) {
                         var x = 0
                         x = e.data.Data.UserBalance < e.data.Data.TotalPrice ? e.data.Data.UserBalance : e.data.Data.TotalPrice
+                        x = x.toFixed(2)
                         console.log(x)
+
                         t.setData({
                             usebalance: x
                         })
@@ -491,12 +505,13 @@ Page({
         e.data.IsOpenInvoice && (i = e.data.InvoiceRate);
         var n = (t * (100 * i) / 1e4).toFixed(2);
         t = t.toAdd(e.data.OrderFreight).toAdd(parseFloat(n)), t = parseFloat(t).toFixed(2);
-        var x = t - this.data.balance;
+        var x = parseFloat(t) - this.data.usebalance;
         x = parseFloat(x).toFixed(2)
         e.setData({
             OrderTotalPrice: t,
             TaxRate: n,
-            OrderFreight: a
+            OrderFreight: a,
+            lastMoney: x
         });
     },
     setProvinceCityData: function(e, t, a, n, o) {
@@ -704,6 +719,8 @@ Page({
     },
     changeNm: function (e) {
         var tm = this;
+        var xy = (tm.data.OrderTotalPrice - tm.data.usebalance).toFixed(2)
+        console.log(xy)
         tm.setData({
             isUseRedPacket: !tm.data.isUseRedPacket
         })

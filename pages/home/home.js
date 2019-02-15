@@ -126,6 +126,7 @@ Page({
         });
     },
     onLoad: function(a) {
+        var tm = this;
         if (a.scene) {
             wx.request({
                 url: e.getUrl("YTALDecodeScene"),
@@ -133,6 +134,23 @@ Page({
                     scene: a.scene
                 },
                 success: function(t) {
+                    t.data.referralUserId && e.setRefferUserId(t.data.referralUserId);
+                    e.getUserInfo(function (f) {
+                        debugger
+                        wx.request({
+                            url: e.getUrl("YTALUpdateReferralUserId"),
+                            data: {
+                                openId: f.OpenId,
+                                ReferralUserId: t.data.referralUserId
+                            },
+                            success: function (res) {
+                                debugger;
+                            },
+                            complete: function () {
+                                wx.hideNavigationBarLoading(), wx.stopPullDownRefresh();
+                            }
+                        });
+                    });
                     var x = '/pages/goodInfo/goodInfo?brandId=' + t.data.brandId + '&goodsId=' + t.data.goodsId + '&goodsSource=' + t.data.goodsSource
                     wx.navigateTo({
                         url: x,
@@ -140,7 +158,6 @@ Page({
                 }
             });
         }
-        var tm = this;
         wx.hideTabBar({})
         // wx.getStorage({
         //     key: 'tcOne',
