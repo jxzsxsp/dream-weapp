@@ -1,4 +1,5 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
 <view class='page-section' style='width:750rpx;'>
     <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
         <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
@@ -84,7 +85,7 @@
         </view>
     </view>
 
-    <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
+    <!-- <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
         <view class="brandInfoTab hotSell {{nothing==0?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
             <image src="http://cos.qkmai.com/qkmbb/ytal/firetb.png" style='width:45rpx;height:45rpx;' wx:if="{{nothing==0}}"></image>
             <image src="http://cos.qkmai.com/qkmbb/ytal/firetb_1.png" style='width:45rpx;height:45rpx;' wx:else></image>
@@ -98,7 +99,7 @@
         </view>
         <view class="brandInfoTab sellOut {{nothing==1?'active':''}}" bindtap='onShowHotSell' data-state="1" style='line-height: 80rpx;font-size:32rpx;width:49%;text-align:center'>已抢光</view>
 
-    </view>
+    </view> -->
     <view class='brandInfoContainer' wx:if="{{isSelectState==1}}" style='position:relative;'>
         <view wx:if='{{showNoList && rushGoodsList.length == 0 && nothing==0}}' style='display:flex;flex-flow:column nowrap;justify-content:space-around;align-items:center;padding:130rpx 60rpx;width:730rpx;margin-left:10rpx;box-sizing:border-box;'>
             <image style='width:168rpx;height:168rpx;margin-bottom:60rpx;' src='http://cos.qkmai.com/qkmbb/ytal/bianpaotb.png'></image>
