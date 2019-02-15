@@ -233,7 +233,6 @@ Number.prototype.toFixed = function (t) {
   },
   setUserInfo: function (t) {
     this.globalData.userInfo = t;
-    
   },
   orderPay: function (t, e, o) {
     var r = this;
