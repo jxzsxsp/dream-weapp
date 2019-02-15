@@ -11,6 +11,18 @@ var t = require("../../utils/config.js"), a = getApp(), i = null, n = new Array(
 
 Page({
     data: {
+        inputData: {
+            input_value: "",//输入框的初始内容
+            value_length: 0,//输入框密码位数
+            isNext: false,//是否有下一步的按钮
+            get_focus: true,//输入框的聚焦状态
+            focus_class: true,//输入框聚焦样式
+            value_num: [1, 2, 3, 4, 5, 6],//输入框格子数
+            height: "98rpx",//输入框高度
+            width: "604rpx",//输入框宽度
+            see: false,//是否明文展示
+            interval: true,//是否显示间隔格子
+        },
         OrderInfo: null,
         ProductSku: "",
         currentPage: "page1",
@@ -72,9 +84,13 @@ Page({
         showMessage: !1,
         messageContent: "",
         showDistpicker: !1,
-        isCss: !0
+        isCss: !0,
+        balance: 0,
+        isUseRedPacket: true,
+        usebalance: 0
     },
     onLoad: function(e) {
+        // this.getBalance()
         this.setAreaData(), this.setAreaData();
         var t = this, i = e.productsku, n = e.buyamount, o = e.frompage, s = e.countdownid, r = e.shipaddressid;
         a.getOpenId(function(e) {
@@ -90,6 +106,12 @@ Page({
                 },
                 success: function(e) {
                     if ("OK" == e.data.Status) {
+                        var x = 0
+                        x = e.data.Data.UserBalance < e.data.Data.TotalPrice ? e.data.Data.UserBalance : e.data.Data.TotalPrice
+                        console.log(x)
+                        t.setData({
+                            usebalance: x
+                        })
                         for (var a = e.data.Data, d = [], c = 2, u = 0; u < a.CouponList.length; u++) d[u] = a.CouponList[u].CouponName + " " + a.CouponList[u].Price;
                         for (var l = 0; l < a.Suppliers.length; l++) 0 == a.Suppliers[l].SupplierId && (c = a.Suppliers[l].SupplierId);
                         var p = null;
@@ -468,7 +490,9 @@ Page({
         var i = 0;
         e.data.IsOpenInvoice && (i = e.data.InvoiceRate);
         var n = (t * (100 * i) / 1e4).toFixed(2);
-        t = t.toAdd(e.data.OrderFreight).toAdd(parseFloat(n)), t = parseFloat(t).toFixed(2), 
+        t = t.toAdd(e.data.OrderFreight).toAdd(parseFloat(n)), t = parseFloat(t).toFixed(2);
+        var x = t - this.data.balance;
+        x = parseFloat(x).toFixed(2)
         e.setData({
             OrderTotalPrice: t,
             TaxRate: n,
@@ -617,6 +641,7 @@ Page({
             isEnable: !0
         }), a.getOpenId(function(n) {
             var o;
+                 
             wx.request({
                 url: a.getUrl("SubmitOrder"),
                 data: (o = {
@@ -631,7 +656,8 @@ Page({
                     deductionPoints: i.data.DeductionPoints,
                     formId: t.detail.formId,
                     NeedInvoice: i.data.IsOpenInvoice,
-                    InvoiceId: i.data.InvoiceId
+                    InvoiceId: i.data.InvoiceId,
+                    usebalance: i.data.isUseRedPacket == true ? i.data.usebalance : 0
                 }, e(o, "fromPage", i.data.FromPage), e(o, "shippingType", i.data.ShippType), e(o, "shiptoDate", i.data.SendTime), 
                 o),
                 header: {
@@ -657,5 +683,39 @@ Page({
                 }
             });
         }));
+    },
+    getBalance: function() {
+        var tm = this;
+        wx.request({
+            url: a.getUrl("YTALGetMemberBalanceList"),
+            data: {
+                openId: a.globalData.userInfo.OpenId,
+                pageIndex: 1,
+                pageSize: 1
+            },
+            success: function (res) {
+                console.log(res)
+                tm.setData({
+                    balance: (res.data.balance).toFixed(2)
+                })
+
+            }
+        });
+    },
+    changeNm: function (e) {
+        var tm = this;
+        tm.setData({
+            isUseRedPacket: !tm.data.isUseRedPacket
+        })
+    },
+    // 当组件输入数字6位数时的自定义函数
+    valueSix() {
+        console.log("1");
+        // 模态交互效果
+        wx.showToast({
+            title: '支付成功',
+            icon: 'success',
+            duration: 2000
+        })
     }
 });

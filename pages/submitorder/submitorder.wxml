@@ -124,6 +124,27 @@
                 </view>
                 <view class="yunfeir">￥{{OrderFreight}}</view>
             </view>
+            <view class="yunfei">
+                <view class="yunfeil">余额抵扣</view>
+                <view class="yunfeir">￥1.5</view>
+                <checkbox-group bindchange="checkboxChange">
+                        <checkbox bindtap='changeNm' checked='{{isUseRedPacket}}'></checkbox>
+                </checkbox-group>
+            </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <view class="yunfei" hidden="{{!IsOpenInvoice}}">
                 <view class="yunfeil">税费</view>
                 <view class="yunfeir">￥{{TaxRate}}</view>
@@ -256,10 +277,11 @@
         </view>
     </view>
     <view class="jinge" hidden="{{currentPage=='page1'?false:true}}">
+    <!-- {{((isUseRedPacket && OrderTotalPrice > usebalance) ? (OrderTotalPrice - usebalance) : (isUseRedPacket && OrderTotalPrice <= usebalance) ? 0 : OrderTotalPrice) }} -->
         <view class="classtext">
             实付金额：
-            <text class="price">￥{{OrderTotalPrice}}
-      </text>
+            <text class="price">￥{{((isUseRedPacket && OrderTotalPrice > usebalance) ? (OrderTotalPrice - usebalance) : (isUseRedPacket && OrderTotalPrice <= usebalance) ? 0 : OrderTotalPrice) }}</text>
+            <!-- <text class="price">￥{{OrderTotalPrice}}</text> -->
         </view>
         <button disabled="{{isEnable}}" formType="submit">提交订单</button>
     </view>
@@ -294,4 +316,25 @@
             </view>
         </view>
     </view>
+</view>
+
+
+
+<view style='text-align:center;padding-top:200rpx;width:750rpx;height:100%;background-color:rgba(64,64,64,0.7);z-index:-1111;position:fixed;top:20rpx;display:none;'>
+  <view style='margin-bottom:50rpx'>请输入支付密码</view>
+
+  <paySix 
+  bindvalueSix="valueSix" 
+  input_value="{{inputData.input_value}}" 
+  value_length="{{inputData.value_length}}" 
+  isNext="{{inputData.isNext}}" 
+  get_focus="{{inputData.get_focus}}" 
+  focus_class="{{inputData.focus_class}}" 
+  value_num="{{inputData.value_num}}"
+  height="{{inputData.height}}" 
+  width="{{inputData.width}}" 
+  see="{{inputData.see}}" 
+  interval="{{inputData.interval}}">
+  </paySix>
+  
 </view>

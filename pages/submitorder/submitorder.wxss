@@ -1,3 +1,4 @@
+@import "/components/sixpass/sixpass.wxss";
 page {
     background: #f5f5f5;
     padding-bottom: 105rpx;
