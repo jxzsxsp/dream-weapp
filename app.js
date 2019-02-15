@@ -127,14 +127,10 @@ Number.prototype.toFixed = function (t) {
     this.screenSize();
   },
   getUserInfo: function (t) {
-
       fundebug.notifyError(new Error("app-getUserInfo"), {
           name: "app用户授权",
           metaData: t
       });
-
-
-
     var e = this;
     e.globalData.userInfo && "0" == e.globalData.isReloadUser ? ("function" == typeof t && t(e.globalData.userInfo),
       wx.hideNavigationBarLoading()) : (e.globalData.isReloadUser = "0", wx.showNavigationBarLoading(),
@@ -237,6 +233,7 @@ Number.prototype.toFixed = function (t) {
   },
   setUserInfo: function (t) {
     this.globalData.userInfo = t;
+    
   },
   orderPay: function (t, e, o) {
     var r = this;
