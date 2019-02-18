@@ -9,10 +9,11 @@
   <block wx:if="{{title}}">
     <view class='no-container'>
       <view class='logo'>
-        <image src='./assets/none.png'></image>
+        <image wx:if="{{type !== 'recommend'}}" src='./assets/none.png'></image>
+        <image wx:if="{{type === 'recommend'}}" src='./assets/offline.png'></image>
       </view>
       <text class='title'>{{title}}</text>
-      <view class='btn' bind:tap="goRecommendSupplier">前往浏览</view>
+      <view wx:if="{{type !== 'recommend'}}" class='btn' bind:tap="goRecommendSupplier">前往浏览</view>
     </view>
   </block>
 </block>

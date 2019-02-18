@@ -5,7 +5,8 @@ Component({
    */
   properties: {
     list: Array,
-    title: String
+    title: String,
+    type: String
   },
 
   /**

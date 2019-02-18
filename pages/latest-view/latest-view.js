@@ -41,10 +41,11 @@ const privateMethods = {
     this.props.loadingState = http.defaultLoadingState();
     this.getShopList().then(res => {
       console.log(res)
-      this.setData({
-        shopList: res.list
-      })
-
+      if (res.list) {
+        this.setData({
+          shopList: res.list
+        })
+      }
     })
   },
   flushShopList: function (item) {

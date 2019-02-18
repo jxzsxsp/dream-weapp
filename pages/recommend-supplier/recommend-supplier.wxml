@@ -1,5 +1,7 @@
 <shop-list
   list="{{shopList}}"
+  type="recommend"
+  title="即将上线，敬请期待"
   bind:follow="followShop"
   bind:cancel="cancelFollow"
   bind:detail="showDetail"
