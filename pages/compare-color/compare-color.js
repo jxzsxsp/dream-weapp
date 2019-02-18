@@ -46,7 +46,8 @@ let lifecycle = {
       isCompare: this.data.isCompare,
       standardType: this.data.standardTypeList[0]
     })
-
+  },
+  onShow: function() {
     this.getColorDetail()
   },
   onShareAppMessage: function () {
