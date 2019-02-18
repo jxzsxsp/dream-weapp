@@ -1,5 +1,4 @@
 var t = getApp();
-
 Page({
     data: {
         ShopCarts: null,
@@ -209,9 +208,6 @@ Page({
                 showCancel: !1
             }) : e.ChangeQuantiy(e, o - i, s.CartItemInfo[a].SkuID));
         }
-
-
-
     },
     DelCarts: function(e) {
         var a = this,
@@ -341,16 +337,7 @@ Page({
                     });
                 },
                 complete: function() {
-
-
-
-
-
-
-
-
                     // tm.selectAll();
-
                 }
             });
         });
@@ -377,10 +364,6 @@ Page({
             isEmpty: !0
         }), this.loadData(this, true);
     },
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
     backInfo: function(event) {
         var tm = this,
             a = event.currentTarget.dataset.sku;
@@ -399,7 +382,5 @@ Page({
 
             }
         });
-
-
     }
 });

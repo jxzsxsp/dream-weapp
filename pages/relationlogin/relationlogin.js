@@ -1,7 +1,5 @@
 require("../../utils/config.js");
-
 var n = getApp();
-
 Page({
     data: {},
     onLoad: function(o) {
@@ -10,13 +8,6 @@ Page({
             HeadImg: n.globalData.wxUserInfo.headImage
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {},
     quickRegister: function() {
         wx.navigateTo({
             url: "../relationphone/relationphone"

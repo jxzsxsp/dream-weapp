@@ -1,5 +1,5 @@
-var e = require("../../utils/config.js"), o = getApp();
-
+var e = require("../../utils/config.js"),
+    o = getApp();
 Page({
     data: {
         PhoneText: "重新发送",
@@ -31,18 +31,21 @@ Page({
                 OpenId: o.globalData.openId
             },
             success: function(o) {
-                if (void 0 == o.data.error_response) if ("OK" == o.data.Status) {
-                    e.showTip("验证码发送成功", "success");
-                    var a = 60, n = setInterval(function() {
-                        a > 0 ? (a--, that.setData({
-                            PhoneText: a + "s后可重发",
-                            IsSend: !0
-                        })) : (that.setData({
-                            PhoneText: "重新发送",
-                            IsSend: !1
-                        }), clearInterval(n));
-                    }, 1e3);
-                } else e.showTip(o.data.Message, "warning"); else e.showTip(o.data.error_response.sub_msg);
+                if (void 0 == o.data.error_response)
+                    if ("OK" == o.data.Status) {
+                        e.showTip("验证码发送成功", "success");
+                        var a = 60,
+                            n = setInterval(function() {
+                                a > 0 ? (a--, that.setData({
+                                    PhoneText: a + "s后可重发",
+                                    IsSend: !0
+                                })) : (that.setData({
+                                    PhoneText: "重新发送",
+                                    IsSend: !1
+                                }), clearInterval(n));
+                            }, 1e3);
+                    } else e.showTip(o.data.Message, "warning");
+                else e.showTip(o.data.error_response.sub_msg);
             }
         }) : e.showTip("手机号格式不对", "tips");
     },
@@ -63,12 +66,5 @@ Page({
                 }
             });
         }) : e.showTip("手机号格式不对", "tips");
-    },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

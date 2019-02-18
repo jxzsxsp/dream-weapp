@@ -1,14 +1,11 @@
 var conf = require("../../utils/config.js"),
     app = getApp();
 Page({
-    /**
-     * 页面的初始数据
-     */
     data: {
         nullDraw: app.getRequestUrl + "/Templates/xcxshop/images/null.png",
-        isHotState:true,
-        nothing:0,
-        isSoldOut:0,
+        isHotState: true,
+        nothing: 0,
+        isSoldOut: 0,
         brandRushInfo: [],
         rushGoodsList: [],
         brandLogo: '',
@@ -32,14 +29,10 @@ Page({
         count: 0,
         needAni: false,
         hide_good_box: true,
-        goTopStatus:false,
+        goTopStatus: false,
         SelectskuId: [],
         SkuID: ""
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function(options) {
         options.ReferralUserId && app.setRefferUserId(options.ReferralUserId);
         var tm = this;
@@ -56,31 +49,26 @@ Page({
         // 执行倒计时函数
         this.getListGoodsData();
         this.countDown();
-
         var that = this;
         this.busPos = {};
         this.busPos['x'] = 39;
         this.busPos['y'] = app.globalData.hh - 120;
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function() {
         this.GetShopCart()
     },
-    GetShopCartAgain: function () {
+    GetShopCartAgain: function() {
         var tm = this;
         var t = this,
             a = 0,
             r = t.data.choiceProducts;
-        app.getOpenId(function (o) {
+        app.getOpenId(function(o) {
             wx.request({
                 url: app.getUrl("getShoppingCartList"),
                 data: {
                     openId: o
                 },
-                success: function (t) {
+                success: function(t) {
                     if ("OK" == t.data.Status) {
                         tm.setData({
                             SkuID: t.data.Data.CartItemInfo[0].SkuID
@@ -91,7 +79,7 @@ Page({
                                 openId: app.globalData.openId,
                                 skus: tm.data.SkuID
                             },
-                            success: function (t) {
+                            success: function(t) {
                                 "OK" == t.data.Status ? wx.navigateTo({
                                     url: "../submitorder/submitorder?productsku=" + tm.data.SkuID
                                 }) : "NOUser" == t.data.Message ? wx.navigateTo({
@@ -105,14 +93,14 @@ Page({
                         title: "提示",
                         content: t.data.Message,
                         showCancel: !1,
-                        success: function (t) {
+                        success: function(t) {
                             t.confirm && wx.navigateBack({
                                 delta: 1
                             });
                         }
                     });
                 },
-                complete: function () {
+                complete: function() {
                     wx.hideLoading(), null != r && t.setData({
                         choiceProducts: r,
                         TotalNum: a
@@ -171,10 +159,6 @@ Page({
             });
         });
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
     onReachBottom: function() {
         if (this.data.hasMore) {
             wx.showNavigationBarLoading();
@@ -216,9 +200,6 @@ Page({
             }
         });
     },
-    /**
-     * 用户点击右上角分享
-     */
     onShareAppMessage: function() {
         var tm = this;
         var picUrl = tm.data.imgUrl;
@@ -296,7 +277,7 @@ Page({
             goodsImg: goodsImage
         });
     },
-    goToBuyGoods: function (event) {
+    goToBuyGoods: function(event) {
         var tm = this;
         var goodsId = event.currentTarget.dataset["goodsid"];
         var salePrice = event.currentTarget.dataset["saleprice"];
@@ -328,7 +309,7 @@ Page({
                         brandSource: brandSource,
                         salePrice: salePrice
                     },
-                    success: function (res) {
+                    success: function(res) {
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({
@@ -336,9 +317,9 @@ Page({
                                 content: jd.message,
                                 showCancel: false
                             })
-                                break;
+                            break;
                             case 'success':
-                                wx.hideLoading();
+                                    wx.hideLoading();
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
@@ -442,14 +423,14 @@ Page({
             url: '/pages/home/home'
         })
     },
-   
+
     getListGoodsData: function() {
         var tm = this;
         wx.request({
             url: app.getUrl("YTALGetPageRushGoodsByTagId"),
             data: {
                 tagId: tm.data.tagId,
-                isSoldOut:tm.data.isSoldOut,
+                isSoldOut: tm.data.isSoldOut,
                 pi: ++tm.data.dataIndex,
                 ps: tm.data.dataSize
             },
@@ -527,25 +508,25 @@ Page({
             }
         }, 25);
     },
-    onShowHotSell:function(event){
+    onShowHotSell: function(event) {
         var tm = this;
-        var isFlagNum=event.currentTarget.dataset.state;
-        if (isFlagNum == tm.data.nothing){
-            return 
-        }else{
+        var isFlagNum = event.currentTarget.dataset.state;
+        if (isFlagNum == tm.data.nothing) {
+            return
+        } else {
             tm.setData({
                 nothing: (tm.data.nothing == 0 ? 1 : 0),
-                dataIndex:1
+                dataIndex: 1
             })
             wx.request({
                 url: app.getUrl("YTALGetPageRushGoodsByTagId"),
                 data: {
                     tagId: tm.data.tagId,
-                    isSoldOut:isFlagNum,
+                    isSoldOut: isFlagNum,
                     pi: 1,
                     ps: tm.data.dataSize
                 },
-                success: function (jd) {
+                success: function(jd) {
                     if (jd.data.length == 0) {
                         tm.setData({
                             rushGoodsList: []
@@ -574,14 +555,14 @@ Page({
             });
         }
     },
-    onPageScroll: function (obj) {
+    onPageScroll: function(obj) {
         if (obj.scrollTop > 363) {
             this.setData({
                 goTopStatus: true
             })
         }
     },
-    goToTop: function () {
+    goToTop: function() {
         wx.pageScrollTo({
             scrollTop: 0,
         })
@@ -589,7 +570,7 @@ Page({
             goTopStatus: false
         })
     },
-    previewImg: function (event) {
+    previewImg: function(event) {
         var imgSrc = event.currentTarget.dataset['imgsrc'];
         var imgs = event.currentTarget.dataset['imgs'];
         wx.previewImage({
@@ -597,7 +578,7 @@ Page({
             urls: imgs
         })
     },
-    sharePro: function (event) {
+    sharePro: function(event) {
         var brandid = event.currentTarget.dataset.brandid;
         var goodid = event.currentTarget.dataset.goodid;
         var goodssource = event.currentTarget.dataset.goodssource;

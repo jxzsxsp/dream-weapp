@@ -1,5 +1,6 @@
-var t = require("../../utils/config.js"), e = getApp(), a = require("../wxParse/wxParse.js");
-
+var t = require("../../utils/config.js"),
+    e = getApp(),
+    a = require("../wxParse/wxParse.js");
 Page({
     data: {
         ProductId: 0,
@@ -58,23 +59,24 @@ Page({
         t.ReferralUserId && e.setRefferUserId(t.ReferralUserId);
 
         var tm = this;
-        e.getUserInfo(function (t) {
+        e.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t
             })
         });
 
-        var a = t.id, o = this;
-        e.globalData.userInfo && e.globalData.userInfo.IsReferral ? o.data.referralId = !0 : o.data.referralId = !1, 
-        o.setData({
-            ProductId: a,
-            referralId: o.data.referralId
-        }), o.loadData(o);
+        var a = t.id,
+            o = this;
+        e.globalData.userInfo && e.globalData.userInfo.IsReferral ? o.data.referralId = !0 : o.data.referralId = !1,
+            o.setData({
+                ProductId: a,
+                referralId: o.data.referralId
+            }), o.loadData(o);
     },
     onShareAppMessage: function(a) {
-        var o = this, i = "/pages/productdetail/productdetail?id=" + o.data.ProductId;
-        return e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId), 
-        {
+        var o = this,
+            i = "/pages/productdetail/productdetail?id=" + o.data.ProductId;
+        return e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId), {
             title: o.data.ProductName,
             path: i,
             success: function(e) {
@@ -118,14 +120,16 @@ Page({
                         var o = "";
                         0 == a.SkuItemList.length && (o = a.Skus[0].SkuId);
                         var i = "";
-                        if (a.Promotes && a.Promotes.ActivityCount && a.Promotes.ActivityCount > 0) for (var s in a.Promotes) {
-                            var n = a.Promotes[s];
-                            if (n instanceof Array) for (var u in n) {
-                                var r = n[u];
-                                r && r.ActivityName && r.ActivityName.length > 0 && (i.length > 0 && (i += ","), 
-                                i += r.ActivityName);
+                        if (a.Promotes && a.Promotes.ActivityCount && a.Promotes.ActivityCount > 0)
+                            for (var s in a.Promotes) {
+                                var n = a.Promotes[s];
+                                if (n instanceof Array)
+                                    for (var u in n) {
+                                        var r = n[u];
+                                        r && r.ActivityName && r.ActivityName.length > 0 && (i.length > 0 && (i += ","),
+                                            i += r.ActivityName);
+                                    }
                             }
-                        }
                         a.SkuItemList.forEach(function(t, e) {
                             t.AttributeValue.forEach(function(t, e) {
                                 t.Enable = 1;
@@ -281,7 +285,8 @@ Page({
         });
     },
     changeAmount: function(t) {
-        var e = parseInt(t.detail.value), a = this.data.skuStock;
+        var e = parseInt(t.detail.value),
+            a = this.data.skuStock;
         isNaN(e) || e > a || e <= 0 ? wx.showModal({
             title: "提示",
             content: "请输入正确的数量,不能大于库存或者小于等于0",
@@ -292,20 +297,25 @@ Page({
     },
     commitBuy: function(t) {
         if (!(this.data.ActiveType > 0)) {
-            for (var e = !0, a = 0; a < this.data.selectedskuList.length; a++) if (void 0 == this.data.selectedskuList[a] || "" == this.data.selectedskuList[a] || null == this.data.selectedskuList[a]) {
-                e = !1;
-                break;
-            }
-            if (this.data.selectedskuList.length == this.data.SkuItemList.length && e) if (this.data.buyAmount <= 0) wx.showModal({
-                title: "提示",
-                content: "请输入要购买的数量",
-                showCancel: !1
-            }); else {
-                var o = this.data.buyAmount, i = this.data.selectedSku;
-                wx.navigateTo({
-                    url: "../submitorder/submitorder?productsku=" + i + "&buyamount=" + o + "&frompage=signbuy"
+            for (var e = !0, a = 0; a < this.data.selectedskuList.length; a++)
+                if (void 0 == this.data.selectedskuList[a] || "" == this.data.selectedskuList[a] || null == this.data.selectedskuList[a]) {
+                    e = !1;
+                    break;
+                }
+            if (this.data.selectedskuList.length == this.data.SkuItemList.length && e)
+                if (this.data.buyAmount <= 0) wx.showModal({
+                    title: "提示",
+                    content: "请输入要购买的数量",
+                    showCancel: !1
                 });
-            } else wx.showModal({
+                else {
+                    var o = this.data.buyAmount,
+                        i = this.data.selectedSku;
+                    wx.navigateTo({
+                        url: "../submitorder/submitorder?productsku=" + i + "&buyamount=" + o + "&frompage=signbuy"
+                    });
+                }
+            else wx.showModal({
                 title: "提示",
                 content: "请选择规格",
                 showCancel: !1
@@ -314,48 +324,53 @@ Page({
     },
     addSku: function(t) {
         if (!(this.data.ActiveType > 0)) {
-            for (var a = this, o = !0, i = 0; i < this.data.selectedskuList.length; i++) if (void 0 == this.data.selectedskuList[i] || "" == this.data.selectedskuList[i] || null == this.data.selectedskuList[i]) {
-                o = !1;
-                break;
-            }
-            if (this.data.selectedskuList.length == this.data.SkuItemList.length && o) if (this.data.buyAmount <= 0) wx.showModal({
-                title: "提示",
-                content: "请输入要购买的数量",
-                showCancel: !1
-            }); else {
-                var s = this.data.buyAmount, n = this.data.selectedSku;
-                e.getOpenId(function(t) {
-                    wx.request({
-                        url: e.getUrl("addToCart"),
-                        data: {
-                            openId: t,
-                            SkuID: n,
-                            Quantity: s
-                        },
-                        success: function(t) {
-                            "OK" == t.data.Status ? wx.showModal({
-                                title: "提示",
-                                content: "加入购物车成功",
-                                showCancel: !1,
-                                success: function(t) {
-                                    t.confirm && a.setData({
-                                        backShow: "none",
-                                        SkuShow: "none"
-                                    });
-                                }
-                            }) : "NOUser" == t.data.Message ? wx.navigateTo({
-                                url: "../login/login"
-                            }) : wx.showModal({
-                                title: "提示",
-                                content: t.data.ErrorResponse.ErrorMsg,
-                                showCancel: !1,
-                                success: function(t) {}
-                            });
-                        },
-                        complete: function() {}
-                    });
+            for (var a = this, o = !0, i = 0; i < this.data.selectedskuList.length; i++)
+                if (void 0 == this.data.selectedskuList[i] || "" == this.data.selectedskuList[i] || null == this.data.selectedskuList[i]) {
+                    o = !1;
+                    break;
+                }
+            if (this.data.selectedskuList.length == this.data.SkuItemList.length && o)
+                if (this.data.buyAmount <= 0) wx.showModal({
+                    title: "提示",
+                    content: "请输入要购买的数量",
+                    showCancel: !1
                 });
-            } else wx.showModal({
+                else {
+                    var s = this.data.buyAmount,
+                        n = this.data.selectedSku;
+                    e.getOpenId(function(t) {
+                        wx.request({
+                            url: e.getUrl("addToCart"),
+                            data: {
+                                openId: t,
+                                SkuID: n,
+                                Quantity: s
+                            },
+                            success: function(t) {
+                                "OK" == t.data.Status ? wx.showModal({
+                                    title: "提示",
+                                    content: "加入购物车成功",
+                                    showCancel: !1,
+                                    success: function(t) {
+                                        t.confirm && a.setData({
+                                            backShow: "none",
+                                            SkuShow: "none"
+                                        });
+                                    }
+                                }) : "NOUser" == t.data.Message ? wx.navigateTo({
+                                    url: "../login/login"
+                                }) : wx.showModal({
+                                    title: "提示",
+                                    content: t.data.ErrorResponse.ErrorMsg,
+                                    showCancel: !1,
+                                    success: function(t) {}
+                                });
+                            },
+                            complete: function() {}
+                        });
+                    });
+                }
+            else wx.showModal({
                 title: "提示",
                 content: "请选择规格",
                 showCancel: !1
@@ -363,13 +378,18 @@ Page({
         }
     },
     onSkuClick: function(t) {
-        var e = this, a = t.target.dataset.indexcount, o = t.target.id, i = t.target.dataset.skuvalue, s = t.target.dataset.attributeid;
+        var e = this,
+            a = t.target.dataset.indexcount,
+            o = t.target.id,
+            i = t.target.dataset.skuvalue,
+            s = t.target.dataset.attributeid;
         if (0 != t.target.dataset.enablevalue) {
             var n = new Object();
             n.valueid = o, n.value = i, n.attributeid = s;
             var u = this.data.selectedskuList;
             u[a] = n;
-            var r = "", c = this.data.SkuItemList;
+            var r = "",
+                c = this.data.SkuItemList;
             c.length == u.length && !0;
             for (var l = this.data.ProductId, d = 0; d < u.length; d++) {
                 var h = u[d];
@@ -378,7 +398,7 @@ Page({
             var S = null;
             console.log(c.length + "-" + u.length), e.data.Skus.forEach(function(t, e, a) {
                 for (var o = !0, i = 0; i < u.length; i++) void 0 != u[i] && -1 != t.SkuId.indexOf("_" + u[i].valueid) || (o = !1);
-                if (o && c.length == u.length) return S = t, void (l = t.SkuId);
+                if (o && c.length == u.length) return S = t, void(l = t.SkuId);
             });
             c[a];
             for (var f = 0; f < c[a].AttributeValue.length; f++) c[a].AttributeValue[f].ValueId == o ? c[a].AttributeValue[f].UseAttributeImage = "selected" : c[a].AttributeValue[f].UseAttributeImage = "False";

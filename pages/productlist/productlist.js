@@ -1,5 +1,4 @@
 var a = getApp();
-
 Page({
     data: {
         ProductList: null,
@@ -19,7 +18,6 @@ Page({
             KeyWord: t
         }), e.loadData(e, !1);
     },
-    onReady: function() {},
     onShow: function() {
         var a = "";
         void 0 == this.data.keyword && (a = "");
@@ -28,8 +26,6 @@ Page({
             KeyWord: a
         }), t.loadData(t, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onSearch: function(a) {
         var t = this;
         t.setData({
@@ -37,7 +33,8 @@ Page({
         }), t.loadData(t, !1);
     },
     onReachBottom: function() {
-        var a = this, t = a.data.PageIndex + 1;
+        var a = this,
+            t = a.data.PageIndex + 1;
         a.setData({
             PageIndex: t
         }), a.loadData(a, !0);
@@ -56,14 +53,19 @@ Page({
         });
     },
     onConfirmSearch: function(a) {
-        var t = this, e = a.detail.value;
+        var t = this,
+            e = a.detail.value;
         t.setData({
             KeyWord: e,
             PageIndex: 1
         }), t.loadData(t, !1);
     },
     onSortClick: function(a) {
-        var t = this, e = a.target.dataset.sortby, o = a.currentTarget.dataset.num, d = "asc", r = "shengxu";
+        var t = this,
+            e = a.target.dataset.sortby,
+            o = a.currentTarget.dataset.num,
+            d = "asc",
+            r = "shengxu";
         t.data.SortOrder == d && (d = "desc", r = "jiangxu"), t.setData({
             PageIndex: 1,
             SortBy: e,
@@ -73,11 +75,13 @@ Page({
         }), t.loadData(t, !1);
     },
     goToProductDetail: function(a) {
-        var t = a.currentTarget.dataset.productid, e = a.currentTarget.dataset.activeid, o = "../productdetail/productdetail?id=" + t;
-        1 == a.currentTarget.dataset.activetype && (o = "../countdowndetail/countdowndetail?id=" + e), 
-        wx.navigateTo({
-            url: o
-        });
+        var t = a.currentTarget.dataset.productid,
+            e = a.currentTarget.dataset.activeid,
+            o = "../productdetail/productdetail?id=" + t;
+        1 == a.currentTarget.dataset.activetype && (o = "../countdowndetail/countdowndetail?id=" + e),
+            wx.navigateTo({
+                url: o
+            });
     },
     loadData: function(t, e) {
         wx.showNavigationBarLoading(), a.getOpenId(function(o) {

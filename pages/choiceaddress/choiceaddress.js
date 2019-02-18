@@ -1,5 +1,5 @@
-var t = require("../../utils/config.js"), d = getApp();
-
+var t = require("../../utils/config.js"),
+    d = getApp();
 Page({
     data: {
         ProductSku: "",
@@ -14,7 +14,13 @@ Page({
         jumpUrl: ""
     },
     onLoad: function(t) {
-        var d = this, e = t.productsku, s = t.buyamount, a = t.frompage, o = t.countdownid, n = t.shipaddressid, i = "../editaddress/editaddress?Source=choiceaddress&productsku=" + e + "&buyamount=" + s + "&frompage=" + a + "&countdownid=" + o;
+        var d = this,
+            e = t.productsku,
+            s = t.buyamount,
+            a = t.frompage,
+            o = t.countdownid,
+            n = t.shipaddressid,
+            i = "../editaddress/editaddress?Source=choiceaddress&productsku=" + e + "&buyamount=" + s + "&frompage=" + a + "&countdownid=" + o;
         d.setData({
             jumpUrl: i,
             ProductSku: e,
@@ -45,7 +51,8 @@ Page({
         });
     },
     bindDeleteAddressTap: function(e) {
-        var s = this, a = e.currentTarget.dataset.shippingid;
+        var s = this,
+            a = e.currentTarget.dataset.shippingid;
         wx.showModal({
             title: "确定删除该地址吗？",
             success: function(e) {
@@ -76,15 +83,12 @@ Page({
         }) : wx.hideNavigationBarLoading();
     },
     bindEditAddressTap: function(t) {
-        var d = t.currentTarget.dataset.addressdata, e = this;
+        var d = t.currentTarget.dataset.addressdata,
+            e = this;
         0 == this.data.IsCheck && wx.redirectTo({
             url: "../editaddress/editaddress?extra=" + JSON.stringify(d) + "&title=编辑收货地址&Source=choiceaddress&productsku=" + e.data.ProductSku + "&buyamount=" + e.data.BuyAmount + "&frompage=" + e.data.FromPage + "&countdownid=" + e.data.CountdownId
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
     onAddShippingAddress: function(e) {
         var s = this;
         wx.showModal({

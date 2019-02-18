@@ -1,10 +1,6 @@
 var conf = require("../../utils/config.js"),
     app = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         nullDraw: app.getRequestUrl + "/Templates/xcxshop/images/null.png",
         isHotState: true,
@@ -38,10 +34,6 @@ Page({
         SelectskuId: [],
         SkuID: ""
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function(options) {
         app.globalData.fundebug.notifyError(new Error("列表onload"), {
             name: "brandInfo-onload",
@@ -85,7 +77,6 @@ Page({
 
     onShow: function() {
         this.GetShopCart();
-
     },
     GetShopCart: function() {
         var tm = this;
@@ -191,9 +182,6 @@ Page({
         });
     },
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     onPullDownRefresh: function() {
         this.setData({
             brandRush: [],
@@ -203,9 +191,6 @@ Page({
         this.getTitle();
     },
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
     onReachBottom: function() {
         if (this.data.hasMore) {
             wx.showNavigationBarLoading();
@@ -400,9 +385,6 @@ Page({
                 })
             }
         }
-    },
-    loadData: function(e) {
-
     },
     goToBuyGoods: function(event) {
         var tm = this;

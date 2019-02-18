@@ -1,5 +1,5 @@
-var e = require("../../utils/config.js"), a = getApp();
-
+var e = require("../../utils/config.js"),
+    a = getApp();
 Page({
     data: {
         pageIndex: 0,
@@ -27,11 +27,14 @@ Page({
         var a = this;
         if ("NOUser" == e.Message) wx.navigateTo({
             url: "../login/login"
-        }); else if ("OK" == e.Status) {
+        });
+        else if ("OK" == e.Status) {
             var t = a.data.couponsList;
             if (e.Data.length > 0) {
                 for (var n = 0; n < e.Data.length; n++) {
-                    var s = (g = e.Data[n]).StartTime.substring(0, 10).replace(/\-/g, "."), o = g.ClosingTime.substring(0, 10).replace(/\-/g, "."), i = "";
+                    var s = (g = e.Data[n]).StartTime.substring(0, 10).replace(/\-/g, "."),
+                        o = g.ClosingTime.substring(0, 10).replace(/\-/g, "."),
+                        i = "";
                     i = g.CanUseProducts && g.CanUseProducts.length > 0 ? "部分商品可用" : "全场通用";
                     var r = "";
                     r = g.OrderUseLimit > 0 ? "订单满" + g.OrderUseLimit + "元可用" : "订单金额无限制";
@@ -57,15 +60,17 @@ Page({
         } else wx.hideNavigationBarLoading();
     },
     setCanReceive: function(e, a) {
-        var t = this.data.couponsList, n = t.find(function(a) {
-            return a.couponsId == e;
-        });
+        var t = this.data.couponsList,
+            n = t.find(function(a) {
+                return a.couponsId == e;
+            });
         n && (n.canReceive = a, this.setData({
             couponsList: t
         }));
     },
     getCoupon: function(e) {
-        var t = this, n = e.currentTarget.id;
+        var t = this,
+            n = e.currentTarget.id;
         a.getOpenId(function(e) {
             wx.request({
                 url: a.getUrl("UserGetCoupon"),

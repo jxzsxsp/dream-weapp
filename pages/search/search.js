@@ -161,7 +161,6 @@ Page({
         //     });
         // }
     },
-    onReady: function() {},
     onShow: function() {
         this.GetShopCart();
     },
@@ -230,8 +229,6 @@ Page({
             });
         });
     },
-    onHide: function() {},
-    onUnload: function() {},
     onReachBottom: function() {
         if (this.data.hasMore) {
             wx.showNavigationBarLoading();
@@ -626,19 +623,19 @@ Page({
         };
         // 加载页面数据
         wx.request({
-                url: currentUrl,
-                data: currentData,
-                success: function(jd) {
+            url: currentUrl,
+            data: currentData,
+            success: function(jd) {
 
-                    if (jd.data.length != 0) {
-                        let goodsList = [];
-                        jd.data.forEach(o => {
-                            goodsList.push(o)
-                        });
-                        var newList = tm.data.rushGoodsList.concat(goodsList)
-                        tm.setData({
-                            rushGoodsList: newList
-                        })
+                if (jd.data.length != 0) {
+                    let goodsList = [];
+                    jd.data.forEach(o => {
+                        goodsList.push(o)
+                    });
+                    var newList = tm.data.rushGoodsList.concat(goodsList)
+                    tm.setData({
+                        rushGoodsList: newList
+                    })
                 } else {
                     tm.setData({
                         hasMore: false
@@ -647,33 +644,33 @@ Page({
 
             }
         });
-},
-sharePro: function(event) {
-    var brandid = event.currentTarget.dataset.brandid;
-    var goodid = event.currentTarget.dataset.goodid;
-    var goodssource = event.currentTarget.dataset.goodssource;
-    wx.navigateTo({
-        url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
-    })
+    },
+    sharePro: function(event) {
+        var brandid = event.currentTarget.dataset.brandid;
+        var goodid = event.currentTarget.dataset.goodid;
+        var goodssource = event.currentTarget.dataset.goodssource;
+        wx.navigateTo({
+            url: '/pages/poster/poster?brandid=' + brandid + '&goodid=' + goodid + '&goodssource=' + goodssource,
+        })
         // wx.showModal({
         //     title: '',
         //     content: '敬请期待',
         //     showCancel: false
         // })
-},
-onKeyWordClick: function(e) {
-    var tm = this;
-    var KeyWord = e.target.dataset.keyword;
-    tm.setData({
-        KeyWord: KeyWord
-    })
-},
-goToTop: function() {
-    wx.pageScrollTo({
-        scrollTop: 0,
-    })
-    this.setData({
-        goTopStatus: false
-    })
-},
+    },
+    onKeyWordClick: function(e) {
+        var tm = this;
+        var KeyWord = e.target.dataset.keyword;
+        tm.setData({
+            KeyWord: KeyWord
+        })
+    },
+    goToTop: function() {
+        wx.pageScrollTo({
+            scrollTop: 0,
+        })
+        this.setData({
+            goTopStatus: false
+        })
+    },
 });

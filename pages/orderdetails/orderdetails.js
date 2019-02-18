@@ -1,5 +1,4 @@
 var t = getApp();
-
 Page({
     data: {
         OrderInfo: null,
@@ -62,7 +61,6 @@ Page({
             });
         });
     },
-    onReady: function() {},
     onShow: function() {
         var a = this,
             e = a.data.OrderId;
@@ -106,10 +104,5 @@ Page({
                 }
             });
         });
-    },
-    onHide: function() {},
-    onUnload: function() {},
-    goTod: function () {
-        
     }
 });

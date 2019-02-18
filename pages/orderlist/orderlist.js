@@ -1,5 +1,4 @@
 var t = getApp();
-
 Page({
     data: {
         isEmpty: !0,
@@ -15,7 +14,7 @@ Page({
         PageSize: 100,
         nullOrder: t.getRequestUrl + "/Templates/xcxshop/images/nullOrder.png",
         waitpay: null,
-        orderCount:{}
+        orderCount: {}
     },
     onLoad: function(q) {
         var tm = this;
@@ -25,14 +24,13 @@ Page({
             Status: e
         });
 
-        t.getUserInfo(function (t) {
+        t.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t
             })
             tm.getOrderCount()
         });
     },
-    onReady: function() {},
     onShow: function() {
         var t = this;
         t.setData({
@@ -40,16 +38,16 @@ Page({
             OrderList: []
         }), t.loadData(t.data.Status, t, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onReachBottom: function() {
-        var t = this, e = t.data.PageIndex + 1;
+        var t = this,
+            e = t.data.PageIndex + 1;
         t.setData({
             PageIndex: e
         }), t.loadData(t.data.Status, t, !0);
     },
     closeOrder: function(e) {
-        var a = this, i = e.target.dataset.orderid;
+        var a = this,
+            i = e.target.dataset.orderid;
         wx.showModal({
             title: "提示",
             content: "确定要取消订单吗？",
@@ -90,11 +88,13 @@ Page({
         });
     },
     orderPay: function(e) {
-        var a = this, i = e.currentTarget.dataset.orderid;
+        var a = this,
+            i = e.currentTarget.dataset.orderid;
         t.orderPay(i, a.data.Status, !0);
     },
     orderFinish: function(e) {
-        var a = this, i = e.currentTarget.dataset.orderid;
+        var a = this,
+            i = e.currentTarget.dataset.orderid;
         t.getOpenId(function(e) {
             wx.request({
                 url: t.getUrl("FinishOrder"),
@@ -129,7 +129,8 @@ Page({
         });
     },
     onTabClick: function(t) {
-        var e = this, a = t.currentTarget.dataset.status;
+        var e = this,
+            a = t.currentTarget.dataset.status;
         e.setData({
             PageIndex: 1
         }), e.loadData(a, e, !1);
@@ -156,13 +157,18 @@ Page({
         });
     },
     RefundOrder: function(t) {
-        var e = t.currentTarget.dataset.orderid, a = t.currentTarget.dataset.money;
+        var e = t.currentTarget.dataset.orderid,
+            a = t.currentTarget.dataset.money;
         wx.navigateTo({
             url: "../ApplyRefund/ApplyRefund?orderid=" + e + "&&m=" + a
         });
     },
     ReturnsOrder: function(t) {
-        var e = t.currentTarget.dataset.orderid, a = t.currentTarget.dataset.skuId, i = t.currentTarget.dataset.skuname, r = t.currentTarget.dataset.num, n = t.currentTarget.dataset.money;
+        var e = t.currentTarget.dataset.orderid,
+            a = t.currentTarget.dataset.skuId,
+            i = t.currentTarget.dataset.skuname,
+            r = t.currentTarget.dataset.num,
+            n = t.currentTarget.dataset.money;
         wx.navigateTo({
             url: "../ApplyReturns/ApplyReturns?orderid=" + e + "&&skuId=" + a + "&&pro=" + i + "&&num=" + r + "&&m=" + n
         });
@@ -247,7 +253,7 @@ Page({
             WaitReviewActive: "active"
         });
     },
-    getOrderCount: function () {
+    getOrderCount: function() {
         var tm = this;
 
         wx.request({
@@ -255,7 +261,7 @@ Page({
             data: {
                 openId: t.globalData.userInfo.OpenId
             },
-            success: function (res) {
+            success: function(res) {
                 tm.setData({
                     orderCount: res.data
                 })
@@ -275,7 +281,7 @@ Page({
         //     });
         // });
     },
-    fixedGoToHome: function () {
+    fixedGoToHome: function() {
         wx.switchTab({
             url: '/pages/home/home'
         })

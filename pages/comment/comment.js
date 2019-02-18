@@ -1,10 +1,10 @@
-var a = getApp(), e = require("../../utils/config.js");
-
+var a = getApp(),
+    e = require("../../utils/config.js");
 Page({
     data: {
         OrderId: "",
         ProductList: [],
-        UserCredentials: [ "../../images/return-img_12.jpg" ],
+        UserCredentials: ["../../images/return-img_12.jpg"],
         UploadGredentials: [],
         ScoreGrade: [],
         Remark: [],
@@ -14,7 +14,8 @@ Page({
         isSubmit: !1
     },
     onLoad: function(t) {
-        var r = this, o = t.id;
+        var r = this,
+            o = t.id;
         a.getOpenId(function(t) {
             var n = {
                 openId: t,
@@ -29,21 +30,25 @@ Page({
         var e = this;
         if ("NOUser" == a.Message) wx.navigateTo({
             url: "../login/login"
-        }); else if ("OK" == a.Status) {
-            var t = [], r = [], o = [];
+        });
+        else if ("OK" == a.Status) {
+            var t = [],
+                r = [],
+                o = [];
             a.Data.forEach(function(a, e, n) {
                 var s = {
-                    skuId: a.SkuId,
-                    skucontent: a.SkuContent,
-                    grade: parseInt(5),
-                    remark: ""
-                }, i = {
-                    img1: "../../images/return-img_03.jpg",
-                    img2: "../../images/return-img_03.jpg",
-                    img3: "../../images/return-img_03.jpg",
-                    ImgSize: 0,
-                    skuId: a.SkuId
-                };
+                        skuId: a.SkuId,
+                        skucontent: a.SkuContent,
+                        grade: parseInt(5),
+                        remark: ""
+                    },
+                    i = {
+                        img1: "../../images/return-img_03.jpg",
+                        img2: "../../images/return-img_03.jpg",
+                        img3: "../../images/return-img_03.jpg",
+                        ImgSize: 0,
+                        skuId: a.SkuId
+                    };
                 t.push(s), r.push(i), o.push("txt_" + a.SkuId);
             }), e.setData({
                 ProductList: a.Data,
@@ -64,13 +69,17 @@ Page({
         });
     },
     ScoreGrade: function(a) {
-        var e = a.currentTarget.dataset.grade, t = a.currentTarget.dataset.index, r = this.data.ScoreGrade;
+        var e = a.currentTarget.dataset.grade,
+            t = a.currentTarget.dataset.index,
+            r = this.data.ScoreGrade;
         r[t].grade = parseInt(e), this.setData({
             ScoreGrade: r
         });
     },
     ChooseImg: function(a) {
-        var e = this, t = a.currentTarget.dataset.index, r = parseInt(a.currentTarget.dataset.coloum);
+        var e = this,
+            t = a.currentTarget.dataset.index,
+            r = parseInt(a.currentTarget.dataset.coloum);
         a.currentTarget.dataset.skuid;
         wx.chooseImage({
             success: function(a) {
@@ -86,7 +95,8 @@ Page({
             isSubmit: !0
         });
         a.detail.formId;
-        var t = e.data.ScoreGrade, r = e.data.TxtareaName;
+        var t = e.data.ScoreGrade,
+            r = e.data.TxtareaName;
         if (r.length <= 0) return wx.showModal({
             title: "提示",
             content: "文本框不存在",
@@ -95,8 +105,8 @@ Page({
         }), !1;
         var o = !1;
         if (r.forEach(function(r, n, s) {
-            e.ToTrim(a.detail.value[r]).length <= 0 ? o = !0 : t[n].remark = e.ToTrim(a.detail.value[r]);
-        }), o) return wx.showModal({
+                e.ToTrim(a.detail.value[r]).length <= 0 ? o = !0 : t[n].remark = e.ToTrim(a.detail.value[r]);
+            }), o) return wx.showModal({
             title: "提示",
             content: "请输入评价内容",
             confirmColor: "#db3c40",
@@ -109,9 +119,9 @@ Page({
         var n = e.data.UploadGredentials;
         e.data.UserCredentials.forEach(function(a, e, t) {
             var r = n[a.skuId];
-            (void 0 == r || "" == r || r.length <= 0) && (r = []), "../../images/return-img_03.jpg" != a.img1 && r.push(a.uploadimg1), 
-            "../../images/return-img_03.jpg" != a.img2 && r.push(a.uploadimg2), "../../images/return-img_03.jpg" != a.img3 && r.push(a.uploadimg3), 
-            n[a.skuId] = r;
+            (void 0 == r || "" == r || r.length <= 0) && (r = []), "../../images/return-img_03.jpg" != a.img1 && r.push(a.uploadimg1),
+                "../../images/return-img_03.jpg" != a.img2 && r.push(a.uploadimg2), "../../images/return-img_03.jpg" != a.img3 && r.push(a.uploadimg3),
+                n[a.skuId] = r;
         }), e.setData({
             UploadGredentials: n
         }), e.AddComments();
@@ -129,9 +139,10 @@ Page({
                 success: function(a) {
                     var n = JSON.parse(a.data);
                     if ("OK" == n.Status) {
-                        var s = n.Data[0].ImageUrl, i = o.data.UserCredentials;
-                        1 == r ? (i[t].img1 = e, i[t].uploadimg1 = s) : 2 == r ? (i[t].img2 = e, i[t].uploadimg2 = s) : (i[t].img3 = e, 
-                        i[t].uploadimg3 = s);
+                        var s = n.Data[0].ImageUrl,
+                            i = o.data.UserCredentials;
+                        1 == r ? (i[t].img1 = e, i[t].uploadimg1 = s) : 2 == r ? (i[t].img2 = e, i[t].uploadimg2 = s) : (i[t].img3 = e,
+                            i[t].uploadimg3 = s);
                         var d = parseInt(i[t].ImgSize);
                         d = d >= 2 ? 2 : parseInt(d + 1), i[t].ImgSize = d, o.setData({
                             UserCredentials: i
@@ -166,9 +177,10 @@ Page({
                 success: function(a) {
                     var t = JSON.parse(a.data);
                     if ("OK" == t.Status) {
-                        var o = e.data.UploadGredentials, n = o[r];
-                        (void 0 == n || "" == n || n.length <= 0) && (n = []), n.push(t.Data[0].ImageUrl), 
-                        o[r] = n;
+                        var o = e.data.UploadGredentials,
+                            n = o[r];
+                        (void 0 == n || "" == n || n.length <= 0) && (n = []), n.push(t.Data[0].ImageUrl),
+                            o[r] = n;
                         var s = parseInt(e.data.UploadNum) + 1;
                         e.setData({
                             UploadGredentials: o,
@@ -198,17 +210,21 @@ Page({
         return a.replace(/(^\s*)|(\s*$)/g, "");
     },
     AddComments: function() {
-        var e = this, t = e.data.ScoreGrade, r = [], o = e.data.UploadGredentials;
+        var e = this,
+            t = e.data.ScoreGrade,
+            r = [],
+            o = e.data.UploadGredentials;
         t.forEach(function(a, t, n) {
             var s = {
-                ProductId: a.skuId.substr(0, a.skuId.indexOf("_")),
-                OrderId: e.data.OrderId,
-                SkuId: a.skuId,
-                ReviewText: a.remark,
-                SkuContent: a.skucontent,
-                Score: a.grade,
-                ImageUrl1: ""
-            }, i = a.skuId;
+                    ProductId: a.skuId.substr(0, a.skuId.indexOf("_")),
+                    OrderId: e.data.OrderId,
+                    SkuId: a.skuId,
+                    ReviewText: a.remark,
+                    SkuContent: a.skucontent,
+                    Score: a.grade,
+                    ImageUrl1: ""
+                },
+                i = a.skuId;
             void 0 != o[i] && (s.ImageUrl1 = o[i].join(",")), r.push(s);
         }), a.getOpenId(function(t) {
             wx.request({

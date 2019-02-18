@@ -1,5 +1,5 @@
-var e = require("../../utils/config.js"), a = getApp();
-
+var e = require("../../utils/config.js"),
+    a = getApp();
 Page({
     data: {
         isEmpty: !0,
@@ -28,11 +28,14 @@ Page({
         var a = this;
         if ("NOUser" == e.Message) wx.navigateTo({
             url: "../login/login"
-        }); else if ("OK" == e.Status) {
+        });
+        else if ("OK" == e.Status) {
             var o = a.data.couponsList;
             if (e.Data.length > 0) {
                 for (var t = 0; t < e.Data.length; t++) {
-                    var n = (i = e.Data[t]).StartTime.substring(0, 10).replace(/\-/g, "."), p = i.ClosingTime.substring(0, 10).replace(/\-/g, "."), s = "";
+                    var n = (i = e.Data[t]).StartTime.substring(0, 10).replace(/\-/g, "."),
+                        p = i.ClosingTime.substring(0, 10).replace(/\-/g, "."),
+                        s = "";
                     s = i.CanUseProducts && i.CanUseProducts.length > 0 ? "部分商品可用" : "全场通用";
                     var g = "";
                     g = i.OrderUseLimit > 0 ? "订单满" + i.OrderUseLimit.toFixed(2) + "元可用" : "订单金额无限制";

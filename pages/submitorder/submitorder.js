@@ -6,22 +6,32 @@ function e(e, t, a) {
         writable: !0
     }) : e[t] = a, e;
 }
-
-var t = require("../../utils/config.js"), a = getApp(), i = null, n = new Array(), o = new Array(), s = new Array(), r = new Array(), d = 0, c = 0, u = 0, l = 0, p = [], h = [];
-
+var t = require("../../utils/config.js"),
+    a = getApp(),
+    i = null,
+    n = new Array(),
+    o = new Array(),
+    s = new Array(),
+    r = new Array(),
+    d = 0,
+    c = 0,
+    u = 0,
+    l = 0,
+    p = [],
+    h = [];
 Page({
     data: {
         inputData: {
-            input_value: "",//输入框的初始内容
-            value_length: 0,//输入框密码位数
-            isNext: false,//是否有下一步的按钮
-            get_focus: true,//输入框的聚焦状态
-            focus_class: true,//输入框聚焦样式
-            value_num: [1, 2, 3, 4, 5, 6],//输入框格子数
-            height: "98rpx",//输入框高度
-            width: "604rpx",//输入框宽度
-            see: false,//是否明文展示
-            interval: true,//是否显示间隔格子
+            input_value: "", //输入框的初始内容
+            value_length: 0, //输入框密码位数
+            isNext: false, //是否有下一步的按钮
+            get_focus: true, //输入框的聚焦状态
+            focus_class: true, //输入框聚焦样式
+            value_num: [1, 2, 3, 4, 5, 6], //输入框格子数
+            height: "98rpx", //输入框高度
+            width: "604rpx", //输入框宽度
+            see: false, //是否明文展示
+            interval: true, //是否显示间隔格子
         },
         OrderInfo: null,
         ProductSku: "",
@@ -100,11 +110,16 @@ Page({
                     openId: a.globalData.userInfo.OpenId,
                     ReferralUserId: wx.getStorageSync("ReferralUserId")
                 },
-                success: function (res) { },
-                complete: function () { }
+                success: function(res) {},
+                complete: function() {}
             });
         }
-        var t = this, i = e.productsku, n = e.buyamount, o = e.frompage, s = e.countdownid, r = e.shipaddressid;
+        var t = this,
+            i = e.productsku,
+            n = e.buyamount,
+            o = e.frompage,
+            s = e.countdownid,
+            r = e.shipaddressid;
         a.getOpenId(function(e) {
             wx.request({
                 url: a.getUrl("GetShoppingCart"),
@@ -197,17 +212,13 @@ Page({
         return 0 == e || 1 == e ? "普通发票" : 2 == e || 3 == e ? "电子发票" : "增值税发票";
     },
     LoadInvoice: function(e) {
-        for (var t = "", a = "", i = 0; i < e.length; i++) 1 != e[i].InvoiceType && 3 != e[i].InvoiceType && 4 != e[i].InvoiceType || t.length <= 0 && (t = e[i].InvoiceTitle, 
-        a = e[i].InvoiceTaxpayerNumber);
+        for (var t = "", a = "", i = 0; i < e.length; i++) 1 != e[i].InvoiceType && 3 != e[i].InvoiceType && 4 != e[i].InvoiceType || t.length <= 0 && (t = e[i].InvoiceTitle,
+            a = e[i].InvoiceTaxpayerNumber);
         this.setData({
             InvoiceTitle: t,
             InvoiceTaxpayerNumber: a
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
     gotoAddress: function() {
         wx.navigateTo({
             url: "../choiceaddress/choiceaddress?productsku=" + this.data.ProductSku + "&buyamount=" + this.data.BuyAmount + "&frompage=" + this.data.FromPage + "&countdownid=" + this.data.CountdownId + "&shipaddressid=" + this.data.ShipAddressId
@@ -262,17 +273,23 @@ Page({
         });
     },
     getCouponBaseId: function(e) {
-        for (var t = this, a = 0; a < t.data.CouponList.length; a++) if (this.data.CouponList[a].CouponId == e) return a;
+        for (var t = this, a = 0; a < t.data.CouponList.length; a++)
+            if (this.data.CouponList[a].CouponId == e) return a;
         return -1;
     },
     ChangeValue: function(e) {
-        var t = e.currentTarget.dataset.key, a = e.detail.value, i = this.data.InvoiceEnty;
+        var t = e.currentTarget.dataset.key,
+            a = e.detail.value,
+            i = this.data.InvoiceEnty;
         i[t] = a, this.setData({
             InvoiceEnty: i
         });
     },
     SaveInvoice: function(e) {
-        var t = this, i = t.data.OrderInfo, n = this.data.InvoiceType, o = this.data.InvoiceEnty;
+        var t = this,
+            i = t.data.OrderInfo,
+            n = this.data.InvoiceType,
+            o = this.data.InvoiceEnty;
         4 == n && (o.ReceiveRegionName = t.data.FullRegionPath, o.ReceiveRegionId = t.data.regionId);
         var s = JSON.stringify(o);
         t.CheckSaveInvoice(n, o) && a.getOpenId(function(e) {
@@ -317,8 +334,7 @@ Page({
     CheckSaveInvoice: function(e, a) {
         if (1 == e || 3 == e || 4 == e) {
             if (!t.trim(a.InvoiceTitle)) return t.showTip("请输入单位名称"), !1;
-            if (!a.InvoiceTaxpayerNumber || !t.trim(a.InvoiceTaxpayerNumber)) return t.showTip("请输入单位税号"), 
-            !1;
+            if (!a.InvoiceTaxpayerNumber || !t.trim(a.InvoiceTaxpayerNumber)) return t.showTip("请输入单位税号"), !1;
         }
         if (2 == e || 3 == e) {
             if (!t.trim(a.ReceivePhone)) return t.showTip("请输入收票人手机"), !1;
@@ -339,7 +355,8 @@ Page({
         return !0;
     },
     setCoupon: function(e) {
-        var t = this, a = (e.currentTarget.id, e.currentTarget.dataset.num);
+        var t = this,
+            a = (e.currentTarget.id, e.currentTarget.dataset.num);
         if (a >= 0) {
             var i = t.data.CouponList[a];
             t.setData({
@@ -374,11 +391,13 @@ Page({
         }), t.CalcMaxUsePoints(), t.CalcOrderTotalPrice();
     },
     ChangeInvoiceType: function(e) {
-        var t = this.data.InvoiceType, a = e.currentTarget.dataset.name;
+        var t = this.data.InvoiceType,
+            a = e.currentTarget.dataset.name;
         this.ChangeInvoiceInfo(t, a);
     },
     ChangeInvoiceInfo: function(e, t) {
-        var a = 1 == e || 3 == e || 4 == e, i = 0;
+        var a = 1 == e || 3 == e || 4 == e,
+            i = 0;
         "普通发票" == t ? (i = 0, a && (i = 1)) : "电子发票" == t ? (i = 2, a && (i = 3)) : i = "增值税发票" == t ? 4 : "个人" == t ? 1 == e ? 0 : 3 == e ? 2 : e : 0 == e ? 1 : 2 == e ? 3 : e;
         var n = this.FindInVoiceById(i);
         this.setData({
@@ -390,7 +409,9 @@ Page({
         });
     },
     bindPickerChange: function(e) {
-        var t = this, a = e.detail.value, i = t.data.CouponList[a];
+        var t = this,
+            a = e.detail.value,
+            i = t.data.CouponList[a];
         t.setData({
             DefaultCouponCode: i.ClaimCode,
             DefaultCouponPrice: parseFloat(i.Price),
@@ -429,11 +450,12 @@ Page({
         }), this.CalcOrderTotalPrice();
     },
     ChooseInvoice: function(e) {
-        var t = this, a = 0;
-        "普通发票" == t.data.InvoiceTypeName ? a = "个人" == t.data.InvoiceTitleName ? 0 : 1 : "电子发票" == t.data.InvoiceTypeName ? a = "个人" == t.data.InvoiceTitleName ? 2 : 3 : "增值税发票" == t.data.InvoiceTypeName && (a = 4), 
-        this.ChangeInvoiceInfo(a, t.data.InvoiceTypeName), this.setData({
-            currentPage: "page2"
-        });
+        var t = this,
+            a = 0;
+        "普通发票" == t.data.InvoiceTypeName ? a = "个人" == t.data.InvoiceTitleName ? 0 : 1 : "电子发票" == t.data.InvoiceTypeName ? a = "个人" == t.data.InvoiceTitleName ? 2 : 3 : "增值税发票" == t.data.InvoiceTypeName && (a = 4),
+            this.ChangeInvoiceInfo(a, t.data.InvoiceTypeName), this.setData({
+                currentPage: "page2"
+            });
     },
     CancelInvoice: function() {
         this.setData({
@@ -441,10 +463,11 @@ Page({
         });
     },
     FindInVoiceById: function(e, t) {
-        for (var a = null, i = this, n = 0; n < i.data.OrderInfo.InvoiceList.length; n++) if (i.data.OrderInfo.InvoiceList[n].Id == t || i.data.OrderInfo.InvoiceList[n].InvoiceType == e) {
-            a = i.data.OrderInfo.InvoiceList[n];
-            break;
-        }
+        for (var a = null, i = this, n = 0; n < i.data.OrderInfo.InvoiceList.length; n++)
+            if (i.data.OrderInfo.InvoiceList[n].Id == t || i.data.OrderInfo.InvoiceList[n].InvoiceType == e) {
+                a = i.data.OrderInfo.InvoiceList[n];
+                break;
+            }
         return null == a && (a = {
             Id: 0,
             InvoiceType: e,
@@ -463,8 +486,10 @@ Page({
         }), a;
     },
     UsePointNumber: function(e) {
-        var a = this, i = parseInt(e.detail.value);
-        if (isNaN(i)) t.showTip("格式不正确", "tips"); else {
+        var a = this,
+            i = parseInt(e.detail.value);
+        if (isNaN(i)) t.showTip("格式不正确", "tips");
+        else {
             i > a.data.MaxUsePoint && (i = a.data.MaxUsePoint);
             var n = i;
             n > a.data.MaxUsePoint && (n = a.data.MaxUsePoint), n > a.data.MyPoints && (n = a.data.MyPoints);
@@ -481,12 +506,14 @@ Page({
         });
     },
     CalcMaxUsePoints: function() {
-        var e = this, t = e.data.ProductAmount - e.data.FullDiscount;
-        "False" == e.data.OrderInfo.IsFreightFree && parseFloat(e.data.OrderInfo.OrderFreight), 
-        (t = t.toSub(e.data.DefaultCouponPrice)) < 0 && (t = 0);
+        var e = this,
+            t = e.data.ProductAmount - e.data.FullDiscount;
+        "False" == e.data.OrderInfo.IsFreightFree && parseFloat(e.data.OrderInfo.OrderFreight),
+            (t = t.toSub(e.data.DefaultCouponPrice)) < 0 && (t = 0);
         var a = parseInt(e.data.PointDeductionRate * (1e3 * t) * e.data.ShoppingDeduction / 100 / 1e3);
         a > e.data.MyPoints && (a = e.data.MyPoints);
-        var i = a / e.data.ShoppingDeduction, n = e.data.DeductionPoints;
+        var i = a / e.data.ShoppingDeduction,
+            n = e.data.DeductionPoints;
         n > a && (n = a);
         var o = e.data.PointsDiscount;
         o > i && (o = i), e.setData({
@@ -497,7 +524,8 @@ Page({
         });
     },
     CalcOrderTotalPrice: function() {
-        var e = this, t = e.data.ProductAmount - e.data.FullDiscount;
+        var e = this,
+            t = e.data.ProductAmount - e.data.FullDiscount;
         (t = (t = t.toSub(e.data.DefaultCouponPrice)).toSub(e.data.PointsDiscount)) < 0 && (t = 0);
         var a = 0;
         "False" == e.data.OrderInfo.IsFreightFree && (a = parseFloat(e.data.OrderInfo.OrderFreight));
@@ -517,28 +545,37 @@ Page({
     setProvinceCityData: function(e, t, a, n, o) {
         var s = this;
         null != e && (i = e);
-        var r = i, d = [], c = [];
+        var r = i,
+            d = [],
+            c = [];
         for (var u in r) {
-            var l = r[u].name, p = r[u].id;
+            var l = r[u].name,
+                p = r[u].id;
             d.push(l), c.push(p);
         }
         s.setData({
             provinceName: d,
             provinceCode: c
         });
-        var h = i[t].city, v = [], I = [];
+        var h = i[t].city,
+            v = [],
+            I = [];
         for (var u in h) {
-            var l = h[u].name, p = h[u].id;
+            var l = h[u].name,
+                p = h[u].id;
             1, v.push(l), I.push(p);
         }
         s.setData({
             cityName: v,
             cityCode: I
         });
-        var f = h[a].area, g = [], m = [];
+        var f = h[a].area,
+            g = [],
+            m = [];
         if (null != f && f.length > 0) {
             for (var u in f) {
-                var l = f[u].name, p = f[u].id;
+                var l = f[u].name,
+                    p = f[u].id;
                 g.push(l), m.push(p);
             }
             s.setData({
@@ -551,19 +588,23 @@ Page({
         });
     },
     getItemIndex: function(e, t) {
-        for (var a = e.length; a--; ) if (e[a] === t) return a;
+        for (var a = e.length; a--;)
+            if (e[a] === t) return a;
         return -1;
     },
     setAreaDataShow: function(e, t, a, i) {
         var r = this;
-        if (null != e) p = e, n.push(t), o.push(e); else {
+        if (null != e) p = e, n.push(t), o.push(e);
+        else {
             var d = r.getItemIndex(n, t);
             p = d >= 0 ? o[d] : [];
         }
-        var u = [], l = [];
+        var u = [],
+            l = [];
         if (p && p.length > 0) {
             for (var h in p) {
-                var v = h.id, I = h.name;
+                var v = h.id,
+                    I = h.name;
                 u.push(v), l.push(I);
             }
             r.setData({
@@ -578,13 +619,17 @@ Page({
     },
     setStreetData: function(e, t, a, i) {
         var n = this;
-        if (null != e) s.push(regionId), r.push(e), h = e; else {
+        if (null != e) s.push(regionId), r.push(e), h = e;
+        else {
             var o = n.getItemIndex(s, t);
             h = o >= 0 ? r[o] : [];
         }
     },
     setAreaData: function(e, t, n, o) {
-        var s = this, e = e || 0, t = t || 0, o = (n = n || 0) || 0;
+        var s = this,
+            e = e || 0,
+            t = t || 0,
+            o = (n = n || 0) || 0;
         void 0 == i || null == i ? wx.request({
             url: a.getUrl("GetRegionsOfProvinceCity"),
             async: !1,
@@ -596,8 +641,8 @@ Page({
     },
     changeArea: function(e) {
         var t = this;
-        d = e.detail.value[0], c = e.detail.value[1], u = e.detail.value.length > 2 ? e.detail.value[2] : 0, 
-        l = 0, console.log("省:" + d + "市:" + c + "区:" + u), t.setAreaData(d, c, u, l);
+        d = e.detail.value[0], c = e.detail.value[1], u = e.detail.value.length > 2 ? e.detail.value[2] : 0,
+            l = 0, console.log("省:" + d + "市:" + c + "区:" + u), t.setAreaData(d, c, u, l);
     },
     showDistpicker: function() {
         this.setData({
@@ -605,7 +650,8 @@ Page({
         });
     },
     distpickerCancel: function() {
-        var e = this, t = e.data.InvoiceEnty.ReceiveRegionName;
+        var e = this,
+            t = e.data.InvoiceEnty.ReceiveRegionName;
         this.setData({
             showDistpicker: !1,
             fullAddress: t,
@@ -633,15 +679,15 @@ Page({
     submitOrder: function(t) {
         var i = this;
         if (void 0 == i.data.FromPage && (i.data.FromPage = ""), (i.data.FromPage && i.data.BuyAmount <= 0 || "" == i.data.ProductSku || void 0 == i.data.ProductSku) && wx.showModal({
-            title: "提示",
-            content: "参数错误",
-            showCancel: !1,
-            success: function(e) {
-                e.confirm && wx.switchTab({
-                    url: "../home/home"
-                });
-            }
-        }), null == i.data.ShippingAddressInfo || void 0 == i.data.ShippingAddressInfo) return this.setData({
+                title: "提示",
+                content: "参数错误",
+                showCancel: !1,
+                success: function(e) {
+                    e.confirm && wx.switchTab({
+                        url: "../home/home"
+                    });
+                }
+            }), null == i.data.ShippingAddressInfo || void 0 == i.data.ShippingAddressInfo) return this.setData({
             isEnable: !1
         }), void wx.showModal({
             title: "提示",
@@ -656,36 +702,38 @@ Page({
             isEnable: !0
         }), a.getOpenId(function(n) {
             var o;
-                 
+
             wx.request({
                 url: a.getUrl("SubmitOrder"),
                 data: (o = {
-                    openId: n,
-                    fromPage: i.data.FromPage,
-                    shippingId: i.data.ShippingAddressInfo.ShippingId,
-                    couponCode: i.data.DefaultCouponCode,
-                    countDownId: i.data.CountdownId,
-                    buyAmount: i.data.BuyAmount,
-                    productSku: i.data.ProductSku,
-                    remark: i.data.Remark,
-                    deductionPoints: i.data.DeductionPoints,
-                    formId: t.detail.formId,
-                    NeedInvoice: i.data.IsOpenInvoice,
-                    InvoiceId: i.data.InvoiceId,
-                    usebalance: i.data.isUseRedPacket == true ? i.data.usebalance : 0
-                }, e(o, "fromPage", i.data.FromPage), e(o, "shippingType", i.data.ShippType), e(o, "shiptoDate", i.data.SendTime), 
-                o),
+                        openId: n,
+                        fromPage: i.data.FromPage,
+                        shippingId: i.data.ShippingAddressInfo.ShippingId,
+                        couponCode: i.data.DefaultCouponCode,
+                        countDownId: i.data.CountdownId,
+                        buyAmount: i.data.BuyAmount,
+                        productSku: i.data.ProductSku,
+                        remark: i.data.Remark,
+                        deductionPoints: i.data.DeductionPoints,
+                        formId: t.detail.formId,
+                        NeedInvoice: i.data.IsOpenInvoice,
+                        InvoiceId: i.data.InvoiceId,
+                        usebalance: i.data.isUseRedPacket == true ? i.data.usebalance : 0
+                    }, e(o, "fromPage", i.data.FromPage), e(o, "shippingType", i.data.ShippType), e(o, "shiptoDate", i.data.SendTime),
+                    o),
                 header: {
                     "content-type": "application/x-www-form-urlencoded"
                 },
                 method: "post",
                 success: function(e) {
-                    if ("OK" == e.data.Status) if (e.data.OrderTotal > 0) {
-                        var t = e.data.OrderId;
-                        a.orderPay(t, 0, !1);
-                    } else wx.redirectTo({
-                        url: "../orderlist/orderlist?status=2"
-                    }); else wx.showModal({
+                    if ("OK" == e.data.Status)
+                        if (e.data.OrderTotal > 0) {
+                            var t = e.data.OrderId;
+                            a.orderPay(t, 0, !1);
+                        } else wx.redirectTo({
+                            url: "../orderlist/orderlist?status=2"
+                        });
+                    else wx.showModal({
                         title: "提示",
                         content: e.data.Message,
                         showCancel: !1
@@ -708,7 +756,7 @@ Page({
                 pageIndex: 1,
                 pageSize: 1
             },
-            success: function (res) {
+            success: function(res) {
                 console.log(res)
                 tm.setData({
                     balance: (res.data.balance).toFixed(2)
@@ -717,7 +765,7 @@ Page({
             }
         });
     },
-    changeNm: function (e) {
+    changeNm: function(e) {
         var tm = this;
         var xy = (tm.data.OrderTotalPrice - tm.data.usebalance).toFixed(2)
         console.log(xy)

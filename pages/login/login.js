@@ -11,12 +11,9 @@ Page({
 
         // this.quickLogin()
     },
-    onReady: function() {},
     onShow: function() {
         // this.quickLogin()
     },
-    onHide: function() {},
-    onUnload: function() {},
     bindUserNameInput: function(e) {
         this.setData({
             userName: e.detail.value
@@ -32,7 +29,8 @@ Page({
         });
     },
     loginbyUser: function(a) {
-        var s = this.data.userName, t = this.data.password;
+        var s = this.data.userName,
+            t = this.data.password;
         t.length < 6 ? wx.showModal({
             title: "提示",
             content: "密码长度不能少于6位",
@@ -84,10 +82,10 @@ Page({
                     ReferralUserId: s
                 },
                 success: function(a) {
-                    void 0 == a.data.error_response ? a.data.Data.IsBindUser ? (e.setUserInfo(a.data.Data), 
-                    wx.switchTab({
-                        url: "../usehome/usehome"
-                    })) : wx.redirectTo({
+                    void 0 == a.data.error_response ? a.data.Data.IsBindUser ? (e.setUserInfo(a.data.Data),
+                        wx.switchTab({
+                            url: "../usehome/usehome"
+                        })) : wx.redirectTo({
                         url: "../relationlogin/relationlogin"
                     }) : hishop.showTip(a.data.error_response.sub_msg);
                 }

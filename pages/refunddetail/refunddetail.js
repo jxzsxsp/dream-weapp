@@ -1,5 +1,5 @@
-var t = require("../../utils/util.js"), e = getApp();
-
+var t = require("../../utils/util.js"),
+    e = getApp();
 Page({
     data: {
         RefundInfo: null,
@@ -14,7 +14,8 @@ Page({
         });
     },
     onLoad: function(t) {
-        var n = this, a = t.id;
+        var n = this,
+            a = t.id;
         e.getOpenId(function(t) {
             wx.request({
                 url: e.getUrl("GetRefundDetail"),
@@ -24,7 +25,8 @@ Page({
                 },
                 success: function(t) {
                     if ("OK" == t.data.Status) {
-                        var e = t.data.Data, a = [];
+                        var e = t.data.Data,
+                            a = [];
                         "".length > 0 && (a = "".split(",")), n.setData({
                             RefundInfo: e,
                             Credentials: a
@@ -47,11 +49,12 @@ Page({
         });
     },
     ShowProgress: function(e) {
-        var n = this, a = {
-            status: parseInt(e.Status),
-            time: t.formatTime(e.ApplyForTime),
-            finishedTime: t.formatTime(e.DealTime)
-        };
+        var n = this,
+            a = {
+                status: parseInt(e.Status),
+                time: t.formatTime(e.ApplyForTime),
+                finishedTime: t.formatTime(e.DealTime)
+            };
         n.setData({
             ProgressStatue: a
         });
@@ -61,12 +64,5 @@ Page({
         wx.navigateTo({
             url: "../productdetail/productdetail?id=" + e
         });
-    },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

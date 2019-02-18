@@ -18,16 +18,12 @@ Page({
         SubMemberAllSplittin: "",
         peoNum:0
     },
-    onLoad: function(e) {},
-    onReady: function() {},
     onShow: function() {
         var e = this;
         e.setData({
             PageIndex: 1
         }), e.loadData(e, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onPullDownRefresh: function() {
         var e = this;
         e.loadData(e, !1);

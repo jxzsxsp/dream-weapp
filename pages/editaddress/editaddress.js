@@ -131,7 +131,7 @@ Page({
     bindSaveTapTap: function(t) {
         var a = this;
         console.log(t)
-        
+
         if (!(/^1[34578]\d{9}$/.test(a.data.CellPhone))) {
             // tm.setData({
             //     phoneFocus: true

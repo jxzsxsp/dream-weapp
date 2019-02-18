@@ -36,16 +36,9 @@ Page({
             url: "../applicationpromotion/applicationpromotion"
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
     ReturnUp: function() {
         wx.switchTab({
             url: "../usehome/usehome"
         });
-    },
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

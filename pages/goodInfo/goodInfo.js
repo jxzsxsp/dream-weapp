@@ -1,10 +1,6 @@
 var conf = require("../../utils/config.js"),
     app = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         nullDraw: app.getRequestUrl + "/Templates/xcxshop/images/null.png",
         isHotState: true,
@@ -34,10 +30,6 @@ Page({
         SkuID: "",
         goodInfo: {}
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function(options) {
         // const scene = decodeURIComponent(query.scene)
         // var scene = decodeURIComponent(options.scene)
@@ -65,8 +57,6 @@ Page({
                 userInfo: t
             })
         });
-
-        // 执行倒计时函数    
         this.getTitle();
         this.getGoodInfo()
         this.countDown();
@@ -84,16 +74,6 @@ Page({
             url: "../productdetail/productdetail?id=" + event.currentTarget.dataset.productid
         });
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function() {
         this.GetShopCart();
     },
@@ -200,23 +180,6 @@ Page({
             });
         });
     },
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     // onPullDownRefresh: function () {
     //     this.setData({
     //         brandRush: [],
@@ -234,10 +197,6 @@ Page({
             goTopStatus: false
         })
     },
-
-    /**
-     * 用户点击右上角分享
-     */
     onShareAppMessage: function() {
         var tm = this;
         var title = tm.data.mainTitle;
@@ -369,9 +328,6 @@ Page({
                 })
             }
         }
-    },
-    loadData: function(e) {
-
     },
     goToBuyGoods: function(event) {
         var tm = this;
@@ -640,9 +596,6 @@ Page({
                 goodsId: tm.data.goodsId,
                 goodsSource: tm.data.goodsSource,
                 brandId: tm.data.brandId
-                // goodsId: "2c9089c268833f0801688e52bf4e17bc",
-                // goodsSource: "dadacang",
-                // brandId: "2c9089c268833f0801688e04a5421485"
             },
             success: function(jd) {
                 tm.setData({

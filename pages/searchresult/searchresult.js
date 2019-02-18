@@ -1,5 +1,4 @@
 var t = getApp();
-
 Page({
     data: {
         ProductList: null,
@@ -21,13 +20,13 @@ Page({
         imgUrl: ''
     },
     onLoad: function(q) {
-        var tm =this;
+        var tm = this;
         q.ReferralUserId && t.setRefferUserId(q.ReferralUserId);
-        var pages = getCurrentPages()    //获取加载的页面
-        var currentPage = pages[pages.length - 1]    //获取当前页面的对象
-        var url = currentPage.route    //当前页面url
-        var options = currentPage.options    //如果要获取url中所带的参数可以查看options
-        if(q.imgUrl) {
+        var pages = getCurrentPages() //获取加载的页面
+        var currentPage = pages[pages.length - 1] //获取当前页面的对象
+        var url = currentPage.route //当前页面url
+        var options = currentPage.options //如果要获取url中所带的参数可以查看options
+        if (q.imgUrl) {
             this.setData({
                 imgUrl: q.picUrl
             })
@@ -42,12 +41,9 @@ Page({
             CategoryId: e
         }), r.loadData(r, !1);
     },
-    onReady: function() {},
     onShow: function() {
         this.GetShopCart();
     },
-    onHide: function() {},
-    onUnload: function() {},
     onSearch: function(t) {
         var a = this;
         a.setData({
@@ -105,7 +101,7 @@ Page({
                 url: r
             });
     },
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
         var tm = this;
         var i = '';
         var title = '商品列表'
@@ -115,7 +111,7 @@ Page({
         } else {
             i = '/pages/searchresult/searchresult?CategoryId=' + tm.data.CategoryId;
         }
-            e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
         return {
             title: title,
             path: i,
@@ -143,7 +139,7 @@ Page({
                     sortOrder: a.data.SortOrder
                 },
                 success: function(t) {
-                    if (t.statusCode==200) {
+                    if (t.statusCode == 200) {
                         var r = t.data.Data;
                         if (e) {
                             var u = a.data.ProductList;

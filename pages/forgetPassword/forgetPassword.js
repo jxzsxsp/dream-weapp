@@ -1,9 +1,9 @@
-var e = require("../../utils/config.js"), t = getApp();
-
+var e = require("../../utils/config.js"),
+    t = getApp();
 Page({
     data: {
         TypeIndex: -1,
-        TypeList: [ "手机找回密码", "邮箱找回密码" ],
+        TypeList: ["手机找回密码", "邮箱找回密码"],
         CodeType: 1,
         isHidePage1: !1,
         NeedValidate: 0,
@@ -107,12 +107,5 @@ Page({
                 complete: function() {}
             });
         });
-    },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

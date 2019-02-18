@@ -1,6 +1,5 @@
 var t = require("../../utils/config.js"),
     e = getApp();
-
 Page({
     data: {
         isNewShow: true,
@@ -135,7 +134,7 @@ Page({
                 },
                 success: function(t) {
                     t.data.referralUserId && e.setRefferUserId(t.data.referralUserId);
-                    e.getUserInfo(function (f) {
+                    e.getUserInfo(function(f) {
                         debugger
                         wx.request({
                             url: e.getUrl("YTALUpdateReferralUserId"),
@@ -143,10 +142,10 @@ Page({
                                 openId: f.OpenId,
                                 ReferralUserId: t.data.referralUserId
                             },
-                            success: function (res) {
+                            success: function(res) {
                                 debugger;
                             },
-                            complete: function () {
+                            complete: function() {
                                 wx.hideNavigationBarLoading(), wx.stopPullDownRefresh();
                             }
                         });

@@ -9,7 +9,8 @@ Page({
         });
     },
     onShareAppMessage: function(o) {
-        var n = this, t = o.webViewUrl;
+        var n = this,
+            t = o.webViewUrl;
         return {
             path: "/pages/outurl/outurl?url=" + encodeURIComponent(t),
             success: function(o) {
@@ -23,11 +24,5 @@ Page({
             },
             fail: function(o) {}
         };
-    },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {}
+    }
 });

@@ -39,11 +39,5 @@ Page({
         }), this.setData({
             isCheck: !o
         });
-    },
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

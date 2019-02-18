@@ -1,5 +1,5 @@
-var t = require("../../utils/config.js"), e = getApp();
-
+var t = require("../../utils/config.js"),
+    e = getApp();
 Page({
     data: {
         openId: "",
@@ -9,27 +9,23 @@ Page({
         isempty: !0,
         Points: 0
     },
-    onLoad: function(t) {},
-    onReady: function() {},
     onShow: function() {
         var t = this;
         t.setData({
             PageIndex: 1
         }), t.loadData(t, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onPullDownRefresh: function() {
         var t = this;
         t.loadData(t, !1);
     },
     onReachBottom: function() {
-        var t = this, e = t.data.PageIndex + 1;
+        var t = this,
+            e = t.data.PageIndex + 1;
         t.setData({
             PageIndex: e
         }), t.loadData(t, !0);
     },
-    onShareAppMessage: function() {},
     loadData: function(a, n) {
         wx.showLoading({
             title: "加载中"
@@ -43,7 +39,8 @@ Page({
                 },
                 success: function(e) {
                     if (void 0 == e.data.error_response) {
-                        var o = e.data.userpoint_get_response.List, i = e.data.userpoint_get_response;
+                        var o = e.data.userpoint_get_response.List,
+                            i = e.data.userpoint_get_response;
                         if (n) {
                             var s = a.data.pointList;
                             s.push.apply(s, o), a.setData({

@@ -1,10 +1,6 @@
 var conf = require("../../utils/config.js"),
     app = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         brandRush: [],
         brandCate: [],
@@ -18,10 +14,6 @@ Page({
         selectedTag: "",
         selectedImg: "",
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function(a) {
         a.ReferralUserId && app.setRefferUserId(a.ReferralUserId);
         var tm = this;

@@ -1,5 +1,5 @@
-var e = require("../../utils/config.js"), a = getApp();
-
+var e = require("../../utils/config.js"),
+    a = getApp();
 Page({
     data: {
         BannerUrl: "",
@@ -10,15 +10,15 @@ Page({
         PhoneCode: ""
     },
     onLoad: function(e) {
-        a.globalData.ReferralInfo.ReferralCellPhone && (a.globalData.ReferralInfo.ReferralExtInfo.CellPhone = a.globalData.ReferralInfo.ReferralCellPhone), 
-        this.setData({
-            VcodeUrl: a.getRequestUrl + "/VerifyCodeImage.aspx?openid=" + a.globalData.openId,
-            UserCredentials: a.globalData.ReferralInfo.BannerUrl,
-            BannerUrl: a.globalData.ReferralInfo.BannerUrl,
-            ShopName: a.globalData.ReferralInfo.ShopName,
-            Email: a.globalData.ReferralInfo.ReferralExtInfo.Email,
-            Phone: a.globalData.ReferralInfo.ReferralExtInfo.CellPhone
-        });
+        a.globalData.ReferralInfo.ReferralCellPhone && (a.globalData.ReferralInfo.ReferralExtInfo.CellPhone = a.globalData.ReferralInfo.ReferralCellPhone),
+            this.setData({
+                VcodeUrl: a.getRequestUrl + "/VerifyCodeImage.aspx?openid=" + a.globalData.openId,
+                UserCredentials: a.globalData.ReferralInfo.BannerUrl,
+                BannerUrl: a.globalData.ReferralInfo.BannerUrl,
+                ShopName: a.globalData.ReferralInfo.ShopName,
+                Email: a.globalData.ReferralInfo.ReferralExtInfo.Email,
+                Phone: a.globalData.ReferralInfo.ReferralExtInfo.CellPhone
+            });
     },
     DeleteImg: function() {
         var a = this;
@@ -34,7 +34,7 @@ Page({
         a.getRequestUrl;
         n.data.BannerUrl ? wx.previewImage({
             current: n.data.BannerUrl,
-            urls: [ n.data.BannerUrl ]
+            urls: [n.data.BannerUrl]
         }) : wx.chooseImage({
             count: 1,
             success: function(e) {
@@ -46,7 +46,8 @@ Page({
         });
     },
     UploadImage: function(e) {
-        var n = "", o = this;
+        var n = "",
+            o = this;
         a.getOpenId(function(t) {
             wx.uploadFile({
                 url: a.getUrl("UploadAppletImage"),
@@ -114,11 +115,5 @@ Page({
     InputValue: function(e) {
         var a = e.currentTarget.dataset.key;
         this.data[a] = e.detail.value;
-    },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {}
+    }
 });

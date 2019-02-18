@@ -1,5 +1,4 @@
 var o = getApp();
-
 Page({
     data: {
         OpenReferral: "",
@@ -28,7 +27,7 @@ Page({
                 success: function(t) {
                     o.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 },
-                complete: function () {
+                complete: function() {
                     wx.stopPullDownRefresh()
                 }
             });
@@ -42,7 +41,7 @@ Page({
         this.setData({
             OpenReferral: o.globalData.siteInfo.OpenReferral
         });
-       
+
     },
     onShow: function() {
         var o = this;
@@ -57,10 +56,10 @@ Page({
         o.globalData.isReloadUser = "1", o.getUserInfo(function(t) {
             n.setData({
                 userInfo: t
-            // }), t.IsTrustLogon ? o.globalData.siteInfo.QuickLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
-            //     url: "../phonevefcode/phonevefcode"
-            // }) : o.globalData.siteInfo.UserLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
-            //     url: "../phonevefcode/phonevefcode"
+                // }), t.IsTrustLogon ? o.globalData.siteInfo.QuickLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
+                //     url: "../phonevefcode/phonevefcode"
+                // }) : o.globalData.siteInfo.UserLoginIsForceBindingMobbile && !t.CellPhoneVerification && wx.redirectTo({
+                //     url: "../phonevefcode/phonevefcode"
             });
         });
         this.getOrderCount()
@@ -71,16 +70,16 @@ Page({
             url: "../orderlist/orderlist?status=" + n
         });
     },
-    bindHelp:function(){
-      wx.navigateTo({
-        url: "/pages/webPage/webPage"
-      });
+    bindHelp: function() {
+        wx.navigateTo({
+            url: "/pages/webPage/webPage"
+        });
     },
-    bindAtention: function () {
-      wx.navigateTo({
-        // url: "/pages/myAtention/myAtention"
-          url: "/pages/myFocus/myFocus"
-      });
+    bindAtention: function() {
+        wx.navigateTo({
+            // url: "/pages/myAtention/myAtention"
+            url: "/pages/myFocus/myFocus"
+        });
     },
     bindApply: function(o) {
         wx.navigateTo({
@@ -178,10 +177,10 @@ Page({
     },
     bindxiaji: function(e) {
         wx.navigateTo({
-            url:"../myteam/myteam"
+            url: "../myteam/myteam"
         });
     },
-    bindfans: function (e) {
+    bindfans: function(e) {
         wx.navigateTo({
             url: "../myfans/myfans"
         });
@@ -191,18 +190,18 @@ Page({
             url: '/pages/discovery/discovery'
         })
     },
-    goToCode: function () {
+    goToCode: function() {
         var tm = this;
         wx.navigateTo({
             url: "../a/a?id=" + tm.data.userInfo.UserId + "&src=" + tm.data.userInfo.picture
         });
     },
-    bindwallet:function(){
+    bindwallet: function() {
         wx.navigateTo({
             url: "../wallet/wallet"
         });
     },
-    bindXieyi:function(e){
+    bindXieyi: function(e) {
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + e.currentTarget.dataset.id
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
@@ -214,15 +213,15 @@ Page({
             url: s
         })
     },
-    getOrderCount: function () {
+    getOrderCount: function() {
         var tm = this;
-        o.getOpenId(function (n) {
+        o.getOpenId(function(n) {
             wx.request({
                 url: o.getUrl("YTALGetMenberOrderTotal"),
                 data: {
                     openId: n
                 },
-                success: function (res) {
+                success: function(res) {
                     tm.setData({
                         orderCount: res.data
                     })

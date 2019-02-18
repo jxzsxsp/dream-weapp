@@ -65,14 +65,10 @@ Page({
             url: "../applysendgood/applysendgood?id=" + e + "&&skuId=" + a
         });
     },
-    onReady: function() {},
     onShow: function() {
         var t = this;
         t.loadData(t, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
     onReachBottom: function() {
         var t = this;
         t.loadData(t, !0);

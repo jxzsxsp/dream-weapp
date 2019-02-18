@@ -1,5 +1,4 @@
 var a = getApp();
-
 Page({
     data: {
         pageSize: 10,
@@ -49,20 +48,16 @@ Page({
             url: "../countdowndetail/countdowndetail?id=" + t
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
     onReachBottom: function() {
-        var a = this, t = a.data.pageIndex;
+        var a = this,
+            t = a.data.pageIndex;
         console.log(t), a.setData({
             pageIndex: t + 1
         }), a.loadData(this, !0);
     },
     onShareAppMessage: function(t) {
         var e = "/pages/countdown/countdown";
-        return a.globalData.userInfo && a.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + a.globalData.userInfo.UserId), 
-        {
+        return a.globalData.userInfo && a.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + a.globalData.userInfo.UserId), {
             title: "限时抢购",
             path: e,
             success: function(a) {

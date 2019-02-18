@@ -1,7 +1,11 @@
 function t(t) {
-    var e = parseInt(t / 86400), a = parseInt(t % 86400 / 3600), n = parseInt(t % 3600 / 60), o = parseInt(t % 3600 % 60), i = "";
-    return e > 0 && (i += e + "天"), a < 10 && (a = "0" + a), n < 10 && (n = "0" + n), 
-    o < 10 && (o = "0" + o), i += a + ":" + n + ":" + o;
+    var e = parseInt(t / 86400),
+        a = parseInt(t % 86400 / 3600),
+        n = parseInt(t % 3600 / 60),
+        o = parseInt(t % 3600 % 60),
+        i = "";
+    return e > 0 && (i += e + "天"), a < 10 && (a = "0" + a), n < 10 && (n = "0" + n),
+        o < 10 && (o = "0" + o), i += a + ":" + n + ":" + o;
 }
 
 function e(a, n) {
@@ -26,7 +30,8 @@ function a(e, n) {
     }, 1e3);
 }
 
-var n = getApp(), o = require("../wxParse/wxParse.js");
+var n = getApp(),
+    o = require("../wxParse/wxParse.js");
 
 Page({
     data: {
@@ -76,7 +81,8 @@ Page({
     },
     onLoad: function(t) {
         t.ReferralUserId && n.setRefferUserId(t.ReferralUserId);
-        var o = this, i = t.id;
+        var o = this,
+            i = t.id;
         n.getOpenId(function(t) {
             wx.request({
                 url: n.getUrl("GetCountDownProductDetail"),
@@ -88,11 +94,14 @@ Page({
                     if ("OK" == t.data.Status) {
                         var n = t.data.Data;
                         if (n.NowTime < n.StartDate) {
-                            var i = new Date(n.NowTime), s = (u = new Date(n.StartDate)).getTime() - i.getTime();
+                            var i = new Date(n.NowTime),
+                                s = (u = new Date(n.StartDate)).getTime() - i.getTime();
                             e(o, r = s / 1e3);
                         }
                         if (n.NowTime > n.StartDate && n.NowTime < n.EndDate) {
-                            var i = new Date(n.NowTime), u = new Date(n.EndDate), r = (s = u.getTime() - i.getTime()) / 1e3;
+                            var i = new Date(n.NowTime),
+                                u = new Date(n.EndDate),
+                                r = (s = u.getTime() - i.getTime()) / 1e3;
                             a(o, r);
                         }
                         var c = "";
@@ -143,9 +152,9 @@ Page({
         });
     },
     onShareAppMessage: function() {
-        var t = this, e = "../countdowndetail/countdowndetail?id=" + t.data.CountDownId;
-        return n.globalData.userInfo && n.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + n.globalData.userInfo.UserId), 
-        {
+        var t = this,
+            e = "../countdowndetail/countdowndetail?id=" + t.data.CountDownId;
+        return n.globalData.userInfo && n.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + n.globalData.userInfo.UserId), {
             title: "限时抢购" + t.data.ProductName,
             path: e,
             success: function(t) {
@@ -156,10 +165,6 @@ Page({
             }
         };
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
     getCoupon: function(t) {
         var e = t.currentTarget.id;
         n.getOpenId(function(t) {
@@ -219,7 +224,9 @@ Page({
         });
     },
     changeAmount: function(t) {
-        var e = this, a = parseInt(t.detail.value), n = e.data.MaxCount;
+        var e = this,
+            a = parseInt(t.detail.value),
+            n = e.data.MaxCount;
         if (n > e.data.skuStock && (n = e.data.skuStock), isNaN(a) || a > n || a <= 0) return e.setData({
             buyAmount: n
         }), void wx.showModal({
@@ -244,31 +251,42 @@ Page({
         });
     },
     commitBuy: function(t) {
-        for (var e = !0, a = 0; a < this.data.selectedskuList.length; a++) if (void 0 == this.data.selectedskuList[a] || "" == this.data.selectedskuList[a] || null == this.data.selectedskuList[a]) {
-            e = !1;
-            break;
-        }
-        if (this.data.selectedskuList.length == this.data.SkuItemList.length && e) if (this.data.buyAmount <= 0) wx.showModal({
-            title: "提示",
-            content: "请输入要购买的数量",
-            showCancel: !1
-        }); else {
-            var n = this.data.buyAmount, o = this.data.selectedSku, i = this.data.CountDownId;
-            wx.navigateTo({
-                url: "../submitorder/submitorder?productsku=" + o + "&buyamount=" + n + "&frompage=countdown&countdownid=" + i
+        for (var e = !0, a = 0; a < this.data.selectedskuList.length; a++)
+            if (void 0 == this.data.selectedskuList[a] || "" == this.data.selectedskuList[a] || null == this.data.selectedskuList[a]) {
+                e = !1;
+                break;
+            }
+        if (this.data.selectedskuList.length == this.data.SkuItemList.length && e)
+            if (this.data.buyAmount <= 0) wx.showModal({
+                title: "提示",
+                content: "请输入要购买的数量",
+                showCancel: !1
             });
-        } else wx.showModal({
+            else {
+                var n = this.data.buyAmount,
+                    o = this.data.selectedSku,
+                    i = this.data.CountDownId;
+                wx.navigateTo({
+                    url: "../submitorder/submitorder?productsku=" + o + "&buyamount=" + n + "&frompage=countdown&countdownid=" + i
+                });
+            }
+        else wx.showModal({
             title: "提示",
             content: "请选择规格",
             showCancel: !1
         });
     },
     onSkuClick: function(t) {
-        var e = this, a = t.target.dataset.indexcount, n = t.target.id, o = t.target.dataset.skuvalue, i = new Object();
+        var e = this,
+            a = t.target.dataset.indexcount,
+            n = t.target.id,
+            o = t.target.dataset.skuvalue,
+            i = new Object();
         i.valueid = n, i.value = o;
         var s = this.data.selectedskuList;
         s[a] = i;
-        var u = "", r = this.data.SkuItemList;
+        var u = "",
+            r = this.data.SkuItemList;
         r.length, s.length;
         for (var c = this.data.ProductId, d = 0; d < s.length; d++) {
             var l = s[d];
@@ -277,7 +295,7 @@ Page({
         var h = null;
         e.data.Skus.forEach(function(t, a, n) {
             for (var o = !0, i = 0; i < s.length; i++) void 0 != s[i] && -1 != t.SkuId.indexOf("_" + s[i].valueid) || (o = !1);
-            if (o && r.length == s.length) return h = t, c = t.SkuId, void (e.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
+            if (o && r.length == s.length) return h = t, c = t.SkuId, void(e.data.buyAmount = t.CartQuantity > 0 ? t.CartQuantity : 1);
         });
         r[a];
         for (var S = 0; S < r[a].AttributeValue.length; S++) r[a].AttributeValue[S].ValueId == n ? r[a].AttributeValue[S].UseAttributeImage = "selected" : r[a].AttributeValue[S].UseAttributeImage = "False";
