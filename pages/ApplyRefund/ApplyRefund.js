@@ -46,11 +46,16 @@ Page({
             url: "../login/login"
         }); else if ("OK" == t.Status) {
             var n = [];
-            t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款"), t.CanReturnOnStore && n.push("到店退款")
+            // t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款"), t.CanReturnOnStore && n.push("到店退款")
             // n.push("退到银行卡"), this.setData({
             //     RefundMoney: t.MaxRefundAmount,
             //     RefundTextList: n
             // });
+            t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款")
+            this.setData({
+                RefundMoney: t.MaxRefundAmount,
+                RefundTextList: n
+            });
         } else wx.showModal({
             title: "提示",
             content: t.Message,
