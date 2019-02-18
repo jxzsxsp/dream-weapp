@@ -1,11 +1,11 @@
 page {
     /* background-color: #0a023a; */
-    background: #ba050f
+    background: #3c3b45
 }
 
 .homecont {
     /* background-color: #0a023a; */
-    background: #ba050f
+    background: #3c3b45
 }
 
 image {
@@ -31,7 +31,7 @@ image {
 .tabline{
     width: 60rpx;
     height: 2px;
-    background: #fff;
+    background: rgb(233, 26, 26);
     margin-top: 6rpx;
     margin-left: 40rpx;
     opacity: 0;

@@ -1,7 +1,6 @@
 {
     "backgroundTextStyle": "white",
-    "navigationBarBackgroundColor": "#ba050f",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "亚太奥莱",
-    "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
 }

@@ -1,27 +1,24 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <import src="../common/templeates.wxml"></import>
 <view class="homecont" style="z-index:998;width:750rpx;max-width:750rpx;overflow:hidden;">
-    <view style='width:750rpx;height:70rpx;background:#8e0009;font-size:24rpx;color:#edbec1;z-index:1000;position:fixed;top:0rpx;left:0;display:flex;flex-direction:row;justify-content:center;align-items: center;'>
-        <text style='margin-left:120rpx'>点击</text>
+    <!-- <view style='width:750rpx;height:70rpx;background:#fff;font-size:24rpx;color:#edbec1;z-index:1000;position:fixed;top:0rpx;left:0;display:flex;flex-direction:row;justify-content:center;align-items: center;background:url("http://cos.qkmai.com/qkmbb/ytal/syxcx.png") no-repeat center top;background-size:cover'>
+        <!-- <text style='margin-left:120rpx'>点击</text>
         <image src="http://cos.qkmai.com/qkmbb/ytal/dianddtb.png" style='display:inline-block;width:34rpx;height:12rpx;margin:0 20rpx'></image>
         <text>添加到我的小程序</text>
-        <image src="http://cos.qkmai.com/qkmbb/ytal/shouzhitb.png" style='；display:inline-block;width:29rpx;height:38rpx;margin-left:30rpx'></image>
-    </view>
-    <view style='height:250rpx;background-color: #ba050f;z-index:1000;'>
-        <scroll-view scroll-x style="width: 100%;height:160rpx;white-space: nowrap; display: flex;background:#ba050f;position:fixed;top:70rpx;left:0;z-index:998;align-items:flex-start;">
-            <view style='position:fixed;z-index:998;width:750rpx;background:#ba050f'>
-                <view style='display:flex;flex-direction:row;justify-content:space-around;align-items: center;width:100%;background: url("http://cos.qkmai.com/qkmbb/ytal/searchbg_2.png") no-repeat center top;background-size:cover;width:750rpx;height:105rpx'>
-                    <view style='display:inline-block;'>
-                        <image src="http://cos.qkmai.com/qkmbb/ytal/hongbaotb.png" style='display:inline-block;width:118rpx;height:76rpx'></image>
-                    </view>
-                    <view style='color:#959595;font-size:24rpx;display:inline-block;background:#f5f5f5;width:470rpx;border-radius:30rpx;height:55rpx;display:flex;flex-direction:row;align-items: center;padding:0 20rpx' bindtap='GoToSearch'>
+        <image src="http://cos.qkmai.com/qkmbb/ytal/shouzhitb.png" style='；display:inline-block;width:29rpx;height:38rpx;margin-left:30rpx'></image> -->
+    <!-- </view> -->
+    <view style='height:180rpx;z-index:1000;'>
+        <scroll-view scroll-x style="width: 100%;height:160rpx;white-space: nowrap; display: flex;background:#3c3b45;position:fixed;top:0rpx;left:0;z-index:998;align-items:flex-start;">
+            <view style='position:fixed;z-index:998;width:750rpx;background:#3c3b45'>
+                <view style='display:flex;flex-direction:row;justify-content:space-around;align-items: center;width:100%;background-size:cover;width:750rpx;height:105rpx'>
+                    <view style='color:#959595;font-size:24rpx;display:inline-block;background:#f7f7f7;width:680rpx;border-radius:30rpx;height:55rpx;display:flex;flex-direction:row;align-items: center;padding:0 20rpx;justify-content:center' bindtap='GoToSearch'>
                         <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png' style='width:30rpx;height:30rpx;'></image>
                         <text style='color:#959595;font-size:24rpx;display:inline-block;line-height:64rpx;padding-left:20rpx'>搜商品关键字/VIP自购最高返40%</text>
                     </view>
-                    <view style='display:inline-block;position:relative'>
-                        <image src="http://cos.qkmai.com/qkmbb/ytal/zixuntb.png" style='display:inline-block;width:65rpx;height:57rpx'></image>
+                    <!-- <view style='display:inline-block;position:relative'>
+                        <image src="http://cos.qkmai.com/qkmbb/ytal/sykf.png" style='display:inline-block;width:65rpx;height:57rpx'></image>
                         <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
-                    </view>
+                    </view> -->
                 </view>
             </view>
             <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}' style='margin-top:105rpx'>
@@ -33,29 +30,32 @@
             </view>
         </scroll-view>
     </view>
+    <view style='background:#3c3b45' wx:if='{{selectedCate=="全场直播"}}'>
+
+        <image src='http://cos.qkmai.com/qkmbb/ytal/syvip.png' style='width:100%;height:224rpx;'></image>
+    </view>
     <!-- <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
     </template> -->
-    <view style='background-color: #ba050f;' wx:if='{{selectedCate=="全场直播"}}'>
-        <view wx:if="{{(DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName) && isLoadEnd}}" style='display:flex;flex-direction:column;background-color: #ba050f;justify-content:space-around;align-items: center;background: url("http://cos.qkmai.com/qkmbb/ytal/yindaobg.png") no-repeat center top;background-size:cover;width:750rpx;height:210rpx;'>
+    <!-- <view style='background-color: #fff;' wx:if='{{selectedCate=="全场直播"}}'>
+        <view wx:if="{{(DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName) && isLoadEnd}}" style='display:flex;flex-direction:column;background-color: #fff;justify-content:space-around;align-items: center;background: url("http://cos.qkmai.com/qkmbb/ytal/yindaobg.png") no-repeat center top;background-size:cover;width:750rpx;height:210rpx;'>
             <text style='color:#fff;font-size:28rpx;padding-top:30rpx;margin-bottom:-30rpx；color:#edbec1;font-style:italic'>VIP自购省钱，分享赚钱，最高返40%！</text>
             <view style='display:flex;flex-direction:row;justify-content:space-around;align-items: center;padding-bottom:20rpx;margin-top:-30rpx'>
-                <view style='color:#ba050f;border:1px solid #ba050f;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-right:20rpx;' bindtap='goToZZ'>我要试用</view>
+                <view style='color:#fff;border:1px solid #fff;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-right:20rpx;' bindtap='goToZZ'>我要试用</view>
                 <navigator url='/pages/longvip/longvip'>
-                    <view style='color:#ba050f;border:1px solid #ba050f;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-left:20rpx;'>正式VIP</view>
+                    <view style='color:#fff;border:1px solid #fff;padding:15rpx 30rpx;background:linear-gradient(180deg,#fff , #e07662);font-size:26rpx;border-radius:20px;margin-left:20rpx;'>正式VIP</view>
                 </navigator>
             </view>
         </view>
-        <!-- <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
-            <view style='width:750rpx;margin:0rpx auto;padding:0;font-size:0;z-index:99;' wx:if='{{selectedCate=="全场直播"}}' bindtap='onGetLink'>
+        <!-- <view class='show-box' style='font-size:0;' wx:if='{{selectedCate=="首页"}}'>
+            <view style='width:750rpx;margin:0rpx auto;padding:0;font-size:0;z-index:99;' wx:if='{{selectedCate=="首页"}}' bindtap='onGetLink'>
                 <image style='width:750rpx;padding:0;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/350yhq_3.png'></image>
             </view>
 
         </view> -->
-    </view>
-    <view style='width:750rpx;max-width:750rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:5rpx;;background: url("http://cos.qkmai.com/qkmbb/ytal/pinpaibg_2.png") no-repeat center top;background-size:cover;width:750rpx;height:390rpx;'
-        wx:if='{{selectedCate=="全场直播"}}'>
-
-        <!-- <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg_1.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image> -->
+    <!--</view> -->
+    <!-- <view style='width:750rpx;max-width:750rpx;overflow:hidden;display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;font-size:0;padding-top:30rpx;position:relative;padding-bottom:5rpx;;background: url("http://cos.qkmai.com/qkmbb/ytal/pinpaibg_2.png") no-repeat center top;background-size:cover;width:750rpx;height:390rpx;'
+        wx:if='{{selectedCate=="首页"}}'>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/pinpaibg_1.png' style='position:absolute;left:-10rpx;top:0;width:750rpx;height:430rpx;z-index:0;'></image> 
         <view style='z-idnex:3;width:750rpx;display:flex;flex-flow:row;justify-content:center'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/ptfw_1.png' style='width:613rpx;height:auto;margin:0 auto' mode='widthFix' lazy-load></image>
         </view>
@@ -64,25 +64,241 @@
                 <image style='box-sizing:border-box;width:110rpx;height:110rpx;border-radius:57.5rpx;height:auto;' mode='widthFix' lazy-load src='{{item.brandLogo}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'></image>
             </view>
         </view>
+    </view> -->
+    <view wx:if='{{selectedCate=="全场直播"}}' style='width:730rpx;margin:0 auto;positon:relative'>
+        <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
+            <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
+                <text style='font-size:32rpx;color:#daac7c;'>品牌甄选</text>
+                <!-- <text style='font-size:30rpx;color:#d8d8d8;margin-left:15rpx;'>正品/大牌/低价</text> -->
+            </view>
+            <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c' bindtap='goToBrand'>查看更多 ></view>
+        </view>
+        <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:710rpx;margin:0 auto;'>
+            <view style='position:relative;width:230rpx;height:360rpx;background:#daac7c;border-radius:20rpx;overflow:hidden' wx:for='{{topLogoList}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                <image src="{{item.goodsImages[0]}}" style='width:230rpx;height:230rpx'></image>
+                <view style='width: 210rpx;margin:20rpx auto;text-align:center;'>
+                    <!-- <view style='font-size:28rpx;margin-top:40rpx;text-align:center;color:#fff'>{{item.mainTitle}}</view> -->
+                    <view>
+                        <view style='font-size:16px;text-align:center;color:#fff;font-weight:700;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                            <text style='font-size:16px;'>折起</text>
+                        </view>
+                    </view>
+                    <view style='text-align:center;font-size:11px;color:#fff;'>最高分佣
+                        <text style='font-size:11px;text-align:center;color:#fff;font-weight:700;'>{{item.topCommissionRate}}%
+                        </text>
+                    </view>
 
+                    <!-- <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view> -->
+                </view>
+                <view style='position:absolute;top:160rpx;width:90rpx;height:90rpx;left:50%;margin-left:-45rpx;text-align:center;background:#fff;border-radius:45rpx;overflow:hidden'>
+                    <image src="{{item.brandLogo}}" style='width:60rpx;height:60rpx;margin:15rpx auto'></image>
+                </view>
+            </view>
+            <!-- <view style='position:relative;width:230rpx;height:380rpx;background:#616161;border-radius:20rpx;overflow:hidden'>
+                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
+                <view style='width:230rpx;height:150rpx;'>
+                    <view style='font-size:20rpx;margin-top:40rpx;text-align:center'>兰奥</view>
+                    <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view>
+                </view>
+                <view style='position:absolute;top:190rpx;width:150rpx;height:70rpx;left:50%;margin-left:-75rpx;text-align:center;background:#fff;border-radius:30rpx;overflow:hidden'>
+                    <image src="http://akim.oss-cn-shanghai.aliyuncs.com/20181206/f3251401ef5b451fb6e670112033dce2.jpg" style='width:130rpx;height:60rpx;margin:5rpx auto'></image>
+                </view>
+            </view>
+            <view style='position:relative;width:230rpx;height:380rpx;background:#616161;border-radius:20rpx;overflow:hidden'>
+                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
+                <view style='width:230rpx;height:150rpx;'>
+                    <view style='font-size:20rpx;margin-top:40rpx;text-align:center'>兰奥</view>
+                    <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view>
+                </view>
+                <view style='position:absolute;top:190rpx;width:150rpx;height:70rpx;left:50%;margin-left:-75rpx;text-align:center;background:#fff;border-radius:30rpx;overflow:hidden'>
+                    <image src="http://akim.oss-cn-shanghai.aliyuncs.com/20181206/f3251401ef5b451fb6e670112033dce2.jpg" style='width:130rpx;height:60rpx;margin:5rpx auto'></image>
+                </view>
+            </view>
+            <view style='position:relative;width:230rpx;height:380rpx;background:#616161;border-radius:20rpx;overflow:hidden'>
+                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
+                <view style='width:230rpx;height:150rpx;'>
+                    <view style='font-size:20rpx;margin-top:40rpx;text-align:center'>兰奥</view>
+                    <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view>
+                </view>
+                <view style='position:absolute;top:190rpx;width:150rpx;height:70rpx;left:50%;margin-left:-75rpx;text-align:center;background:#fff;border-radius:30rpx;overflow:hidden'>
+                    <image src="http://akim.oss-cn-shanghai.aliyuncs.com/20181206/f3251401ef5b451fb6e670112033dce2.jpg" style='width:130rpx;height:60rpx;margin:5rpx auto'></image>
+                </view>
+            </view> -->
+        </view>
     </view>
-    <view style='margin-left:10rpx;width:730rpx;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;' wx:if='{{selectedCate=="全场直播"}}'>
+    <!-- <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;margin-left:10rpx;width:730rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
         </navigator>
         <navigator style='margin-bottom:10rpx;' url='/pages/productdetail/productdetail?id=2386'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/haixian2.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;height:auto;' mode='widthFix' lazy-load></image>
         </navigator>
-        <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=5" data-id='5'>
+        <view bindtap='bindCouponsTap'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/alzm.png'></image>
         </view>
 
         <navigator url='/pages/webPage/webPage'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='z-index:99;width:360rpx;border-radius:20rpx;box-sizing:border-box;z-index:99;height:auto;' mode='widthFix' lazy-load></image>
-        </navigator>
-        <!-- <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=3" data-id='3'>
+        </navigator> -->
+    <!-- <view bindtap='goView' data-url="/pages/webPage/webPage?artUrl=https://ytal.qkmai.com/wapShop/ArticleDetails?ArticleId=3" data-id='3'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </view> -->
+    <!-- </view> -->
+    <!-- <view wx:if='{{selectedCate=="全场直播"}}'>
+        <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:700rpx;margin:0 auto;'>
+            <view style='font-size:30rpx;'>单品推荐</view>
+            <navigator style='margin-bottom:10rpx;' url='/pages/searchresult/searchresult?cid=34'>
+                <view style='font-size:26rpx;'>更多</view>
+            </navigator>
+        </view>
+        
+        <view style='display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;width:730rpx;margin:0 auto;'>
+            <view style='position:relative;width:230rpx;height:360rpx;background:#fff;' wx:for="{{getProductsList}}">
+                <image src="{{item.Pic}}" style='width:230rpx;height:230rpx'></image>
+                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>{{item.ProductName}}</view>
+                <view style='font-size:20rpx;text-align:left'>￥{{item.SalePrice}}</view>
+            </view>
+            <!-- <view style='position:relative;width:230rpx;height:300rpx;background:#fff;'>
+                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
+                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>环球海鲜</view>
+                <view style='font-size:20rpx;text-align:center'>￥299.00</view>
+            </view>
+            <view style='position:relative;width:230rpx;height:300rpx;background:#fff;'>
+                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
+                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>环球海鲜</view>
+                <view style='font-size:20rpx;text-align:center'>￥299.00</view>
+            </view>
+            <view style='position:relative;width:230rpx;height:300rpx;background:#fff;'>
+                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
+                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>环球海鲜</view>
+                <view style='font-size:20rpx;text-align:center'>￥299.00</view>
+            </view> 
+        </view>
+    </view> -->
+    <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
+        <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
+            <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
+                <text style='font-size:32rpx;color:#daac7c;'>捡漏专区</text>
+            </view>
+            <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
+                <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c'>查看更多 ></view>
+            </navigator>
+
+            <view style='display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;width:710rpx;margin:0 auto;'>
+                <block wx:for="{{rushGoodsList}}">
+                    <view style='width:100%;background:#fff;display:flex;flex-flow:row;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx'>
+                        <view style='width:75%;display:flex;flex-flow:row;justify-content:flex-start;height:240rpx'>
+                            <image src="{{item.goodsImages[0]}}" style='width:200rpx;height:200rpx;margin:20rpx' mode='widthFix'></image>
+                            <!-- <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view> -->
+                            <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
+                                <view style='font-size:11px;width:280rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.mainTitle}}</view>
+                                <view style='font-size:11px;width:100%'>
+                                    <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
+                                    <text class='marketPrice' style='text-decoration: line-through;'>¥{{filter.toFix(item.marketPrice,2)}}</text>
+                                </view>
+                                <view style='font-size:11px;width:100%'>折扣{{item.marketPriceDiscount}}折起</view>
+                            </view>
+
+                        </view>
+                        <view style='width:25%;background:#daac7c;display:flex;flex-direction:column;justify-content:center;align-items:center;;font-size:26rpx;color:#fff'>
+                            <view>VIP省/赚</view>
+                            <view>{{item.commissionMoney}}元</view>
+                        </view>
+                    </view>
+                </block>
+                <!-- <view style='width:100%;background:#fff;display:flex;flex-flow:row;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx'>
+                    <view style='width:75%;display:flex;flex-flow:row;justify-content:flex-start;height:220rpx'>
+                        <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view>
+                        <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
+                            <view style='font-size:11px;'>乐高创意百变系列……</view>
+                            <view style='font-size:11px;width:100%'>
+                                <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>134.2</text>
+                                <text class='marketPrice' style='text-decoration: line-through;'>¥169</text>
+                            </view>
+                            <view style='font-size:11px;width:100%'>折扣2.1折起</view>
+                        </view>
+                    </view>
+                    <view style='width:25%;background:#daac7c;display:flex;flex-direction:column;justify-content:center;align-items:center;;font-size:26rpx;color:#fff'>
+                        <view>VIP省/赚</view>
+                        <view>10.2元</view>
+                    </view>
+                </view> -->
+            </view>
+            
+        </view>
+
+    </view>
+    <view wx:if='{{selectedCate=="全场直播"}}' style='background:#3c3b45;margin:0rpx auto;'>
+        <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:100%;height:56rpx;'></image>
+    </view>
+    <view wx:if='{{selectedCate=="全场直播"}}' style='background:#3c3b45;background:#3c3b45;margin:0rpx auto;width:710rpx;'>
+        <view wx:key="{{item}}" wx:for='{{topLogoListLast}}' wx:for-index="bindex" style='padding-top:15rpx;margin-top:20rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
+            <view style='padding:60rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
+                    <image src='{{item.brandLogo}}' style='width:98%;height:auto;' mode='widthFix' lazy-load></image>
+                </view>
+                <!-- <view wx:if='{{item.goodsCount}}' style='width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>{{item.goodsCount? item.goodsCount : 0}}
+                    <text style="font-size:22rpx;color:#959595;">款</text>
+                </view>
+                <view wx:else style='display:none;width:98%;font-size:12px;text-align:center;padding-top:10rpx;font-size:26rpx;color:#db3c40;'>
+                    <text style="font-size:22rpx;color:#959595;">预告</text>
+                </view> -->
+            </view>
+            <view style='float:right:623rpx;position:relative;'>
+                <view style='position:absolute;top:-14rpx;right:148rpx;width:138rpx;height:86rpx;font-size:12px;background:url(http://cos.qkmai.com/qkmbb/ytal/graybqtb.png) no-repeat top left;background-size:138rpx 86rpx;color:#fff;' wx:if="{{userInfo.IsReferral}}">
+                    <view style='width:100%;text-align:center;padding-top:5rpx;'>最高分佣</view>
+                    <view style='font-size:12px;text-align:center;line-height:30rpx;color:#fff;'>{{item.topCommissionRate}}%
+                        <!-- <text style='font-size:9px;'>折起</text> -->
+                    </view>
+                </view>
+                <view style='position:absolute;top:-14rpx;right:0rpx;width:138rpx;height:86rpx;font-size:18px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png) no-repeat top left;background-size:138rpx 86rpx;'>
+                    <view style='font-size:18px;text-align:center;line-height:70rpx;color:#fff;font-weight:700;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                        <text style='font-size:11px;'>折起</text>
+                    </view>
+                </view>
+                <view style='height:85rpx;padding:70rpx 0 16rpx 0;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                    <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
+                        <view style='font-size:30rpx;'>{{item.mainTitle}}</view>
+                        <!-- <view style='font-size:24rpx;'>进入会场</view> -->
+                    </view>
+                    <view>
+                        <view>
+                            <view wx:if='{{item.subTitle}}' style='font-size:20rpx;line-height:34rpx;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:34rpx;margin-top:10rpx;height:35rpx;padding: 0 8rpx;float:left;margin-right:10rpx;'>{{item.subTitle}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view style='clear:both'></view>
+                <view style='padding-left:129rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+                    <view style='font-size:28rpx;color:#515151;padding-bottom:16rpx;'>
+                        <text bindlongpress='copy' data-length='item.brandDesc.length' class='{{toggleText && currentId == item.brandId ? "nowrap" : ""}} {{item.brandDesc.length >65 ? "ellipsis" : ""}}' data-val="{{item.brandDesc}}">{{item.brandDesc}}</text>
+                        <text catchtap='toggleHide' data-id='{{item.brandId}}' style='color:#db3c40;' wx:if='{{item.brandDesc.length > 65}}'>{{toggleText  && currentId == item.brandId ? "收起" : "全文"}}</text>
+                    </view>
+                </view>
+                <view style='margin-top:50rpx'>
+                    <view scroll-x style="width: 710rpx;height:360rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:space-around">
+                        <block wx:for="{{item.topBrandGoods}}" wx:for-item="itemName" wx:for-index="idx">
+                            <view style="width:200rpx;height:300rpx;overflow:hidden">
+                                <image src="{{itemName.goodsImages[0]}}" style='width:200rpx;height:200rpx;'></image>
+                                <view style='font-size:26rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{itemName.infoDesc}}</view>
+                                <view style='font-size:26rpx;'>￥{{itemName.salePrice}}</view>
+                            </view>
+                        </block>
+                    </view>
+
+                    <view style='clear:both'></view>
+                </view>
+                <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
+                    <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;display:flex;flex-flow:row nowrap;;'>
+                    </view>
+                </view>
+                <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
+                    bindtap='goToTop'>
+                    <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
+
+                </view>
+
+            </view>
+        </view>
     </view>
     <!-- <view style='display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:center;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
@@ -93,11 +309,11 @@
         </navigator>
     </view> -->
     <!-- <image src='http://cos.qkmai.com/qkmbb/ytal/wnzx.png' style='width:730rpx;vertical-align:top;margin-bottom:10rpx;' mode='widthFix' lazy-load wx:if='{{selectedCate=="全场直播"}}'></image> -->
-    <view style='width:730rpx;margin-left:10rpx;padding:0;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
+    <!-- <view style='width:730rpx;margin-left:10rpx;padding:0;font-size:0;' wx:if='{{selectedCate=="全场直播"}}'>
         <image style='width:730rpx;padding:0;margin:0;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/remai.png'></image>
-    </view>
+    </view> -->
 
-    <view style='padding:0 0 0 0;width:730rpx;margin-left:10rpx;'>
+    <view style='padding:0 0 0 0;width:730rpx;margin-left:10rpx;' wx:if='{{selectedCate!="全场直播"}}'>
         <view wx:key="{{item}}" wx:for='{{brandRush}}' wx:for-index="bindex" style='padding-top:15rpx;margin-top:20rpx;background:#fff;padding-right:27rpx;border-radius:20rpx;'>
             <view style='padding:60rpx 26rpx 16rpx 16rpx;float:left;width:85rpx;height:90rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
                 <view class='fcc' style='border: 1rpx solid #e5e5e5;width:85rpx;height:85rpx;'>
@@ -167,7 +383,7 @@
                 <view style='height:90rpx;line-height:90rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:flex-start;width:730rpx;margin-top:35rpx;'>
 
                     <!-- <view style=''> -->
-                    <view style='width:40%;text-align:center;height:90rpx;line-height:90rpx;background-color:#f7f7f7;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
+                    <view style='width:40%;text-align:center;height:90rpx;line-height:90rpx;background-color:#3c3b45;position:relative;top:-4rpx;border-bottom-left-radius:20rpx;' class='tui-countdown-content'>
                         <!-- 距结束
                         <text class='tui-conutdown-box tui-countdown-bg'>{{item.countDownTime.day}}</text>天
                         <text class='tui-conutdown-box'>{{item.countDownTime.hou}}</text>时 -->
@@ -185,31 +401,50 @@
                             <view style='position:relative;left:25rpx;'>分享专场</view>
                         </button>
                         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;left:35rpx;top:25rpx;height:auto;' mode='widthFix'></image>
+                        <!-- <view style='clear:both'></view> -->
                     </view>
+
                     <view style='position:relative;width:30%;height:90rpx;color:#fff;font-size:30rpx;text-align:center;line-height:90rpx;background:linear-gradient(rgba(255,108,38,1), rgba(222,34,0,1));border-bottom-right-radius:20rpx;' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}'
                         data-brandsource='{{item.brandSource}}'>
                         <view style='position:relative;left:20rpx;'>去抢购</view>
                         <image src='http://cos.qkmai.com/qkmbb/ytal/qianggoutb.png' style='width:40rpx;position:absolute;left:40rpx;top:25rpx;height:auto;' mode='widthFix'></image>
                     </view>
+                    <!-- <view style='clear:both'></view> -->
                 </view>
                 <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
                     bindtap='goToTop'>
                     <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
+                    <!-- <text style='font-size:24rpx;color:#95959'>顶部</text> -->
                 </view>
+                <!-- <view style='padding-left:115rpx'>
+                    <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;text-align:center;line-height:50rpx'>
+                        <button style='width:160rpx;font-size:26rpx;line-height:50rpx;border:none;color:#fff;' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}' data-maintitle='{{item.mainTitle}}' data-bg='{{item.goodsImages[0]}}' plain='true' openType="share">分享专场</button>
+
+                        <view style='clear:both'></view>
+                    </view>
+                    <view style='float:right;width:160rpx;height:50rpx;background-color:#db3c40;margin:10rpx 20rpx 30rpx 0;font-size:26rpx;color:#fefefe;text-align:center;line-height:50rpx' bindtap='linkToBrandRush' data-brandId='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>去抢购</view>
+                    <view style='clear:both'></view>
+                </view> -->
             </view>
         </view>
     </view>
     <view class='loadmore loading' wx:if="{{ hasMore && brandRush.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && brandRush.length > 0 }}">—— 我也是有底线的 ——</view>
+    <!-- <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/zuangy_.png&tagId=1' class='fig' style='position:fixed;right:26rpx;bottom:26rpx;width:138rpx;border-radius:0;z-index:994;' wx:if="{{userInfo.IsReferral}}">
+        <image src='http://cos.qkmai.com/qkmbb/ytal/zuangy.png' style='width:138rpx;height:auto;' mode='widthFix' lazy-load></image>
+    </navigator> -->
+
+
+
 </view>
-<!-- <view class='homepop' wx:if="{{isShow}}">
+<view class='homepop' wx:if="{{isShow}}" style='z-index:1001'>
     <view class='popOpacity'></view>
     <view class='popcontainer'>
         <view class='close' bindtap='onCloseBtn'></view>
-        <view class='getBtn' bindtap='goView' data-url="/pages/webPage/webPage?artUrl=http://ytal.qkmai.com/ArticleDetails?ArticleId=24" data-id='24'></view>
+        <view class='getBtn' bindtap='onCloseBtn' data-id='24'></view>
     </view>
-</view> -->
-<view class='homepop' wx:if="{{isNewShow}}">
+</view>
+<view class='homepop' wx:if="{{isNewShow}}" style='z-index:1001'>
     <view class='popOpacity'></view>
     <view class='popcontainer2'>
         <view class='close2' bindtap='onCloseNewBtn'></view>

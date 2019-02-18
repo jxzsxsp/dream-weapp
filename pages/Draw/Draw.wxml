@@ -20,11 +20,11 @@
                 </view>
             </view>
         </view>
-        <view class="kong" hidden="{{isEmpty}}">
+        <!-- <view class="kong" hidden="{{isEmpty}}">
             <view bindtap="toproduct" class="bg_nullCounp" style="background:url({{nullDraw}}) center center no-repeat; background-size:auto 192rpx"></view>
             敬请期待
-        </view>
-        <!-- <form bindsubmit="formSubmit" reportSubmit="true">
+        </view> -->
+        <form bindsubmit="formSubmit" reportSubmit="true">
             <view class="Draw_total">
                 <text class="form-group-name">提现金额</text>
                 <view class="form-group-input">
@@ -59,7 +59,7 @@
                 <button class="submit" formType="submit">申请提现</button>
             </view>
             <view class="time" hidden="{{!LastDrawTime}}">上次提现日期:{{LastDrawTime}}</view>
-        </form> -->
+        </form>
     </view>
     <view class="mt120" wx:if="{{TabType==2}}">
         <view class="points-list pl24">

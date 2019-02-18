@@ -122,6 +122,7 @@ Number.prototype.toFixed = function(t) {
 }, Number.prototype.toDiv = function() {
     return t(this, arguments, "divide");
 }, App({
+
     onLaunch: function() {
         //调用API从本地缓存中获取数据 
         this.screenSize();
@@ -242,6 +243,7 @@ Number.prototype.toFixed = function(t) {
                         }
                     });
                 } else console.log("获取用户登录态失败！" + o.errMsg);
+           
             }
         });
     },
