@@ -1,5 +1,4 @@
 var t = getApp();
-
 Page({
     data: {
         ShopCarts: null,
@@ -14,12 +13,24 @@ Page({
         Suppliers: null
     },
     onLoad: function(a) {
-        // var tm = this;
+        var tm = this;
         a.ReferralUserId && t.setRefferUserId(a.ReferralUserId);
+        if (wx.getStorageSync("ReferralUserId") != "") {
+            wx.request({
+                url: t.getUrl("YTALUpdateReferralUserId"),
+                data: {
+                    openId: t.globalData.userInfo.OpenId,
+                    ReferralUserId: wx.getStorageSync("ReferralUserId")
+                },
+                success: function(res) {},
+                complete: function() {}
+            });
+
+        }
         // console.log("执行selectAll")
         // tm.selectAll();
     },
-    loadData: function (e, Boolean) {
+    loadData: function(e, Boolean) {
         // console.log("loadData执行")
         var tm = this;
         wx.showLoading({
@@ -40,9 +51,9 @@ Page({
                             e.data.SelectskuId.indexOf(t.SkuID) >= 0 && (t.selected = !0, a = parseFloat(a) + parseFloat(t.SubTotal));
                         });
                         var o = null == n || n.length <= 0 || n.RecordCount <= 0;
-                    // console.log(s.length)
-                        if(s.length > 0) {
-                            s[0].CartItemInfo.forEach(function (a, b) {
+                        // console.log(s.length)
+                        if (s.length > 0) {
+                            s[0].CartItemInfo.forEach(function(a, b) {
                                 a.selected = true
                             });
                         }
@@ -58,7 +69,7 @@ Page({
                                 index: 3,
                                 text: n.RecordCount.toString()
                             })
-                        } else{
+                        } else {
                             wx.removeTabBarBadge({
                                 index: 3,
                             })
@@ -146,7 +157,7 @@ Page({
             Suppliers: s,
             selectAllStatus: a,
             SelectskuId: e
-            }), console.log(t.data.Suppliers),t.GetTotal();
+        }), console.log(t.data.Suppliers), t.GetTotal();
     },
     SwitchEdite: function() {
         // console.log("switchEdite")
@@ -381,10 +392,10 @@ Page({
     onUnload: function() {},
     onPullDownRefresh: function() {},
     onReachBottom: function() {},
-    backInfo: function (event) {
+    backInfo: function(event) {
         var tm = this,
             a = event.currentTarget.dataset.sku;
-            // console.log(a)
+        // console.log(a)
         var hx = encodeURIComponent(a)
         // hx = "https://ytal.qkmai.com/API/WeChatApplet.ashx?action=YTALGetGoodsBrand&sku=" + hx
         // console.log(hx)
@@ -394,14 +405,14 @@ Page({
             data: {
                 sku: a
             },
-            success: function (t) {
+            success: function(t) {
                 console.log(t.data)
                 wx.navigateTo({
                     // brandId=2c9089c2685cc4020168656b9ea73b66& brandSource=dadacang
                     url: "../brandInfo/brandInfo?brandId=" + t.data.brandId + "&brandSource=" + t.data.brandSource
                 });
             },
-            complete: function () {
+            complete: function() {
 
             }
         });

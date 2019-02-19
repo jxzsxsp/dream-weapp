@@ -37,9 +37,9 @@ Page({
         isTooLow: false,
         isShowState: true,
         current: 0,
-        DistributionInfo:""
+        DistributionInfo: ""
     },
-    GetCheckData: function () {
+    GetCheckData: function() {
         this.setData({
             DistributionInfo: e.globalData.ReferralInfo,
             isLoadEnd: true
@@ -103,13 +103,6 @@ Page({
     },
     onLoad: function(a) {
         var tm = this;
-        //wx.hideTabBar({})
-        if (a.q) {
-            var q = decodeURIComponent(a.q);
-            var str = q.split("=");
-            e.setRefferUserId(str[1]);
-        }
-        a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
         e.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t
@@ -118,20 +111,38 @@ Page({
                 name: "首页onload",
                 metaData: a
             });
+            if (wx.getStorageSync("ReferralUserId") != "") {
+                wx.request({
+                    url: e.getUrl("YTALUpdateReferralUserId"),
+                    data: {
+                        openId: t.OpenId,
+                        ReferralUserId: wx.getStorageSync("ReferralUserId")
+                    },
+                    success: function(res) {},
+                    complete: function() {}
+                });
+            }
         });
+
+        if (a.q) {
+            var q = decodeURIComponent(a.q);
+            var str = q.split("=");
+            e.setRefferUserId(str[1]);
+        }
+        a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
 
         // e.globalData.fundebug.notifyError(new Error("onload"), {
         //     name: "首页onload",
         //     metaData: a
         // });
         var r, o, n = this;
-        e.getOpenId(function (t) {
+        e.getOpenId(function(t) {
             wx.request({
                 url: e.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
                 },
-                success: function (t) {
+                success: function(t) {
                     e.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
@@ -1153,19 +1164,19 @@ Page({
             }
         }
     },
-    GoToSearch:function(){
+    GoToSearch: function() {
         wx.navigateTo({
             url: '../search/search'
         })
     },
-    onPageScroll: function (obj) {
+    onPageScroll: function(obj) {
         if (obj.scrollTop > 363) {
             this.setData({
                 goTopStatus: true
             })
         }
     },
-    goToTop: function () {
+    goToTop: function() {
         wx.pageScrollTo({
             scrollTop: 0,
         })
@@ -1173,7 +1184,7 @@ Page({
             goTopStatus: false
         })
     },
-    goToZZ:function(){
+    goToZZ: function() {
         wx.switchTab({
             url: '../discovery/discovery',
         })

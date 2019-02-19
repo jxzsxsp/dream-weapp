@@ -227,23 +227,6 @@ Page({
             });
         });
     },
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     onPullDownRefresh: function() {
         this.setData({
             brandRush: [],
@@ -491,6 +474,13 @@ Page({
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
                         }
+                    },
+                    fail:function (res) {
+                        wx.hideLoading()
+                        wx.showModal({
+                            title: '提示',
+                            content: '加入购物车失败',
+                        })
                     }
                 })
             }

@@ -416,6 +416,13 @@ Page({
                                 //     url: '/pages/shopcart/shopcart'
                                 // })
                         }
+                    },
+                    fail: function (res) {
+                        wx.hideLoading()
+                        wx.showModal({
+                            title: '提示',
+                            content: '加入购物车失败'
+                        })
                     }
                 })
             }
