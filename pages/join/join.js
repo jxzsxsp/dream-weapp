@@ -1,0 +1,219 @@
+var e = getApp();
+
+Page({
+    data: {
+        OrderId: "",
+        SkuId: "",
+        RefundType: 0,
+        RefundTypeText: "请选择退款方式",
+        RefundMoney: 0,
+        RefundReason: 0,
+        RefundReasonText: "请选择退款原因",
+        Remark: "",
+        BankName: "",
+        BankAccountName: "",
+        BankAccountNo: "",
+        ShowReason: !0,
+        ShowType: !0,
+        ShowReasonList: ["大小/款式与描述不符", "漏发/未收到货/发错货", "有瑕疵/质量问题", "有污渍/发霉变质", "到的商品有破损"],
+        ShowReasonIndex: -1,
+        RefundTextList: ["退到预付款", "原路返回"],
+        ShowRefundIndex: -1
+    },
+    onLoad: function (t) {
+        var n = this, a = t.orderid;
+        t.m;
+        n.setData({
+            OrderId: a
+        }), e.getOpenId(function (t) {
+            wx.request({
+                url: e.getUrl(e.globalData.getAfterSalePreCheck),
+                data: {
+                    openId: t,
+                    IsReturn: !1,
+                    OrderId: a,
+                    SkuId: ""
+                },
+                success: function (e) {
+                    n.GetCheckData(e);
+                }
+            });
+        });
+    },
+    GetCheckData: function (e) {
+        var t = e.data;
+        if ("NOUser" == t.Message) wx.navigateTo({
+            url: "../login/login"
+        }); else if ("OK" == t.Status) {
+            var n = [];
+            t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款")
+            // t.CanBackReturn && n.push("原路返回"), t.CanToBalance && n.push("退到预付款"), t.CanReturnOnStore && n.push("到店退款")
+            // n.push("退到银行卡"), this.setData({
+            //     RefundMoney: t.MaxRefundAmount,
+            //     RefundTextList: n
+            // });
+            this.setData({
+                RefundMoney: t.MaxRefundAmount,
+                RefundTextList: n
+            });
+        } else wx.showModal({
+            title: "提示",
+            content: t.Message,
+            showCancel: !1,
+            success: function (e) {
+                e.confirm && wx.navigateBack({
+                    delta: 1
+                });
+            }
+        });
+    },
+    InputText: function (e) {
+        var t = this, n = e.currentTarget.dataset.names, a = e.detail.value;
+        switch (n) {
+            case "BankName":
+                t.setData({
+                    BankName: a
+                });
+                break;
+
+            case "BankAccountName":
+                t.setData({
+                    BankAccountName: a
+                });
+                break;
+
+            case "BankAccountNo":
+                t.setData({
+                    BankAccountNo: a
+                });
+                break;
+
+            default:
+                t.setData({
+                    Remark: a
+                });
+        }
+    },
+    ShowReason: function (e) {
+        var t = this;
+        wx.showActionSheet({
+            itemList: t.data.ShowReasonList,
+            success: function (e) {
+                console.log(e), t.setData({
+                    ShowReasonIndex: e.tapIndex
+                });
+            },
+            fail: function (e) {
+                console.log(e.errMsg);
+            }
+        });
+    },
+    ShowType: function (e) {
+        var t = this;
+        wx.showActionSheet({
+            itemList: t.data.RefundTextList,
+            success: function (e) {
+                if (!e.cancel) {
+                    var n = t.data.RefundTextList[e.tapIndex], a = t.GetRefundTypeId(n);
+                    console.log(n), console.log(a), t.setData({
+                        ShowRefundIndex: e.tapIndex,
+                        RefundTypeText: n,
+                        RefundType: a
+                    });
+                }
+            },
+            fail: function (e) {
+                console.log(e.errMsg);
+            }
+        });
+    },
+    ChooseReason: function (e) {
+        var t = this, n = e.currentTarget.dataset.name;
+        t.setData({
+            RefundReasonText: n,
+            ShowType: !0,
+            ShowReason: !0
+        });
+    },
+    ChooseType: function (e) {
+        var t = this, n = t.RefundTextList[e.currentTarget.dataset.id], a = GetRefundTypeId(n);
+        console.log(e.currentTarget.dataset.id), console.log(a), t.setData({
+            RefundType: a,
+            RefundTypeText: n,
+            ShowType: !0,
+            ShowReason: !0
+        });
+    },
+    GetRefundTypeId: function (e) {
+        return "退到预付款" == e ? 1 : "退到银行卡" == e ? 2 : "原路返回" == e ? 3 : 4;
+    },
+    formSubmit: function (t) {
+        var n = this, a = parseInt(n.data.ShowReasonIndex), o = t.detail.formId, s = n.ToTrim(t.detail.value.txtBankName), c = n.ToTrim(t.detail.value.txtBankAccountName), u = n.ToTrim(t.detail.value.txtBankAccountNo), d = n.data.RefundType;
+        2 == d && (s.length <= 0 || c.length <= 0 || u.length <= 0) ? wx.showModal({
+            title: "提示",
+            content: "银行卡信息不允许为空！",
+            showCancel: !1,
+            confirmColor: "#db3c40"
+        }) : d ? a < 0 ? wx.showModal({
+            title: "提示",
+            content: "请选择要退款的原因",
+            showCancel: !1,
+            confirmColor: "#db3c40"
+        }) : n.data.OrderId.length <= 0 ? wx.showModal({
+            title: "提示",
+            content: "请选择要退款的订单",
+            showCancel: !1,
+            confirmColor: "#db3c40"
+        }) : e.getOpenId(function (t) {
+            wx.request({
+                url: e.getUrl("ApplyRefund"),
+                data: {
+                    openId: t,
+                    skuId: n.data.SkuId,
+                    orderId: n.data.OrderId,
+                    RefundType: d,
+                    RefundReason: n.data.ShowReasonList[a],
+                    Remark: n.data.Remark,
+                    BankName: s,
+                    BankAccountName: c,
+                    BankAccountNo: u,
+                    FormId: o
+                },
+                success: function (e) {
+                    "OK" == e.data.Status ? wx.showModal({
+                        title: "提示",
+                        content: e.data.Message,
+                        showCancel: !1,
+                        confirmColor: "#db3c40",
+                        success: function (e) {
+                            wx.redirectTo({
+                                url: "../orderlist/orderlist"
+                            });
+                        }
+                    }) : "NOUser" == e.data.Message ? wx.navigateTo({
+                        url: "../login/login"
+                    }) : wx.showModal({
+                        title: "提示",
+                        content: e.data.Message,
+                        showCancel: !1,
+                        confirmColor: "#db3c40",
+                        success: function (e) {
+                            e.confirm && wx.navigateBack({
+                                delta: 1
+                            });
+                        }
+                    });
+                },
+                complete: function () { }
+            });
+        }) : wx.showModal({
+            title: "提示",
+            content: "请选择要退款的方式",
+            showCancel: !1,
+            confirmColor: "#db3c40"
+        });
+    },
+    ToTrim: function (e) {
+        return e.replace(/(^\s*)|(\s*$)/g, "");
+    }
+});
