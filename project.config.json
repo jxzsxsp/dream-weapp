@@ -37,8 +37,21 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "入驻",
+					"pathName": "pages/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "11111",
+					"pathName": "pages/brandInfo/brandInfo",
+					"query": "brandId=2c9089c2687a7c1601687e4dbf2513c9&brandSource=dadacang"
+				}
+			]
 		}
 	}
 }

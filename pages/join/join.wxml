@@ -6,15 +6,15 @@
         <!-- <view class="form-group bg-white" style='padding-top:110rpx;'> -->
         <view class="form-group bg-white">
             <view class="form-group-name">供应商名称</view>
-            <input bindinput="InputValue" data-key="joinName" maxlength="20" placeholder="请输入供应商名称" placeholderStyle="color:#bdbdbd" type="text" value="{{joinName}}"></input>
+            <input bindinput="InputValue" data-key="joinName" maxlength="20" placeholder="请输入供应商名称" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
         </view>
         <view class="form-group bg-white">
             <view class="form-group-name">联系人</view>
-            <input bindinput="InputValue" data-key="joinConcat" maxlength="20" placeholder="请输入联系人" placeholderStyle="color:#bdbdbd" type="text" value="{{joinConcat}}"></input>
+            <input bindinput="InputValue" data-key="joinConcat" maxlength="20" placeholder="请输入联系人" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
         </view>
         <view class="form-group bg-white">
             <view class="form-group-name">联系方式</view>
-            <input bindinput="InputValue" data-key="joinPhone" maxlength="20" placeholder="请输入联系方式" placeholderStyle="color:#bdbdbd" type="text" value="{{joinPhone}}" bindblur="phoneCheck"></input>
+            <input bindinput="InputValue" data-key="joinPhone" maxlength="20" placeholder="请输入联系方式" placeholderStyle="color:#bdbdbd" type="number" bindblur="blurCheck" focus='{{focus}}'></input>
         </view>
 
         <view class="line">

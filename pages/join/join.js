@@ -7,7 +7,11 @@ Page({
         FormId: "",
         ReturnMoney: 0,
         ImageIndex: 0,
-        OneReundAmount: 0
+        OneReundAmount: 0,
+        joinName:"",
+        joinConcat: "",
+        joinPhone: null,
+        focus: false
     },
     onLoad: function(t) {
 
@@ -45,24 +49,47 @@ Page({
             }
         });
     },
-    phoneCheck: function(e) {
-        if (!/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value)) {
-            // wx.showToast({
-            //     title: '手机号有误',
-            //     icon: 'error',
-            //     duration: 2000
-            // })
-            // wx.showModal({
-            //     title: '手机号有误'
-            // })
-            wx.showModal({
-                title: '提示',
-                content: '你输入的电话不符，请重新检查填写',
-                showCancel: false
-            })
+    blurCheck: function(e) {
+        var tm = this;
+        if (e.detail.value != "") {
+            var x = e.currentTarget.dataset.key 
 
-            // return false;
+            if(x == 'joinName') {
+                tm.setData({
+                    joinName: e.detail.value
+                })
+            } else if (x == 'joinConcat') {
+                tm.setData({
+                    joinConcat: e.detail.value
+                })
+            } else if (x == 'joinPhone') {
+                if (!/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value)) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '你输入的电话不符，请重新检查填写',
+                        showCancel: false
+                    })
+                    tm.setData({
+                        focus: true
+                    })
+                } else {
+                    tm.setData({
+                        joinPhone: e.detail.value,
+                        focus: false
+                    })
+                }
+            }
         }
+
+        // if (e.currentTarget.dataset.key == 'joinPhone') {
+        //     if (!/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value)) {
+        //         wx.showModal({
+        //             title: '提示',
+        //             content: '你输入的电话不符，请重新检查填写',
+        //             showCancel: false
+        //         })
+        //     }
+        // }
     },
     formSubmit: function(e) {
         // function checkPhone() {
