@@ -423,6 +423,7 @@ Page({
                     },
                     success: function(res) {
                         var jd = res.data;
+                        wx.hideLoading()
                         switch (jd.status) {
                             default: wx.showModal({
                                 title: '提示',
@@ -540,6 +541,7 @@ Page({
                     },
                     success: function(res) {
                         var jd = res.data;
+                        wx.hideLoading();
                         switch (jd.status) {
                             default: wx.showModal({
                                 title: '提示',
