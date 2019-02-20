@@ -41,7 +41,7 @@
                     <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
                     <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
                     <view style='float:right' wx:if="{{userInfo.IsReferral}}">
-                        <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
+                        <text style='font-size:24rpx;padding-right:15rpx'>VIP省/赚</text>
                         <text class='commissionMoney' style='font-weight:900;font-size:40rpx'><text style='font-size:24rpx'>¥</text>{{item.commissionMoney}}</text>
                     </view>
                 </view>
@@ -108,12 +108,12 @@
             </view>
         </view>
         <!-- <view class="fixedBtn active"  wx:if="{{userInfo.IsReferral}}" style='bottom:246rpx;' bindtap='fixedShare'> -->
-        <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
+        <!-- <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
             <text>分享</text>
             <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' data-brandId='{{brandId}}' plain='true' openType="share">分享</button>
-            <!-- <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' bindtap='linkToBrandRushShare' data-brandId='{{brandId}}' plain='true' openType="share">分享</button> -->
-        </view>
+            <!-- <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' bindtap='linkToBrandRushShare' data-brandId='{{brandId}}' plain='true' openType="share">分享</button> 
+        </view> -->
         <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:246rpx;' bindtap='fixedGoToCart'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
             <text>购物车</text>
