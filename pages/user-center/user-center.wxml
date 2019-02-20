@@ -67,8 +67,8 @@
   custom-style="abc"
 >
   <view class='share-img-container flex-column'>
-    <view style='width:0px;height:0px;overflow:hidden;'>
-      <canvas canvas-id='shareImg' class='canvas-img' hidden></canvas>
+    <view class='hidden-canvas' style='width:0px;height:0px;overflow:hidden;'>
+      <canvas canvas-id='shareImg' class='canvas-img'></canvas>
     </view>
     <!-- <view class='share-img flex-column'>
       <view class='share-head flex'>

@@ -327,3 +327,12 @@
 .guanbi {
   font-size: 38rpx;
 }
+
+.hidden-canvas {
+  width:0rpx;
+  height:0rpx;
+  overflow:hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
