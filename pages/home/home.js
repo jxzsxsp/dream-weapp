@@ -845,10 +845,16 @@ Page({
             currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
             currentData = {}
         } else {
-            currentUrl = e.getUrl("YTALGetListBrandRushIsHeadByCate");
+            currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
             currentData = {
-                cate: this.data.selectedCate
-            }
+                pi: ++tm.data.dataIndex,
+                ps: tm.data.pageSize,
+                cate: tm.data.selectedCate
+            };
+            // currentUrl = e.getUrl("YTALGetListBrandRushIsHeadByCate");
+            // currentData = {
+            //     cate: this.data.selectedCate
+            // }
         }
         wx.request({
             url: currentUrl,
