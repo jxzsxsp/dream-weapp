@@ -33,7 +33,7 @@
         <block wx:for="{{SplittinList}}" wx:key="{{SplittinList}}">
             <view class='list' style='display:flex;flex-direction:row;justify-content: space-around;align-items: center;'>
                 <view style='display:flex;flex-direction:column;justify-content:center;padding-left:20rpx;width:70%;height:100%;'>
-                    <text class='' style=' color: #000;font-size: 26rpx;text-align:left;margin-bottom:10rpx;'>{{item.Remark}}</text>
+                    <text class='' style=' color: #000;font-size: 26rpx;text-align:left;margin-bottom:10rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.Remark}}</text>
                     <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>{{item.TradeDate}}</text>
                 </view>
                 <view style='display:flex;flex-direction:row;justify-content: space-between;width:30%;'>

@@ -1086,8 +1086,6 @@ Page({
                                         //brandRush: logoListLast
                                     })
                                 }
-
-
                             },
                             complete: function() {
                                 wx.hideLoading();
@@ -1096,9 +1094,6 @@ Page({
                         });
                     }
                     // console.log(logoListLast)
-
-
-
                 }
             }
         });
