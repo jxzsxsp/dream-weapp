@@ -8,32 +8,35 @@
     <view class="productjs pl24 pr24">
         <view class="pricel pb24 mt24">
             <view class="saleprice">
-        ￥
-        <text class="font48">{{ShowPrice}}</text>
+                ￥
+                <text class="font48">{{ShowPrice}}</text>
             </view>
             <view class="oldprice font28" hidden="{{MarketPrice<=0}}">
-        ￥
-        <text>{{MarketPrice}}</text>
+                ￥
+                <text>{{MarketPrice}}</text>
             </view>
         </view>
-        <view class="name_share">
+        <view class="name_share" style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
             <view class="name">{{ProductName}}</view>
-            <button class="share-icon" openType="share" style="background:url({{sharebtn}}) center center; background-size:48rpx 48rpx"></button>
-            <text class="share_text">分享</text>
+            <view style='border-left:1px solid #e0e0e0;display:flex;flex-direction:column;align-items:center;padding:0 20rpx'>
+                <button class="share-icon" openType="share" style="background:url({{sharebtn}}) center center; background-size:48rpx 48rpx"></button>
+                <text class="share_text">分享</text>
+            </view>
+
         </view>
         <view class="jjname">{{ShortDescription}}</view>
         <view class="mt16 line_height32 mb32" style="display:flex;overflow:hidden; color:#757575;display:none;">
             <view class="yunfei">
-          运费：
-          <text>￥{{Freight}}</text>
+                运费：
+                <text>￥{{Freight}}</text>
             </view>
             <view class="yunfei">
-          销量：
-          <text>{{ShowSaleCounts}}</text>
+                销量：
+                <text>{{ShowSaleCounts}}</text>
             </view>
             <view class="xiaoliang" hidden="{{!referralId&&ReferralMoney>=0}}">
-          预计佣金：
-          <text>￥{{ReferralMoney}}</text>
+                预计佣金：
+                <text>￥{{ReferralMoney}}</text>
             </view>
         </view>
     </view>
@@ -75,7 +78,7 @@
         <view class="xqtitle pt24 pb24 pl24 font32">
             <view class="coupontitle">
                 <view class="coupontitlel">
-                    <view bindtap="onTabClick" class="{{DetailStatus}}" data-status="0">详情描述</view>
+                    <!-- <view bindtap="onTabClick" class="{{DetailStatus}}" data-status="0">详情描述</view> -->
                 </view>
                 <view class="coupontitlel" wx:if="{{ExtendAttribute.length>0}}">
                     <view bindtap="onTabClick" class="{{AttributeStatus}}" data-status="1">产品参数</view>
@@ -84,7 +87,7 @@
         </view>
         <view class="xqcont" wx:if="{{DetailStatus=='active'}}">
             <view class="wxParse">
-<rich-text nodes='{{TempMetaDescription}}'></rich-text>
+                <rich-text nodes='{{TempMetaDescription}}'></rich-text>
             </view>
         </view>
         <view class="xqattr" wx:if="{{AttributeStatus=='active'}}">
@@ -93,25 +96,25 @@
     </view>
 </view>
 <view class="btn-area">
-    <navigator hoverClass="navigator-hover" openType="switchTab" url="../home/home">
+    <navigator hoverClass="navigator-hover" openType="switchTab" url="../home/home" style='padding-top:12rpx'>
         <view class="icon">
-            <view class="iconfont home font48"></view>
+            <view class="iconfont home font48" style='font-size:36rpx'></view>
         </view>
-      首页
+        首页
     </navigator>
-    <navigator hoverClass="navigator-hover" openType="switchTab" url="../shopcart/shopcart">
+    <navigator hoverClass="navigator-hover" openType="switchTab" url="../shopcart/shopcart" style='padding-top:12rpx'>
         <view class="icon">
-            <view class="iconfont icon__cart font48"></view>
+            <view class="iconfont icon__cart font48" style='font-size:36rpx'></view>
         </view>
-      购物车
+        购物车
     </navigator>
     <block wx:if="{{IsOnSale&&ActiveType<3}}">
         <navigator bindtap="addShopCart" class="goumai shop font36" hoverClass="other-navigator-hover" openType="navigate" url="">
-        加入购物车
-      </navigator>
+            加入购物车
+        </navigator>
         <navigator bindtap="clickSku" class="goumai font36" hoverClass="other-navigator-hover" openType="navigate" url="">
-        立即购买
-      </navigator>
+            立即购买
+        </navigator>
     </block>
     <view class="xiajia font36" wx:else>{{ActiveText}}</view>
 </view>
@@ -127,8 +130,8 @@
         <view class="youhuiquan" wx:for="{{Coupons}}" wx:key="CouponId">
             <view class="nrong">
                 <view class="nrje">
-              ￥
-              <text>{{item.Price}}</text>
+                    ￥
+                    <text>{{item.Price}}</text>
                 </view>
                 <view class="nrtimelist">{{item.CanUseProduct}}</view>
             </view>
@@ -182,7 +185,7 @@
             <image class="lqicon guigeimg" mode="aspectFit" src="{{skuImg}}"></image>
             <view class="guigecont">
                 <view class="saleprice">￥
-            <text>{{skuPrice}}</text>
+                    <text>{{skuPrice}}</text>
                 </view>
                 <view class="guigeyxhs" hidden="{{SkuItemList==''||SkuItemList.length==0}}">已选：{{selectedSkuContent}}</view>
             </view>
@@ -195,8 +198,10 @@
                 <view class="sezhititle font28 line_height40">{{item.AttributeName}}</view>
                 <view class="sezhicont mt8">
                     <block wx:for="{{item.AttributeValue}}" wx:for-item="sku" wx:key="ValueId">
-                        <image bindtap="onSkuClick" class="{{sku.Enable==0?'disable':''}} {{sku.UseAttributeImage=='selected'?'SKUSelectValueClass':'skuvalueclass'}}" data-attributeid="{{item.AttributeId}}" data-enablevalue="{{sku.Enable}}" data-indexcount="{{i}}" data-skuvalue="{{sku.Value}}" id="{{sku.ValueId}}" src="{{sku.ImageUrl}}" wx:if="{{sku.ImageUrl!=''}}"></image>
-                        <text bindtap="onSkuClick" class="{{sku.Enable==0?'disable':''}} {{sku.UseAttributeImage=='selected'?'SKUSelectValueClass':'skuvalueclass'}}" data-attributeid="{{item.AttributeId}}" data-enablevalue="{{sku.Enable}}" data-indexcount="{{i}}" data-skuvalue="{{sku.Value}}" id="{{sku.ValueId}}" wx:else> {{sku.Value}} </text>
+                        <image bindtap="onSkuClick" class="{{sku.Enable==0?'disable':''}} {{sku.UseAttributeImage=='selected'?'SKUSelectValueClass':'skuvalueclass'}}" data-attributeid="{{item.AttributeId}}" data-enablevalue="{{sku.Enable}}" data-indexcount="{{i}}" data-skuvalue="{{sku.Value}}"
+                            id="{{sku.ValueId}}" src="{{sku.ImageUrl}}" wx:if="{{sku.ImageUrl!=''}}"></image>
+                        <text bindtap="onSkuClick" class="{{sku.Enable==0?'disable':''}} {{sku.UseAttributeImage=='selected'?'SKUSelectValueClass':'skuvalueclass'}}" data-attributeid="{{item.AttributeId}}" data-enablevalue="{{sku.Enable}}" data-indexcount="{{i}}" data-skuvalue="{{sku.Value}}"
+                            id="{{sku.ValueId}}" wx:else> {{sku.Value}} </text>
                     </block>
                 </view>
             </view>
