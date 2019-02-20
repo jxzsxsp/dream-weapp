@@ -1,5 +1,6 @@
 var t = require("../../utils/config.js"),
     e = getApp();
+
 Page({
     data: {
         isNewShow: true,
@@ -33,11 +34,15 @@ Page({
         toggleText: false,
         currentId: 0,
         topLogoList: [],
+        topLogoListLast: [],
         focusList: [],
         isTooLow: false,
         isShowState: true,
         current: 0,
-        DistributionInfo: ""
+        DistributionInfo: "",
+        TopListBrandRush: [],
+        getProductsList: [],
+        rushGoodsList: []
     },
     GetCheckData: function() {
         this.setData({
@@ -125,7 +130,6 @@ Page({
         });
     },
     onLoad: function(a) {
-        var tm = this;
         if (a.scene) {
             wx.request({
                 url: e.getUrl("YTALDecodeScene"),
@@ -133,23 +137,6 @@ Page({
                     scene: a.scene
                 },
                 success: function(t) {
-                    t.data.referralUserId && e.setRefferUserId(t.data.referralUserId);
-                    e.getUserInfo(function(f) {
-                        debugger
-                        wx.request({
-                            url: e.getUrl("YTALUpdateReferralUserId"),
-                            data: {
-                                openId: f.OpenId,
-                                ReferralUserId: t.data.referralUserId
-                            },
-                            success: function(res) {
-                                debugger;
-                            },
-                            complete: function() {
-                                wx.hideNavigationBarLoading(), wx.stopPullDownRefresh();
-                            }
-                        });
-                    });
                     var x = '/pages/goodInfo/goodInfo?brandId=' + t.data.brandId + '&goodsId=' + t.data.goodsId + '&goodsSource=' + t.data.goodsSource
                     wx.navigateTo({
                         url: x,
@@ -157,7 +144,9 @@ Page({
                 }
             });
         }
+        var tm = this;
         wx.hideTabBar({})
+
         // wx.getStorage({
         //     key: 'tcOne',
         //     success(res) {
@@ -169,6 +158,7 @@ Page({
         //         }
         //     }
         // })
+
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
@@ -258,7 +248,7 @@ Page({
                         }
                     })
                 } else {
-                    tm.getLogo();
+                    // tm.getBrandbush();
                     tm.getCate();
                     wx.hideNavigationBarLoading();
                 }
@@ -266,6 +256,12 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
         })
+
+        tm.getLogo()
+        // tm.getCode()
+        tm.getProducts()
+        tm.getPageRushGoodsByTagId()
+
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
@@ -705,6 +701,7 @@ Page({
         });
         // 渲染，然后每隔一秒执行一次倒计时函数
         this.setData({
+            //brandRush: brandRushList
             brandRush: brandRushList
         })
 
@@ -791,6 +788,7 @@ Page({
                         topArr: topArrList,
                         brandRush: topArrList
                     });
+                    tm.getBrandbush(res)
                 }
                 wx.request({
                     url: e.getUrl("YTALGetPageBrandRush"),
@@ -823,11 +821,14 @@ Page({
                                 bottomArr: bottomArrList,
                                 brandRush: newList
                             })
+                            tm.getBrandbush(res)
                         } else {
                             tm.setData({
                                 hasMore: false
                             })
                         }
+
+
                     }
                 })
             },
@@ -874,8 +875,10 @@ Page({
                 });
                 tm.setData({
                     brandRush: brandRushList
+                    //topLogoListLast: brandRushList
                 })
-                tm.loadMore();
+                tm.getBrandbush(jd)
+                //tm.loadMore();
             },
             complete: function() {
                 wx.stopPullDownRefresh();
@@ -915,6 +918,7 @@ Page({
                         bottomArr: bottomArrList,
                         brandRush: newList
                     })
+                    //tm.getBrandbush(res)
                 } else {
                     tm.setData({
                         hasMore: false
@@ -985,9 +989,11 @@ Page({
                         }
                         brandRushList.push(o)
                     });
-                    tm.setData({
-                        brandRush: tm.data.brandRush.concat(brandRushList)
-                    })
+                    // tm.setData({
+                    //     brandRush: tm.data.brandRush.concat(brandRushList)
+                    //     //topLogoListLast: tm.data.brandRush.concat(brandRushList)
+                    // })
+                    //tm.getBrandbushMore(jd)
                 } else {
                     tm.setData({
                         hasMore: false
@@ -1049,12 +1055,142 @@ Page({
                     jd.data.forEach(o => {
                         logoList.push(o)
                     });
-                    tm.setData({
-                        topLogoList: logoList
-                    })
+                    // var logoListThree = logoList.slice(0, 3)
+                    // var logoListLast = logoList.slice(3)
+                    var logoListLast = logoList.slice(0, 3);
+                    console.log(logoListLast.length)
+                    for (let i = 0; i < logoListLast .length; i++) {
+                        wx.request({
+                            url: e.getUrl("YTALGetListRushGoods"),
+                            data: {
+                                brandId: logoListLast[i].brandId,
+                                isSoldOut: 0,
+                                goodsSource: logoListLast[i].brandSource,
+                                pi: 1,
+                                ps: 3
+                            },
+                            success: function(jd) {
+                                var topBrandGoods = jd.data;
+                                var key = "topBrandGoods";
+                                logoListLast[i][key] = topBrandGoods;
+                                if (i == logoListLast.length - 1) {
+                                    tm.setData({
+                                        topLogoList: logoListLast,
+                                        //topLogoListLast: logoListLast
+                                        //brandRush: logoListLast
+                                    })
+                                }
+
+
+                            },
+                            complete: function() {
+                                wx.hideLoading();
+                                // console.log(tm.data.topLogoListLast[0]["topBrandGoods"])
+                            }
+                        });
+                    }
+                    // console.log(logoListLast)
+
+
+
                 }
             }
         });
+    },
+    getBrandbushMore: function(jd) {
+        var tm = this;
+        // console.log(jd)
+        if (jd.data.length != 0) {
+            let logoList = [];
+            jd.data.forEach(o => {
+                logoList.push(o)
+            });
+            // var logoListThree = logoList.slice(0, 3)
+            var logoListLast = logoList
+            console.log(logoListLast)
+            for (let i = 0; i < logoListLast.length; i++) {
+                wx.request({
+                    url: e.getUrl("YTALGetListRushGoods"),
+                    data: {
+                        brandId: logoListLast[i].brandId,
+                        isSoldOut: 0,
+                        goodsSource: logoListLast[i].brandSource,
+                        pi: 1,
+                        ps: 3
+                    },
+                    success: function(jd) {
+                        var topBrandGoods = jd.data;
+                        var key = "topBrandGoods";
+                        logoListLast[i][key] = topBrandGoods;
+                        if (i == logoListLast.length - 1) {
+                            tm.setData({
+                                //topLogoList: logoListThree,
+                                //topLogoListLast: logoListLast
+                                brandRush: tm.data.brandRush.concat(logoListLast)
+                            })
+
+                        }
+                    },
+                    complete: function() {
+                        wx.hideLoading();
+                        // console.log(tm.data.topLogoListLast[0]["topBrandGoods"])
+                    }
+                });
+
+            }
+
+
+            // console.log(tm.data.topLogoListLast)
+            // console.log(logoListLast)
+
+
+
+        }
+    },
+    getBrandbush: function(jd) {
+        var tm = this;
+        //console.log(jd)
+        if (jd.data.length != 0) {
+            let logoList = [];
+            jd.data.forEach(o => {
+                logoList.push(o)
+            });
+            // var logoListThree = logoList.slice(0, 3)
+            var logoListLast = logoList
+            //console.log(logoListLast)
+            for (let i = 0; i < logoListLast.length; i++) {
+                wx.request({
+                    url: e.getUrl("YTALGetListRushGoods"),
+                    data: {
+                        brandId: logoListLast[i].brandId,
+                        isSoldOut: 0,
+                        goodsSource: logoListLast[i].brandSource,
+                        pi: 1,
+                        ps: 3
+                    },
+                    success: function(jd) {
+                        var topBrandGoods = jd.data;
+                        var key = "topBrandGoods";
+                        logoListLast[i][key] = topBrandGoods;
+                        if (i == logoListLast.length - 1) {
+                            tm.setData({
+                                //topLogoList: logoListThree,
+                                //topLogoListLast: logoListLast
+                                brandRush: logoListLast
+                            })
+                        }
+                    },
+                    complete: function() {
+                        wx.hideLoading();
+                        // console.log(tm.data.topLogoListLast[0]["topBrandGoods"])
+                    }
+                });
+            }
+            // console.log(logoListLast)
+
+
+
+        }
     },
     goView: function(event) {
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
@@ -1210,6 +1346,7 @@ Page({
         })
     },
     getCode: function() {
+
         wx.login({
             success(res) {
                 if (res.code) {
@@ -1221,12 +1358,99 @@ Page({
                             js_code: res.code,
                             grant_type: "authorization_code"
                         },
+
                         success: function(jd) {}
+
                     })
                 } else {
                     console.log('登录失败！' + res.errMsg)
                 }
             }
         })
+    },
+    toggleLeft1() {
+        this.setData({
+            showLeft1: !this.data.showLeft1
+        });
+    },
+    goCouponsList: function(event) {
+        var url = "https://ytal.qkmai.com/vShop/couponslist?source=wap"
+        var deurl = encodeURIComponent(url)
+        var s = '/pages/webPage/webPage?artUrl=' + deurl
+        e.globalData.fundebug.notifyError(new Error("首页跳转文章"), {
+            name: "文章链接",
+            metaData: s
+        });
+        wx.navigateTo({
+            url: s
+        })
+    },
+    getProducts: function() {
+        var tm = this;
+        wx.showNavigationBarLoading(), e.getOpenId(function(r) {
+            wx.request({
+                url: e.getUrl("GetProducts"),
+                data: {
+                    openId: r,
+                    cId: 34,
+                    pageIndex: 1,
+                    pageSize: 3,
+                    // sortBy: a.data.SortBy,
+                    // sortOrder: a.data.SortOrder
+                },
+                success: function(t) {
+                    //console.log(t)
+                    if (t.statusCode == 200) {
+                        var r = t.data.Data;
+                        //console.log(r)
+                        tm.setData({
+                            getProductsList: r.slice(0, 3)
+                        })
+                    }
+                },
+                complete: function() {
+                    wx.hideNavigationBarLoading();
+                }
+            });
+        });
+    },
+    bindCouponsTap: function(o) {
+        wx.navigateTo({
+            url: "../couponlist/couponlist"
+        });
+    },
+    goToBrand: function() {
+        wx.switchTab({
+            url: '../brandRush/brandRush',
+        })
+    },
+    getPageRushGoodsByTagId: function() {
+        var tm = this;
+        var currentUrl = e.getUrl("YTALGetPageRushGoodsByTagId");
+        var currentData = {
+            tagId: 2,
+            isSoldOut: 0,
+            pi: 1,
+            ps: 3
+        };
+        // 加载页面数据
+        wx.request({
+            url: currentUrl,
+            data: currentData,
+            success: function(jd) {
+
+                if (jd.data.length != 0) {
+                    let goodsList = [];
+                    jd.data.forEach(o => {
+                        goodsList.push(o)
+                    });
+                    var newList = tm.data.rushGoodsList.concat(goodsList)
+                    tm.setData({
+                        rushGoodsList: newList
+                    })
+
+                }
+            }
+        });
     }
 });
