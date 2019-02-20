@@ -1,0 +1,65 @@
+<view class="page-section">
+    <!-- <view style='position:fixed;top:0;left:0;color:#db3c40;font-size:13px;width:750rpx;line-height:40rpx;background-color:#ff585e;z-index:100000;color:#fff;padding:20rpx;box-sizing:border-box;'>
+        <view>提示：本平台不接受订单物流签收7天后的售后申请，如有疑问，请签收后第一时间联系客服</view>
+    </view> -->
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <!-- <view class="form-group bg-white" style='padding-top:110rpx;'> -->
+        <view class="form-group bg-white">
+            <view class="form-group-name">供应商</view>
+            <input data-key="joinName" maxlength="20" placeholder="请输入公司名称" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
+        </view>
+
+        <view class="form-group bg-white">
+            <view class="form-group-name">联系人</view>
+            <input data-key="joinConcat" maxlength="20" placeholder="请输入联系人" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
+        </view>
+
+        <view class="form-group bg-white">
+            <view class="form-group-name">联系电话</view>
+            <input data-key="joinPhone" maxlength="20" placeholder="请输入联系人手机号" placeholderStyle="color:#bdbdbd" type="number" bindblur="blurCheck" focus='{{focus}}'></input>
+        </view>
+
+        <view class="form-group bg-white">
+            <view class="form-group-name">经营商品</view>
+            <input data-key="joinGoods" maxlength="20" placeholder="请描述售卖商品品类" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
+        </view>
+
+        <view class="form-group bg-white">
+            <view class="form-group-name">授权品牌</view>
+            <input data-key="joinBrand" maxlength="20" placeholder="请输入售卖商品品牌" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
+        </view>
+
+        <view class="form-group bg-white">
+            <view class="form-group-name">店铺网址</view>
+            <input data-key="joinUrl" maxlength="20" placeholder="支持淘宝、京东、拼多多等主流电商平台" placeholderStyle="color:#bdbdbd" type="text" bindblur="blurCheck"></input>
+        </view>
+
+        <view class="line">
+            <view></view>
+        </view>
+        <view class="beizhu">
+            <view class="form-group-name">备注</view>
+        </view>
+        <view class="beizhu bg-white">
+            <textarea class="group-area" name="txtarea" placeholder="在此输入备注"></textarea>
+        </view>
+        <view class="beizhu" style="border-bottom: 1rpx solid #fff;">
+            <view class="form-group-name" style='width:500rpx;'>上传凭证(提交三证合一、授权证书等)</view>
+        </view>
+        <view class="beizhu bg-white" style="display:flex">
+            <view bindtap="uploadImg" class="uploadimg" data-index="0">
+                <image src="{{UserCredentials[0]}}" style="width:158rpx;height:158rpx;"></image>
+            </view>
+            <view bindtap="uploadImg" class="uploadimg" data-index="1">
+                <image src="{{UserCredentials[1]}}" style="width:158rpx;height:158rpx;"></image>
+            </view>
+            <view bindtap="uploadImg" class="uploadimg" data-index="2">
+                <image src="{{UserCredentials[2]}}" style="width:158rpx;height:158rpx;"></image>
+            </view>
+        </view>
+        <view class="btn">
+            <button class="submit" formType="submit">确定提交</button>
+            <navigator class="cancel" openType="navigateBack">取消</navigator>
+        </view>
+    </form>
+</view>

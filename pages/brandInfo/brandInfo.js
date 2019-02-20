@@ -381,6 +381,9 @@ Page({
                                     shopcartCount: tm.data.shopcartCount + 1
                                 });
                         }
+                    },
+                    fail: function (res) {
+                        console.log(res)
                     }
                 })
             }

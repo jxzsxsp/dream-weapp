@@ -71,7 +71,8 @@
         "pages/myFocus/myFocus",
         "pages/wallet/wallet",
         "pages/poster/poster",
-        "pages/goodInfo/goodInfo"
+        "pages/goodInfo/goodInfo",
+        "pages/join/join"
     ],
     "window": {
         "backgroundTextStyle": "light",
