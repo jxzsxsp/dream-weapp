@@ -1,0 +1,11 @@
+<!--components/goodLists.wxml-->
+<view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
+    <block wx:for="{{goodLists}}" wx:for-item="itemName" wx:for-index="idx">
+        <view style="width:218rpx;height:300rpx;margin-right:6rpx">
+            <image src="http://cos.qkmai.com/qkmbb/ytal/graybqtb.png" style='width:218rpx;height:218rpx;'></image>
+            <!-- <view style='font-size:26rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{itemName.infoDesc}}</view> -->
+            <!-- <view style='font-size:26rpx;text-align:center'>￥{{itemName.salePrice}}</view>
+        <view style='font-size:22rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#db9548;text-align:center'>VIP省/赚{{itemName.commissionMoney}}元</view> -->
+        </view>
+    </block>
+</view>
