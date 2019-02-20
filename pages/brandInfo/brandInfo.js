@@ -32,7 +32,8 @@ Page({
         goTopStatus: false,
         goodsImages: [],
         SelectskuId: [],
-        SkuID: ""
+        SkuID: "",
+        countDownFlag:true
     },
     onLoad: function(options) {
         app.globalData.fundebug.notifyError(new Error("列表onload"), {
@@ -276,6 +277,7 @@ Page({
         return shareInfo;
     },
     countDown: function() { //倒计时函数
+        var tm = this;
         // 获取当前时间，同时得到活动结束时间数组
         let newTime = new Date().getTime();
         var rushInfo = this.data.brandRushInfo;
@@ -307,6 +309,10 @@ Page({
                     min: '00',
                     sec: '00'
                 }
+                tm.setData({
+                    countDownFlag: false
+                })
+                
             }
             o.countDownTime = obj;
         })

@@ -1,20 +1,20 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 
-<view class='page-section' style='width:750rpx;'>
+<view class='page-section' style='width:750rpx;' wx:if="{{countDownFlag}}">
     <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
-        <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
-            <view style='position:absolute;top:0rpx;right:170rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/graybqtb.png ) no-repeat top left;background-size:100% 100%;' wx:if="{{userInfo.IsReferral}}">
+        <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;'>
+            <!-- <view style='position:absolute;top:0rpx;right:170rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/graybqtb.png ) no-repeat top left;background-size:100% 100%;' wx:if="{{userInfo.IsReferral}}">
                 <view style='float:right;font-size:22rpx;text-align:center;color:#fff;padding-top:5rpx'>
                     <text style='font-size:22rpx;'>最高分佣</text>
                     <text style='padding-left:5rpx;font-size:24rpx;'>{{item.topCommissionRate}}%</text>
                 </view>
-            </view>
+            </view> -->
             <view style='position:absolute;top:0rpx;right:25rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/redbqtb.png ) no-repeat top left;background-size:100% 100%;'>
                 <view style='font-size:36rpx;text-align:center;line-height:70rpx;color:#fff;font-weight:900'>{{filter.toFix((item.lowerDiscount / 10),1)}}
                     <text style='font-size:22rpx;line-height:70rpx;'>折起</text>
                 </view>
             </view>
-            <view style='overflow:hidden;padding-top:35rpx'>
+            <view style='overflow:hidden;padding-top:5rpx'>
                 <view style='padding:27rpx 26rpx 16rpx 16rpx;float:left;'>
                     <view style='width:85rpx;height:85rpx;border: 1rpx solid #e5e5e5;display:flex;justify-content:center;align-items:center;'>
                         <image src='{{item.brandLogo}}' style='width:98%;height:auto' mode='widthFix'></image>
@@ -41,32 +41,34 @@
                     </view>
                 </view>
             </view>
-            <view style='padding-left:129rpx'>
-                <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
-                    <text bindlongpress='copy' class='ellipsis' data-val="{{item.brandDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.brandDesc}}</text>
-                </view>
-            </view>
-            <view style='padding-left:129rpx;padding-bottom:15rpx;display:flex;justify-content:flex-start;align-items:center;'>
-                <view>
-                    <image src='http://cos.qkmai.com/qkmbb/icon_brand_notice.png' style='margin-right:30rpx;width:35rpx;height:30rpx;padding-top:10rpx;'></image>
-                </view>
-                <view style='overflow:hidden;'>
-                    <view class='videoLed'>
-                        <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!本商品的实际销售方为货源提供方，品牌方或品牌授权经销商，非本平台和本平台的VIP用户。</text>
+            <view style='margin-top:-30rpx'>
+                <view style='padding-left:129rpx'>
+                    <view style='font-size:26rpx;line-height:40rpx;color:#515151'>
+                        <text bindlongpress='copy' class='ellipsis' data-val="{{item.brandDesc}}" style='white-space:pre-wrap;max-width:600rpx;word-break:break-all;'>{{item.brandDesc}}</text>
                     </view>
                 </view>
-            </view>
-            <view style="padding-left:129rpx;">
-                <view wx:for="{{goodsImages}}" style='display:inline-block;'>
-                    <image src="{{item}}" style='width:186rpx;height:186rpx;' bindtap='previewImg' data-imgsrc='{{item}}' data-imgs='{{goodsImages}}' lazy-load></image>
+                <view style='padding-left:129rpx;padding-bottom:15rpx;display:flex;justify-content:flex-start;align-items:center;'>
+                    <view>
+                        <image src='http://cos.qkmai.com/qkmbb/icon_brand_notice.png' style='margin-right:30rpx;width:35rpx;height:30rpx;padding-top:10rpx;'></image>
+                    </view>
+                    <view style='overflow:hidden;'>
+                        <view class='videoLed'>
+                            <text style="font-size:22rpx;color:#db3c40;white-space:nowrap;">正品清仓!不支持无理由退换!活动结束后按付款顺序发货!本商品的实际销售方为货源提供方，品牌方或品牌授权经销商，非本平台和本平台的VIP用户。</text>
+                        </view>
+                    </view>
                 </view>
-            </view>
-            <view style='padding-left:125rpx;padding-right:15rpx'>
-                <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;overflow:hidden;display:flex;flex-direction:row'>
-                    <text style=''>结束时间{{item.endTimeInfo}}</text>
-                    <view style='font-size:14px;width:50%;text-align:right;color:#515151;line-height:40rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:center;' bindtap='changeFocus' data-index="{{bindex}}" data-title="{{item.mainTitle}}">
-                        <image src='{{isFocus && isFocus == true? "http://cos.qkmai.com/qkmbb/ytal/guanzhutb1.png" : "http://cos.qkmai.com/qkmbb/ytal/guanzhutb.png"}}' style='width:40rpx;margin-right:10rpx;height:auto;' mode='widthFix'></image>
-                        {{isFocus && isFocus == true? "取消关注" : "关注"}}
+                <view style="padding-left:129rpx;">
+                    <view wx:for="{{goodsImages}}" style='display:inline-block;'>
+                        <image src="{{item}}" style='width:186rpx;height:186rpx;' bindtap='previewImg' data-imgsrc='{{item}}' data-imgs='{{goodsImages}}' lazy-load></image>
+                    </view>
+                </view>
+                <view style='padding-left:125rpx;padding-right:15rpx'>
+                    <view style='font-size: 26rpx;	color: #b0b0b0;	line-height: 40rpx;overflow:hidden;display:flex;flex-direction:row'>
+                        <text style='width:50%;'>结束时间{{item.endTimeInfo}}</text>
+                        <view style='font-size:14px;width:50%;text-align:right;color:#515151;line-height:40rpx;display:flex;flex-flow:row nowrap;justify-content:flex-end;align-items:center;' bindtap='changeFocus' data-index="{{bindex}}" data-title="{{item.mainTitle}}">
+                            <image src='{{isFocus && isFocus == true? "http://cos.qkmai.com/qkmbb/ytal/guanzhutb1.png" : "http://cos.qkmai.com/qkmbb/ytal/guanzhutb.png"}}' style='width:40rpx;margin-right:10rpx;height:auto;' mode='widthFix'></image>
+                            {{isFocus && isFocus == true? "取消关注" : "关注"}}
+                        </view>
                     </view>
                 </view>
             </view>
@@ -84,6 +86,11 @@
             </view>
         </view>
     </view>
+
+
+    <!-- 1111111 -->
+
+
 
     <!-- <view class='brandInfoTabBar' style="display: flex;flex-direction: row;justify-content: center;align-items: center;color: #515151;height: 80rpx;border-radius: 15rpx;margin:20rpx;">
         <view class="brandInfoTab hotSell {{nothing==0?'active':''}}" bindtap='onShowHotSell' style='font-size:32rpx;display:flex;flex-direction:row;justify-content:center;align-items: center;width:49%' data-state="0">
@@ -146,7 +153,7 @@
                     <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
                     <text class='marketPrice'>¥{{filter.toFix(item.marketPrice,2)}}</text>
                     <view style='float:right' wx:if="{{userInfo.IsReferral}}">
-                        <text style='font-size:24rpx;padding-right:15rpx'>佣金</text>
+                        <text style='font-size:24rpx;padding-right:15rpx'>VIP省/赚</text>
                         <text class='commissionMoney' style='font-weight:900;font-size:40rpx'><text style='font-size:24rpx'>¥</text>{{item.commissionMoney}}</text>
                     </view>
                 </view>
@@ -309,11 +316,11 @@
         </view>
     </view>
 
-   <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
+    <!-- <view class="fixedBtn active" wx:if="{{userInfo.IsReferral}}" style='bottom:356rpx;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiang_1.png'></image>
         <text>分享</text>
         <button style='color:transparent;position:absolute;left:0;top:0;width:96rpx;height:96rpx;' data-brandId='{{brandId}}' plain='true' openType="share">分享</button>
-    </view>
+    </view> -->
     <view class="fixedBtn {{userInfo.IsReferral? '' : 'actice'}}" style='bottom:246rpx;' bindtap='fixedGoToCart'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/gouwuche_1.png'></image>
         <text>购物车</text>
@@ -333,4 +340,8 @@
     </view>
     <view class='loadmore loading' wx:if="{{ hasMore && rushGoodsList.length > 0 }}">正在加载中…</view>
     <view class='loadmore' wx:if="{{ !hasMore && rushGoodsList.length > 0 }}">—— 我也是有底线的 ——</view>
+</view>
+<view wx:else style='display:flex;flex-direction:column;justify-content:center;align-items: center;'>
+    <view>活动已过期</view>
+    <view style='background-image:linear-gradient(-90deg,#ff1b1a,#ff5622);color:#fff;font-size:12px;padding:10rpx 20rpx' bindtap='fixedGoToHome'>去首页</view>
 </view>
