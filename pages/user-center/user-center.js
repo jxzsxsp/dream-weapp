@@ -5,7 +5,7 @@ const data = {
     { name: '关注店铺', icon: 'icon-shop', half: true },
     { name: '最近浏览', icon: 'icon-history', half: true },
     { name: '我的收藏', icon: 'icon-favorite', half: false },
-    { name: '推荐供应商', icon: 'icon-recommendsupplier', half: false },
+    { name: '推荐', icon: 'icon-recommendsupplier', half: false },
   ],
   userInfo: {},
   showShareImg: false,

@@ -1,7 +1,7 @@
 export const isOnline = false
 
 export default {
-  Login: 'http://172.16.2.166:8080',
-  url: 'http://172.16.2.150:8080',  //主域名
-  Pantone: 'http://172.16.2.149:8080'
+  Login: 'https://sso2.lianshang.com',
+  url: 'https://chameleon.lianshang.com',  //主域名
+  Pantone: 'https://colorlab.lianshang.com'
 }

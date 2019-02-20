@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "推荐供应商",
+  "navigationBarTitleText": "推荐",
   "usingComponents": {
     "shop-list": "/components/shop-list/shop-list"
   }
