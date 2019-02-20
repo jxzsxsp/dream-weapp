@@ -117,8 +117,8 @@
         </view>
         <view class='list-item'>
             <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;' bindtap="bindyongjin">
-                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的佣金</text>
-                <text style='font-size:12px;color:#515151;'>分享好友购物得佣金</text>
+                <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>我的收入</text>
+                <text style='font-size:12px;color:#515151;'>分享好友购物得返利</text>
                 <!-- <view style='font-size:12px;color:#515151;'>可提现
                     <text class='tip-text'>￥{{DistributionInfo.CanDrawSplittin}}</text> | 未结算
                     <text class='tip-text'>￥{{DistributionInfo.NoSettlementSplttin}}</text>

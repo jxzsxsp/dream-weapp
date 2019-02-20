@@ -1,4 +1,3 @@
-<!--pages/wallet/wallet.wxml-->
 <view class='wallet_container'>
     <view class='wallet_top'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/wodehbtb.png  ' style="width:100rpx;height:100rpx;margin:50rpx auto 30rpx auto;" class='h_icon'></image>
@@ -20,33 +19,8 @@
                 </view>
             </view>
         </block>
-        <!-- <text style='font-size: 32rpx;padding:15rpx'>红包明细</text> -->
-        <!-- <view class='list'>
-            <view>
-                <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block'>201812209070315</text>
-                <text class='font_small' style='padding-left:10rpx;display:block'>2019-01-02 18:56:13</text>
-            </view>
-            <view>
-                <text class='font_big jl3 red' style='font-size:36rpx'>+￥120.00</text>
-            </view>
-        </view>
-        <view class='list'>
-            <view>
-                <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block'>201812209070315</text>
-                <text class='font_small' style='padding-left:10rpx;display:block'>2019-01-02 18:56:13</text>
-            </view>
-            <view>
-                <text class='font_big jl3 red'>+￥120.00</text>
-            </view>
-        </view>
-        <view class='list'>
-            <view>
-                <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block'>201812209070315</text>
-                <text class='font_small' style='padding-left:10rpx;display:block'>2019-01-02 18:56:13</text>
-            </view>
-            <view>
-                <text class='font_big jl3 green'>-￥120.00</text>
-            </view>
-        </view> -->
     </view>
 </view>
+
+<view class='loadmore loading' wx:if="{{ hasMore && BalanceList.length > 0 }}">正在加载中…</view>
+<view class='loadmore' wx:if="{{ !hasMore && BalanceList.length > 0 }}">—— 我也是有底线的 ——</view>

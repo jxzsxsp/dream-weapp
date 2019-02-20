@@ -1,36 +1,30 @@
-// pages/wallet/wallet.js
 var t = require("../../utils/config.js"),
     a = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-        balance:"",
+        balance: "",
         userInfo: {},
         openId: "",
         PageIndex: 1,
         PageSize: 10,
-        BalanceList: null,
+        BalanceList: [],
         isempty: !0,
         SplittinTotal: "",
         CanDrawSplittin: "",
         NoSettlementSplttin: "",
         DrawSplittinTotal: "",
         isDefault: true,
-        DistributionInfo: ""
+        DistributionInfo: "",
+        dataIndex: 0,
+        hasMore: true
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         var tm = this;
         a.getUserInfo(function (t) {
             tm.setData({
                 userInfo: t
             })
+            tm.loadMore()
         });
         a.getOpenId(function (t) {
             wx.request({
@@ -44,62 +38,27 @@ Page({
             });
         });
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
     onShow: function () {
         var t = this;
-        t.setData({
-            PageIndex: 1
-        }), t.loadData(t, !1);
+        // t.setData({
+        //     PageIndex: 1
+        // }), t.loadData(t, !1);
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     onPullDownRefresh: function () {
         var t = this;
-        t.loadData(t, !1);
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-        var t = this,
-            a = t.data.PageIndex + 1;
         t.setData({
-            PageIndex: a
-        }), t.loadData(t, !0);
+            dataIndex: 0
+        })
+        // t.loadData(t, !1);
+        t.loadMore();
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    onReachBottom: function () {
+        var t = this;
+        // a = t.data.PageIndex + 1;
+        // t.setData({
+        //     PageIndex: a
+        // }), t.loadData(t, !0);
+        t.loadMore();
     },
     loadData: function (i, n) {
         wx.showLoading({
@@ -120,7 +79,7 @@ Page({
                             var o = i.data.SplittinData;
                             o.push.apply(o, l), i.setData({
                                 BalanceList: o,
-                               
+
                             });
                         } else {
                             l.Total;
@@ -137,8 +96,6 @@ Page({
             });
         });
     },
-
-    
     changeList: function (e) {
         var tm = this;
         if (e.currentTarget.dataset.flag === tm.data.isDefault) return;
@@ -159,5 +116,37 @@ Page({
         wx.navigateTo({
             url: s
         })
+    },
+    loadMore: function () {
+        var tm = this;
+        wx.showLoading({
+            title: "加载中"
+        });
+        wx.request({
+            url: a.getUrl("YTALGetMemberBalanceList"),
+            data: {
+                openId: tm.data.userInfo.OpenId,
+                // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
+                pageIndex: ++tm.data.dataIndex,
+                pageSize: tm.data.PageSize
+            },
+            success: function (res) {
+                if (res.data.list.length != 10) {
+                    tm.setData({
+                        hasMore: false
+                    })
+                }
+                var oldList = tm.data.BalanceList
+                var newList = oldList.concat(res.data.list)
+                tm.setData({
+                    BalanceList: newList,
+                    balance: res.data.balance
+                })
+                wx.hideLoading();
+            },
+            complete: function () {
+                wx.hideLoading();
+            }
+        });
     }
 })
