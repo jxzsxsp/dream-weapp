@@ -62,12 +62,14 @@
 
 <van-popup
   show="{{showShareImg}}"
-  position="center"
+  position="bottom"
   bind:close="closeShareImg"
   custom-style="abc"
 >
   <view class='share-img-container flex-column'>
-    <canvas canvas-id='shareImg' class='canvas-img'></canvas>
+    <view style='width:0px;height:0px;overflow:hidden;'>
+      <canvas canvas-id='shareImg' class='canvas-img' hidden></canvas>
+    </view>
     <!-- <view class='share-img flex-column'>
       <view class='share-head flex'>
         <image class="share-avatar" src="{{userInfo.avatarUrl}}"/>
@@ -82,7 +84,17 @@
       <view class='share-tips'>长按识别二维码，获取您的专属色彩管家</view>
     </view> -->
 
+    <view class='guanbi-event flex' bind:tap='closeShareImg'>
+      <view class='iconfont icon-guanbi guanbi'></view>
+    </view>
+
+    <view class='share-qrcode-img'>
+      <image mode='widthFix' src='/assets/share_qrcode.jpg'></image>
+    </view>
+
     <button class='save-img flex' bind:tap="saveImg" hidden='{{saveImgBtnHidden}}'>保存图片</button>
     <button class='save-img flex' open-type="openSetting" bindopensetting='handleSetting' hidden='{{openSettingBtnHidden}}'>去授权</button>
+
+    <text class='share-qrcode-text'>保存图片到相册，你可以分享啦</text>
   </view>
 </van-popup>

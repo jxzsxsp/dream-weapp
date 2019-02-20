@@ -24,28 +24,28 @@ const privateMethod = {
   drawImg: function (ctx) {
     const unit = this.data.unit
 
-    ctx.drawImage(this.data.shareBackImgPath, 0, 0, 540 * unit, 720 * unit);
+    ctx.drawImage(this.data.shareQrcodeImgPath, 0, 0, 750 * unit, 975 * unit);
 
-    //这里很重要，主要就是布局
-    ctx.save();
-    //绘制头像
-    ctx.beginPath(); //开始绘制
-    //先画个圆，前两个参数确定了圆心 （x,y） 坐标  第三个参数是圆的半径  四参数是绘图方向  默认是false，即顺时针
-    ctx.arc(116 * unit, 105 * unit, 50 * unit, 0, Math.PI * 2, false);
-    ctx.clip(); //画好了圆 剪切  原始画布中剪切任意形状和尺寸。
-    // 一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内 这也是我们要save上下文的原因
-    ctx.drawImage(this.data.avatarUrl, 66 * unit, 55 * unit, 100 * unit, 100 * unit);
-    ctx.restore(); //恢复之前保存的绘图上下文 恢复之前保存的绘图问下文即状态 还可以继续绘制
-
+    // //这里很重要，主要就是布局
+    // ctx.save();
+    // //绘制头像
+    // ctx.beginPath(); //开始绘制
+    // //先画个圆，前两个参数确定了圆心 （x,y） 坐标  第三个参数是圆的半径  四参数是绘图方向  默认是false，即顺时针
+    // ctx.arc(116 * unit, 105 * unit, 50 * unit, 0, Math.PI * 2, false);
+    // ctx.clip(); //画好了圆 剪切  原始画布中剪切任意形状和尺寸。
+    // // 一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内 这也是我们要save上下文的原因
     // ctx.drawImage(this.data.avatarUrl, 66 * unit, 55 * unit, 100 * unit, 100 * unit);
-    ctx.drawImage(this.data.qrcodeImgPath, 120 * unit, 230 * unit, 300 * unit, 300 * unit);
-    ctx.setFontSize(34 * unit)
-    ctx.setFillStyle('#000000')
-    ctx.fillText(this.data.userInfo.nickName, 192 * unit, 95 * unit)
-    ctx.setFontSize(24 * unit)
-    ctx.setFillStyle('#616161')
-    ctx.fillText('向您推荐小程序', 192 * unit, 133 * unit);
-    ctx.fillText('长按识别二维码，获取您的专属色彩管家', 48 * unit, 637 * unit);
+    // ctx.restore(); //恢复之前保存的绘图上下文 恢复之前保存的绘图问下文即状态 还可以继续绘制
+
+    // // ctx.drawImage(this.data.avatarUrl, 66 * unit, 55 * unit, 100 * unit, 100 * unit);
+    // ctx.drawImage(this.data.qrcodeImgPath, 120 * unit, 230 * unit, 300 * unit, 300 * unit);
+    // ctx.setFontSize(34 * unit)
+    // ctx.setFillStyle('#000000')
+    // ctx.fillText(this.data.userInfo.nickName, 192 * unit, 95 * unit)
+    // ctx.setFontSize(24 * unit)
+    // ctx.setFillStyle('#616161')
+    // ctx.fillText('向您推荐小程序', 192 * unit, 133 * unit);
+    // ctx.fillText('长按识别二维码，获取您的专属色彩管家', 48 * unit, 637 * unit);
   },
 
   //保存至相册
@@ -91,6 +91,7 @@ const privateMethod = {
       }
     })
   },
+
 }
 
 const lifecycle = {
@@ -121,6 +122,16 @@ const lifecycle = {
       }
     })
 
+    wx.getImageInfo({
+      src: '../../assets/share_qrcode.jpg',
+      success: function (res) {
+        console.log(res)
+        _this.setData({
+          shareQrcodeImgPath: '../../' + res.path
+        });
+      }
+    })
+
     //获取用户设备信息，屏幕宽度
     wx.getSystemInfo({
       success: res => {
@@ -143,7 +154,7 @@ const lifecycle = {
     return {
       title: `推荐您进入蜥奇`,
       path: `/pages/index/index`,
-      imageUrl: 'http://img50.lianshang.cn/data/share.jpg'
+      imageUrl: 'http://img50.lianshang.cn/data/user/c/20192/5/1550660549650_4618.jpg'
     }
   },
 }
@@ -170,7 +181,7 @@ const viewAction = {
     })
   },
   showShareImg: function(d, v) {
-    this.drawShareImg();
+    // this.drawShareImg();
     this.setData({
       showShareImg: true
     })

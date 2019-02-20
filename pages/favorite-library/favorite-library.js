@@ -60,7 +60,7 @@ const lifecycle = {
       return {
         title: `分享颜色库《${this.data.selectedLibrary.name}》给你！快来蜥奇看看吧！`,
         path: `/pages/color-library-detail/color-library-detail?id=${this.data.selectedLibrary.id}`,
-        imageUrl: 'http://img50.lianshang.cn/data/share.jpg'
+        imageUrl: 'http://img50.lianshang.cn/data/user/c/20192/5/1550660549650_4618.jpg'
       }
     }
   },
