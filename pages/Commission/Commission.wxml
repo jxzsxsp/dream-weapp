@@ -1,4 +1,3 @@
-<!--pages/Commission/Commission.wxml-->
 <view class='commission_container'>
     <view class='commission_top'>
         <text class='tit'>可提现（元）</text>
@@ -22,113 +21,36 @@
             </view>
         </view>
     </view>
-    <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16"  data-id='16'>
+    <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16" data-id='16'>
         <image src="http://cos.qkmai.com/qkmbb/ytal/redenvelopetb.png"></image>
         <view>
             <text class='font_a'>佣金赚取/提现攻略</text>
             <text class='font_b'>平台佣金规则说明</text>
         </view>
-
-        <view class='go_btn' >GO</view>
-
+        <view class='go_btn'>GO</view>
     </view>
     <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length!=0}}">
         <block wx:for="{{SplittinList}}" wx:key="{{SplittinList}}">
-            <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-                <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                    <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>{{item.OrderId}}</text>
+            <view class='list' style='display:flex;flex-direction:row;justify-content: space-around;align-items: center;'>
+                <view style='display:flex;flex-direction:column;justify-content:center;padding-left:20rpx;width:70%;height:100%;'>
+                    <text class='' style=' color: #000;font-size: 26rpx;text-align:left;margin-bottom:10rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.Remark}}</text>
                     <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>{{item.TradeDate}}</text>
                 </view>
-                <view style='display:flex;flex-direction:column;justify-content: start-end;'>
+                <view style='display:flex;flex-direction:row;justify-content: space-between;width:30%;'>
+                    <view class='font_small'>{{item.IsUse?'已结算':'未结算'}}</view>
+                    <view class='font_big' style='padding-right:10rpx;'>{{item.Income}}</view>
+                </view>
+                <!-- <view style='display:flex;flex-direction:column;justify-content: start-end;width:15%;'>
                     <text class='font_big'> {{item.TradeTypeText}}</text>
                     <text class='font_small'>{{item.IsUse?'已结算':'未结算'}}</text>
                 </view>
-                <view>
+                <view style='width:15%;text-align:right;'>
                     <text class='font_big jl3' style='padding-right:20rpx'>{{item.Income}}</text>
-                </view>
+                </view> -->
             </view>
         </block>
-        <!-- <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
-                <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
-            </view>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'>注册分销奖励</text>
-                <text class='font_small'>未结算</text>
-            </view>
-            <view>
-                <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
-            </view>
-        </view> -->
-        <!-- <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
-                <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
-            </view>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'> 自购订单返佣</text>
-                <text class='font_small'>未结算</text>
-            </view>
-            <view>
-                <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
-            </view>
-
-        </view>
-        <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
-                <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
-            </view>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'> 粉丝购物返佣</text>
-                <text class='font_small'>未结算</text>
-            </view>
-            <view>
-                <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
-            </view>
-
-        </view>
-        <view class='list list1' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
-                <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
-            </view>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'> 拉新VIP奖励</text>
-                <text class='font_small'>未结算</text>
-            </view>
-            <view>
-                <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
-            </view>
-        </view>
-        <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
-                <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
-            </view>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'> 自购订单返佣</text>
-                <text class='font_small'>未结算</text>
-            </view>
-            <view>
-                <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
-            </view>
-
-        </view>
-        <view class='list' style='display:flex;flex-direction:row;justify-content: space-between;align-items: center;'>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;padding-left:20rpx'>
-                <text class='' style=' color: #000;font-size: 26rpx;text-align:left'>201812209070315</text>
-                <text class='' style='color: #959595;font-size: 22rpx;text-align:left'>2019-01-02 18:56:13</text>
-            </view>
-            <view style='display:flex;flex-direction:column;justify-content: start-end;'>
-                <text class='font_big'> 粉丝购物返佣</text>
-                <text class='font_small'>未结算</text>
-            </view>
-            <view>
-                <text class='font_big jl3' style='padding-right:20rpx'>￥120.00</text>
-            </view>
-
-        </view> -->
     </view>
 </view>
+
+<view class='loadmore loading' wx:if="{{ hasMore && SplittinList.length > 0 }}">正在加载中…</view>
+<view class='loadmore' wx:if="{{ !hasMore && SplittinList.length > 0 }}">—— 我也是有底线的 ——</view>
