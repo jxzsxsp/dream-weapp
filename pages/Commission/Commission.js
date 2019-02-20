@@ -104,8 +104,8 @@ Page({
         wx.request({
             url: a.getUrl("SplittinList"),
             data: {
-                // openId: tm.data.userInfo.OpenId,
-                openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
+                openId: tm.data.userInfo.OpenId,
+                // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
                 pageIndex: ++tm.data.dataIndex,
                 pageSize: tm.data.PageSize
             },
