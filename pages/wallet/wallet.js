@@ -7,14 +7,16 @@ Page({
         openId: "",
         PageIndex: 1,
         PageSize: 10,
-        BalanceList: null,
+        BalanceList: [],
         isempty: !0,
         SplittinTotal: "",
         CanDrawSplittin: "",
         NoSettlementSplttin: "",
         DrawSplittinTotal: "",
         isDefault: true,
-        DistributionInfo: ""
+        DistributionInfo: "",
+        dataIndex: 0,
+        hasMore:true
     },
     onLoad: function(options) {
         var tm = this;
@@ -22,6 +24,7 @@ Page({
             tm.setData({
                 userInfo: t
             })
+            tm.loadMore()    
         });
         a.getOpenId(function(t) {
             wx.request({
@@ -37,20 +40,22 @@ Page({
     },
     onShow: function() {
         var t = this;
-        t.setData({
-            PageIndex: 1
-        }), t.loadData(t, !1);
+        // t.setData({
+        //     PageIndex: 1
+        // }), t.loadData(t, !1);
     },
     onPullDownRefresh: function() {
         var t = this;
-        t.loadData(t, !1);
+        // t.loadData(t, !1);
+        t.loadMore();
     },
     onReachBottom: function() {
-        var t = this,
-            a = t.data.PageIndex + 1;
-        t.setData({
-            PageIndex: a
-        }), t.loadData(t, !0);
+        var t = this;
+            // a = t.data.PageIndex + 1;
+        // t.setData({
+        //     PageIndex: a
+        // }), t.loadData(t, !0);
+        t.loadMore();
     },
     loadData: function(i, n) {
         wx.showLoading({
@@ -108,5 +113,37 @@ Page({
         wx.navigateTo({
             url: s
         })
+    },
+    loadMore: function () {
+        var tm = this;
+        wx.showLoading({
+            title: "加载中"
+        });
+        wx.request({
+            url: a.getUrl("YTALGetMemberBalanceList"),
+            data: {
+                openId: tm.data.userInfo.OpenId,
+                // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
+                pageIndex: ++tm.data.dataIndex,
+                pageSize: tm.data.PageSize
+            },
+            success: function (res) {
+                if (res.data.list.length != 10) {
+                    tm.setData({
+                        hasMore: false
+                    })
+                }
+                var oldList = tm.data.BalanceList
+                var newList = oldList.concat(res.data.list)
+                tm.setData({
+                    BalanceList: newList,
+                    balance: res.data.balance
+                })
+                wx.hideLoading();
+            },
+            complete: function () {
+                wx.hideLoading();
+            }
+        });
     }
 })
