@@ -125,8 +125,11 @@
                 <view class="yunfeir">￥{{OrderFreight}}</view>
             </view>
             <view class="yunfei">
-                <view class="yunfeil">余额抵扣</view>
-                <view class="yunfeir" style='margin-right:10rpx;'>￥{{usebalance}}</view>
+                <view style='margin-right:20rpx;height:48rpx;'>
+                    <image src="http://cos.qkmai.com/qkmbb/ytal/yuetb.png" style='width:34rpx;height:34rpx;margin-top:7rpx'></image>
+                </view>
+                <view class="yunfeil">红包</view>
+                <view class="yunfeir" style='margin-right:10rpx;'>抵扣{{usebalance}}元</view>
                 <checkbox-group bindchange="checkboxChange">
                     <checkbox bindtap='changeNm' checked='{{isUseRedPacket}}'></checkbox>
                 </checkbox-group>
@@ -136,6 +139,9 @@
                 <view class="yunfeir">￥{{TaxRate}}</view>
             </view>
             <view class="yunfei" hidden="{{DefaultCouponCode==''}}">
+                <view style='margin-right:20rpx;height:48rpx;'>
+                    <image src="http://cos.qkmai.com/qkmbb/ytal/youhuiquantb.png " style='width:34rpx;height:34rpx;margin-top:7rpx'></image>
+                </view>
                 <view class="yunfeil">优惠券</view>
                 <view class="yunfeir">-￥{{DefaultCouponPrice>ProductAmount?ProductAmount:DefaultCouponPrice}}</view>
             </view>
