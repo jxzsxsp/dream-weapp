@@ -134,7 +134,7 @@ page {
     display: flex;
     line-height: 64rpx;
     height: 64rpx;
-    border-bottom: 1rpx solid #e0e0e0;
+    /* border-bottom: 1rpx solid #e0e0e0; */
 }
 
 .oldprice {
@@ -681,7 +681,7 @@ page {
 }
 
 .name_share {
-    margin-top: 24rpx;
+    /* margin-top: 24rpx; */
     position: relative;
     display: inline-block;
 }
