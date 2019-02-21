@@ -26,8 +26,10 @@ const lifeCycle = {
         })
       })
   },
-  onShareAppMessage: function() {
-
+  onShareAppMessage: function () {
+    return {
+      title: `蜥奇-智能色彩管理专家`
+    }
   },
 }
 
