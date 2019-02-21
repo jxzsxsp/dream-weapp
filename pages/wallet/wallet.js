@@ -16,7 +16,8 @@ Page({
         isDefault: true,
         DistributionInfo: "",
         dataIndex: 0,
-        hasMore:true
+        hasMore:true,
+        isBalance: true
     },
     onLoad: function(options) {
         var tm = this;

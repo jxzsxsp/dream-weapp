@@ -6,8 +6,12 @@
             <text style="font-size:30rpx;color:#000;line-height: 90rpx;">￥</text>
             <text class='money_num' style="font-size:60rpx;text-align:center;color:#000;line-height: 90rpx;">{{balance}}</text>
         </view>
+
+
+
+        <navigator url='/pages/rebate/rebate' style='font-size:16px;color:#000;text-align:center;'>自购返利详情</navigator>
     </view>
-    <view class='wallet_bottom' wx:if="{{BalanceList.length!=0}}">
+    <view class='wallet_bottom' wx:if="{{BalanceList.length!=0 && isBalance}}">
         <block wx:for="{{BalanceList}}">
             <view class='list'>
                 <view>
@@ -19,6 +23,26 @@
                 </view>
             </view>
         </block>
+
+
+
+        <!-- <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length!=0}}"> -->
+            <!-- <block wx:for="{{SplittinList}}" wx:key="{{SplittinList}}">
+                <view class='list' style='display:flex;flex-direction:row;justify-content: space-around;align-items: center;'>
+                    <view style='display:flex;flex-direction:column;justify-content:center;padding-left:20rpx;width:70%;height:100%;'>
+                        <text style=' color: #000;font-size: 26rpx;text-align:left;margin-bottom:10rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.Remark}}</text>
+                        <text style='color: #959595;font-size: 22rpx;text-align:left'>{{item.TradeDate}}</text>
+                    </view>
+                    <view style='display:flex;flex-direction:row;justify-content: space-between;width:30%;'>
+                        <view class='font_small'>{{item.IsUse?'已结算':'未结算'}}</view>
+                        <view class='font_big' style='padding-right:10rpx;'>{{item.Income}}</view>
+                    </view>
+                </view>
+            </block> -->
+        <!-- </view> -->
+
+
+
     </view>
 </view>
 
