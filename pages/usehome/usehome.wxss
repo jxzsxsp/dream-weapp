@@ -89,6 +89,7 @@ page{
     padding: 24rpx 0;
     overflow: hidden;
     border-radius:15rpx;  
+    
 }
 .usecdsecond {
     display: flex;
