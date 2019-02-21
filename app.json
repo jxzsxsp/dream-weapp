@@ -72,7 +72,8 @@
         "pages/wallet/wallet",
         "pages/poster/poster",
         "pages/goodInfo/goodInfo",
-        "pages/join/join"
+        "pages/join/join",
+        "pages/rebate/rebate"
     ],
     "window": {
         "backgroundTextStyle": "light",
