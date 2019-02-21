@@ -16,7 +16,8 @@
 
         <view class="form-group bg-white">
             <view class="form-group-name">联系电话</view>
-            <input data-key="joinPhone" maxlength="20" placeholder="请输入联系人手机号" placeholderStyle="color:#bdbdbd" type="number" bindblur="blurCheck" focus='{{focus}}'></input>
+            <input data-key="joinPhone" maxlength="20" placeholder="请输入联系人手机号" placeholderStyle="color:#bdbdbd" type="number" bindblur="blurCheck"></input>
+            <!-- <input data-key="joinPhone" maxlength="20" placeholder="请输入联系人手机号" placeholderStyle="color:#bdbdbd" type="number" bindblur="blurCheck" focus='{{focus}}'></input> -->
         </view>
 
         <view class="form-group bg-white">
