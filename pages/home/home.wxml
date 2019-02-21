@@ -30,9 +30,10 @@
             </view>
         </scroll-view>
     </view>
-    <view style='background:#3c3b45' wx:if='{{selectedCate=="全场直播"}}'>
-
-        <image src='http://cos.qkmai.com/qkmbb/ytal/syvip.png' style='width:100%;height:224rpx;'></image>
+    <view style='background:#3c3b45' wx:if='{{selectedCate=="全场直播"}}' wx:if="{{(DistributionInfo.ReferralGradeName == '试用' || !DistributionInfo.ReferralGradeName) && isLoadEnd}}">
+        <navigator url='/pages/longvip/longvip'>
+            <image src='http://cos.qkmai.com/qkmbb/ytal/syvip.png' style='width:100%;height:224rpx;'></image>
+        </navigator>
     </view>
     <!-- <template is="{{'temp_'+item.type}}" data="{{...item,RequestUrl:RequestUrl}}" wx:for="{{TopicData}}" wx:key="id" wx:if='{{selectedCate=="全场直播"}}' style="width:350rpx;z-index:999;min-height:180rpx;">
     </template> -->
@@ -281,7 +282,7 @@
                     </view>
                 </view>
                 <view style='margin-top:5rpx'>
-                    <!-- <goodLists goodLists="{{item.goodsImages}}"></goodLists> -->
+                    <!-- <goodLists goodLists="{{item}}" idx="{{bindex}}">{{item}}</goodLists> -->
                     <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
                         <block wx:for="{{item.topBrandGoods}}" wx:for-item="itemName" wx:for-index="idx">
                             <view style="width:218rpx;height:300rpx;margin-right:6rpx">
@@ -300,9 +301,7 @@
                 <view class='fig' style='position:fixed;right:15rpx;bottom:26rpx;width:70rpx;height:70rpx;border-radius:0;z-index:994;background:#fff;border-radius:50%;border:1px solid #cacaca;display:flex;flex-direction:column;align-items: center;opacity:0.5' wx:if="{{goTopStatus}}"
                     bindtap='goToTop'>
                     <image src='http://cos.qkmai.com/qkmbb/ytal/toptb.png' style='width:50rpx;height:auto;margin-top:10rpx' mode='widthFix'></image>
-
                 </view>
-
             </view>
         </view>
     </view>
