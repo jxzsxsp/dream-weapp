@@ -32,7 +32,7 @@ Component({
      * 组件的初始数据
      */
     data: {
-        brandName: "品牌名称"
+        brandName: "亚太奥莱"
     },
 
     /**
