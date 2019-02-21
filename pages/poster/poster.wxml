@@ -38,6 +38,6 @@
 </view>
 <view style='position:fixed;bottom:0;width:100%;'>
     <view style='display:flex;flex-direction:row;justify-content:center;align-items: center;' bindtap='showPoster'>
-        <text style='width:100%;color:#fff;border:1px solid #ba050f;padding:15rpx 20rpx;background-image:linear-gradient(-90deg,#ff1b1a,#ff5622);font-size:26rpx;border-radius:20px;margin-right:20rpx;text-align:center'>生成图片保存到相册</text>
+        <text style='width:100%;color:#fff;border:1px solid #ba050f;background-image:linear-gradient(-90deg,#ff1b1a,#ff5622);font-size:36rpx;text-align:center;height:90rpx;line-height:90rpx'>生成图片保存到相册</text>
     </view>
 </view>
