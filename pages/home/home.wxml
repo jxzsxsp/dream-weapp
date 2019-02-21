@@ -182,35 +182,30 @@
             <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
                 <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c'>查看更多 ></view>
             </navigator>
-
-            <view style='display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;width:710rpx;margin:0 auto;'>
-                <block wx:for="{{rushGoodsList}}">
-                    <view style='width:100%;background:#fff;display:flex;flex-flow:row;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx'>
-                        <view style='width:80%;display:flex;flex-flow:row;justify-content:flex-start;height:200rpx'>
-                            <image src="{{item.goodsImages[0]}}" style='width:160rpx;height:160rpx;margin:20rpx' mode='widthFix'></image>
-                            <!-- <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view> -->
-                            <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
-                                <view style='font-size:13px;width:320rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.mainTitle}}</view>
-                                <view style='width:100%;margin-top:10rpx'>
-                                    <text class="salePrice" style='font-weight:900;font-size:14px;'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
-                                    <text style='font-size:11px;opacity:0'>2</text>
-                                    <text style='font-size:11px;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:17px;margin-top:5px;height:17px;padding: 0 4px;margin-right:5px;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</text>
-                                    <view style='margin-top:-20rpx;color:#515151' class='marketPrice' style='text-decoration: line-through;font-size:11px;'> ¥{{filter.toFix(item.marketPrice,2)}}</view>
-
-
+            <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
+                <view style='display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;width:710rpx;margin:0 auto;'>
+                    <block wx:for="{{rushGoodsList}}">
+                        <view style='width:100%;display:flex;flex-flow:row;justify-content:space-between;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx;background:#daac7c;'>
+                            <view style='width:80%;display:flex;flex-flow:row;justify-content:flex-start;height:200rpx;background:#fff;'>
+                                <image src="{{item.goodsImages[0]}}" style='width:160rpx;height:160rpx;margin:20rpx' mode='widthFix'></image>
+                                <!-- <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view> -->
+                                <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
+                                    <view style='font-size:13px;width:320rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.mainTitle}}</view>
+                                    <view style='width:100%;margin-top:10rpx'>
+                                        <text class="salePrice" style='font-weight:900;font-size:14px;'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
+                                        <text style='font-size:11px;opacity:0'>2</text>
+                                        <text style='font-size:11px;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:17px;margin-top:5px;height:17px;padding: 0 4px;margin-right:5px;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</text>
+                                        <view style='margin-top:-20rpx;color:#515151' class='marketPrice' style='text-decoration: line-through;font-size:11px;'> ¥{{filter.toFix(item.marketPrice,2)}}</view>
+                                    </view>
                                 </view>
-
-
                             </view>
-
+                            <view style='width:20%;background:#daac7c;display:flex;flex-direction:column;justify-content:center;align-items:center;;font-size:26rpx;color:#fff'>
+                                <view>VIP省/赚</view>
+                                <view>{{item.commissionMoney}}元</view>
+                            </view>
                         </view>
-                        <view style='width:20%;background:#daac7c;display:flex;flex-direction:column;justify-content:center;align-items:center;;font-size:26rpx;color:#fff'>
-                            <view>VIP省/赚</view>
-                            <view>{{item.commissionMoney}}元</view>
-                        </view>
-                    </view>
-                </block>
-                <!-- <view style='width:100%;background:#fff;display:flex;flex-flow:row;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx'>
+                    </block>
+                    <!-- <view style='width:100%;background:#fff;display:flex;flex-flow:row;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx'>
                     <view style='width:75%;display:flex;flex-flow:row;justify-content:flex-start;height:220rpx'>
                         <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view>
                         <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
@@ -227,7 +222,8 @@
                         <view>10.2元</view>
                     </view>
                 </view> -->
-            </view>
+                </view>
+            </navigator>
 
         </view>
 
