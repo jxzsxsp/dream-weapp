@@ -282,8 +282,8 @@
                     </view>
                 </view>
                 <view style='margin-top:5rpx'>
-                    <!-- <goodLists goodLists="{{item}}" idx="{{bindex}}">{{item}}</goodLists> -->
-                    <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
+                    <goodLists goodLists="{{item}}" idx="{{bindex}}"></goodLists>
+                    <!-- <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
                         <block wx:for="{{item.topBrandGoods}}" wx:for-item="itemName" wx:for-index="idx">
                             <view style="width:218rpx;height:300rpx;margin-right:6rpx">
                                 <image src="{{itemName.goodsImages[0]}}" style='width:218rpx;height:218rpx;'></image>
@@ -291,7 +291,7 @@
                                 <view style='font-size:22rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#db9548;text-align:center'>VIP省/赚{{itemName.commissionMoney}}元</view>
                             </view>
                         </block>
-                    </view>
+                    </view> -->
                     <view style='clear:both'></view>
                 </view>
                 <view style='padding-left:119rpx;padding-right:10rpx;padding-bottom:20rpx;padding:10rpx 10rpx 10rpx 119rpx;'>
@@ -369,16 +369,16 @@
                 </view>
                 <view style='margin-top:5rpx'>
                     <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
-                        <!-- <goodLists goodLists="{{0}}"></goodLists> -->
-                        <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
-                            <block wx:for="{{item.topBrandGoods}}" wx:for-item="itemName" wx:for-index="idx">
-                                <view style="width:218rpx;height:300rpx;margin-right:6rpx">
-                                    <image src="{{itemName.goodsImages[0]}}" style='width:218rpx;height:218rpx;'></image>
-                                    <view style='font-size:26rpx;text-align:center'>￥{{itemName.salePrice}}</view>
-                                    <view style='font-size:22rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#db9548;text-align:center'>VIP省/赚{{itemName.commissionMoney}}元</view>
-                                </view>
-                            </block>
-                        </view>
+                        <goodLists goodLists="{{item}}" idx="{{bindex}}"></goodLists>
+                    <!-- <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
+                        <block wx:for="{{item.topBrandGoods}}" wx:for-item="itemName" wx:for-index="idx">
+                            <view style="width:218rpx;height:300rpx;margin-right:6rpx">
+                                <image src="{{itemName.goodsImages[0]}}" style='width:218rpx;height:218rpx;'></image>
+                                <view style='font-size:26rpx;text-align:center'>￥{{itemName.salePrice}}</view>
+                                <view style='font-size:22rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#db9548;text-align:center'>VIP省/赚{{itemName.commissionMoney}}元</view>
+                            </view>
+                        </block>
+                    </view> -->
                     </view>
                     <view style='clear:both'></view>
                 </view>
