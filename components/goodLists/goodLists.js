@@ -6,13 +6,38 @@ Component({
      */
     properties: {
         goodLists: {
+            type: Object,
+            value: '',
+            observer: function (newVal, oldVal) {
+                
+                // console.log(newVal)
+                var tm = this;
+                //console.log("1" + tm.properties.goodLists)
+                // wx.request({
+                //     url: app.getUrl("YTALGetListBrandRushIsHead"),
+                //     data: {
+                //         //sku: newVal
+                //     },
+                //     success: function (res) {
+                //         console.log(res)
+                //         tm.setData({
+                //             goodLists: res.data.brandName
+                //         })
+                //         console.log(tm.data.goodLists)
+
+                //     }
+                // });
+
+            }
+        },
+        idx:{
             type: String,
             value: '',
             observer: function (newVal, oldVal) {
-
-                var tm = this;
-                console.log("1"+ tm.data.goodLists)
                 
+                var tm = this;
+                
+
             }
         }
     },
@@ -33,7 +58,7 @@ Component({
     ready() {
         var tm = this;
         var skucode = this.properties.itemsku;
-        console.log("2" + tm.data.goodLists)
+        //console.log("1" + tm.properties.goodLists)
         // 在组件实例进入页面节点树时执行
     }
 })
