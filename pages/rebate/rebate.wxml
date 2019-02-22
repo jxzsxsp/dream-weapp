@@ -1,3 +1,4 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='commission_container'>
     <view class='commission_top' style='font-size:18px;line-height:1.5;text-align:center;'>
         <view style='padding-top:80rpx;'>VIP自购返利列表</view>
@@ -34,12 +35,13 @@
         <block wx:for="{{SplittinList}}" wx:key="{{SplittinList}}">
             <view class='list' style='display:flex;flex-direction:row;justify-content: space-around;align-items: center;'>
                 <view style='display:flex;flex-direction:column;justify-content:center;padding-left:20rpx;width:70%;height:100%;'>
-                    <text style=' color: #000;font-size: 26rpx;text-align:left;margin-bottom:10rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.OrderId}}</text>
-                    <text style='color: #959595;font-size: 22rpx;text-align:left'>{{item.TradeDate}}</text>
+                    <text style=' color: #000;font-size: 26rpx;text-align:left;margin-bottom:10rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.orderId}}</text>
+                    <text style='color: #959595;font-size: 22rpx;text-align:left'>{{item.payDate}}</text>
                 </view>
                 <view style='display:flex;flex-direction:row;justify-content: space-between;width:30%;'>
-                    <view class='font_small'>{{item.IsUse?'已结算':'未结算'}}</view>
-                    <view class='font_big' style='padding-right:10rpx;'>{{item.Income}}</view>
+                    <view class='font_small'>{{item.IsSettle?'已结算':'未结算'}}</view>
+                    <view class='font_big' style='padding-right:10rpx;'>{{filter.toFix((item.selfPurchaseProfit),2)}}</view>
+                    
                 </view>
                 <!-- <view style='display:flex;flex-direction:column;justify-content: start-end;width:15%;'>
                     <text class='font_big'> {{item.TradeTypeText}}</text>

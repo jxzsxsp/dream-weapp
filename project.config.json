@@ -36,7 +36,57 @@
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {}
-
+		"miniprogram": {
+			"current": 7,
+			"list": [
+				{
+					"id": -1,
+					"name": "submitorder",
+					"pathName": "pages/submitorder/submitorder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "longvip",
+					"pathName": "pages/longvip/longvip",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "123",
+					"pathName": "pages/Commission/Commission",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "234",
+					"pathName": "pages/wallet/wallet",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "234",
+					"pathName": "pages/rebate/rebate",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "21212121212121212121212121",
+					"pathName": "pages/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "999999",
+					"pathName": "pages/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "3333333333333333333333333",
+					"pathName": "pages/rebate/rebate"
+				}
+			]
+		}
 	}
 }

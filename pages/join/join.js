@@ -282,14 +282,12 @@ Page({
                     });
                 },
                 complete: function() {
-                    debugger
                     a.length > 0 ? t.UploadBatchImages(t, a) : t.AddReturnInfo();
                 }
             });
         }) : t.AddReturnInfo();
     },
     AddReturnInfo: function() {
-        debugger
         var t = this;
         e.getOpenId(function(a) {
             wx.request({
@@ -324,17 +322,26 @@ Page({
                         confirmColor: "#db3c40",
                         content: e.data.Message,
                         showCancel: !1,
-                        success: function(e) {
-                            wx.redirectTo({
-                                url: "../applylist/applylist"
-                            });
+                        success: function(res) {
+                            if (res.confirm) {
+                                wx.redirectTo({
+                                    url: "../usehome/usehome"
+                                });
+                            } else if (res.cancel) {
+                                wx.redirectTo({
+                                    url: "../usehome/usehome"
+                                });
+                            }
+                            // wx.redirectTo({
+                            //     url: "../usehome/usehome"
+                            // });
                         }
-                    }) : "NOUser" == e.data.Message ? wx.navigateTo({
+                    }) : "NOUser" == e.data.message ? wx.navigateTo({
                         url: "../login/login"
                     }) : wx.showModal({
                         title: "提示",
                         confirmColor: "#db3c40",
-                        content: e.data.Message,
+                        content: e.data.message,
                         showCancel: !1,
                         success: function(e) {
                             e.confirm && wx.navigateBack({

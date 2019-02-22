@@ -228,5 +228,10 @@ Page({
                 }
             });
         });
+    },
+    joinUs: function () {
+        wx.navigateTo({
+            url: '../join/join',
+        })
     }
 });

@@ -102,7 +102,7 @@ Page({
             title: "加载中"
         });
         wx.request({
-            url: a.getUrl("SplittinList"),
+            url: a.getUrl("YTALCommissionTrade"),
             data: {
                 // openId: tm.data.userInfo.OpenId,
                 openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
@@ -110,19 +110,19 @@ Page({
                 pageSize: tm.data.PageSize
             },
             success: function (res) {
-                if (res.data.splittin_get_response.SplittinList.length != 10) {
+                if (res.data.length != 10) {
                     tm.setData({
                         hasMore: false
                     })
                 }
                 var oldList = tm.data.SplittinList
-                var newList = oldList.concat(res.data.splittin_get_response.SplittinList)
+                var newList = oldList.concat(res.data)
                 tm.setData({
                     SplittinList: newList,
-                    SplittinTotal: res.data.splittin_get_response.SplittinTotal,
-                    CanDrawSplittin: res.data.splittin_get_response.CanDrawSplittin,
-                    NoSettlementSplttin: res.data.splittin_get_response.NoSettlementSplttin,
-                    DrawSplittinTotal: res.data.splittin_get_response.DrawSplittinTotal
+                    // SplittinTotal: res.data.splittin_get_response.SplittinTotal,
+                    // CanDrawSplittin: res.data.splittin_get_response.CanDrawSplittin,
+                    // NoSettlementSplttin: res.data.splittin_get_response.NoSettlementSplttin,
+                    // DrawSplittinTotal: res.data.splittin_get_response.DrawSplittinTotal
                 })
                 wx.hideLoading();
             },
