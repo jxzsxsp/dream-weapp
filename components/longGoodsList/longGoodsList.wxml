@@ -1,4 +1,5 @@
 <!--components/longGoodsList/longGoodsList.wxml-->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:710rpx;margin:0 auto;'>
     <view style='position:relative;width:230rpx;height:360rpx;background:#daac7c;border-radius:20rpx;overflow:hidden' wx:for='{{longGoodsList}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
         <image src="{{item.goodsImages[0]}}" style='width:230rpx;height:230rpx'></image>
