@@ -94,25 +94,8 @@ Page({
                 })
             }
         }
-
-        // if (e.currentTarget.dataset.key == 'joinPhone') {
-        //     if (!/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value)) {
-        //         wx.showModal({
-        //             title: '提示',
-        //             content: '你输入的电话不符，请重新检查填写',
-        //             showCancel: false
-        //         })
-        //     }
-        // }
     },
     formSubmit: function(e) {
-        // function checkPhone() {
-        //     var phone = document.getElementById('phone').value;
-        //     if (!(/^1(3|4|5|7|8)\d{9}$/.test(phone))) {
-        //         alert("手机号码有误，请重填");
-        //         return false;
-        //     }
-        // }
         var tm = this;
         this.setData({
             formId: e.detail.formId,
@@ -174,81 +157,6 @@ Page({
                 "../../images/return-img_03.jpg" != e && p.push(e);
             }), tm.UploadBatchImages(tm, p);
         }
-
-
-        // var t = this,
-        //     a = parseInt(t.data.ShowReasonIndex),
-        //     n = t.data.AfterSaleTypeList[t.data.AfterSaleTypeId],
-        //     o = t.GetAfterSaleTypeId(n),
-        //     s = e.detail.formId,
-        //     r = t.ToTrim(e.detail.value.txtBankName),
-        //     u = t.ToTrim(e.detail.value.txtBankAccountName),
-        //     d = t.ToTrim(e.detail.value.txtBankAccountNo),
-        //     l = parseFloat(e.detail.value.txtmoney.replace("￥", "")),
-        //     i = parseInt(t.data.ApplyReturnNum);
-        // if (i <= 0 || i > t.data.ReturnNum) wx.showModal({
-        //     title: "提示",
-        //     content: "请输入正确的退货数量",
-        //     showCancel: !1,
-        //     confirmColor: "#db3c40"
-        // });
-        // else if (l > t.data.OneReundAmount * i) wx.showModal({
-        //     title: "提示",
-        //     content: "请输入正确的退款金额,金额必须小于等于" + t.data.OneReundAmount * i + "元",
-        //     showCancel: !1,
-        //     confirmColor: "#db3c40"
-        // });
-        // else {
-        //     var f = e.detail.value.txtarea,
-        //         c = t.data.RefundType;
-        //     if (2 == c && (r.length <= 0 || u.length <= 0 || d.length <= 0)) wx.showModal({
-        //         title: "提示",
-        //         content: "银行卡信息不允许为空！",
-        //         showCancel: !1,
-        //         confirmColor: "#db3c40"
-        //     });
-        //     else if (c <= 0) wx.showModal({
-        //         title: "提示",
-        //         content: "请选择要退款的方式",
-        //         showCancel: !1,
-        //         confirmColor: "#db3c40"
-        //     });
-        //     else if (a < 0) wx.showModal({
-        //         title: "提示",
-        //         content: "请选择要退款的原因",
-        //         showCancel: !1,
-        //         confirmColor: "#db3c40"
-        //     });
-        //     else if (o < 0) wx.showModal({
-        //         title: "提示",
-        //         content: "请选择售后类型",
-        //         showCancel: !1,
-        //         confirmColor: "#db3c40"
-        //     });
-        //     else if (t.data.OrderId.length <= 0) wx.showModal({
-        //         title: "提示",
-        //         content: "请选择要退款的订单",
-        //         showCancel: !1,
-        //         confirmColor: "#db3c40"
-        //     });
-        //     else {
-        //         t.setData({
-        //             formId: s,
-        //             AfterSaleTypeId: o,
-        //             Remark: f,
-        //             BankName: r,
-        //             BankAccountName: u,
-        //             BankAccountNo: d,
-        //             ApplyReturnNum: i,
-        //             ReturnMoney: l,
-        //             UploadGredentials: []
-        //         });
-        //         var p = [];
-        //         t.data.UserCredentials.find(function(e, t) {
-        //             "../../images/return-img_03.jpg" != e && p.push(e);
-        //         }), t.UploadBatchImages(t, p);
-        //     }
-        // }
     },
     UploadBatchImages: function(t, a) {
         var n = a.shift();
