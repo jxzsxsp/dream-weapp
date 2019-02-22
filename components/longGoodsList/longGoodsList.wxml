@@ -1,0 +1,22 @@
+<!--components/longGoodsList/longGoodsList.wxml-->
+<view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:710rpx;margin:0 auto;'>
+    <view style='position:relative;width:230rpx;height:360rpx;background:#daac7c;border-radius:20rpx;overflow:hidden' wx:for='{{longGoodsList}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
+        <image src="{{item.goodsImages[0]}}" style='width:230rpx;height:230rpx'></image>
+        <view style='width: 210rpx;margin:20rpx auto;text-align:center;'>
+            <!-- <view style='font-size:28rpx;margin-top:40rpx;text-align:center;color:#fff'>{{item.mainTitle}}</view> -->
+            <view>
+                <view style='font-size:16px;text-align:center;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
+                    <text style='font-size:16px;'>折起</text>
+                </view>
+            </view>
+            <view style='text-align:center;font-size:11px;color:#fff;'>VIP省/赚
+                <text style='font-size:11px;text-align:center;color:#fff;'>{{item.topCommissionRate}}%</text>
+            </view>
+
+            <!-- <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view> -->
+        </view>
+        <view style='position:absolute;top:160rpx;width:90rpx;height:90rpx;left:50%;margin-left:-45rpx;text-align:center;background:#fff;border-radius:45rpx;overflow:hidden'>
+            <image src="{{item.brandLogo}}" style='width:60rpx;height:60rpx;margin:15rpx auto'></image>
+        </view>
+    </view>
+</view>
