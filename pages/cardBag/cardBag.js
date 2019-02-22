@@ -72,11 +72,15 @@ Page({
         });
     },
     onShareAppMessage: function(o) {
-        var cardId = o.target.dataset.cardid;        
-        return {
-            title: '送您张现金购物卡，快去买！',
-                path: '/pages/cardInfo/cardInfo?cardId=' + cardId + '&ReferralUserId' + app.globalData.userInfo.UserId,
-            imageUrl: '/images/donatecardbanner.png'
-        }
+        var cardId = o.target.dataset.cardid;    
+        var title = '送您张现金购物卡，快去买！';
+        var path = '/pages/cardInfo/cardInfo?cardId=' + cardId
+        var imageUrl = '/images/donatecardbanner.png'    
+        // return {
+        //     title: '送您张现金购物卡，快去买！',
+        //         path: '/pages/cardInfo/cardInfo?cardId=' + cardId + '&ReferralUserId' + app.globalData.userInfo.UserId,
+        //     imageUrl: '/images/donatecardbanner.png'
+        // }
+        app.share(title, path, imageUrl)
     }
 })

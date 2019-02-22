@@ -45,13 +45,17 @@ Page({
         });
     },
     onShareAppMessage: function() {
-        var i = '/pages/discovery/discovery?from=menu';
-        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        return {
-            title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
-            path: i,
-            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
-        }
+        // var i = '/pages/discovery/discovery?from=menu';
+        // app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        // return {
+        //     title: '加入亚太奥莱VIP，能省会赚，最高返40%！',
+        //     path: i,
+        //     imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
+        // }
+        // var title = '加入亚太奥莱VIP，能省会赚，最高返40%！';
+        var path = '/pages/discovery/discovery?from=menu';
+        var imageUrl = "http://cos.qkmai.com/qkmbb/ytal/yqfx.png";
+        app.share(path, imageUrl)
     },
     changeTitle: function(e) {
         var tm = this;

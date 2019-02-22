@@ -256,25 +256,27 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
-        var tm = this;
         var title = tm.data.mainTitle;
-        var url = tm.data.brandRushInfo[0].goodsImages[0];
+        var imageUrl = tm.data.brandRushInfo[0].goodsImages[0];
         var brandId = tm.data.brandRushInfo[0].brandId;
         var brandSource = tm.data.brandRushInfo[0].brandSource;
         var lower = (tm.data.brandRushInfo[0].lowerDiscount / 10).toFixed(1)
-        var i = '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource
-        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        var shareInfo = {
-            title: '【品牌特卖】' + title + ' ' + lower + '折起',
-            path: i,
-            imageUrl: url
-        };
+        var path = '/pages/brandInfo/brandInfo?brandId=' + brandId + "&brandSource=" + brandSource
+        title = '【品牌特卖】' + title + ' ' + lower + '折起'
+        app.share(title, path, imageUrl)
 
-        app.globalData.fundebug.notifyError(new Error("首页分享"), {
-            name: "首页分享",
-            metaData: shareInfo
-        });
-        return shareInfo;
+        // app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        // var shareInfo = {
+        //     title: '【品牌特卖】' + title + ' ' + lower + '折起',
+        //     path: i,
+        //     imageUrl: url
+        // };
+
+        // app.globalData.fundebug.notifyError(new Error("首页分享"), {
+        //     name: "首页分享",
+        //     metaData: shareInfo
+        // });
+        // return shareInfo;
     },
     countDown: function() { //倒计时函数
         var tm = this;

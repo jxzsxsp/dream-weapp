@@ -14,14 +14,15 @@ Page({
     },
     onShareAppMessage: function(s) {
         var deurl = encodeURIComponent("https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=5")
-        var x = '/pages/webPage/webPage?artUrl=' + deurl
-        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (x += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        return {
-            path: x
-        }
-        app.globalData.fundebug.notifyError(new Error("webview文章"), {
-            name: "webview",
-            metaData: x
-        });
+        var path = '/pages/webPage/webPage?artUrl=' + deurl
+        // app.globalData.userInfo && app.globalData.userInfo.IsReferral && (x += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        // return {
+        //     path: path
+        // }
+        // app.globalData.fundebug.notifyError(new Error("webview文章"), {
+        //     name: "webview",
+        //     metaData: path
+        // });
+        app.share(path)
     }
 })

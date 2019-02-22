@@ -56,16 +56,19 @@ Page({
         }), a.loadData(this, !0);
     },
     onShareAppMessage: function(t) {
-        var e = "/pages/countdown/countdown";
-        return a.globalData.userInfo && a.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + a.globalData.userInfo.UserId), {
-            title: "限时抢购",
-            path: e,
-            success: function(a) {
-                hishop.showTip("分享成功", "success");
-            },
-            fail: function(a) {
-                hishop.showTip("分享失败", "error");
-            }
-        };
+        var path = "/pages/countdown/countdown";
+        var title = "限时抢购";
+        a.share(title, path)
+        
+        // return a.globalData.userInfo && a.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + a.globalData.userInfo.UserId), {
+        //     title: "限时抢购",
+        //     path: e,
+        //     success: function(a) {
+        //         hishop.showTip("分享成功", "success");
+        //     },
+        //     fail: function(a) {
+        //         hishop.showTip("分享失败", "error");
+        //     }
+        // };
     }
 });

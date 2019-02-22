@@ -19,13 +19,17 @@ Page({
         tm.onFive();
     },
     onShareAppMessage: function() {
-        var i = '/pages/redPacket/redPacket?from=menu';
-        t.globalData.userInfo && t.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + t.globalData.userInfo.UserId)
-        return {
-            title: '恭喜您获得350元红包',
-            path: i,
-            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/300fengmian.png  "
-        }
+        // var i = '/pages/redPacket/redPacket?from=menu';
+        // t.globalData.userInfo && t.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + t.globalData.userInfo.UserId)
+        // return {
+        //     title: '恭喜您获得350元红包',
+        //     path: i,
+        //     imageUrl: "http://cos.qkmai.com/qkmbb/ytal/300fengmian.png"
+        // }
+        var title = '恭喜您获得350元红包';
+        var path = '/pages/redPacket/redPacket?from=menu';
+        var imageUrl = "http://cos.qkmai.com/qkmbb/ytal/300fengmian.png";
+        t.share(title, path, imageUrl)
     },
     onGetCoupon: function(event) {
         var tm = this;

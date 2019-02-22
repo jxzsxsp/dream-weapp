@@ -35,7 +35,6 @@ Page({
             PageIndex: a
         }), e.loadData(e, !0);
     },
-    // onShareAppMessage: function() {},
     loadData: function(t, n) {
         var tm = this;
         wx.showLoading({

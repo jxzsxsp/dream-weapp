@@ -31,13 +31,5 @@ Page({
             sel_electron: !0,
             sel_tax: !1
         });
-    },
-    onLoad: function(e) {},
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

@@ -215,12 +215,5 @@ Page({
     },
     ToTrim: function(e) {
         return e.replace(/(^\s*)|(\s*$)/g, "");
-    },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    }
 });

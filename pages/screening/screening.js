@@ -205,14 +205,18 @@ Page({
         var picUrl = tm.data.imgUrl;
         var tagId = tm.data.tagId;
 
-        var i = '/pages/screening/screening?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
+        // var i = '/pages/screening/screening?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
+        // var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+        // app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        // return {
+        //     title: title,
+        //     path: i,
+        //     imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
+        // }
         var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
-        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        return {
-            title: title,
-            path: i,
-            imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
-        }
+        var path = '/pages/screening/screening?from=menu&tagId=' + tagId + '&picUrl=' + picUrl;
+        var imageUrl = "http://cos.qkmai.com/qkmbb/ytal/yqfx.png";
+        app.share(title, path, imageUrl)
     },
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;

@@ -85,13 +85,6 @@ Page({
             });
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {},
     bingApplyDraw: function(a) {
         this.setData({
             TabType: 1,

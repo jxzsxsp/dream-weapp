@@ -152,18 +152,21 @@ Page({
         });
     },
     onShareAppMessage: function() {
-        var t = this,
-            e = "../countdowndetail/countdowndetail?id=" + t.data.CountDownId;
-        return n.globalData.userInfo && n.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + n.globalData.userInfo.UserId), {
-            title: "限时抢购" + t.data.ProductName,
-            path: e,
-            success: function(t) {
-                hishop.showTip("分享成功", "success");
-            },
-            fail: function(t) {
-                hishop.showTip("分享失败", "error");
-            }
-        };
+        var t = this;
+        var title = "限时抢购" + t.data.ProductName;
+        var path = "../countdowndetail/countdowndetail?id=" + t.data.CountDownId;
+        n.share(title, path)
+
+        // return n.globalData.userInfo && n.globalData.userInfo.IsReferral && (e += "&ReferralUserId=" + n.globalData.userInfo.UserId), {
+        //     title: "限时抢购" + t.data.ProductName,
+        //     path: e,
+        //     success: function(t) {
+        //         hishop.showTip("分享成功", "success");
+        //     },
+        //     fail: function(t) {
+        //         hishop.showTip("分享失败", "error");
+        //     }
+        // };
     },
     getCoupon: function(t) {
         var e = t.currentTarget.id;

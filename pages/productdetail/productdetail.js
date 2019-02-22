@@ -74,18 +74,21 @@ Page({
             }), o.loadData(o);
     },
     onShareAppMessage: function(a) {
-        var o = this,
-            i = "/pages/productdetail/productdetail?id=" + o.data.ProductId;
-        return e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId), {
-            title: o.data.ProductName,
-            path: i,
-            success: function(e) {
-                t.showTip("分享成功", "success");
-            },
-            fail: function(e) {
-                t.showTip("分享失败", "error");
-            }
-        };
+        // var o = this,
+        //     i = "/pages/productdetail/productdetail?id=" + o.data.ProductId;
+        // return e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId), {
+        //     title: o.data.ProductName,
+        //     path: i,
+        //     success: function(e) {
+        //         t.showTip("分享成功", "success");
+        //     },
+        //     fail: function(e) {
+        //         t.showTip("分享失败", "error");
+        //     }
+        // };
+        var title = this.data.ProductName;
+        var path = "/pages/productdetail/productdetail?id=" + this.data.ProductId;
+        e.share(title, path)
     },
     onReachBottom: function() {
         var t = this;

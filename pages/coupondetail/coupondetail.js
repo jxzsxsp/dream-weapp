@@ -94,12 +94,13 @@ Page({
     },
     onShareAppMessage: function() {
         var tm = this;
-        var i = '/pages/coupondetail/coupondetail?CouponId=' + tm.data.CouponId;
+        var title = '领取优惠券';
+        var path = '/pages/coupondetail/coupondetail?CouponId=' + tm.data.CouponId;
+        e.share(title, path)
         e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
         return {
             title: '领取优惠券',
             path: i,
-            // imageUrl: brandBg
         }
     },
     goToSx: function () {

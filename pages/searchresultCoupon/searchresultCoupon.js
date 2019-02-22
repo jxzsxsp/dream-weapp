@@ -112,20 +112,21 @@ Page({
     },
     onShareAppMessage: function() {
         var tm = this;
-        var i = '';
+        var path = '';
         var title = '商品列表'
         if (tm.data.CouponId) {
             title = "领取优惠券"
-            i = '/pages/searchresult/searchresult?CouponId=' + tm.data.CouponId;
+            path = '/pages/searchresult/searchresult?CouponId=' + tm.data.CouponId;
         } else {
-            i = '/pages/searchresult/searchresult?CategoryId=' + tm.data.CategoryId;
+            path = '/pages/searchresult/searchresult?CategoryId=' + tm.data.CategoryId;
         }
-        e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-        return {
-            title: title,
-            path: i,
-            // imageUrl: brandBg
-        }
+        // e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        // return {
+        //     title: title,
+        //     path: i,
+        //     // imageUrl: brandBg
+        // }
+        e.share(title, path)
     },
     loadData: function(a, e) {
         wx.showNavigationBarLoading(), t.getOpenId(function(r) {

@@ -13,16 +13,12 @@ Page({
         DrawSplittinTotal: "",
         isDefault: true,
     },
-    onLoad: function(t) {},
-    onReady: function() {},
     onShow: function() {
         var t = this;
         t.setData({
             PageIndex: 1
         }), t.loadData(t, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onPullDownRefresh: function() {
         var t = this;
         t.loadData(t, !1);
@@ -33,7 +29,6 @@ Page({
             PageIndex: a
         }), t.loadData(t, !0);
     },
-    // onShareAppMessage: function() {},
     loadData: function(i, n) {
         wx.showLoading({
             title: "加载中"

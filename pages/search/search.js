@@ -177,6 +177,10 @@ Page({
     //         path: i,
     //         imageUrl: "http://cos.qkmai.com/qkmbb/ytal/yqfx.png"
     //     }
+    // var title = '恭喜您获得350元红包';
+    // var path = '/pages/redPacket/redPacket?from=menu';
+    // var imageUrl = "http://cos.qkmai.com/qkmbb/ytal/300fengmian.png";
+    // e.share(title, path, imageUrl)
     // },
     GetShopCart: function() {
         var tm = this;

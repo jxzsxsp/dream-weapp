@@ -14,15 +14,12 @@ Page({
             RequestId: t
         });
     },
-    onReady: function() {},
     onShow: function() {
         var a = this;
         a.setData({
             PageIndex: 1
         }), a.loadData(a, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onPullDownRefresh: function() {
         var a = this;
         a.loadData(a, !1);
@@ -33,7 +30,6 @@ Page({
             PageIndex: e
         }), a.loadData(a, !0);
     },
-    onShareAppMessage: function() {},
     loadData: function(t, n) {
         wx.showLoading({
             title: "加载中"

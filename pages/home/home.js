@@ -1086,28 +1086,31 @@ Page({
         }
     },
     onShareAppMessage: function (event) {
-        var i = '/pages/home/home?from=menu';
+        // var i = '/pages/home/home?from=menu';
+        // var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
+        // if (event.from == 'menu') { } else {
+        //     var lower = (parseFloat(event.target.dataset['lower']) / 10).toFixed(1);
+        //     var barndId = event.target.dataset['brandid'];
+        //     var brandSoruce = event.target.dataset['brandsource'];
+        //     var brandName = event.target.dataset['maintitle'];
+        //     var brandBg = event.target.dataset['bg'];
+        //     i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
+        //     title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
+        // }
+        // e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
+        // var shareInfo = {
+        //     title: title,
+        //     path: i,
+        //     imageUrl: brandBg
+        // };
+        // e.globalData.fundebug.notifyError(new Error("首页分享"), {
+        //     name: "首页分享",
+        //     metaData: shareInfo
+        // });
+        // return shareInfo;
         var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
-        if (event.from == 'menu') { } else {
-            var lower = (parseFloat(event.target.dataset['lower']) / 10).toFixed(1);
-            var barndId = event.target.dataset['brandid'];
-            var brandSoruce = event.target.dataset['brandsource'];
-            var brandName = event.target.dataset['maintitle'];
-            var brandBg = event.target.dataset['bg'];
-            i = '/pages/brandInfo/brandInfo?brandId=' + barndId + "&brandSource=" + brandSoruce;
-            title = '【品牌特卖】' + brandName + ' ' + lower + '折起';
-        }
-        e.globalData.userInfo && e.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + e.globalData.userInfo.UserId)
-        var shareInfo = {
-            title: title,
-            path: i,
-            imageUrl: brandBg
-        };
-        e.globalData.fundebug.notifyError(new Error("首页分享"), {
-            name: "首页分享",
-            metaData: shareInfo
-        });
-        return shareInfo;
+        var path = '/pages/home/home?from=menu';
+        e.share(title, path)
     },
     getHomeData: function (t) {
         var a = this;

@@ -75,13 +75,14 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
-        var i = '/pages/brandRush/brandRush?from=menu';
+        var path = '/pages/brandRush/brandRush?from=menu';
         var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
-        app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
-        return {
-            title: title,
-            path: i
-        }
+        app.share(title, path)
+        // app.globalData.userInfo && app.globalData.userInfo.IsReferral && (i += "&ReferralUserId=" + app.globalData.userInfo.UserId)
+        // return {
+        //     title: title,
+        //     path: i
+        // }
     },
     linkToBrandRush: function(event) {
         var barndId = event.currentTarget.dataset['brandid'];

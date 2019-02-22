@@ -11,16 +11,12 @@ Page({
         ExpandMemberAll: "",
         LowerUserSaleTotal: ""
     },
-    onLoad: function(e) {},
-    onReady: function() {},
     onShow: function() {
         var e = this;
         e.setData({
             PageIndex: 1
         }), e.loadData(e, !1);
     },
-    onHide: function() {},
-    onUnload: function() {},
     onPullDownRefresh: function() {
         var e = this;
         e.loadData(e, !1);
@@ -31,7 +27,6 @@ Page({
             PageIndex: a
         }), e.loadData(e, !0);
     },
-    // onShareAppMessage: function() {},
     loadData: function(t, n) {
         var tm = this;
         wx.showLoading({

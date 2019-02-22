@@ -122,13 +122,9 @@ Number.prototype.toFixed = function(t) {
 }, Number.prototype.toDiv = function() {
     return t(this, arguments, "divide");
 }, App({
-
     onLaunch: function() {
         //调用API从本地缓存中获取数据 
         this.screenSize();
-    },
-    onShow: function() {
-
     },
     getUserInfo: function(t) {
         fundebug.notifyError(new Error("app-getUserInfo"), {
@@ -243,7 +239,7 @@ Number.prototype.toFixed = function(t) {
                         }
                     });
                 } else console.log("获取用户登录态失败！" + o.errMsg);
-           
+
             }
         });
     },
@@ -410,6 +406,48 @@ Number.prototype.toFixed = function(t) {
             'bezier_points': ret
         };
     },
+    share: function (title, path, imageUrl) {
+        //设置一个默认分享背景图片
+        let defaultImageUrl = 'http://cos.qkmai.com/qkmbb/ytal/yqfx.png';
+        this.globalData.userInfo && this.globalData.userInfo.IsReferral && (path += "&ReferralUserId=" + this.globalData.userInfo.UserId)
+        return {
+            title: title || '加入亚太奥莱VIP，能省会赚，最高返40%！',
+            path: path,
+            imageUrl: imageUrl || defaultImageUrl,
+            // success(res) {
+            //     console.log("转发成功！");
+            //     if (!res.shareTickets) {
+            //         //分享到个人
+            //         api.shareFriend().then(() => {
+            //             console.warn("shareFriendSuccess!");
+            //             //执行转发成功以后的回调函数
+            //             callback && callback();
+            //         });
+            //     } else {
+            //         //分享到群
+            //         let st = res.shareTickets[0];
+            //         wx.getShareInfo({
+            //             shareTicket: st,
+            //             success(res) {
+            //                 let iv = res.iv
+            //                 let encryptedData = res.encryptedData;
+            //                 api.groupShare(encryptedData, iv).then(() => {
+            //                     console.warn("groupShareSuccess!");
+            //                     //执行转发成功以后的回调函数
+            //                     callback && callback();
+            //                 });
+            //             }
+            //         });
+            //     }
+            // },
+            // fail: function(res) {
+            //     console.log("转发失败！");
+            // }
+        };
+    },
+    request: function() {
+
+    }
 }), Number.prototype.toFixed = function(t) {
     e = this + "";
     if (t || (t = 0), -1 == e.indexOf(".") && (e += "."), e += new Array(t + 1).join("0"),
