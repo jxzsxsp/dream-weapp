@@ -15,7 +15,7 @@
         <block wx:for="{{BalanceList}}">
             <view class='list'>
                 <view>
-                    <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block'>{{item.InpourId}}</text>
+                    <text style='padding-left:10rpx; color: #000;font-size: 26rpx;display:block;width:400rpx;'>{{item.Remark}}</text>
                     <text class='font_small' style='padding-left:10rpx;display:block'>{{item.TradeDate}}</text>
                 </view>
                 <view>

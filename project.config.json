@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -90,6 +90,12 @@
 				{
 					"id": -1,
 					"name": "2133123123123",
+					"pathName": "pages/wallet/wallet",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "213312312312323133333333",
 					"pathName": "pages/wallet/wallet"
 				}
 			]
