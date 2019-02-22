@@ -122,58 +122,58 @@ Page({
         tm.data.UserCredentials.find(function (e, tm) {
             "../../images/return-img_03.jpg" != e && p.push(e);
         }), tm.UploadBatchImages(tm, p);
-        // if (this.data.joinName == "") {
-        //     wx.showModal({
-        //         title: "提示",
-        //         content: "请输入联系人",
-        //         showCancel: false,
-        //         confirmColor: "#db3c40"
-        //     });
-        // } else if (this.data.joinConcat == "") {
-        //     wx.showModal({
-        //         title: "提示",
-        //         content: "请输入联系人",
-        //         showCancel: false,
-        //         confirmColor: "#db3c40"
-        //     });
-        // } else if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.joinPhone))) {
-        //     wx.showModal({
-        //         title: "提示",
-        //         content: "请输入正确的联系方式",
-        //         showCancel: false,
-        //         confirmColor: "#db3c40"
-        //     });
-        // } else if (this.data.joinGoods == "") {
-        //     wx.showModal({
-        //         title: "提示",
-        //         content: "请输入经营商品",
-        //         showCancel: false,
-        //         confirmColor: "#db3c40"
-        //     });
-        // } else if (this.data.joinBrand == "") {
-        //     wx.showModal({
-        //         title: "提示",
-        //         content: "请输入正确的退货数量",
-        //         showCancel: false,
-        //         confirmColor: "#db3c40"
-        //     });
-        // } else if (this.data.joinUrl == "") {
-        //     wx.showModal({
-        //         title: "提示",
-        //         content: "请输入正确的退货数量",
-        //         showCancel: false,
-        //         confirmColor: "#db3c40"
-        //     });
-        // } else {
-        //     this.setData({
-        //         formId: e.detail.formId,
-        //         UploadGredentials: []
-        //     });
-        //     var p = [];
-        //     tm.data.UserCredentials.find(function (e, tm) {
-        //         "../../images/return-img_03.jpg" != e && p.push(e);
-        //     }), tm.UploadBatchImages(tm, p);
-        // }
+        if (this.data.joinName == "") {
+            wx.showModal({
+                title: "提示",
+                content: "请输入联系人",
+                showCancel: false,
+                confirmColor: "#db3c40"
+            });
+        } else if (this.data.joinConcat == "") {
+            wx.showModal({
+                title: "提示",
+                content: "请输入联系人",
+                showCancel: false,
+                confirmColor: "#db3c40"
+            });
+        } else if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.joinPhone))) {
+            wx.showModal({
+                title: "提示",
+                content: "请输入正确的联系方式",
+                showCancel: false,
+                confirmColor: "#db3c40"
+            });
+        } else if (this.data.joinGoods == "") {
+            wx.showModal({
+                title: "提示",
+                content: "请输入经营商品",
+                showCancel: false,
+                confirmColor: "#db3c40"
+            });
+        } else if (this.data.joinBrand == "") {
+            wx.showModal({
+                title: "提示",
+                content: "请输入正确的退货数量",
+                showCancel: false,
+                confirmColor: "#db3c40"
+            });
+        } else if (this.data.joinUrl == "") {
+            wx.showModal({
+                title: "提示",
+                content: "请输入正确的退货数量",
+                showCancel: false,
+                confirmColor: "#db3c40"
+            });
+        } else {
+            this.setData({
+                formId: e.detail.formId,
+                UploadGredentials: []
+            });
+            var p = [];
+            tm.data.UserCredentials.find(function (e, tm) {
+                "../../images/return-img_03.jpg" != e && p.push(e);
+            }), tm.UploadBatchImages(tm, p);
+        }
 
 
         // var t = this,
@@ -317,6 +317,7 @@ Page({
                     formId: t.data.formId
                 },
                 success: function(e) {
+                    debugger
                     "OK" == e.data.Status ? wx.showModal({
                         title: "提示",
                         confirmColor: "#db3c40",
@@ -324,15 +325,15 @@ Page({
                         showCancel: !1,
                         success: function(res) {
                             if (res.confirm) {
-                                wx.redirectTo({
+                                wx.switchTab({
                                     url: "../usehome/usehome"
                                 });
                             } else if (res.cancel) {
-                                wx.redirectTo({
+                                wx.switchTab({
                                     url: "../usehome/usehome"
                                 });
                             }
-                            // wx.redirectTo({
+                            // wx.switchTab({
                             //     url: "../usehome/usehome"
                             // });
                         }

@@ -117,10 +117,11 @@ Page({
                     marketPrice: marketPrice,
                     marketPriceDiscount: marketPriceDiscount
                 })
+                wx.hideLoading();
 
             },
             complete: function() {
-                wx.hideLoading();
+                
             }
         });
     },
