@@ -22,7 +22,14 @@
     "pages/recommend-supplier/recommend-supplier",
     "pages/business-card/business-card",
     "pages/follow-shop/follow-shop",
-    "pages/latest-view/latest-view"
+    "pages/latest-view/latest-view",
+    "pages/shop/shop",
+    "pages/item-detail/item-detail",
+    "pages/shop-info/shop-info",
+    "pages/my-apply/my-apply",
+    "pages/item-favorite/item-favorite",
+    "pages/notice-list/notice-list",
+    "pages/notice-detail/notice-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

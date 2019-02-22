@@ -22,4 +22,11 @@ export default {
   businessCard: 'business-card',
   followShop: 'follow-shop',
   latestView: 'latest-view',
+  shop: 'shop',
+  itemDetail: 'item-detail',
+  shopInfo: 'shop-info',
+  myApply: 'my-apply',
+  itemFavorite: 'item-favorite',
+  noticeList: 'notice-list',
+  noticeDetail: 'notice-detail',
 }
