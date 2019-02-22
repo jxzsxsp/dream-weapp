@@ -145,7 +145,14 @@ Page({
                         //图片保存到本地
                         wx.saveImageToPhotosAlbum({
                             filePath: res.tempFilePath,
-                            success: function(data) {},
+                            success: function(data) {
+                                wx.showToast({
+                                    title: '图片已存到本地',
+                                    icon: 'success',
+                                    duration: 2000
+                                })
+                                
+                            },
                             fail: function(err) {
                                 if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
                                     wx.openSetting({
@@ -157,6 +164,7 @@ Page({
                             },
                             complete: function() {
                                 wx.hideLoading();
+                                
                             }
                         })
                     }
