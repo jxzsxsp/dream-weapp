@@ -4,7 +4,9 @@
     "navigationBarTitleText": "亚太奥莱",
     "navigationBarTextStyle": "black",
     "usingComponents": {
-        "goodLists": "/components/goodLists/goodLists"
+        "goodLists": "/components/goodLists/goodLists",
+        "longGoodsList": "/components/longGoodsList/longGoodsList",
+        "region": "/components/region/region"
        
     }
 }

@@ -1,11 +1,11 @@
 <!--components/goodLists.wxml-->
 <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
-    <block wx:for="{{goodLists.topBrandGoods}}">
-        <view style="width:218rpx;height:300rpx;margin-right:6rpx">
+    <view wx:for="{{goodLists.goodsList}}" bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.goodsSource}}'>
+        <view style="width:218rpx;height:300rpx;margin-right:6rpx" >
             <!-- <view>{{goodLists}}</view> -->
-            <image src="{{item.goodsImages[0]}}" style='width:218rpx;height:218rpx;'></image>
+            <image src="{{item.goodsImages[0]}}" style='width:218rpx;height:218rpx;' mode="aspectFit"></image>
             <view style='font-size:26rpx;text-align:center'>￥{{item.salePrice}}</view>
             <view style='font-size:22rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color:#db9548;text-align:center'>VIP省/赚{{item.commissionMoney}}元</view>
         </view>
-    </block>
+    </view>
 </view>

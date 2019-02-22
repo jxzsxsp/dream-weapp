@@ -74,57 +74,7 @@
             </view>
             <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c' bindtap='goToBrand'>查看更多 ></view>
         </view>
-        <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:710rpx;margin:0 auto;'>
-            <view style='position:relative;width:230rpx;height:360rpx;background:#daac7c;border-radius:20rpx;overflow:hidden' wx:for='{{topLogoList}}' bindtap='linkToBrandRush' data-brandid='{{item.brandId}}' data-brandsource='{{item.brandSource}}'>
-                <image src="{{item.goodsImages[0]}}" style='width:230rpx;height:230rpx'></image>
-                <view style='width: 210rpx;margin:20rpx auto;text-align:center;'>
-                    <!-- <view style='font-size:28rpx;margin-top:40rpx;text-align:center;color:#fff'>{{item.mainTitle}}</view> -->
-                    <view>
-                        <view style='font-size:16px;text-align:center;color:#fff;'>{{filter.toFix((item.lowerDiscount / 10),1)}}
-                            <text style='font-size:16px;'>折起</text>
-                        </view>
-                    </view>
-                    <view style='text-align:center;font-size:11px;color:#fff;'>VIP省/赚
-                        <text style='font-size:11px;text-align:center;color:#fff;'>{{item.topCommissionRate}}%</text>
-                    </view>
-
-                    <!-- <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view> -->
-                </view>
-                <view style='position:absolute;top:160rpx;width:90rpx;height:90rpx;left:50%;margin-left:-45rpx;text-align:center;background:#fff;border-radius:45rpx;overflow:hidden'>
-                    <image src="{{item.brandLogo}}" style='width:60rpx;height:60rpx;margin:15rpx auto'></image>
-                </view>
-            </view>
-            <!-- <view style='position:relative;width:230rpx;height:380rpx;background:#616161;border-radius:20rpx;overflow:hidden'>
-                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
-                <view style='width:230rpx;height:150rpx;'>
-                    <view style='font-size:20rpx;margin-top:40rpx;text-align:center'>兰奥</view>
-                    <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view>
-                </view>
-                <view style='position:absolute;top:190rpx;width:150rpx;height:70rpx;left:50%;margin-left:-75rpx;text-align:center;background:#fff;border-radius:30rpx;overflow:hidden'>
-                    <image src="http://akim.oss-cn-shanghai.aliyuncs.com/20181206/f3251401ef5b451fb6e670112033dce2.jpg" style='width:130rpx;height:60rpx;margin:5rpx auto'></image>
-                </view>
-            </view>
-            <view style='position:relative;width:230rpx;height:380rpx;background:#616161;border-radius:20rpx;overflow:hidden'>
-                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
-                <view style='width:230rpx;height:150rpx;'>
-                    <view style='font-size:20rpx;margin-top:40rpx;text-align:center'>兰奥</view>
-                    <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view>
-                </view>
-                <view style='position:absolute;top:190rpx;width:150rpx;height:70rpx;left:50%;margin-left:-75rpx;text-align:center;background:#fff;border-radius:30rpx;overflow:hidden'>
-                    <image src="http://akim.oss-cn-shanghai.aliyuncs.com/20181206/f3251401ef5b451fb6e670112033dce2.jpg" style='width:130rpx;height:60rpx;margin:5rpx auto'></image>
-                </view>
-            </view>
-            <view style='position:relative;width:230rpx;height:380rpx;background:#616161;border-radius:20rpx;overflow:hidden'>
-                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
-                <view style='width:230rpx;height:150rpx;'>
-                    <view style='font-size:20rpx;margin-top:40rpx;text-align:center'>兰奥</view>
-                    <view style='font-size:20rpx;text-align:center'>冰点低价3折起</view>
-                </view>
-                <view style='position:absolute;top:190rpx;width:150rpx;height:70rpx;left:50%;margin-left:-75rpx;text-align:center;background:#fff;border-radius:30rpx;overflow:hidden'>
-                    <image src="http://akim.oss-cn-shanghai.aliyuncs.com/20181206/f3251401ef5b451fb6e670112033dce2.jpg" style='width:130rpx;height:60rpx;margin:5rpx auto'></image>
-                </view>
-            </view> -->
-        </view>
+        <longGoodsList longGoodsList="{{topLogoList}}"></longGoodsList>
     </view>
     <!-- <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;margin-left:10rpx;width:730rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
@@ -184,50 +134,9 @@
                 <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c'>查看更多 ></view>
             </navigator>
             <navigator url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
-                <view style='display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;width:710rpx;margin:0 auto;'>
-                    <block wx:for="{{rushGoodsList}}">
-                        <view style='width:100%;display:flex;flex-flow:row;justify-content:space-between;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx;background:#daac7c;'>
-                            <view style='width:80%;display:flex;flex-flow:row;justify-content:flex-start;height:200rpx;background:#fff;'>
-                                <image src="{{item.goodsImages[0]}}" style='width:160rpx;height:160rpx;margin:20rpx' mode='widthFix'></image>
-                                <!-- <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view> -->
-                                <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
-                                    <view style='font-size:13px;width:320rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.mainTitle}}</view>
-                                    <view style='width:100%;margin-top:10rpx'>
-                                        <text class="salePrice" style='font-weight:900;font-size:14px;'><text style='font-size:24rpx'>¥</text>{{filter.toFix(item.salePrice,2)}}</text>
-                                        <text style='font-size:11px;opacity:0'>2</text>
-                                        <text style='font-size:11px;color:#ff0000;background-color: #ffe0e7;border-radius: 15px;height:17px;margin-top:5px;height:17px;padding: 0 4px;margin-right:5px;'>{{filter.toFix((item.marketPriceDiscount / 10),1)}}折</text>
-                                        <view style='margin-top:-20rpx;color:#515151' class='marketPrice' style='text-decoration: line-through;font-size:11px;'> ¥{{filter.toFix(item.marketPrice,2)}}</view>
-                                    </view>
-                                </view>
-                            </view>
-                            <view style='width:20%;background:#daac7c;display:flex;flex-direction:column;justify-content:center;align-items:center;;font-size:26rpx;color:#fff'>
-                                <view>VIP省/赚</view>
-                                <view>{{item.commissionMoney}}元</view>
-                            </view>
-                        </view>
-                    </block>
-                    <!-- <view style='width:100%;background:#fff;display:flex;flex-flow:row;border-radius:25rpx;overflow:hidden;margin-bottom:20rpx'>
-                    <view style='width:75%;display:flex;flex-flow:row;justify-content:flex-start;height:220rpx'>
-                        <view style='background:#000;width:180rpx;height:180rpx;margin:20rpx'></view>
-                        <view style='display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:left'>
-                            <view style='font-size:11px;'>乐高创意百变系列……</view>
-                            <view style='font-size:11px;width:100%'>
-                                <text class="salePrice" style='font-weight:900'><text style='font-size:24rpx'>¥</text>134.2</text>
-                                <text class='marketPrice' style='text-decoration: line-through;'>¥169</text>
-                            </view>
-                            <view style='font-size:11px;width:100%'>折扣2.1折起</view>
-                        </view>
-                    </view>
-                    <view style='width:25%;background:#daac7c;display:flex;flex-direction:column;justify-content:center;align-items:center;;font-size:26rpx;color:#fff'>
-                        <view>VIP省/赚</view>
-                        <view>10.2元</view>
-                    </view>
-                </view> -->
-                </view>
+                <region region="{{rushGoodsList}}"></region>
             </navigator>
-
         </view>
-
     </view>
     <view wx:if='{{selectedCate=="全场直播"}}' style='background:#3c3b45;margin:0rpx auto;'>
         <image src='http://cos.qkmai.com/qkmbb/ytal/shuom.png' style='width:100%;height:56rpx;'></image>

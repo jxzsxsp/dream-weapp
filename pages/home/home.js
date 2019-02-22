@@ -51,14 +51,14 @@ Page({
         });
 
     },
-    onLoad: function (a) {
+    onLoad: function(a) {
         if (a.scene) {
             wx.request({
                 url: e.getUrl("YTALDecodeScene"),
                 data: {
                     scene: a.scene
                 },
-                success: function (t) {
+                success: function(t) {
                     var x = '/pages/goodInfo/goodInfo?brandId=' + t.data.brandId + '&goodsId=' + t.data.goodsId + '&goodsSource=' + t.data.goodsSource
                     wx.navigateTo({
                         url: x,
@@ -85,7 +85,7 @@ Page({
             e.setRefferUserId(str[1]);
         }
         a.ReferralUserId && e.setRefferUserId(a.ReferralUserId);
-        e.getUserInfo(function (t) {
+        e.getUserInfo(function(t) {
             tm.setData({
                 userInfo: t
             })
@@ -95,26 +95,26 @@ Page({
             });
         });
         var r, o, n = this;
-        e.getOpenId(function (t) {
+        e.getOpenId(function(t) {
             wx.request({
                 url: e.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
                 },
-                success: function (t) {
+                success: function(t) {
                     e.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
                 }
             });
         });
         n = this;
-        e.getOpenId(function (a) {
+        e.getOpenId(function(a) {
             var r = {
                 openId: a
             };
             wx.showNavigationBarLoading(), t.httpGet(e.getUrl(e.globalData.getIndexData), r, n.getHomeData);
         });
         wx.getSystemInfo({
-            success: function (res) {
+            success: function(res) {
                 var x = res.version
                 var reg = new RegExp("/.", "g");
                 var s = x.replace(".", "").replace(".", "");
@@ -140,8 +140,8 @@ Page({
                     wx.hideNavigationBarLoading();
                 }
             },
-            fail: function (res) { },
-            complete: function (res) { },
+            fail: function(res) {},
+            complete: function(res) {},
         })
 
         tm.getLogo()
@@ -217,8 +217,8 @@ Page({
             });
         });
     },
-    
-    
+
+
     onReachBottom: function() {
         var t = this;
         if (1 == t.data.refreshSuccess) {
@@ -329,7 +329,7 @@ Page({
                 pi: ++tm.data.dataIndex,
                 ps: 5
             },
-            success: function (res) {
+            success: function(res) {
                 if (res.data.length == 5) {
                     let bottomArrList = [];
                     res.data.forEach(o => {
@@ -347,14 +347,17 @@ Page({
                             var min = o.rushEndTime.split(' ')[1].split(':')[1];
                             o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                         }
-                        bottomArrList.push(o)
+                        if (o.goodsList.length>0){
+                            bottomArrList.push(o)
+                        }
+                        
                     });
                     var newList = tm.data.topArr.concat(bottomArrList)
                     tm.setData({
                         bottomArr: bottomArrList,
                         brandRush: newList
                     })
-                    tm.getBrandbush(res)
+                    //tm.getBrandbush(res)
                 } else {
                     tm.setData({
                         hasMore: false
@@ -441,24 +444,29 @@ Page({
         // });
     },
     loadTop: function() {
+        wx.showLoading({
+            mask: true
+        });
         var tm = this;
         var currentUrl = '';
         var currentData = {};
-        if (tm.data.selectedCate == "全场直播") {
-            currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
-            currentData = {}
-        } else {
-            currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
-            currentData = {
-                pi: ++tm.data.dataIndex,
-                ps: tm.data.pageSize,
-                cate: tm.data.selectedCate
-            };
-            // currentUrl = e.getUrl("YTALGetListBrandRushIsHeadByCate");
-            // currentData = {
-            //     cate: this.data.selectedCate
-            // }
-        }
+        currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
+        currentData = {
+            pi: ++tm.data.dataIndex,
+            ps: tm.data.pageSize,
+            cate: tm.data.selectedCate
+        };
+        // if (tm.data.selectedCate == "全场直播") {
+        //     currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
+        //     currentData = {}
+        // } else {
+        //     currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
+        //     currentData = {
+        //         pi: ++tm.data.dataIndex,
+        //         ps: tm.data.pageSize,
+        //         cate: tm.data.selectedCate
+        //     };
+        // }
         wx.request({
             url: currentUrl,
             data: currentData,
@@ -480,13 +488,16 @@ Page({
                         var min = o.rushEndTime.split(' ')[1].split(':')[1];
                         o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                     }
-                    brandRushList.push(o)
+                    if (o.goodsList.length > 0) {
+                        brandRushList.push(o)
+                    }
+                    
                 });
                 tm.setData({
                     brandRush: brandRushList
                     //topLogoListLast: brandRushList
                 })
-                tm.getBrandbush(jd)
+                //tm.getBrandbush(jd)
                 //tm.loadMore();
             },
             complete: function() {
@@ -520,7 +531,9 @@ Page({
                             var min = o.rushEndTime.split(' ')[1].split(':')[1];
                             o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                         }
-                        bottomArrList.push(o)
+                        if (o.goodsList.length > 0) {
+                            bottomArrList.push(o)
+                        }
                     });
                     var newList = tm.data.topArr.concat(bottomArrList)
                     tm.setData({
@@ -596,13 +609,15 @@ Page({
 
                             o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
                         }
-                        brandRushList.push(o)
+                        if (o.goodsList.length > 0) {
+                            brandRushList.push(o)
+                        }
                     });
-                    // tm.setData({
-                    //     brandRush: tm.data.brandRush.concat(brandRushList)
-                    //     //topLogoListLast: tm.data.brandRush.concat(brandRushList)
-                    // })
-                    tm.getBrandbushMore(jd)
+                    tm.setData({
+                        brandRush: tm.data.brandRush.concat(brandRushList)
+                        //topLogoListLast: tm.data.brandRush.concat(brandRushList)
+                    })
+                    //tm.getBrandbushMore(jd)
                 } else {
                     tm.setData({
                         hasMore: false
@@ -614,7 +629,7 @@ Page({
             }
         });
     },
-    getBrandbushMore: function (jd) {
+    getBrandbushMore: function(jd) {
         var tm = this;
         if (jd.data.length != 0) {
             let logoList = [];
@@ -633,7 +648,7 @@ Page({
                         pi: 1,
                         ps: 3
                     },
-                    success: function (jd) {
+                    success: function(jd) {
                         var topBrandGoods = jd.data;
                         var key = "topBrandGoods";
                         logoListLast[i][key] = topBrandGoods;
@@ -644,7 +659,7 @@ Page({
 
                         }
                     },
-                    complete: function () {
+                    complete: function() {
                         wx.hideLoading();
                     }
                 });
@@ -652,7 +667,7 @@ Page({
             }
         }
     },
-    getBrandbush: function (jd) {
+    getBrandbush: function(jd) {
         var tm = this;
         if (jd.data.length != 0) {
             let logoList = [];
@@ -670,7 +685,7 @@ Page({
                         pi: 1,
                         ps: 3
                     },
-                    success: function (jd) {
+                    success: function(jd) {
                         var topBrandGoods = jd.data;
                         var key = "topBrandGoods";
                         logoListLast[i][key] = topBrandGoods;
@@ -680,14 +695,14 @@ Page({
                             })
                         }
                     },
-                    complete: function () {
+                    complete: function() {
                         wx.hideLoading();
                     }
                 });
             }
         }
     },
-    getLogo: function() {//品牌墙前三个
+    getLogo: function() { //品牌墙前三个
         var tm = this;
         wx.request({
             url: e.getUrl("YTALGetTopListBrandRushIsHead"),
@@ -701,41 +716,45 @@ Page({
                     // var logoListThree = logoList.slice(0, 3)
                     // var logoListLast = logoList.slice(3)
                     var logoListLast = logoList.slice(0, 3);
-                    console.log(logoListLast.length)
-                    for (let i = 0; i < logoListLast .length; i++) {
-                        wx.request({
-                            url: e.getUrl("YTALGetListRushGoods"),
-                            data: {
-                                brandId: logoListLast[i].brandId,
-                                isSoldOut: 0,
-                                goodsSource: logoListLast[i].brandSource,
-                                pi: 1,
-                                ps: 3
-                            },
-                            success: function(jd) {
-                                var topBrandGoods = jd.data;
-                                var key = "topBrandGoods";
-                                logoListLast[i][key] = topBrandGoods;
-                                if (i == logoListLast.length - 1) {
-                                    tm.setData({
-                                        topLogoList: logoListLast,
-                                        //topLogoListLast: logoListLast
-                                        //brandRush: logoListLast
-                                    })
-                                }
-                            },
-                            complete: function() {
-                                wx.hideLoading();
-                                // console.log(tm.data.topLogoListLast[0]["topBrandGoods"])
-                            }
-                        });
-                    }
+                    tm.setData({
+                        topLogoList: logoListLast,
+                        //topLogoListLast: logoListLast
+                        //brandRush: logoListLast
+                    })
+                    // for (let i = 0; i < logoListLast .length; i++) {
+                    //     wx.request({
+                    //         url: e.getUrl("YTALGetListRushGoods"),
+                    //         data: {
+                    //             brandId: logoListLast[i].brandId,
+                    //             isSoldOut: 0,
+                    //             goodsSource: logoListLast[i].brandSource,
+                    //             pi: 1,
+                    //             ps: 3
+                    //         },
+                    //         success: function(jd) {
+                    //             var topBrandGoods = jd.data;
+                    //             var key = "topBrandGoods";
+                    //             logoListLast[i][key] = topBrandGoods;
+                    //             if (i == logoListLast.length - 1) {
+                    //                 tm.setData({
+                    //                     topLogoList: logoListLast,
+                    //                     //topLogoListLast: logoListLast
+                    //                     //brandRush: logoListLast
+                    //                 })
+                    //             }
+                    //         },
+                    //         complete: function() {
+                    //             wx.hideLoading();
+                    //             // console.log(tm.data.topLogoListLast[0]["topBrandGoods"])
+                    //         }
+                    //     });
+                    // }
                     // console.log(logoListLast)
                 }
             }
         });
     },
-    getPageRushGoodsByTagId: function () { //捡漏专区显示前三条
+    getPageRushGoodsByTagId: function() { //捡漏专区显示前三条
         var tm = this;
         var currentUrl = e.getUrl("YTALGetPageRushGoodsByTagId");
         var currentData = {
@@ -748,8 +767,7 @@ Page({
         wx.request({
             url: currentUrl,
             data: currentData,
-            success: function (jd) {
-
+            success: function(jd) {
                 if (jd.data.length != 0) {
                     let goodsList = [];
                     jd.data.forEach(o => {
@@ -764,7 +782,6 @@ Page({
             }
         });
     },
-
     compareVersion: function(v1, v2) {
         v1 = v1.split('.')
         v2 = v2.split('.')
@@ -876,17 +893,17 @@ Page({
             url: '../brandRush/brandRush',
         })
     },
-    copy: function (e) {
+    copy: function(e) {
         wx.setClipboardData({
             data: e.target.dataset.val,
-            success: function (res) {
+            success: function(res) {
                 wx.showToast({
                     title: '复制成功',
                 });
             }
         });
     },
-    toggleHide: function (e) {
+    toggleHide: function(e) {
         var tm = this;
         if (tm.data.currentId == 0) {
             tm.setData({
@@ -910,12 +927,12 @@ Page({
             }
         }
     },
-    happyEarn: function () {
+    happyEarn: function() {
         wx.navigateTo({
             url: '/pages/screening/screening?picUrl=https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/6822/31/9032/161822/5c0f578dE04dbed1a/cb0be7a8eabaa9ff.jpg!cr_1125x549_0_72!q70.jpg.dpg&tagId=2',
         })
     },
-    goView: function (event) {
+    goView: function(event) {
         var url = "https://ytal.qkmai.com/vShop/ArticleDetails?ArticleId=" + event.currentTarget.dataset.id
         var deurl = encodeURIComponent(url)
         var s = '/pages/webPage/webPage?artUrl=' + deurl
@@ -927,14 +944,14 @@ Page({
             url: s
         })
     },
-    focusList: function () {
+    focusList: function() {
         var tm = this;
         wx.request({
             url: e.getUrl("GetListBrandByFollow"),
             data: {
                 openId: e.globalData.openId
             },
-            success: function (jd) {
+            success: function(jd) {
                 if (jd.data.length > 0) {
                     let logoList = [];
                     tm.setData({
@@ -944,7 +961,7 @@ Page({
             }
         });
     },
-    changeFocus: function (event) {
+    changeFocus: function(event) {
         var tm = this;
         var s = event.currentTarget.dataset.index;
         var o = e.globalData.openId
@@ -954,7 +971,7 @@ Page({
                 openId: o,
                 mainTitle: event.currentTarget.dataset.title
             },
-            success: function (jd) {
+            success: function(jd) {
                 event._relatedInfo.anchorTargetText = "取消关注"
                 var br = tm.data.brandRush;
                 br[s].isFocus = !br[s].isFocus;
@@ -964,7 +981,7 @@ Page({
             }
         });
     },
-    onCloseBtn: function () {
+    onCloseBtn: function() {
         wx.setStorage({
             key: 'tcTwo',
             data: 'read'
@@ -974,7 +991,7 @@ Page({
         })
         wx.showTabBar({})
     },
-    onCloseNewBtn: function () {
+    onCloseNewBtn: function() {
         wx.setStorage({
             key: 'tcTwo',
             data: 'read'
@@ -985,7 +1002,7 @@ Page({
         })
         wx.showTabBar({})
     },
-    onGetLink: function () {
+    onGetLink: function() {
         this.setData({
             isShow: false
         })
@@ -994,19 +1011,19 @@ Page({
             url: '../redPacket/redPacket',
         })
     },
-    GoToSearch: function () {
+    GoToSearch: function() {
         wx.navigateTo({
             url: '../search/search'
         })
     },
-    onPageScroll: function (obj) {
+    onPageScroll: function(obj) {
         if (obj.scrollTop > 363) {
             this.setData({
                 goTopStatus: true
             })
         }
     },
-    goToTop: function () {
+    goToTop: function() {
         wx.pageScrollTo({
             scrollTop: 0,
         })
@@ -1014,12 +1031,12 @@ Page({
             goTopStatus: false
         })
     },
-    goToZZ: function () {
+    goToZZ: function() {
         wx.switchTab({
             url: '../discovery/discovery',
         })
     },
-    goToZZZ: function () {
+    goToZZZ: function() {
         wx.setStorage({
             key: 'tcTwo',
             data: 'read'
@@ -1032,23 +1049,23 @@ Page({
     timeFormat(param) { //小于10的格式化函数
         return param < 10 ? '0' + param : param;
     },
-    linkBrandRushInfo: function (event) {
+    linkBrandRushInfo: function(event) {
         wx.navigateTo({
             url: "../brandInfo/brandInfo?rushCode=" + event.currentTarget.dataset.rushcode
         });
     },
-    linkProductDetail: function (event) {
+    linkProductDetail: function(event) {
         wx.navigateTo({
             url: "../productdetail/productdetail?id=" + event.currentTarget.dataset.productid
         });
     },
-    ClickSwiper: function (t) {
+    ClickSwiper: function(t) {
         var e = this,
             a = t.currentTarget.dataset.link,
             r = t.currentTarget.dataset.showtype;
         e.JumpUrlByType(r, a);
     },
-    JumpUrlByType: function (t, a) {
+    JumpUrlByType: function(t, a) {
         switch (console.log(t), t) {
             case 10:
                 wx.navigateTo({
@@ -1062,7 +1079,7 @@ Page({
                     appId: a,
                     extarData: {},
                     envVersion: "develop",
-                    success: function (t) { }
+                    success: function(t) {}
                 }) : (-1 == a.indexOf("http://") && -1 == a.indexOf("https://") && (a = e.getRequestUrl + a),
                     console.log(a), wx.navigateTo({
                         url: "../outurl/outurl?url=" + encodeURIComponent(a)
@@ -1085,6 +1102,7 @@ Page({
                 });
         }
     },
+
     onShareAppMessage: function (event) {
         // var i = '/pages/home/home?from=menu';
         // var title = '亚太奥莱品牌热卖，能省会赚，最高返佣40%！';
@@ -1112,7 +1130,7 @@ Page({
         var path = '/pages/home/home?from=menu';
         e.share(title, path)
     },
-    getHomeData: function (t) {
+    getHomeData: function(t) {
         var a = this;
         "NOUser" != t.Message ? ("OK" == t.Status ? (a.getHomeProductData(a.data.pageIndex, !0),
             a.setData({
@@ -1122,12 +1140,12 @@ Page({
                 TopicUrl: t.Data.HomeTopicPath,
                 VersionNumber: t.Data.Vid
             }), e.globalData.siteInfo = t.Data.SiteInfo, a.CheckVersionNumber(a)) : wx.showToast({
-                title: "系统数据异常"
-            }), wx.hideNavigationBarLoading()) : wx.navigateTo({
-                url: "../login/login"
-            });
+            title: "系统数据异常"
+        }), wx.hideNavigationBarLoading()) : wx.navigateTo({
+            url: "../login/login"
+        });
     },
-    getHomeProductData: function (a, r) {
+    getHomeProductData: function(a, r) {
         // var o = this;
         // void 0 == r && (r = !1), a < 1 && (a = 1), e.getOpenId(function(n) {
         //     var u = {
@@ -1156,86 +1174,86 @@ Page({
         //     });
         // });
     },
-    CheckVersionNumber: function (t) {
+    CheckVersionNumber: function(t) {
         var e = wx.getStorageSync("versionnumber");
         null == e || "" == e || "undefined" == e || parseInt(e) < parseInt(t.data.VersionNumber) ? (wx.setStorageSync("versionnumber", t.data.VersionNumber),
             t.DownloadTopcis(t)) : t.HomeTopicData(t);
     },
-    DownloadTopcis: function (t) {
+    DownloadTopcis: function(t) {
         wx.request({
             url: t.data.TopicUrl,
             dataType: "json",
-            success: function (t) {
+            success: function(t) {
                 wx.setStorage({
                     key: "topiclist",
                     data: t.data.LModules
                 });
             },
-            complete: function () {
+            complete: function() {
                 t.HomeTopicData(t);
             }
         });
     },
-    HomeTopicData: function (t) {
+    HomeTopicData: function(t) {
         var tm = this;
         wx.getStorage({
             key: "topiclist",
-            success: function (e) {
+            success: function(e) {
                 t.setData({
                     TopicData: e.data
                 });
             },
-            complete: function () { }
+            complete: function() {}
         });
     },
-    bindSearchInput: function (t) {
+    bindSearchInput: function(t) {
         var e = t.detail.value;
         e.length > 0 && this.setData({
             keyword: e
         });
     },
-    bindConfirmSearchInput: function (t) {
+    bindConfirmSearchInput: function(t) {
         var e = t.detail.value;
         e.length > 0 && (wx.setStorage({
             key: "keyword",
             data: e
         }), wx.switchTab({
             url: "../searchresult/searchresult",
-            success: function (t) {
+            success: function(t) {
                 wx.hideKeyboard();
             }
         }));
     },
-    bindBlurInput: function (t) {
+    bindBlurInput: function(t) {
         wx.hideKeyboard();
     },
-    bindSearchAction: function (t) {
+    bindSearchAction: function(t) {
         var e = this.data.keyword;
         e.length > 0 && (wx.setStorage({
             key: "keyword",
             data: e
         }), wx.switchTab({
             url: "../searchresult/searchresult",
-            success: function (t) {
+            success: function(t) {
                 wx.hideKeyboard();
             }
         }));
     },
-    gotoKeyWordPage: function (t) {
+    gotoKeyWordPage: function(t) {
         wx.navigateTo({
             url: "../search/search"
         });
     },
-    findProductById: function (t) {
-        return this.data.choiceProducts.find(function (e) {
+    findProductById: function(t) {
+        return this.data.choiceProducts.find(function(e) {
             return e.ProductId == t;
         });
     },
-    setProductCartQuantity: function (t, e, a) {
+    setProductCartQuantity: function(t, e, a) {
         var r = this,
             o = !1,
             n = r.data.choiceProducts,
-            u = n.find(function (e) {
+            u = n.find(function(e) {
                 return e.ProductId == t;
             });
         if (u) {
@@ -1255,14 +1273,14 @@ Page({
             r.setData(i);
         }
     },
-    setSkuCartQuantity: function (t, e, a) {
+    setSkuCartQuantity: function(t, e, a) {
         var r = this,
             o = !1,
             n = r.data.CurrentProduct;
         if (n && n.Skus) {
-            var u = n.Skus.find(function (e) {
-                return e.SkuId == t;
-            }),
+            var u = n.Skus.find(function(e) {
+                    return e.SkuId == t;
+                }),
                 i = r.data.CurrentSku;
             if (u) {
                 switch (e = parseInt(e), a) {
