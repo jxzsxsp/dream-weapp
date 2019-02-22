@@ -1,28 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='commission_container'>
-    <view class='commission_top' style='font-size:18px;line-height:1.5;text-align:center;'>
-        <view style='padding-top:80rpx;'>VIP自购返利列表</view>
-        <!-- <text class='tit'>可提现（元）</text>
-        <view class='show_num'>
-            <text class='money_num' style="font-size:60rpx">{{CanDrawSplittin}}</text>
-            <view class='getMoney_btn' bindtap="bindSplittinDraw">申请提现</view>
-        </view>
-        <view class='line'></view>
-        <view class='showlist'>
-            <view>
-                <text>总收入</text>
-                <text>{{SplittinTotal}}</text>
-            </view>
-            <view>
-                <text>已提现</text>
-                <text>{{DrawSplittinTotal}}</text>
-            </view>
-            <view>
-                <text>未结算</text>
-                <text>{{NoSettlementSplttin}}</text>
-            </view>
-        </view> -->
-    </view>
+    
     <!-- <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16" data-id='16'>
         <image src="http://cos.qkmai.com/qkmbb/ytal/redenvelopetb.png"></image>
         <view>
