@@ -143,7 +143,6 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
         })
-
         tm.getLogo()
         // tm.getCode()
         //tm.getProducts()
@@ -217,8 +216,6 @@ Page({
             });
         });
     },
-
-
     onReachBottom: function() {
         var t = this;
         if (1 == t.data.refreshSuccess) {
@@ -357,91 +354,13 @@ Page({
                         bottomArr: bottomArrList,
                         brandRush: newList
                     })
-                    //tm.getBrandbush(res)
                 } else {
                     tm.setData({
                         hasMore: false
                     })
                 }
-
-
             }
         })
-        // wx.request({
-        //     url: e.getUrl("YTALGetListBrandRushIsHead"),
-        //     data: {},
-        //     success: function(res) {
-        //         if (res.data.length > 0) {
-        //             let topArrList = [];
-        //             res.data.forEach(o => {
-        //                 var obj = {
-        //                     day: '00',
-        //                     hou: '00',
-        //                     min: '00',
-        //                     sec: '00'
-        //                 }
-        //                 o.countDownTime = obj;
-        //                 if (o.rushEndTime != null) {
-        //                     var month = o.rushEndTime.split('-')[1];
-        //                     var day = o.rushEndTime.split('-')[2].split(' ')[0];
-        //                     var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-        //                     var min = o.rushEndTime.split(' ')[1].split(':')[1];
-        //                     o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-        //                 }
-        //                 topArrList.push(o)
-        //             });
-        //             tm.setData({
-        //                 topArr: topArrList,
-        //                 brandRush: topArrList
-        //             });
-        //             //tm.getBrandbush(res)
-        //         }
-        //         wx.request({
-        //             url: e.getUrl("YTALGetPageBrandRush"),
-        //             data: {
-        //                 pi: ++tm.data.dataIndex,
-        //                 ps: 5
-        //             },
-        //             success: function(res) {
-        //                 if (res.data.length == 5) {
-        //                     let bottomArrList = [];
-        //                     res.data.forEach(o => {
-        //                         var obj = {
-        //                             day: '00',
-        //                             hou: '00',
-        //                             min: '00',
-        //                             sec: '00'
-        //                         }
-        //                         o.countDownTime = obj;
-        //                         if (o.rushEndTime != null) {
-        //                             var month = o.rushEndTime.split('-')[1];
-        //                             var day = o.rushEndTime.split('-')[2].split(' ')[0];
-        //                             var hour = o.rushEndTime.split(' ')[1].split(':')[0];
-        //                             var min = o.rushEndTime.split(' ')[1].split(':')[1];
-        //                             o.endTimeInfo = month + "/" + day + " " + hour + ":" + min;
-        //                         }
-        //                         bottomArrList.push(o)
-        //                     });
-        //                     var newList = tm.data.topArr.concat(bottomArrList)
-        //                     tm.setData({
-        //                         bottomArr: bottomArrList,
-        //                         brandRush: newList
-        //                     })
-        //                     //tm.getBrandbush(res)
-        //                 } else {
-        //                     tm.setData({
-        //                         hasMore: false
-        //                     })
-        //                 }
-
-
-        //             }
-        //         })
-        //     },
-        //     complete: function() {
-        //         wx.stopPullDownRefresh();
-        //     }
-        // });
     },
     loadTop: function() {
         wx.showLoading({
@@ -456,17 +375,6 @@ Page({
             ps: tm.data.pageSize,
             cate: tm.data.selectedCate
         };
-        // if (tm.data.selectedCate == "全场直播") {
-        //     currentUrl = e.getUrl("YTALGetListBrandRushIsHead");
-        //     currentData = {}
-        // } else {
-        //     currentUrl = e.getUrl("YTALGetPageBrandRushByCate");
-        //     currentData = {
-        //         pi: ++tm.data.dataIndex,
-        //         ps: tm.data.pageSize,
-        //         cate: tm.data.selectedCate
-        //     };
-        // }
         wx.request({
             url: currentUrl,
             data: currentData,
@@ -868,10 +776,8 @@ Page({
                     // sortOrder: a.data.SortOrder
                 },
                 success: function(t) {
-                    //console.log(t)
                     if (t.statusCode == 200) {
                         var r = t.data.Data;
-                        //console.log(r)
                         tm.setData({
                             getProductsList: r.slice(0, 3)
                         })
