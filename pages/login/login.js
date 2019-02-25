@@ -121,8 +121,8 @@ const viewAction = {
 
     if (v.errMsg !== 'getPhoneNumber:ok') {
       wx.showModal({
-        title: '警告',
-        content: '若不授权获取手机，则无法注册会员！',
+        title: '提示',
+        content: '若拒绝获取手机号，则无法注册使用蜥奇！',
         showCancel: false
       })
       return
