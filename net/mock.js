@@ -792,8 +792,72 @@ let shop = {
   },
 }
 
+let item = {
+  [urls.shopHome]: {},
+  [urls.shopHomeItem]: {},
+  [urls.itemDetail]: {},
+  [urls.addItemFavorite]: {},
+  [urls.cancelItemFavorite]: {},
+  [urls.tradeCreate]: {},
+  [urls.shopSimpleDetail]: {},
+  [urls.messageUnreadNum]: {
+    "totalCount": 10
+  },
+  [urls.applyList]: {},
+  [urls.itemFavoriteList]: {},
+  [urls.messageList]: {
+    "list": [
+      {
+        "id": 1,
+        "title": "拿样卡申请",
+        "content": "消息内容",
+        "messageType": 1,
+        "bizType": 1,
+        "itemCode": "12890",
+        "itemTitle": "32s 75*75全面仿…",
+        "shopId": 1,
+        "shopName": "店铺名称1",
+        "customerId": 1,
+        "bizId": 1,
+      },
+      {
+        "id": 2,
+        "title": "拿样卡申请",
+        "content": "消息内容",
+        "messageType": 2,
+        "bizType": 1,
+        "itemCode": "099-299",
+        "itemTitle": "春夏款",
+        "shopId": 1,
+        "shopName": "店铺名称2",
+        "customerId": 1,
+        "bizId": 1,
+      }
+    ],
+    "totalCount": 98,
+    "hasMore": true
+  },
+  [urls.messageDetail]: {
+    "messageTitle": "拿样卡申请",
+    "creatTime": "10-01 10：00",
+    "avatar": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg",
+    "mobile": "109876723",
+    "customerName": "张三",
+    "itemTitle": "春夏款",
+    "itemCode": "099-299",
+    "productName": "水洗布",
+    "imageUrl": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg",
+    "buyerName": "收货人-张三",
+    "buyerMobile": "收货人-手机号",
+    "address": "收货地址",
+    "needAgreedOperator": "true" //是否需要【同意或拒绝】操作
+  },
+  [urls.confirmReceived]: {},
+}
+
 export default {
   ...colorLibraryDetail,
   ...colorLabel,
   ...shop,
+  ...item,
 }

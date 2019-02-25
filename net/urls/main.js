@@ -23,4 +23,17 @@ export default {
   shopDetail: '/shop/detail', // 店铺详情接口
   personDetail: '/shop/business-card', // 个人名片接口
   bindCustomer: '/shop/bind-customer', // 添加客户关系记录（到店码，浏览）
+  shopHome: '/shop/bind-customer', // 店铺首页 GET
+  shopHomeItem: '/shop/bind-customer', // 店铺首页商品 GET
+  itemDetail: '/item/detail', // 商品详情接口 GET
+  addItemFavorite: '/item/item-add-favorite', // 商品添加收藏 POST
+  cancelItemFavorite: '/item/item-cancel-favorite', // 商品取消收藏 POST
+  tradeCreate: '/trade/create', // 剪米样/拿色卡提交接口 POST
+  shopSimpleDetail: '/shop/simple-detail', // 店铺信息 GET
+  messageUnreadNum: '/message/unread-num', // 未读通知数 GET
+  applyList: '/trade/apply-list', // 我的调样申请列表接口 GET
+  itemFavoriteList: '/item/item-favorite-list', // 我的商品收藏列表 GET
+  messageList: '/message/list', // 通知列表 GET
+  messageDetail: '/message/biz-detail', // 消息通知跳调样详情接口 GET
+  confirmReceived: '/trade/confirm-received', // 确认收货接口 POST
 }

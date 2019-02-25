@@ -1,0 +1,3 @@
+.bottom-line {
+  height: 22rpx;
+}

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText":"我的申请",
+  "usingComponents": {
+    "fold": "/components/fold/fold",
+    "apply-item-list": "/components/apply-item-list/apply-item-list"
+  }
 }

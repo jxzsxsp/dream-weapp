@@ -1,0 +1,7 @@
+<block wx:if="{{list && list.length > 0}}">
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="bottom-line"></view>
+    <apply-item shop="{{item}}" />
+  </block>
+  <view class="bottom-line"></view>
+</block>

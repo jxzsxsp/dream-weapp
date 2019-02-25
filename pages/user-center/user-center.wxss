@@ -72,7 +72,33 @@
 }
 
 .user-name-container {
-  flex: 1;
+  /* flex: 1; */
+}
+
+.notice {
+  color: #0156fe;
+  font-size: 48rpx;
+  margin-left: 340rpx;
+  position: relative;
+}
+
+.badge {
+  height: 28rpx;
+  min-width: 28rpx;
+  border-radius: 14rpx;
+  background: #FF0000;
+  font-family: PingFangSC-Medium;
+  font-size: 20rpx;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -4rpx;
+  right: -10rpx;
+}
+
+.badge text {
+  margin: 5rpx;
 }
 
 .user-name {

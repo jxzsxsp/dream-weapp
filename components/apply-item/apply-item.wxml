@@ -1,0 +1,29 @@
+<view class='item-container'>
+  <view class='head-container'>
+    <view class='shop-container'>
+      <view class='iconfont icon-shop shop'></view>
+      <text class='shop-name'>一万纺织</text>
+      <view class='iconfont icon-jinru jinru'></view>
+    </view>
+
+    <view class='msg-container'>
+      <!-- <text class='wait-replay'>等待商家回复</text> -->
+      <view class='disagree'>
+        <text>等待商家回复</text>
+        <view class='iconfont icon-jinru disagree-jinru'></view>
+      </view>
+    </view>
+  </view>
+
+  <view class='content-container'>
+    <view class='item-avatar'>
+    </view>
+
+    <view class='content'>
+      <text class='item-title'>牛奶丝绒针面料名字万一很长很…</text>
+      <text class='item-code'>B-201026</text>
+      <text class='product-name'>无纺布</text>
+      <text class='time'>1-2 11:03</text>
+    </view>
+  </view>
+</view>

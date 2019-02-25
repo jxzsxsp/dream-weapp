@@ -1,2 +1,64 @@
-<!--pages/my-apply/my-apply.wxml-->
-<text>pages/my-apply/my-apply.wxml</text>
+<view class='tab-container flex'>
+  <view class='tabs flex'>
+    <view class="tab flex {{showYangKa ? 'selected' : ''}}" bindtap='showYangKa'>
+      <text>拿样卡</text>
+    </view>
+    <view class="tab flex {{showMiYang ? 'selected' : ''}}" bindtap='showMiYang'>
+      <text>剪米样</text>
+    </view>
+  </view>
+</view>
+
+<view class='content'>
+  <view wx:if="{{showYangKa}}">
+    <fold title="未回复">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+
+    <fold title="已同意">
+      <apply-item-list
+        list="{{}}"
+      />
+    </fold>
+
+    <fold title="已拒绝">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+
+    <fold title="已收货">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+  </view>
+
+  <view wx:if="{{showMiYang}}">
+    <fold title="未回复">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+
+    <fold title="已同意">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+
+    <fold title="已拒绝">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+
+    <fold title="已收货">
+      <apply-item-list
+        list="{{list}}"
+      />
+    </fold>
+  </view>
+</view>

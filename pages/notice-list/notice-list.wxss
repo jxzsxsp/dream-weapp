@@ -1,1 +1,101 @@
-/* pages/notice-list/notice-list.wxss */
+.bottom-line {
+  height: 1px;
+  background: #D8D8D8;
+}
+
+.item {
+  width: 100%;
+  height: 170rpx;
+  background: #FFFFFF;
+}
+
+.avatar {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 39rpx;
+  overflow: hidden;
+  margin-top: 40rpx;
+  margin-left: 30rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.miyang {
+  background: #F9974F;
+}
+
+.seka {
+  background: #0EB06C;
+}
+
+.avatar-icon {
+  font-size: 40rpx;
+  color: #ffffff;
+}
+
+.content {
+  margin-left: 20rpx;
+  height: 170rpx;
+  justify-content: center;
+}
+
+.title {
+  align-items: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #000000;
+  letter-spacing: 1.07rpx;
+}
+
+.unread {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 7rpx;
+  background: #0156FE;
+  margin-right: 12rpx;
+}
+
+.shop-name {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #000000;
+  letter-spacing: 0.8rpx;
+}
+
+.item-content {
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #8E8E93;
+  letter-spacing: 0.8rpx;
+  margin-top: 3rpx;
+}
+
+.item-code {
+  width: 200rpx;
+}
+
+.item-name {
+  width: 340rpx;
+}
+
+.no-notice-img {
+  width: 120rpx;
+  height: 120rpx;
+  margin: auto;
+  margin-top: 390rpx;
+}
+
+.no-notice-img image {
+  width: 100%;
+  height: 100%;
+}
+
+.no-notice-txt {
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #C9C8D0;
+  letter-spacing: 1rpx;
+  text-align: center;
+  margin: auto;
+  margin-top: 5rpx;
+}

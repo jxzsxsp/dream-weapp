@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "apply-item": "../apply-item/apply-item"
+  }
+}

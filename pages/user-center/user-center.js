@@ -1,16 +1,20 @@
-import {$Page, $wx} from '../../genji4mp/index'
+import { $Page, $wx } from '../../genji4mp/index'
+import { http, urls } from '../../net/index'
 
 const data = {
   settingList: [
     { name: '关注店铺', icon: 'icon-shop', half: true },
     { name: '最近浏览', icon: 'icon-history', half: true },
-    { name: '我的收藏', icon: 'icon-favorite', half: false },
+    { name: '我的收藏', icon: 'icon-favorite', half: true },
+    { name: '商品收藏', icon: 'icon-goods', half: true },
     { name: '推荐', icon: 'icon-recommendsupplier', half: false },
+    { name: '我的申请', icon: 'icon-apply', half: false },
   ],
   userInfo: {},
   showShareImg: false,
   saveImgBtnHidden: false,
   openSettingBtnHidden: true,
+  noticeNum: 0,
 }
 
 const privateMethod = {
@@ -91,16 +95,33 @@ const privateMethod = {
       }
     })
   },
+  getNoticeNum: function() {
+    http.get(urls.messageUnreadNum, {
+      mock: true,
+    }).then(res => {
+      this.setData({
+        noticeNum: res.totalCount
+      })
+    })
+  }
 
 }
 
 const lifecycle = {
   onLoad: function () {
+    $wx.app.getAppUserInfo().then(res => {
+      $wx.app.saveAuthInfo().then(res => {
+        this.setData({
+          userInfo: $wx.app.globalData.userInfo
+        })
+      })
+    })
+    this.getNoticeNum()
   },
   onReady: function() {
     let _this = this
 
-    this.downloadAvatarImg()
+    // this.downloadAvatarImg()
     
     wx.getImageInfo({
       src: '../../assets/xiaoxi_qrcode.jpg',
@@ -171,9 +192,18 @@ const viewAction = {
       // 我的收藏
       $wx.navigateTo($wx.router.favoriteLibrary)
     } else if (d.index === 3) {
+      // 商品收藏
+      $wx.navigateTo($wx.router.itemFavorite)
+    } else if (d.index === 4) {
       // 推荐供应商
       $wx.navigateTo($wx.router.recommendSupplier)
+    } else if (d.index === 5) {
+      // 我的申请
+      $wx.navigateTo($wx.router.myApply)
     }
+  },
+  gotoNoticeList: function() {
+    $wx.navigateTo($wx.router.noticeList)
   },
   callContact: function() {
     $wx.makePhoneCall({

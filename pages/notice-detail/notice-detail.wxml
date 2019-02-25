@@ -1,2 +1,82 @@
-<!--pages/notice-detail/notice-detail.wxml-->
-<text>pages/notice-detail/notice-detail.wxml</text>
+<view class='head flex'>
+  <view class="head-avatar flex {{true ? 'miyang' : 'seka'}}">
+    <image wx:if="{{false}}" src='{{notice.avatar}}'></image>
+    <view wx:if="{{true}}" class='iconfont icon-miyang avatar-icon'></view>
+    <view wx:if="{{false}}" class='iconfont icon-color_card avatar-icon'></view>
+  </view>
+  <view class='head-content flex-column'>
+    <text class='head-title'>{{notice.messageTitle}}</text>
+    <text class='head-time'>{{notice.creatTime}}</text>
+  </view>
+</view>
+
+<view class='content'>
+  <!-- <view class='desc'>您关注的店铺 <text class='desc-shop-name'>一万纺织</text> 上新了</view> -->
+  <!-- <view class='desc'><text class='desc-shop-name'>一万纺织</text> <text class='sended'>已发货</text></view> -->
+  <!-- <view class='desc'><text class='desc-shop-name'>一万纺织</text> <text class='disagree'>已拒绝 </text> 您的拿色卡请求</view> -->
+  <view class='desc'><text class='desc-shop-name'>一万纺织</text> <text class='agree'>已同意 </text> 您的拿色卡请求</view>
+  <view class='shop-info flex'>
+    <view class='shop-avatar'>
+      <image src='{{notice.avatar}}'></image>
+    </view>
+    <view class='info-content flex-column'>
+      <text class='shop-name'>{{notice.customerName}}</text>
+      <text class='shop-mobile'>{{notice.mobile}}</text>
+    </view>
+    <view class='iconfont icon-call call-icon'></view>
+  </view>
+  <view class='line'></view>
+
+  <view class='item flex'>
+    <view class='item-title flex'>
+      <text>商品名</text>
+      <text>：</text>
+    </view>
+    <text class='item-content'>{{notice.itemTitle}}</text>
+  </view>
+  <view class='line'></view>
+  
+  <view class='item flex'>
+    <view class='item-title flex'>
+      <text>货号</text>
+      <text>：</text>
+    </view>
+    <text class='item-content'>{{notice.itemCode}}</text>
+  </view>
+  <view class='line'></view>
+  
+  <view class='item flex'>
+    <view class='item-title flex'>
+      <text>品名</text>
+      <text>：</text>
+    </view>
+    <text class='item-content'>{{notice.productName}}</text>
+  </view>
+  <view class='line'></view>
+  
+  <view class='item flex'>
+    <view class='item-title flex'>
+      <text>商品图</text>
+      <text>：</text>
+    </view>
+    <view class='item-content-img'>
+      <image src='{{notice.imageUrl}}'></image>
+    </view>
+  </view>
+  <view class='line'></view>
+  
+</view>
+
+<!-- <view class='disagree-container flex-column'>
+  <text class='disagree-title'>拒绝理由：</text>
+  <text class='disagree-content'>过年期间不发货，等过完年再来吧！</text>
+</view> -->
+
+<view class='logistics-container flex'>
+  <text class='logistics-title'>物流单号：</text>
+  <text class='logistics-no'>668 929 882 001</text>
+</view>
+
+<view class='confirm-received flex'>
+  <text>确认收货</text>
+</view>

@@ -1,66 +1,75 @@
-// pages/notice-list/notice-list.js
-Page({
+import { $wx, $Page } from '../../genji4mp/index'
+import { http, urls } from '../../net/index'
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+const props = {
+  loadingState: http.defaultLoadingState(),
+}
 
+const data = {
+  noticeList: [],
+}
+
+const lifecycle = {
+  onLoad: function (query) {
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow: function (query) {
+    this.refresh()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-
+    this.refresh()
+    $wx.stopPullDownRefresh();
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
+    let noticeList = this.data.noticeList
 
+    this.getNoticeList().then(res => {
+      this.setData({
+        noticeList: noticeList.concat(res)
+      })
+    })
+  },
+}
+
+const privateMethods = {
+  getNoticeList: function () {
+    return http.getList(urls.messageList, this.props.loadingState, {
+      mock: true,
+    })
+  },
+  refresh: function () {
+    this.props.loadingState = http.defaultLoadingState();
+    this.getNoticeList().then(res => {
+      if (res) {
+        this.setData({
+          noticeList: res
+        })
+      }
+    })
+  },
+  flushNoticeList: function (item) {
+    let noticeList = this.data.noticeList
+
+    for (let i = 0; i < noticeList.length; i++) {
+      if (noticeList[i].id === item.id) {
+        noticeList[i] = item
+        break
+      }
+    }
+
+    this.setData({
+      noticeList: noticeList
+    })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+}
 
+const viewAction = {
+  showDetail: function (d, v) {
+    $wx.navigateTo($wx.router.noticeDetail, {
+      bizType: d.type,
+      bizId: d.id
+    })
   }
-})
+}
+
+$Page.register(props, data, lifecycle, privateMethods, viewAction)

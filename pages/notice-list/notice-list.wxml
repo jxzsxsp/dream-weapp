@@ -1,2 +1,32 @@
-<!--pages/notice-list/notice-list.wxml-->
-<text>pages/notice-list/notice-list.wxml</text>
+<block wx:if="{{noticeList && noticeList.length > 0}}">
+  <view class="bottom-line"></view>
+  <block wx:for="{{noticeList}}" wx:key="index">
+    <view class='item flex' data-id='{{item.bizId}}' data-type='{{item.bizType}}' bindtap="showDetail">
+      <view class="avatar flex {{item.messageType === 1 ? 'miyang' : item.messageType === 2 ? 'seka' : ''}}">
+        <view wx:if="{{item.messageType === 1}}" class='iconfont icon-miyang avatar-icon'></view>
+        <view wx:if="{{item.messageType === 2}}" class='iconfont icon-color_card avatar-icon'></view>
+      </view>
+
+      <view class='content flex-column'>
+        <view class='title flex'>
+          <view class='unread'></view>
+          <text>{{item.title}}</text>
+        </view>
+        <text class='shop-name'>店铺名：{{item.shopName}}</text>
+        <view class='item-content flex'>
+          <view class='item-code'>货号：{{item.itemCode}}</view>
+          <view class='item-name'>名称：{{item.itemTitle}}</view>
+          <view class='time'>{{'11:13'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-line"></view>
+  </block>
+</block>
+<block wx:else>
+  <view class='no-notice-img'>
+    <image src='/assets/no_notice.png'></image>
+  </view>
+  <view class='no-notice-txt'>您还没有收到任何消息哦!</view>
+</block>

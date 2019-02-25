@@ -5,28 +5,33 @@
       <view class="user-name-container">
         <text class="user-name">{{userInfo.nickName}}</text>
       </view>
+      <view class="iconfont icon-notice notice" bindtap='gotoNoticeList'>
+        <view wx:if="{{noticeNum && noticeNum > 0}}" class='badge flex'>
+          <text>{{noticeNum}}</text>
+        </view>
+      </view>
       <!-- <view class="edit-user">
         <text class="edit-text">编辑</text>
         <view class="iconfont icon-ic_back setting-detail"/>
       </view> -->
     </view>
-    <view wx:else class="not-login-container">
+    <!-- <view wx:else class="not-login-container">
       <text class="not-login-text">Hello,你好</text>
       <button class="not-login-button" open-type="getUserInfo" bind:getuserinfo=getUserInfo">
         <text class="not-login-button-text">登录/注册</text>
       </button>
-    </view>
+    </view> -->
   </view>
 
   <block wx:if="{{userInfo.nickName}}">
     <view class='setting-list-container'>
       <block wx:for="{{settingList}}" wx:key="{{index}}">
-        <view class="setting-row-container {{item.half ? 'row-half' : 'border-top'}}" bind:tap="itemClicked" data-index="{{index}}" >
+        <view class="setting-row-container {{item.half ? 'row-half' : 'border-top'}} {{index > 1 && item.half ? 'border-top' : ''}}" bind:tap="itemClicked" data-index="{{index}}" >
           <view class="iconfont {{item.icon}} setting-icon"/>
           <text class="setting-text">{{item.name}}</text>
           <view class="iconfont icon-ic_back setting-detail"/>
         </view>
-        <view wx:if="{{index === 0}}" class='divider-line'></view>
+        <view wx:if="{{index%2 === 0 && item.half}}" class='divider-line'></view>
       </block>
     </view>
 
