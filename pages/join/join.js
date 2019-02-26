@@ -8,12 +8,13 @@ Page({
         ReturnMoney: 0,
         ImageIndex: 0,
         OneReundAmount: 0,
-        joinName:"",
+        joinName: "",
         joinConcat: "",
         joinPhone: null,
         joinGoods: "",
         joinBrand: "",
         joinUrl: "",
+        joinRemark: "",
         focus: false
     },
     onLoad: function(t) {
@@ -55,8 +56,8 @@ Page({
     blurCheck: function(e) {
         var tm = this;
         if (e.detail.value != "") {
-            var x = e.currentTarget.dataset.key 
-            if(x == 'joinName') {
+            var x = e.currentTarget.dataset.key;
+            if (x == 'joinName') {
                 tm.setData({
                     joinName: e.detail.value
                 })
@@ -92,6 +93,10 @@ Page({
                 tm.setData({
                     joinUrl: e.detail.value
                 })
+            } else if (x == 'joinRemark') {
+                tm.setData({
+                    joinRemark: e.detail.value
+                })
             }
         }
     },
@@ -102,7 +107,7 @@ Page({
             UploadGredentials: []
         });
         var p = [];
-        tm.data.UserCredentials.find(function (e, tm) {
+        tm.data.UserCredentials.find(function(e, tm) {
             "../../images/return-img_03.jpg" != e && p.push(e);
         }), tm.UploadBatchImages(tm, p);
         if (this.data.joinName == "") {
@@ -119,7 +124,7 @@ Page({
                 showCancel: false,
                 confirmColor: "#db3c40"
             });
-        } else if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.joinPhone))) {
+        } else if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.joinPhone))) {
             wx.showModal({
                 title: "提示",
                 content: "请输入正确的联系方式",
@@ -153,7 +158,7 @@ Page({
                 UploadGredentials: []
             });
             var p = [];
-            tm.data.UserCredentials.find(function (e, tm) {
+            tm.data.UserCredentials.find(function(e, tm) {
                 "../../images/return-img_03.jpg" != e && p.push(e);
             }), tm.UploadBatchImages(tm, p);
         }
@@ -198,6 +203,19 @@ Page({
     AddReturnInfo: function() {
         var t = this;
         e.getOpenId(function(a) {
+            var data = {}
+            data = {
+                openid: a,
+                supplier: t.data.joinName,
+                brand: t.data.joinBrand,
+                contactname: t.data.joinConcat,
+                mobile: t.data.joinPhone,
+                goods: t.data.joinGoods,
+                shopurl: t.data.joinUrl,
+                imgs: t.data.UploadGredentials.join(","),
+                formId: t.data.formId
+            }
+            if (t.data.joinRemark != "") data.remark = t.data.joinRemark
             wx.request({
                 url: e.getUrl("YTALApplySupplier"),
                 data: {
@@ -208,7 +226,7 @@ Page({
                     mobile: t.data.joinPhone,
                     goods: t.data.joinGoods,
                     shopurl: t.data.joinUrl,
-                    remark: t.data.xxxxxxxxxxxxxxxxxx,
+                    remark: t.data.joinRemark,
                     imgs: t.data.UploadGredentials.join(","),
                     // skuId: t.data.SkuId,
                     // orderId: t.data.OrderId,
@@ -225,39 +243,38 @@ Page({
                     formId: t.data.formId
                 },
                 success: function(e) {
-                    debugger
-                    "OK" == e.data.Status ? wx.showModal({
-                        title: "提示",
-                        confirmColor: "#db3c40",
-                        content: e.data.Message,
-                        showCancel: !1,
-                        success: function(res) {
-                            if (res.confirm) {
-                                wx.switchTab({
-                                    url: "../usehome/usehome"
-                                });
-                            } else if (res.cancel) {
-                                wx.switchTab({
-                                    url: "../usehome/usehome"
+                        "OK" == e.data.Status ? wx.showModal({
+                            title: "提示",
+                            confirmColor: "#db3c40",
+                            content: e.data.Message,
+                            showCancel: !1,
+                            success: function(res) {
+                                if (res.confirm) {
+                                    wx.switchTab({
+                                        url: "../usehome/usehome"
+                                    });
+                                } else if (res.cancel) {
+                                    wx.switchTab({
+                                        url: "../usehome/usehome"
+                                    });
+                                }
+                                // wx.switchTab({
+                                //     url: "../usehome/usehome"
+                                // });
+                            }
+                        }) : "NOUser" == e.data.message ? wx.navigateTo({
+                            url: "../login/login"
+                        }) : wx.showModal({
+                            title: "提示",
+                            confirmColor: "#db3c40",
+                            content: e.data.message,
+                            showCancel: !1,
+                            success: function(e) {
+                                e.confirm && wx.navigateBack({
+                                    delta: 1
                                 });
                             }
-                            // wx.switchTab({
-                            //     url: "../usehome/usehome"
-                            // });
-                        }
-                    }) : "NOUser" == e.data.message ? wx.navigateTo({
-                        url: "../login/login"
-                    }) : wx.showModal({
-                        title: "提示",
-                        confirmColor: "#db3c40",
-                        content: e.data.message,
-                        showCancel: !1,
-                        success: function(e) {
-                            e.confirm && wx.navigateBack({
-                                delta: 1
-                            });
-                        }
-                    });
+                        });
                 },
                 complete: function() {}
             });

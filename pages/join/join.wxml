@@ -42,7 +42,7 @@
             <view class="form-group-name">备注</view>
         </view>
         <view class="beizhu bg-white">
-            <textarea class="group-area" name="txtarea" placeholder="在此输入备注"></textarea>
+            <textarea class="group-area" name="txtarea" placeholder="在此输入备注" data-key="joinRemark" bindblur="blurCheck"></textarea>
         </view>
         <view class="beizhu" style="border-bottom: 1rpx solid #fff;">
             <view class="form-group-name" style='width:500rpx;'>上传凭证(提交三证合一、授权证书等)</view>
