@@ -408,8 +408,11 @@ Number.prototype.toFixed = function(t) {
     },
     share: function (title, path, imageUrl) {
         //设置一个默认分享背景图片
+        var tm = this;
         let defaultImageUrl = 'http://cos.qkmai.com/qkmbb/ytal/yqfx.png';
-        this.globalData.userInfo && this.globalData.userInfo.IsReferral && (path += "&ReferralUserId=" + this.globalData.userInfo.UserId)
+        if (tm.globalData.userInfo && tm.globalData.userInfo.IsReferral) {
+            path += "&ReferralUserId=" + tm.globalData.userInfo.UserId
+        }
         return {
             title: title || '加入亚太奥莱VIP，能省会赚，最高返40%！',
             path: path,
