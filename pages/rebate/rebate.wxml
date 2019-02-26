@@ -17,7 +17,7 @@
                     <text style='color: #959595;font-size: 22rpx;text-align:left'>{{item.payDate}}</text>
                 </view>
                 <view style='display:flex;flex-direction:row;justify-content: space-between;width:30%;'>
-                    <view class='font_small'>{{item.IsSettle?'已结算':'未结算'}}</view>
+                    <view class='font_small'>{{item.isSettle?'已结算':'未结算'}}</view>
                     <view class='font_big' style='padding-right:10rpx;'>{{filter.toFix((item.selfPurchaseProfit),2)}}</view>
                     
                 </view>
