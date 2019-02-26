@@ -256,6 +256,7 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
+        var tm = this;
         var title = tm.data.mainTitle;
         var imageUrl = tm.data.brandRushInfo[0].goodsImages[0];
         var brandId = tm.data.brandRushInfo[0].brandId;
