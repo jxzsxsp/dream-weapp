@@ -1,2 +1,46 @@
-<!--pages/shop-info/shop-info.wxml-->
-<text>pages/shop-info/shop-info.wxml</text>
+<view class='head-container flex-column'>
+  <view class='head-avatar'>
+    <image src='{{shopInfo.logo}}'></image>
+  </view>
+  <view class='shop-name'>{{shopInfo.name}}</view>
+  <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.id}}' bindtap='followShop'>
+    <view class='iconfont icon-aixing icon'></view>
+    <text>关注</text>
+  </view>
+  <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.id}}' bindtap='followShop'>
+    <view class='iconfont icon-xuanzhong icon'></view>
+    <text>已关注</text>
+  </view>
+</view>
+
+<view class='space'></view>
+
+<view class='item-group'>
+  <view class='item flex'>
+    <view class='title'>主营品名</view>
+    <view class='content flex'>
+      <block wx:for="{{shopInfo.businesses}}" wx:key="index">
+        {{item.businessName}}
+      </block>
+    </view>
+  </view>
+  <view class='item-line'></view>
+
+  <view class='item flex'>
+    <view class='title'>联系电话</view>
+    <view class='content flex'>{{shopInfo.mobile}}</view>
+  </view>
+  <view class='item-line'></view>
+
+  <view class='item flex'>
+    <view class='title'>店铺地址</view>
+    <view class='content flex'>{{shopInfo.address}}</view>
+  </view>
+</view>
+
+<view class='line'></view>
+
+<view class='go-shop-btn flex' data-id='{{shopInfo.id}}' bindtap='gotoShop'>
+  <text>去查看全部商品</text>
+  <view class='iconfont icon-jinru'></view>
+</view>

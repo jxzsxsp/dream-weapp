@@ -9,6 +9,7 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
+    console.log(query)
   },
 }
 

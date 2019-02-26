@@ -45,10 +45,6 @@ swiper {
   color: #b1b1b1;
 }
 
-.favorited {
-  color: #4a90e2;
-}
-
 .favorite-container text {
   font-family: PingFangSC-Regular;
   font-size: 22rpx;
@@ -183,9 +179,13 @@ swiper {
   align-items: center;
 }
 
-.icon {
+.common-icon {
   font-size: 34rpx;
   color: #e4e4e8;
+}
+
+.favorited {
+  color: #4a90e2;
 }
 
 .icon-btn text {

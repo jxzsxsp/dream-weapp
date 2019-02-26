@@ -5,7 +5,7 @@
       <view class="user-name-container">
         <text class="user-name">{{userInfo.nickName}}</text>
       </view>
-      <view class="iconfont icon-notice notice" bindtap='gotoNoticeList'>
+      <view class="iconfont icon-notice2 notice" bindtap='gotoNoticeList'>
         <view wx:if="{{noticeNum && noticeNum > 0}}" class='badge flex'>
           <text>{{noticeNum}}</text>
         </view>

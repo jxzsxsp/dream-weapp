@@ -5,6 +5,7 @@ const props = {
 }
 
 const data = {
+  favorited: true,
   itemDetail: {}
 }
 
@@ -33,6 +34,26 @@ const privateMethods = {
 }
 
 const viewAction = {
+  favoriteItem: function (d) {
+    console.log(d)
+    this.setData({
+      favorited: !this.data.favorited
+    })
+  },
+  gotoShop: function(d) {
+    $wx.navigateTo($wx.router.shopInfo, {shopId: d.shop_id})
+  },
+  callPhone: function (d) {
+    $wx.makePhoneCall({
+      phoneNumber: d.mobile,
+    })
+  },
+  buySeka: function(d) {
+    $wx.navigateTo($wx.router.shopInfo)
+  },
+  buyMiyang: function (d) {
+    $wx.navigateTo($wx.router.shopInfo)
+  }
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

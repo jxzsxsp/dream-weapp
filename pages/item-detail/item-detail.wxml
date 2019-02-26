@@ -7,7 +7,7 @@
   indicator-active-color="#5283c0"
   circular="{{true}}"
 >
-  <block wx:for="{{itemDetail.imageUrlList}}">
+  <block wx:for="{{itemDetail.imageUrlList}}" wx:key="index">
     <swiper-item>
       <view class='swiper-container'>
         <image mode='aspectFit' src="{{item}}"></image>
@@ -18,8 +18,8 @@
 
 <view class='title-container flex'>
   <view class='title'>人造皮革面料仿真皮料原色揉皮打造</view>
-  <view class='favorite-container flex-column'>
-    <view class='iconfont icon-xingxuanzhong favorite favorited'></view>
+  <view class='favorite-container flex-column' data-id='1' bindtap='favoriteItem'>
+    <view class="iconfont icon-favorite2 favorite {{favorited ? 'favorited' : ''}}"></view>
     <text>收藏</text>
   </view>
 </view>
@@ -81,21 +81,21 @@
 <view class='bottom-space'></view>
 
 <view class='bottom-container flex'>
-  <view class='icon-btn flex-column'>
-    <view class='iconfont icon-shop icon'></view>
+  <view class='icon-btn flex-column' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShop'>
+    <view class='iconfont icon-inter_shop common-icon'></view>
     <text>店铺</text>
   </view>
-  <view class='icon-btn flex-column'>
-    <view class='iconfont icon-call icon'></view>
+  <view class='icon-btn flex-column' data-mobile='{{itemDetail.shopInfo.mobile}}' bindtap='callPhone'>
+    <view class='iconfont icon-call common-icon'></view>
     <text>联系</text>
   </view>
-  <view class='icon-btn flex-column'>
-    <view class='iconfont icon-favorite icon'></view>
+  <view class='icon-btn flex-column' data-id='1' bindtap='favoriteItem'>
+    <view class="iconfont icon-favorite2 common-icon {{favorited ? 'favorited' : ''}}"></view>
     <text>收藏</text>
   </view>
 
   <view class='buy-btns flex'>
-    <view class='common-btn seka-btn flex'>拿色卡</view>
-    <view class='common-btn miyang-btn flex'>剪米样</view>
+    <view class='common-btn seka-btn flex' bindtap='buySeka'>拿色卡</view>
+    <view class='common-btn miyang-btn flex' bindtap='buyMiyang'>剪米样</view>
   </view>
 </view>
