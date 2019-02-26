@@ -400,6 +400,7 @@ Page({
                     },
                     success: function(res) {
                         var jd = res.data;
+                        wx.hideLoading();
                         switch (jd.status) {
                             default: wx.showModal({
                                 title: '提示',
@@ -456,6 +457,13 @@ Page({
                                 //     url: '/pages/shopcart/shopcart'
                                 // })
                         }
+                    },
+                    fail: function (res) {
+                        wx.hideLoading()
+                        wx.showModal({
+                            title: '提示',
+                            content: '加入购物车失败',
+                        })
                     }
                 })
             }
