@@ -38,9 +38,11 @@ Page({
             })
         });
         this.getOrderCount()
-        this.setData({
-            OpenReferral: o.globalData.siteInfo.OpenReferral
-        });
+        if (o.globalData.siteInfo.OpenReferral) {
+            this.setData({
+                OpenReferral: o.globalData.siteInfo.OpenReferral
+            });
+        }
 
     },
     onShow: function() {
@@ -229,7 +231,7 @@ Page({
             });
         });
     },
-    joinUs: function () {
+    joinUs: function() {
         wx.navigateTo({
             url: '../join/join',
         })
