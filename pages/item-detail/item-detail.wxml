@@ -1,2 +1,101 @@
-<!--pages/item-detail/item-detail.wxml-->
-<text>pages/item-detail/item-detail.wxml</text>
+<swiper
+  indicator-dots="{{true}}"
+  autoplay="{{true}}"
+  interval="{{5000}}"
+  duration="{{1000}}"
+  indicator-color="#bbb3b7"
+  indicator-active-color="#5283c0"
+  circular="{{true}}"
+>
+  <block wx:for="{{itemDetail.imageUrlList}}">
+    <swiper-item>
+      <view class='swiper-container'>
+        <image mode='aspectFit' src="{{item}}"></image>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class='title-container flex'>
+  <view class='title'>人造皮革面料仿真皮料原色揉皮打造</view>
+  <view class='favorite-container flex-column'>
+    <view class='iconfont icon-xingxuanzhong favorite favorited'></view>
+    <text>收藏</text>
+  </view>
+</view>
+
+<view class='price-container flex'>
+  <view class='price-type flex'>
+    <view class='item-title'>大货价格</view>
+    <view class='price'>{{itemDetail.itemPriceInfo.largeCargoPrice}}{{itemDetail.itemPriceInfo.largeCargoPriceUnitName}}/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</view>
+  </view>
+  <view class='price-type flex'>
+    <view class='item-title'>样布价格</view>
+    <view class='price'>{{itemDetail.itemPriceInfo.swatchPrice}}{{itemDetail.itemPriceInfo.swatchPriceUnitName}}/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</view>
+  </view>
+</view>
+
+<view class='property-container flex-column'>
+  <view class='property-item flex'>
+    <view class='item-title'>商品货号</view>
+    <view class='item-content'>{{itemDetail.itemCode}}</view>
+  </view>
+  <block wx:for="{{itemDetail.itemPropertyList}}" wx:key="index">
+    <view class='property-item flex'>
+      <view class='item-title'>{{item.propertyName}}</view>
+      <view class='item-content'>
+        <block wx:for="{{item.propertyValueList}}" wx:key="index">
+          {{item.propertyValueName}}
+        </block>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class='shop-container flex'>
+  <view class='shop-avatar'>
+    <image src='{{itemDetail.shopInfo.logo}}'></image>
+  </view>
+
+  <view class='shop-name'>
+    查看 <text>{{itemDetail.shopInfo.name}}</text> 全部商品
+  </view>
+
+  <view class='iconfont icon-jinru jinru'></view>
+</view>
+
+<view>
+  <view class='desc-title flex'>图文详情</view>
+  <block wx:for="{{itemDetail.detailImageUrlList}}" wx:key="index">
+    <image class='detail-img' src='{{item}}' mode='widthFix'></image>
+  </block>
+</view>
+
+<view>
+  <view class='desc-title flex'>细节图</view>
+  <block wx:for="{{itemDetail.sampleImageUrlList}}" wx:key="index">
+    <image class='detail-img' src='{{item}}' mode='widthFix'></image>
+  </block>
+</view>
+
+<view class='bottom-space'></view>
+
+<view class='bottom-container flex'>
+  <view class='icon-btn flex-column'>
+    <view class='iconfont icon-shop icon'></view>
+    <text>店铺</text>
+  </view>
+  <view class='icon-btn flex-column'>
+    <view class='iconfont icon-call icon'></view>
+    <text>联系</text>
+  </view>
+  <view class='icon-btn flex-column'>
+    <view class='iconfont icon-favorite icon'></view>
+    <text>收藏</text>
+  </view>
+
+  <view class='buy-btns flex'>
+    <view class='common-btn seka-btn flex'>拿色卡</view>
+    <view class='common-btn miyang-btn flex'>剪米样</view>
+  </view>
+</view>

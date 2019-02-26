@@ -795,7 +795,67 @@ let shop = {
 let item = {
   [urls.shopHome]: {},
   [urls.shopHomeItem]: {},
-  [urls.itemDetail]: {},
+  [urls.itemDetail]: {
+    "title": "商品",
+    "itemCode": "LD323D",
+    "imageUrlList": ["http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg","http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png"],
+    "itemPropertyList": [
+      {
+        "propertyId": 21,
+        "propertyName": "品名",
+        "propertyValueList": [
+          {
+            "propertyValueId": 21,
+            "propertyValueName": "痲纺",
+            "unitId": 212
+          }
+        ]
+      },
+      {
+        "propertyId": 21,
+        "propertyName": "门幅",
+        "propertyValueList": [
+          {
+            "propertyValueId": 21,
+            "propertyValueName": "145cm",
+            "unitId": 212
+          }
+        ]
+      },
+      {
+        "propertyId": 21,
+        "propertyName": "克重",
+        "propertyValueList": [
+          {
+            "propertyValueId": 21,
+            "propertyValueName": "50g/㎡",
+            "unitId": 212
+          }
+        ]
+      }
+    ],
+    "itemPriceInfo": {
+      "isNegotiateSwatchPrice": 0,
+      "swatchPrice": 23.3,
+      "swatchMeasurementUnit": "米",
+      "swatchPriceUnit": 1,
+      "swatchPriceUnitName": "元",
+      "isNegotiateLargeCargoPrice": 0,
+      "largeCargoPrice": 3223.32,
+      "largeCargoMeasurementUnit": "公斤",
+      "largeCargoPriceUnit": 1,
+      "largeCargoPriceUnitName": "元"
+    },
+    "detailImageUrlList": ["http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png", "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg"],
+    "sampleImageUrlList": ["http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg", "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg"],
+    "isFavorite": true,
+    "shopInfo": {
+      "id": 1,
+      "name": "链尚店铺",
+      "logo": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg",
+      "mobile": "13524630281"
+    }
+  },
   [urls.addItemFavorite]: {},
   [urls.cancelItemFavorite]: {},
   [urls.tradeCreate]: {},
