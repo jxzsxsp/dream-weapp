@@ -804,7 +804,34 @@ let item = {
     "totalCount": 10
   },
   [urls.applyList]: {},
-  [urls.itemFavoriteList]: {},
+  [urls.itemFavoriteList]: {
+    "list": [
+      {
+        "id": 1,
+        "title": "牛奶丝针面料",
+        "itemCode": "123456",
+        "productName": "痲纺",
+        "largeCargoPrice": "¥ 38.6",
+        "largeCargoMeasurementUnit": "米",
+        "isNegotiateLargeCargoPrice": "true",
+        "largeCargoPriceUnit": "元",
+        "imageUrl": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg"
+      },
+      {
+        "id": 2,
+        "title": "牛奶丝针面料",
+        "itemCode": "123456",
+        "productName": "痲纺",
+        "largeCargoPrice": "¥ 38.6",
+        "largeCargoMeasurementUnit": "米",
+        "isNegotiateLargeCargoPrice": "true",
+        "largeCargoPriceUnit": "元",
+        "imageUrl": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg"
+      }
+    ],
+    "hasMore": "true",
+    "totalCount": "100"
+  },
   [urls.messageList]: {
     "list": [
       {

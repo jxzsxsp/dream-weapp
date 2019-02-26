@@ -1,2 +1,27 @@
-<!--pages/item-favorite/item-favorite.wxml-->
-<text>pages/item-favorite/item-favorite.wxml</text>
+<block wx:if="{{itemList && itemList.length > 0}}">
+
+  <block wx:for="{{itemList}}" wx:key="index">
+    <view class='item flex' data-id='{{item.id}}' bindtap="showDetail">
+      <view class="avatar">
+        <image src='{{item.imageUrl}}'></image>
+      </view>
+
+      <view class='content flex-column'>
+        <text class='title'>{{item.title}}</text>
+        <text class='product-name'>{{item.productName}}</text>
+        <view class='price-container flex'>
+          <view class='price'>{{item.largeCargoPrice}}</view>
+          <view class='unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-line"></view>
+  </block>
+</block>
+<block wx:else>
+  <view class='no-item-img'>
+    <image src='/assets/no_item.png'></image>
+  </view>
+  <view class='no-item-txt'>您还没有收藏任何商品哦!</view>
+</block>

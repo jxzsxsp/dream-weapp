@@ -1,5 +1,4 @@
 <block wx:if="{{noticeList && noticeList.length > 0}}">
-  <view class="bottom-line"></view>
   <block wx:for="{{noticeList}}" wx:key="index">
     <view class='item flex' data-id='{{item.bizId}}' data-type='{{item.bizType}}' bindtap="showDetail">
       <view class="avatar flex {{item.messageType === 1 ? 'miyang' : item.messageType === 2 ? 'seka' : ''}}">
@@ -21,7 +20,7 @@
       </view>
     </view>
 
-    <view class="bottom-line"></view>
+    <!-- <view class="bottom-line"></view> -->
   </block>
 </block>
 <block wx:else>
