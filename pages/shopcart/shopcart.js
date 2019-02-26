@@ -89,7 +89,6 @@ Page({
                     // 默认购物车全选
                     if (Boolean) {
                         tm.selectAll();
-
                     }
                 }
             });

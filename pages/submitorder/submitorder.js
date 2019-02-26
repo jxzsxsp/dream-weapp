@@ -97,10 +97,18 @@ Page({
         isCss: !0,
         balance: 0,
         isUseRedPacket: true,
+        // isUseRedPacket: true,
         usebalance: 0,
-        lastMoney: 0.00
+        lastMoney: 0.00,
+        Muse: false
     },
     onLoad: function(e) {
+        var tm = this;
+        if (a.globalData.ReferralInfo && a.globalData.ReferralInfo.ReferralGradeId > 1) {
+            tm.setData({
+                Muse: true
+            })
+        }
         // this.getBalance()
         this.setAreaData(), this.setAreaData();
         if (wx.getStorageSync("ReferralUserId") != "") {
@@ -718,7 +726,8 @@ Page({
                         formId: t.detail.formId,
                         NeedInvoice: i.data.IsOpenInvoice,
                         InvoiceId: i.data.InvoiceId,
-                        usebalance: i.data.isUseRedPacket == true ? i.data.usebalance : 0
+                        usebalance: (i.data.isUseRedPacket && i.data.Muse) ? i.data.usebalance : 0
+                        // usebalance: i.data.isUseRedPacket == true ? i.data.usebalance : 0
                     }, e(o, "fromPage", i.data.FromPage), e(o, "shippingType", i.data.ShippType), e(o, "shiptoDate", i.data.SendTime),
                     o),
                 header: {

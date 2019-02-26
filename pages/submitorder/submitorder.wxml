@@ -124,7 +124,7 @@
                 </view>
                 <view class="yunfeir">￥{{OrderFreight}}</view>
             </view>
-            <view class="yunfei">
+            <view class="yunfei" wx:if='{{Muse}}'>
                 <view style='margin-right:20rpx;height:48rpx;'>
                     <image src="http://cos.qkmai.com/qkmbb/ytal/yuetb.png" style='width:34rpx;height:34rpx;margin-top:7rpx'></image>
                 </view>
