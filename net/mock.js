@@ -793,45 +793,25 @@ let shop = {
 }
 
 let item = {
-  [urls.shopHome]: {},
-  [urls.shopHomeItem]: {},
   [urls.itemDetail]: {
     "title": "商品",
     "itemCode": "LD323D",
-    "imageUrlList": ["http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg","http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png"],
-    "itemPropertyList": [
+    "imageUrlList": ["http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg", "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png"],
+    "itemProperties": [
       {
-        "propertyId": 21,
-        "propertyName": "品名",
-        "propertyValueList": [
-          {
-            "propertyValueId": 21,
-            "propertyValueName": "痲纺",
-            "unitId": 212
-          }
-        ]
+        "propertyId": 12,
+        "name": "品名",
+        "propertyValue": "卫衣布"
+      },
+      {
+        "propertyId": 20,
+        "name": "门幅",
+        "propertyValue": "50cm"
       },
       {
         "propertyId": 21,
-        "propertyName": "门幅",
-        "propertyValueList": [
-          {
-            "propertyValueId": 21,
-            "propertyValueName": "145cm",
-            "unitId": 212
-          }
-        ]
-      },
-      {
-        "propertyId": 21,
-        "propertyName": "克重",
-        "propertyValueList": [
-          {
-            "propertyValueId": 21,
-            "propertyValueName": "50g/㎡",
-            "unitId": 212
-          }
-        ]
+        "name": "克重",
+        "propertyValue": "50 g/m"
       }
     ],
     "itemPriceInfo": {
@@ -856,10 +836,22 @@ let item = {
       "mobile": "13524630281"
     }
   },
-  [urls.addItemFavorite]: {},
-  [urls.cancelItemFavorite]: {},
+  [urls.addItemFavorite]: {
+    "code": 200,
+    "message": "成功"
+  },
+  [urls.cancelItemFavorite]: {
+    "code": 200,
+    "message": "成功"
+  },
   [urls.tradeCreate]: {},
-  [urls.shopSimpleDetail]: {},
+  [urls.shopSimpleDetail]: {
+    "shopId": 32,
+    "shopName": "Laura Thomas",
+    "logoUrl": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg",
+    "itemCountOnSales": 251,
+    "isFollow": true
+  },
   [urls.messageUnreadNum]: {
     "totalCount": 10
   },
@@ -940,6 +932,78 @@ let item = {
     "needAgreedOperator": "true" //是否需要【同意或拒绝】操作
   },
   [urls.confirmReceived]: {},
+  [urls.getItemListByPosition]: {
+    "list": [
+      {
+        "id": 1,
+        "title": "春夏款1",
+        "itemCode": "0116-003",
+        "imageUrl": "http://img50.lianshang.cn/data/user/c/20192/5/2188835777607_img.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "price": "20.2 元/米",
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元"
+      },
+      {
+        "id": 2,
+        "title": "春夏款2",
+        "itemCode": "0116-003",
+        "imageUrl": "http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "price": "20.2 元/米",
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元"
+      },
+      {
+        "id": 3,
+        "title": "春夏款3",
+        "itemCode": "0116-003",
+        "imageUrl": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "price": "20.2 元/米",
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元"
+      },
+      {
+        "id": 4,
+        "title": "春夏款4",
+        "itemCode": "0116-003",
+        "imageUrl": "http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "price": "20.2 元/米",
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元"
+      },
+      {
+        "id": 5,
+        "title": "春夏款3",
+        "itemCode": "0116-003",
+        "imageUrl": "http://img.lianshang.cn/data/ad/20174/5/2722_1493261514810.png",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "price": "20.2 元/米",
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元"
+      },
+      {
+        "id": 6,
+        "title": "春夏款4",
+        "itemCode": "0116-003",
+        "imageUrl": "http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "price": "20.2 元/米",
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元"
+      },
+    ],
+    "totalCount": 100,
+    "hasMore": true
+  },
 }
 
 export default {

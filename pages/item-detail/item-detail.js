@@ -5,6 +5,7 @@ const props = {
 }
 
 const data = {
+  itemId: 0,
   favorited: true,
   itemDetail: {}
 }
@@ -12,7 +13,7 @@ const data = {
 const lifecycle = {
   onLoad: function (query) {
     this.setData({
-      id: query.id
+      itemId: query.itemId
     })
   },
   onShow: function() {
@@ -28,16 +29,33 @@ const privateMethods = {
   getItemDetail: function () {
     return http.get(urls.itemDetail, {
       mock: true,
-      id: this.data.id
+      id: this.data.itemId
+    })
+  },
+  addItemFavorite: function () {
+    http.get(urls.addItemFavorite, {
+      mock: true,
+      itemId: this.data.itemId,
+    })
+  },
+  cancelItemFavorite: function () {
+    http.get(urls.cancelItemFavorite, {
+      mock: true,
+      itemId: this.data.itemId
     })
   },
 }
 
 const viewAction = {
   favoriteItem: function (d) {
-    console.log(d)
     this.setData({
       favorited: !this.data.favorited
+    }, function() {
+      if(this.data.favorited) {
+        this.addItemFavorite()
+      } else {
+        this.cancelItemFavorite()
+      }
     })
   },
   gotoShop: function(d) {

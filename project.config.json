@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 25,
+			"current": 20,
 			"list": [
 				{
 					"id": 0,
@@ -214,17 +214,17 @@
 					}
 				},
 				{
-					"id": -1,
+					"id": 19,
 					"name": "店铺首页",
 					"pathName": "pages/shop/shop",
-					"query": "",
+					"query": "shopId=1",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 20,
 					"name": "商品详情",
 					"pathName": "pages/item-detail/item-detail",
-					"query": "",
+					"query": "itemId=1",
 					"scene": null
 				},
 				{

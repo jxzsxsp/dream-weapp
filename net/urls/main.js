@@ -23,8 +23,6 @@ export default {
   shopDetail: '/shop/detail', // 店铺详情接口
   personDetail: '/shop/business-card', // 个人名片接口
   bindCustomer: '/shop/bind-customer', // 添加客户关系记录（到店码，浏览）
-  shopHome: '/shop/bind-customer', // 店铺首页 GET
-  shopHomeItem: '/shop/bind-customer', // 店铺首页商品 GET
   itemDetail: '/item/detail', // 商品详情接口 GET
   addItemFavorite: '/item/item-add-favorite', // 商品添加收藏 POST
   cancelItemFavorite: '/item/item-cancel-favorite', // 商品取消收藏 POST
@@ -36,4 +34,5 @@ export default {
   messageList: '/message/list', // 通知列表 GET
   messageDetail: '/message/biz-detail', // 消息通知跳调样详情接口 GET
   confirmReceived: '/trade/confirm-received', // 确认收货接口 POST
+  getItemListByPosition: '/item/get-by-position', // 根据位置显示商品列表接口 GET
 }

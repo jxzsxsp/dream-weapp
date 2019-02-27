@@ -1,2 +1,170 @@
-<!--pages/shop/shop.wxml-->
-<text>pages/shop/shop.wxml</text>
+<view class='back-container'>
+  <view class='shop-container flex'>
+    <view class='shop-avatar'>
+      <image src='{{shopInfo.logoUrl}}'></image>
+    </view>
+
+    <view class='content-container flex-column'>
+      <text class='shop-name'>{{shopInfo.shopName}}</text>
+      <text class='item-num'>在售商品 {{shopInfo.itemCountOnSales}}件</text>
+
+      <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' bindtap='followShop'>
+        <view class='iconfont icon-aixing'></view>
+        <text>关注</text>
+      </view>
+      <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' bindtap='followShop'>
+        <view class='iconfont icon-xuanzhong'></view>
+        <text>已关注</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="nav-container flex {{navFixed ? 'nav-fixed' : ''}}">
+    <view class='nav-menu flex-column' data-type='{{homeMenuType}}' bindtap='toggleMenu'>
+      <text>首页</text>
+      <view wx:if="{{currentMenuType === homeMenuType}}" class='menu-selected'></view>
+    </view>
+
+    <view class='nav-menu flex-column' data-type='{{itemMenuType}}' bindtap='toggleMenu'>
+      <text>商品</text>
+      <view wx:if="{{currentMenuType === itemMenuType}}" class='menu-selected'></view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{swiperItemList && swiperItemList.length > 0 && currentMenuType === 'home'}}" class='bg-blur'>
+  <image src='/assets/bg_blur.png'></image>
+</view>
+
+<view wx:if="{{currentMenuType === homeMenuType}}" class='home-container'>
+  <view wx:if="{{swiperItemList && swiperItemList.length > 0}}" class='swiper-container'>
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-color="#bbb3b7" indicator-active-color="#5283c0" circular="{{true}}">
+      <block wx:for="{{swiperItemList}}" wx:key="index">
+        <swiper-item data-id='{{item.id}}' bindtap='gotoItemDetail'>
+          <image src="{{item.imageUrl}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <block wx:if="{{hotItemList && hotItemList.length > 0}}">
+    <view class='title-container flex'>
+      <image src='/assets/quanquan.png'></image>
+      <text class='block-title'>火热爆款区</text>
+    </view>
+
+    <block wx:for="{{hotItemList}}" wx:key="index">
+      <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
+        <view class='item-img'>
+          <image src='{{item.imageUrl}}'></image>
+        </view>
+
+        <view class='block-content-container flex-column'>
+          <text class='block-content-title'>{{item.title}}</text>
+          <text class='block-product-name'>{{item.itemCode}}</text>
+          <view class='block-property flex'>
+            <text class='door-width'>145cm</text>
+            <text class='weight'>50g/㎡</text>
+          </view>
+          <view class='block-price-container flex'>
+            <text class='block-price'>{{item.largeCargoPrice}}</text>
+            <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{index < hotItemList.length - 1}}" class='item-space'></view>
+    </block>
+  </block>
+
+  <block wx:if="{{newItemList && newItemList.length > 0}}">
+    <view class='title-container flex'>
+      <image src='/assets/quanquan.png'></image>
+      <text class='block-title'>新品抢先看</text>
+    </view>
+
+    <block wx:for="{{newItemList}}" wx:key="index">
+      <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
+        <view class='item-img'>
+          <image src='{{item.imageUrl}}'></image>
+        </view>
+
+        <view class='block-content-container flex-column'>
+          <text class='block-content-title'>{{item.title}}</text>
+          <text class='block-product-name'>{{item.itemCode}}</text>
+          <view class='block-property flex'>
+            <text class='door-width'>145cm</text>
+            <text class='weight'>50g/㎡</text>
+          </view>
+          <view class='block-price-container flex'>
+            <text class='block-price'>{{item.largeCargoPrice}}</text>
+            <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{index < newItemList.length - 1}}" class='item-space'></view>
+    </block>
+  </block>
+
+  <block wx:if="{{normalItemList && normalItemList.length > 0}}">
+    <view class='title-container flex'>
+      <text class='common-title'>全部商品</text>
+    </view>
+
+    <view class='common-container flex'>
+    <block wx:for="{{normalItemList}}" wx:key="index">
+      <view class='common-item-container flex-column' data-id='{{item.id}}' bindtap='gotoItemDetail'>
+        <view class='common-item-img'>
+          <image src='{{item.imageUrl}}'></image>
+        </view>
+
+        <text class='common-content-title'>{{item.title}}</text>
+
+        <view class='common-price-container flex'>
+          <text class='common-price'>{{item.largeCargoPrice}}</text>
+          <text class='common-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{index%2 === 0}}" class='common-item-space'></view>
+    </block>
+    </view>
+
+  </block>
+
+  <view class='no-more flex'>
+    <text>没有更多了</text>
+  </view>
+</view>
+
+<view wx:if="{{currentMenuType === itemMenuType}}" class='item-container'>
+
+  <view class="position-type-container flex {{navFixed ? 'position-type-fixed' : ''}}">
+    <view class="position-type-item flex {{currentPositionType === positionType.HOT ? 'position-type-selected' : ''}}" data-type='{{positionType.HOT}}' bindtap='togglePositionType'>爆款区</view>
+    <view class="position-type-item flex {{currentPositionType === positionType.NEW ? 'position-type-selected' : ''}}" data-type='{{positionType.NEW}}' bindtap='togglePositionType'>新品区</view>
+    <view class="position-type-item flex {{currentPositionType === positionType.NORMAL ? 'position-type-selected' : ''}}" data-type='{{positionType.NORMAL}}' bindtap='togglePositionType'>普通区</view>
+  </view>
+
+    <view class='common-top-space'></view>
+
+    <view class='common-container flex'>
+    <block wx:for="{{itemList}}" wx:key="index">
+      <view class='common-item-container flex-column' data-id='{{item.id}}' bindtap='gotoItemDetail'>
+        <view class='common-item-img'>
+          <image src='{{item.imageUrl}}'></image>
+        </view>
+
+        <text class='common-content-title'>{{item.title}}</text>
+
+        <view class='common-price-container flex'>
+          <text class='common-price'>{{item.largeCargoPrice}}</text>
+          <text class='common-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{index%2 === 0}}" class='common-item-space'></view>
+    </block>
+    </view>
+
+</view>

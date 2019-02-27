@@ -42,7 +42,7 @@ const viewAction = {
     })
   },
   gotoShop: function(d) {
-    $wx.navigateTo($wx.router.shop, {id: d.id})
+    $wx.navigateTo($wx.router.shop, {shopId: d.id})
   }
 }
 

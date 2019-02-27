@@ -40,14 +40,10 @@
     <view class='item-title'>商品货号</view>
     <view class='item-content'>{{itemDetail.itemCode}}</view>
   </view>
-  <block wx:for="{{itemDetail.itemPropertyList}}" wx:key="index">
+  <block wx:for="{{itemDetail.itemProperties}}" wx:key="index">
     <view class='property-item flex'>
-      <view class='item-title'>{{item.propertyName}}</view>
-      <view class='item-content'>
-        <block wx:for="{{item.propertyValueList}}" wx:key="index">
-          {{item.propertyValueName}}
-        </block>
-      </view>
+      <view class='item-title'>{{item.name}}</view>
+      <view class='item-content'>{{item.propertyValue}}</view>
     </view>
   </block>
 </view>
