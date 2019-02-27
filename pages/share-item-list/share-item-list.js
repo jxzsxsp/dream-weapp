@@ -1,66 +1,103 @@
-// pages/share-item-list/share-item-list.js
-Page({
+import { $wx, $Page } from '../../genji4mp/index'
+import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+const props = {
+}
 
+const data = {
+  shopId: 0,
+  shareCode: 0,
+  shopInfo: {},
+  itemList: [],
+  isFollow: false,
+}
+
+const lifecycle = {
+  onLoad: function (query) {
+    console.log(query)
+
+    $wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#4A90E2',
+    })
+
+    const scene = decodeURIComponent(query.scene)
+    const scenes = scene.split(',')
+
+    let shopId = parseInt(scenes[0])
+    let shareCode = parseInt(scenes[1])
+
+    this.setData({
+      shopId: shopId,
+      shareCode: shareCode,
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow: function (query) {
+    this.getShopDetail()
+    this.getShareItemList()
   },
+}
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+const privateMethods = {
+  getShopDetail: function () {
+    return http.get(urls.shopSimpleDetail, {
+      mock: true,
+      shopId: this.data.shopId
+    }).then(res => {
+      this.setData({
+        shopInfo: res,
+        isFollow: res.isFollow,
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getShareItemList: function (positionType) {
+    return http.get(urls.shareItemList, {
+      mock: true,
+      shareCode: this.data.shareCode,
+    }).then(res => {
+      this.setData({
+        itemList: res.list
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  follow: function () {
+    http.get(urls.followSupplier, {
+      mock: true,
+      shopId: this.data.shopId,
+      source: constant.BindCustomerSource.WEAPP_VIEW,
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  cancelFollow: function () {
+    http.get(urls.unfollowSupplier, {
+      mock: true,
+      shopId: this.data.shopId
+    })
   },
+}
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+const viewAction = {
+  followShop: function (d) {
+    this.setData({
+      isFollow: !this.data.isFollow
+    }, function () {
+      if (this.data.isFollow) {
+        this.follow()
+      } else {
+        this.cancelFollow()
+      }
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  gotoItemDetail: function (d) {
+    $wx.navigateTo($wx.router.itemDetail, {
+      itemId: d.id
+    })
   },
+  gotoShopHome: function (d) {
+    $wx.navigateTo($wx.router.shop, {
+      shopId: this.data.shopId
+    })
+  },
+}
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+$Page.register(props, data, lifecycle, privateMethods, viewAction)

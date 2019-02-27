@@ -35,4 +35,5 @@ export default {
   messageDetail: '/message/biz-detail', // 消息通知跳调样详情接口 GET
   confirmReceived: '/trade/confirm-received', // 确认收货接口 POST
   getItemListByPosition: '/item/get-by-position', // 根据位置显示商品列表接口 GET
+  shareItemList: '/item/qrcode-item-list', // 根据分享的id获取商品列表接口 GET
 }

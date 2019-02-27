@@ -1,2 +1,58 @@
-<!--pages/share-item-list/share-item-list.wxml-->
-<text>pages/share-item-list/share-item-list.wxml</text>
+<view class='back-container'>
+
+</view>
+
+<view class='bg-blur'>
+</view>
+
+<view class='item-container'>
+
+  <view class='desc'>分享了{{itemList.length}}件商品给你</view>
+
+  <block wx:for="{{itemList}}" wx:key="index">
+    <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
+      <view class='item-img'>
+        <image src='{{item.imageUrl}}'></image>
+      </view>
+
+      <view class='block-content-container flex-column'>
+        <text class='block-content-title'>{{item.title}}</text>
+        <text class='block-product-name'>{{item.itemCode}}</text>
+        <view class='block-property flex'>
+          <text class='door-width'>145cm</text>
+          <text class='weight'>50g/㎡</text>
+        </view>
+        <view class='block-price-container flex'>
+          <text class='block-price'>{{item.largeCargoPrice}}</text>
+          <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{index < itemList.length - 1}}" class='item-space'></view>
+  </block>
+
+  <view class='shop-container flex' bindtap='gotoShopHome'>
+    <view class='shop-avatar'>
+      <image src='{{shopInfo.logoUrl}}'></image>
+    </view>
+
+    <view class='content-container flex-column'>
+      <text class='shop-name'>{{shopInfo.shopName}}</text>
+      <text class='item-num'>在售商品 {{shopInfo.itemCountOnSales}}件</text>
+
+      <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
+        <view class='iconfont icon-aixing'></view>
+        <text>关注</text>
+      </view>
+      <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
+        <view class='iconfont icon-xuanzhong'></view>
+        <text>已关注</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='no-more flex'>
+    <text>更多精彩，进店看看吧!</text>
+  </view>
+</view>
