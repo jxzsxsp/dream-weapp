@@ -4,7 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    list: Array
+    list: Array,
+    status: Number,
+    hasMore: Boolean,
   },
 
   /**
@@ -18,6 +20,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onMore: function onMore() {
+      this.triggerEvent('more',
+        this.properties.status,
+        { bubbles: true, composed: true });
+    },
   }
 })

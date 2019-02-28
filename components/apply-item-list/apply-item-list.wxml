@@ -1,7 +1,10 @@
 <block wx:if="{{list && list.length > 0}}">
   <block wx:for="{{list}}" wx:key="index">
     <view class="bottom-line"></view>
-    <apply-item shop="{{item}}" />
+    <apply-item trade="{{item}}" />
   </block>
   <view class="bottom-line"></view>
+
+  <view wx:if="{{hasMore}}" class='no-more' bind:tap="onMore">加载更多</view>
+  <view wx:if="{{!hasMore}}" class='no-more'>没有更多</view>
 </block>

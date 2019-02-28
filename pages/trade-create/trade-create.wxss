@@ -17,7 +17,7 @@ page {
   line-height: 40rpx;
 }
 
-form-group {
+.form-container {
   background: #ffffff;
 }
 

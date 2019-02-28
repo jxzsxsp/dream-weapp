@@ -4,20 +4,42 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    trade: Object
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    title: '',
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onReceive: function onReceive() {
+      this.triggerEvent('receive',
+        this.properties.trade,
+        { bubbles: true, composed: true });
+    },
+    showReason: function() {
+      wx.showModal({
+        title: '拒绝原因',
+        content: this.properties.trade.remark,
+        showCancel: false,
+        confirmColor: '#0156fe',
+      })
+    },
+  },
+  ready: function () {
+    let title = this.data.trade.title
 
+    if (title.length > 14) {
+      title = title.substring(0, 13) + '...'
+    }
+    this.setData({
+      title
+    })
   }
 })

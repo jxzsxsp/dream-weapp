@@ -1,68 +1,72 @@
 <view class="container">
-  <view class='title-container flex'>
-    <text>请如实填写，以便商家寄送 </text>
-  </view>
+  <form report-submit="{{true}}" bindsubmit="formSubmit">
+    <view class='title-container flex'>
+      <text>请如实填写，以便商家寄送 </text>
+    </view>
 
-  <form-group class="normal-text">
-    <form-cell>
-      <text slot="left">姓名</text>
-      <input 
-        slot="right" 
-        bind:blur="finishInput" 
-        placeholder="请填写姓名" 
-        data-type="consigneeName" 
-        class="input" 
-        value="{{consigneeName}}"
-      />
-    </form-cell>
-    <form-cell>
-      <text slot="left">手机号</text>
-      <input 
-        slot="right"
-        value="{{}}"
-        bind:blur="finishInput" 
-        placeholder="请输入手机号" 
-        type="number" 
-        data-type="consigneeMobile" 
-        class="input" 
-        value="{{consigneeMobile}}"
-      />
-    </form-cell>
-    <form-cell has-detail>
-      <text slot="left">所在区域</text>
-      <picker slot="right" mode="region" bindchange="changeRegion" value="{{region}}">
-        <text class="placeholder" wx:if="{{!region.length}}">请选择收货地址所在区域</text>
-        <text wx:else>{{region[0]}} {{region[1]}} {{region[2]}}</text>
-      </picker>
-      <text slot="right"></text>
-    </form-cell>
-    <form-cell isLast>
-      <text slot="left">详细地址</text>
+    <view class='form-container'>
+      <form-group class="normal-text">
+        <form-cell>
+          <text slot="left">姓名</text>
+          <input 
+            slot="right" 
+            bind:blur="finishInput" 
+            placeholder="请填写姓名" 
+            data-type="consigneeName" 
+            class="input" 
+            value="{{consigneeName}}"
+          />
+        </form-cell>
+        <form-cell>
+          <text slot="left">手机号</text>
+          <input 
+            slot="right"
+            value="{{}}"
+            bind:blur="finishInput" 
+            placeholder="请输入手机号" 
+            type="number" 
+            data-type="consigneeMobile" 
+            class="input" 
+            value="{{consigneeMobile}}"
+          />
+        </form-cell>
+        <form-cell has-detail>
+          <text slot="left">所在区域</text>
+          <picker slot="right" mode="region" bindchange="changeRegion" value="{{region}}">
+            <text class="placeholder" wx:if="{{!region.length}}">请选择收货地址所在区域</text>
+            <text wx:else>{{region[0]}} {{region[1]}} {{region[2]}}</text>
+          </picker>
+          <text slot="right"></text>
+        </form-cell>
+        <form-cell isLast>
+          <text slot="left">详细地址</text>
+          <textarea
+            slot="right" 
+            auto-height
+            bindinput="finishInput" 
+            placeholder="请输入收货详细地址" 
+            class="input" 
+            data-type="address"
+            value="{{address}}"
+            class="detail-address-area"
+          />
+        </form-cell>
+      </form-group>
+    </view>
+
+    <view class='title-container flex'>
+      <text>备注</text>
+    </view>
+
+    <view class='remark-container flex'>
       <textarea
-        slot="right" 
-        auto-height
-        bindinput="finishInput" 
-        placeholder="请输入收货详细地址" 
-        class="input" 
-        data-type="address"
-        value="{{address}}"
-        class="detail-address-area"
+        bindinput="finishInput"
+        placeholder="请填写理由"
+        data-type="remark"
+        value="{{remark}}"
       />
-    </form-cell>
-  </form-group>
+    </view>
 
-  <view class='title-container flex'>
-    <text>备注</text>
-  </view>
-
-  <view class='remark-container flex'>
-    <textarea
-      bindinput="finishInput"
-      placeholder="请填写理由"
-      data-type="remark"
-      value="{{remark}}"
-    />
-  </view>
-
-  <button class="confirm-button button" disabled='{{!canSubmit}}' bind:tap="submit"> 提交 </button>
+    <button class="confirm-button button" disabled='{{!canSubmit}}' form-type="submit"> 提交 </button>
+  </form>
 </view>

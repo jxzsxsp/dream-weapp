@@ -857,7 +857,92 @@ let item = {
   [urls.messageUnreadNum]: {
     "totalCount": 10
   },
-  [urls.applyList]: {},
+  [urls.applyList]: {
+    "list": [
+      {
+        "id": 1,
+        "itemId": 1,
+        "title": "牛奶丝绒针面料名字万一很长很长",
+        "itemCode": "B-201026",
+        "productName": "无纺布",
+        "shopId": 1,
+        "shopName": "一万纺织",
+        "remark": "过年期间不发货，过些日子再来吧！",
+        "logisticsSn": "2999182042123",
+        "createTime": "1-2 11:03",
+        "customerId": 1,
+        "customerName": "申请人名称",
+        "status": 10,
+        "statusName": "未回复"
+      },
+      {
+        "id": 2,
+        "itemId": 1,
+        "title": "牛奶丝绒针面料名字万一很长很长2",
+        "itemCode": "B-201026",
+        "productName": "无纺布",
+        "shopId": 1,
+        "shopName": "一万纺织",
+        "remark": "过年期间不发货，过些日子再来吧！",
+        "logisticsSn": "2999182042123",
+        "createTime": "1-2 11:03",
+        "customerId": 1,
+        "customerName": "申请人名称",
+        "status": 20,
+        "statusName": "已同意"
+      },
+      {
+        "id": 3,
+        "itemId": 1,
+        "title": "牛奶丝绒针面料名字万一很长很长3",
+        "itemCode": "B-201026",
+        "productName": "无纺布",
+        "shopId": 1,
+        "shopName": "一万纺织",
+        "remark": "过年期间不发货，过些日子再来吧！",
+        "logisticsSn": "2999182042123",
+        "createTime": "1-2 11:03",
+        "customerId": 1,
+        "customerName": "申请人名称",
+        "status": 30,
+        "statusName": "已拒绝"
+      },
+      {
+        "id": 4,
+        "itemId": 1,
+        "title": "牛奶丝绒针面料名字万一很长很长4",
+        "itemCode": "B-201026",
+        "productName": "无纺布",
+        "shopId": 1,
+        "shopName": "一万纺织",
+        "remark": "过年期间不发货，过些日子再来吧！",
+        "logisticsSn": "2999182042123",
+        "createTime": "1-2 11:03",
+        "customerId": 1,
+        "customerName": "申请人名称",
+        "status": 40,
+        "statusName": "已发货"
+      },
+      {
+        "id": 5,
+        "itemId": 1,
+        "title": "牛奶丝绒针面料名字万一很长很长5",
+        "itemCode": "B-201026",
+        "productName": "无纺布",
+        "shopId": 1,
+        "shopName": "一万纺织",
+        "remark": "过年期间不发货，过些日子再来吧！",
+        "logisticsSn": "2999182042123",
+        "createTime": "1-2 11:03",
+        "customerId": 1,
+        "customerName": "申请人名称",
+        "status": 50,
+        "statusName": "已收货"
+      },
+    ],
+    "hasMore": true,
+    "totalCount": 100
+  },
   [urls.itemFavoriteList]: {
     "list": [
       {
@@ -933,7 +1018,10 @@ let item = {
     "address": "收货地址",
     "needAgreedOperator": "true" //是否需要【同意或拒绝】操作
   },
-  [urls.confirmReceived]: {},
+  [urls.confirmReceived]: {
+    "code": 200,
+    "message": "成功"
+  },
   [urls.getItemListByPosition]: {
     "list": [
       {

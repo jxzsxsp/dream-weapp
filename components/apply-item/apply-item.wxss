@@ -3,12 +3,13 @@
 .item-container {
   margin: auto;
   width: 696rpx;
-  height: 312rpx;
+  min-height: 312rpx;
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
   box-shadow: 0 5rpx 20rpx 0 rgba(0,0,0,0.10);
   border-radius: 26rpx;
+  overflow: hidden;
 }
 
 .head-container {
@@ -56,6 +57,10 @@
   color: #0156FE;
 }
 
+.received {
+  color: #0EB06C;
+}
+
 .disagree {
   color: #FF0000;
   display: flex;
@@ -85,6 +90,7 @@
 }
 
 .content {
+  width: 420rpx;
   margin-left: 32rpx;
   display: flex;
   flex-direction: column;
@@ -127,5 +133,45 @@
   color: #616161;
   letter-spacing: 0.8rpx;
   text-align: right;
-  margin-top: 50rpx;
+  margin-top: 40rpx;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.logistics-container {
+  width: 696rpx;
+  height: 88rpx;
+}
+
+.title {
+  margin-left: 32rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #C9C8D0;
+  letter-spacing: 1.03rpx;
+}
+
+.logistics-sn {
+  font-family: PingFangSC-Medium;
+  font-size: 24rpx;
+  color: #616161;
+  letter-spacing: 1.03rpx;
+}
+
+.confirm-receive {
+  width: 217rpx;
+  height: 68rpx;
+  background: #0EB06C;
+  border-radius: 100px;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  letter-spacing: 1.21rpx;
+  margin-left: 100rpx;
+  margin-top: 8rpx;
 }

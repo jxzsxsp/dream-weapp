@@ -1,17 +1,20 @@
 <view class='item-container'>
   <view class='head-container'>
     <view class='shop-container'>
-      <view class='iconfont icon-shop shop'></view>
-      <text class='shop-name'>一万纺织</text>
+      <view class='iconfont icon-inter_shop shop'></view>
+      <text class='shop-name'>{{trade.shopName}}</text>
       <view class='iconfont icon-jinru jinru'></view>
     </view>
 
     <view class='msg-container'>
-      <!-- <text class='wait-replay'>等待商家回复</text> -->
-      <view class='disagree'>
-        <text>等待商家回复</text>
+      <text wx:if="{{trade.status === 10}}" class='wait-replay'>等待商家回复</text>
+      <text wx:if="{{trade.status === 20}}" class='wait-replay'>等待发货</text>
+      <view wx:if="{{trade.status === 30}}" class='disagree' bindtap='showReason'>
+        <text>商家已拒绝，查看原因</text>
         <view class='iconfont icon-jinru disagree-jinru'></view>
       </view>
+      <text wx:if="{{trade.status === 40}}" class='wait-replay'>卖家已发货</text>
+      <text wx:if="{{trade.status === 50}}" class='received'>已收货</text>
     </view>
   </view>
 
@@ -20,10 +23,16 @@
     </view>
 
     <view class='content'>
-      <text class='item-title'>牛奶丝绒针面料名字万一很长很…</text>
-      <text class='item-code'>B-201026</text>
-      <text class='product-name'>无纺布</text>
-      <text class='time'>1-2 11:03</text>
+      <text class='item-title'>{{title}}</text>
+      <text class='item-code'>{{trade.itemCode}}</text>
+      <text class='product-name'>{{trade.productName}}</text>
+      <text class='time'>{{trade.createTime}}</text>
     </view>
+  </view>
+
+  <view wx:if="{{trade.status === 40}}" class='logistics-container flex' bindtap='onReceive'>
+    <text class='title'>物流单号：</text>
+    <text class='logistics-sn'>{{trade.logisticsSn}}</text>
+    <view class='confirm-receive flex'>确认收货</view>
   </view>
 </view>

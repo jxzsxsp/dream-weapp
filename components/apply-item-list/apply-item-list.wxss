@@ -1,3 +1,15 @@
 .bottom-line {
   height: 22rpx;
 }
+
+.no-more {
+  width: 100%;
+  height: 74rpx;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #8E8E93;
+  letter-spacing: 0.33rpx;
+  text-align: center;
+}

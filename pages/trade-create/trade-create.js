@@ -8,17 +8,17 @@ const props = {
 const data = {
   itemId: 0,
   type: 0, // 订单类型 1.拿色卡，2.剪米样，3.下大货
-  consigneeName: "",
-  consigneeMobile: "",
+  consigneeName: '',
+  consigneeMobile: '',
   region: [],
   provinceId: 0,
-  provinceName: "",
+  provinceName: '',
   cityId: 0,
-  cityName: "",
+  cityName: '',
   areaId: 0,
-  areaName: "",
-  address: "",
-  remark: "",
+  areaName: '',
+  address: '',
+  remark: '',
   canSubmit: false,
 }
 
@@ -56,9 +56,10 @@ const viewAction = {
     this.setData({ region: v })
   },
   // 提交
-  submit() {
+  formSubmit(d, v) {
     let data = this.data
     let param = {
+      formId: v.formId,
       itemId: data.itemId,
       type: data.type,
       consigneeName: { value: data.consigneeName, hint: '姓名' },

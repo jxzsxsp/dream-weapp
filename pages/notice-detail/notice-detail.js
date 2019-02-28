@@ -36,6 +36,12 @@ const privateMethods = {
 }
 
 const viewAction = {
+  confirmReceived: function (d, v) {
+    http.get(urls.confirmReceived, {
+      mock: true,
+      tradeId: v.id,
+    })
+  }
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

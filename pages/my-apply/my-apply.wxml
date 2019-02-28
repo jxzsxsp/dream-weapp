@@ -1,63 +1,95 @@
 <view class='tab-container flex'>
   <view class='tabs flex'>
-    <view class="tab flex {{showYangKa ? 'selected' : ''}}" bindtap='showYangKa'>
+    <view class="tab flex {{currentTabType === yangkaType ? 'selected' : ''}}" data-type='{{yangkaType}}' bindtap='toggleTabType'>
       <text>拿样卡</text>
     </view>
-    <view class="tab flex {{showMiYang ? 'selected' : ''}}" bindtap='showMiYang'>
+    <view class="tab flex {{currentTabType === miyangType ? 'selected' : ''}}" data-type='{{miyangType}}' bindtap='toggleTabType'>
       <text>剪米样</text>
     </view>
   </view>
 </view>
 
 <view class='content'>
-  <view wx:if="{{showYangKa}}">
+  <view wx:if="{{currentTabType === yangkaType}}">
     <fold title="未回复">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.unreport}}"
+        hasMore="{{unreportLoadingState.hasMore}}"
+        list="{{unreportList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
 
     <fold title="已同意">
       <apply-item-list
-        list="{{}}"
+        status="{{status.agree}}"
+        hasMore="{{agreeLoadingState.hasMore}}"
+        list="{{agreeList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
 
     <fold title="已拒绝">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.disagree}}"
+        hasMore="{{disagreeLoadingState.hasMore}}"
+        list="{{disagreeList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
 
     <fold title="已收货">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.received}}"
+        hasMore="{{receivedLoadingState.hasMore}}"
+        list="{{receivedList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
   </view>
 
-  <view wx:if="{{showMiYang}}">
+  <view wx:if="{{currentTabType === miyangType}}">
     <fold title="未回复">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.unreport}}"
+        hasMore="{{unreportLoadingState.hasMore}}"
+        list="{{unreportList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
 
     <fold title="已同意">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.agree}}"
+        hasMore="{{agreeLoadingState.hasMore}}"
+        list="{{agreeList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
 
     <fold title="已拒绝">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.disagree}}"
+        hasMore="{{disagreeLoadingState.hasMore}}"
+        list="{{disagreeList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
 
     <fold title="已收货">
       <apply-item-list
-        list="{{list}}"
+        status="{{status.received}}"
+        hasMore="{{receivedLoadingState.hasMore}}"
+        list="{{receivedList}}"
+        bind:more="loadMore"
+        bind:receive="confirmReceived"
       />
     </fold>
   </view>

@@ -60,7 +60,10 @@ class BasePage {
           // 小程序调用
           let e = args[0]
           let detail = {}
-          detail = e.detail.hasOwnProperty('value') ? e.detail.value : e.detail 
+          detail = e.detail.hasOwnProperty('value') ? e.detail.value : e.detail
+          if (!!e.detail.formId) {
+            detail.formId = e.detail.formId
+          }
           action.call(this, e.currentTarget.dataset || {}, detail)
         } else {
           // 自己调用
