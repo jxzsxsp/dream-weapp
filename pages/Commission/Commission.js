@@ -29,6 +29,7 @@ Page({
                 url: a.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
+                    // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k"
                     // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA"
                 },
                 success: function(t) {
@@ -106,6 +107,7 @@ Page({
             data: {
                 openId: tm.data.userInfo.OpenId,
                 // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
+                // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k",
                 pageIndex: ++tm.data.dataIndex,
                 pageSize: tm.data.PageSize
             },

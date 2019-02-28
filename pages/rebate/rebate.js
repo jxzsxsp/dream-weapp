@@ -51,7 +51,7 @@ Page({
     },
     onReachBottom: function () {
         var t = this;
-        t.data.hasMore ? t.loadMore() : ""
+        // t.data.hasMore ? t.loadMore() : ""
     },
     bindSplittinDraw: function (t) {
         var tm = this;

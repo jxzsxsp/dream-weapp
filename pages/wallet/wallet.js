@@ -32,6 +32,7 @@ Page({
                 url: a.getUrl("GetReferralInfo"),
                 data: {
                     openId: t
+                    // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k", 
                 },
                 success: function(t) {
                     a.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
@@ -41,21 +42,13 @@ Page({
     },
     onShow: function() {
         var t = this;
-        // t.setData({
-        //     PageIndex: 1
-        // }), t.loadData(t, !1);
     },
     onPullDownRefresh: function() {
         var t = this;
-        // t.loadData(t, !1);
         t.loadMore();
     },
     onReachBottom: function() {
         var t = this;
-            // a = t.data.PageIndex + 1;
-        // t.setData({
-        //     PageIndex: a
-        // }), t.loadData(t, !0);
         t.loadMore();
     },
     loadData: function(i, n) {
@@ -66,6 +59,7 @@ Page({
                 url: a.getUrl("YTALGetMemberBalanceList"),
                 data: {
                     openId: e,
+                    // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k",
                     pageIndex: i.data.PageIndex,
                     pageSize: i.data.PageSize
                 },
@@ -125,6 +119,7 @@ Page({
             data: {
                 openId: tm.data.userInfo.OpenId,
                 // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA",
+                // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k",
                 pageIndex: ++tm.data.dataIndex,
                 pageSize: tm.data.PageSize
             },
