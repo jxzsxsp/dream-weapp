@@ -1,0 +1,6 @@
+<view class="group-container">
+  <view class="seperator"/>
+  <slot></slot>
+  <view class="seperator"/>
+  <view wx:if="{{hasMargin}}" class="margin"/>
+</view>

@@ -29,4 +29,6 @@ export default {
   itemFavorite: 'item-favorite',
   noticeList: 'notice-list',
   noticeDetail: 'notice-detail',
+  shareItemList: 'share-item-list',
+  tradeCreate: 'trade-create',
 }

@@ -136,3 +136,19 @@ page {
 .active {
   background: #0156FE;
 }
+
+.go-shop-btn {
+  margin: auto;
+  margin-top: 70rpx;
+  width: 686rpx;
+  height: 94rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #0156FE;
+  letter-spacing: -0.17rpx;
+  text-align: center;
+}

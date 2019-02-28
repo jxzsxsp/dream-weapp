@@ -32,5 +32,10 @@
   </view>
 </view>
 
+<view class='go-shop-btn flex' data-id='{{shopInfo.id}}' bindtap='gotoShopHome'>
+  <text>进店铺查看商品</text>
+  <view class='iconfont icon-jinru'></view>
+</view>
+
 <view wx:if="{{!isFollow}}" class='bottom-btn active flex' bind:tap="followShop">关注店铺</view>
 <view wx:if="{{isFollow}}" class='bottom-btn flex'>已关注店铺</view>

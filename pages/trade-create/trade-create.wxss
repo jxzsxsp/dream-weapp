@@ -1,0 +1,78 @@
+page {
+  background: #f0f0f5;
+}
+
+.title-container {
+  width: 750rpx;
+  height: 80rpx;
+}
+
+.title-container text {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #8E8E93;
+  letter-spacing: 0.93rpx;
+  margin-top: 26rpx;
+  margin-left: 32rpx;
+  line-height: 40rpx;
+}
+
+form-group {
+  background: #ffffff;
+}
+
+.normal-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.input {
+  text-align: right;
+  flex: 1;
+}
+
+.placeholder {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #9B9B9B;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.detail-address-area {
+  width: 500rpx;
+  text-align: right;
+}
+
+.remark-container {
+  width: 750rpx;
+  height: 220rpx;
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+}
+
+.remark-container textarea {
+  width: 700rpx;
+  height: 200rpx;
+}
+
+.confirm-button {
+  width: 670rpx;
+  height: 94rpx;
+  left: 40rpx;
+  position: fixed;
+  align-self: center;
+  bottom: 80rpx;
+  background: #0156FE;
+  color: #FFFFFF;
+  letter-spacing: 1.35rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+}
+
+.disabled {
+  background: #CBCBCB;
+}

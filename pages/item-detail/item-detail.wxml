@@ -48,7 +48,7 @@
   </block>
 </view>
 
-<view class='shop-container flex'>
+<view class='shop-container flex' bindtap='gotoShopHome'>
   <view class='shop-avatar'>
     <image src='{{itemDetail.shopInfo.logo}}'></image>
   </view>
@@ -77,7 +77,7 @@
 <view class='bottom-space'></view>
 
 <view class='bottom-container flex'>
-  <view class='icon-btn flex-column' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShop'>
+  <view class='icon-btn flex-column' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShopInfo'>
     <view class='iconfont icon-inter_shop common-icon'></view>
     <text>店铺</text>
   </view>
@@ -85,13 +85,13 @@
     <view class='iconfont icon-call common-icon'></view>
     <text>联系</text>
   </view>
-  <view class='icon-btn flex-column' data-id='1' bindtap='favoriteItem'>
+  <view class='icon-btn flex-column' bindtap='favoriteItem'>
     <view class="iconfont icon-favorite2 common-icon {{favorited ? 'favorited' : ''}}"></view>
     <text>收藏</text>
   </view>
 
   <view class='buy-btns flex'>
-    <view class='common-btn seka-btn flex' bindtap='buySeka'>拿色卡</view>
-    <view class='common-btn miyang-btn flex' bindtap='buyMiyang'>剪米样</view>
+    <view class='common-btn seka-btn flex' data-type='1' bindtap='buySubmit'>拿色卡</view>
+    <view class='common-btn miyang-btn flex' data-type='2' bindtap='buySubmit'>剪米样</view>
   </view>
 </view>

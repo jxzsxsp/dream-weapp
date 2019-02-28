@@ -93,7 +93,7 @@ const viewAction = {
       itemId: d.id
     })
   },
-  gotoShopHome: function (d) {
+  gotoShopHome: function () {
     $wx.navigateTo($wx.router.shop, {
       shopId: this.data.shopId
     })

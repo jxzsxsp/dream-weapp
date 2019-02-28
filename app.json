@@ -30,7 +30,8 @@
     "pages/item-favorite/item-favorite",
     "pages/notice-list/notice-list",
     "pages/notice-detail/notice-detail",
-    "pages/share-item-list/share-item-list"
+    "pages/share-item-list/share-item-list",
+    "pages/trade-create/trade-create"
   ],
   "window": {
     "backgroundTextStyle": "light",

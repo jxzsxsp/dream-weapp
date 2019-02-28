@@ -844,7 +844,9 @@ let item = {
     "code": 200,
     "message": "成功"
   },
-  [urls.tradeCreate]: {},
+  [urls.tradeCreate]: {
+    "id": 212
+  },
   [urls.shopSimpleDetail]: {
     "shopId": 32,
     "shopName": "Laura Thomas",

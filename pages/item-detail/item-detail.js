@@ -12,9 +12,15 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
-    this.setData({
-      itemId: query.itemId
-    })
+    if (!!query.itemId) {
+      this.setData({
+        itemId: query.itemId
+      })
+    } else if (!!query.scene) {
+      this.setData({
+        itemId: decodeURIComponent(query.scene)
+      })
+    }
   },
   onShow: function() {
     this.getItemDetail().then(res => {
@@ -47,7 +53,7 @@ const privateMethods = {
 }
 
 const viewAction = {
-  favoriteItem: function (d) {
+  favoriteItem: function () {
     this.setData({
       favorited: !this.data.favorited
     }, function() {
@@ -58,20 +64,23 @@ const viewAction = {
       }
     })
   },
-  gotoShop: function(d) {
+  gotoShopInfo: function(d) {
     $wx.navigateTo($wx.router.shopInfo, {shopId: d.shop_id})
+  },
+  gotoShopHome: function (d) {
+    $wx.navigateTo($wx.router.shop, { shopId: d.shop_id })
   },
   callPhone: function (d) {
     $wx.makePhoneCall({
       phoneNumber: d.mobile,
     })
   },
-  buySeka: function(d) {
-    $wx.navigateTo($wx.router.shopInfo)
+  buySubmit: function(d) {
+    $wx.navigateTo($wx.router.tradeCreate, {
+      type: d.type,
+      itemId: this.data.itemId,
+    })
   },
-  buyMiyang: function (d) {
-    $wx.navigateTo($wx.router.shopInfo)
-  }
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

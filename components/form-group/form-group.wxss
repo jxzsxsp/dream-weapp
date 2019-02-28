@@ -1,0 +1,14 @@
+.group-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.seperator {
+  height: 1px;
+  background: #E2E2E2;
+}
+
+.margin {
+  height: 20rpx;
+  background: #F1F1F1;
+}

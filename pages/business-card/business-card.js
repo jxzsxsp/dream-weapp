@@ -180,6 +180,11 @@ const viewAction = {
       })
     })
   },
+  gotoShopHome: function () {
+    $wx.navigateTo($wx.router.shop, {
+      shopId: this.data.shopId
+    })
+  },
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

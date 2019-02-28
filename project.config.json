@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 27,
 			"list": [
 				{
 					"id": 0,
@@ -267,6 +267,13 @@
 					"name": "分享商品列表",
 					"pathName": "pages/share-item-list/share-item-list",
 					"query": "scene=2,2",
+					"scene": null
+				},
+				{
+					"id": 27,
+					"name": "创建订单",
+					"pathName": "pages/trade-create/trade-create",
+					"query": "type=1&itemId=1",
 					"scene": null
 				}
 			]

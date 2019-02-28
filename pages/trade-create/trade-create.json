@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "信息填写",
+  "usingComponents": {
+    "form-cell": "/components/form-cell/form-cell",
+    "form-group": "/components/form-group/form-group"
+  }
+}
