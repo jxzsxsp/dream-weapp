@@ -204,9 +204,9 @@
         <view class='list-item'>
             <view style='display:flex;flex-flow:column nowrap;min-width:550rpx;'>
                 <text class='list-item-title' style='font-size:16px;margin-bottom:10rpx;'>版本号 </text>
-                <text style='font-size:12px;color:#515151;'>3.1.9</text>
             </view>
-            <view style='padding-right:20rpx'>
+            <view style='padding-right:20rpx;text-align:right'>
+                <view style='font-size:12px;color:#515151;text-align:right'>3.1.9</view>
                 <!-- <image src='http://cos.qkmai.com/qkmbb/myytal/wdhb.png  ' style='width:100rpx;height:100rpx;' lazy-load></image> -->
             </view>
         </view>
