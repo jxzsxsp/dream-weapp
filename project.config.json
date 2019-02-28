@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 27,
+			"current": 21,
 			"list": [
 				{
 					"id": 0,
@@ -228,10 +228,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 21,
 					"name": "店铺信息",
 					"pathName": "pages/shop-info/shop-info",
-					"query": "",
+					"query": "shopId=1",
 					"scene": null
 				},
 				{
@@ -256,10 +256,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 25,
 					"name": "通知详情",
 					"pathName": "pages/notice-detail/notice-detail",
-					"query": "",
+					"query": "bizId=1& bizType=1",
 					"scene": 1011
 				},
 				{

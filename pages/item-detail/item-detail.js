@@ -34,19 +34,19 @@ const lifecycle = {
 const privateMethods = {
   getItemDetail: function () {
     return http.get(urls.itemDetail, {
-      mock: true,
-      id: this.data.itemId
+      // mock: true,
+      itemId: this.data.itemId
     })
   },
   addItemFavorite: function () {
     http.get(urls.addItemFavorite, {
-      mock: true,
+      // mock: true,
       itemId: this.data.itemId,
     })
   },
   cancelItemFavorite: function () {
     http.get(urls.cancelItemFavorite, {
-      mock: true,
+      // mock: true,
       itemId: this.data.itemId
     })
   },

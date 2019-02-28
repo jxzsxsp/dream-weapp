@@ -33,7 +33,7 @@ const lifecycle = {
 const privateMethods = {
   getNoticeList: function () {
     return http.getList(urls.messageList, this.props.loadingState, {
-      mock: true,
+      // mock: true,
     })
   },
   refresh: function () {

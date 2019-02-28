@@ -32,7 +32,7 @@ const lifecycle = {
 const privateMethods = {
   getItemList: function () {
     return http.getList(urls.itemFavoriteList, this.props.loadingState, {
-      mock: true,
+      // mock: true,
     })
   },
   refresh: function () {

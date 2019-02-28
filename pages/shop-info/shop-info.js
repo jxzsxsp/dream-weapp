@@ -29,7 +29,7 @@ const lifecycle = {
 const privateMethods = {
   getShopDetail: function () {
     return http.get(urls.shopDetail, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId
     })
   },

@@ -83,13 +83,13 @@ const lifecycle = {
 const privateMethods = {
   getShopDetail: function () {
     return http.get(urls.shopSimpleDetail, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId
     })
   },
   getHomeItemList: function (positionType) {
     return http.get(urls.getItemListByPosition, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId,
       positionType: positionType,
     }).then(res => {
@@ -115,7 +115,7 @@ const privateMethods = {
   },
   getItemList: function (positionType) {
     return http.getList(urls.getItemListByPosition, this.props.loadingState, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId,
       positionType: positionType,
     })
@@ -132,14 +132,14 @@ const privateMethods = {
   },
   follow: function () {
     http.get(urls.followSupplier, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId,
       source: constant.BindCustomerSource.WEAPP_VIEW,
     })
   },
   cancelFollow: function () {
     http.get(urls.unfollowSupplier, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId
     })
   },

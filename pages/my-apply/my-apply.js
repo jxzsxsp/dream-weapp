@@ -71,7 +71,7 @@ const privateMethods = {
   },
   getApplyList: function (status, loadingState) {
     return http.getList(urls.applyList, loadingState, {
-      mock: true,
+      // mock: true,
       tradeType: this.data.currentTabType,
       status: status,
     })
@@ -125,7 +125,7 @@ const viewAction = {
   },
   confirmReceived: function (d, v) {
     http.get(urls.confirmReceived, {
-      mock: true,
+      // mock: true,
       tradeId: v.id,
     })
   }

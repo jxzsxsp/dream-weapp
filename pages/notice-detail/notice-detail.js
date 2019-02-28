@@ -24,7 +24,7 @@ const lifecycle = {
 const privateMethods = {
   getNoticeDetail: function () {
     http.get(urls.messageDetail, {
-      mock: true,
+      // mock: true,
       bizType: this.data.bizType,
       bizId: this.data.bizId
     }).then(res => {
@@ -38,7 +38,7 @@ const privateMethods = {
 const viewAction = {
   confirmReceived: function (d, v) {
     http.get(urls.confirmReceived, {
-      mock: true,
+      // mock: true,
       tradeId: v.id,
     })
   }

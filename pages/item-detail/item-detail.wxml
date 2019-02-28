@@ -17,7 +17,7 @@
 </swiper>
 
 <view class='title-container flex'>
-  <view class='title'>人造皮革面料仿真皮料原色揉皮打造</view>
+  <view class='title'>{{itemDetail.title}}</view>
   <view class='favorite-container flex-column' data-id='1' bindtap='favoriteItem'>
     <view class="iconfont icon-favorite2 favorite {{favorited ? 'favorited' : ''}}"></view>
     <text>收藏</text>

@@ -75,7 +75,7 @@ const viewAction = {
     }
     
     http.post(urls.tradeCreate, {
-      mock: true,
+      // mock: true,
       ...param
     }).then(() => {
       $wx.navigateBack()

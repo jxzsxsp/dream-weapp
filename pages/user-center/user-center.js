@@ -97,7 +97,7 @@ const privateMethod = {
   },
   getNoticeNum: function() {
     http.get(urls.messageUnreadNum, {
-      mock: true,
+      // mock: true,
     }).then(res => {
       this.setData({
         noticeNum: res.totalCount

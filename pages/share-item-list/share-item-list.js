@@ -42,7 +42,7 @@ const lifecycle = {
 const privateMethods = {
   getShopDetail: function () {
     return http.get(urls.shopSimpleDetail, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId
     }).then(res => {
       this.setData({
@@ -53,7 +53,7 @@ const privateMethods = {
   },
   getShareItemList: function (positionType) {
     return http.get(urls.shareItemList, {
-      mock: true,
+      // mock: true,
       shareCode: this.data.shareCode,
     }).then(res => {
       this.setData({
@@ -63,14 +63,14 @@ const privateMethods = {
   },
   follow: function () {
     http.get(urls.followSupplier, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId,
       source: constant.BindCustomerSource.WEAPP_VIEW,
     })
   },
   cancelFollow: function () {
     http.get(urls.unfollowSupplier, {
-      mock: true,
+      // mock: true,
       shopId: this.data.shopId
     })
   },
