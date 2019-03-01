@@ -1,4 +1,4 @@
-// components/brandName/brandName.js
+// components/goodLists/goodLists.js
 var app = getApp()
 Component({
     /**
@@ -36,9 +36,9 @@ Component({
      */
     methods: {
         linkToBrandRush(event) {
-            const myEventDetail = {} // detail对象，提供给事件监听函数
-            const myEventOption = {} // 触发事件的选项
-            this.triggerEvent('myevent', myEventDetail, myEventOption)
+            // const myEventDetail = {} // detail对象，提供给事件监听函数
+            // const myEventOption = {} // 触发事件的选项
+            // this.triggerEvent('myevent', myEventDetail, myEventOption)
 
             var barndId = event.currentTarget.dataset['brandid'];
             var brandSoruce = event.currentTarget.dataset['brandsource'];
