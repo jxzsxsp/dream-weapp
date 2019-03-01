@@ -15,14 +15,9 @@
                         <image src='http://cos.qkmai.com/qkmbb/ytal/searchtb.png' style='width:30rpx;height:30rpx;'></image>
                         <text style='color:#959595;font-size:24rpx;display:inline-block;line-height:64rpx;padding-left:20rpx'>搜商品关键字/VIP自购最高返40%</text>
                     </view>
-                    <!-- <view style='display:inline-block;position:relative'>
-                        <image src="http://cos.qkmai.com/qkmbb/ytal/sykf.png" style='display:inline-block;width:65rpx;height:57rpx'></image>
-                        <button openType="contact" plain='true' style='position:absolute;left:0;top:0;width:100%;height:100%;border:0;color:transparent;'>1</button>
-                    </view> -->
                 </view>
             </view>
             <view bindtap="changeCate" data-cateName='{{item.cateName}}' class="catetitle" wx:key="{{item}}" wx:for='{{barndRushCate}}' style='margin-top:105rpx'>
-
                 <view class="{{selectedCate==item.cateName?'active':''}}">{{item.cateName}}
                     <text class='brandCount'>{{item.brandCount}}</text>
                 </view>

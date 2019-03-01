@@ -143,15 +143,14 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
         })
-        tm.getLogo()
-        // tm.getCode()
-        //tm.getProducts()
-        tm.getPageRushGoodsByTagId()
+       
 
     },
     onShow: function() {
         var tm = this;
         this.GetShopCart();
+        tm.getLogo()
+        tm.getPageRushGoodsByTagId()
         wx.getStorage({
             key: 'tcTwo',
             success(res) {
@@ -681,9 +680,9 @@ Page({
                     jd.data.forEach(o => {
                         goodsList.push(o)
                     });
-                    var newList = tm.data.rushGoodsList.concat(goodsList)
+                    //var newList = tm.data.rushGoodsList.concat(goodsList)
                     tm.setData({
-                        rushGoodsList: newList
+                        rushGoodsList: goodsList
                     })
 
                 }
