@@ -20,10 +20,9 @@ Component({
                             pageSize: 1
                         },
                         success: function(res) {
-                            // var x = res.data.SubMember_get_response.ExpandMemberAll;
-                            // x = parseFloat(x).toFixed(2)
+                            console.log("aaa:" + res.data.balance)
                             tm.setData({
-                                redPacketNum: (res.data.balance).toFixed(2)
+                                redPacketNum: tm.toFix(res.data.balance, 2)
                             })
 
                         }
@@ -43,27 +42,34 @@ Component({
     /**
      * 组件的方法列表
      */
-    methods: {},
-    ready() {
-        var tm = this;
-        var redPacket = this.properties.redPacketNum;
-        app.getOpenId(function(t) {
-            wx.request({
-                url: app.getUrl("YTALGetMemberBalanceList"),
-                data: {
-                    openId: t,
-                    pageIndex: 1,
-                    pageSize: 1
-                },
-                success: function(res) {
-                    tm.setData({
-                        redPacketNum: (res.data.balance).toFixed(2)
-                    })
+    methods: {
+        toFix: function(value, count) {
+            var num = parseFloat(value)
+            return num.toFixed(count)
+        }
+    },
+    pageLifetimes: {
+        show() {
+            var tm = this;
+            var redPacket = this.properties.redPacketNum;
+            app.getOpenId(function(t) {
+                wx.request({
+                    url: app.getUrl("YTALGetMemberBalanceList"),
+                    data: {
+                        openId: t,
+                        pageIndex: 1,
+                        pageSize: 1
+                    },
+                    success: function(res) {
+                        console.log("bbb:" + res.data.balance)
+                        tm.setData({
+                            redPacketNum: tm.toFix(res.data.balance, 2)
+                        })
 
-                }
-            });
-        })
-
-        // 在组件实例进入页面节点树时执行
+                    }
+                });
+            })
+        }
     }
+
 })
