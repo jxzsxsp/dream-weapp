@@ -1,2 +1,3 @@
 <!--components/splittinNum/splittinNum.wxml-->
-<view>{{splittinNum}}</view>
+<!-- <view>{{splittinNum}}</view> -->
+<view>0.00</view>

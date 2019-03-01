@@ -2,7 +2,8 @@
     <view class='commission_top'>
         <text class='tit'>可提现（元）</text>
         <view class='show_num'>
-            <text class='money_num' style="font-size:60rpx">{{CanDrawSplittin}}</text>
+            <!-- <text class='money_num' style="font-size:60rpx">{{CanDrawSplittin}}</text> -->
+            <text class='money_num' style="font-size:60rpx">0.00</text>
             <view class='getMoney_btn' bindtap="bindSplittinDraw">申请提现</view>
         </view>
         <!-- <view class='line'></view>
