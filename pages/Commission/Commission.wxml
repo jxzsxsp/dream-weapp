@@ -5,7 +5,7 @@
             <text class='money_num' style="font-size:60rpx">{{CanDrawSplittin}}</text>
             <view class='getMoney_btn' bindtap="bindSplittinDraw">申请提现</view>
         </view>
-        <view class='line'></view>
+        <!-- <view class='line'></view>
         <view class='showlist'>
             <view>
                 <text>总收入</text>
@@ -19,7 +19,7 @@
                 <text>未结算</text>
                 <text>{{NoSettlementSplttin}}</text>
             </view>
-        </view>
+        </view> -->
     </view>
     <view class='commission_middle' bindtap='GoArticle' data-url="/pages/webPage/webPage?artUrl=http://ytalman.qkmai.com/ArticleDetails?ArticleId=16" data-id='16'>
         <image src="http://cos.qkmai.com/qkmbb/ytal/redenvelopetb.png"></image>
@@ -29,7 +29,7 @@
         </view>
         <view class='go_btn'>GO</view>
     </view>
-    <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length!=0}}">
+    <!-- <view class='commission_bottom' style='width: 670rpx;margin: 30rpx auto;background: #fff;border-radius: 20rpx;padding: 20rpx;' wx:if="{{SplittinList.length!=0}}">
         <block wx:for="{{SplittinList}}" wx:key="{{SplittinList}}">
             <view class='list' style='display:flex;flex-direction:row;justify-content: space-around;align-items: center;'>
                 <view style='display:flex;flex-direction:column;justify-content:center;padding-left:20rpx;width:70%;height:100%;'>
@@ -40,17 +40,10 @@
                     <view class='font_small'>{{item.IsUse?'已结算':'未结算'}}</view>
                     <view class='font_big' style='padding-right:10rpx;'>{{item.Income}}</view>
                 </view>
-                <!-- <view style='display:flex;flex-direction:column;justify-content: start-end;width:15%;'>
-                    <text class='font_big'> {{item.TradeTypeText}}</text>
-                    <text class='font_small'>{{item.IsUse?'已结算':'未结算'}}</text>
-                </view>
-                <view style='width:15%;text-align:right;'>
-                    <text class='font_big jl3' style='padding-right:20rpx'>{{item.Income}}</text>
-                </view> -->
             </view>
         </block>
-    </view>
+    </view> -->
 </view>
 
-<view class='loadmore loading' wx:if="{{ hasMore && SplittinList.length > 0 }}">正在加载中…</view>
-<view class='loadmore' wx:if="{{ !hasMore && SplittinList.length > 0 }}">—— 我也是有底线的 ——</view>
+<!-- <view class='loadmore loading' wx:if="{{ hasMore && SplittinList.length > 0 }}">正在加载中…</view>
+<view class='loadmore' wx:if="{{ !hasMore && SplittinList.length > 0 }}">—— 我也是有底线的 ——</view> -->
