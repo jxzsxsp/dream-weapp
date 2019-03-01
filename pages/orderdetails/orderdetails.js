@@ -6,7 +6,8 @@ Page({
         SendGifts: null,
         OrderId: 0,
         Suppliers: null,
-        isTimeOut: false
+        isTimeOut: false,
+        isShowB: true
     },
     onLoad: function(t) {
         this.setData({
@@ -78,6 +79,11 @@ Page({
                         if (new Date().getTime() > new Date(new Date(e.OrderDate).getTime() + 24 * 60 * 60 * 1000).getTime()) {
                             a.setData({
                                 isTimeOut: true
+                            })
+                        }
+                        if (new Date().getTime() > new Date(new Date(e.OrderDate).getTime() + 168 * 60 * 60 * 1000).getTime()) {
+                            a.setData({
+                                isShowB: false
                             })
                         }
                         "" != e.LogisticsData && (n = e.LogisticsData);

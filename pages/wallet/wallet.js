@@ -33,6 +33,7 @@ Page({
                 data: {
                     openId: t
                     // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k", 
+                    // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA", 
                 },
                 success: function(t) {
                     a.globalData.ReferralInfo = t.data.referral_get_response, tm.GetCheckData();
@@ -59,6 +60,7 @@ Page({
                 url: a.getUrl("YTALGetMemberBalanceList"),
                 data: {
                     openId: e,
+                    // openId: "o_rWK5f-5hvhMrySuLW5L7d_vTwA", 
                     // openId: "o_rWK5eww_Jox7jWHb8acVXcGd9k",
                     pageIndex: i.data.PageIndex,
                     pageSize: i.data.PageSize
