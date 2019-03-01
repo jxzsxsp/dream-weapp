@@ -1,5 +1,6 @@
 import { $wx, $Page } from '../../genji4mp/index'
 import { http, urls } from '../../net/index'
+import constant from '../../constant/index'
 
 const props = {
 }
@@ -33,12 +34,31 @@ const privateMethods = {
       shopId: this.data.shopId
     })
   },
+  follow: function () {
+    http.get(urls.followSupplier, {
+      // mock: true,
+      shopId: this.data.shopId,
+      source: constant.BindCustomerSource.WEAPP_VIEW,
+    })
+  },
+  cancelFollow: function () {
+    http.get(urls.unfollowSupplier, {
+      // mock: true,
+      shopId: this.data.shopId
+    })
+  },
 }
 
 const viewAction = {
   followShop: function(d) {
     this.setData({
       isFollow: !this.data.isFollow
+    }, function() {
+      if (this.data.isFollow) {
+        this.follow()
+      } else {
+        this.cancelFollow()
+      }
     })
   },
   gotoShop: function(d) {

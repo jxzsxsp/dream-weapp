@@ -70,7 +70,7 @@ const privateMethods = {
     }
   },
   getApplyList: function (status, loadingState) {
-    return http.getList(urls.applyList, loadingState, {
+    return http.postList(urls.applyList, loadingState, {
       // mock: true,
       tradeType: this.data.currentTabType,
       status: status,

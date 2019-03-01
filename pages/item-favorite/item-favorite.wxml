@@ -10,8 +10,13 @@
         <text class='title'>{{item.title}}</text>
         <text class='product-name'>{{item.productName}}</text>
         <view class='price-container flex'>
-          <view class='price'>{{item.largeCargoPrice}}</view>
-          <view class='unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</view>
+          <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
+            <view class='price'>面议</view>
+          </block>
+          <block wx:else>
+            <view class='price'>{{item.largeCargoPrice}}</view>
+            <view class='unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</view>
+          </block>
         </view>
       </view>
     </view>

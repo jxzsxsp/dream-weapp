@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 25,
 			"list": [
 				{
 					"id": 0,
@@ -224,7 +224,7 @@
 					"id": 20,
 					"name": "商品详情",
 					"pathName": "pages/item-detail/item-detail",
-					"query": "itemId=1",
+					"query": "itemId=376",
 					"scene": null
 				},
 				{
@@ -259,14 +259,14 @@
 					"id": 25,
 					"name": "通知详情",
 					"pathName": "pages/notice-detail/notice-detail",
-					"query": "bizId=1& bizType=1",
+					"query": "bizType=20&bizId=384&id=51",
 					"scene": 1011
 				},
 				{
 					"id": 26,
 					"name": "分享商品列表",
 					"pathName": "pages/share-item-list/share-item-list",
-					"query": "scene=2,2",
+					"query": "scene=1,2",
 					"scene": null
 				},
 				{

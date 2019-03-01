@@ -6,7 +6,7 @@ const props = {
 
 const data = {
   itemId: 0,
-  favorited: true,
+  isFavorite: false,
   itemDetail: {}
 }
 
@@ -25,7 +25,8 @@ const lifecycle = {
   onShow: function() {
     this.getItemDetail().then(res => {
       this.setData({
-        itemDetail: res
+        itemDetail: res,
+        isFavorite: res.isFavorite,
       })
     })
   }
@@ -39,13 +40,13 @@ const privateMethods = {
     })
   },
   addItemFavorite: function () {
-    http.get(urls.addItemFavorite, {
+    http.post(urls.addItemFavorite, {
       // mock: true,
       itemId: this.data.itemId,
     })
   },
   cancelItemFavorite: function () {
-    http.get(urls.cancelItemFavorite, {
+    http.post(urls.cancelItemFavorite, {
       // mock: true,
       itemId: this.data.itemId
     })
@@ -55,9 +56,9 @@ const privateMethods = {
 const viewAction = {
   favoriteItem: function () {
     this.setData({
-      favorited: !this.data.favorited
+      isFavorite: !this.data.isFavorite
     }, function() {
-      if(this.data.favorited) {
+      if (this.data.isFavorite) {
         this.addItemFavorite()
       } else {
         this.cancelItemFavorite()

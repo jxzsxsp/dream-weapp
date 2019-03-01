@@ -36,4 +36,6 @@ export default {
   confirmReceived: '/trade/confirm-received', // 确认收货接口 POST
   getItemListByPosition: '/item/get-by-position', // 根据位置显示商品列表接口 GET
   shareItemList: '/item/qrcode-item-list', // 根据分享的id获取商品列表接口 GET
+  homeItemList: '/item/items-for-home-page-chame', // 店铺首页各个区域商品列表接口 GET
+  setRead: '/message/set-read', // 消息通知已读接口 GET
 }

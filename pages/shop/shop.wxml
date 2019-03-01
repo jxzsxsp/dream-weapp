@@ -63,12 +63,17 @@
           <text class='block-content-title'>{{item.title}}</text>
           <text class='block-product-name'>{{item.itemCode}}</text>
           <view class='block-property flex'>
-            <text class='door-width'>145cm</text>
-            <text class='weight'>50g/㎡</text>
+            <text wx:if="{{item.width}}" class='door-width'>{{item.width}}</text>
+            <text wx:if="{{item.weight}}" class='weight'>{{item.weight}}</text>
           </view>
           <view class='block-price-container flex'>
-            <text class='block-price'>{{item.largeCargoPrice}}</text>
-            <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+            <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
+            <text class='block-price'>面议</text>
+            </block>
+            <block wx:else>
+              <text class='block-price'>{{item.largeCargoPrice}}</text>
+              <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+            </block>
           </view>
         </view>
       </view>
@@ -93,12 +98,17 @@
           <text class='block-content-title'>{{item.title}}</text>
           <text class='block-product-name'>{{item.itemCode}}</text>
           <view class='block-property flex'>
-            <text class='door-width'>145cm</text>
-            <text class='weight'>50g/㎡</text>
+            <text wx:if="{{item.width}}" class='door-width'>{{item.width}}</text>
+            <text wx:if="{{item.weight}}" class='weight'>{{item.weight}}</text>
           </view>
           <view class='block-price-container flex'>
-            <text class='block-price'>{{item.largeCargoPrice}}</text>
-            <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+            <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
+            <text class='block-price'>面议</text>
+            </block>
+            <block wx:else>
+              <text class='block-price'>{{item.largeCargoPrice}}</text>
+              <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+            </block>
           </view>
         </view>
       </view>
@@ -122,8 +132,13 @@
         <text class='common-content-title'>{{item.title}}</text>
 
         <view class='common-price-container flex'>
+          <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
+          <text class='common-price'>面议</text>
+          </block>
+          <block wx:else>
           <text class='common-price'>{{item.largeCargoPrice}}</text>
           <text class='common-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+          </block>
         </view>
       </view>
 
@@ -158,8 +173,13 @@
         <text class='common-content-title'>{{item.title}}</text>
 
         <view class='common-price-container flex'>
+          <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
+          <text class='common-price'>面议</text>
+          </block>
+          <block wx:else>
           <text class='common-price'>{{item.largeCargoPrice}}</text>
           <text class='common-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+          </block>
         </view>
       </view>
 

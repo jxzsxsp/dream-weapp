@@ -19,7 +19,7 @@
 <view class='title-container flex'>
   <view class='title'>{{itemDetail.title}}</view>
   <view class='favorite-container flex-column' data-id='1' bindtap='favoriteItem'>
-    <view class="iconfont icon-favorite2 favorite {{favorited ? 'favorited' : ''}}"></view>
+    <view class="iconfont icon-favorite2 favorite {{isFavorite ? 'favorited' : ''}}"></view>
     <text>收藏</text>
   </view>
 </view>
@@ -27,11 +27,21 @@
 <view class='price-container flex'>
   <view class='price-type flex'>
     <view class='item-title'>大货价格</view>
+    <block wx:if="{{itemDetail.itemPriceInfo.isNegotiateLargeCargoPrice === 1}}">
+    <view class='price'>面议</view>
+    </block>
+    <block wx:else>
     <view class='price'>{{itemDetail.itemPriceInfo.largeCargoPrice}}{{itemDetail.itemPriceInfo.largeCargoPriceUnitName}}/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</view>
+    </block>
   </view>
   <view class='price-type flex'>
     <view class='item-title'>样布价格</view>
+    <block wx:if="{{itemDetail.itemPriceInfo.isNegotiateSwatchPrice === 1}}">
+    <view class='price'>面议</view>
+    </block>
+    <block wx:else>
     <view class='price'>{{itemDetail.itemPriceInfo.swatchPrice}}{{itemDetail.itemPriceInfo.swatchPriceUnitName}}/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</view>
+    </block>
   </view>
 </view>
 
@@ -43,12 +53,12 @@
   <block wx:for="{{itemDetail.itemProperties}}" wx:key="index">
     <view class='property-item flex'>
       <view class='item-title'>{{item.name}}</view>
-      <view class='item-content'>{{item.propertyValue}}</view>
+      <view wx:if="{{item.propertyValue}}" class='item-content'>{{item.propertyValue}}</view>
     </view>
   </block>
 </view>
 
-<view class='shop-container flex' bindtap='gotoShopHome'>
+<view class='shop-container flex' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShopHome'>
   <view class='shop-avatar'>
     <image src='{{itemDetail.shopInfo.logo}}'></image>
   </view>
@@ -86,7 +96,7 @@
     <text>联系</text>
   </view>
   <view class='icon-btn flex-column' bindtap='favoriteItem'>
-    <view class="iconfont icon-favorite2 common-icon {{favorited ? 'favorited' : ''}}"></view>
+    <view class="iconfont icon-favorite2 common-icon {{isFavorite ? 'favorited' : ''}}"></view>
     <text>收藏</text>
   </view>
 

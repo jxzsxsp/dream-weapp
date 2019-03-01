@@ -1166,6 +1166,54 @@ let item = {
     "totalCount": 100,
     "hasMore": true
   },
+  [urls.homeItemList]: {
+    "10": [
+      {
+        "id": 2,
+        "title": "春夏款",
+        "itemCode": "0116-003",
+        "imageUrl": "http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元",
+        "width": "150cm",
+        "weight": "500 克/m"
+      }
+    ],
+    "20": [
+      {
+        "id": 2,
+        "title": "春夏款",
+        "itemCode": "0116-003",
+        "imageUrl": "http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元",
+        "width": "150cm",
+        "weight": "500 克/m"
+      }
+    ],
+    "30": [
+      {
+        "id": 2,
+        "title": "春夏款",
+        "itemCode": "0116-003",
+        "imageUrl": "http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg",
+        "isNegotiateLargeCargoPrice": false, //是否面议
+        "largeCargoPrice": 12.4,
+        "largeCargoMeasurementUnit": "米",
+        "largeCargoPriceUnit": "元",
+        "width": "150cm",
+        "weight": "500 克/m"
+      }
+    ]
+  },
+  [urls.setRead]: {
+    "code": 200,
+    "message": "成功"
+  },
 }
 
 export default {

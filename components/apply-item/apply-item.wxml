@@ -20,12 +20,13 @@
 
   <view class='content-container'>
     <view class='item-avatar'>
+      <image wx:if="{{imageUrl}}" src='{{imageUrl}}'></image>
     </view>
 
     <view class='content'>
       <text class='item-title'>{{title}}</text>
       <text class='item-code'>{{trade.itemCode}}</text>
-      <text class='product-name'>{{trade.productName}}</text>
+      <text wx:if="{{trade.productName}}" class='product-name'>{{trade.productName}}</text>
       <text class='time'>{{trade.createTime}}</text>
     </view>
   </view>

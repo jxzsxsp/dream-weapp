@@ -4,6 +4,7 @@ import constant from '../../constant/index'
 
 const props = {
   loadingState: http.defaultLoadingState(),
+  homeLoadingState: http.defaultLoadingState(),
 }
 
 const data = { //位置类型（10.轮播位，20.新品区，30.爆款区, 40.普通区）
@@ -50,10 +51,8 @@ const lifecycle = {
       })
     })
 
-    this.getHomeItemList(this.data.positionType.SWIPER)
-    this.getHomeItemList(this.data.positionType.HOT)
-    this.getHomeItemList(this.data.positionType.NEW)
-    this.getHomeItemList(this.data.positionType.NORMAL)
+    this.getHotItemList()
+    this.homeRefresh(this.data.positionType.NORMAL)
     this.refresh()
   },
   onPageScroll: function(d) {
@@ -67,16 +66,23 @@ const lifecycle = {
   },
   onReachBottom: function () {
     if (this.data.currentMenuType !== this.data.itemMenuType) {
-      return
+      let normalItemList = this.data.normalItemList
+
+      this.getHomeItemList(this.data.positionType.NORMAL).then(res => {
+        this.setData({
+          normalItemList: normalItemList.concat(res)
+        })
+      })
+    } else {
+      let itemList = this.data.itemList
+
+      this.getItemList(this.data.currentPositionType).then(res => {
+        this.setData({
+          itemList: itemList.concat(res)
+        })
+      })
     }
 
-    let itemList = this.data.itemList
-
-    this.getItemList(this.data.currentPositionType).then(res => {
-      this.setData({
-        itemList: itemList.concat(res)
-      })
-    })
   },
 }
 
@@ -87,28 +93,43 @@ const privateMethods = {
       shopId: this.data.shopId
     })
   },
+  getHotItemList: function () {
+    return http.get(urls.homeItemList, {
+      // mock: true,
+      shopId: this.data.shopId
+    }).then(res => {
+      this.setData({
+        swiperItemList: res[this.data.positionType.SWIPER],
+        hotItemList: res[this.data.positionType.HOT],
+        newItemList: res[this.data.positionType.NEW],
+      })
+    })
+  },
   getHomeItemList: function (positionType) {
-    return http.get(urls.getItemListByPosition, {
+    return http.getList(urls.getItemListByPosition, this.props.homeLoadingState, {
       // mock: true,
       shopId: this.data.shopId,
       positionType: positionType,
-    }).then(res => {
-      console.log(res.list, positionType)
-      if(positionType === this.data.positionType.SWIPER) {
+    })
+  },
+  homeRefresh: function (positionType) {
+    this.props.homeLoadingState = http.defaultLoadingState();
+    this.getHomeItemList(positionType).then(res => {
+      if (positionType === this.data.positionType.SWIPER) {
         this.setData({
-          swiperItemList: res.list
+          swiperItemList: res
         })
       } else if (positionType === this.data.positionType.HOT) {
         this.setData({
-          hotItemList: res.list
+          hotItemList: res
         })
       } else if (positionType === this.data.positionType.NEW) {
         this.setData({
-          newItemList: res.list
+          newItemList: res
         })
       } else if (positionType === this.data.positionType.NORMAL) {
         this.setData({
-          normalItemList: res.list
+          normalItemList: res
         })
       }
     })
