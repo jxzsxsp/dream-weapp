@@ -7,15 +7,8 @@
             <text style="font-size:30rpx;color:#000;line-height: 90rpx;">￥</text>
             <text class='money_num' style="font-size:60rpx;text-align:center;color:#000;line-height: 90rpx;">{{filter.toFix(balance,2)}}</text>
         </view>
-
-
-
         <!-- <navigator url='/pages/rebate/rebate' style='font-size:16px;color:#000;text-align:center;line-height:60rpx;border-radius:20rpx;width:300rpx;height:60rpx;margin-left:150rpx;background-image:linear-gradient(-90deg,#ff1b1a,#ff5622);color:#fff'>自购返利详情</navigator> -->
     </view>
-
-
-
-
     <!-- <view class='wallet_bottom' wx:if="{{BalanceList.length!=0 && isBalance}}">
         <block wx:for="{{BalanceList}}">
             <view class='list'>
