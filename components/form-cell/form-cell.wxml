@@ -4,7 +4,7 @@
     <view class="right-container">
       <slot name="right"></slot>
     </view>
-    <image class="detail-image" src="./assets/detail.png" wx:if="{{hasDetail}}"/>
+    <view wx:if="{{hasDetail}}" class='iconfont icon-jinru icon'></view>
   </view>
   <view class="seperator" wx:if="{{!isLast}}"/>
 </view>

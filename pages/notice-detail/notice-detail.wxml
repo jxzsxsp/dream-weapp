@@ -1,29 +1,29 @@
 <view class='head flex'>
   <view class="head-avatar flex {{true ? 'miyang' : 'seka'}}">
-    <image wx:if="{{false}}" src='{{notice.avatar}}'></image>
-    <view wx:if="{{true}}" class='iconfont icon-miyang avatar-icon'></view>
-    <view wx:if="{{false}}" class='iconfont icon-color_card avatar-icon'></view>
+    <image wx:if="{{bizType === 20 && notice.messageType === 90 && notice.shopLogo}}" src='{{notice.shopLogo}}'></image>
+    <view wx:if="{{notice.messageType === 20}}" class='iconfont icon-miyang avatar-icon'></view>
+    <view wx:if="{{notice.messageType === 10}}" class='iconfont icon-color_card avatar-icon'></view>
   </view>
   <view class='head-content flex-column'>
     <text class='head-title'>{{notice.messageTitle}}</text>
-    <text class='head-time'>{{notice.creatTime}}</text>
+    <text class='head-time'>{{notice.createTime}}</text>
   </view>
 </view>
 
 <view class='content'>
-  <!-- <view class='desc'>您关注的店铺 <text class='desc-shop-name'>一万纺织</text> 上新了</view> -->
-  <!-- <view class='desc'><text class='desc-shop-name'>一万纺织</text> <text class='sended'>已发货</text></view> -->
-  <!-- <view class='desc'><text class='desc-shop-name'>一万纺织</text> <text class='disagree'>已拒绝 </text> 您的拿色卡请求</view> -->
-  <view class='desc'><text class='desc-shop-name'>一万纺织</text> <text class='agree'>已同意 </text> 您的拿色卡请求</view>
+  <view wx:if="{{bizType === 20 && notice.messageType === 90}}" class='desc'>您关注的店铺 <text class='desc-shop-name'>{{notice.shopName}}</text> 上新了</view>
+  <view wx:if="{{bizType === 10 && notice.tradeStatus === 40}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='sended'>已发货</text></view>
+  <view wx:if="{{bizType === 10 && notice.tradeStatus === 30}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='disagree'>已拒绝 </text> 您的拿色卡请求</view>
+  <view wx:if="{{bizType === 10 && notice.tradeStatus === 20}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='agree'>已同意 </text> 您的拿色卡请求</view>
   <view class='shop-info flex'>
     <view class='shop-avatar'>
-      <image src='{{notice.avatar}}'></image>
+      <image wx:if="{{notice.shopLogo}}" src='{{notice.shopLogo}}'></image>
     </view>
     <view class='info-content flex-column'>
-      <text class='shop-name'>{{notice.customerName}}</text>
-      <text class='shop-mobile'>{{notice.mobile}}</text>
+      <text class='shop-name'>{{notice.shopName}}</text>
+      <text class='shop-mobile'>{{notice.shopMobile}}</text>
     </view>
-    <view class='iconfont icon-call call-icon'></view>
+    <view class='iconfont icon-call call-icon' bindtap='callPhone'></view>
   </view>
   <view class='line'></view>
 
@@ -32,7 +32,7 @@
       <text>商品名</text>
       <text>：</text>
     </view>
-    <text class='item-content'>{{notice.itemTitle}}</text>
+    <text wx:if="{{notice.itemTitle}}" class='item-content'>{{notice.itemTitle}}</text>
   </view>
   <view class='line'></view>
   
@@ -41,7 +41,7 @@
       <text>货号</text>
       <text>：</text>
     </view>
-    <text class='item-content'>{{notice.itemCode}}</text>
+    <text wx:if="{{notice.itemCode}}" class='item-content'>{{notice.itemCode}}</text>
   </view>
   <view class='line'></view>
   
@@ -50,7 +50,7 @@
       <text>品名</text>
       <text>：</text>
     </view>
-    <text class='item-content'>{{notice.productName}}</text>
+    <text wx:if="{{notice.productName}}" class='item-content'>{{notice.productName}}</text>
   </view>
   <view class='line'></view>
   
@@ -59,7 +59,7 @@
       <text>商品图</text>
       <text>：</text>
     </view>
-    <view class='item-content-img'>
+    <view class='item-content-img' bindtap='gotoItemDetail'>
       <image src='{{notice.imageUrl}}'></image>
     </view>
   </view>
@@ -67,16 +67,16 @@
   
 </view>
 
-<!-- <view class='disagree-container flex-column'>
+<view wx:if="{{bizType === 10 && notice.tradeStatus === 30}}" class='disagree-container flex-column'>
   <text class='disagree-title'>拒绝理由：</text>
-  <text class='disagree-content'>过年期间不发货，等过完年再来吧！</text>
-</view> -->
-
-<view class='logistics-container flex'>
-  <text class='logistics-title'>物流单号：</text>
-  <text class='logistics-no'>668 929 882 001</text>
+  <text wx:if="{{notice.remark}}" class='disagree-content'>{{notice.remark}}</text>
 </view>
 
-<view class='confirm-received flex'>
+<view wx:if="{{notice.logisticsSn}}" class='logistics-container flex'>
+  <text class='logistics-title'>物流单号：</text>
+  <text class='logistics-no'>{{notice.logisticsSn}}</text>
+</view>
+
+<view wx:if="{{bizType === 10 && tradeStatus === 40}}" class='confirm-received flex'>
   <text>确认收货</text>
 </view>

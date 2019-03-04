@@ -47,7 +47,7 @@ const lifecycle = {
         isFollow: res.isFollow,
       })
       $wx.setNavigationBarTitle({
-        title: res.shopName,
+        title: '',
       })
     })
 
@@ -57,11 +57,16 @@ const lifecycle = {
   },
   onPageScroll: function(d) {
     let navFixed = false
+    let title = ''
     if (d.scrollTop > 99) {
       navFixed = true
+      title = this.data.shopInfo.shopName
     }
     this.setData({
       navFixed: navFixed
+    })
+    $wx.setNavigationBarTitle({
+      title: title,
     })
   },
   onReachBottom: function () {
@@ -83,6 +88,11 @@ const lifecycle = {
       })
     }
 
+  },
+  onShareAppMessage: function () {
+    return {
+      title: this.data.shopInfo.shopName
+    }
   },
 }
 

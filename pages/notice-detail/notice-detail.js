@@ -6,6 +6,8 @@ const props = {
 
 const data = {
   id: 0,
+  bizId: 0,
+  bizType: 0,
   notice: {}
 }
 
@@ -13,7 +15,8 @@ const lifecycle = {
   onLoad: function (query) {
     this.setData({
       bizType: query.bizType,
-      bizId: query.bizId
+      bizId: query.bizId,
+      id: query.id,
     })
   },
   onShow: function () {
@@ -26,20 +29,36 @@ const privateMethods = {
     http.get(urls.messageDetail, {
       // mock: true,
       bizType: this.data.bizType,
-      bizId: this.data.bizId
+      bizId: this.data.bizId,
+      id: this.data.id,
     }).then(res => {
       this.setData({
-        notice: res
+        notice: res,
+        tradeStatus: res.tradeStatus,
       })
     })
   },
 }
 
 const viewAction = {
-  confirmReceived: function (d, v) {
+  callPhone: function() {
+    $wx.makePhoneCall({
+      phoneNumber: this.data.notice.shopMobile,
+    })
+  },
+  confirmReceived: function () {
     http.get(urls.confirmReceived, {
       // mock: true,
-      tradeId: v.id,
+      tradeId: this.data.notice.tradeId,
+    }).then(res => {
+      this.setData({
+        tradeStatus: 50
+      })
+    })
+  },
+  gotoItemDetail: function() {
+    $wx.navigateTo($wx.router.itemDetail, {
+      itemId: this.data.notice.itemId,
     })
   }
 }

@@ -65,9 +65,15 @@ const privateMethods = {
 
 const viewAction = {
   showDetail: function (d, v) {
-    $wx.navigateTo($wx.router.noticeDetail, {
-      bizType: d.type,
-      bizId: d.id
+    http.post(urls.setRead, {
+      // mock: true,
+      id: d.id,
+    }).then(res => {
+      $wx.navigateTo($wx.router.noticeDetail, {
+        bizType: d.biz_type,
+        bizId: d.biz_id,
+        id: d.id,
+      })
     })
   }
 }

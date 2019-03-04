@@ -24,10 +24,12 @@
     </view>
 
     <view class='content'>
-      <text class='item-title'>{{title}}</text>
-      <text class='item-code'>{{trade.itemCode}}</text>
-      <text wx:if="{{trade.productName}}" class='product-name'>{{trade.productName}}</text>
-      <text class='time'>{{trade.createTime}}</text>
+      <view class='item-title'>{{title}}</view>
+      <view class='item-code'>{{trade.itemCode}}</view>
+      <view wx:if="{{trade.productName}}" class='product-name'>
+        <text>{{trade.productName}}</text>
+      </view>
+      <view class='time'>{{trade.createTime}}</view>
     </view>
   </view>
 
@@ -37,3 +39,17 @@
     <view class='confirm-receive flex'>确认收货</view>
   </view>
 </view>
+
+<van-popup
+  show="{{ showReason }}"
+  position="center"
+  bind:close="showReason"
+>
+  <view class='reason-container'>
+    <view class='reason-title'>拒绝原因</view>
+    <view class='reason-line'></view>
+    <view class='reason-content'>{{trade.remark}}</view>
+    <view class='reason-line'></view>
+    <view class='reason-btn' bindtap='showReason'>确定</view>
+  </view>
+</van-popup>

@@ -87,11 +87,16 @@ const privateMethods = {
     })
   },
   show: function(v) {
-    v.showDetail = !v.showDetail
-    this.flushShopList(v)
-    if (v.showDetail) {
-      this.bindCustomer(v.id)
-    }
+    // v.showDetail = !v.showDetail
+    // this.flushShopList(v)
+    // if (v.showDetail) {
+    //   this.bindCustomer(v.id)
+    // }
+    this.bindCustomer(v.id).then(res => {
+      $wx.navigateTo($wx.router.shop, {
+        shopId: v.id,
+      })
+    })
   }
 }
 

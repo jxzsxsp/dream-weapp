@@ -12,6 +12,7 @@ Component({
    */
   data: {
     title: '',
+    showReason: false,
   },
 
   /**
@@ -24,11 +25,14 @@ Component({
         { bubbles: true, composed: true });
     },
     showReason: function() {
-      wx.showModal({
-        title: '拒绝原因',
-        content: this.properties.trade.remark,
-        showCancel: false,
-        confirmColor: '#0156fe',
+      // wx.showModal({
+      //   title: '拒绝原因',
+      //   content: this.properties.trade.remark,
+      //   showCancel: false,
+      //   confirmColor: '#0156fe',
+      // })
+      this.setData({
+        showReason: !this.data.showReason,
       })
     },
   },

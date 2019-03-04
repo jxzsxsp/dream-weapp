@@ -50,7 +50,7 @@ const privateMethods = {
 const viewAction = {
   showDetail: function (d, v) {
     $wx.navigateTo($wx.router.itemDetail, {
-      id: d.id
+      itemId: d.id
     })
   }
 }

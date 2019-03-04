@@ -36,7 +36,7 @@ page {
 .placeholder {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
-  color: #9B9B9B;
+  color: #868686;
   letter-spacing: 0;
   text-align: right;
 }

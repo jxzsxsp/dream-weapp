@@ -15,103 +15,77 @@ const data = {
   yangkaType: 1, //订单类型 1.色卡，2.米样，3.大货
   miyangType: 2,
   currentTabType: 1,
-  unreportList: [],
-  agreeList: [],
-  disagreeList: [],
-  receivedList: [],
-  unreportLoadingState: http.defaultLoadingState(),
-  agreeLoadingState: http.defaultLoadingState(),
-  disagreeLoadingState: http.defaultLoadingState(),
-  receivedLoadingState: http.defaultLoadingState(),
+  allData: {
+    "10": {
+      list: [],
+      loadingState: http.defaultLoadingState(),
+      show: false,
+    },
+    "20": {
+      list: [],
+      loadingState: http.defaultLoadingState(),
+      show: false,
+    },
+    "30": {
+      list: [],
+      loadingState: http.defaultLoadingState(),
+      show: false,
+    },
+    "50": {
+      list: [],
+      loadingState: http.defaultLoadingState(),
+      show: false,
+    },
+  },
 }
 
 const lifecycle = {
   onLoad: function (query) {
   },
   onShow: function() {
-    this.refresh()
   }
 }
 
 const privateMethods = {
   loadMore: function (d, v) {
-    if (d.detail === this.data.status.unreport) {
-      let unreportList = this.data.unreportList
-      this.getApplyList(this.data.status.unreport, this.data.unreportLoadingState).then(res => {
-        this.setData({
-          unreportList: unreportList.concat(res),
-          unreportLoadingState: this.data.unreportLoadingState
-        })
+    let list = this.data.allData[d.detail].list
+    let loadingState = this.data.allData[d.detail].loadingState
+    this.getApplyList(d.detail, loadingState).then(res => {
+      let allData = this.data.allData
+      allData[d.detail].list = list.concat(res)
+      allData[d.detail].loadingState = loadingState
+      this.setData({
+        allData: allData
       })
-    } else if (d.detail === this.data.status.agree) {
-      let agreeList = this.data.agreeList
-      this.getApplyList(this.data.status.agree, this.data.agreeLoadingState).then(res => {
-        this.setData({
-          agreeList: agreeList.concat(res),
-          agreeLoadingState: this.data.agreeLoadingState
-        })
-      })
-    } if (d.detail === this.data.status.disagree) {
-      let disagreeList = this.data.disagreeList
-      this.getApplyList(this.data.status.disagree, this.data.disagreeLoadingState).then(res => {
-        this.setData({
-          disagreeList: disagreeList.concat(res),
-          disagreeLoadingState: this.data.disagreeLoadingState
-        })
-      })
-    } if (d.detail === this.data.status.received) {
-      let receivedList = this.data.receivedList
-      this.getApplyList(this.data.status.received, this.data.receivedLoadingState).then(res => {
-        this.setData({
-          receivedList: receivedList.concat(res),
-          receivedLoadingState: this.data.receivedLoadingState
-        })
-      })
-    }
+    })
   },
   getApplyList: function (status, loadingState) {
     return http.postList(urls.applyList, loadingState, {
-      // mock: true,
+      mock: true,
       tradeType: this.data.currentTabType,
       status: status,
     })
   },
-  refresh: function () {
-    this.setData({
-      unreportLoadingState: http.defaultLoadingState(),
-      agreeLoadingState: http.defaultLoadingState(),
-      disagreeLoadingState: http.defaultLoadingState(),
-      receivedLoadingState: http.defaultLoadingState(),
-    }, function () {
-      this.getApplyList(this.data.status.unreport, this.data.unreportLoadingState).then(res => {
+  showList: function (d, v) {
+    let show = !this.data.allData[d.detail].show
+    if (show) {
+      let loadingState = http.defaultLoadingState()
+      this.getApplyList(d.detail, loadingState).then(res => {
+        let allData = this.data.allData
+        allData[d.detail].list = res
+        allData[d.detail].show = show
+        allData[d.detail].loadingState = loadingState
         this.setData({
-          unreportList: res,
-          unreportLoadingState: this.data.unreportLoadingState
+          allData: allData
         })
       })
-
-      this.getApplyList(this.data.status.agree, this.data.agreeLoadingState).then(res => {
-        this.setData({
-          agreeList: res,
-          agreeLoadingState: this.data.agreeLoadingState
-        })
+    } else {
+      let allData = this.data.allData
+      allData[d.detail].show = show
+      this.setData({
+        allData: allData
       })
-
-      this.getApplyList(this.data.status.disagree, this.data.disagreeLoadingState).then(res => {
-        this.setData({
-          disagreeList: res,
-          disagreeLoadingState: this.data.disagreeLoadingState
-        })
-      })
-
-      this.getApplyList(this.data.status.received, this.data.receivedLoadingState).then(res => {
-        this.setData({
-          receivedList: res,
-          receivedLoadingState: this.data.receivedLoadingState
-        })
-      })
-    })
-    
+    }
   },
 }
 

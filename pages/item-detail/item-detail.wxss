@@ -58,12 +58,13 @@ swiper {
   height: 100rpx;
   margin-top: 5rpx;
   border-bottom: 1px solid #EEEEF1;
-  justify-content: center;
   align-items: center;
 }
 
 .price-type {
+  align-items: center;
   width: 335rpx;
+  margin-left: 32rpx;
 }
 
 .item-title {
@@ -81,9 +82,15 @@ swiper {
 }
 
 .price {
+  height: 56rpx;
+  align-items: flex-end;
   font-family: PTMono-Bold;
   font-size: 24rpx;
   color: #4a90e2;
+}
+
+.block-price {
+  font-size: 40rpx;
 }
 
 .property-container {

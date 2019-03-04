@@ -117,7 +117,13 @@
 }
 
 .product-name {
-  width: 120rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+}
+
+.product-name text {
+  min-width: 80rpx;
   height: 30rpx;
   border: 1px solid #0156FE;
   border-radius: 21px;
@@ -129,7 +135,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 10rpx;
+  padding: 0 10rpx;
 }
 
 .time {
@@ -179,4 +185,56 @@
   letter-spacing: 1.21rpx;
   margin-left: 100rpx;
   margin-top: 8rpx;
+}
+
+.reason-container {
+  width: 686rpx;
+  height: 484rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 10rpx 0 rgba(0,0,0,0.15);
+  border-radius: 26rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reason-title {
+  width: 686rpx;
+  height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #000000;
+  letter-spacing: 1.13rpx;
+}
+
+.reason-content {
+  width: 686rpx;
+  height: 252rpx;
+  padding: 24rpx 32rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  letter-spacing: 1.05rpx;
+}
+
+.reason-btn {
+  width: 686rpx;
+  height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #0156FE;
+  letter-spacing: 1.27rpx;
+}
+
+.reason-line {
+  height: 1px;
+  background: #D8D8D8;
 }

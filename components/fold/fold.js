@@ -11,6 +11,10 @@ Component({
     show: {
       type: Boolean,
       value: false
+    },
+    status: {
+      type: Number,
+      value: 0
     }
   },
 
@@ -28,6 +32,11 @@ Component({
       this.setData({
         show: !this.data.show
       })
-    }
+    },
+    onShow: function onShow() {
+      this.triggerEvent('show',
+        this.properties.status,
+        { bubbles: true, composed: true });
+    },
   }
 })

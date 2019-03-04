@@ -87,8 +87,11 @@ const viewAction = {
   },
 
   showDetail: function (d, v) {
-    v.showDetail = !v.showDetail
-    this.flushShopList(v)
+    // v.showDetail = !v.showDetail
+    // this.flushShopList(v)
+    $wx.navigateTo($wx.router.shop, {
+      shopId: v.id,
+    })
   },
 }
 

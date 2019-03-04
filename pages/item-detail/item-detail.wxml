@@ -28,19 +28,29 @@
   <view class='price-type flex'>
     <view class='item-title'>大货价格</view>
     <block wx:if="{{itemDetail.itemPriceInfo.isNegotiateLargeCargoPrice === 1}}">
-    <view class='price'>面议</view>
+    <view class='price flex'>
+      <text class='block-price'>面议</text>
+    </view>
     </block>
     <block wx:else>
-    <view class='price'>{{itemDetail.itemPriceInfo.largeCargoPrice}}{{itemDetail.itemPriceInfo.largeCargoPriceUnitName}}/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</view>
+    <view class='price flex'>
+      <text class='block-price'>￥{{itemDetail.itemPriceInfo.largeCargoPrice}}</text>
+      <text>/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</text>
+    </view>
     </block>
   </view>
   <view class='price-type flex'>
     <view class='item-title'>样布价格</view>
     <block wx:if="{{itemDetail.itemPriceInfo.isNegotiateSwatchPrice === 1}}">
-    <view class='price'>面议</view>
+    <view class='price flex'>
+      <text class='block-price'>面议</text>
+    </view>
     </block>
     <block wx:else>
-    <view class='price'>{{itemDetail.itemPriceInfo.swatchPrice}}{{itemDetail.itemPriceInfo.swatchPriceUnitName}}/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</view>
+    <view class='price flex'>
+      <text class='block-price'>￥{{itemDetail.itemPriceInfo.swatchPrice}}</text>
+      <text>/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</text>
+    </view>
     </block>
   </view>
 </view>
@@ -70,14 +80,14 @@
   <view class='iconfont icon-jinru jinru'></view>
 </view>
 
-<view>
+<view wx:if="{{itemDetail.detailImageUrlList && itemDetail.detailImageUrlList.length > 0}}">
   <view class='desc-title flex'>图文详情</view>
   <block wx:for="{{itemDetail.detailImageUrlList}}" wx:key="index">
     <image class='detail-img' src='{{item}}' mode='widthFix'></image>
   </block>
 </view>
 
-<view>
+<view wx:if="{{itemDetail.sampleImageUrlList && itemDetail.sampleImageUrlList.length > 0}}">
   <view class='desc-title flex'>细节图</view>
   <block wx:for="{{itemDetail.sampleImageUrlList}}" wx:key="index">
     <image class='detail-img' src='{{item}}' mode='widthFix'></image>

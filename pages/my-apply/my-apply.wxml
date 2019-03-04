@@ -11,41 +11,61 @@
 
 <view class='content'>
   <view wx:if="{{currentTabType === yangkaType}}">
-    <fold title="未回复">
+    <fold
+      title="待回复"
+      show="{{allData[status.unreport].show}}"
+      status="{{status.unreport}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.unreport}}"
-        hasMore="{{unreportLoadingState.hasMore}}"
-        list="{{unreportList}}"
+        hasMore="{{allData[status.unreport].loadingState.hasMore}}"
+        list="{{allData[status.unreport].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
     </fold>
 
-    <fold title="已同意">
+    <fold
+      title="已同意"
+      show="{{allData[status.agree].show}}"
+      status="{{status.agree}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.agree}}"
-        hasMore="{{agreeLoadingState.hasMore}}"
-        list="{{agreeList}}"
+        hasMore="{{allData[status.agree].loadingState.hasMore}}"
+        list="{{allData[status.agree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
     </fold>
 
-    <fold title="已拒绝">
+    <fold
+      title="已拒绝"
+      show="{{allData[status.disagree].show}}"
+      status="{{status.disagree}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.disagree}}"
-        hasMore="{{disagreeLoadingState.hasMore}}"
-        list="{{disagreeList}}"
+        hasMore="{{allData[status.disagree].loadingState.hasMore}}"
+        list="{{allData[status.disagree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
     </fold>
 
-    <fold title="已收货">
+    <fold
+      title="已收货"
+      show="{{allData[status.received].show}}"
+      status="{{status.received}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.received}}"
-        hasMore="{{receivedLoadingState.hasMore}}"
-        list="{{receivedList}}"
+        hasMore="{{allData[status.received].loadingState.hasMore}}"
+        list="{{allData[status.received].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
@@ -53,41 +73,61 @@
   </view>
 
   <view wx:if="{{currentTabType === miyangType}}">
-    <fold title="未回复">
+    <fold
+      title="待回复"
+      show="{{allData[status.unreport].show}}"
+      status="{{status.unreport}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.unreport}}"
-        hasMore="{{unreportLoadingState.hasMore}}"
-        list="{{unreportList}}"
+        hasMore="{{allData[status.unreport].loadingState.hasMore}}"
+        list="{{allData[status.unreport].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
     </fold>
 
-    <fold title="已同意">
+    <fold
+      title="已同意"
+      show="{{allData[status.agree].show}}"
+      status="{{status.agree}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.agree}}"
-        hasMore="{{agreeLoadingState.hasMore}}"
-        list="{{agreeList}}"
+        hasMore="{{allData[status.agree].loadingState.hasMore}}"
+        list="{{allData[status.agree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
     </fold>
 
-    <fold title="已拒绝">
+    <fold
+      title="已拒绝"
+      show="{{allData[status.disagree].show}}"
+      status="{{status.disagree}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.disagree}}"
-        hasMore="{{disagreeLoadingState.hasMore}}"
-        list="{{disagreeList}}"
+        hasMore="{{allData[status.disagree].loadingState.hasMore}}"
+        list="{{allData[status.disagree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />
     </fold>
 
-    <fold title="已收货">
+    <fold
+      title="已收货"
+      show="{{allData[status.received].show}}"
+      status="{{status.received}}"
+      bind:show="showList"
+    >
       <apply-item-list
         status="{{status.received}}"
-        hasMore="{{receivedLoadingState.hasMore}}"
-        list="{{receivedList}}"
+        hasMore="{{allData[status.received].loadingState.hasMore}}"
+        list="{{allData[status.received].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
       />

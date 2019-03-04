@@ -78,7 +78,7 @@ const viewAction = {
       // mock: true,
       ...param
     }).then(() => {
-      $wx.navigateBack()
+      $wx.navigateBack(1, {}, '成功', 'success')
     })
   }
 }
@@ -92,7 +92,6 @@ const privateMethods = {
       && this.isNotEmpty(this.data.consigneeMobile)
       && this.isNotEmpty(this.data.region)
       && this.isNotEmpty(this.data.address)
-      && this.isNotEmpty(this.data.remark)
     this.setData({
       canSubmit: canSubmit
     })

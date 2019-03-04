@@ -1,5 +1,5 @@
 <view class='container'>
-  <view class='head' bindtap="toggleContent">
+  <view class='head' bindtap="onShow">
     <view class="iconfont icon-sanjiao icon {{show ? 'show' : ''}}"></view>
     <text class='title'>{{title}}</text>
   </view>
