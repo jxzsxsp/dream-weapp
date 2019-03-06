@@ -1,5 +1,5 @@
 <view class='head flex'>
-  <view class="head-avatar flex {{true ? 'miyang' : 'seka'}}">
+  <view class="head-avatar flex {{notice.messageType === 20 ? 'miyang' : notice.messageType === 10 ? 'seka' : ''}}">
     <image wx:if="{{bizType === 20 && notice.messageType === 90 && notice.shopLogo}}" src='{{notice.shopLogo}}'></image>
     <view wx:if="{{notice.messageType === 20}}" class='iconfont icon-miyang avatar-icon'></view>
     <view wx:if="{{notice.messageType === 10}}" class='iconfont icon-color_card avatar-icon'></view>
@@ -12,9 +12,9 @@
 
 <view class='content'>
   <view wx:if="{{bizType === 20 && notice.messageType === 90}}" class='desc'>您关注的店铺 <text class='desc-shop-name'>{{notice.shopName}}</text> 上新了</view>
-  <view wx:if="{{bizType === 10 && notice.tradeStatus === 40}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='sended'>已发货</text></view>
-  <view wx:if="{{bizType === 10 && notice.tradeStatus === 30}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='disagree'>已拒绝 </text> 您的拿色卡请求</view>
-  <view wx:if="{{bizType === 10 && notice.tradeStatus === 20}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='agree'>已同意 </text> 您的拿色卡请求</view>
+  <view wx:if="{{bizType === 10 && tradeStatus === 40}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='sended'>已发货</text></view>
+  <view wx:if="{{bizType === 10 && tradeStatus === 30}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='disagree'>已拒绝 </text> 您的{{notice.messageType === 10 ? '拿色卡' : '剪米样'}}请求</view>
+  <view wx:if="{{bizType === 10 && tradeStatus === 20}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='agree'>已同意 </text> 您的{{notice.messageType === 10 ? '拿色卡' : '剪米样'}}请求</view>
   <view class='shop-info flex'>
     <view class='shop-avatar'>
       <image wx:if="{{notice.shopLogo}}" src='{{notice.shopLogo}}'></image>
@@ -60,16 +60,16 @@
       <text>：</text>
     </view>
     <view class='item-content-img' bindtap='gotoItemDetail'>
-      <image src='{{notice.imageUrl}}'></image>
+      <image mode='scaleToFill' src='{{notice.imageUrl}}'></image>
     </view>
   </view>
   <view class='line'></view>
   
 </view>
 
-<view wx:if="{{bizType === 10 && notice.tradeStatus === 30}}" class='disagree-container flex-column'>
+<view wx:if="{{bizType === 10 && tradeStatus === 30}}" class='disagree-container flex-column'>
   <text class='disagree-title'>拒绝理由：</text>
-  <text wx:if="{{notice.remark}}" class='disagree-content'>{{notice.remark}}</text>
+  <text wx:if="{{notice.refuseRemark}}" class='disagree-content'>{{notice.refuseRemark}}</text>
 </view>
 
 <view wx:if="{{notice.logisticsSn}}" class='logistics-container flex'>
@@ -77,6 +77,10 @@
   <text class='logistics-no'>{{notice.logisticsSn}}</text>
 </view>
 
-<view wx:if="{{bizType === 10 && tradeStatus === 40}}" class='confirm-received flex'>
+<view wx:if="{{bizType === 10 && tradeStatus === 40 && needOperator}}" class='confirm-received flex' bindtap='confirmReceived'>
   <text>确认收货</text>
+</view>
+
+<view wx:if="{{bizType === 10 && tradeStatus === 40 && !needOperator}}" class='confirm-received received flex'>
+  <text>已收货</text>
 </view>

@@ -28,6 +28,8 @@ const lifeCycle = {
       itemId: query.itemId,
       type: query.type,
     })
+
+    this.getLatestLogistics()
   }
 }
 
@@ -96,6 +98,19 @@ const privateMethods = {
       canSubmit: canSubmit
     })
   },
+  getLatestLogistics: function() {
+    http.get(urls.getLatestLogistics, {
+      // mock: true,
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        ...res.consigneeInfo,
+        region: [res.consigneeInfo.provinceName, res.consigneeInfo.cityName, res.consigneeInfo.areaName]
+      }, function() {
+        this.checkCanSubmit()
+      })
+    })
+  }
 }
 
 $Page.register(props, data, lifeCycle, privateMethods, viewAction)

@@ -1,4 +1,5 @@
 <block wx:if="{{noticeList && noticeList.length > 0}}">
+  <wxs src="../../utils/tools.wxs" module="tools" />
   <block wx:for="{{noticeList}}" wx:key="index">
     <view class='item flex' data-id='{{item.id}}' data-biz_id='{{item.bizId}}' data-biz_type='{{item.bizType}}' bindtap="showDetail">
       <view class="avatar flex {{item.messageType === 20 ? 'miyang' : item.messageType === 10 ? 'seka' : ''}}">
@@ -14,8 +15,8 @@
         </view>
         <text class='shop-name'>店铺名：{{item.shopName}}</text>
         <view class='item-content flex'>
-          <view class='item-code'>货号：{{item.itemCode}}</view>
-          <view class='item-name'>名称：{{item.itemTitle}}</view>
+          <view class='item-code'>货号：{{tools.subStr(item.itemCode, 6)}}</view>
+          <view class='item-name'>名称：{{tools.subStr(item.itemTitle, 8)}}</view>
           <view class='time'>{{item.createTime}}</view>
         </view>
       </view>

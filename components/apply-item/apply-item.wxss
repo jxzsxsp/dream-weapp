@@ -166,6 +166,7 @@
 }
 
 .logistics-sn {
+  width: 300rpx;
   font-family: PingFangSC-Medium;
   font-size: 24rpx;
   color: #616161;
@@ -183,7 +184,6 @@
   font-size: 28rpx;
   color: #FFFFFF;
   letter-spacing: 1.21rpx;
-  margin-left: 100rpx;
   margin-top: 8rpx;
 }
 

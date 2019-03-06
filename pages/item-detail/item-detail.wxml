@@ -7,10 +7,19 @@
   indicator-active-color="#5283c0"
   circular="{{true}}"
 >
-  <block wx:for="{{itemDetail.imageUrlList}}" wx:key="index">
+  <block wx:if="{{itemDetail.imageUrlList && itemDetail.imageUrlList.length > 0}}">
+    <block wx:for="{{itemDetail.imageUrlList}}" wx:key="index">
+      <swiper-item>
+        <view class='swiper-container'>
+          <image mode='scaleToFill' src="{{item}}"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </block>
+  <block wx:else>
     <swiper-item>
       <view class='swiper-container'>
-        <image mode='aspectFit' src="{{item}}"></image>
+        <image mode='scaleToFill' src="/assets/default_item.png"></image>
       </view>
     </swiper-item>
   </block>
@@ -24,32 +33,37 @@
   </view>
 </view>
 
-<view class='price-container flex'>
+<view class='price-container flex-column'>
+  <wxs src="../../utils/tools.wxs" module="tools" />
   <view class='price-type flex'>
-    <view class='item-title'>大货价格</view>
+    <view class='item-title'>大货参考价</view>
     <block wx:if="{{itemDetail.itemPriceInfo.isNegotiateLargeCargoPrice === 1}}">
     <view class='price flex'>
       <text class='block-price'>面议</text>
     </view>
     </block>
     <block wx:else>
-    <view class='price flex'>
-      <text class='block-price'>￥{{itemDetail.itemPriceInfo.largeCargoPrice}}</text>
-      <text>/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</text>
+    <view wx:if="{{itemDetail.itemPriceInfo.largeCargoPrice}}" class='price flex'>
+      <text class='small-word'>￥</text>
+      <text>{{tools.seperatePrice(itemDetail.itemPriceInfo.largeCargoPrice).first}}</text>
+      <text class='small-word'>{{tools.seperatePrice(itemDetail.itemPriceInfo.largeCargoPrice).second}}</text>
+      <text class='small-word'>/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</text>
     </view>
     </block>
   </view>
   <view class='price-type flex'>
-    <view class='item-title'>样布价格</view>
+    <view class='item-title'>样布参考价</view>
     <block wx:if="{{itemDetail.itemPriceInfo.isNegotiateSwatchPrice === 1}}">
     <view class='price flex'>
       <text class='block-price'>面议</text>
     </view>
     </block>
     <block wx:else>
-    <view class='price flex'>
-      <text class='block-price'>￥{{itemDetail.itemPriceInfo.swatchPrice}}</text>
-      <text>/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</text>
+    <view wx:if="{{itemDetail.itemPriceInfo.largeCargoPrice}}" class='price flex'>
+      <text class='small-word'>￥</text>
+      <text>{{tools.seperatePrice(itemDetail.itemPriceInfo.swatchPrice).first}}</text>
+      <text class='small-word'>{{tools.seperatePrice(itemDetail.itemPriceInfo.swatchPrice).second}}</text>
+      <text class='small-word'>/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</text>
     </view>
     </block>
   </view>
@@ -68,9 +82,9 @@
   </block>
 </view>
 
-<view class='shop-container flex' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShopHome'>
+<view class='shop-container flex' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShopItem'>
   <view class='shop-avatar'>
-    <image src='{{itemDetail.shopInfo.logo}}'></image>
+    <image src="{{itemDetail.shopInfo.logo ? itemDetail.shopInfo.logo : '/assets/default_shop_logo.png'}}"></image>
   </view>
 
   <view class='shop-name'>
@@ -81,14 +95,14 @@
 </view>
 
 <view wx:if="{{itemDetail.detailImageUrlList && itemDetail.detailImageUrlList.length > 0}}">
-  <view class='desc-title flex'>图文详情</view>
+  <view class='desc-title flex'>细节图</view>
   <block wx:for="{{itemDetail.detailImageUrlList}}" wx:key="index">
     <image class='detail-img' src='{{item}}' mode='widthFix'></image>
   </block>
 </view>
 
 <view wx:if="{{itemDetail.sampleImageUrlList && itemDetail.sampleImageUrlList.length > 0}}">
-  <view class='desc-title flex'>细节图</view>
+  <view class='desc-title flex'>样衣图</view>
   <block wx:for="{{itemDetail.sampleImageUrlList}}" wx:key="index">
     <image class='detail-img' src='{{item}}' mode='widthFix'></image>
   </block>
@@ -97,7 +111,7 @@
 <view class='bottom-space'></view>
 
 <view class='bottom-container flex'>
-  <view class='icon-btn flex-column' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShopInfo'>
+  <view class='icon-btn flex-column' data-shop_id='{{itemDetail.shopInfo.id}}' bindtap='gotoShopHome'>
     <view class='iconfont icon-inter_shop common-icon'></view>
     <text>店铺</text>
   </view>
@@ -111,7 +125,9 @@
   </view>
 
   <view class='buy-btns flex'>
-    <view class='common-btn seka-btn flex' data-type='1' bindtap='buySubmit'>拿色卡</view>
-    <view class='common-btn miyang-btn flex' data-type='2' bindtap='buySubmit'>剪米样</view>
+      <view wx:if="{{itemDetail.status === 20}}" class='common-btn seka-btn flex' data-type='1' bindtap='buySubmit'>拿色卡</view>
+      <view wx:if="{{itemDetail.status === 20}}" class='common-btn miyang-btn flex' data-type='2' bindtap='buySubmit'>剪米样</view>
+
+    <view wx:if="{{itemDetail.status !== 20}}" class='off-line flex'>该商品暂未上架</view>
   </view>
 </view>

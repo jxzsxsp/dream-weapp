@@ -1,0 +1,32 @@
+var seperateStr = function (item, label) {
+  var index = item.indexOf(label)
+  var first = item.substring(0, index)
+  var second = item.substring(index, index + label.length)
+  var third = item.substring(index + label.length, item.length)
+  return {first, second ,third};
+}
+
+var subStr = function (str, length) {
+  if (!!str && str.length > length) {
+    str = str.substring(0, length) + "..."
+  }
+  return str
+}
+
+var arrayToStr = function (arr) {
+  return arr.join(',')
+}
+var seperatePrice = function (price) {
+  price = price.toString()
+  var index = price.indexOf('.')
+  var first = index === -1 ? price : price.substring(0, index)
+  var second = index === -1 ? '' : price.substring(index)
+  return { first, second };
+}
+
+module.exports = {
+  seperateStr: seperateStr,
+  arrayToStr: arrayToStr,
+  subStr: subStr,
+  seperatePrice: seperatePrice,
+};

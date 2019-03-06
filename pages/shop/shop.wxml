@@ -1,18 +1,18 @@
 <view class='back-container'>
-  <view class='shop-container flex'>
+  <view class='shop-container flex' catchtap='gotoShopInfo'>
     <view class='shop-avatar'>
-      <image src='{{shopInfo.logoUrl}}'></image>
+      <image mode='scaleToFill' src="{{shopInfo.logoUrl ? shopInfo.logoUrl : '/assets/default_shop_logo.png'}}"></image>
     </view>
 
     <view class='content-container flex-column'>
       <text class='shop-name'>{{shopInfo.shopName}}</text>
       <text class='item-num'>在售商品 {{shopInfo.itemCountOnSales}}件</text>
 
-      <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' bindtap='followShop'>
+      <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
         <view class='iconfont icon-aixing'></view>
         <text>关注</text>
       </view>
-      <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' bindtap='followShop'>
+      <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
         <view class='iconfont icon-xuanzhong'></view>
         <text>已关注</text>
       </view>
@@ -36,12 +36,14 @@
   <image src='/assets/bg_blur.png'></image>
 </view>
 
+<wxs src="../../utils/tools.wxs" module="tools" />
+
 <view wx:if="{{currentMenuType === homeMenuType}}" class='home-container'>
   <view wx:if="{{swiperItemList && swiperItemList.length > 0}}" class='swiper-container'>
     <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-color="#bbb3b7" indicator-active-color="#5283c0" circular="{{true}}">
       <block wx:for="{{swiperItemList}}" wx:key="index">
         <swiper-item data-id='{{item.id}}' bindtap='gotoItemDetail'>
-          <image src="{{item.imageUrl}}"></image>
+          <image mode='scaleToFill' src="{{item.imageUrl}}"></image>
         </swiper-item>
       </block>
     </swiper>
@@ -56,12 +58,12 @@
     <block wx:for="{{hotItemList}}" wx:key="index">
       <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='item-img'>
-          <image src='{{item.imageUrl}}'></image>
+          <image mode='scaleToFill' src='{{item.imageUrl}}'></image>
         </view>
 
         <view class='block-content-container flex-column'>
           <text class='block-content-title'>{{item.title}}</text>
-          <text class='block-product-name'>{{item.itemCode}}</text>
+          <text class='block-product-name'>{{item.productName}}</text>
           <view class='block-property flex'>
             <text wx:if="{{item.width}}" class='door-width'>{{item.width}}</text>
             <text wx:if="{{item.weight}}" class='weight'>{{item.weight}}</text>
@@ -71,8 +73,12 @@
             <text class='block-price'>面议</text>
             </block>
             <block wx:else>
-              <text class='block-price'>{{item.largeCargoPrice}}</text>
-              <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+              <view class='block-price'>
+                <text class='small-word'>￥</text>
+                <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+                <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+              </view>
+              <text class='block-unit'>/{{item.largeCargoMeasurementUnit}}</text>
             </block>
           </view>
         </view>
@@ -91,12 +97,12 @@
     <block wx:for="{{newItemList}}" wx:key="index">
       <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='item-img'>
-          <image src='{{item.imageUrl}}'></image>
+          <image mode='scaleToFill' src='{{item.imageUrl}}'></image>
         </view>
 
         <view class='block-content-container flex-column'>
           <text class='block-content-title'>{{item.title}}</text>
-          <text class='block-product-name'>{{item.itemCode}}</text>
+          <text class='block-product-name'>{{item.productName}}</text>
           <view class='block-property flex'>
             <text wx:if="{{item.width}}" class='door-width'>{{item.width}}</text>
             <text wx:if="{{item.weight}}" class='weight'>{{item.weight}}</text>
@@ -106,8 +112,12 @@
             <text class='block-price'>面议</text>
             </block>
             <block wx:else>
-              <text class='block-price'>{{item.largeCargoPrice}}</text>
-              <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+              <view class='block-price'>
+                <text class='small-word'>￥</text>
+                <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+                <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+              </view>
+              <text class='block-unit'>/{{item.largeCargoMeasurementUnit}}</text>
             </block>
           </view>
         </view>
@@ -126,7 +136,7 @@
     <block wx:for="{{normalItemList}}" wx:key="index">
       <view class='common-item-container flex-column' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='common-item-img'>
-          <image src='{{item.imageUrl}}'></image>
+          <image mode='scaleToFill' src='{{item.imageUrl}}'></image>
         </view>
 
         <text class='common-content-title'>{{item.title}}</text>
@@ -136,8 +146,12 @@
           <text class='common-price'>面议</text>
           </block>
           <block wx:else>
-          <text class='common-price'>{{item.largeCargoPrice}}</text>
-          <text class='common-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+            <view class='common-price'>
+              <text class='small-word'>￥</text>
+              <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+              <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+            </view>
+            <text class='common-unit'>/{{item.largeCargoMeasurementUnit}}</text>
           </block>
         </view>
       </view>
@@ -148,8 +162,12 @@
 
   </block>
 
-  <view class='no-more flex'>
+  <view wx:if="{{swiperItemList.length !== 0 || hotItemList.length !== 0 || newItemList.length !== 0 || normalItemList.length !== 0}}" class='no-more flex'>
     <text>没有更多了</text>
+  </view>
+
+  <view wx:if="{{swiperItemList.length === 0 && hotItemList.length === 0 && newItemList.length === 0 && normalItemList.length === 0}}" class='no-more black flex'>
+    <text>这里空空如也〜</text>
   </view>
 </view>
 
@@ -167,7 +185,7 @@
     <block wx:for="{{itemList}}" wx:key="index">
       <view class='common-item-container flex-column' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='common-item-img'>
-          <image src='{{item.imageUrl}}'></image>
+          <image mode='scaleToFill' src='{{item.imageUrl}}'></image>
         </view>
 
         <text class='common-content-title'>{{item.title}}</text>
@@ -177,8 +195,8 @@
           <text class='common-price'>面议</text>
           </block>
           <block wx:else>
-          <text class='common-price'>{{item.largeCargoPrice}}</text>
-          <text class='common-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+          <text class='common-price'>￥{{item.largeCargoPrice}}</text>
+          <text class='common-unit'>/{{item.largeCargoMeasurementUnit}}</text>
           </block>
         </view>
       </view>

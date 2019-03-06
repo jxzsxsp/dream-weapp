@@ -80,7 +80,7 @@
 }
 
 .item-name {
-  width: 300rpx;
+  width: 280rpx;
 }
 
 .no-notice-img {

@@ -9,10 +9,11 @@
 
   <view class='desc'>分享了{{itemList.length}}件商品给你</view>
 
+  <wxs src="../../utils/tools.wxs" module="tools" />
   <block wx:for="{{itemList}}" wx:key="index">
     <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
       <view class='item-img'>
-        <image src='{{item.imageUrl}}'></image>
+        <image mode='scaleToFill' src='{{item.imageUrl}}'></image>
       </view>
 
       <view class='block-content-container flex-column'>
@@ -27,8 +28,12 @@
             <text class='block-price'>面议</text>
             </block>
             <block wx:else>
-              <text class='block-price'>{{item.largeCargoPrice}}</text>
-              <text class='block-unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</text>
+              <view class='block-price'>
+                <text class='small-word'>￥</text>
+                <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+                <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+              </view>
+              <text class='block-unit'>/{{item.largeCargoMeasurementUnit}}</text>
             </block>
         </view>
       </view>
@@ -39,7 +44,7 @@
 
   <view class='shop-container flex' bindtap='gotoShopHome'>
     <view class='shop-avatar'>
-      <image src='{{shopInfo.logoUrl}}'></image>
+      <image mode='scaleToFill' src='{{shopInfo.logoUrl}}'></image>
     </view>
 
     <view class='content-container flex-column'>

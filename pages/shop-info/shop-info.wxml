@@ -1,6 +1,6 @@
 <view class='head-container flex-column'>
   <view class='head-avatar'>
-    <image src='{{shopInfo.logo}}'></image>
+    <image mode='scaleToFill' src="{{shopInfo.logo ? shopInfo.logo : '/assets/default_shop_logo.png'}}"></image>
   </view>
   <view class='shop-name'>{{shopInfo.name}}</view>
   <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.id}}' bindtap='followShop'>
@@ -18,10 +18,9 @@
 <view class='item-group'>
   <view class='item flex'>
     <view class='title'>主营品名</view>
+    <wxs src="../../utils/tools.wxs" module="tools" />
     <view class='content flex'>
-      <block wx:for="{{shopInfo.businesses}}" wx:key="index">
-        {{item.businessName}}
-      </block>
+      <text>{{tools.arrayToStr(shopInfo.businesses)}}</text>
     </view>
   </view>
   <view class='item-line'></view>
@@ -34,7 +33,9 @@
 
   <view class='item flex'>
     <view class='title'>店铺地址</view>
-    <view class='content flex'>{{shopInfo.address}}</view>
+    <view class='content flex'>
+      <text>{{shopInfo.fullAddress}}</text>
+    </view>
   </view>
 </view>
 

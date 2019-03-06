@@ -1,21 +1,26 @@
 <block wx:if="{{itemList && itemList.length > 0}}">
+  <wxs src="../../utils/tools.wxs" module="tools" />
 
   <block wx:for="{{itemList}}" wx:key="index">
     <view class='item flex' data-id='{{item.id}}' bindtap="showDetail">
       <view class="avatar">
-        <image src='{{item.imageUrl}}'></image>
+        <image mode='scaleToFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
       </view>
 
       <view class='content flex-column'>
         <text class='title'>{{item.title}}</text>
-        <text class='product-name'>{{item.productName}}</text>
+        <text wx:if="{{item.productName}}" class='product-name'>{{item.productName}}</text>
         <view class='price-container flex'>
           <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
             <view class='price'>面议</view>
           </block>
           <block wx:else>
-            <view class='price'>{{item.largeCargoPrice}}</view>
-            <view class='unit'>{{item.largeCargoPriceUnit}}/{{item.largeCargoMeasurementUnit}}</view>
+            <view wx:if="{{item.largeCargoPrice}}" class='price'>
+              <text class='small-word'>￥</text>
+              <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+              <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+            </view>
+            <view class='unit'>/{{item.largeCargoMeasurementUnit}}</view>
           </block>
         </view>
       </view>

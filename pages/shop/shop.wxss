@@ -122,7 +122,6 @@ page {
 
 .home-container {
   width: 702rpx;
-  height: 800rpx;
   margin: auto;
 }
 
@@ -247,6 +246,10 @@ swiper {
   letter-spacing: 0.54rpx;
 }
 
+.small-word {
+  font-size: 20rpx;
+}
+
 .block-unit {
   font-family: PTMono-Regular;
   font-size: 18rpx;
@@ -268,6 +271,11 @@ swiper {
   color: #8E8E93;
   letter-spacing: 0.33rpx;
   text-align: center;
+}
+
+.black {
+  margin: auto;
+  margin-top: 350rpx;
 }
 
 .common-container {

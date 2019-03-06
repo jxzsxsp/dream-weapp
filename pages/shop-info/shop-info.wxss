@@ -33,14 +33,14 @@ page {
 
 .favorite-btn {
   margin-top: 12rpx;
-  width: 160rpx;
+  width: 147rpx;
   height: 64rpx;
   justify-content: center;
   align-items: center;
   background: #0166fe;
   border-radius: 32rpx;
   font-family: PingFangSC-Semibold;
-  font-size: 30rpx;
+  font-size: 24rpx;
   color: #FFFFFF;
   letter-spacing: 0;
 }
@@ -52,8 +52,8 @@ page {
 .space {
   height: 20rpx;
   background: #fafafa;
-  border-top: 1px solid #d8d8d8;
-  border-bottom: 1px solid #d8d8d8;
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
 }
 
 .item-group {
@@ -87,15 +87,19 @@ page {
   letter-spacing: 1.13rpx;
 }
 
+.content text {
+  text-align: right;
+}
+
 .item-line {
   margin-left: 30rpx;
   height: 1px;
-  background: #d8d8d8;
+  background: #EFEFEF;
 }
 
 .line {
   height: 1px;
-  background: #d8d8d8;
+  background: #EFEFEF;
 }
 
 .go-shop-btn {

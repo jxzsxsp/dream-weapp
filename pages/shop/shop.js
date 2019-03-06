@@ -36,8 +36,14 @@ const lifecycle = {
       backgroundColor: '#4A90E2',
     })
 
+    let currentMenuType = this.data.currentMenuType
+    if(!!query.menuType) {
+      currentMenuType = query.menuType
+    }
+
     this.setData({
       shopId: query.shopId,
+      currentMenuType: currentMenuType,
     })
   },
   onShow: function () {
@@ -46,14 +52,16 @@ const lifecycle = {
         shopInfo: res,
         isFollow: res.isFollow,
       })
+      
       $wx.setNavigationBarTitle({
         title: '',
       })
-    })
 
-    this.getHotItemList()
-    this.homeRefresh(this.data.positionType.NORMAL)
-    this.refresh()
+      this.getHotItemList()
+      this.homeRefresh(this.data.positionType.NORMAL)
+      this.refresh()
+      this.bindCustomer()
+    })
   },
   onPageScroll: function(d) {
     let navFixed = false
@@ -91,12 +99,20 @@ const lifecycle = {
   },
   onShareAppMessage: function () {
     return {
-      title: this.data.shopInfo.shopName
+      title: this.data.shopInfo.shopName,
+      path: `/pages/shop/shop?shopId=${this.data.shopId}`,
     }
   },
 }
 
 const privateMethods = {
+  bindCustomer: function () {
+    return http.post(urls.bindCustomer, {
+      // mock: true,
+      shopId: this.data.shopId,
+      source: constant.BindCustomerSource.WEAPP_VIEW,
+    })
+  },
   getShopDetail: function () {
     return http.get(urls.shopSimpleDetail, {
       // mock: true,
@@ -173,6 +189,9 @@ const privateMethods = {
       // mock: true,
       shopId: this.data.shopId
     })
+  },
+  gotoShopInfo: function () {
+    $wx.navigateTo($wx.router.shopInfo, { shopId: this.data.shopId })
   },
 }
 

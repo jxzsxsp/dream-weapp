@@ -1,10 +1,10 @@
-<view class='item-container'>
+<view class='item-container' catch:tap="onDetail">
   <view class='head-container'>
     <view class='shop-img'>
       <image src="{{shop.logo ? shop.logo : '/assets/default_shop_logo.png'}}"></image>
     </view>
 
-    <view class='shop-content' bind:tap="onDetail">
+    <view class='shop-content'>
       <text class='shop-name'>{{shop.name}}</text>
       <view class='main-business'>
         <text class='business-title'>主营</text>
@@ -13,8 +13,8 @@
     </view>
 
     <view class='operate-btn'>
-      <view wx:if="{{shop.isFollow === 0}}" class='btn' bind:tap="onFollow">关注</view>
-      <view wx:if="{{shop.isFollow === 1}}" class='btn-active' bind:tap="onCancel">已关注</view>
+      <view wx:if="{{shop.isFollow === 0}}" class='btn' catch:tap="onFollow">关注</view>
+      <view wx:if="{{shop.isFollow === 1}}" class='btn-active' catch:tap="onCancel">已关注</view>
     </view>
   </view>
 

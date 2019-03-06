@@ -73,12 +73,13 @@
 
 .user-name-container {
   /* flex: 1; */
+  width: 430rpx;
 }
 
 .notice {
   color: #0156fe;
   font-size: 48rpx;
-  margin-left: 340rpx;
+  margin-left: 50rpx;
   position: relative;
 }
 

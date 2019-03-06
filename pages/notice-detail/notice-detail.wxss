@@ -14,6 +14,11 @@
   align-items: center;
 }
 
+.head-avatar image {
+  width: 100%;
+  height: 100%;
+}
+
 .miyang {
   background: #F9974F;
 }
@@ -226,4 +231,8 @@
   font-size: 34rpx;
   color: #FFFFFF;
   letter-spacing: 1.46rpx;
+}
+
+.received {
+  background: #CBCBCB;
 }

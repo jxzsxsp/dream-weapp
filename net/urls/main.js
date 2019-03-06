@@ -38,4 +38,6 @@ export default {
   shareItemList: '/item/qrcode-item-list', // 根据分享的id获取商品列表接口 GET
   homeItemList: '/item/items-for-home-page-chame', // 店铺首页各个区域商品列表接口 GET
   setRead: '/message/set-read', // 消息通知已读接口 GET
+  getLatestLogistics: '/trade/get-latest-logistics', // 用户收货信息初始化接口 GET
+  addItemBrowseRecord: '/item/add-item-browse-record', // 用户收货信息初始化接口 GET
 }

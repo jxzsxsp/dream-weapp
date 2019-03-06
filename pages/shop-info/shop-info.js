@@ -13,6 +13,10 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
+    $wx.setNavigationBarColor({
+      frontColor: '#000000',
+      backgroundColor: '#fafafa',
+    })
     this.setData({
       shopId: query.shopId
     })
@@ -62,7 +66,7 @@ const viewAction = {
     })
   },
   gotoShop: function(d) {
-    $wx.navigateTo($wx.router.shop, {shopId: d.id})
+    $wx.navigateTo($wx.router.shop, { shopId: d.id, menuType: 'item'})
   }
 }
 

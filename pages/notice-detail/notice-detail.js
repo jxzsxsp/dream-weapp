@@ -34,7 +34,8 @@ const privateMethods = {
     }).then(res => {
       this.setData({
         notice: res,
-        tradeStatus: res.tradeStatus,
+        tradeStatus: parseInt(res.tradeStatus),
+        needOperator: res.confirmOperator ? res.confirmOperator.needOperator : false
       })
     })
   },
@@ -47,12 +48,12 @@ const viewAction = {
     })
   },
   confirmReceived: function () {
-    http.get(urls.confirmReceived, {
+    http.post(urls.confirmReceived, {
       // mock: true,
       tradeId: this.data.notice.tradeId,
     }).then(res => {
       this.setData({
-        tradeStatus: 50
+        needOperator: false
       })
     })
   },

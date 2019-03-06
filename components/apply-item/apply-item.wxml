@@ -20,7 +20,7 @@
 
   <view class='content-container'>
     <view class='item-avatar'>
-      <image wx:if="{{imageUrl}}" src='{{imageUrl}}'></image>
+      <image mode='scaleToFill' wx:if="{{imageUrl}}" src='{{imageUrl}}'></image>
     </view>
 
     <view class='content'>
@@ -33,10 +33,10 @@
     </view>
   </view>
 
-  <view wx:if="{{trade.status === 40}}" class='logistics-container flex' bindtap='onReceive'>
+  <view wx:if="{{trade.status === 40}}" class='logistics-container flex'>
     <text class='title'>物流单号：</text>
-    <text class='logistics-sn'>{{trade.logisticsSn}}</text>
-    <view class='confirm-receive flex'>确认收货</view>
+    <text class='logistics-sn'>{{trade.logisticsSn ? trade.logisticsSn : ''}}</text>
+    <view class='confirm-receive flex' bindtap='onReceive'>确认收货</view>
   </view>
 </view>
 

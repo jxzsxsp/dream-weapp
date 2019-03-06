@@ -116,7 +116,6 @@ const lifecycle = {
         })
       })
     })
-    this.getNoticeNum()
   },
   onReady: function() {
     let _this = this
@@ -165,6 +164,8 @@ const lifecycle = {
   },
 
   onShow: function () {
+    this.getNoticeNum()
+    
     if ($wx.app.isBinded()) {
       this.setData({
         userInfo: $wx.app.globalData.userInfo

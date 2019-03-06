@@ -1214,6 +1214,23 @@ let item = {
     "code": 200,
     "message": "成功"
   },
+  [urls.getLatestLogistics]: {
+    "consigneeInfo": {
+      "consigneeName": "John Miller",
+      "consigneeMobile": "15692838273",
+      "provinceId": 0,
+      "provinceName": "辽宁省",
+      "cityId": 0,
+      "cityName": "景德镇市",
+      "areaId": 0,
+      "areaName": "华东",
+      "address": "memhkdbnow"
+    }
+  },
+  [urls.addItemBrowseRecord]: {
+    "code": 200,
+    "message": "成功"
+  },
 }
 
 export default {

@@ -61,7 +61,7 @@ const privateMethods = {
   },
   getApplyList: function (status, loadingState) {
     return http.postList(urls.applyList, loadingState, {
-      mock: true,
+      // mock: true,
       tradeType: this.data.currentTabType,
       status: status,
     })
@@ -69,16 +69,7 @@ const privateMethods = {
   showList: function (d, v) {
     let show = !this.data.allData[d.detail].show
     if (show) {
-      let loadingState = http.defaultLoadingState()
-      this.getApplyList(d.detail, loadingState).then(res => {
-        let allData = this.data.allData
-        allData[d.detail].list = res
-        allData[d.detail].show = show
-        allData[d.detail].loadingState = loadingState
-        this.setData({
-          allData: allData
-        })
-      })
+      this.refresh(d.detail)
     } else {
       let allData = this.data.allData
       allData[d.detail].show = show
@@ -87,20 +78,43 @@ const privateMethods = {
       })
     }
   },
+  refresh: function(status) {
+    let loadingState = http.defaultLoadingState()
+    this.getApplyList(status, loadingState).then(res => {
+      let allData = this.data.allData
+      allData[status].list = res
+      allData[status].show = true
+      allData[status].loadingState = loadingState
+      this.setData({
+        allData: allData
+      })
+    })
+  }
 }
 
 const viewAction = {
   toggleTabType: function(d) {
     this.setData({
       currentTabType: d.type,
-    }, function() {
-      this.refresh()
+    }, function () {
+      let allData = this.data.allData
+      let status = this.data.status
+      allData[status.unreport].show = false
+      allData[status.agree].show = false
+      allData[status.disagree].show = false
+      allData[status.received].show = false
+      
+      this.setData({
+        allData: allData
+      })
     })
   },
   confirmReceived: function (d, v) {
-    http.get(urls.confirmReceived, {
+    http.post(urls.confirmReceived, {
       // mock: true,
       tradeId: v.id,
+    }).then(res => {
+      this.refresh(this.data.status.agree)
     })
   }
 }
