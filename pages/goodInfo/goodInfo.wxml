@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class='page-section' style='width:750rpx;' wx:if="{{countDownFlag}}">
-    <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
+    <!-- <view style='margin-top:10rpx;overflow:hidden;width:730rpx;margin-left:10rpx;margin-bottom:20rpx;box-shadow:0px 0px 10px #bdbdbd;border-radius:20rpx;'>
         <view wx:for='{{brandRushInfo}}' style='position:relative;padding-right:27rpx;background:#fff;overflow:hidden;border-radius:20rpx;padding-top:20rpx;'>
             <view style='position:absolute;top:0rpx;right:170rpx;width:138rpx;height:87rpx;font-size:14px;background:url(http://cos.qkmai.com/qkmbb/ytal/graybqtb.png ) no-repeat top left;background-size:100% 100%;' wx:if="{{userInfo.IsReferral}}">
                 <view style='float:right;font-size:22rpx;text-align:center;color:#fff;padding-top:5rpx'>
@@ -78,7 +78,7 @@
                 <image src='http://cos.qkmai.com/qkmbb/ytal/fenxiangtb.png' style='width:40rpx;position:absolute;right:150rpx;top:25rpx;' mode='widthFix'></image>
             </view>
         </view>
-    </view>
+    </view> -->
 
 
 

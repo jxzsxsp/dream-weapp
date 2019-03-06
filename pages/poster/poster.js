@@ -82,7 +82,7 @@ Page({
                 })
             },
             complete: function() {
-                wx.hideLoading();
+                
             }
         });
     },

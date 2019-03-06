@@ -13,7 +13,7 @@
     <image src='{{imgUrl}}' style='width:750rpx;' mode='widthFix'></image>
 </view> -->
 <view class="coupontitle" hidden="{{ProductList==null||ProductList.length<=0}}">
-    <view class="coupontitlel">
+    <!-- <view class="coupontitlel">
         <view bindtap="onSortClick" class="{{Num==0?'active':''}}" data-num="0" data-sortby="ProductId">默认</view>
     </view>
     <view class="coupontitlel">
@@ -24,7 +24,7 @@
     </view>
     <view class="coupontitlel">
         <view bindtap="onSortClick" class="jiages1s jiages {{Num==3?'active'+' '+SortClass:''}}" data-num="3" data-sortby="VistiCounts">浏览量</view>
-    </view>
+    </view> -->
 </view>
 <view class="prodcut-list search-list">
     <view class="prodcut-comm">

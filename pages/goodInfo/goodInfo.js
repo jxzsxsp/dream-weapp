@@ -237,6 +237,7 @@ Page({
 
             let obj = null;
             // 如果活动未结束，对时间进行处理
+       
             if (endTime - newTime > 0) {
                 let time = (endTime - newTime) / 1000;
                 // 获取天、时、分、秒

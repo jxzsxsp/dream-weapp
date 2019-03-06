@@ -53,6 +53,7 @@ Page({
     },
     onLoad: function(a) {
         if (a.scene) {
+            wx.showLoading({})
             wx.request({
                 url: e.getUrl("YTALDecodeScene"),
                 data: {
@@ -143,14 +144,14 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
         })
-       
-
+    
     },
     onShow: function() {
         var tm = this;
         this.GetShopCart();
         tm.getLogo()
         tm.getPageRushGoodsByTagId()
+        tm.getProducts()
         wx.getStorage({
             key: 'tcTwo',
             success(res) {

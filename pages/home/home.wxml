@@ -89,37 +89,24 @@
             <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </view> -->
     <!-- </view> -->
-    <!-- <view wx:if='{{selectedCate=="全场直播"}}'>
-        <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:700rpx;margin:0 auto;'>
-            <view style='font-size:30rpx;'>单品推荐</view>
+    <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
+        <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
+            <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
+                <text style='font-size:32rpx;color:#daac7c;'>单品推荐</text>
+                <!-- <text style='font-size:30rpx;color:#d8d8d8;margin-left:15rpx;'>正品/大牌/低价</text> -->
+            </view>
             <navigator style='margin-bottom:10rpx;' url='/pages/searchresult/searchresult?cid=34'>
-                <view style='font-size:26rpx;'>更多</view>
+                <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c' >查看更多 ></view>
             </navigator>
         </view>
-        
-        <view style='display:flex;flex-flow:row wrap;justify-content:space-around;align-items:center;width:730rpx;margin:0 auto;'>
-            <view style='position:relative;width:230rpx;height:360rpx;background:#fff;' wx:for="{{getProductsList}}">
+        <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:710rpx;margin:0 auto;'>
+            <view style='position:relative;width:230rpx;height:360rpx;background:#daac7c;border-radius:20rpx;overflow:hidden' wx:for="{{getProductsList}}" bindtap='linkProductDetail'data-productId="{{item.ProductId}}">
                 <image src="{{item.Pic}}" style='width:230rpx;height:230rpx'></image>
-                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>{{item.ProductName}}</view>
-                <view style='font-size:20rpx;text-align:left'>￥{{item.SalePrice}}</view>
+                <view style='color:#fff;font-size:13px;margin-top:10rpx;text-align:center;width:230rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;margin-top:20rpx'>{{item.ProductName}}</view>
+                <view style='color:#fff;font-size:13px;text-align:center'>￥{{item.SalePrice}}</view>
             </view>
-            <!-- <view style='position:relative;width:230rpx;height:300rpx;background:#fff;'>
-                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
-                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>环球海鲜</view>
-                <view style='font-size:20rpx;text-align:center'>￥299.00</view>
-            </view>
-            <view style='position:relative;width:230rpx;height:300rpx;background:#fff;'>
-                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
-                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>环球海鲜</view>
-                <view style='font-size:20rpx;text-align:center'>￥299.00</view>
-            </view>
-            <view style='position:relative;width:230rpx;height:300rpx;background:#fff;'>
-                <image src="http://mer.oss.aikucun.com/2019/01/Attach2c9089c268833f0801688e04a4ef146e.jpg" style='width:230rpx;height:230rpx'></image>
-                <view style='font-size:20rpx;margin-top:10rpx;text-align:center'>环球海鲜</view>
-                <view style='font-size:20rpx;text-align:center'>￥299.00</view>
-            </view> 
         </view>
-    </view> -->
+    </view>
     <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
         <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
             <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
@@ -274,7 +261,7 @@
                 <view style='margin-top:5rpx'>
                     <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
                         <goodLists goodLists="{{item}}" idx="{{bindex}}"></goodLists>
-                    <!-- <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
+                        <!-- <view scroll-x style="width: 710rpx;height:300rpx;white-space: nowrap; display: flex;align-items:flex-start;flex-direction:row;justify-content:flex-start;overflow:hidden">
                         <block wx:for="{{item.topBrandGoods}}" wx:for-item="itemName" wx:for-index="idx">
                             <view style="width:218rpx;height:300rpx;margin-right:6rpx">
                                 <image src="{{itemName.goodsImages[0]}}" style='width:218rpx;height:218rpx;'></image>
