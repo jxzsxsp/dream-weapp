@@ -430,10 +430,8 @@ Page({
         wx.request({
             url: app.getUrl("YTALGetInfoBrandRush"),
             data: {
-                // brandId: tm.data.brandId,
-                // brandSource: tm.data.brandSource
-                brandId: "2c9089c268833f0801688e04a5421485",
-                brandSource: "dadacang"
+                brandId: tm.data.brandId,
+                brandSource: tm.data.brandSource
             },
             success: function(jd) {
                 if (jd.data == "") return;
