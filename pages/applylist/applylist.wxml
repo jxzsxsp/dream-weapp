@@ -5,8 +5,8 @@
                 <text class="font-arial">{{item.OrderId}}</text>
             </view>
             <!-- <view class="state">{{item.StatusText}}</view> -->
-            <view class="state">{{item.StatusText == "申请退款" ? "申请退款中" : (item.StatusText == "退款中" ? "拼团失败,退款中" : item.StatusText)}}</view>
-
+            <!-- <view class="state">{{item.StatusText == "申请退款" ? "申请退款中" : (item.StatusText == "退款中" ? "拼团失败,退款中" : item.StatusText)}}</view> -->
+            <view class="state">{{item.StatusText}}</view>
         </view>
         <view bindtap="applydetail" class="bd" data-id="{{item.AfterSaleId}}" data-type="{{item.AfterSaleType}}">
             <view class="comm" wx:for="{{item.LineItems}}" wx:for-item="lineitem">

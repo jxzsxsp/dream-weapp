@@ -447,9 +447,6 @@ Number.prototype.toFixed = function(t) {
             //     console.log("转发失败！");
             // }
         };
-    },
-    request: function() {
-
     }
 }), Number.prototype.toFixed = function(t) {
     e = this + "";
