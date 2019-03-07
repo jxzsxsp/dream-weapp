@@ -769,7 +769,7 @@ Page({
                 url: e.getUrl("GetProducts"),
                 data: {
                     openId: r,
-                    cId: 34,
+                    cId: 38,
                     pageIndex: 1,
                     pageSize: 3,
                     // sortBy: a.data.SortBy,

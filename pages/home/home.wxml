@@ -89,12 +89,12 @@
             <image src='http://cos.qkmai.com/qkmbb/ytal/xsdd.png' style='width:375rpx;background-color:#fff;box-sizing:border-box;' mode='widthFix' lazy-load></image>
         </view> -->
     <!-- </view> -->
-    <!-- <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
+    <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
         <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
             <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
-                <text style='font-size:32rpx;color:#daac7c;'>单品推荐</text>
+                <text style='font-size:32rpx;color:#daac7c;'>爆品推荐</text>
             </view>
-            <navigator style='margin-bottom:10rpx;' url='/pages/searchresult/searchresult?cid=34'>
+            <navigator style='margin-bottom:10rpx;' url='/pages/searchresult/searchresult?cid=38'>
                 <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c' >查看更多 ></view>
             </navigator>
         </view>
@@ -105,7 +105,7 @@
                 <view style='color:#fff;font-size:13px;text-align:center'>￥{{item.SalePrice}}</view>
             </view>
         </view>
-    </view> -->
+    </view>
     <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
         <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
             <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
