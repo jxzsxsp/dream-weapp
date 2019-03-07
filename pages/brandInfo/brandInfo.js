@@ -370,6 +370,7 @@ Page({
                         salePrice: salePrice
                     },
                     success: function(res) {
+                                    wx.hideLoading();
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({
@@ -380,7 +381,6 @@ Page({
                             break;
                             case 'success':
 
-                                    wx.hideLoading();
                                 tm.touchOnGoods(event)
 
                                 tm.setData({
@@ -431,6 +431,7 @@ Page({
                         salePrice: salePrice
                     },
                     success: function(res) {
+                                    wx.hideLoading();
                         var jd = res.data;
                         switch (jd.status) {
                             default: wx.showModal({
@@ -440,7 +441,6 @@ Page({
                             })
                             break;
                             case 'success':
-                                    wx.hideLoading();
                                 tm.setData({
                                     goodsId: '',
                                     goodsSkuId: '',
