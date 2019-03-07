@@ -7,7 +7,7 @@
       </view>
       <view class="iconfont icon-notice2 notice" bindtap='gotoNoticeList'>
         <view wx:if="{{noticeNum && noticeNum > 0}}" class='badge flex'>
-          <text>{{noticeNum}}</text>
+          <text>{{noticeNum > 99 ? '99+' : noticeNum}}</text>
         </view>
       </view>
       <!-- <view class="edit-user">

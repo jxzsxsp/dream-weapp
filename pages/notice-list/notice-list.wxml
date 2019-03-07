@@ -5,7 +5,7 @@
       <view class="avatar flex {{item.messageType === 20 ? 'miyang' : item.messageType === 10 ? 'seka' : ''}}">
         <view wx:if="{{item.messageType === 20}}" class='iconfont icon-miyang avatar-icon'></view>
         <view wx:if="{{item.messageType === 10}}" class='iconfont icon-color_card avatar-icon'></view>
-        <image wx:if="{{item.messageType === 90 && item.shopLogo}}" src='{{item.shopLogo}}'></image>
+        <image wx:if="{{item.messageType === 90}}" src="{{item.shopLogo ? item.shopLogo : '/assets/default_shop_logo.png'}}"></image>
       </view>
 
       <view class='content flex-column'>

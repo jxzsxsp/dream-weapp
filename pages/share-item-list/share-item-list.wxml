@@ -28,12 +28,19 @@
             <text class='block-price'>面议</text>
             </block>
             <block wx:else>
-              <view class='block-price'>
-                <text class='small-word'>￥</text>
-                <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
-                <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
-              </view>
-              <text class='block-unit'>/{{item.largeCargoMeasurementUnit}}</text>
+              <block wx:if="{{item.largeCargoPrice}}">
+                <view class='block-price'>
+                  <text class='small-word'>￥</text>
+                  <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+                  <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+                </view>
+                <text class='block-unit'>/{{item.largeCargoMeasurementUnit}}</text>
+              </block>
+              <block wx:else>
+                <view class='block-price'>
+                  <text>暂无</text>
+                </view>
+              </block>
             </block>
         </view>
       </view>
@@ -44,7 +51,7 @@
 
   <view class='shop-container flex' bindtap='gotoShopHome'>
     <view class='shop-avatar'>
-      <image mode='aspectFill' src='{{shopInfo.logoUrl}}'></image>
+      <image mode='aspectFill' src="{{shopInfo.logoUrl ? shopInfo.logoUrl : '/assets/default_shop_logo.png'}}"></image>
     </view>
 
     <view class='content-container flex-column'>
