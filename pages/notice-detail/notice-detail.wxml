@@ -60,7 +60,7 @@
       <text>：</text>
     </view>
     <view class='item-content-img' bindtap='gotoItemDetail'>
-      <image mode='scaleToFill' src='{{notice.imageUrl}}'></image>
+      <image mode='aspectFill' src="{{notice.imageUrl ? notice.imageUrl : '/assets/default_item.png'}}"></image>
     </view>
   </view>
   <view class='line'></view>

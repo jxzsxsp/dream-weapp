@@ -4,23 +4,30 @@
   <block wx:for="{{itemList}}" wx:key="index">
     <view class='item flex' data-id='{{item.id}}' bindtap="showDetail">
       <view class="avatar">
-        <image mode='scaleToFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
+        <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
       </view>
 
       <view class='content flex-column'>
-        <text class='title'>{{item.title}}</text>
+        <text class='title'>{{tools.subStr(item.title, 16)}}</text>
         <text wx:if="{{item.productName}}" class='product-name'>{{item.productName}}</text>
         <view class='price-container flex'>
           <block wx:if="{{item.isNegotiateLargeCargoPrice}}">
             <view class='price'>面议</view>
           </block>
           <block wx:else>
-            <view wx:if="{{item.largeCargoPrice}}" class='price'>
-              <text class='small-word'>￥</text>
-              <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
-              <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
-            </view>
-            <view class='unit'>/{{item.largeCargoMeasurementUnit}}</view>
+            <block wx:if="{{item.largeCargoPrice}}">
+              <view class='price'>
+                <text class='small-word'>￥</text>
+                <text>{{tools.seperatePrice(item.largeCargoPrice).first}}</text>
+                <text class='small-word'>{{tools.seperatePrice(item.largeCargoPrice).second}}</text>
+              </view>
+              <view class='unit'>/{{item.largeCargoMeasurementUnit}}</view>
+            </block>
+            <block wx:else>
+              <view class='price'>
+                <text>暂无</text>
+              </view>
+            </block>
           </block>
         </view>
       </view>

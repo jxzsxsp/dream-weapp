@@ -20,7 +20,7 @@
 
   <view class='content-container'>
     <view class='item-avatar'>
-      <image mode='scaleToFill' wx:if="{{imageUrl}}" src='{{imageUrl}}'></image>
+      <image mode='aspectFill' wx:if="{{trade.imageUrl}}" src='{{trade.imageUrl}}'></image>
     </view>
 
     <view class='content'>
@@ -48,7 +48,7 @@
   <view class='reason-container'>
     <view class='reason-title'>拒绝原因</view>
     <view class='reason-line'></view>
-    <view class='reason-content'>{{trade.remark}}</view>
+    <view class='reason-content'>{{trade.refuseRemark}}</view>
     <view class='reason-line'></view>
     <view class='reason-btn' bindtap='showReason'>确定</view>
   </view>

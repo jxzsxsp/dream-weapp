@@ -189,7 +189,7 @@
 
 .reason-container {
   width: 686rpx;
-  height: 484rpx;
+  min-height: 484rpx;
   background: #FFFFFF;
   box-shadow: 0 0 10rpx 0 rgba(0,0,0,0.15);
   border-radius: 26rpx;
@@ -212,13 +212,16 @@
 }
 
 .reason-content {
-  width: 686rpx;
-  height: 252rpx;
+  width: 622rpx;
+  min-height: 252rpx;
   padding: 24rpx 32rpx;
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #000000;
   letter-spacing: 1.05rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .reason-btn {

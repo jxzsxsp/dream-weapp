@@ -1,6 +1,6 @@
 <view class='head-container flex-column'>
   <view class='head-avatar'>
-    <image mode='scaleToFill' src="{{shopInfo.logo ? shopInfo.logo : '/assets/default_shop_logo.png'}}"></image>
+    <image mode='aspectFill' src="{{shopInfo.logo ? shopInfo.logo : '/assets/default_shop_logo.png'}}"></image>
   </view>
   <view class='shop-name'>{{shopInfo.name}}</view>
   <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.id}}' bindtap='followShop'>

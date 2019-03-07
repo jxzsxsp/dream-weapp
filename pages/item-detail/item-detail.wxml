@@ -11,7 +11,7 @@
     <block wx:for="{{itemDetail.imageUrlList}}" wx:key="index">
       <swiper-item>
         <view class='swiper-container'>
-          <image mode='scaleToFill' src="{{item}}"></image>
+          <image mode='aspectFill' src="{{item}}"></image>
         </view>
       </swiper-item>
     </block>
@@ -19,7 +19,7 @@
   <block wx:else>
     <swiper-item>
       <view class='swiper-container'>
-        <image mode='scaleToFill' src="/assets/default_item.png"></image>
+        <image mode='aspectFill' src="/assets/default_item.png"></image>
       </view>
     </swiper-item>
   </block>
@@ -43,12 +43,15 @@
     </view>
     </block>
     <block wx:else>
-    <view wx:if="{{itemDetail.itemPriceInfo.largeCargoPrice}}" class='price flex'>
-      <text class='small-word'>￥</text>
-      <text>{{tools.seperatePrice(itemDetail.itemPriceInfo.largeCargoPrice).first}}</text>
-      <text class='small-word'>{{tools.seperatePrice(itemDetail.itemPriceInfo.largeCargoPrice).second}}</text>
-      <text class='small-word'>/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</text>
-    </view>
+      <view wx:if="{{itemDetail.itemPriceInfo.largeCargoPrice}}" class='price flex'>
+        <text class='small-word'>￥</text>
+        <text>{{tools.seperatePrice(itemDetail.itemPriceInfo.largeCargoPrice).first}}</text>
+        <text class='small-word'>{{tools.seperatePrice(itemDetail.itemPriceInfo.largeCargoPrice).second}}</text>
+        <text class='small-word'>/{{itemDetail.itemPriceInfo.largeCargoMeasurementUnit}}</text>
+      </view>
+      <view wx:if="{{!itemDetail.itemPriceInfo.largeCargoPrice}}" class='price flex'>
+        <text>暂无</text>
+      </view>
     </block>
   </view>
   <view class='price-type flex'>
@@ -59,12 +62,15 @@
     </view>
     </block>
     <block wx:else>
-    <view wx:if="{{itemDetail.itemPriceInfo.largeCargoPrice}}" class='price flex'>
-      <text class='small-word'>￥</text>
-      <text>{{tools.seperatePrice(itemDetail.itemPriceInfo.swatchPrice).first}}</text>
-      <text class='small-word'>{{tools.seperatePrice(itemDetail.itemPriceInfo.swatchPrice).second}}</text>
-      <text class='small-word'>/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</text>
-    </view>
+      <view wx:if="{{itemDetail.itemPriceInfo.swatchPrice}}" class='price flex'>
+        <text class='small-word'>￥</text>
+        <text>{{tools.seperatePrice(itemDetail.itemPriceInfo.swatchPrice).first}}</text>
+        <text class='small-word'>{{tools.seperatePrice(itemDetail.itemPriceInfo.swatchPrice).second}}</text>
+        <text class='small-word'>/{{itemDetail.itemPriceInfo.swatchMeasurementUnit}}</text>
+      </view>
+      <view wx:if="{{!itemDetail.itemPriceInfo.swatchPrice}}" class='price flex'>
+        <text>暂无</text>
+      </view>
     </block>
   </view>
 </view>
@@ -77,7 +83,7 @@
   <block wx:for="{{itemDetail.itemProperties}}" wx:key="index">
     <view class='property-item flex'>
       <view class='item-title'>{{item.name}}</view>
-      <view wx:if="{{item.propertyValue}}" class='item-content'>{{item.propertyValue}}</view>
+      <view class='item-content'>{{item.propertyValue ? item.propertyValue : '暂无'}}</view>
     </view>
   </block>
 </view>
@@ -97,15 +103,23 @@
 <view wx:if="{{itemDetail.detailImageUrlList && itemDetail.detailImageUrlList.length > 0}}">
   <view class='desc-title flex'>细节图</view>
   <block wx:for="{{itemDetail.detailImageUrlList}}" wx:key="index">
-    <image class='detail-img' src='{{item}}' mode='widthFix'></image>
+    <view class='detail-img-container'>
+      <image class='detail-img' src='{{item}}' mode='aspectFill'></image>
+    </view>
   </block>
 </view>
 
 <view wx:if="{{itemDetail.sampleImageUrlList && itemDetail.sampleImageUrlList.length > 0}}">
   <view class='desc-title flex'>样衣图</view>
   <block wx:for="{{itemDetail.sampleImageUrlList}}" wx:key="index">
-    <image class='detail-img' src='{{item}}' mode='widthFix'></image>
+    <view class='detail-img-container'>
+      <image class='detail-img' src='{{item}}' mode='aspectFill'></image>
+    </view>
   </block>
+</view>
+
+<view class='no-more flex'>
+  <text>没有更多了</text>
 </view>
 
 <view class='bottom-space'></view>

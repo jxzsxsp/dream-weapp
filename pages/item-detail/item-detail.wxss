@@ -158,13 +158,33 @@ swiper {
   justify-content: center;
 }
 
-.detail-img {
+.detail-img-container {
   width: 750rpx;
-  margin: 0 auto;
+  height: 750rpx;
+}
+
+.detail-img {
+  width: 100%;
+  height: 100%;
+}
+
+.no-more {
+  width: 100%;
+  height: 74rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-more text {
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #8E8E93;
+  letter-spacing: 0.33rpx;
+  text-align: center;
 }
 
 .bottom-space {
-  height: 200rpx;
+  height: 130rpx;
 }
 
 .bottom-container {

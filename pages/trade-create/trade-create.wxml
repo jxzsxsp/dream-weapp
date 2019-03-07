@@ -40,7 +40,7 @@
         </form-cell>
         <form-cell isLast>
           <text slot="left">详细地址</text>
-          <textarea
+          <input
             slot="right" 
             auto-height
             bindinput="finishInput" 

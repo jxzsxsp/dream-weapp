@@ -15,8 +15,8 @@
         </view>
         <text class='shop-name'>店铺名：{{item.shopName}}</text>
         <view class='item-content flex'>
-          <view class='item-code'>货号：{{tools.subStr(item.itemCode, 6)}}</view>
-          <view class='item-name'>名称：{{tools.subStr(item.itemTitle, 8)}}</view>
+          <view class='item-code'>货号：{{tools.subStr(item.itemCode ? item.itemCode : '', 6)}}</view>
+          <view class='item-name'>名称：{{tools.subStr(item.itemTitle ? item.itemTitle : '', 8)}}</view>
           <view class='time'>{{item.createTime}}</view>
         </view>
       </view>

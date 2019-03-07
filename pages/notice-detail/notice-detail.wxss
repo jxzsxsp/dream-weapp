@@ -176,7 +176,7 @@
 
 .disagree-container {
   width: 100%;
-  height: 200rpx;
+  min-height: 200rpx;
   background: #FFEBEB;
 }
 
@@ -192,6 +192,8 @@
 .disagree-content {
   margin-top: 4rpx;
   margin-left: 130rpx;
+  margin-bottom: 20rpx;
+  width: 600rpx;
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
   color: #000000;

@@ -55,13 +55,13 @@ const privateMethods = {
     })
   },
   addItemFavorite: function () {
-    http.post(urls.addItemFavorite, {
+    return http.post(urls.addItemFavorite, {
       // mock: true,
       itemId: this.data.itemId,
     })
   },
   cancelItemFavorite: function () {
-    http.post(urls.cancelItemFavorite, {
+    return http.post(urls.cancelItemFavorite, {
       // mock: true,
       itemId: this.data.itemId
     })
@@ -70,14 +70,16 @@ const privateMethods = {
 
 const viewAction = {
   favoriteItem: function () {
-    this.setData({
-      isFavorite: !this.data.isFavorite
-    }, function() {
-      if (this.data.isFavorite) {
-        this.addItemFavorite()
-      } else {
-        this.cancelItemFavorite()
-      }
+    let result
+    if (!this.data.isFavorite) {
+      result = this.addItemFavorite()
+    } else {
+      result = this.cancelItemFavorite()
+    }
+    result.then(res => {
+      this.setData({
+        isFavorite: !this.data.isFavorite
+      })
     })
   },
   gotoShopInfo: function(d) {

@@ -4,7 +4,20 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    trade: Object
+    trade: { // 属性名
+      type: Object,
+      value: {},
+      observer: function(newVal, oldVal, changedPath) {
+        let title = newVal.title
+
+        if (title.length > 14) {
+          title = title.substring(0, 13) + '...'
+        }
+        this.setData({
+          title
+        })
+      }
+    }
   },
 
   /**
@@ -36,14 +49,4 @@ Component({
       })
     },
   },
-  ready: function () {
-    let title = this.data.trade.title
-
-    if (title.length > 14) {
-      title = title.substring(0, 13) + '...'
-    }
-    this.setData({
-      title
-    })
-  }
 })

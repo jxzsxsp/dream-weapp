@@ -19,6 +19,9 @@ const data = { //位置类型（10.轮播位，20.新品区，30.爆款区, 40.�
   itemMenuType: 'item',
   currentMenuType: 'home',
   shopId: 0,
+  user: 0,
+  type: 0,
+  source: constant.BindCustomerSource.WEAPP_VIEW,
   shopInfo: {},
   isFollow: false,
   navFixed: false,
@@ -36,32 +39,56 @@ const lifecycle = {
       backgroundColor: '#4A90E2',
     })
 
+    $wx.setNavigationBarTitle({
+      title: '',
+    })
+
     let currentMenuType = this.data.currentMenuType
     if(!!query.menuType) {
       currentMenuType = query.menuType
     }
 
+    let type = 0
+    let shopId = 0
+    let userId = 0
+    
+    if (!!query.scene) {
+      const scene = decodeURIComponent(query.scene)
+      const scenes = scene.split(',')
+      type = parseInt(scenes[0])
+      shopId = parseInt(scenes[1])
+      userId = parseInt(scenes[2])
+    }
+
+    if (!!query.type) {
+      type = query.type
+    }
+
+    if (!!query.shopId) {
+      shopId = query.shopId
+    }
+
     this.setData({
-      shopId: query.shopId,
+      type: type,
+      shopId: shopId,
+      userId: userId,
       currentMenuType: currentMenuType,
+    }, function() {
+      this.getShopDetail().then(res => {
+        this.setData({
+          shopInfo: res,
+          isFollow: res.isFollow,
+        })
+
+        this.getHotItemList()
+        this.homeRefresh(this.data.positionType.NORMAL)
+        this.refresh()
+        this.bindCustomer()
+      })
     })
+
   },
   onShow: function () {
-    this.getShopDetail().then(res => {
-      this.setData({
-        shopInfo: res,
-        isFollow: res.isFollow,
-      })
-      
-      $wx.setNavigationBarTitle({
-        title: '',
-      })
-
-      this.getHotItemList()
-      this.homeRefresh(this.data.positionType.NORMAL)
-      this.refresh()
-      this.bindCustomer()
-    })
   },
   onPageScroll: function(d) {
     let navFixed = false
@@ -107,10 +134,22 @@ const lifecycle = {
 
 const privateMethods = {
   bindCustomer: function () {
+    let source = this.data.source
+    let type = this.data.type
+
+    if (constant.QrCodeType.SHOP === type) {
+      source = constant.BindCustomerSource.SHOP
+    } else if (constant.QrCodeType.TO_SHOP === type) {
+      source = constant.BindCustomerSource.TO_SHOP
+    } else if (constant.QrCodeType.PERSONAL_BUSINESS_CARD === type) {
+      source = constant.BindCustomerSource.PERSONAL_BUSINESS_CARD
+    }
+
     return http.post(urls.bindCustomer, {
       // mock: true,
       shopId: this.data.shopId,
-      source: constant.BindCustomerSource.WEAPP_VIEW,
+      source: source,
+      empId: this.data.userId,
     })
   },
   getShopDetail: function () {

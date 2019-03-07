@@ -7,7 +7,7 @@ const props = {
 
 const data = {
   shopId: 0,
-  shareCode: 0,
+  shareCode: '',
   shopInfo: {},
   itemList: [],
   isFollow: false,
@@ -26,7 +26,7 @@ const lifecycle = {
     const scenes = scene.split(',')
 
     let shopId = parseInt(scenes[0])
-    let shareCode = parseInt(scenes[1])
+    let shareCode = scenes[1]
 
     this.setData({
       shopId: shopId,
@@ -34,8 +34,9 @@ const lifecycle = {
     })
   },
   onShow: function (query) {
-    this.getShopDetail()
-    this.getShareItemList()
+    this.getShopDetail().then(res => {
+      this.getShareItemList()
+    })
   },
 }
 
