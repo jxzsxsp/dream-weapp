@@ -73,7 +73,8 @@
         "pages/poster/poster",
         "pages/goodInfo/goodInfo",
         "pages/join/join",
-        "pages/rebate/rebate"
+        "pages/rebate/rebate",
+        "pages/webpt/webpt"
     ],
     "window": {
         "backgroundTextStyle": "light",
