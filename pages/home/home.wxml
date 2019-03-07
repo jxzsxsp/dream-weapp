@@ -61,16 +61,15 @@
             </view>
         </view>
     </view> -->
-    <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
+    <!-- <view wx:if='{{selectedCate=="全场直播"}}' style='width:710rpx;margin:0 auto;positon:relative'>
         <view style='width:100%;display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;'>
             <view style='margin-bottom:30rpx;margin-top:20rpx;margin-left:8rpx'>
                 <text style='font-size:32rpx;color:#daac7c;'>品牌甄选</text>
-                <!-- <text style='font-size:30rpx;color:#d8d8d8;margin-left:15rpx;'>正品/大牌/低价</text> -->
             </view>
             <view style='font-size:26rpx;color:#d8d8d8;margin-right:8rpx;color:#daac7c' bindtap='goToBrand'>查看更多 ></view>
         </view>
         <longGoodsList longGoodsList="{{topLogoList}}"></longGoodsList>
-    </view>
+    </view> -->
     <!-- <view style='display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;font-size:0;margin-bottom:10rpx;padding-top:10rpx;position:relative;z-index:99;min-height:200rpx;margin-left:10rpx;width:730rpx;' wx:if='{{selectedCate=="全场直播"}}'>
         <navigator style='margin-bottom:10rpx;' url='/pages/screening/screening?picUrl=http://cos.qkmai.com/qkmbb/ytal/1zhe_.png&tagId=2'>
             <image style='z-index:99;width:360rpx;border-radius:20rpx;z-index:99;height:auto;' mode='widthFix' lazy-load src='http://cos.qkmai.com/qkmbb/ytal/1zhe2.png'></image>
