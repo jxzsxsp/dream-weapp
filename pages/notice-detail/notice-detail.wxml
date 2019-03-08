@@ -67,7 +67,7 @@
   
 </view>
 
-<view wx:if="{{bizType === 10 && tradeStatus === 30}}" class='disagree-container flex-column'>
+<view wx:if="{{bizType === 10 && tradeStatus === 30 && notice.refuseRemark}}" class='disagree-container flex-column'>
   <text class='disagree-title'>拒绝理由：</text>
   <text wx:if="{{notice.refuseRemark}}" class='disagree-content'>{{notice.refuseRemark}}</text>
 </view>
