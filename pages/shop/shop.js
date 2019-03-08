@@ -63,11 +63,11 @@ const lifecycle = {
     }
 
     if (!!query.type) {
-      type = query.type
+      type = parseInt(query.type)
     }
 
     if (!!query.shopId) {
-      shopId = query.shopId
+      shopId = parseInt(query.shopId)
     }
 
     this.setData({
