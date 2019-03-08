@@ -26,6 +26,34 @@
         <view bindtap="bindStatue" class="usecdlist" data-key="1">
             <view class="iconfont icon__wallet"></view>
             <text>待付款</text>
+            <view class="order_num" hidden="{{userInfo.waitPayCount==0}}">
+                <text>{{userInfo.waitPayCount}}</text>
+            </view>
+        </view>
+        <view bindtap="bindStatue" class="usecdlist" data-key="2">
+            <view class="iconfont icon__package"></view>
+            <text>拣货中</text>
+            <view class="order_num" hidden="{{userInfo.waitSendCount==0}}">
+                <text>{{userInfo.waitSendCount}}</text>
+            </view>
+        </view>
+        <view bindtap="bindStatue" class="usecdlist" data-key="3">
+            <view class="iconfont icon__shipping"></view>
+            <text>待收货</text>
+            <view class="order_num" hidden="{{userInfo.waitFinishCount==0}}">
+                <text>{{userInfo.waitFinishCount}}</text>
+            </view>
+        </view>
+        <view bindtap="bindApply" class="usecdlist">
+            <view class="iconfont icon__service-1 "></view>
+            <text>售后单</text>
+            <view class="order_num" hidden="{{userInfo.afterSalesCount==0}}">
+                <text>{{userInfo.afterSalesCount}}</text>
+            </view>
+        </view>
+        <!-- <view bindtap="bindStatue" class="usecdlist" data-key="1">
+            <view class="iconfont icon__wallet"></view>
+            <text>待付款</text>
             <view class="order_num" hidden="{{orderCount.WaitBuyerPay==0}}">
                 <text>{{orderCount.WaitBuyerPay}}</text>
             </view>
@@ -50,7 +78,7 @@
             <view class="order_num" hidden="{{orderCount.ApplyForRefund==0}}">
                 <text>{{orderCount.ApplyForRefund}}</text>
             </view>
-        </view>
+        </view> -->
         <image src="http://cos.qkmai.com/qkmbb/ytal/dakuohaotb.png" class='line'></image>
         <view bindtap="bindStatue" class="usecdlist" data-key="0">
             <image src="http://cos.qkmai.com/qkmbb/ytal/dingdantb.png" class='order_icon'></image>
@@ -116,7 +144,7 @@
 
     </view>
     <view class='row-list' style='background-color:#fff;' wx:if="{{userInfo.IsReferral}}">
-        
+
         <view style='box-sizing:border-box;width:750rpx;height:130rpx;display:flex;flex-flow:row nowrap;align-items:center;margin-bottom:20rpx;background:#f5f5f5'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/gongyingshang.png' style='width:100%;height:130rpx;;' lazy-load bindtap='joinUs'></image>
         </view>
@@ -169,7 +197,7 @@
                 <image src='http://cos.qkmai.com/qkmbb/myytal/wdyj.png' style='width:100rpx;height:100rpx;' lazy-load></image>
             </view>
         </view> -->
-        <view style='box-sizing:border-box;width:750rpx;height:130rpx;display:flex;flex-flow:row nowrap;align-items:center;margin-bottom:20rpx;background:#f5f5f5' >
+        <view style='box-sizing:border-box;width:750rpx;height:130rpx;display:flex;flex-flow:row nowrap;align-items:center;margin-bottom:20rpx;background:#f5f5f5'>
             <image src='http://cos.qkmai.com/qkmbb/ytal/gongyingshang.png' style='width:100%;height:130rpx;;' lazy-load bindtap='joinUs'></image>
         </view>
         <view class='list-item'>
