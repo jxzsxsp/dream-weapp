@@ -15,6 +15,7 @@
             data-type="consigneeName" 
             class="input" 
             value="{{consigneeName}}"
+            maxlength="14"
           />
         </form-cell>
         <form-cell>
@@ -28,6 +29,7 @@
             data-type="consigneeMobile" 
             class="input" 
             value="{{consigneeMobile}}"
+            maxlength="11"
           />
         </form-cell>
         <form-cell has-detail>
@@ -49,6 +51,7 @@
             data-type="address"
             value="{{address}}"
             class="detail-address-area"
+            maxlength="100"
           />
         </form-cell>
       </form-group>
@@ -64,6 +67,7 @@
         placeholder="请填写理由"
         data-type="remark"
         value="{{remark}}"
+        maxlength="50"
       />
     </view>
 

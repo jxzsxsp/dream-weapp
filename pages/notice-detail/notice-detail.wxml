@@ -1,6 +1,6 @@
 <view class='head flex'>
   <view class="head-avatar flex {{notice.messageType === 20 ? 'miyang' : notice.messageType === 10 ? 'seka' : ''}}">
-    <image wx:if="{{bizType === 20 && notice.messageType === 90 && notice.shopLogo}}" src='{{notice.shopLogo}}'></image>
+    <image wx:if="{{bizType === 20 && notice.messageType === 90}}" src="{{notice.shopLogo ? notice.shopLogo : '/assets/default_shop_logo.png'}}"></image>
     <view wx:if="{{notice.messageType === 20}}" class='iconfont icon-miyang avatar-icon'></view>
     <view wx:if="{{notice.messageType === 10}}" class='iconfont icon-color_card avatar-icon'></view>
   </view>
@@ -17,7 +17,7 @@
   <view wx:if="{{bizType === 10 && tradeStatus === 20}}" class='desc'><text class='desc-shop-name'>{{notice.shopName}}</text> <text class='agree'>已同意 </text> 您的{{notice.messageType === 10 ? '拿色卡' : '剪米样'}}请求</view>
   <view class='shop-info flex'>
     <view class='shop-avatar'>
-      <image wx:if="{{notice.shopLogo}}" src='{{notice.shopLogo}}'></image>
+      <image src="{{notice.shopLogo ? notice.shopLogo : '/assets/default_shop_logo.png'}}"></image>
     </view>
     <view class='info-content flex-column'>
       <text class='shop-name'>{{notice.shopName}}</text>
