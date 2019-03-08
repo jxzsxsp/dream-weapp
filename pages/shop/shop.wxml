@@ -11,11 +11,11 @@
       <text class='item-num'>在售商品 {{shopInfo.itemCountOnSales}}件</text>
 
       <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
-        <view class='iconfont icon-aixing'></view>
+        <view class='iconfont icon-aixing icon'></view>
         <text>关注</text>
       </view>
       <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
-        <view class='iconfont icon-xuanzhong'></view>
+        <!-- <view class='iconfont icon-xuanzhong'></view> -->
         <text>已关注</text>
       </view>
     </view>
@@ -45,7 +45,7 @@
     <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" indicator-color="#bbb3b7" indicator-active-color="#5283c0" circular="{{true}}">
       <block wx:for="{{swiperItemList}}" wx:key="index">
         <swiper-item data-id='{{item.id}}' bindtap='gotoItemDetail'>
-          <image mode='aspectFill' src="{{item.imageUrl}}"></image>
+          <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
         </swiper-item>
       </block>
     </swiper>
@@ -60,7 +60,7 @@
     <block wx:for="{{hotItemList}}" wx:key="index">
       <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='item-img'>
-          <image mode='aspectFill' src='{{item.imageUrl}}'></image>
+          <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
         </view>
 
         <view class='block-content-container flex-column'>
@@ -99,7 +99,7 @@
     <block wx:for="{{newItemList}}" wx:key="index">
       <view class='block-item-container flex' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='item-img'>
-          <image mode='aspectFill' src='{{item.imageUrl}}'></image>
+          <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
         </view>
 
         <view class='block-content-container flex-column'>
@@ -138,7 +138,7 @@
     <block wx:for="{{normalItemList}}" wx:key="index">
       <view class='common-item-container flex-column' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='common-item-img'>
-          <image mode='aspectFill' src='{{item.imageUrl}}'></image>
+          <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
         </view>
 
         <text class='common-content-title'>{{tools.subStr(item.title, 10)}}</text>
@@ -194,7 +194,7 @@
     <block wx:for="{{itemList}}" wx:key="index">
       <view class='common-item-container flex-column' data-id='{{item.id}}' bindtap='gotoItemDetail'>
         <view class='common-item-img'>
-          <image mode='aspectFill' src='{{item.imageUrl}}'></image>
+          <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
         </view>
 
         <text class='common-content-title'>{{tools.subStr(item.title, 10)}}</text>

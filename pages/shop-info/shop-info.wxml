@@ -8,7 +8,7 @@
     <text>关注</text>
   </view>
   <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.id}}' bindtap='followShop'>
-    <view class='iconfont icon-xuanzhong icon'></view>
+    <!-- <view class='iconfont icon-xuanzhong icon'></view> -->
     <text>已关注</text>
   </view>
 </view>

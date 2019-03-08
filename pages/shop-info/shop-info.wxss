@@ -45,8 +45,12 @@ page {
   letter-spacing: 0;
 }
 
+.icon {
+  margin-right: 14rpx;
+}
+
 .favorite-btn text {
-  margin-left: 14rpx;
+  /* margin-left: 14rpx; */
 }
 
 .space {

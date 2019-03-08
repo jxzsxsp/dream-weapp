@@ -165,7 +165,7 @@ page {
   background: #0166fe;
   border-radius: 25rpx;
   font-family: PingFangSC-Semibold;
-  font-size: 20rpx;
+  font-size: 24rpx;
   color: #FFFFFF;
   letter-spacing: 0;
   position: absolute;
@@ -173,8 +173,12 @@ page {
   top: 50rpx;
 }
 
+.icon {
+  margin-right: 14rpx;
+}
+
 .favorite-btn text {
-  margin-left: 14rpx;
+  /* margin-left: 14rpx; */
 }
 
 .no-more {

@@ -66,11 +66,11 @@ const viewAction = {
       type: data.type,
       consigneeName: { value: data.consigneeName, hint: '姓名' },
       consigneeMobile: { value: data.consigneeMobile, hint: '手机号' },
-      provinceId: 0,
+      provinceId: data.provinceId,
       provinceName: { value: data.region[0], hint: '省市区' },
-      cityId: 0,
+      cityId: data.cityId,
       cityName: { value: data.region[1], hint: '省市区' },
-      areaId: 0,
+      areaId: data.areaId,
       areaName: { value: data.region[2], hint: '省市区' },
       address: { value: data.address, hint: '详细地址' },
       remark: data.remark,
@@ -105,7 +105,7 @@ const privateMethods = {
       console.log(res)
       this.setData({
         ...res.consigneeInfo,
-        region: [res.consigneeInfo.provinceName, res.consigneeInfo.cityName, res.consigneeInfo.areaName]
+        region: res.consigneeInfo ? [res.consigneeInfo.provinceName, res.consigneeInfo.cityName, res.consigneeInfo.areaName] : []
       }, function() {
         this.checkCanSubmit()
       })

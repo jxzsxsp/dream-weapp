@@ -59,11 +59,11 @@
       <text class='item-num'>在售商品 {{shopInfo.itemCountOnSales}}件</text>
 
       <view wx:if='{{!isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
-        <view class='iconfont icon-aixing'></view>
+        <view class='iconfont icon-aixing icon'></view>
         <text>关注</text>
       </view>
       <view wx:if='{{isFollow}}' class='favorite-btn flex' data-id='{{shopInfo.shopId}}' catchtap='followShop'>
-        <view class='iconfont icon-xuanzhong'></view>
+        <!-- <view class='iconfont icon-xuanzhong'></view> -->
         <text>已关注</text>
       </view>
     </view>

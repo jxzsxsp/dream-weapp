@@ -1,3 +1,4 @@
+<block wx:if="{{itemDetail && itemDetail.shopInfo}}">
 <swiper
   indicator-dots="{{true}}"
   autoplay="{{true}}"
@@ -11,7 +12,7 @@
     <block wx:for="{{itemDetail.imageUrlList}}" wx:key="index">
       <swiper-item>
         <view class='swiper-container'>
-          <image mode='aspectFill' src="{{item}}"></image>
+          <image mode='aspectFill' src="{{item ? item : '/assets/default_item.png'}}"></image>
         </view>
       </swiper-item>
     </block>
@@ -145,3 +146,10 @@
     <view wx:if="{{itemDetail.status !== 20}}" class='off-line flex'>该商品暂未上架</view>
   </view>
 </view>
+</block>
+<block wx:else>
+  <view class='no-item-img'>
+    <image src='/assets/no_item.png'></image>
+  </view>
+  <view class='no-item-txt'>该商品已删除!</view>
+</block>
