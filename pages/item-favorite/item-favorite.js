@@ -45,6 +45,12 @@ const privateMethods = {
       }
     })
   },
+  cancelItemFavorite: function (itemId) {
+    return http.post(urls.cancelItemFavorite, {
+      // mock: true,
+      itemId: itemId
+    })
+  },
 }
 
 const viewAction = {
@@ -52,7 +58,14 @@ const viewAction = {
     $wx.navigateTo($wx.router.itemDetail, {
       itemId: d.id
     })
-  }
+  },
+  onDelete: function(d, v) {
+    if(v === 'right') {
+      this.cancelItemFavorite(d.id).then(res => {
+        this.refresh()
+      })
+    }
+  },
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

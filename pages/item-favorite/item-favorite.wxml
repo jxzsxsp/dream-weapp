@@ -2,6 +2,11 @@
   <wxs src="../../utils/tools.wxs" module="tools" />
 
   <block wx:for="{{itemList}}" wx:key="index">
+    <van-swipe-cell
+      right-width="{{100}}"
+      bind:click="onDelete"
+      data-id="{{item.id}}"
+    >
     <view class='item flex' data-id='{{item.id}}' bindtap="showDetail">
       <view class="avatar">
         <image mode='aspectFill' src="{{item.imageUrl ? item.imageUrl : '/assets/default_item.png'}}"></image>
@@ -32,6 +37,10 @@
         </view>
       </view>
     </view>
+    <view slot="right">
+      <view class='van-swipe-cell__right'>删除</view>
+    </view>
+    </van-swipe-cell>
 
     <view class="bottom-line"></view>
   </block>
