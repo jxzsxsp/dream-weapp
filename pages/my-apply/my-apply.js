@@ -116,7 +116,13 @@ const viewAction = {
     }).then(res => {
       this.refresh(this.data.status.agree)
     })
-  }
+  },
+  gotoShop: function (d, v) {
+    $wx.navigateTo($wx.router.shop, {shopId: v.shopId})
+  },
+  gotoItem: function (d, v) {
+    $wx.navigateTo($wx.router.itemDetail, { itemId: v.itemId })
+  },
 }
 
 $Page.register(props, data, lifecycle, privateMethods, viewAction)

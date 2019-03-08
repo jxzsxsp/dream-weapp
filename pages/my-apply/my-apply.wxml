@@ -23,6 +23,8 @@
         list="{{allData[status.unreport].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
 
@@ -38,6 +40,8 @@
         list="{{allData[status.agree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
 
@@ -53,6 +57,8 @@
         list="{{allData[status.disagree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
 
@@ -68,6 +74,8 @@
         list="{{allData[status.received].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
   </view>
@@ -85,6 +93,8 @@
         list="{{allData[status.unreport].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
 
@@ -100,6 +110,8 @@
         list="{{allData[status.agree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
 
@@ -115,6 +127,8 @@
         list="{{allData[status.disagree].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
 
@@ -130,6 +144,8 @@
         list="{{allData[status.received].list}}"
         bind:more="loadMore"
         bind:receive="confirmReceived"
+        catch:shop="gotoShop"
+        catch:item="gotoItem"
       />
     </fold>
   </view>

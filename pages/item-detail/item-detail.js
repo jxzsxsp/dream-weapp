@@ -12,6 +12,8 @@ const data = {
 
 const lifecycle = {
   onLoad: function (query) {
+    console.log(query)
+    
     let itemId = 0
     if (!!query.itemId) {
       itemId = query.itemId

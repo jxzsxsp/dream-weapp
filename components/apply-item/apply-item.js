@@ -37,6 +37,16 @@ Component({
         this.properties.trade,
         { bubbles: true, composed: true });
     },
+    onShop: function onShop() {
+      this.triggerEvent('shop',
+        this.properties.trade,
+        { bubbles: true, composed: true });
+    },
+    onItem: function onItem() {
+      this.triggerEvent('item',
+        this.properties.trade,
+        { bubbles: true, composed: true });
+    },
     showReason: function() {
       // wx.showModal({
       //   title: '拒绝原因',

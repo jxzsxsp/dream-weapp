@@ -34,6 +34,8 @@ const data = { //位置类型（10.轮播位，20.新品区，30.爆款区, 40.�
 
 const lifecycle = {
   onLoad: function (query) {
+    console.log(query)
+    
     $wx.setNavigationBarColor({
       frontColor: '#ffffff',
       backgroundColor: '#4A90E2',
@@ -74,21 +76,21 @@ const lifecycle = {
       userId: userId,
       currentMenuType: currentMenuType,
     }, function() {
-      this.getShopDetail().then(res => {
-        this.setData({
-          shopInfo: res,
-          isFollow: res.isFollow,
-        })
-
-        this.getHotItemList()
-        this.homeRefresh(this.data.positionType.NORMAL)
-        this.refresh()
-        this.bindCustomer()
-      })
     })
 
   },
   onShow: function () {
+    this.getShopDetail().then(res => {
+      this.setData({
+        shopInfo: res,
+        isFollow: res.isFollow,
+      })
+
+      this.getHotItemList()
+      this.homeRefresh(this.data.positionType.NORMAL)
+      this.refresh()
+      this.bindCustomer()
+    })
   },
   onPageScroll: function(d) {
     let navFixed = false

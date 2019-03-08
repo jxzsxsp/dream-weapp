@@ -1,6 +1,6 @@
 <view class='item-container'>
   <view class='head-container'>
-    <view class='shop-container'>
+    <view class='shop-container' catchtap='onShop'>
       <view class='iconfont icon-inter_shop shop'></view>
       <text class='shop-name'>{{trade.shopName}}</text>
       <view class='iconfont icon-jinru jinru'></view>
@@ -18,9 +18,9 @@
     </view>
   </view>
 
-  <view class='content-container'>
+  <view class='content-container' catchtap='onItem'>
     <view class='item-avatar'>
-      <image mode='aspectFill' wx:if="{{trade.imageUrl}}" src='{{trade.imageUrl}}'></image>
+      <image mode='aspectFill' src="{{trade.imageUrl ? trade.imageUrl : '/assets/default_item.png'}}"></image>
     </view>
 
     <view class='content'>
@@ -36,7 +36,7 @@
   <view wx:if="{{trade.status === 40}}" class='logistics-container flex'>
     <text class='title'>物流单号：</text>
     <text class='logistics-sn'>{{trade.logisticsSn ? trade.logisticsSn : ''}}</text>
-    <view class='confirm-receive flex' bindtap='onReceive'>确认收货</view>
+    <view class='confirm-receive flex' catchtap='onReceive'>确认收货</view>
   </view>
 </view>
 
