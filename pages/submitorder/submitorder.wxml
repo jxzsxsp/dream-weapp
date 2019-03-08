@@ -142,7 +142,7 @@
               <view style='margin-right:20rpx;height:48rpx;'>
                 <image src="http://cos.qkmai.com/qkmbb/ytal/yuetb.png" style='width:34rpx;height:34rpx;margin-top:7rpx'></image>
               </view>
-              <view class="yunfeil">红包支付({{usebalance}}元)</view>
+              <view class="yunfeil" style="width:450rpx">红包支付({{usebalance}}元)</view>
             </view>
             <checkbox-group >
               <checkbox bindtap='changeNm' checked='{{isUseRedPacket}}'></checkbox>
