@@ -97,6 +97,8 @@ const lifecycle = {
     let title = ''
     if (d.scrollTop > 99) {
       navFixed = true
+    }
+    if (d.scrollTop > 40) {
       title = this.data.shopInfo.shopName
     }
     this.setData({
